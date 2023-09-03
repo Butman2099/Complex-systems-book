@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: docs
+
+language: _language-ukr.yml
+lang: ru
+
+book:
+  title: "Моделювання складних систем у Python"
+  author: "Соловйов В.М, Бєлінський А.О."
+  date: today 
+  date-format: iso 
+  chapters:
+    - index.qmd
+    - intro.ipynb
+    - lab_1.ipynb
+    - lab_2.ipynb
+    - lab_3.ipynb
+    - lab_4.ipynb
+    - lab_5.ipynb
+    - lab_6.ipynb
+    - lab_11.ipynb
+    - lab_12.ipynb
+
+bibliography: references.bib
+toc: true
+number-sections: true
+callout-appearance: default
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    keep-tex: true
+    documentclass: report
+  docx: 
+    toc: true
+    number-sections: true
+  epub: 
+    toc: true
+    number-sections: true 
+    
+
+
+
+
