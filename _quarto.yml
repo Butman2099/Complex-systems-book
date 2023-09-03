@@ -10,6 +10,10 @@ book:
   author: "Соловйов В.М, Бєлінський А.О."
   date: today 
   date-format: iso 
+  search: true
+  repo-url: https://github.com/Butman2099/Complex-systems-book
+  repo-actions: [edit]
+  site-url: https://butman2099.github.io/Complex-systems-book/
   chapters:
     - index.qmd
     - intro.ipynb

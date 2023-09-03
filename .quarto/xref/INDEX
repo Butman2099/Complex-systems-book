@@ -1,0 +1,32 @@
+{
+  "index.qmd": {
+    "index.html": "23982e90"
+  },
+  "intro.ipynb": {
+    "intro.html": "6bb5729b"
+  },
+  "lab_1.ipynb": {
+    "lab_1.html": "351ceb5d"
+  },
+  "lab_2.ipynb": {
+    "lab_2.html": "aa318cd6"
+  },
+  "lab_3.ipynb": {
+    "lab_3.html": "f7b75617"
+  },
+  "lab_4.ipynb": {
+    "lab_4.html": "cdc37fe3"
+  },
+  "lab_5.ipynb": {
+    "lab_5.html": "5580fcf4"
+  },
+  "lab_6.ipynb": {
+    "lab_6.html": "9d2007a4"
+  },
+  "lab_11.ipynb": {
+    "lab_11.html": "3ab94408"
+  },
+  "lab_12.ipynb": {
+    "lab_12.html": "5c318871"
+  }
+}
