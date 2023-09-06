@@ -71,10 +71,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,6 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Переключить темный режим"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -201,6 +204,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Додатки</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Інструкція зі встановлення Anaconda Navigator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Вступ до мови програмування Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Основи Jupyter Notebook</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -223,6 +255,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#одночасне-вивантаження-декількох-ринкових-активів" id="toc-одночасне-вивантаження-декількох-ринкових-активів" class="nav-link" data-scroll-target="#одночасне-вивантаження-декількох-ринкових-активів"><span class="header-section-number">2.2.2</span> Одночасне вивантаження декількох ринкових активів</a></li>
   </ul></li>
   <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">2.3</span> Висновок</a></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">2.4</span> Завдання для самостійної роботи</a></li>
+  <li><a href="#контрольні-питання" id="toc-контрольні-питання" class="nav-link" data-scroll-target="#контрольні-питання"><span class="header-section-number">2.5</span> Контрольні питання</a></li>
+  <li><a href="#додаток" id="toc-додаток" class="nav-link" data-scroll-target="#додаток"><span class="header-section-number">2.6</span> Додаток</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_1.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -347,18 +382,18 @@ r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{
 </div>
 </div>
 <p>Для встановлення бібліотеки <code>yfinance</code> можете скористатися наступною командою:</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install yfinance <span class="op">--</span>upgrade <span class="op">--</span>no<span class="op">-</span>cache<span class="op">-</span><span class="bu">dir</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://github.com/ranaroussi/yfinance">Гітхаб репозиторій</a> містить більше інформації по самій бібліотеці та помилкам, що можуть виникнути та їх потенційним рішенням.</p>
 <section id="вступ-до-модуля-ticker" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="вступ-до-модуля-ticker"><span class="header-section-number">2.2.1</span> Вступ до модуля <code>Ticker()</code></h3>
 <p>Перш за все імпортуємо бібліотеку <code>yfinance</code> за допомогою наступної команди:</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Модуль <code>Ticker()</code> дозволяє отримувати ринкові та метадані для цінного паперу, використовуючи Python:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msft <span class="op">=</span> yf.Ticker(<span class="st">"MSFT"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(msft)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -366,18 +401,18 @@ r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{
 </div>
 </div>
 <p>Можна вилучити всю інформацію по досліджуваному індексу:</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати інформацію по індексу</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(msft.info)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'address1': 'One Microsoft Way', 'city': 'Redmond', 'state': 'WA', 'zip': '98052-6399', 'country': 'United States', 'phone': '425 882 8080', 'website': 'https://www.microsoft.com', 'industry': 'Software—Infrastructure', 'industryDisp': 'Software—Infrastructure', 'sector': 'Technology', 'sectorDisp': 'Technology', 'longBusinessSummary': 'Microsoft Corporation develops and supports software, services, devices and solutions worldwide. The Productivity and Business Processes segment offers office, exchange, SharePoint, Microsoft Teams, office 365 Security and Compliance, Microsoft viva, and Microsoft 365 copilot; and office consumer services, such as Microsoft 365 consumer subscriptions, Office licensed on-premises, and other office services. This segment also provides LinkedIn; and dynamics business solutions, including Dynamics 365, a set of intelligent, cloud-based applications across ERP, CRM, power apps, and power automate; and on-premises ERP and CRM applications. The Intelligent Cloud segment provides server products and cloud services, such as azure and other cloud services; SQL and windows server, visual studio, system center, and related client access licenses, as well as nuance and GitHub; and enterprise services including enterprise support services, industry solutions, and nuance professional services. The More Personal Computing segment offers Windows, including windows OEM licensing and other non-volume licensing of the Windows operating system; Windows commercial comprising volume licensing of the Windows operating system, windows cloud services, and other Windows commercial offerings; patent licensing; and windows Internet of Things; and devices, such as surface, HoloLens, and PC accessories. Additionally, this segment provides gaming, which includes Xbox hardware and content, and first- and third-party content; Xbox game pass and other subscriptions, cloud gaming, advertising, third-party disc royalties, and other cloud services; and search and news advertising, which includes Bing, Microsoft News and Edge, and third-party affiliates. The company sells its products through OEMs, distributors, and resellers; and directly through digital marketplaces, online, and retail stores. The company was founded in 1975 and is headquartered in Redmond, Washington.', 'fullTimeEmployees': 221000, 'companyOfficers': [{'maxAge': 1, 'name': 'Mr. Satya  Nadella', 'age': 55, 'title': 'Chairman &amp; CEO', 'yearBorn': 1967, 'fiscalYear': 2022, 'totalPay': 12676750, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Bradford L. Smith LCA', 'age': 63, 'title': 'Pres &amp; Vice Chairman', 'yearBorn': 1959, 'fiscalYear': 2022, 'totalPay': 4655274, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Amy E. Hood', 'age': 50, 'title': 'Exec. VP &amp; CFO', 'yearBorn': 1972, 'fiscalYear': 2022, 'totalPay': 4637915, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Judson  Althoff', 'age': 49, 'title': 'Exec. VP &amp; Chief Commercial Officer', 'yearBorn': 1973, 'fiscalYear': 2022, 'totalPay': 4428268, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Christopher David Young', 'age': 50, 'title': 'Exec. VP of Bus. Devel., Strategy &amp; Ventures', 'yearBorn': 1972, 'fiscalYear': 2022, 'totalPay': 4588876, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Alice L. Jolla', 'age': 55, 'title': 'Corp. VP &amp; Chief Accounting Officer', 'yearBorn': 1967, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. James Kevin Scott', 'age': 50, 'title': 'Exec. VP of AI &amp; CTO', 'yearBorn': 1972, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Brett  Iversen', 'title': 'Gen. Mang. of Investor Relations', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Frank X. Shaw', 'title': 'Corp. VP for Corp. Communications', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Christopher C. Capossela', 'age': 52, 'title': 'Exec. VP &amp; Chief Marketing Officer', 'yearBorn': 1970, 'exercisedValue': 0, 'unexercisedValue': 0}], 'auditRisk': 6, 'boardRisk': 3, 'compensationRisk': 3, 'shareHolderRightsRisk': 2, 'overallRisk': 2, 'governanceEpochDate': 1690848000, 'compensationAsOfEpochDate': 1672444800, 'maxAge': 86400, 'priceHint': 2, 'previousClose': 327.0, 'open': 332.85, 'dayLow': 321.06, 'dayHigh': 332.98, 'regularMarketPreviousClose': 327.0, 'regularMarketOpen': 332.85, 'regularMarketDayLow': 321.06, 'regularMarketDayHigh': 332.98, 'dividendRate': 2.72, 'dividendYield': 0.0083, 'exDividendDate': 1692144000, 'payoutRatio': 0.2748, 'fiveYearAvgDividendYield': 1.06, 'beta': 0.903706, 'trailingPE': 33.263428, 'forwardPE': 25.514263, 'volume': 9366773, 'regularMarketVolume': 9366773, 'averageVolume': 27877593, 'averageVolume10days': 20817470, 'averageDailyVolume10Day': 20817470, 'bid': 321.56, 'ask': 321.64, 'bidSize': 800, 'askSize': 800, 'marketCap': 2392308318208, 'fiftyTwoWeekLow': 213.43, 'fiftyTwoWeekHigh': 366.78, 'priceToSalesTrailing12Months': 11.289, 'fiftyDayAverage': 334.5692, 'twoHundredDayAverage': 285.35226, 'trailingAnnualDividendRate': 2.72, 'trailingAnnualDividendYield': 0.008318043, 'currency': 'USD', 'enterpriseValue': 2397717659648, 'profitMargins': 0.34146, 'floatShares': 7423671316, 'sharesOutstanding': 7429760000, 'sharesShort': 35852374, 'sharesShortPriorMonth': 38002864, 'sharesShortPreviousMonthDate': 1688083200, 'dateShortInterest': 1690761600, 'sharesPercentSharesOut': 0.0047999998, 'heldPercentInsiders': 0.00052, 'heldPercentInstitutions': 0.73212, 'shortRatio': 1.09, 'shortPercentOfFloat': 0.0047999998, 'impliedSharesOutstanding': 7429760000, 'bookValue': 27.748, 'priceToBook': 11.604079, 'lastFiscalYearEnd': 1688083200, 'nextFiscalYearEnd': 1719705600, 'mostRecentQuarter': 1688083200, 'earningsQuarterlyGrowth': 0.2, 'netIncomeToCommon': 72361000960, 'trailingEps': 9.68, 'forwardEps': 12.62, 'pegRatio': 2.04, 'lastSplitFactor': '2:1', 'lastSplitDate': 1045526400, 'enterpriseToRevenue': 11.315, 'enterpriseToEbitda': 23.502, '52WeekChange': 0.17267346, 'SandP52WeekChange': 0.056414247, 'lastDividendValue': 0.68, 'lastDividendDate': 1692144000, 'exchange': 'NMS', 'quoteType': 'EQUITY', 'symbol': 'MSFT', 'underlyingSymbol': 'MSFT', 'shortName': 'Microsoft Corporation', 'longName': 'Microsoft Corporation', 'firstTradeDateEpochUtc': 511108200, 'timeZoneFullName': 'America/New_York', 'timeZoneShortName': 'EDT', 'uuid': 'b004b3ec-de24-385e-b2c1-923f10d3fb62', 'messageBoardId': 'finmb_21835', 'gmtOffSetMilliseconds': -14400000, 'currentPrice': 321.99, 'targetHighPrice': 440.0, 'targetLowPrice': 232.0, 'targetMeanPrice': 387.17, 'targetMedianPrice': 400.0, 'recommendationMean': 1.8, 'recommendationKey': 'buy', 'numberOfAnalystOpinions': 44, 'totalCash': 111256002560, 'totalCashPerShare': 14.974, 'ebitda': 102022995968, 'totalDebt': 79441002496, 'quickRatio': 1.536, 'currentRatio': 1.769, 'totalRevenue': 211914997760, 'debtToEquity': 38.522, 'revenuePerShare': 28.46, 'returnOnAssets': 0.14245, 'returnOnEquity': 0.38824, 'freeCashflow': 47268999168, 'operatingCashflow': 87581999104, 'earningsGrowth': 0.202, 'revenueGrowth': 0.083, 'grossMargins': 0.6892, 'ebitdaMargins': 0.48143002, 'operatingMargins': 0.41772997, 'financialCurrency': 'USD', 'trailingPegRatio': 2.3941}</code></pre>
+<pre><code>{'address1': 'One Microsoft Way', 'city': 'Redmond', 'state': 'WA', 'zip': '98052-6399', 'country': 'United States', 'phone': '425 882 8080', 'website': 'https://www.microsoft.com', 'industry': 'Software—Infrastructure', 'industryDisp': 'Software—Infrastructure', 'sector': 'Technology', 'sectorDisp': 'Technology', 'longBusinessSummary': 'Microsoft Corporation develops and supports software, services, devices and solutions worldwide. The Productivity and Business Processes segment offers office, exchange, SharePoint, Microsoft Teams, office 365 Security and Compliance, Microsoft viva, and Microsoft 365 copilot; and office consumer services, such as Microsoft 365 consumer subscriptions, Office licensed on-premises, and other office services. This segment also provides LinkedIn; and dynamics business solutions, including Dynamics 365, a set of intelligent, cloud-based applications across ERP, CRM, power apps, and power automate; and on-premises ERP and CRM applications. The Intelligent Cloud segment provides server products and cloud services, such as azure and other cloud services; SQL and windows server, visual studio, system center, and related client access licenses, as well as nuance and GitHub; and enterprise services including enterprise support services, industry solutions, and nuance professional services. The More Personal Computing segment offers Windows, including windows OEM licensing and other non-volume licensing of the Windows operating system; Windows commercial comprising volume licensing of the Windows operating system, windows cloud services, and other Windows commercial offerings; patent licensing; and windows Internet of Things; and devices, such as surface, HoloLens, and PC accessories. Additionally, this segment provides gaming, which includes Xbox hardware and content, and first- and third-party content; Xbox game pass and other subscriptions, cloud gaming, advertising, third-party disc royalties, and other cloud services; and search and news advertising, which includes Bing, Microsoft News and Edge, and third-party affiliates. The company sells its products through OEMs, distributors, and resellers; and directly through digital marketplaces, online, and retail stores. The company was founded in 1975 and is headquartered in Redmond, Washington.', 'fullTimeEmployees': 221000, 'companyOfficers': [{'maxAge': 1, 'name': 'Mr. Satya  Nadella', 'age': 55, 'title': 'Chairman &amp; CEO', 'yearBorn': 1967, 'fiscalYear': 2022, 'totalPay': 12676750, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Bradford L. Smith LCA', 'age': 63, 'title': 'Pres &amp; Vice Chairman', 'yearBorn': 1959, 'fiscalYear': 2022, 'totalPay': 4655274, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Amy E. Hood', 'age': 50, 'title': 'Exec. VP &amp; CFO', 'yearBorn': 1972, 'fiscalYear': 2022, 'totalPay': 4637915, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Judson  Althoff', 'age': 49, 'title': 'Exec. VP &amp; Chief Commercial Officer', 'yearBorn': 1973, 'fiscalYear': 2022, 'totalPay': 4428268, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Christopher David Young', 'age': 50, 'title': 'Exec. VP of Bus. Devel., Strategy &amp; Ventures', 'yearBorn': 1972, 'fiscalYear': 2022, 'totalPay': 4588876, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Ms. Alice L. Jolla', 'age': 55, 'title': 'Corp. VP &amp; Chief Accounting Officer', 'yearBorn': 1967, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. James Kevin Scott', 'age': 50, 'title': 'Exec. VP of AI &amp; CTO', 'yearBorn': 1972, 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Brett  Iversen', 'title': 'Gen. Mang. of Investor Relations', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Frank X. Shaw', 'title': 'Corp. VP for Corp. Communications', 'exercisedValue': 0, 'unexercisedValue': 0}, {'maxAge': 1, 'name': 'Mr. Christopher C. Capossela', 'age': 52, 'title': 'Exec. VP &amp; Chief Marketing Officer', 'yearBorn': 1970, 'exercisedValue': 0, 'unexercisedValue': 0}], 'auditRisk': 6, 'boardRisk': 3, 'compensationRisk': 3, 'shareHolderRightsRisk': 2, 'overallRisk': 2, 'governanceEpochDate': 1693526400, 'compensationAsOfEpochDate': 1672444800, 'maxAge': 86400, 'priceHint': 2, 'previousClose': 328.66, 'open': 329.0, 'dayLow': 328.66, 'dayHigh': 334.84, 'regularMarketPreviousClose': 328.66, 'regularMarketOpen': 329.0, 'regularMarketDayLow': 328.66, 'regularMarketDayHigh': 334.84, 'dividendRate': 2.72, 'dividendYield': 0.0083, 'exDividendDate': 1692144000, 'payoutRatio': 0.2748, 'fiveYearAvgDividendYield': 1.05, 'beta': 0.904564, 'trailingPE': 34.386597, 'forwardPE': 26.43027, 'volume': 18105063, 'regularMarketVolume': 18105063, 'averageVolume': 26367677, 'averageVolume10days': 19693130, 'averageDailyVolume10Day': 19693130, 'bid': 333.08, 'ask': 333.14, 'bidSize': 1200, 'askSize': 2200, 'marketCap': 2478196391936, 'fiftyTwoWeekLow': 213.43, 'fiftyTwoWeekHigh': 366.78, 'priceToSalesTrailing12Months': 11.694295, 'fiftyDayAverage': 332.707, 'twoHundredDayAverage': 288.5822, 'trailingAnnualDividendRate': 2.72, 'trailingAnnualDividendYield': 0.0082760295, 'currency': 'USD', 'enterpriseValue': 2410051272704, 'profitMargins': 0.34146, 'floatShares': 7423448423, 'sharesOutstanding': 7429760000, 'sharesShort': 31028035, 'sharesShortPriorMonth': 42497800, 'sharesShortPreviousMonthDate': 1689292800, 'dateShortInterest': 1692057600, 'sharesPercentSharesOut': 0.0042, 'heldPercentInsiders': 0.00052, 'heldPercentInstitutions': 0.73212, 'shortRatio': 1.0, 'shortPercentOfFloat': 0.0042, 'impliedSharesOutstanding': 7429760000, 'bookValue': 27.748, 'priceToBook': 12.020686, 'lastFiscalYearEnd': 1688083200, 'nextFiscalYearEnd': 1719705600, 'mostRecentQuarter': 1688083200, 'earningsQuarterlyGrowth': 0.2, 'netIncomeToCommon': 72361000960, 'trailingEps': 9.7, 'forwardEps': 12.62, 'pegRatio': 2.08, 'lastSplitFactor': '2:1', 'lastSplitDate': 1045526400, 'enterpriseToRevenue': 11.373, 'enterpriseToEbitda': 23.623, '52WeekChange': 0.29776895, 'SandP52WeekChange': 0.15546322, 'lastDividendValue': 0.68, 'lastDividendDate': 1692144000, 'exchange': 'NMS', 'quoteType': 'EQUITY', 'symbol': 'MSFT', 'underlyingSymbol': 'MSFT', 'shortName': 'Microsoft Corporation', 'longName': 'Microsoft Corporation', 'firstTradeDateEpochUtc': 511108200, 'timeZoneFullName': 'America/New_York', 'timeZoneShortName': 'EDT', 'uuid': 'b004b3ec-de24-385e-b2c1-923f10d3fb62', 'messageBoardId': 'finmb_21835', 'gmtOffSetMilliseconds': -14400000, 'currentPrice': 333.55, 'targetHighPrice': 440.0, 'targetLowPrice': 232.0, 'targetMeanPrice': 387.17, 'targetMedianPrice': 400.0, 'recommendationMean': 1.8, 'recommendationKey': 'buy', 'numberOfAnalystOpinions': 44, 'totalCash': 111256002560, 'totalCashPerShare': 14.974, 'ebitda': 102022995968, 'totalDebt': 79441002496, 'quickRatio': 1.536, 'currentRatio': 1.769, 'totalRevenue': 211914997760, 'debtToEquity': 38.522, 'revenuePerShare': 28.46, 'returnOnAssets': 0.14245, 'returnOnEquity': 0.38824, 'freeCashflow': 47268999168, 'operatingCashflow': 87581999104, 'earningsGrowth': 0.202, 'revenueGrowth': 0.083, 'grossMargins': 0.6892, 'ebitdaMargins': 0.48143002, 'operatingMargins': 0.41772997, 'financialCurrency': 'USD', 'trailingPegRatio': 2.4063}</code></pre>
 </div>
 </div>
 <p>Можна вилучити ринкові значення за максимальний період часу:</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати ринкові історичні значення індексу</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>msft.history(period<span class="op">=</span><span class="st">"max"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
@@ -466,67 +501,67 @@ r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-08-18 00:00:00-04:00</td>
-<td>314.489990</td>
-<td>318.380005</td>
-<td>311.549988</td>
-<td>316.480011</td>
-<td>24744800</td>
-<td>0.0</td>
-<td>0.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2023-08-21 00:00:00-04:00</td>
-<td>317.929993</td>
-<td>322.769989</td>
-<td>317.040009</td>
+<td data-quarto-table-cell-role="th">2023-08-29 00:00:00-04:00</td>
 <td>321.880005</td>
-<td>24040000</td>
-<td>0.0</td>
-<td>0.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2023-08-22 00:00:00-04:00</td>
-<td>325.500000</td>
-<td>326.079987</td>
-<td>321.459991</td>
-<td>322.459991</td>
-<td>16102000</td>
+<td>328.980011</td>
+<td>321.880005</td>
+<td>328.410004</td>
+<td>19284600</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-08-23 00:00:00-04:00</td>
-<td>323.820007</td>
-<td>329.200012</td>
-<td>323.459991</td>
-<td>327.000000</td>
-<td>21073100</td>
+<td data-quarto-table-cell-role="th">2023-08-30 00:00:00-04:00</td>
+<td>328.670013</td>
+<td>329.809998</td>
+<td>326.450012</td>
+<td>328.790009</td>
+<td>15222100</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-08-24 00:00:00-04:00</td>
-<td>332.850006</td>
-<td>332.980011</td>
-<td>321.059998</td>
-<td>321.989990</td>
-<td>9366773</td>
+<td data-quarto-table-cell-role="th">2023-08-31 00:00:00-04:00</td>
+<td>329.200012</td>
+<td>330.910004</td>
+<td>326.779999</td>
+<td>327.760010</td>
+<td>26411000</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-09-01 00:00:00-04:00</td>
+<td>331.309998</td>
+<td>331.989990</td>
+<td>326.779999</td>
+<td>328.660004</td>
+<td>14931200</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-09-05 00:00:00-04:00</td>
+<td>329.000000</td>
+<td>334.839996</td>
+<td>328.660004</td>
+<td>333.549988</td>
+<td>18105063</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 </tbody>
 </table>
 
-<p>9439 rows × 7 columns</p>
+<p>9446 rows × 7 columns</p>
 </div>
 </div>
 </div>
 <p>Окрім цього, <code>yfinance</code> дозволяє отримати інформацію по дивідентам та сплітам фінансового індексу:</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># показувати дії (дивіденди, спліти)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>msft.actions</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <div>
 
 
@@ -606,10 +641,10 @@ r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати дивіденти</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>msft.dividends</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Date
 2003-02-19 00:00:00-05:00    0.08
 2003-10-15 00:00:00-04:00    0.16
@@ -625,10 +660,10 @@ r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{
 Name: Dividends, Length: 79, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати спліти</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>msft.splits</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>Date
 1987-09-21 00:00:00-04:00    2.0
 1990-04-16 00:00:00-04:00    2.0
@@ -656,7 +691,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <section id="одночасне-вивантаження-декількох-ринкових-активів" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="одночасне-вивантаження-декількох-ринкових-активів"><span class="header-section-number">2.2.2</span> Одночасне вивантаження декількох ринкових активів</h3>
 <p>Як і до цього, ви також можете завантажувати дані для кількох тикерів одночасно.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>) <span class="co"># вивантажуємо дані, </span></span>
@@ -666,10 +701,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code></code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
@@ -718,7 +750,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2017-01-03</td>
-<td>27.059305</td>
+<td>27.059309</td>
 <td>201.337372</td>
 <td>29.037500</td>
 <td>225.240005</td>
@@ -733,8 +765,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2017-01-04</td>
-<td>27.029018</td>
-<td>202.535141</td>
+<td>27.029022</td>
+<td>202.535156</td>
 <td>29.004999</td>
 <td>226.580002</td>
 <td>29.127501</td>
@@ -748,8 +780,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2017-01-05</td>
-<td>27.166473</td>
-<td>202.374298</td>
+<td>27.166470</td>
+<td>202.374252</td>
 <td>29.152500</td>
 <td>226.399994</td>
 <td>29.215000</td>
@@ -764,7 +796,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2017-01-06</td>
 <td>27.469334</td>
-<td>203.098343</td>
+<td>203.098328</td>
 <td>29.477501</td>
 <td>227.210007</td>
 <td>29.540001</td>
@@ -778,8 +810,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2017-01-09</td>
-<td>27.720943</td>
-<td>202.427887</td>
+<td>27.720938</td>
+<td>202.427917</td>
 <td>29.747499</td>
 <td>226.460007</td>
 <td>29.857500</td>
@@ -798,11 +830,11 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Для отримання конкретно цін закриття індексу <strong>SPY</strong>, вам варто використовувати наступну команду: <code>data['Close']['SPY']</code> Але, якщо вам потребується згрупувати дані по їх символу, можна скористатися наступним записом:</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                   group_by<span class="op">=</span><span class="st">"ticker"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                   group_by<span class="op">=</span><span class="st">"ticker"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
@@ -817,23 +849,29 @@ Name: Stock Splits, dtype: float64</code></pre>
 <li><strong><code>neurokit2</code></strong>: зручна бібліотека, що забезпечує легкий доступ до розширених процедур обробки біосигналів. Дослідники та клініцисти без глибоких знань програмування або біомедичної обробки сигналів можуть аналізувати фізіологічні дані за допомогою лише двох рядків коду. Перевага даної бібліотеки полягає в тому, що вона надає функціонал, який можна використовувати не лише для біомедичних сигналів, але й для фінансових, фізичних тощо.</li>
 </ul>
 <p>Встановити кожну з даних бібліотек можна в наступний спосіб: <code>!pip install *назва бібліотеки*</code>:</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install matplotlib pandas numpy neurokit2</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install matplotlib pandas numpy neurokit2</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Далі нам треба буде визначити стиль рисунків для виведення та збереження. Зробити це можна в наступний спосіб. Для використання подальшого стилю рисунків потребується встановити наступну бібліотеку:</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># для встановлення останньої версії (із PyPI)</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install SciencePlots</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Імпортуємо кожну із зазначених бібліотек:</p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline  <span class="co"># магічна команда для вбудування рисунків у середовище jupyter блокнотів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>UsageError: unrecognized arguments: # магічна команда для вбудування рисунків у середовище jupyter блокнотів</code></pre>
 </div>
-<p>Далі нам треба буде визначити стиль рисунків для виведення та збереження. Зробити це можна в наступний спосіб. Для використання подальшого стилю рисунків потребується встановити наступну бібліотеку:</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># для встановлення останньої версії (із PyPI)</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install SciencePlots</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виконаємо налаштування стилю наших подальших рисунків:</p>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -853,7 +891,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 <p>Представлені налаштування є орієнтовними і можуть змінюватись у ході наступних лабораторних. Ви можете встановлювати власні налаштування. На сайті бібліотеки <a href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html">matplotlib</a> можна ознайомитись з усіма можливими командами.</p>
 <p>Розглянемо можливість використання всіх згаданих показників у якості індикаторів або індикаторів-передвісників кризових явищ. Для прикладу завантажимо часовий ряд Біткоїна за період з 1 вересня 2015 по 1 березня 2020, використовуючи <code>yfinance</code>:</p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'BTC-USD'</span>       <span class="co"># Символ індексу</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2015-09-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2020-03-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -868,7 +906,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Виведемо досліджуваний ряд</p>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -895,7 +933,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 g(t) = \frac{G(t) - \mu}{\sigma},  
 \]</span></p>
 <p>де <span class="math inline">\(\mu\)</span> відповідає середньому значенню прибутковостей за досліджуваний часовий інтервал, а <span class="math inline">\(\sigma\)</span> представляє стандартне відхилення.</p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> time_ser.copy()      <span class="co"># копіюємо значення вихідного ряду для збереження </span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># його від змін</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -906,7 +944,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> ret.dropna().values  <span class="co"># видаляємо всі можливі нульові значення </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо отриманий результат</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index[<span class="dv">1</span>:], ret)           <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -932,11 +970,11 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 </div>
 <p>Зверніть увагу, що флуктуації нормалізованих прибутковостей досить часто перевищують величину <span class="math inline">\(\pm 3\sigma\)</span>, що, як відомо, надзвичайно рідко спостерігається для незалежних подій. Цей факт можна відобразити шляхом порівняння функції розподілу нормалізованих флуктуацій з розподілом Гауса (рис. <a href="#fig-btc-dist">Рисунок&nbsp;<span>2.3</span></a>). Очевидно, що хвости розподілу вихідного ряду містять значні флуктуації, вони досить помітні (часто кажуть “важкі” у порівнянні з самою “головою” розподілу).</p>
 <p>Для побудови нормального розподілу скористаємось бібліотекою <code>scipy</code>. Встановити її можна по аналогії з попередніми бібліотеками.</p>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Для встановлення останньої версії scipy</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install scipy</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm <span class="co"># імпорт модуля norm для побудови Гаусового розподілу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Функція щільності ймовірності для <code>norm</code> має наступний вид:</p>
@@ -944,14 +982,14 @@ g(t) = \frac{G(t) - \mu}{\sigma},
     f(x) = \frac{\exp{(-x^2/2)}}{\sqrt{2\pi}}
 \]</span></p>
 <p>для дійсних значень <span class="math inline">\(x\)</span>.</p>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mu, sigma <span class="op">=</span> norm.fit(ret)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(ret.<span class="bu">min</span>(), ret.<span class="bu">max</span>(), <span class="dv">10000</span>) <span class="co"># Генеруємо 10000 значень для побудови </span></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># Гаусового розподілу</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.pdf(x, mu, sigma)                   <span class="co"># Отримання значень функції щільності</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, p, label<span class="op">=</span><span class="st">'Гаус'</span>)                <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ax.hist(ret, bins<span class="op">=</span><span class="dv">50</span>,                      <span class="co"># Побудова гістограми для прибутковостей</span></span>
@@ -993,7 +1031,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <li><strong>r</strong> (<em>float</em>) - крос-кореляція сигналу з самим собою на різних часових лагах. Мінімальний часовий лаг дорівнює 0, максимальний часовий лаг дорівнює довжині сигналу. Або значення кореляції на певному часовому лазі, якщо лаг не дорівнює <code>None</code>.</li>
 <li><strong>info</strong> (<em>dict</em>) - Словник, що містить додаткову інформацію, наприклад, довірчий інтервал.</li>
 </ul>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># розрахунок автокореляції</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>r_init, _ <span class="op">=</span> nk.signal_autocor(time_ser.values, </span>
@@ -1005,7 +1043,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>r_range <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(r_ret) <span class="op">+</span> <span class="dv">1</span>)               <span class="co"># генерація лагів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                    <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_init[<span class="dv">1</span>:], label<span class="op">=</span>symbol)  <span class="co"># Додаємо дані до графіку</span></span>
@@ -1032,7 +1070,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <p>Подальші розрахунки здійснюватимуться в рамках алгоритму ковзного (рухомого) вікна. Для цього виділятиметься частина часового ряду (вікно), для якої розраховуватимуться міри складності, потім вікно зміщуватиметься разом з часовим рядом на заздалегідь визначену величину, і процедура повторюватиметься до тих пір, поки значення всього ряду не будуть вичерпані. Далі, порівнюючи динаміку фактичного часового ряду і відповідних мір складності, ми матимемо змогу судити про характерні зміни в динаміці міри складності зі зміною досліджуваної системи. Якщо та чи інша міра складності поводиться певним чином для всіх періодів крахів, наприклад, зменшується або збільшується під час передкризовий або передкритичний період, то вона може служити їх індикатором або провісником.</p>
 <p>Розглянемо як поводитиме себе функція автокореляцій та волатильність в рамках алгоритму ковзного вікна.</p>
 <p>Спочатку визначимо параметри</p>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> <span class="co"># вид ряду: </span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>             <span class="co"># 1 - вихідний, </span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>             <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
@@ -1049,15 +1087,15 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>autocorr <span class="op">=</span> []   <span class="co"># масив значень автокореляції при змінній lag</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі розпочнемо розрахунки. Для відслідковування прогресу зміщення ковзного вікна скористаємось бібліотекою <code>tqdm</code>. Її можна встановити аналогічно попереднім бібліотекам.</p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Імпортуємо модуль для візуалізації прогресу</p>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>і тепер приступимо до виконання віконної процедури:</p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># Фрагменти довжиною window  </span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                                              </span>
@@ -1095,11 +1133,11 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>    volatility.append(vol_window)</span>
 <span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>    autocorr.append(r_window[<span class="dv">1</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 1393/1393 [00:01&lt;00:00, 933.40it/s]</code></pre>
+<pre><code>100%|██████████| 1393/1393 [00:01&lt;00:00, 966.47it/s]</code></pre>
 </div>
 </div>
 <p>Збережемо результати в окремих текстових файлах</p>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># збереження результатів ковзної автокореляції</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"autocorr_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1111,7 +1149,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, volatility)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Нарешті порівняємо динаміку вихідного ряду і розрахованих похідних. Для цього врахуємо, що автокореляцію і волатильність ми рахували для рухомого вікна. Результати представлено на рис. <a href="#fig-btc-all">Рисунок&nbsp;<span>2.5</span></a>.</p>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>,<span class="dv">8</span>))</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
@@ -1167,6 +1205,27 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <section id="висновок" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">2.3</span> Висновок</h2>
 <p>Таким чином, аналіз флуктуацій прибутковостей та волатильностей шляхом побудови функції автокореляції та розподілу ймовірності дозволяє отримати певні висновки, що можуть допомогти в роботі із аналізованими часовими рядами і ринком, з якого взято зазначені часові ряди. Зокрема, у даному випадку, можна давати рекомендації аналітикам, що працюють на фінансових ринках.</p>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">2.4</span> Завдання для самостійної роботи</h2>
+<ol type="1">
+<li>Отримати індекс часового ряду у викладача</li>
+<li>Провести дослідження згідно інструкції</li>
+<li>Дослідити зміни розрахованих величин для вікон 100 і 500, з кроком 1. Порівняти результати</li>
+<li>Зробити висновки</li>
+</ol>
+</section>
+<section id="контрольні-питання" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="контрольні-питання"><span class="header-section-number">2.5</span> Контрольні питання</h2>
+<ol type="1">
+<li>Порівняйте вид залежностей флуктуацій цін і прибутковостей. Чому при розрахунках користуються не цінами, а прибутковостями?</li>
+<li>Яку характеристику ряду визначає волатильність?</li>
+<li>У чому причина різних залежностей для прибутковостей та їх модулів?</li>
+</ol>
+</section>
+<section id="додаток" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="додаток"><span class="header-section-number">2.6</span> Додаток</h2>
+<p>Для обрання часового індексу часового ряду використаємо дані, що розміщенні на сайті <a href="https://finance.yahoo.com">Yahoo! Finance</a>. Оскільки окремі фінансові показники не завжди є доступними, будемо використовувати список компаній, що входять до індексу <a href="https://en.wikipedia.org/wiki/Dow_Jones_Industrial_Average">DJIA</a>. За вказаним посиланням та номером у списку групи оберіть компанію, що входить до індексу та проведіть відповідні розрахунки. Порівняйте отримані результати з Біткоїном.</p>
 
 
 </section>
@@ -1192,6 +1251,121 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
