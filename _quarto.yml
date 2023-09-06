@@ -30,6 +30,7 @@ book:
           state: Дніпропетровська область
           url: https://www.duet.edu.ua/ua
   date: today 
+  cover-image: title_book.jpeg
   date-format: iso 
   search: true
   repo-url: https://github.com/Butman2099/Complex-systems-book
@@ -58,6 +59,9 @@ callout-appearance: default
 
 format:
   html:
+    highlight-style: oblivion
+    css: style.css
+    page-layout: full
     theme:
       light: cosmo
       dark: superhero
