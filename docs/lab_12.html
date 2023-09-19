@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 9&nbsp; Лабораторна робота № 12</title>
+<title>Моделювання складних систем у Python - 10&nbsp; Лабораторна робота № 12</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_12.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_12.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -196,14 +196,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 7</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./lab_11.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab_12.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -245,40 +251,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Зміст</h2>
    
   <ul>
-  <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</a>
+  <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">10.1</span> Теоретичні відомості</a>
   <ul class="collapse">
-  <li><a href="#імпортуємо-необхідні-бібліотеки" id="toc-імпортуємо-необхідні-бібліотеки" class="nav-link" data-scroll-target="#імпортуємо-необхідні-бібліотеки"><span class="header-section-number">9.1.1</span> Імпортуємо необхідні бібліотеки</a></li>
-  <li><a href="#виконуємо-налаштування-рисунків" id="toc-виконуємо-налаштування-рисунків" class="nav-link" data-scroll-target="#виконуємо-налаштування-рисунків"><span class="header-section-number">9.1.2</span> Виконуємо налаштування рисунків</a></li>
-  <li><a href="#зчитування-даних" id="toc-зчитування-даних" class="nav-link" data-scroll-target="#зчитування-даних"><span class="header-section-number">9.1.3</span> Зчитування даних</a></li>
-  <li><a href="#важкі-хвости-та-чорні-понеділки" id="toc-важкі-хвости-та-чорні-понеділки" class="nav-link" data-scroll-target="#важкі-хвости-та-чорні-понеділки"><span class="header-section-number">9.1.4</span> Важкі хвости та Чорні понеділки</a></li>
-  <li><a href="#відхилення-в-23-сигма" id="toc-відхилення-в-23-сигма" class="nav-link" data-scroll-target="#відхилення-в-23-сигма"><span class="header-section-number">9.1.5</span> Відхилення в 23 сигма</a></li>
-  <li><a href="#статистика-степеневого-розподілу" id="toc-статистика-степеневого-розподілу" class="nav-link" data-scroll-target="#статистика-степеневого-розподілу"><span class="header-section-number">9.1.6</span> Статистика степеневого розподілу</a></li>
-  <li><a href="#статистичні-моменти-під-впливом-важких-хвостів" id="toc-статистичні-моменти-під-впливом-важких-хвостів" class="nav-link" data-scroll-target="#статистичні-моменти-під-впливом-важких-хвостів"><span class="header-section-number">9.1.7</span> Статистичні моменти під впливом важких хвостів</a></li>
-  <li><a href="#як-ексцес-дестабілізує-розрахунки-волатильності" id="toc-як-ексцес-дестабілізує-розрахунки-волатильності" class="nav-link" data-scroll-target="#як-ексцес-дестабілізує-розрахунки-волатильності"><span class="header-section-number">9.1.8</span> Як ексцес дестабілізує розрахунки волатильності</a></li>
-  <li><a href="#наслідки-для-моделювання-та-прогнозування" id="toc-наслідки-для-моделювання-та-прогнозування" class="nav-link" data-scroll-target="#наслідки-для-моделювання-та-прогнозування"><span class="header-section-number">9.1.9</span> Наслідки для моделювання та прогнозування</a></li>
-  <li><a href="#марковіц-і-стабільність-волатильності" id="toc-марковіц-і-стабільність-волатильності" class="nav-link" data-scroll-target="#марковіц-і-стабільність-волатильності"><span class="header-section-number">9.1.10</span> Марковіц і стабільність волатильності</a></li>
-  <li><a href="#розподіл-леві" id="toc-розподіл-леві" class="nav-link" data-scroll-target="#розподіл-леві"><span class="header-section-number">9.1.11</span> Розподіл Леві</a></li>
+  <li><a href="#імпортуємо-необхідні-бібліотеки" id="toc-імпортуємо-необхідні-бібліотеки" class="nav-link" data-scroll-target="#імпортуємо-необхідні-бібліотеки"><span class="header-section-number">10.1.1</span> Імпортуємо необхідні бібліотеки</a></li>
+  <li><a href="#виконуємо-налаштування-рисунків" id="toc-виконуємо-налаштування-рисунків" class="nav-link" data-scroll-target="#виконуємо-налаштування-рисунків"><span class="header-section-number">10.1.2</span> Виконуємо налаштування рисунків</a></li>
+  <li><a href="#зчитування-даних" id="toc-зчитування-даних" class="nav-link" data-scroll-target="#зчитування-даних"><span class="header-section-number">10.1.3</span> Зчитування даних</a></li>
+  <li><a href="#важкі-хвости-та-чорні-понеділки" id="toc-важкі-хвости-та-чорні-понеділки" class="nav-link" data-scroll-target="#важкі-хвости-та-чорні-понеділки"><span class="header-section-number">10.1.4</span> Важкі хвости та Чорні понеділки</a></li>
+  <li><a href="#відхилення-в-23-сигма" id="toc-відхилення-в-23-сигма" class="nav-link" data-scroll-target="#відхилення-в-23-сигма"><span class="header-section-number">10.1.5</span> Відхилення в 23 сигма</a></li>
+  <li><a href="#статистика-степеневого-розподілу" id="toc-статистика-степеневого-розподілу" class="nav-link" data-scroll-target="#статистика-степеневого-розподілу"><span class="header-section-number">10.1.6</span> Статистика степеневого розподілу</a></li>
+  <li><a href="#статистичні-моменти-під-впливом-важких-хвостів" id="toc-статистичні-моменти-під-впливом-важких-хвостів" class="nav-link" data-scroll-target="#статистичні-моменти-під-впливом-важких-хвостів"><span class="header-section-number">10.1.7</span> Статистичні моменти під впливом важких хвостів</a></li>
+  <li><a href="#як-ексцес-дестабілізує-розрахунки-волатильності" id="toc-як-ексцес-дестабілізує-розрахунки-волатильності" class="nav-link" data-scroll-target="#як-ексцес-дестабілізує-розрахунки-волатильності"><span class="header-section-number">10.1.8</span> Як ексцес дестабілізує розрахунки волатильності</a></li>
+  <li><a href="#наслідки-для-моделювання-та-прогнозування" id="toc-наслідки-для-моделювання-та-прогнозування" class="nav-link" data-scroll-target="#наслідки-для-моделювання-та-прогнозування"><span class="header-section-number">10.1.9</span> Наслідки для моделювання та прогнозування</a></li>
+  <li><a href="#марковіц-і-стабільність-волатильності" id="toc-марковіц-і-стабільність-волатильності" class="nav-link" data-scroll-target="#марковіц-і-стабільність-волатильності"><span class="header-section-number">10.1.10</span> Марковіц і стабільність волатильності</a></li>
+  <li><a href="#розподіл-леві" id="toc-розподіл-леві" class="nav-link" data-scroll-target="#розподіл-леві"><span class="header-section-number">10.1.11</span> Розподіл Леві</a></li>
   </ul></li>
-  <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</a>
+  <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">10.2</span> Хід роботи</a>
   <ul class="collapse">
-  <li><a href="#зчитування-з-yahoo-finance" id="toc-зчитування-з-yahoo-finance" class="nav-link" data-scroll-target="#зчитування-з-yahoo-finance"><span class="header-section-number">9.2.1</span> Зчитування з Yahoo Finance</a></li>
-  <li><a href="#виведення-графіку-досліджуваного-ряду" id="toc-виведення-графіку-досліджуваного-ряду" class="nav-link" data-scroll-target="#виведення-графіку-досліджуваного-ряду"><span class="header-section-number">9.2.2</span> Виведення графіку досліджуваного ряду</a></li>
-  <li><a href="#побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" id="toc-побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" class="nav-link" data-scroll-target="#побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду"><span class="header-section-number">9.2.3</span> Побудова розподілу Леві та розрахунок параметрів для всього ряду</a></li>
-  <li><a href="#підганяємо-розподіл-леві-та-гаусовий-для-порівняння" id="toc-підганяємо-розподіл-леві-та-гаусовий-для-порівняння" class="nav-link" data-scroll-target="#підганяємо-розподіл-леві-та-гаусовий-для-порівняння"><span class="header-section-number">9.2.4</span> Підганяємо розподіл Леві та Гаусовий для порівняння</a></li>
-  <li><a href="#отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy" id="toc-отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy" class="nav-link" data-scroll-target="#отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy"><span class="header-section-number">9.2.5</span> Отримуємо параметри розподілу Леві у відповідності до однієї із параметризацій, що пропонує пакет <span class="math inline">\(levy\)</span></a></li>
-  <li><a href="#будуємо-теоретичні-та-емпіричні-розподіли" id="toc-будуємо-теоретичні-та-емпіричні-розподіли" class="nav-link" data-scroll-target="#будуємо-теоретичні-та-емпіричні-розподіли"><span class="header-section-number">9.2.6</span> Будуємо теоретичні та емпіричні розподіли</a></li>
-  <li><a href="#виводимо-параметри-розподілу-леві-для-заданого-індексу" id="toc-виводимо-параметри-розподілу-леві-для-заданого-індексу" class="nav-link" data-scroll-target="#виводимо-параметри-розподілу-леві-для-заданого-індексу"><span class="header-section-number">9.2.7</span> Виводимо параметри розподілу Леві для заданого індексу</a></li>
-  <li><a href="#дослідження-поведінки-альфа-стабільного-розподілу-леві" id="toc-дослідження-поведінки-альфа-стабільного-розподілу-леві" class="nav-link" data-scroll-target="#дослідження-поведінки-альфа-стабільного-розподілу-леві"><span class="header-section-number">9.2.8</span> Дослідження поведінки альфа-стабільного розподілу Леві</a></li>
-  <li><a href="#задання-ширини-вікна-та-кроку" id="toc-задання-ширини-вікна-та-кроку" class="nav-link" data-scroll-target="#задання-ширини-вікна-та-кроку"><span class="header-section-number">9.2.9</span> Задання ширини вікна та кроку</a></li>
-  <li><a href="#розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна" id="toc-розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна" class="nav-link" data-scroll-target="#розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна"><span class="header-section-number">9.2.10</span> Розраховуємо параметри Леві, використовуючи алгоритм сковзного вікна</a></li>
-  <li><a href="#зберігаємо-значення-у-текстовому-документі" id="toc-зберігаємо-значення-у-текстовому-документі" class="nav-link" data-scroll-target="#зберігаємо-значення-у-текстовому-документі"><span class="header-section-number">9.2.11</span> Зберігаємо значення у текстовому документі</a></li>
-  <li><a href="#визначимо-функцію-для-побудови-парних-графіків" id="toc-визначимо-функцію-для-побудови-парних-графіків" class="nav-link" data-scroll-target="#визначимо-функцію-для-побудови-парних-графіків"><span class="header-section-number">9.2.12</span> Визначимо функцію для побудови парних графіків</a></li>
-  <li><a href="#виводимо-динаміку-показника-стабільності-alpha" id="toc-виводимо-динаміку-показника-стабільності-alpha" class="nav-link" data-scroll-target="#виводимо-динаміку-показника-стабільності-alpha"><span class="header-section-number">9.2.13</span> Виводимо динаміку показника стабільності <span class="math inline">\(\alpha\)</span></a></li>
-  <li><a href="#виводимо-динаміку-індексу-асиметрії-beta" id="toc-виводимо-динаміку-індексу-асиметрії-beta" class="nav-link" data-scroll-target="#виводимо-динаміку-індексу-асиметрії-beta"><span class="header-section-number">9.2.14</span> Виводимо динаміку індексу асиметрії <span class="math inline">\(\beta\)</span></a></li>
-  <li><a href="#виводимо-динаміку-параметру-зміщення-mu" id="toc-виводимо-динаміку-параметру-зміщення-mu" class="nav-link" data-scroll-target="#виводимо-динаміку-параметру-зміщення-mu"><span class="header-section-number">9.2.15</span> Виводимо динаміку параметру зміщення <span class="math inline">\(\mu\)</span></a></li>
-  <li><a href="#виводимо-динаміку-параметра-масштабу-sigma" id="toc-виводимо-динаміку-параметра-масштабу-sigma" class="nav-link" data-scroll-target="#виводимо-динаміку-параметра-масштабу-sigma"><span class="header-section-number">9.2.16</span> Виводимо динаміку параметра масштабу <span class="math inline">\(\sigma\)</span></a></li>
+  <li><a href="#зчитування-з-yahoo-finance" id="toc-зчитування-з-yahoo-finance" class="nav-link" data-scroll-target="#зчитування-з-yahoo-finance"><span class="header-section-number">10.2.1</span> Зчитування з Yahoo Finance</a></li>
+  <li><a href="#виведення-графіку-досліджуваного-ряду" id="toc-виведення-графіку-досліджуваного-ряду" class="nav-link" data-scroll-target="#виведення-графіку-досліджуваного-ряду"><span class="header-section-number">10.2.2</span> Виведення графіку досліджуваного ряду</a></li>
+  <li><a href="#побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" id="toc-побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" class="nav-link" data-scroll-target="#побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду"><span class="header-section-number">10.2.3</span> Побудова розподілу Леві та розрахунок параметрів для всього ряду</a></li>
+  <li><a href="#підганяємо-розподіл-леві-та-гаусовий-для-порівняння" id="toc-підганяємо-розподіл-леві-та-гаусовий-для-порівняння" class="nav-link" data-scroll-target="#підганяємо-розподіл-леві-та-гаусовий-для-порівняння"><span class="header-section-number">10.2.4</span> Підганяємо розподіл Леві та Гаусовий для порівняння</a></li>
+  <li><a href="#отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy" id="toc-отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy" class="nav-link" data-scroll-target="#отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy"><span class="header-section-number">10.2.5</span> Отримуємо параметри розподілу Леві у відповідності до однієї із параметризацій, що пропонує пакет <span class="math inline">\(levy\)</span></a></li>
+  <li><a href="#будуємо-теоретичні-та-емпіричні-розподіли" id="toc-будуємо-теоретичні-та-емпіричні-розподіли" class="nav-link" data-scroll-target="#будуємо-теоретичні-та-емпіричні-розподіли"><span class="header-section-number">10.2.6</span> Будуємо теоретичні та емпіричні розподіли</a></li>
+  <li><a href="#виводимо-параметри-розподілу-леві-для-заданого-індексу" id="toc-виводимо-параметри-розподілу-леві-для-заданого-індексу" class="nav-link" data-scroll-target="#виводимо-параметри-розподілу-леві-для-заданого-індексу"><span class="header-section-number">10.2.7</span> Виводимо параметри розподілу Леві для заданого індексу</a></li>
+  <li><a href="#дослідження-поведінки-альфа-стабільного-розподілу-леві" id="toc-дослідження-поведінки-альфа-стабільного-розподілу-леві" class="nav-link" data-scroll-target="#дослідження-поведінки-альфа-стабільного-розподілу-леві"><span class="header-section-number">10.2.8</span> Дослідження поведінки альфа-стабільного розподілу Леві</a></li>
+  <li><a href="#задання-ширини-вікна-та-кроку" id="toc-задання-ширини-вікна-та-кроку" class="nav-link" data-scroll-target="#задання-ширини-вікна-та-кроку"><span class="header-section-number">10.2.9</span> Задання ширини вікна та кроку</a></li>
+  <li><a href="#розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна" id="toc-розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна" class="nav-link" data-scroll-target="#розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна"><span class="header-section-number">10.2.10</span> Розраховуємо параметри Леві, використовуючи алгоритм сковзного вікна</a></li>
+  <li><a href="#зберігаємо-значення-у-текстовому-документі" id="toc-зберігаємо-значення-у-текстовому-документі" class="nav-link" data-scroll-target="#зберігаємо-значення-у-текстовому-документі"><span class="header-section-number">10.2.11</span> Зберігаємо значення у текстовому документі</a></li>
+  <li><a href="#визначимо-функцію-для-побудови-парних-графіків" id="toc-визначимо-функцію-для-побудови-парних-графіків" class="nav-link" data-scroll-target="#визначимо-функцію-для-побудови-парних-графіків"><span class="header-section-number">10.2.12</span> Визначимо функцію для побудови парних графіків</a></li>
+  <li><a href="#виводимо-динаміку-показника-стабільності-alpha" id="toc-виводимо-динаміку-показника-стабільності-alpha" class="nav-link" data-scroll-target="#виводимо-динаміку-показника-стабільності-alpha"><span class="header-section-number">10.2.13</span> Виводимо динаміку показника стабільності <span class="math inline">\(\alpha\)</span></a></li>
+  <li><a href="#виводимо-динаміку-індексу-асиметрії-beta" id="toc-виводимо-динаміку-індексу-асиметрії-beta" class="nav-link" data-scroll-target="#виводимо-динаміку-індексу-асиметрії-beta"><span class="header-section-number">10.2.14</span> Виводимо динаміку індексу асиметрії <span class="math inline">\(\beta\)</span></a></li>
+  <li><a href="#виводимо-динаміку-параметру-зміщення-mu" id="toc-виводимо-динаміку-параметру-зміщення-mu" class="nav-link" data-scroll-target="#виводимо-динаміку-параметру-зміщення-mu"><span class="header-section-number">10.2.15</span> Виводимо динаміку параметру зміщення <span class="math inline">\(\mu\)</span></a></li>
+  <li><a href="#виводимо-динаміку-параметра-масштабу-sigma" id="toc-виводимо-динаміку-параметра-масштабу-sigma" class="nav-link" data-scroll-target="#виводимо-динаміку-параметра-масштабу-sigma"><span class="header-section-number">10.2.16</span> Виводимо динаміку параметра масштабу <span class="math inline">\(\sigma\)</span></a></li>
   </ul></li>
-  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">9.3</span> Висновок</a></li>
+  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">10.3</span> Висновок</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_12.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -287,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></h1>
 </div>
 
 
@@ -317,10 +323,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>У цій лабораторній ми досліджуємо розподіл прибутковості фінансових активів і стабільність певних показників, які ми розраховуємо, опираючись на ці активи. Зокрема, ми побачимо, що більш високі моменти розподілу прибутковостей з важкими хвостами насправді дуже нестабільні, нескінченні або взагалі не визначені, і що, наприклад, одна єдина точка даних визначає більшу частину надлишкового ексцесу. Цей факт має досить драматичні наслідки, оскільки популярні моделі, такі як GARCH, базуються на можливості оцінки кінцевого значення ексцесу. Суть, яку ми хочемо донести, полягає в тому, що, не приділяючи особливої уваги повноті фінансових розподілів, не можна очікувати, що моделі будуть працювати за межами навчальної та тестувальної вибірки. Аналітики та трейдери завжди будуть дивуватись новим екстремальним подіям, що, як правило, рідко бувають позитивними.</p>
 </div>
 </div>
-<section id="теоретичні-відомості" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</h2>
-<section id="імпортуємо-необхідні-бібліотеки" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="імпортуємо-необхідні-бібліотеки"><span class="header-section-number">9.1.1</span> Імпортуємо необхідні бібліотеки</h3>
+<section id="теоретичні-відомості" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">10.1</span> Теоретичні відомості</h2>
+<section id="імпортуємо-необхідні-бібліотеки" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="імпортуємо-необхідні-бібліотеки"><span class="header-section-number">10.1.1</span> Імпортуємо необхідні бібліотеки</h3>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np                 <span class="co"># бібліотека для роботи з масивами чисел</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt    <span class="co"># бібліотека для побудови графіків</span></span>
@@ -335,8 +341,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="виконуємо-налаштування-рисунків" class="level3" data-number="9.1.2">
-<h3 data-number="9.1.2" class="anchored" data-anchor-id="виконуємо-налаштування-рисунків"><span class="header-section-number">9.1.2</span> Виконуємо налаштування рисунків</h3>
+<section id="виконуємо-налаштування-рисунків" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="виконуємо-налаштування-рисунків"><span class="header-section-number">10.1.2</span> Виконуємо налаштування рисунків</h3>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
@@ -354,8 +360,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="зчитування-даних" class="level3" data-number="9.1.3">
-<h3 data-number="9.1.3" class="anchored" data-anchor-id="зчитування-даних"><span class="header-section-number">9.1.3</span> Зчитування даних</h3>
+<section id="зчитування-даних" class="level3" data-number="10.1.3">
+<h3 data-number="10.1.3" class="anchored" data-anchor-id="зчитування-даних"><span class="header-section-number">10.1.3</span> Зчитування даних</h3>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'databases\^spx_d.csv'</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df.set_index(<span class="st">'Date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
@@ -363,8 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df.index <span class="op">&gt;=</span> <span class="st">'1950-01-01'</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="важкі-хвости-та-чорні-понеділки" class="level3" data-number="9.1.4">
-<h3 data-number="9.1.4" class="anchored" data-anchor-id="важкі-хвости-та-чорні-понеділки"><span class="header-section-number">9.1.4</span> Важкі хвости та Чорні понеділки</h3>
+<section id="важкі-хвости-та-чорні-понеділки" class="level3" data-number="10.1.4">
+<h3 data-number="10.1.4" class="anchored" data-anchor-id="важкі-хвости-та-чорні-понеділки"><span class="header-section-number">10.1.4</span> Важкі хвости та Чорні понеділки</h3>
 <p>Спочатку ми розглянемо розподіл щоденних прибутковостей індексу S&amp;P 500, починаючи з 1950 року. У клітинці нижче буде показано <a href="https://pandas.pydata.org/docs/user_guide/10min.html">Pandas dataframe</a> <code>df</code>, що містить дані OHLC з файлу (ці дані були попередньо завантажені в клітинці вище).</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -622,8 +628,8 @@ r_t = \log(\frac{p_t}{p_{t-1}})
 </div>
 </div>
 </section>
-<section id="відхилення-в-23-сигма" class="level3" data-number="9.1.5">
-<h3 data-number="9.1.5" class="anchored" data-anchor-id="відхилення-в-23-сигма"><span class="header-section-number">9.1.5</span> Відхилення в 23 сигма</h3>
+<section id="відхилення-в-23-сигма" class="level3" data-number="10.1.5">
+<h3 data-number="10.1.5" class="anchored" data-anchor-id="відхилення-в-23-сигма"><span class="header-section-number">10.1.5</span> Відхилення в 23 сигма</h3>
 <p>Як ми можемо бачити вище, як розподіл Гауса, так і розподіл Лапласа різко недооцінюють ймовірність дуже волатильної динаміки! Часто зазначають, що трапилась “<a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule">3-сигма</a> подія на ринку” або щось подібне, тому що багатьом людям подобається оцінювати індивідуальні прибутковості по <a href="https://en.wikipedia.org/wiki/Standard_deviation">стандартному відхиленню</a> (зване “сигмою”) підібраного гаусового розподілу. Однак, якщо Розподіл Гауса взагалі не відповідає розподілу вибірки, як у нашому випадку, оцінка краху в одиницях “сигма” може ввести в оману! Щоб показати це, ми спочатку перевіримо, на скільки сигм ринок змістився в Чорний понеділок 1987 року:</p>
 <div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">abs</span>(np.<span class="bu">min</span>(lr))<span class="op">/</span>np.std(lr, ddof<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -723,8 +729,8 @@ r_t = \log(\frac{p_t}{p_{t-1}})
 <p>Внесемо ясність: виходячи з розподілу Гауса, щоденні втрати Чорної п’ятниці 1987 року повинні бути подією, яку ми очікуємо раз на <span class="math inline">\(10^{116}\)</span> днів. Це число в значній мірі незбагненно велике. Якби S&amp;P 500 почав торгуватися відразу після <a href="https://en.wikipedia.org/wiki/Age_of_the_universe">народження Всесвіту</a>, це становило б лише <span class="math inline">\(10^{13}\)</span> торгових днів. Через $10^{116} $ днів усі зірки у Всесвіті давно згорять, навіть усі <a href="https://en.wikipedia.org/wiki/Future_of_an_expanding_universe#Dark_Era_and_Photon_Age">чорні діри випаруються</a> і Всесвіт стане темним і порожнім місцем. Тож або ми повинні бути дуже щасливі, що єдина очікувана Чорна п’ятниця в історії та майбутньому Всесвіту позаду, або ви дійсно ніколи не повинні використовувати Розподіл Гауса для моделювання прибутковості акцій! Незалежно від ринку та деталей, якщо хтось говорить про події з 10 сигмами або 23 сигмами, він, безумовно, використовує неправильну модель, оскільки шанс спостерігати таку подію в нашому житті незначний.</p>
 <p>Отже, виникає питання: Як ми справляємось із такими екстремальними значеннями? Чи слід позначати їх як <a href="https://en.wikipedia.org/wiki/Outlier">викиди</a> або артефакти, щоб наші фінансові моделі краще описували більшість значень? Звичайно, ні, оскільки результат наших інвестицій може критично залежати не від більшості менших прибутковостей, а саме від таких екстремальних подій! Далі ми познайомимося з підходом, який може пояснити та екстраполювати за межі екстремальних подій, таких як Чорний понеділок. Але ми також побачимо, що не всі способи врахування важких хвостів розподілів працюють добре, оскільки деякі моделі, такі як <a href="https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity">GARCH</a> може заколисати нас помилковим почуттям безпеки, коли ми завжди беремо до уваги минулі екстремальні події, але завжди дивуємося новим.</p>
 </section>
-<section id="статистика-степеневого-розподілу" class="level3" data-number="9.1.6">
-<h3 data-number="9.1.6" class="anchored" data-anchor-id="статистика-степеневого-розподілу"><span class="header-section-number">9.1.6</span> Статистика степеневого розподілу</h3>
+<section id="статистика-степеневого-розподілу" class="level3" data-number="10.1.6">
+<h3 data-number="10.1.6" class="anchored" data-anchor-id="статистика-степеневого-розподілу"><span class="header-section-number">10.1.6</span> Статистика степеневого розподілу</h3>
 <p>Тепер, коли ми знаємо, що розподіл Гауса не є хорошим вибором, який тип розподілу насправді може описати частоту екстремальних подій, які струшують S&amp;P 500? Частота екстремально позитивні та негативні прибутковості асиметричні для більшості фінансових активів, оскільки крахи, як правило, більш сильні, ніж підйоми. Ось чому нижче ми зосередимося на лівому (негативному) хвості розподілу прибутковостей.</p>
 <p>Оскільки нас цікавлять лише екстремальні події, ми розглянемо лише ті прибутковості, які менше <span class="math inline">\(-0.03\)</span> (приблизно три стандартних відхилення від середнього значення). Нижче ми візуалізуємо ці екстремально негативні показники прибутковостей в <a href="https://en.wikipedia.org/wiki/Log%E2%80%93log_plot">логарифмічному масштабі</a> (тут ми використовуємо абсолютні значення негативних прибутковостей). Як вісь Oy (яка показує частоту логарифмічних прибутковостей), так і вісь Ox (яка показує величину логарифмічних прибутковостей) масштабуються логарифмічно:</p>
 <div class="cell" data-execution_count="27">
@@ -866,8 +872,8 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 </div>
 </div>
 </section>
-<section id="статистичні-моменти-під-впливом-важких-хвостів" class="level3" data-number="9.1.7">
-<h3 data-number="9.1.7" class="anchored" data-anchor-id="статистичні-моменти-під-впливом-важких-хвостів"><span class="header-section-number">9.1.7</span> Статистичні моменти під впливом важких хвостів</h3>
+<section id="статистичні-моменти-під-впливом-важких-хвостів" class="level3" data-number="10.1.7">
+<h3 data-number="10.1.7" class="anchored" data-anchor-id="статистичні-моменти-під-впливом-важких-хвостів"><span class="header-section-number">10.1.7</span> Статистичні моменти під впливом важких хвостів</h3>
 <p>Чому все це так важливо? Степенневий показник <span class="math inline">\(\alpha\)</span> насправді багато говорить нам про стабільність і збіжність <a href="https://en.wikipedia.org/wiki/Moment_(mathematics)">моментів розподілу ймовірностей</a>, і це, в свою чергу, має значення для деяких найбільш часто використовуваних моделей у фінансах. Перші чотири центральні моменти — це:</p>
 <ul>
 <li><strong><a href="https://en.wikipedia.org/wiki/Expected_value">Середнє</a></strong>: очікуване значення розподілу</li>
@@ -1011,8 +1017,8 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 </div>
 </div>
 </section>
-<section id="як-ексцес-дестабілізує-розрахунки-волатильності" class="level3" data-number="9.1.8">
-<h3 data-number="9.1.8" class="anchored" data-anchor-id="як-ексцес-дестабілізує-розрахунки-волатильності"><span class="header-section-number">9.1.8</span> Як ексцес дестабілізує розрахунки волатильності</h3>
+<section id="як-ексцес-дестабілізує-розрахунки-волатильності" class="level3" data-number="10.1.8">
+<h3 data-number="10.1.8" class="anchored" data-anchor-id="як-ексцес-дестабілізує-розрахунки-волатильності"><span class="header-section-number">10.1.8</span> Як ексцес дестабілізує розрахунки волатильності</h3>
 <p>Оскільки ексцес збільшується — або стає нескінченним — це також впливає на нижчі моменти, найголовніше, на дисперсію. Квадратний корінь дисперсії — це стандартне відхилення, або <a href="https://en.wikipedia.org/wiki/Volatility_(finance)">волатильність</a>, як це називається у фінансах. Волатильність є розповсюдженним параметром при оптимізації портфеля і практично в кожній фінансовій моделі, оскільки в кінцевому підсумку вона стала найбільш часто використовуваним показником “ризику”. Щоб побачити, як ексцес впливає на оцінку волатильності, ми проводимо простий експеримент <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Монте-Карло</a>: ми витягуємо щоденну прибутковість за 50 років з розподілу ймовірностей за нашим вибором (ми будемо використовувати Гаусовий і t-розподіл Стьюдента) і обчислюємо оцінку волатильності, використовуючи вибіркове стандартне відхилення. Ми робимо це не тільки один раз, але і 10000 разів, кожен раз, коли ми розраховуємо нову гіпотетичну щоденну прибутковість за 50 років і обчислюємо відповідну оцінку волатильності. Звичайно, не всі ці оцінки будуть однаковими, але коливатимуться навколо справжньої волатильності, оскільки ми маємо лише кінцеву кількість даних. Оскільки ми знаємо справжній розподіл ймовірностей, який ми використовуємо для моделювання, ми також знаємо справжню волатильність. Щоб побачити, наскільки точно ми можемо оцінити волатильність на основі даних за 50 років, ми обчислюємо відносну похибку між оцінками волатильності та справжньою волатильністю.</p>
 <div class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>n_sim <span class="op">=</span> <span class="dv">10000</span></span>
@@ -1122,12 +1128,12 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 </div>
 </div>
 </section>
-<section id="наслідки-для-моделювання-та-прогнозування" class="level3" data-number="9.1.9">
-<h3 data-number="9.1.9" class="anchored" data-anchor-id="наслідки-для-моделювання-та-прогнозування"><span class="header-section-number">9.1.9</span> Наслідки для моделювання та прогнозування</h3>
+<section id="наслідки-для-моделювання-та-прогнозування" class="level3" data-number="10.1.9">
+<h3 data-number="10.1.9" class="anchored" data-anchor-id="наслідки-для-моделювання-та-прогнозування"><span class="header-section-number">10.1.9</span> Наслідки для моделювання та прогнозування</h3>
 <p>Той факт, що більш високі моменти розподілу прибутковості можуть бути нескінченними і що оцінка нижчих моментів, таких як дисперсія, дестабілізується за наявності “товстих хвостів”, має суттєві наслідки для деяких найбільш використовуваних моделей у фінансах. Ми коротко розглянемо дві з них, щоб проілюструвати проблему.</p>
 </section>
-<section id="марковіц-і-стабільність-волатильності" class="level3" data-number="9.1.10">
-<h3 data-number="9.1.10" class="anchored" data-anchor-id="марковіц-і-стабільність-волатильності"><span class="header-section-number">9.1.10</span> Марковіц і стабільність волатильності</h3>
+<section id="марковіц-і-стабільність-волатильності" class="level3" data-number="10.1.10">
+<h3 data-number="10.1.10" class="anchored" data-anchor-id="марковіц-і-стабільність-волатильності"><span class="header-section-number">10.1.10</span> Марковіц і стабільність волатильності</h3>
 <p>У 1954 році <a href="https://en.wikipedia.org/wiki/Harry_Markowitz">Гаррі Марковіц</a> отримав ступінь доктора економічних наук за роботу з теорії фінансових портфелів. Його робота стала наріжним каменем <a href="https://en.wikipedia.org/wiki/Modern_portfolio_theory">сучасної портфельної теорії</a> і тоді це було настільки новим, що під час захисту докторської дисертації Мілтон Фрідман стверджував, що ця робота насправді не стосується галузі економіки (як пояснив Марковіц у своїй <a href="http://nobelprize.org/nobel_prizes/economics/laureates/1990/markowitz-lecture.html">Нобелівській лекції</a> у 1990 році). Марковіц стверджував, що при заданому рівні волатильності існує набір вагових коефіцієнтів розподілу активів у портфелі, які дають максимальну надлишкову прибутковість портфеля (порівняно з безризиковим активом). Якщо ви переглянете діапазон значень волатильності та обчислите максимальну віддачу портфеля, отримавши оптимальні ваги розподілу, Ви отримаєте набір <em>ефективних</em> портфелів, який також називають <a href="https://en.wikipedia.org/wiki/Efficient_frontier">межею ефективності</a>. Одна точка на цій межі в багатьох випадках представляє особливий інтерес, — це точка максимуму <a href="https://en.wikipedia.org/wiki/Sharpe_ratio">коефіцієнта Шарпа</a>.</p>
 <p>Коефіцієнт Шарпа — це часто критикуваний, але також часто використовуваний показник для оцінки ефективності портфеля або фінансових активів загалом, таких як гедж-фонди або ETF. Він визначається як:</p>
 <p><span class="math display">\[
@@ -1393,8 +1399,8 @@ S(\vec{w}) = \frac{\vec{w}.\vec{\mu}}{\sqrt{\vec{w}\Sigma\vec{w}^T}}.
 </div>
 </div>
 </section>
-<section id="розподіл-леві" class="level3" data-number="9.1.11">
-<h3 data-number="9.1.11" class="anchored" data-anchor-id="розподіл-леві"><span class="header-section-number">9.1.11</span> Розподіл Леві</h3>
+<section id="розподіл-леві" class="level3" data-number="10.1.11">
+<h3 data-number="10.1.11" class="anchored" data-anchor-id="розподіл-леві"><span class="header-section-number">10.1.11</span> Розподіл Леві</h3>
 <p>Альфа-стабільний розподіл є узагальненням розподілу Гауса, яке цінується за те, що воно тягне за собою жирні хвости. З цієї причини він широко використовується при обробці сигналів, наприклад, у медицині чи фінансах.</p>
 <p>Загальний клас стабільних розподілів був введений і отримав цю назву французьким математиком Полем Леві на початку 1920-х років.</p>
 <p>Раніше ця тема привертала лише помірну увагу провідних експертів, хоча були і ентузіасти, з яких можна згадати російського математика Олександра Яковича Хінчіна. Натхненням для Леві стало бажання узагальнити відому центральну граничну теорему, згідно з якою будь-який розподіл ймовірностей з кінцевою дисперсією збігається до гауссового розподілу.</p>
@@ -1404,8 +1410,8 @@ S(\vec{w}) = \frac{\vec{w}.\vec{\mu}}{\sqrt{\vec{w}\Sigma\vec{w}^T}}.
 <li>мають власну область збіжності;</li>
 <li>дозволяють канонічну форму характеристичної функції.</li>
 </ul>
-<section id="інваріантність-при-додавані" class="level4" data-number="9.1.11.1">
-<h4 data-number="9.1.11.1" class="anchored" data-anchor-id="інваріантність-при-додавані"><span class="header-section-number">9.1.11.1</span> Інваріантність при додавані</h4>
+<section id="інваріантність-при-додавані" class="level4" data-number="10.1.11.1">
+<h4 data-number="10.1.11.1" class="anchored" data-anchor-id="інваріантність-при-додавані"><span class="header-section-number">10.1.11.1</span> Інваріантність при додавані</h4>
 <p><em>Випадкова величина <span class="math inline">\(X\)</span> підпорядковується стабільному розподілу <span class="math inline">\(P(x) = \text{Prob}\{X \leq x\}\)</span> якщо для будь-якого <span class="math inline">\(n \geq 2\)</span> існують додатнє значення <span class="math inline">\(c_{n}\)</span> та дійсне значення <span class="math inline">\(d_{n}\)</span> такі, що</em></p>
 <p><span class="math display">\[
 X_1 + X_2 + ... + X_n \stackrel{d}{=} c_{n}X + d_{n},
@@ -1449,16 +1455,16 @@ P(X \leq x) = 2 \left( 1 - \phi \left( \sqrt{\frac{\gamma}{x}} \right) \right),
 \]</span></p>
 <p>де <span class="math inline">\(\phi\)</span> позначає кумулятивну функцію нормального розподілу.</p>
 </section>
-<section id="область-збіжності" class="level4" data-number="9.1.11.2">
-<h4 data-number="9.1.11.2" class="anchored" data-anchor-id="область-збіжності"><span class="header-section-number">9.1.11.2</span> Область збіжності</h4>
+<section id="область-збіжності" class="level4" data-number="10.1.11.2">
+<h4 data-number="10.1.11.2" class="anchored" data-anchor-id="область-збіжності"><span class="header-section-number">10.1.11.2</span> Область збіжності</h4>
 <p>Інше (еквівалентне) визначення стверджує, що стабільні розподіли — це єдині розподіли, які можна отримати при границі нормалізованих сум незалежних, ідентично розподілених випадкових величин. Кажуть, що випадкова величина <span class="math inline">\(X\)</span> має область збіжності, тобто якщо існує послідовність незалежних, ідентично розподілених випадкових величин <span class="math inline">\(Y_1, Y_2, ...\)</span> і послідовності позитивних чисел <span class="math inline">\({\gamma_n}\)</span> і дійсних чисел <span class="math inline">\({\delta_n}\)</span> таких, що</p>
 <p><span class="math display">\[  
 \frac{Y_1 + Y_2 + ... + Y_n}{\gamma_n} + \delta_n \stackrel{d}{\Rightarrow} X.  
 \]</span></p>
 <p>Коли <span class="math inline">\(X\)</span> це гаусова випадкова величина, а <span class="math inline">\(Y_i's\)</span> є незалежними, ідентично розподіленими випадковими величинами з визначенною дисперсією, тоді рівняння вище є твердженням звичайної <em>центральної граничної теореми</em>. Область збіжності <span class="math inline">\(X\)</span> вважається <em>нормальною</em> коли <span class="math inline">\(\gamma_n = n^{1/\alpha}\)</span>.</p>
 </section>
-<section id="канонічні-представлення-характеристичної-функції" class="level4" data-number="9.1.11.3">
-<h4 data-number="9.1.11.3" class="anchored" data-anchor-id="канонічні-представлення-характеристичної-функції"><span class="header-section-number">9.1.11.3</span> Канонічні представлення характеристичної функції</h4>
+<section id="канонічні-представлення-характеристичної-функції" class="level4" data-number="10.1.11.3">
+<h4 data-number="10.1.11.3" class="anchored" data-anchor-id="канонічні-представлення-характеристичної-функції"><span class="header-section-number">10.1.11.3</span> Канонічні представлення характеристичної функції</h4>
 <p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією:</p>
 <p><span class="math display">\[
     \begin{split}
@@ -1489,8 +1495,8 @@ f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 \mu_{0} = \begin{cases} \mu + \beta\gamma\tan{\frac{\pi\alpha}{2}} &amp; \text{if} \, \alpha \neq 1 \\ \mu + \beta\frac{2}{\pi}\gamma\log{\gamma} &amp; \text{if} \, \alpha = 1. \end{cases}
 \]</span></p>
 </section>
-<section id="метод-розрахунку-параметрів-alpha-стабільного-розподілу" class="level4" data-number="9.1.11.4">
-<h4 data-number="9.1.11.4" class="anchored" data-anchor-id="метод-розрахунку-параметрів-alpha-стабільного-розподілу"><span class="header-section-number">9.1.11.4</span> Метод розрахунку параметрів <span class="math inline">\(\alpha\)</span>-стабільного розподілу</h4>
+<section id="метод-розрахунку-параметрів-alpha-стабільного-розподілу" class="level4" data-number="10.1.11.4">
+<h4 data-number="10.1.11.4" class="anchored" data-anchor-id="метод-розрахунку-параметрів-alpha-стабільного-розподілу"><span class="header-section-number">10.1.11.4</span> Метод розрахунку параметрів <span class="math inline">\(\alpha\)</span>-стабільного розподілу</h4>
 <p>Числені методи, такі як метод Маккаллоха, заснований на квантилях, і метод оцінки максимальної правдоподібності були розроблені в результаті відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо розробили алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності</p>
 <p><span class="math display">\[
 l(\theta, x) = \sum_{i=1}^{T}\log{f(x_{i}, \theta)}.
@@ -1503,10 +1509,10 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </section>
 </section>
 </section>
-<section id="хід-роботи" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</h2>
-<section id="зчитування-з-yahoo-finance" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="зчитування-з-yahoo-finance"><span class="header-section-number">9.2.1</span> Зчитування з Yahoo Finance</h3>
+<section id="хід-роботи" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">10.2</span> Хід роботи</h2>
+<section id="зчитування-з-yahoo-finance" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="зчитування-з-yahoo-finance"><span class="header-section-number">10.2.1</span> Зчитування з Yahoo Finance</h3>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># встановлення назви індексу</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">"^BSESN"</span> </span>
@@ -1532,8 +1538,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 </div>
 </section>
-<section id="виведення-графіку-досліджуваного-ряду" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="виведення-графіку-досліджуваного-ряду"><span class="header-section-number">9.2.2</span> Виведення графіку досліджуваного ряду</h3>
+<section id="виведення-графіку-досліджуваного-ряду" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="виведення-графіку-досліджуваного-ряду"><span class="header-section-number">10.2.2</span> Виведення графіку досліджуваного ряду</h3>
 <div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>time_ser.plot(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>), xlabel<span class="op">=</span>xlabel, ylabel<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="vs">"</span>)</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'ts1.jpg'</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
@@ -1543,8 +1549,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 </div>
 </section>
-<section id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду"><span class="header-section-number">9.2.3</span> Побудова розподілу Леві та розрахунок параметрів для всього ряду</h3>
+<section id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду"><span class="header-section-number">10.2.3</span> Побудова розподілу Леві та розрахунок параметрів для всього ряду</h3>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>for_levy <span class="op">=</span> time_ser.copy()</span>
@@ -1571,21 +1577,21 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb103-23"><a href="#cb103-23" aria-hidden="true" tabindex="-1"></a>for_levy <span class="op">=</span> for_levy.dropna().values</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="підганяємо-розподіл-леві-та-гаусовий-для-порівняння" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="підганяємо-розподіл-леві-та-гаусовий-для-порівняння"><span class="header-section-number">9.2.4</span> Підганяємо розподіл Леві та Гаусовий для порівняння</h3>
+<section id="підганяємо-розподіл-леві-та-гаусовий-для-порівняння" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="підганяємо-розподіл-леві-та-гаусовий-для-порівняння"><span class="header-section-number">10.2.4</span> Підганяємо розподіл Леві та Гаусовий для порівняння</h3>
 <div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> levy.fit_levy(for_levy)</span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>mean, std <span class="op">=</span> norm.fit(for_levy)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy" class="level3" data-number="9.2.5">
-<h3 data-number="9.2.5" class="anchored" data-anchor-id="отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy"><span class="header-section-number">9.2.5</span> Отримуємо параметри розподілу Леві у відповідності до однієї із параметризацій, що пропонує пакет <span class="math inline">\(levy\)</span></h3>
+<section id="отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy" class="level3" data-number="10.2.5">
+<h3 data-number="10.2.5" class="anchored" data-anchor-id="отримуємо-параметри-розподілу-леві-у-відповідності-до-однієї-із-параметризацій-що-пропонує-пакет-levy"><span class="header-section-number">10.2.5</span> Отримуємо параметри розподілу Леві у відповідності до однієї із параметризацій, що пропонує пакет <span class="math inline">\(levy\)</span></h3>
 <div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>alpha, beta, mu, sigma <span class="op">=</span> params[<span class="dv">0</span>].get(<span class="st">'1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="будуємо-теоретичні-та-емпіричні-розподіли" class="level3" data-number="9.2.6">
-<h3 data-number="9.2.6" class="anchored" data-anchor-id="будуємо-теоретичні-та-емпіричні-розподіли"><span class="header-section-number">9.2.6</span> Будуємо теоретичні та емпіричні розподіли</h3>
+<section id="будуємо-теоретичні-та-емпіричні-розподіли" class="level3" data-number="10.2.6">
+<h3 data-number="10.2.6" class="anchored" data-anchor-id="будуємо-теоретичні-та-емпіричні-розподіли"><span class="header-section-number">10.2.6</span> Будуємо теоретичні та емпіричні розподіли</h3>
 <div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1618,14 +1624,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <div id="fig-pdfs-ther-emp" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_12_files/figure-html/fig-pdfs-ther-emp-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;9.1: Теоретичні та емпіричні альфа-стабільні функції щільності ймовірностей</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;10.1: Теоретичні та емпіричні альфа-стабільні функції щільності ймовірностей</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="виводимо-параметри-розподілу-леві-для-заданого-індексу" class="level3" data-number="9.2.7">
-<h3 data-number="9.2.7" class="anchored" data-anchor-id="виводимо-параметри-розподілу-леві-для-заданого-індексу"><span class="header-section-number">9.2.7</span> Виводимо параметри розподілу Леві для заданого індексу</h3>
+<section id="виводимо-параметри-розподілу-леві-для-заданого-індексу" class="level3" data-number="10.2.7">
+<h3 data-number="10.2.7" class="anchored" data-anchor-id="виводимо-параметри-розподілу-леві-для-заданого-індексу"><span class="header-section-number">10.2.7</span> Виводимо параметри розподілу Леві для заданого індексу</h3>
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="vs">fr"Параматери alpha = </span><span class="sc">{</span>alpha<span class="sc">:.2f}</span><span class="vs">, beta = </span><span class="sc">{</span>beta<span class="sc">:.2f}</span><span class="vs">, mu = </span><span class="sc">{</span>mu<span class="sc">:.2f}</span><span class="vs">, sigma = </span><span class="sc">{</span>sigma<span class="sc">:.2f}</span><span class="vs">"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1634,8 +1640,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 <p>Для досліджуваного індексу бачимо, що параметр <span class="math inline">\(\alpha &lt; 2.0\)</span> та <span class="math inline">\(\beta &lt; 0\)</span>, що вказує на відхилення розподілу даного індексу від нормального. Тобто, для даного ряду переважаючими є кризові явища, на що вказують важкі хвости розподілу. Із порівняльного аналізу Гауссового та Леві розподілів бачимо, що хвости нормального розподілу значно недооцінюють ймовірність появи кризових явищ чого, наприклад, не скажешь про альфа-стабільний розподіл. Взявши логарифм значень ймовірності по осі <span class="math inline">\(Oy\)</span> ми можемо спостерігати, що, наприклад, недооцінка негативних прибутковостей Гауссовим розподілом, у порівнянні з альфа-стабільним, складає <span class="math inline">\(\approx 10^{15}\)</span> порядків. Для позитивних прибутковостей, що перевищують значення <span class="math inline">\(+10\sigma\)</span> недооцінка Гауссовим розподілом складає <span class="math inline">\(\approx 10^{27}\)</span> порядків. Теоретичне значення альфа-стабільного розподілу достатньо точно враховує важкі хвости емпіричного розподілу, що також виражається високим ексцесом розподілу. Також варто зазначити, що коефіцієнт асиметрії <span class="math inline">\(\beta\)</span> вказує на невеличке зміщення розподілу в ліву сторону, що також демонструє переважання кризових явищ.</p>
 </section>
-<section id="дослідження-поведінки-альфа-стабільного-розподілу-леві" class="level3" data-number="9.2.8">
-<h3 data-number="9.2.8" class="anchored" data-anchor-id="дослідження-поведінки-альфа-стабільного-розподілу-леві"><span class="header-section-number">9.2.8</span> Дослідження поведінки альфа-стабільного розподілу Леві</h3>
+<section id="дослідження-поведінки-альфа-стабільного-розподілу-леві" class="level3" data-number="10.2.8">
+<h3 data-number="10.2.8" class="anchored" data-anchor-id="дослідження-поведінки-альфа-стабільного-розподілу-леві"><span class="header-section-number">10.2.8</span> Дослідження поведінки альфа-стабільного розподілу Леві</h3>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">.01</span>)</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>beta_1 <span class="op">=</span> <span class="dv">0</span></span>
@@ -1706,14 +1712,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <div id="fig-pdfs-dependence" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_12_files/figure-html/fig-pdfs-dependence-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;9.2: Залежність функції щільності ймовірностей альфа-стабільного розподілу Леві та кумулятивної функції щільності від різних значень параметрів розподілу</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;10.2: Залежність функції щільності ймовірностей альфа-стабільного розподілу Леві та кумулятивної функції щільності від різних значень параметрів розподілу</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="задання-ширини-вікна-та-кроку" class="level3" data-number="9.2.9">
-<h3 data-number="9.2.9" class="anchored" data-anchor-id="задання-ширини-вікна-та-кроку"><span class="header-section-number">9.2.9</span> Задання ширини вікна та кроку</h3>
+<section id="задання-ширини-вікна-та-кроку" class="level3" data-number="10.2.9">
+<h3 data-number="10.2.9" class="anchored" data-anchor-id="задання-ширини-вікна-та-кроку"><span class="header-section-number">10.2.9</span> Задання ширини вікна та кроку</h3>
 <p>У даному блоці оберемо тип ряду для якого і виконуватимуться розрахунки. Перед нами представлено 6 варіантів представлення часового ряду. Виконуватимемо подальші обчислення для стандартизованих прибутковостей, оскільки згідно багатьом роботам було показано, що розподіл прибутковостей тих же самих фінансових активів (фондових індексів, валютних, криптовалют, тощо) виходить за межі нормального Гауссового розподілу. Покажемо це у даному ноутбуці та застосуємо альфа-стабільний розподіл Леві для кращого моделювання складних систем та передчасної ідентифікації кризових явищ.</p>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span> <span class="co"># ширина сковзного вікна</span></span>
@@ -1726,8 +1732,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb110-8"><a href="#cb110-8" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна" class="level3" data-number="9.2.10">
-<h3 data-number="9.2.10" class="anchored" data-anchor-id="розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна"><span class="header-section-number">9.2.10</span> Розраховуємо параметри Леві, використовуючи алгоритм сковзного вікна</h3>
+<section id="розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна" class="level3" data-number="10.2.10">
+<h3 data-number="10.2.10" class="anchored" data-anchor-id="розраховуємо-параметри-леві-використовуючи-алгоритм-сковзного-вікна"><span class="header-section-number">10.2.10</span> Розраховуємо параметри Леві, використовуючи алгоритм сковзного вікна</h3>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> []</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>beta <span class="op">=</span> []</span>
@@ -1771,8 +1777,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 </div>
 </section>
-<section id="зберігаємо-значення-у-текстовому-документі" class="level3" data-number="9.2.11">
-<h3 data-number="9.2.11" class="anchored" data-anchor-id="зберігаємо-значення-у-текстовому-документі"><span class="header-section-number">9.2.11</span> Зберігаємо значення у текстовому документі</h3>
+<section id="зберігаємо-значення-у-текстовому-документі" class="level3" data-number="10.2.11">
+<h3 data-number="10.2.11" class="anchored" data-anchor-id="зберігаємо-значення-у-текстовому-документі"><span class="header-section-number">10.2.11</span> Зберігаємо значення у текстовому документі</h3>
 <div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"alpha_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, alpha)</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"beta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, beta)</span>
@@ -1780,8 +1786,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"sigma_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, sigma)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="визначимо-функцію-для-побудови-парних-графіків" class="level3" data-number="9.2.12">
-<h3 data-number="9.2.12" class="anchored" data-anchor-id="визначимо-функцію-для-побудови-парних-графіків"><span class="header-section-number">9.2.12</span> Визначимо функцію для побудови парних графіків</h3>
+<section id="визначимо-функцію-для-побудови-парних-графіків" class="level3" data-number="10.2.12">
+<h3 data-number="10.2.12" class="anchored" data-anchor-id="визначимо-функцію-для-побудови-парних-графіків"><span class="header-section-number">10.2.12</span> Визначимо функцію для побудови парних графіків</h3>
 <div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
@@ -1825,8 +1831,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb115-40"><a href="#cb115-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="виводимо-динаміку-показника-стабільності-alpha" class="level3" data-number="9.2.13">
-<h3 data-number="9.2.13" class="anchored" data-anchor-id="виводимо-динаміку-показника-стабільності-alpha"><span class="header-section-number">9.2.13</span> Виводимо динаміку показника стабільності <span class="math inline">\(\alpha\)</span></h3>
+<section id="виводимо-динаміку-показника-стабільності-alpha" class="level3" data-number="10.2.13">
+<h3 data-number="10.2.13" class="anchored" data-anchor-id="виводимо-динаміку-показника-стабільності-alpha"><span class="header-section-number">10.2.13</span> Виводимо динаміку показника стабільності <span class="math inline">\(\alpha\)</span></h3>
 <div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\alpha$'</span></span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"alpha_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1843,7 +1849,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <div id="fig-alpha" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_12_files/figure-html/fig-alpha-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;9.3: Динаміка фондового індексу BSESN та показника стабільності</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;10.3: Динаміка фондового індексу BSESN та показника стабільності</figcaption>
 </figure>
 </div>
 </div>
@@ -1851,8 +1857,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <p>Параметр <span class="math inline">\(\alpha\)</span> (індекс стабільності хвостів розподілу) починає спадати у (перед)кризовий період, що робить його індикатором(-передвісником) кризових явищ. Під час криз у розподілі прибутковостей зростає ексцес, а самі хвости стають важчими, на що даний показник реагує передчасно.</p>
 <p>Наступним розглянемо параметр асиметрії <span class="math inline">\(\beta\)</span>:</p>
 </section>
-<section id="виводимо-динаміку-індексу-асиметрії-beta" class="level3" data-number="9.2.14">
-<h3 data-number="9.2.14" class="anchored" data-anchor-id="виводимо-динаміку-індексу-асиметрії-beta"><span class="header-section-number">9.2.14</span> Виводимо динаміку індексу асиметрії <span class="math inline">\(\beta\)</span></h3>
+<section id="виводимо-динаміку-індексу-асиметрії-beta" class="level3" data-number="10.2.14">
+<h3 data-number="10.2.14" class="anchored" data-anchor-id="виводимо-динаміку-індексу-асиметрії-beta"><span class="header-section-number">10.2.14</span> Виводимо динаміку індексу асиметрії <span class="math inline">\(\beta\)</span></h3>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\beta$'</span></span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"beta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1869,7 +1875,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <div id="fig-beta" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_12_files/figure-html/fig-beta-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;9.4: Динаміка фондового індексу BSESN та показника асиметрії</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;10.4: Динаміка фондового індексу BSESN та показника асиметрії</figcaption>
 </figure>
 </div>
 </div>
@@ -1877,8 +1883,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <p>Динаміка даної міри виглядає набагато хаотичніше у порівнянні з індексом стабільності. Для представлених результатів можна зробити наступний висновок: у передкризовий період даний показник має зростати, вказуючи на значну правосторонню асиметрію розподілу прибутковостей (переважання позитивних прибутковостей). Для кризового періоду цей показник має спадати, вказуючи на домінацію негативних прибутковостей (лівостороння асиметрія розподілу). Даний показник важко розглядати у якості надійного індикатора, оскільки його коливання представляються значними навіть при незначних падіннях представленого фондового індексу.</p>
 <p>Наступним розглянемо індекс розташування (зміщення) альфа-стабільного розподілу:</p>
 </section>
-<section id="виводимо-динаміку-параметру-зміщення-mu" class="level3" data-number="9.2.15">
-<h3 data-number="9.2.15" class="anchored" data-anchor-id="виводимо-динаміку-параметру-зміщення-mu"><span class="header-section-number">9.2.15</span> Виводимо динаміку параметру зміщення <span class="math inline">\(\mu\)</span></h3>
+<section id="виводимо-динаміку-параметру-зміщення-mu" class="level3" data-number="10.2.15">
+<h3 data-number="10.2.15" class="anchored" data-anchor-id="виводимо-динаміку-параметру-зміщення-mu"><span class="header-section-number">10.2.15</span> Виводимо динаміку параметру зміщення <span class="math inline">\(\mu\)</span></h3>
 <div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\mu$'</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mu_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1895,7 +1901,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <div id="fig-mu" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_12_files/figure-html/fig-mu-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;9.5: Динаміка фондового індексу BSESN та показника зміщення</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;10.5: Динаміка фондового індексу BSESN та показника зміщення</figcaption>
 </figure>
 </div>
 </div>
@@ -1903,8 +1909,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <p>Показник розташування <span class="math inline">\(\mu\)</span> потроху спадає у кризовий період, демонструючи зміщення розподілу в сторону негативних прибутковостей. Тим не менш, цей розподіл представляєть настільки ж хаотичним як і показник асиметрії <span class="math inline">\(\beta\)</span>.</p>
 <p>Останні рисунки демонструють динаміку показника масштабування розподілу <span class="math inline">\(\sigma\)</span>:</p>
 </section>
-<section id="виводимо-динаміку-параметра-масштабу-sigma" class="level3" data-number="9.2.16">
-<h3 data-number="9.2.16" class="anchored" data-anchor-id="виводимо-динаміку-параметра-масштабу-sigma"><span class="header-section-number">9.2.16</span> Виводимо динаміку параметра масштабу <span class="math inline">\(\sigma\)</span></h3>
+<section id="виводимо-динаміку-параметра-масштабу-sigma" class="level3" data-number="10.2.16">
+<h3 data-number="10.2.16" class="anchored" data-anchor-id="виводимо-динаміку-параметра-масштабу-sigma"><span class="header-section-number">10.2.16</span> Виводимо динаміку параметра масштабу <span class="math inline">\(\sigma\)</span></h3>
 <div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\sigma$'</span></span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"sigma_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1921,7 +1927,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <div id="fig-sigma" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_12_files/figure-html/fig-sigma-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;9.6: Динаміка фондового індексу BSESN та показника масштабу</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;10.6: Динаміка фондового індексу BSESN та показника масштабу</figcaption>
 </figure>
 </div>
 </div>
@@ -1930,8 +1936,8 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <p>Отже, з усіх 4-ох показників, показник стабільності <span class="math inline">\(\alpha\)</span> є найкращим для ідентифікації кризових явищ та побудови надійних стратегій ризик-менеджменту.</p>
 </section>
 </section>
-<section id="висновок" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">9.3</span> Висновок</h2>
+<section id="висновок" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">10.3</span> Висновок</h2>
 <p>Стабільні розподіли — захоплюючий і плідний об’єкт досліджень в теорії ймовірностей; більше того, в даний час вони мають велику цінність при моделюванні складних процесів у фізиці, астрономії, економіці, теорії комунікацій, тощо.</p>
 <p>У даній роботі було представлено теоретичні та чисельні обгрунтування в сторону альфа-стабільного розподілу Леві в якості практичної моделі для кращого розуміння та передбачення кризових явищ у складних системах.</p>
 <p>Тут ми представили розрахунки як для усього ряду, так і для його підфрагментів, використовуючи алгоритм ковзного вікна. Виходячи з усього ряду прибутковостей, видно, що хвости їх розподілу далеко виходять за межі Гаусового. Найкраще емпіричний розподіл прибутковостей збігається саме з теоретичним альфа-стабільним розподілом Леві.</p>
@@ -2305,7 +2311,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="./lab_11.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
