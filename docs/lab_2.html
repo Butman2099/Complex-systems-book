@@ -412,7 +412,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <li><strong>color</strong> (<em>str</em>) — Колір графіку. Якщо <code>"last_dim"</code>, буде використано останній вимір (максимум 4-й) вбудованих даних, коли розмірність більша за 2. Корисно для візуалізації глибини (для 3-вимірного вбудовування), або четвертого виміру, але працюватиме це повільно.</li>
 <li><strong>shadows</strong> (<em>bool</em>) — якщо значення <code>True</code>, 2D-проекції буде додано до бокових сторін 3D-атрактора.</li>
 <li><strong>linewidth</strong> (<em>float</em>) — задає товщину лінії.</li>
-<li>****kwargs** — До палітри кольорів (наприклад, <code>name="plasma"</code>) або до симулятора системи Лоренца передаються додаткові аргументи ключових слів, такі як <code>duration</code> (за замовчуванням = 100), <code>sampling_rate</code> (за замовчуванням = 10), <code>sigma</code> (за замовчуванням = 10), <code>beta</code> (за замовчуванням = 8/3), <code>rho</code> (за замовчуванням = 28).</li>
+<li><strong>kwargs</strong> — До палітри кольорів (наприклад, <code>name="plasma"</code>) або до симулятора системи Лоренца передаються додаткові аргументи ключових слів, такі як <code>duration</code> (за замовчуванням = 100), <code>sampling_rate</code> (за замовчуванням = 10), <code>sigma</code> (за замовчуванням = 10), <code>beta</code> (за замовчуванням = 8/3), <code>rho</code> (за замовчуванням = 28).</li>
 </ul>
 <p>Як вже зазначалося, побудова фазового простору, на основі якого і проводитиметься рекурентний аналіз, вимагає реконструкції. Виконати реконструкції фазового простору із одновимірного часового ряду можна із використанням <em>методу часових затримок</em>.</p>
 <p>Метод часових затримок є однією з ключових концепцій науки про складність, що ми використовуватимемо і в подальших лабораторних. Він базується на ідеї, що динамічна система може бути описана вектором чисел, який називається її “станом”, що має на меті забезпечити повний опис системи в певний момент часу. Множина всіх можливих станів називається “простором станів”.</p>
@@ -424,13 +424,17 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 \]</span></p>
 <p>де <span class="math inline">\(i\)</span> проходить в діапазоні <span class="math inline">\(1,..., N-(m-1)\tau\)</span>; значення <span class="math inline">\(\tau\)</span> представляє часову затримку, а <span class="math inline">\(m\)</span> — це розмірність вкладень (кількість змінних, що включає кожна траєкторія).</p>
 <p>Код для реконструкції фазового простору може виглядати наступним чином:</p>
-<pre class="{python}"><code>Y = np.zeros((dimension, N - (dimension - 1) * delay)) # ініціалізуємо масив нулів,
-                                                       # що будуть представляти траєкторії
-for i in range(dimension):
-    Y[i] = signal[i * delay : i * delay + Y.shape[1]]  # заповнюємо кожну траєкторію 
-
-embedded = Y.T                                          
-return embedded                                        # повертаємо результат </code></pre>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> complexity_embedding(signal, dimension, delay):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(signal)                                        <span class="co"># вимірюємо довжину сигналу</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> np.zeros((dimension, N <span class="op">-</span> (dimension <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> delay)) <span class="co"># ініціалізуємо масив нулів,</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                                           <span class="co"># що будуть представляти траєкторії</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(dimension):</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        Y[i] <span class="op">=</span> signal[i <span class="op">*</span> delay : i <span class="op">*</span> delay <span class="op">+</span> Y.shape[<span class="dv">1</span>]]  <span class="co"># заповнюємо кожну траєкторію </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    embedded <span class="op">=</span> Y.T                                          </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> embedded                                        <span class="co"># повертаємо результат </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Для реконструкції фазового простору використовуватимемо метод <code>complexity_embedding()</code>. Його синтаксис виглядає наступним чином:</p>
 <p><strong><code>complexity_embedding(signal, delay=1, dimension=3, show=False, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
@@ -439,7 +443,7 @@ return embedded                                        # повертаємо р
 <li><strong>delay</strong> (<em>int</em>) — часова затримка (часто позначається <span class="math inline">\(\tau\)</span> іноді називають запізненням). Ще розглянемо метод <code>complexity_delay()</code> для оцінки оптимального значення цього параметра.</li>
 <li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>, іноді позначається як <span class="math inline">\(d\)</span> або порядок). Далі звернемось до методу <code>complexity_dimension()</code>, щоб оцінити оптимальне значення для цього параметра.</li>
 <li><strong>show</strong> (<em>bool</em>) — Побудувати графік реконструйованого атрактора.</li>
-<li>****kwargs** — інші аргументи, що передаються до <code>complexity_attractor()</code>.</li>
+<li><strong>kwargs</strong> — інші аргументи, що передаються до <code>complexity_attractor()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
@@ -650,13 +654,13 @@ return embedded                                        # повертаємо р
 <p>Зауважте також, що деякі автори (наприклад, Розенштейн, 1994) пропонують спочатку визначити оптимальну розмірність вбудовування, а потім розглядати оптимальне значення затримки як оптимальну затримку між першою та останньою координатами затримки (іншими словами, фактична затримка має дорівнювати оптимальній затримці, поділеній на оптимальну розмірність вбудовування мінус 1).</p>
 <p>Декілька авторів запропонували різні методи для вибору затримки:</p>
 <ul>
-<li><strong>Фрейзер і Свінні (1986)</strong> пропонують використовувати перший локальний мінімум взаємної інформації між затриманим і незатриманим часовими рядами, ефективно визначаючи значення Tau, для якого вони діляться найменшою інформацією (і де атрактор є найменш надлишковим). На відміну від автокореляції, взаємна інформація враховує також нелінійні кореляції.</li>
-<li><strong>Тейлер (1990)</strong> запропонував вибирати таке значення Tau, при якому автокореляція між сигналом та його зміщенною версією при Tau вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Методи, що базуються на автокореляції, мають перевагу в короткому часі обчислень, коли вони обчислюються за допомогою алгоритму швидкого перетворення Фур’є (fast Fourier transform, FFT).</li>
+<li><strong>Фрейзер і Свінні (1986)</strong> пропонують використовувати перший локальний мінімум взаємної інформації між затриманим і незатриманим часовими рядами, ефективно визначаючи значення <span class="math inline">\(\tau\)</span>, для якого вони діляться найменшою інформацією (і де атрактор є найменш надлишковим). На відміну від автокореляції, взаємна інформація враховує також нелінійні кореляції.</li>
+<li><strong>Тейлер (1990)</strong> запропонував вибирати таке значення <span class="math inline">\(\tau\)</span>, при якому автокореляція між сигналом та його зміщенною версією при <span class="math inline">\(\tau\)</span> вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Методи, що базуються на автокореляції, мають перевагу в короткому часі обчислень, коли вони обчислюються за допомогою алгоритму швидкого перетворення Фур’є (fast Fourier transform, FFT).</li>
 <li><strong>Касдаглі (1991)</strong> пропонує замість цього брати перший нульовий перетин автокореляції.</li>
 <li><strong>Розенштейн (1993)</strong> пропонує апроксимувати точку, де функція автокореляцій падає до <span class="math inline">\(\left( 1-1/\exp \right)\)</span> від свого максимального значення.</li>
 <li><strong>Розенштейн (1994)</strong> пропонує наближатися до точки, близької до 40% нахилу середнього зміщення від діагоналі.</li>
 <li><strong>Кім (1999)</strong> пропонує оцінювати Tau за допомогою кореляційного інтегралу, який називається C-C методом, і який, як виявилося, узгоджується з результатами, отриманими за допомогою методу взаємної інформації. Цей метод використовує статистику в реконструйованому фазовому просторі, а не аналізує часову еволюцію ряду. Однак час обчислень для цього методу значно довший через необхідність порівнювати кожну унікальну пару парних векторів у реконструйованому сигналі на кожну затримку.</li>
-<li><strong>Лайл (2021)</strong> описує “Реконструкцію симетричного проекційного атрактора” (Symmetric Projection Attractor Reconstruction, SPAR), де <span class="math inline">\(1/3\)</span> від домінуючої частоти (тобто довжини середнього “циклу”) може бути підходящим значенням для приблизно періодичних даних, і робить атрактор чутливим до морфологічних змін. Див. також <a href="https://youtu.be/GGrOJtcTcHA?t=730">доповідь Астона</a>. Цей метод також є найшвидшим, але може не підходити для аперіодичних сигналів. Аргумент алгоритму (за замовчуванням <code>"fft"</code>).</li>
+<li><strong>Лайл (2021)</strong> описує “Реконструкцію симетричного проекційного атрактора” (Symmetric Projection Attractor Reconstruction, SPAR), де <span class="math inline">\(1/3\)</span> від домінуючої частоти (тобто довжини середнього “циклу”) може бути підходящим значенням для приблизно періодичних даних, і робить атрактор чутливим до морфологічних змін. Див. також <a href="https://youtu.be/GGrOJtcTcHA?t=730">доповідь Астона</a>. Цей метод також є найшвидшим, але може не підходити для аперіодичних сигналів. Аргумент <code>algorithm</code> (за замовчуванням <code>"fft"</code>) передається до аргументу <code>method</code> методу <a href="https://neuropsychology.github.io/NeuroKit/functions/signal.html#signal-psd"><code>signal_psd()</code></a>.</li>
 </ul>
 <p>Можна також зазначити наступний метод для об’єднаного підбору параметрів затримки та розмірності:</p>
 <ul>
@@ -671,11 +675,12 @@ return embedded                                        # повертаємо р
 <div id="fig-btc-delay-fraser1986" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_2_files/figure-html/fig-btc-delay-fraser1986-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;3.13: Оптимальне значення розмірності на основі методу Фрейзера і Свінні для часового ряду Біткоїна</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;3.13: Оптимальне значення часової затримки на основі методу Фрейзера і Свінні для часового ряду Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p><a href="#fig-btc-delay-fraser1986">Рисунок&nbsp;<span>3.13</span></a> показує, що перший локальний мінімум взаємної інформації для стандартизованих вихідних значень Біткоїна знаходиться на 273 лагу. Для візуального огляду реконструйованого атрактора це значення, можливо, є найбільш адекватним. Але використовуючи настільки велику часову затримку, ми втрачаємо доволі багато проміжних значень, що також можуть містити досить важливу приховану інформацію для кількісних розрахунків.</p>
 <div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
@@ -684,11 +689,12 @@ return embedded                                        # повертаємо р
 <div id="fig-btc-delay-theiler" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_2_files/figure-html/fig-btc-delay-theiler-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;3.14: Оптимальне значення розмірності на основі методу Тейлера для часового ряду Біткоїна</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;3.14: Оптимальне значення часової затримки на основі методу Тейлера для часового ряду Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p><a href="#fig-btc-delay-theiler">Рисунок&nbsp;<span>3.14</span></a> демонструє, що автокореляція між стандартизованих вихідним сигналом Біткоїна та його зміщенною версією при <span class="math inline">\(\tau=195\)</span> вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Бачимо, що дане значення затримки є трохи меншим за те, що було отримано до цього, але суті це не змінює. Також бачимо, що між реконструйованими атракторами для <span class="math inline">\(\tau=195\)</span> та <span class="math inline">\(\tau=273\)</span> немає кардинальної візуальної різниці.</p>
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">500</span>, show<span class="op">=</span><span class="va">True</span>,</span>
@@ -709,12 +715,12 @@ return embedded                                        # повертаємо р
 <div id="fig-btc-delay-casdagli1991" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_2_files/figure-html/fig-btc-delay-casdagli1991-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;3.15: Оптимальне значення розмірності на основі методу Касдаглі для прибутковостей Біткоїна</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;3.15: Оптимальне значення часової затримки на основі методу Касдаглі для прибутковостей Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Цього разу нам вдалося досягти оптимального результату, але приклад вище демонструє, що кожна процедура має свої виключення.</p>
+<p>Цього разу нам вдалося досягти оптимального результату, але приклад вище демонструє, що кожна процедура має свої виключення. <a href="#fig-btc-delay-casdagli1991">Рисунок&nbsp;<span>3.15</span></a> показує, що значення прибутковостей Біткоїна характеризуються певними кореляціями лише на перших 4-ох лагах. Подальші часові зміщення роблять значення прибутковостей незалежними один від одного.</p>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
@@ -723,11 +729,12 @@ return embedded                                        # повертаємо р
 <div id="fig-btc-delay-rosenstein1993" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_2_files/figure-html/fig-btc-delay-rosenstein1993-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;3.16: Оптимальне значення розмірності на основі методу Розенштайна (1993) для часового ряду Біткоїна</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;3.16: Оптимальне значення часової затримки на основі методу Розенштайна (1993) для часового ряду Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p><a href="#fig-btc-delay-rosenstein1993">Рисунок&nbsp;<span>3.16</span></a> демонструє, що при <span class="math inline">\(\tau=101\)</span> функція автокореляцій перетинає значення <span class="math inline">\(\left( 1-1/\exp \right)\)</span>. При цьому видно, що навіть для такого лагу зберігається значна частка кореляцій між стандартизованими вихідними значеннями Біткоїна.</p>
 <div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
@@ -736,11 +743,12 @@ return embedded                                        # повертаємо р
 <div id="fig-btc-delay-rosenstein1994" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_2_files/figure-html/fig-btc-delay-rosenstein1994-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;3.17: Оптимальне значення розмірності на основі методу Розенштайна (1994) для часового ряду Біткоїна</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;3.17: Оптимальне значення часової затримки на основі методу Розенштайна (1994) для часового ряду Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>Рисунок вище показує, що при <span class="math inline">\(\tau=120\)</span> зміщення реконструйованих траєкторій від їх оригінального положення на лінії ідентичності зберігає найбільшу кількість інформації стосовно атрактора стандартизованих значень Біткоїна.</p>
 <div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
@@ -749,11 +757,12 @@ return embedded                                        # повертаємо р
 <div id="fig-btc-delay-lyle2021" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_2_files/figure-html/fig-btc-delay-lyle2021-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;3.18: Оптимальне значення розмірності на основі методу Лайла для часового ряду Біткоїна</figcaption>
+<figcaption class="figure-caption">Рисунок&nbsp;3.18: Оптимальне значення часової затримки на основі методу Лайла для часового ряду Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>Згідно представленого вище результату найбільш значущі частоти, отримані за допомогою перетворення Фур’є, зберігаються при <span class="math inline">\(\tau=109\)</span>.</p>
 <p>Тепер подивимось як це виглядатиме для об’єднаного підбору параметрів</p>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
@@ -781,6 +790,7 @@ return embedded                                        # повертаємо р
 <pre><code>20</code></pre>
 </div>
 </div>
+<p>Оскільки представлена вище процедура є доволі громіздкою в плані обчислювальних потужностей, ми обрали діапазон <span class="math inline">\(\tau\)</span> в межах від 1 до 30. Видно, що при <span class="math inline">\(\tau\)</span> близької до 10 оптимальне значення розмірності атрактора дорівнює 20. Можливо, при значеннях <span class="math inline">\(\tau\)</span> близьких до 100 або 200, ми могли б отримати зовсім інше значення розмірності, але це потребує додаткових експериментів.</p>
 </section>
 <section id="автоматизований-підбір-параметра-розмірності-вкладень-m" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">3.2.3</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></h3>
@@ -788,8 +798,8 @@ return embedded                                        # повертаємо р
 <p><strong><code>complexity_dimension(signal, delay=1, dimension_max=20, method='afnn', show=False, **kwargs)</code></strong></p>
 <p>Хоча зазвичай використовують <span class="math inline">\(m=2\)</span> або <span class="math inline">\(m=3\)</span>, але різні автори пропонують наступні процедури підбору:</p>
 <ul>
-<li><strong>Кореляційна розмірність (Correlation Dimension, CD)</strong>: Одним з перших методів оцінки оптимального <span class="math inline">\(m\)</span> був розрахунок кореляційної розмірності для вкладень різного розміру і пошук насичення (тобто плато) в її значенні при збільшенні розміру векторів. Одне з обмежень полягає в тому, що насичення буде також мати місце, коли даних недостатньо для адекватного заповнення простору високої розмірності (зауважте, що в загальному випадку не рекомендується мати настільки великі вбудовування, оскільки це значно скорочує довжину сигналу).</li>
-<li><strong>Найближчі хибні сусіди (False Nearest Neighbour, FNN)</strong>: Метод, запропонований Кеннелом та ін., базується на припущенні, що дві точки, які є близькими одна до одної в достатній розмірності вбудовування, повинні залишатися близькими при збільшенні розмірності. Алгоритм перевіряє сусідів при збільшенні розмірності вкладень, поки не знайде лише незначну кількість хибних сусідів при переході від розмірності <span class="math inline">\(m\)</span> до <span class="math inline">\(m+1\)</span>. Це відповідає найнижчій розмірності вбудовування, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану. Цей метод може не спрацювати в зашумлених сигналах через марну спробу розгорнути шум (а в чисто випадкових сигналах кількість хибних сусідів суттєво не зменшується зі збільшенням <span class="math inline">\(m\)</span>). На рисунку нижче показано, як проекції на простори більшої розмірності можна використовувати для виявлення хибних найближчих сусідів. Наприклад, червона та жовта точки є сусідами в одновимірному просторі, але не в двовимірному.</li>
+<li><strong>Кореляційна розмірність (Correlation Dimension, CD)</strong>: Одним з перших методів оцінки оптимального <span class="math inline">\(m\)</span> був розрахунок кореляційної розмірності для вкладень різного розміру і пошук насичення (тобто плато) в її значенні при збільшенні розміру векторів. Одне з обмежень полягає в тому, що насичення буде також мати місце, коли даних недостатньо для адекватного заповнення простору високої розмірності (зауважте, що в загальному випадку не рекомендується мати настільки великі вкладення, оскільки це значно скорочує довжину сигналу).</li>
+<li><strong>Найближчі хибні сусіди (False Nearest Neighbour, FNN)</strong>: Метод, запропонований Кеннелом та ін., базується на припущенні, що дві точки, які є близькими одна до одної в достатній розмірності вбудовування, повинні залишатися близькими при збільшенні розмірності. Алгоритм перевіряє сусідів при збільшенні розмірності вкладень, поки не знайде лише незначну кількість хибних сусідів при переході від розмірності <span class="math inline">\(m\)</span> до <span class="math inline">\(m+1\)</span>. Це відповідає найнижчій розмірності вкладення, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану. Цей метод може не спрацювати в зашумлених сигналах через марну спробу розгорнути шум (а в чисто випадкових сигналах кількість хибних сусідів суттєво не зменшується зі збільшенням <span class="math inline">\(m\)</span>). На рисунку нижче показано, як проекції на простори більшої розмірності можна використовувати для виявлення хибних найближчих сусідів. Наприклад, червона та жовта точки є сусідами в одновимірному просторі, але не в двовимірному.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -806,7 +816,7 @@ return embedded                                        # повертаємо р
 <li><strong>dimension_max</strong> (<em>int</em>) — максимальний розмір вкладення для тестування.</li>
 <li><strong>method</strong> (<em>str</em>) — Може бути <code>"afn"</code> (середні хибні сусіди), <code>"fnn"</code> (найближчий хибний сусід) або <code>"cd"</code> (кореляційна розмірність).</li>
 <li><strong>show</strong> (<em>bool</em>) — Візуалізувати результат.</li>
-<li>****kwargs** — інші аргументи, такі як <span class="math inline">\(R=10.0\)</span> або <span class="math inline">\(A=2.0\)</span> (відносне та абсолютне граничне значення, тільки для методу <code>"fnn"</code>).</li>
+<li><strong>kwargs</strong> — інші аргументи, такі як <span class="math inline">\(R=10.0\)</span> або <span class="math inline">\(A=2.0\)</span> (відносне та абсолютне граничне значення, тільки для методу <code>"fnn"</code>).</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
@@ -829,6 +839,7 @@ return embedded                                        # повертаємо р
 </div>
 </div>
 </div>
+<p><a href="#fig-btc-dim-cd">Рисунок&nbsp;<span>3.20</span></a> представляє, що оптимальна розмірність вкладень при якій досягається найбільш інформативна репрезентація фазового простору дорівнює 7.</p>
 <div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">100</span>,</span>
@@ -844,6 +855,7 @@ return embedded                                        # повертаємо р
 </div>
 </div>
 </div>
+<p>З представленого вище рисунку видно, що найнижча розмірності вкладення, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану, дорівнює 3. Саме при переході від 3-ох вимірного фазового простору до 4-ох вимірного ми бачимо, що кількість хибних сусідів стає мінімальною і далі не наростає.</p>
 <div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">20</span>,</span>
@@ -859,7 +871,8 @@ return embedded                                        # повертаємо р
 </div>
 </div>
 </div>
-<p>У даному випадку розмірність вкладень можна обирати в діапазоні значень від 3 до 7. Тепер на основі отриманих результатів приступимо до побудови рекурентної діаграми.</p>
+<p>Алгоритм середніх хибних сусідів показує, що тут розмірність вкладень <span class="math inline">\(m=5\)</span> є найоптимальнішою. При подальшому наростанні розмірності, атрактор має походити на більш стохастичний, що вказує на втрату всіх кореляцій, що могли бути присутні в досліджуваному сигналі.</p>
+<p>Згідно з представленими вище алгоритмами автоматичного підбору, розмірність вкладень можна обирати в діапазоні значень від 3 до 7. Тепер на основі отриманих результатів приступимо до побудови рекурентної діаграми.</p>
 </section>
 <section id="побудова-рекурентної-матриці" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="побудова-рекурентної-матриці"><span class="header-section-number">3.2.4</span> Побудова рекурентної матриці</h3>

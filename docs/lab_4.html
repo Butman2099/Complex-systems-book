@@ -394,7 +394,7 @@ y_{j}^{\tau} = \frac{1}{\tau}\sum_{i=(j-1)\tau+1}^{j\tau}x_i, \; 1 \leq j \leq N
 <li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень, <span class="math inline">\(m\)</span>. Використовується лише коли <code>permutation=True</code>.</li>
 <li><strong>permutation</strong> (<em>bool</em>) — якщо значення <code>True</code>, поверне складність Лемпеля-Зіва на основі порядкових патернів.</li>
 <li><strong>symbolize</strong> (<em>str</em>) — використовується тільки коли <code>permutation=False</code>. Метод перетворення неперервного сигналу на вході у символьний (дискретний) сигнал. За замовчуванням присвоює 0 та 1 значенням нижче та вище середнього. Може мати значення <code>None</code>, щоб пропустити процес (якщо вхідний сигнал вже є дискретним). Можна скористатися методом <code>complexity_symbolize()</code> для використання іншої процедури символізації ряду.</li>
-<li>****kwargs** — інші аргументи, які передаються до <code>complexity_ordinalpatterns()</code> (якщо <code>permutation=True</code>) або <code>complexity_symbolize()</code>.</li>
+<li><strong>kwargs</strong> — інші аргументи, які передаються до <code>complexity_ordinalpatterns()</code> (якщо <code>permutation=True</code>) або <code>complexity_symbolize()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
@@ -411,7 +411,7 @@ y_{j}^{\tau} = \frac{1}{\tau}\sum_{i=(j-1)\tau+1}^{j\tau}x_i, \; 1 \leq j \leq N
 <li><strong>tolerance</strong> (<em>float</em>) — поріг пропускання <span class="math inline">\(\varepsilon\)</span> (часто позначається як <span class="math inline">\(r\)</span>), відстань, на якій дві точки даних вважаються подібними. Якщо <code>"sd"</code> (за замовчуванням), буде встановлено значення <span class="math inline">\(0.2 \cdot SD_{signal}\)</span>.</li>
 <li><strong>method</strong> (<em>str</em>) — яку версію мультимасштабного показника обчислювати. Переважна кількість показників за цим методом відповідають саме ентропійним підходам. Нас цікавитиме саме <code>"LZC"</code>.</li>
 <li><strong>show</strong> (<em>bool</em>) — візуалізувати залежність показника від масштабу.</li>
-<li>****kwargs** — необов’язкові аргументи.</li>
+<li><strong>kwargs</strong> — необов’язкові аргументи.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
@@ -436,7 +436,7 @@ S = -\sum_{i=1}^{n}p_i \ln p_{i}.
 <li><strong>symbolize</strong> (<em>str</em>) — метод приведення неперервного сигналу на вході у символьний (дискретний) сигнал. За замовчуванням дорівнює нулю, що пропускає процес (і припускає, що вхідні дані вже є дискретними).</li>
 <li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, виводить дискретність сигналу.</li>
 <li><strong>freq</strong> (<em>np.array</em>) — замість сигналу можна надати вектор ймовірностей.</li>
-<li>****kwargs** — необов’язкові аргументи. Наразі не використовуються.</li>
+<li><strong>kwargs</strong> — необов’язкові аргументи. Наразі не використовуються.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
@@ -524,7 +524,7 @@ Complexity = \frac{\sigma_d}{\sigma_{signal}},
 <p><strong>Параметри</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (часовий ряд) у вигляді вектора значень.</li>
-<li>****kwargs** (<em>optional</em>) — інші аргументи, що потребуються методу <code>nk.signal_autocor()</code>.</li>
+<li><strong>kwargs</strong> (<em>optional</em>) — інші аргументи, що потребуються методу <code>nk.signal_autocor()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
@@ -552,7 +552,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <li><strong>y</strong> (<em>Union[list, np.array, pd.Series]</em>) — масив значень.</li>
 <li><strong>method</strong> (<em>str</em>) — метод для обчислення взаємної інформації: <code>"nolitsa"</code>, <code>"varoquaux"</code>, <code>"knn"</code>, <code>"max"</code>.</li>
 <li><strong>bins</strong> (<em>int</em>) — кількість бінів гістограми. Використовується лише для <code>"nolitsa"</code> та <code>"varoquaux"</code>. Якщо <code>"default"</code>, кількість бінів оцінюється згідно методики Hacine-Gharbi (2018).</li>
-<li>****kwargs** — додаткові ключові аргументи для обраного методу.</li>
+<li><strong>kwargs</strong> — додаткові ключові аргументи для обраного методу.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
