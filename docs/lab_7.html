@@ -357,7 +357,7 @@ p_{min} \approx \varepsilon^{\alpha_{max}}, \; \text{a} \; p_{max} \approx \vare
 \]</span></p>
 <p>Тепер перейдемо до питання о розподілі ймовірностей різних значень <span class="math inline">\(\alpha_{i}\)</span>. Нехай <span class="math inline">\(n(\alpha)d\alpha\)</span> є ймовірністю того, що <span class="math inline">\(\alpha_{i}\)</span> знаходиться в інтервалі від <span class="math inline">\(\alpha\)</span> до <span class="math inline">\(\alpha+d\alpha\)</span>. Іншими словами, <span class="math inline">\(n(\alpha)d\alpha\)</span> представляє собою відносну кількість клітинок <span class="math inline">\(i\)</span>, що характеризуються однією і тією самою мірою <span class="math inline">\(p_{i}\)</span> з <span class="math inline">\(\alpha_{i}\)</span>, що лежать у цьому інтервалі. У випадку монофрактала, для котрого всі <span class="math inline">\(\alpha_{i}\)</span> однакові (і рівні фрактальній розмірності <span class="math inline">\(D\)</span>), це число, очевидно, пропорційно повній кількості клітинок <span class="math inline">\(N(\varepsilon) \approx \varepsilon^{-D}\)</span>, степеневим чином залежних від розміру клітинки <span class="math inline">\(\varepsilon\)</span>. Показник ступеня в цьому співвідношені визначається фрактальною розмірністю множини <span class="math inline">\(D\)</span>.</p>
 <p>Для мультифрактала, однак, це не так, і різні значення <span class="math inline">\(\alpha_{i}\)</span> зустрічаються з ймовірністю, що характеризується не однією і тією ж величиною <span class="math inline">\(D\)</span>, а різними (в залежності від <span class="math inline">\(\alpha\)</span>) значеннями показниками ступеня <span class="math inline">\(f(\alpha)\)</span>,</p>
-<p><span class="math display">\[
+<p><span class="math display">\[\tag{5}
 n(\alpha) \approx \varepsilon^{-f(\alpha)}.
 \]</span></p>
 <p>Таким чином, фізичний сенс функції <span class="math inline">\(f(\alpha)\)</span> полягає в тому, що вона представляє собою розмірність хаусдорфа деякої однорідної підмножини <span class="math inline">\(\Omega_{\alpha}\)</span> із вихідної множини <span class="math inline">\(\Omega\)</span>, що характеризується однаковими ймовірностями заповнення клітинок <span class="math inline">\(p_{i} \approx \varepsilon^{\alpha}\)</span>. Оскільки фрактальна розмірність підмножини очевидно завжди менша або рівна фрактальній розмірності вихідної множини <span class="math inline">\(D_{0}\)</span>, має місце важлива нерівність для функції <span class="math inline">\(f(\alpha)\)</span>:</p>
@@ -365,6 +365,70 @@ n(\alpha) \approx \varepsilon^{-f(\alpha)}.
 f(\alpha) \leq D_{0}.
 \]</span></p>
 <p>У результаті можна зробити висновок, що множина різних значень функції <span class="math inline">\(f(\alpha)\)</span> (при різних <span class="math inline">\(\alpha\)</span>) представляє собою <strong>спектр фрактальних розмірностей</strong> однорідних підмножин <span class="math inline">\(\Omega_{\alpha}\)</span>, на які можна розбити вихідну множину <span class="math inline">\(\Omega\)</span>, кожна з яких характеризується власним значенням фрактальної розмірності <span class="math inline">\(f(\alpha)\)</span>.</p>
+<p>Оскільки будь-якій підмножині належить лише частина загальної кількості клітинок <span class="math inline">\(N(\varepsilon)\)</span>, на котрі ми розділили вихідну множину <span class="math inline">\(\Omega\)</span>, умова нормування ймовірностей, очевидно, не виконується при підсумовуванні тільки по цій підмножині. Сума цих імовірностей стає менше одиниці. Тому й самі ймовірності <span class="math inline">\(p_i\)</span> з одним і тим самим значенням <span class="math inline">\(\alpha_i\)</span> очевидно менше (або в крайньому випадку одного порядку), ніж величина <span class="math inline">\(\varepsilon^{f(\alpha_i)}\)</span>, яка обернено пропорційна кількості наявних клітинок, що покривають дану підмножину (нагадаємо, що у випадку монофрактала <span class="math inline">\(p_i \approx 1/N(\varepsilon)\)</span>). У результаті ми приходимо до наступної важливої нерівності для функції <span class="math inline">\(f(\alpha)\)</span>. А саме, при всіх значеннях <span class="math inline">\(\alpha\)</span></p>
+<p><span class="math display">\[
+f(\alpha) \leq \alpha.
+\]</span></p>
+<p>Знак рівності має місце, наприклад, для повністю однорідного фрактала, де <span class="math inline">\(f(\alpha)=\alpha=D\)</span>.</p>
+</section>
+<section id="перетворення-лежандра" class="level4" data-number="8.1.3.2">
+<h4 data-number="8.1.3.2" class="anchored" data-anchor-id="перетворення-лежандра"><span class="header-section-number">8.1.3.2</span> Перетворення Лежандра</h4>
+<p>Встановимо зв’язок функції <span class="math inline">\(f(\alpha)\)</span> із введенною раніше функцією <span class="math inline">\(\tau(q)\)</span>. Обчислимо для цього статистичну суму <span class="math inline">\(Z(q,\varepsilon)\)</span>. Підставляє у статистичну суму ймовірності <span class="math inline">\(p_i \approx \varepsilon^{\alpha_i}\)</span>, та переходячи від підсумовування по <span class="math inline">\(i\)</span> до інтегрування по <span class="math inline">\(\alpha\)</span> з плотністю ймовірностей (5), ми отримаємо</p>
+<p><span class="math display">\[\tag{6}
+Z(q,\varepsilon) = \sum_{i=1}^{N(\varepsilon)} p_{i}^{q}(\varepsilon) \approx \int d\alpha n(\alpha)\varepsilon^{q\alpha} \approx \int d\alpha\varepsilon^{q\alpha-f(\alpha)}.
+\]</span></p>
+<p>Так як величина <span class="math inline">\(\varepsilon\)</span> дуже мала, основний внесок у цей інтеграл вноситимуть ті значення <span class="math inline">\(\alpha(q)\)</span>, при яких показник ступеня <span class="math inline">\(q\alpha-f(\alpha)\)</span> виявляється мінімальним (а підінтегральна функція — максимальною). Цей вклад буде пропорційним значенню підінтегральної функції у точці максимума. Саме ж значення <span class="math inline">\(\alpha(q)\)</span> визначається при цьому з наступної умови:</p>
+<p><span class="math display">\[
+\left. \frac{d}{d\alpha}[ q\alpha-f(\alpha) ] \right \vert_{\alpha=\alpha(q)} = 0.
+\]</span></p>
+<p>Також, з умови мінімуму ми маємо</p>
+<p><span class="math display">\[
+\left. \frac{d^{2}}{d\alpha^{2}}[ q\alpha-f(\alpha) ] \right \vert_{\alpha=\alpha(q)} &gt; 0.
+\]</span></p>
+<p>У результаті отримуємо, що залежність <span class="math inline">\(\alpha(q)\)</span> неявним чином визначається з рівняння</p>
+<p><span class="math display">\[\tag{7}
+q = \frac{df(\alpha)}{d\alpha}
+\]</span></p>
+<p>і що функція <span class="math inline">\(f(\alpha)\)</span> усюди є випуклою</p>
+<p><span class="math display">\[
+f^{''}(\alpha)&gt;0.
+\]</span></p>
+<p>Це значить, що величина <span class="math inline">\(f(\alpha(q))\)</span> дійсно визначає фрактальну розмірність підмножини <span class="math inline">\(\Omega_{\alpha(q)}\)</span>, що має найбільший домінуючий внесок у статистичну суму (6) при заданій величині показника ступеня <span class="math inline">\(q\)</span>.</p>
+<p>Оскільки <span class="math inline">\(Z(q,\varepsilon)=\tau(q)\)</span>, приходимо до висновку, що</p>
+<p><span class="math display">\[
+\tau(q) = q\alpha(q) - f(\alpha(q)).
+\]</span></p>
+<p>Пам’ятаючи, що <span class="math inline">\(\tau(q)=D(q-1)\)</span>, можемо віднайти функцію <span class="math inline">\(D_{q}\)</span>:</p>
+<p><span class="math display">\[\tag{8}
+D_{q} = \frac{1}{q-1}[ q\alpha(q)-f(\alpha(q)) ].
+\]</span></p>
+<p>Таким чином, якщо ми знаємо функцію мультифрактального спектра <span class="math inline">\(f(\alpha)\)</span>, то з домомогою співвідношень (7) та (8) ми можемо знайти функцію <span class="math inline">\(D_{q}\)</span>. Навпаки, знаючи <span class="math inline">\(D_{q}\)</span>, ми можемо знайти залежність <span class="math inline">\(\alpha(q)\)</span> з допомогою рівняння</p>
+<p><span class="math display">\[\tag{9}
+\alpha(q) = \frac{d}{dq}[(q-1)D_{q}]
+\]</span></p>
+<p>і після цього знайти із (8) залежність <span class="math inline">\(f(\alpha(q))\)</span>. Ці два рівняння і визначають функцію <span class="math inline">\(f(\alpha)\)</span>.</p>
+<p><span class="math display">\[
+\frac{d\tau}{dq}\frac{dq}{d\alpha} = q + \alpha\frac{dq}{d\alpha} - \frac{df}{d\alpha}.
+\]</span></p>
+<p>Приймаючи до уваги те, що <span class="math inline">\(q=df/d\alpha\)</span>, і скорочуючи це рівняння на <span class="math inline">\(dq/d\alpha\)</span>, приходимо до співвідношення</p>
+<p><span class="math display">\[
+\alpha = \frac{d\tau(q)}{dq},
+\]</span></p>
+<p>що еквівалентне виразу (9).</p>
+<p>Вирази для <span class="math inline">\(\tau(q)\)</span> та <span class="math inline">\(\alpha(q)\)</span> задають <strong>перетворення Лежандра</strong> від змінних <span class="math inline">\(\{ q, \tau(q) \}\)</span> до змінних <span class="math inline">\(\{\alpha, f(\alpha)\}\)</span>:</p>
+<p><span class="math display">\[\tag{10}
+\alpha = \frac{d\tau}{dq}
+\]</span></p>
+<p>та</p>
+<p><span class="math display">\[\tag{11}
+f(\alpha) = q\frac{d\tau}{dq} - \tau.
+\]</span></p>
+<p>Як відомо, для однорідного фрактала <span class="math inline">\(D_{q}=D=\text{const}\)</span>. Тому <span class="math inline">\(\alpha=d\tau/dq=D\)</span> і <span class="math inline">\(f(\alpha)=q\alpha-\tau(q)=qD-D(q-1)=D\)</span>. У цьому випадку “графік” функції <span class="math inline">\(f(\alpha)\)</span> на площині <span class="math inline">\(\left( \alpha, f(\alpha) \right)\)</span> складається лише з однієї точки <span class="math inline">\(\left( D, D \right)\)</span>.</p>
+</section>
+<section id="мультифрактальний-аналіз-детрендованих-флуктуацій" class="level4" data-number="8.1.3.3">
+<h4 data-number="8.1.3.3" class="anchored" data-anchor-id="мультифрактальний-аналіз-детрендованих-флуктуацій"><span class="header-section-number">8.1.3.3</span> Мультифрактальний аналіз детрендованих флуктуацій</h4>
+<p>Монофрактальні та мультифрактальні структури фінансових сигналів є особливим різновидом масштабно-інваріантних структур. Найчастіше монофрактальна структура фінансових часових рядів визначається одним степеневим показником і передбачає, що масштабо-інваріантність не залежить від часу і простору. Однак, часто ми маємо змогу спостерігати просторово-часову варіацію масштабно-інваріантної структури досліджуваної складної системи. Ці просторово-часові варіації вказують на мультифрактальність фінансового сигналу, яка визначається мультифрактальним спектром. Ширина і форма мультифрактального спектра можуть також допомогти диференціювати варіативність серцевого ритму у пацієнтів із серцевими захворюваннями, такими як шлуночкова тахікардія, фібриляція шлуночків і застійна серцева недостатність. Мультифрактальний спектр може допомогти кількісно визначити асиметрію підйомів та спадів на фондовому чи криптовалютному ринках, передбачити фінансову кризу, що поступово наближується, і, таким чином, сприяти успішності подальших торгівельних рішень. Основна мета цього розділу — представити одну з найточніших процедур для визначення множини фрактальних показників — <strong>мультифрактальний аналіз детрендованих флуктуацій</strong> (multifractal detrended fluctuation analysis, MFDFA).</p>
+<p>Побудова MFDFA складається з восьми кроків: Розділ <em>“Шум і випадкові блукання у часовому ряді”</em> представляє метод приведення часового ряду до такого, що подібний до випадкового блукання, що є попереднім кроком для MFDFA. Розділ <em>“Обчислення середньоквадратичної варіації часового ряду”</em> представляє середньоквадратичну варіацію, яка є основною процедурою для подальших обчислень в MFDFA і типовим способом обчислення середньої варіації часових рядів різної природи. Розділ <em>“Локальна середньоквадратична варіація часового ряду”</em> представляє обчислення локальної варіації часового ряду як середньоквадратичного відхилення часового ряду в межах сегментів, що можуть як перекриватися, так і не перекриватися. У розділі <em>“Локальне детрендування часового ряду”</em> таке ж локальне середньоквадратичне відхилення обчислюється навколо трендів, які часто зустрічаються у фінансових часових рядах. У розділі <em>“Монофрактальний аналіз детрендованих флуктуацій”</em> амплітуди локальних середніх квадратичних відхилень підсумовуються в узагальнене середнє квадратичне відхилення. У сумарному середньоквадратичному відхиленні для сегментів з малими розмірами вибірки переважають швидкі флуктуації часового ряду. На противагу цьому, у сумарному середньоквадратичному відхиленні для сегментів з великими розмірами вибірки переважають повільні коливання. Степенева залежність між загальним середнім квадратичним відхиленням для декількох розмірів вибірки (тобто масштабів) визначається за допомогою монофрактального аналізу дентрендованих флуктуацій (monofractal detrended fluctuation analysis, DFA) і називається показником Херста (Hurst exponent, <span class="math inline">\(H\)</span>). У розділі <em>“Мультифрактальний аналіз детрендованих флуктуацій”</em> MFDFA отримують шляхом розширення на <span class="math inline">\(q\)</span>-й порядок узагальненого середньоквадратичного відхилення. Середньоквадратичне відхилення <span class="math inline">\(q\)</span>-го порядку може розрізняти сегменти з малими та великими флуктуаціями. Степенева залежність між середньоквадратичним відхиленням <span class="math inline">\(q\)</span>-го порядку чисельно визначається як показник Херста <span class="math inline">\(q\)</span>-го порядку. У розділі <em>“Мультифрактальний спектр часових рядів”</em> на основі показника Херста <span class="math inline">\(q\)</span>-го порядку обчислено декілька мультифрактальних спектрів.</p>
 
 
 </section>
