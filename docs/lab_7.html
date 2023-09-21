@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -431,8 +465,292 @@ f(\alpha) = q\frac{d\tau}{dq} - \tau.
 <h3 data-number="8.1.4" class="anchored" data-anchor-id="мультифрактальний-аналіз-детрендованих-флуктуацій"><span class="header-section-number">8.1.4</span> Мультифрактальний аналіз детрендованих флуктуацій</h3>
 <p>Монофрактальні та мультифрактальні структури фінансових сигналів є особливим різновидом масштабно-інваріантних структур. Найчастіше монофрактальна структура фінансових часових рядів визначається одним степеневим показником і передбачає, що масштабо-інваріантність не залежить від часу і простору. Однак, часто ми маємо змогу спостерігати просторово-часову варіацію масштабно-інваріантної структури досліджуваної складної системи. Ці просторово-часові варіації вказують на мультифрактальність фінансового сигналу, яка визначається мультифрактальним спектром. Ширина і форма мультифрактального спектра можуть також допомогти диференціювати варіативність серцевого ритму у пацієнтів із серцевими захворюваннями, такими як шлуночкова тахікардія, фібриляція шлуночків і застійна серцева недостатність. Мультифрактальний спектр може допомогти кількісно визначити асиметрію підйомів та спадів на фондовому чи криптовалютному ринках, передбачити фінансову кризу, що поступово наближується, і, таким чином, сприяти успішності подальших торгівельних рішень. Основна мета цього розділу — представити одну з найточніших процедур для визначення множини фрактальних показників — <strong>мультифрактальний аналіз детрендованих флуктуацій</strong> (multifractal detrended fluctuation analysis, MFDFA).</p>
 <p>Побудова MFDFA складається з восьми кроків: Розділ <em>“Шум і випадкові блукання у часовому ряді”</em> представляє метод приведення часового ряду до такого, що подібний до випадкового блукання, що є попереднім кроком для MFDFA. Розділ <em>“Обчислення середньоквадратичної варіації часового ряду”</em> представляє середньоквадратичну варіацію, яка є основною процедурою для подальших обчислень в MFDFA і типовим способом обчислення середньої варіації часових рядів різної природи. Розділ <em>“Локальна середньоквадратична варіація часового ряду”</em> представляє обчислення локальної варіації часового ряду як середньоквадратичного відхилення часового ряду в межах сегментів, що можуть як перекриватися, так і не перекриватися. У розділі <em>“Локальне детрендування часового ряду”</em> таке ж локальне середньоквадратичне відхилення обчислюється навколо трендів, які часто зустрічаються у фінансових часових рядах. У розділі <em>“Монофрактальний аналіз детрендованих флуктуацій”</em> амплітуди локальних середніх квадратичних відхилень підсумовуються в узагальнене середнє квадратичне відхилення. У сумарному середньоквадратичному відхиленні для сегментів з малими розмірами вибірки переважають швидкі флуктуації часового ряду. На противагу цьому, у сумарному середньоквадратичному відхиленні для сегментів з великими розмірами вибірки переважають повільні коливання. Степенева залежність між загальним середнім квадратичним відхиленням для декількох розмірів вибірки (тобто масштабів) визначається за допомогою монофрактального аналізу дентрендованих флуктуацій (monofractal detrended fluctuation analysis, DFA) і називається показником Херста (Hurst exponent, <span class="math inline">\(H\)</span>). У розділі <em>“Мультифрактальний аналіз детрендованих флуктуацій”</em> MFDFA отримують шляхом розширення на <span class="math inline">\(q\)</span>-й порядок узагальненого середньоквадратичного відхилення. Середньоквадратичне відхилення <span class="math inline">\(q\)</span>-го порядку може розрізняти сегменти з малими та великими флуктуаціями. Степенева залежність між середньоквадратичним відхиленням <span class="math inline">\(q\)</span>-го порядку чисельно визначається як показник Херста <span class="math inline">\(q\)</span>-го порядку. У розділі <em>“Мультифрактальний спектр часових рядів”</em> на основі показника Херста <span class="math inline">\(q\)</span>-го порядку обчислено декілька мультифрактальних спектрів.</p>
+<p>Для подальшої візуалізації кожного кроку процедури MFDFA імпортуємо наступні модулі:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>І виконаємо налаштування рисунків для виведення:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),         <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Цього разу розглянему можливість побудови індикаторів або індикаторів-передвісників на прикладі індексу сирої нафти West Texas Intermediate (WTI). При описі процедури MFDFA порівнюватимемо мультифрактальність даного ряду зі штучно зненерованими монофрактальними рядами складність яких має представлятися меншою у порівняні з нафтою.</p>
+<p>Сам сайт Yahoo! Finance містить досить коротку історію щодених цін на нафту даної марки. Цього разу, в якості альтернативного прикладу, будемо послуговуватись альтернативним джерелом фінансових даних — <a href="https://fred.stlouisfed.org">федеральним резервом економічних даних федерального резервного банку Сент-Луїса</a> (Federal Reserve Economic Data of the Federal Reserve Bank of St.&nbsp;Louis, FRED). На Python було створено бібліотеку для вивантаження даних із даного джерела — <code>pandas-datareader</code>. Для її встановлення достатньо прописати наступну команду:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas<span class="op">-</span>datareader</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Тепер імпортуємо відповідну бібліотеку:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas_datareader.data <span class="im">as</span> web</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>та виконаємо зчитування індексу з FRED, використовуючи функціонал даної бібліотеки. Завантажимо дані за весь період, що нам буде доступний:</p>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'DCOILWTICO'</span>    <span class="co"># cимвол індексу, як указано на сайті FRED</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"1986-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-01-21"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>wti <span class="op">=</span> web.DataReader(symbol, <span class="st">'fred'</span>, start, end) <span class="co"># зчитуємо значення ряду </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> wti[symbol].copy()                    <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol          <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Виведемо досліджуваний ряд:</p>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wti-init" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-wti-init-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;8.4: Динаміка щоденних змін індексу сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Розглянемо опис нашого масиву даних:</p>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>time_ser.describe()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>count    9336.000000
+mean       46.078743
+std        29.597897
+min       -36.980000
+25%        19.990000
+50%        35.955000
+75%        67.242500
+max       145.310000
+Name: DCOILWTICO, dtype: float64</code></pre>
+</div>
+</div>
+<p>На представленому рисунку видно, що в значеннях досліджуваного індексу існують пропуски та негативні значення на ціну нафти. Для того, щоб позбутися від’ємного значення, можна виконати заміну значення на таке, що близьке до нуля. Для видалення значень <code>NaN</code> достатньо скористатися методом <code>dropna()</code> бібліотеки <code>pandas</code>.</p>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> time_ser.dropna()    <span class="co"># видаляємо значення NaN</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>time_ser[time_ser.values<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">5</span> <span class="co"># замінюємо від'ємне значення на 5</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Знову візуалізуємо результат:</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_filtered.jpg'</span>)      <span class="co"># Зберігаємо графік </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wti-corrected" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-wti-corrected-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;8.5: Динаміка щоденних змін індексу сирої нафти WTI (із видаленими NaN та заміненим від’ємним значенням)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Останнє, що нам залишається, це приведення вихідного ряду до прибутковостей. Для цього визначимо функцію <code>transformation()</code> та знайдемо з її допомогою прибутковості:</p>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні, </span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>wti_ret <span class="op">=</span> transformation(signal, ret_type) <span class="co"># знаходимо прибутковості </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>wti_length <span class="op">=</span> <span class="bu">len</span>(wti_ret)                  <span class="co"># визначаємо довжину прибутковостей</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Як вже зазначалося, при описі процедури MFDFA, ми будемо послуговуватись для порівняння і монофрактальними сигналами. Для подальших розрахунків згенеруємо сигнал білого та рожевого шумів. У цьому нам може допомогти функція <code>signal_noise()</code> бібліотеки <code>neurokit2</code>. Ця функція генерує чистий гаусовий <code>(1/f)**beta</code> шум. Спектр потужності згенерованого шуму пропорційний <code>S(f) = (1/f)**beta</code>. Було описано наступні категорії шуму:</p>
+<ul>
+<li>фіолетовий шум: beta = -2</li>
+<li>синій шум: beta = -1</li>
+<li>білий шум: beta = 0</li>
+<li>мерехтіння / рожевий шум: beta = 1</li>
+<li>коричневий шум: beta = 2</li>
+</ul>
+<p>Її синтаксис виглядає наступним чином:</p>
+<p><strong><code>signal_noise(duration=10, sampling_rate=1000, beta=1, random_state=None)</code></strong></p>
+<p><strong>Параметри</strong></p>
+<ul>
+<li><strong>duration</strong> (<em>float</em>) — бажана тривалість (у секундах).</li>
+<li><strong>sampling_rate</strong> (<em>int</em>) — бажана частота дискретизації (у Гц, тобто відліків на секунду).</li>
+<li><strong>beta</strong> (<em>float</em>) — експонента шуму.</li>
+<li><strong>random_state</strong> (<em>None, int, numpy.random.RandomState або numpy.random.Generator</em>) — початкове значення (зерно) для генератора випадкових чисел.</li>
+</ul>
+<p><strong>Повертає</strong></p>
+<ul>
+<li><strong>noise</strong> (<em>array</em>) — сигнал чистого шуму.</li>
+</ul>
+<p>Тепер можемо згенерувати 2 види шумів:</p>
+<div class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>white_noise <span class="op">=</span> nk.signal_noise(duration<span class="op">=</span>wti_length, <span class="co"># генеруємо білий шум </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                              sampling_rate<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                              beta<span class="op">=</span><span class="dv">0</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                              random_state<span class="op">=</span><span class="dv">123</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>pink_noise <span class="op">=</span> nk.signal_noise(duration<span class="op">=</span>wti_length,  <span class="co"># генеруємо рожевий шум </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                              sampling_rate<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                              beta<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                              random_state<span class="op">=</span><span class="dv">123</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>І тепер приступаємо до подальшої роботи.</p>
+<section id="шум-і-випадкові-блукання-у-часовому-ряді" class="level4" data-number="8.1.4.1">
+<h4 data-number="8.1.4.1" class="anchored" data-anchor-id="шум-і-випадкові-блукання-у-часовому-ряді"><span class="header-section-number">8.1.4.1</span> Шум і випадкові блукання у часовому ряді</h4>
+<p>Мультифрактальний аналіз детрендованих флуктуацій базується на класичному аналізі детрендованих флуктуацій (DFA). Класичний DFA застосовується до часових рядів зі структурою, подібною до випадкових блукань. Однак більшість фінансових часових рядів мають коливання, які більш схожі на прирости випадкових блукань. Якщо фінансовий часовий ряд має структуру, подібну до шуму, як у прибутковостей, його слід перетворити на випадково-блукаючий часовий ряд перед застосуванням DFA. Шуми можна перетворити на випадкові блукання шляхом віднімання середнього значення та інтегрування часового ряду (знаходження його кумулятивної суми). Часовий ряд з білим шумом, монофрактал (рожевий шум) і мультифрактал є шумовими часовими рядами і перетворюються на випадкові блукання за допомогою коду, що наведеного нижче:</p>
+<div class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>RW1 <span class="op">=</span> np.cumsum(white_noise<span class="op">-</span>np.mean(white_noise)) <span class="co"># випадкове блукання білого шуму</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>RW2 <span class="op">=</span> np.cumsum(pink_noise<span class="op">-</span>np.mean(pink_noise))   <span class="co"># випадкове блукання монофракталу</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>RW3 <span class="op">=</span> np.cumsum(wti_ret<span class="op">-</span>np.mean(wti_ret))         <span class="co"># випадкове блукання нафти</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">8</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], wti_ret)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], RW3, <span class="st">'r'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Мультифрактальний часовий ряд'</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], pink_noise, label<span class="op">=</span><span class="st">'Шумоподібний часовий ряд'</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], RW2, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Випадкове блукання'</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Монофрактальний часовий ряд'</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], white_noise)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], RW1, <span class="st">'r'</span>)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Білий шум'</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-step-1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-step-1-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;8.6: Мультифрактальний (верхня панель), монофрактальний (середня панель) та подібний до білого шуму (нижня панель) часові ряди</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="обчислення-середньоквадратичної-варіації-часового-ряду" class="level4" data-number="8.1.4.2">
+<h4 data-number="8.1.4.2" class="anchored" data-anchor-id="обчислення-середньоквадратичної-варіації-часового-ряду"><span class="header-section-number">8.1.4.2</span> Обчислення середньоквадратичної варіації часового ряду</h4>
+<p>Традиційний аналіз варіації часових рядів полягає в обчисленні середнього значення варіації як середньоквадратичного відхилення. Читач може скористатися наведеним нижче кодом для обчислення середньоквадратичного відхилення для часових рядів з білим шумом, монофрактальних і мультифрактальних даних:</p>
+<div class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>RMS_ordinary <span class="op">=</span> np.sqrt(np.mean(white_noise<span class="op">**</span><span class="dv">2</span>))    <span class="co"># середньоквадратична варіація білого шуму</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>RMS_monofractal <span class="op">=</span> np.sqrt(np.mean(pink_noise<span class="op">**</span><span class="dv">2</span>))  <span class="co"># середньоквадратична варіація монофрактала</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>RMS_multifractal <span class="op">=</span> np.sqrt(np.mean(wti_ret<span class="op">**</span><span class="dv">2</span>))    <span class="co"># середньоквадратична варіація мультифрактала</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="148">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">8</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], wti_ret, label<span class="op">=</span><span class="st">'Шумоподібний часовий ряд'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Середнє'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret)<span class="op">+</span>RMS_multifractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="st">'+/- 1 RMS'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret)<span class="op">-</span>RMS_multifractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylim(<span class="op">-</span><span class="dv">20</span>, <span class="dv">20</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Мультифрактальний часовий ряд'</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], pink_noise)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise)<span class="op">+</span>RMS_monofractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise)<span class="op">-</span>RMS_monofractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Монофрактальний часовий ряд'</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], white_noise)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise)<span class="op">+</span>RMS_ordinary, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise)<span class="op">-</span>RMS_ordinary, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Білий шум'</span>)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="dv">0</span>].get_legend_handles_labels()</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-step-2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-step-2-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;8.7: Мультифрактальни (верхня панель), монофрактальний (середня панель) та подібний до білого шуму (нижня панель) часові ряди з нульовим середнім значенням (червона штрихова лінія) і +/- 1 RMS (червона суцільна лінія)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><a href="#fig-step-2">Рисунок&nbsp;<span>8.7</span></a> ілюструє, що середня амплітуда варіації (тобто середньоквадратичне відхилення) є однаковою для всіх трьох часових рядів — білого шуму, монофрактального та мультифрактального, навіть якщо вони мають досить різну структуру. MFDFA може розрізняти ці структури, як ми побачимо в наступних розділах.</p>
+</section>
+<section id="локальна-середньоквадратична-варіація-часового-ряду" class="level4" data-number="8.1.4.3">
+<h4 data-number="8.1.4.3" class="anchored" data-anchor-id="локальна-середньоквадратична-варіація-часового-ряду"><span class="header-section-number">8.1.4.3</span> Локальна середньоквадратична варіація часового ряду</h4>
+<p>Мультифрактальні часові ряди на верхній панелі мають локальні флуктуації як з великими, так і з малими величинами. Середньоквадратичне відхилення (RMS) у попередньому коді можна обчислити для сегментів часового ряду, щоб розрізнити величини локальних флуктуацій. Проста процедура полягає в тому, щоб розділи часовий ряд на однакові за розміром сегменти, що не перекриваються, і обчислити локальне середнє квадратичне відхилення для кожного сегмента. Це можна зробити за допомогою коду наведеного нижче, і це є основною MFDFA:</p>
 
 
+</section>
 </section>
 </section>
 
