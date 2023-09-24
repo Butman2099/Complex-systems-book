@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Моделювання складних систем у Python - 4&nbsp; Лабораторна робота № 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lab_4.html" rel="next">
+<link href="./lab_2.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Пошук не дав результату",
+    "search-matching-documents-text": "Результати пошуку",
+    "search-copy-link-title": "Скопіюйте посилання для пошуку",
+    "search-hide-matches-text": "Приховати додаткові результати",
+    "search-more-match-text": "Додатковий результат у цьому документі",
+    "search-more-matches-text": "Додаткові результати у цьому документі",
+    "search-clear-button-title": "Очистити",
+    "search-detached-cancel-button-title": "Скасувати",
+    "search-submit-button-title": "Надіслати",
+    "search-label": "Поиск"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_3.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Лабораторна робота № 3</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Моделювання складних систем у Python</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Переключить темный режим"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Поиск"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Передмова</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Вступ</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Лабораторна робота № 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Лабораторна робота № 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_3.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Лабораторна робота № 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Лабораторна робота № 4</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Лабораторна робота № 5</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Лабораторна робота № 6</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 7</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Додатки</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Інструкція зі встановлення Anaconda Navigator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Вступ до мови програмування Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Основи Jupyter Notebook</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Зміст</h2>
+   
+  <ul>
+  <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">4.1</span> Теоретичні відомості</a></li>
+  <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">4.2</span> Хід роботи</a>
+  <ul class="collapse">
+  <li><a href="#віконна-процедура" id="toc-віконна-процедура" class="nav-link" data-scroll-target="#віконна-процедура"><span class="header-section-number">4.2.1</span> Віконна процедура</a></li>
+  <li><a href="#рекурентні-міри" id="toc-рекурентні-міри" class="nav-link" data-scroll-target="#рекурентні-міри"><span class="header-section-number">4.2.2</span> Рекурентні міри</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_3.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Лабораторна робота № 3</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Тема.</strong> Кількісний аналіз рекурентних діаграм.</p>
+<p><strong>Мета.</strong> Ознайомитись з кількісними оцінками рекурентних діаграм для аналізу динаміки складних систем.</p>
+<section id="теоретичні-відомості" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">4.1</span> Теоретичні відомості</h2>
+<p>Для якісного опису системи графічне представлення системи підходить якнайкраще. Однак головним недоліком графічного представлення є те, що воно змушує користувачів суб’єктивно інтуїтивно інтерпретувати закономірності та структури, представлені на рекурентній діаграмі.</p>
+<p>Крім того, зі збільшенням розміру даних, проблематичним представляється аналіз усіх <span class="math inline">\(N^2\)</span> значень. Як наслідок, доводиться працювати з окремими ділянками вихідних даних. Аналіз у такий спосіб може створювати нові дефекти, які спотворюють об’єктивність спостережуваних закономірностей і призводять до неправильних інтерпретацій. Щоб подолати це обмеження і поширити об’єктивну оцінку серед дослідників, на початку 1990-х років Веббером та Збілутом були введені визначення та процедури для кількісної оцінки складності рекурентних діаграм, а згодом вони були розширені Марваном та ін.</p>
+<p>Дрібномасштабні кластери можуть являти собою комбінацію ізольованих точок (випадкових рекурентностей). Подібна еволюція в різні періоди часу або в зворотному часовому порядку представлятиме діагональні лінії (детерміновані структури), а також вертикальні/горизонтальні лінії для позначення ламінарних станів (переривчастість) або станів, що предсталяють сингулярності. Для кількісного опису системи системи такі дрібномасштабні кластери слугують основою кількісного рекурентного аналізу (recurrence quantification analysis, RQA).</p>
+</section>
+<section id="хід-роботи" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">4.2</span> Хід роботи</h2>
+<p>Перш ніж переходити до опису кожної з мір та розрахунків, визначемось з інструментарієм для виконання RQA. Як і до цього, ми використовуватимемо бібліотеку <code>neuralkit2</code>.</p>
+<p>Тепер імпортуємо бібліотеки для подальшої роботи:</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>І виконаємо налаштування рисунків для виводу:</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),         <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Розглянемо можливість використання всіх згаданих показників у якості індикаторів або індикаторів-передвісників кризових явищ. Для прикладу завантажимо часовий ряд фондового індексу Доу-Джонса за період з 1 грудня 1993 по 1 грудня 2022, використовуючи <code>yfinance</code>:</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^DJI'</span>          <span class="co"># Символ індексу</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"1993-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2022-01-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, start, end)  <span class="co"># вивантажуємо дані</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol          <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
+</div>
+</div>
+<p>Виведемо досліджуваний ряд:</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-init" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-init-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.1: Динаміка щоденних змін індексу Доу-Джонса</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Користуючись тими методами, що ми розглянули в попередній лабораторній роботі, побудуємо атрактор даного ряда та його рекурентну діаграму. Але перш за все, треба стандартизувати наш ряд. Для цього оголосимо функцію <code>transformation()</code>, що прийматиме на вхід часовий сигнал, тип ряду, і повертатиме його перетворення:</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Далі приводимо ряд до стандартизованого вигляду.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні, </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Для всього ряду і для віконної процедру визначимо наступні параметри:</p>
+<ul>
+<li>розмірність вкладень <span class="math inline">\(m=3\)</span>;</li>
+<li>часова затримка <span class="math inline">\(\tau=1\)</span>;</li>
+<li>радіус багатовимірного околу <span class="math inline">\(\varepsilon = 0.3\)</span>.</li>
+</ul>
+<p>Задамо необхідні параметри для обчислення та виводу:</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                         <span class="co"># розмірність вкладень</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                       <span class="co"># часові затримка</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span>                     <span class="co"># радіус</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>І тепер подивимось на фазові траєкторії досліджуваної системи у дво- та тривимірному просторах:</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span>tau), </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-2d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-2d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.2: Двовимірний фазовий портрет стандартизованих вихідних значень досліджуваного ряду Доу-Джонса</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span>tau), </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.3: Тривимірний фазовий портрет стандартизованих вихідних значень досліджуваного ряду Доу-Джонса</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Як можна бачити по візуальному огляду траєкторій у фазовому просторі важко робити висновки стосовно передбачуванності або хаотичності системи. Спробуємо ще раз, але тепер послуговуючись рекурентною діаграмою:</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec, </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span>m,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span>eps,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-init-stand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-init-stand-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.4: Рекурентна матриця для стандартизованого вихідного ряду Доу-Джонса</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Як можна бачити, на основі рекурентної діаграми в перспективі ми можемо отримати куди більше інформації стосовно еволюції системи. Видно, що 2000-2008 рік характеризувалися найвищим ступенем самоорганізації (рекурентності) про що свідчать доволі велика щільність чорних областей. У той же час можна бачити, що останні роки характеризуються найменшим ступенем рекурентності. Можливо, прогнозованість подій у межах 2022 року варто було б охарактеризувати за допомогою інших індикаторів, але але рекурентна матриця говорить, що події минулих років мало корелюють з теперішнім.</p>
+<p>Ми вже зазначали, що якісна репрезентація рекурентності станів не є достатньо об’єктивною. Найращим варіантом у даному випадку буде використання рекурентного аналізу наряду с алгоритмом рухомого вікна, що використовувався нами у першій лабораторній роботі, і буде використовуватись і надалі.</p>
+<section id="віконна-процедура" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">4.2.1</span> Віконна процедура</h3>
+<p>Для подальшої роботи створюємо віконну процедуру, в якій знов визначаємо вид ряду та ще декілька параметрів. Потім ми ініціалізуємо масиви для кожної рекурентної міри.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>            <span class="co"># вид ряду</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>            <span class="co"># ширина вікна</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">1</span>                   <span class="co"># розмірність вкладень</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                 <span class="co"># часові затримка</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span>               <span class="co"># радіус</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># Ініціалізуємо масиви для збереження віконних значень </span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># рекурентних мір</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>RR <span class="op">=</span> []                 <span class="co"># Частота повторення</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>DET <span class="op">=</span> []                <span class="co"># Детермінізм</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>DIV <span class="op">=</span> []                <span class="co"># Розбіжність</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>AVG_DIAG_LINE <span class="op">=</span> []      <span class="co"># Усереднена довжина діагональних ліній</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>ENT_DIAG <span class="op">=</span> []           <span class="co"># Ентропія діагональних ліній</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>LAM <span class="op">=</span> []                <span class="co"># Ламінарність</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>TT <span class="op">=</span> []                 <span class="co"># Час затримки</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>ENT_VERT <span class="op">=</span> []           <span class="co"># Ентропія вертикальних ліній</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>ENT_WHITE_VERT <span class="op">=</span> []     <span class="co"># Ентропія білих вертикальних ліній</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>AVG_WVERT_LINE <span class="op">=</span> []     <span class="co"># Усереднена довжина білих вертикальних ліній</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>VERT_DIV <span class="op">=</span> []           <span class="co"># Розбіжність вертикальних ліній</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>RATIO_DET_REC <span class="op">=</span> []      <span class="co"># Відношення детермінізму до частоти повторень</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>RATIO_LAM_DET <span class="op">=</span> []      <span class="co"># Відношення ламінарності до детермінізму</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>WHITE_VERT_DIV <span class="op">=</span> []     <span class="co"># Розбіжність білих вертикальних ліній</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>DIAG_RR <span class="op">=</span> []            <span class="co"># Діагональна частота рекурентних значень</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Для подальших розрахунків ми використовуватимемо метод <code>complexity_rqa()</code> бібліотеки <code>neuralkit2</code>. Синтаксис даного методу виглядає наступним чином:</p>
+<p><strong><code>complexity_rqa(signal, dimension=3, delay=1, tolerance='sd', min_linelength=2, method='python', show=False)</code></strong></p>
+<p><strong>Параметри</strong></p>
+<ul>
+<li><strong>signal</strong> (<em>Union[list, np.ndarray, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
+<li><strong>delay</strong> (<em>int</em>) — затримка в часі.</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень, <span class="math inline">\(m\)</span>.</li>
+<li><strong>tolerance</strong> (<em>float</em>) — радіус <span class="math inline">\(\varepsilon\)</span> багатовимірного околу в межах якого шукаються рекурентні траєкторії (часто позначається як <span class="math inline">\(r\)</span>), відстань, на якій дві точки даних вважаються схожими. Якщо <code>"sd"</code> (за замовчуванням), буде встановлено значення <span class="math inline">\(0.2 \cdot SD_{signal}\)</span>.</li>
+<li><strong>min_linelength</strong> (<em>int</em>) — мінімальна довжина діагональних та вертикальних ліній За замовчування дорівнює 2.</li>
+<li><strong>method</strong> (<em>str</em>) — Може бути <code>"pyrqa"</code> для виконання рекурентного аналізу, але із використанням бібліотеки <code>PyRQA</code> (потребує додаткового встановлення).</li>
+<li><strong>show</strong> (<em>bool</em>) — візуалізувати рекурентну матрицю.</li>
+</ul>
+<p><strong>Повертає</strong></p>
+<ul>
+<li><strong>rqa</strong> (<em>DataFrame</em>) — результати процедури RQA.</li>
+<li><strong>info</strong> (<em>dict</em>) — словник, що містить інформацію відносно параметрів, що використовувались для виконання RQA.</li>
+</ul>
+<p>Тепер можемо приступити до віконної процедури:</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)   <span class="co"># виконуємо процедуру </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># трансформації ряду</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    resultRQA, _ <span class="op">=</span> nk.complexity_rqa(fragm,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>                                     delay<span class="op">=</span>tau,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                                     dimension<span class="op">=</span>m,</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>                                     tolerance<span class="op">=</span>eps)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення відношення ламінарності до детермінізму</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'LamiDet'</span>] <span class="op">=</span> resultRQA[<span class="st">'Laminarity'</span>]<span class="op">/</span>resultRQA[<span class="st">'Determinism'</span>]</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення дивергенції чорних вертикальних ліній</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'VDiv'</span>] <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span>resultRQA[<span class="st">'VMax'</span>]</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення дивергенції білих вертикальних ліній</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'WVDiv'</span>] <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span>resultRQA[<span class="st">'WMax'</span>]</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    RR.append(resultRQA[<span class="st">'RecurrenceRate'</span>])</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    DET.append(resultRQA[<span class="st">'Determinism'</span>])</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    DIV.append(resultRQA[<span class="st">'Divergence'</span>]) </span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    AVG_DIAG_LINE.append(resultRQA[<span class="st">'L'</span>])</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    ENT_DIAG.append(resultRQA[<span class="st">'LEn'</span>])</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    LAM.append(resultRQA[<span class="st">'Laminarity'</span>]) </span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>    TT.append(resultRQA[<span class="st">'TrappingTime'</span>]) </span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>    ENT_VERT.append(resultRQA[<span class="st">'VEn'</span>])</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>    ENT_WHITE_VERT.append(resultRQA[<span class="st">'WEn'</span>])</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>    AVG_WVERT_LINE.append(resultRQA[<span class="st">'W'</span>]) </span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    VERT_DIV.append(resultRQA[<span class="st">'VDiv'</span>])</span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    WHITE_VERT_DIV.append(resultRQA[<span class="st">'WVDiv'</span>])</span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    RATIO_DET_REC.append(resultRQA[<span class="st">'DeteRec'</span>]) </span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>    RATIO_LAM_DET.append(resultRQA[<span class="st">'LamiDet'</span>])</span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>    DIAG_RR.append(resultRQA[<span class="st">'DiagRec'</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 7054/7054 [02:39&lt;00:00, 44.16it/s]</code></pre>
+</div>
+</div>
+<p>Зберігаємо отримані результати в текстових файлах:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"RQA_classic_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ss">    tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_eps=</span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">.txt"</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RR"</span> <span class="op">+</span> name, RR)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DIAG_RR"</span> <span class="op">+</span> name, DIAG_RR)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DET"</span> <span class="op">+</span> name, DET)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DIV"</span> <span class="op">+</span> name, DIV)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"VERT_DIV"</span> <span class="op">+</span> name, VERT_DIV)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"WHITE_VERT_DIV"</span> <span class="op">+</span> name, WHITE_VERT_DIV)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"LAM"</span> <span class="op">+</span> name, LAM)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"TT"</span> <span class="op">+</span> name, TT)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"AVG_DIAG_LINE"</span> <span class="op">+</span> name, AVG_DIAG_LINE)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"AVG_WRITE_VERT_LINE"</span> <span class="op">+</span> name, AVG_WVERT_LINE)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_DIAG"</span> <span class="op">+</span> name, ENT_DIAG)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_VERT"</span> <span class="op">+</span> name, ENT_VERT)</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_WHITE_VERT"</span> <span class="op">+</span> name, ENT_WHITE_VERT)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RATIO_DET_REC"</span> <span class="op">+</span> name, RATIO_DET_REC)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RATIO_LAM_DET"</span> <span class="op">+</span> name, RATIO_LAM_DET)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="рекурентні-міри" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="рекурентні-міри"><span class="header-section-number">4.2.2</span> Рекурентні міри</h3>
+<p>Тепер займемося побудовою та інтерпретацією отриманих результатів. Для візуалізації графіків визначимо наступну функцію:</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_recurrence_measure(measure, label, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(time_ser.index[window:length:tstep], </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                  time_ser.values[window:length:tstep], </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(time_ser.index[window:length:tstep],</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>                   measure, </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span><span class="vs">fr'$</span><span class="sc">{</span>label<span class="sc">}</span><span class="vs">$'</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    plt.savefig(label <span class="op">+</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f" RQA_classic_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a><span class="ss">        rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_eps=</span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="частота-рекурентності-recurrence-rate" class="level4" data-number="4.2.2.1">
+<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="частота-рекурентності-recurrence-rate"><span class="header-section-number">4.2.2.1</span> Частота рекурентності (Recurrence rate)</h4>
+<p>Найпростішим показником є частота рекурентності, яка визначає щільністю рекурентних точок на рекурентній діаграмі, ігноруючи лінію ідентичності:</p>
+<p><span class="math display">\[
+RR = \frac{1}{N^2}\displaystyle\sum_{i,j=1}^{N}R(i,j)
+\]</span></p>
+<p>де <span class="math inline">\(N\)</span> — кількість точок на траєкторії фазового простору.</p>
+<p><strong>Частота рекурентності</strong> відповідає ймовірності того, що певний стан повториться.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RR, label<span class="op">=</span><span class="st">'RR'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-rr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-rr-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.5: Динаміка індексу Доу-Джонса та частоти рекурентності</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Як ми можемо бачити з представленого рисунку, міра рекурентності зростає при крахових подіях, що вказує на зростання ступеня самоорганізації та злагодженості торгівельної активності трейдерів на цьому ринку.</p>
+</section>
+<section id="діагональна-частота-рекурентності-diagonal-recurrence-rate" class="level4" data-number="4.2.2.2">
+<h4 data-number="4.2.2.2" class="anchored" data-anchor-id="діагональна-частота-рекурентності-diagonal-recurrence-rate"><span class="header-section-number">4.2.2.2</span> Діагональна частота рекурентності (Diagonal recurrence rate)</h4>
+<p>Даний підхід базується на діагональних рекурентних профілях часового ряду. Діагональний рекурентний профіль кількісно оцінює кількість рекурентних точок на різних лагах, подібно до функції автокореляцій. Для отримання діагонального профілю рекурентностей просто підраховується частка рекурентних точок на діагоналях, розташованих в нижньому правому або нижньому лівому куті рекурентної діаграми, і будується графік як функція відстані від головної діагоналі, тобто лагу.</p>
+<p>По іншому можна сказати, що <strong>діагональна частота рекурентності</strong> фіксує величину автокореляції на різних лагах.</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DIAG_RR, label<span class="op">=</span><span class="st">'DRR'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-diag-rr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-diag-rr-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.6: Динаміка індексу Доу-Джонса та діагональної частоти рекурентності</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>З представленого рисунку видно, що діагональна частота рекурентності зростає у передкризові та кризові стани, що вказує на зростання величини автокореляції, що в свою чергу демонструє зростання ступеню самоорганізації у кризові та передкризові стани.</p>
+</section>
+<section id="детермінізм-determinism" class="level4" data-number="4.2.2.3">
+<h4 data-number="4.2.2.3" class="anchored" data-anchor-id="детермінізм-determinism"><span class="header-section-number">4.2.2.3</span> Детермінізм (Determinism)</h4>
+<p>Наступним показником можна визначити частку рекурентних траєкторій, які формують діагональні лінії мінімальної довжини <span class="math inline">\({\displaystyle \ell _{\min }}\)</span>. Ця міра називається <strong>детермінізмом</strong> і пов’язана з передбачуваністю динамічної системи:</p>
+<p><span class="math display">\[
+DET={\frac {\sum _{\ell =\ell _{\min }}^{N}\ell \,P(\ell )}{\sum _{\ell =1}^{N}\ell P(\ell )}},
+\]</span></p>
+<p>де <span class="math inline">\(P(\ell )\)</span> — частотний розподіл довжин <span class="math inline">\(\ell\)</span> діагональних ліній (тобто підраховує кількість діагональних профілів довжини <span class="math inline">\(\ell\)</span> ).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по детермінізму
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Детерміновані системи характеризуються значною варіацією діагональних ліній різної довжинию. Періодичні сигнали будуть характеризуватися довгими діагональними лініями, в той час як для хаотичних сигналів діагональні лінії будуть короткими. Для стохастичним систем діагональні лінії взагалі будуть відсутніми, за винятком випадкових закономріностей, що утворюватимуть дуже короткі діагональні лінії.</p>
+<p>Білий шум, наприклад, мав би рекурентну діаграму з майже ізольованими рекурентними точками та дуже малих відсотком діагональних ліній, тоді як детермінований процес демонстрував би дуже малу кількість одиночних рекурентностей, але велику щільність довгих діагональних ліній.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DET, label<span class="op">=</span><span class="st">'DET'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-det" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-det-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.7: Динаміка індексу Доу-Джонса та детермінізму</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Як ми можемо бачити з представленого рисунку, як правило, у передкризові та кризові стани показник детермінізму починає зростати, що свідчить і про зростання ступеня передбачуваності (впорядкованості) флуктуацій системи.</p>
+</section>
+<section id="ламінарність-laminarity" class="level4" data-number="4.2.2.4">
+<h4 data-number="4.2.2.4" class="anchored" data-anchor-id="ламінарність-laminarity"><span class="header-section-number">4.2.2.4</span> Ламінарність (Laminarity)</h4>
+<p>Кількість рекурентних станів, які утворюють вертикальні лінії, можна кількісно визначити таким же чином. Ця міра називається <strong>ламінарністю</strong> і пов’язана з кількістю ламінарних фаз (незмінностей) у системі:</p>
+<p><span class="math display">\[
+LAM={\frac {\sum _{v=v_{\min }}^{N}vP(v)}{\sum _{v=1}^{N}vP(v)}},
+\]</span></p>
+<p>де <span class="math inline">\(P(v)\)</span> — частотний розподіл довжин <span class="math inline">\(v\)</span> вертикальних ліній, які мають довжину принаймні <span class="math inline">\(v_{\min}\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по ламінарності
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ламінарність характеризує ймовірність системи перебувати в ламінарному (незмінному) стані. Зі збільшенням ізольованих рекурентних точок у системі, міра ламінарності спадатиме.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>LAM, label<span class="op">=</span><span class="st">'LAM'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-lam" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-lam-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.8: Динаміка індексу Доу-Джонса та ламінарності</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Можна бачити, що при кризових станах ступінь ламінарності зростає. Як ми могли бачити, зростає і щільність діагональних точок, і загалом зростає кількість рекурентних траєкторій у фазовому просторі. Це вказує на те, що фінасовий індекс Доу-Джонса “застрягає” у стані кризи. Кризи характеризуються трендостійкістю, персистентністю та детермінованістю своєї поведінки.</p>
+</section>
+<section id="середня-довжина-діагональних-ліній-the-average-diagonal-lines-length" class="level4" data-number="4.2.2.5">
+<h4 data-number="4.2.2.5" class="anchored" data-anchor-id="середня-довжина-діагональних-ліній-the-average-diagonal-lines-length"><span class="header-section-number">4.2.2.5</span> Середня довжина діагональних ліній (The average diagonal lines length)</h4>
+<p>Також можна виміряти <strong>середню довжину діагональних ліній</strong>. Cередня довжина діагональних лінії визначається як</p>
+<p><span class="math display">\[
+L={\frac  {\sum _{{\ell =\ell _{\min }}}^{N}\ell \,P(\ell )}{\sum _{{\ell =\ell _{\min }}}^{N}P(\ell )}}.
+\]</span></p>
+<p>Загалом цей показник характеризує середній період часу при якому дві траєкторії фазового простору знаходяться в достатній близькості один до одного.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по середній довжині діагональних ліній
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Середня довжина діагональних ліній визначає середній час при якому система залишається передбачуваною.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>AVG_DIAG_LINE, label<span class="op">=</span><span class="st">'AVG L'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-avgl" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-avgl-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.9: Динаміка індексу Доу-Джонса та середньої довжини діагональних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Як і до цього, ми можемо бачити, що середній час перебування Доу-Джонса у детермінованому стані зростає під час кризових явищ, що говорить зростання ступеня колективізації трейдерів на ринку.</p>
+</section>
+<section id="час-захопленнязатримки-trapping-time" class="level4" data-number="4.2.2.6">
+<h4 data-number="4.2.2.6" class="anchored" data-anchor-id="час-захопленнязатримки-trapping-time"><span class="header-section-number">4.2.2.6</span> Час захоплення/затримки (Trapping time)</h4>
+<p>Усереднена довжина діагональної лінії пов’язана із часом передбачуваності динамічної системи та <strong>часом затримки</strong>. У даному випадку ми середню довжину вертикальних ліній:</p>
+<p><span class="math display">\[
+TT={\frac {\sum _{{v=v_{\min }}}^{{N}}vP(v)}{\sum _{{v=v_{\min }}} ^{{N}}P(v)}}.
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по середній довжині вертикальних ліній
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Середня довжина вертикальних ліній визначає середній час перебування системи в ламінарному стані. Тобто, вона відповідає середньому періоду часу при якому система “завмирає” у певному стані. Очевидно, що зростання цiєї величини характеризує дедалi бiльший час затримки дослiджуваної системи в певному станi.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>TT, label<span class="op">=</span><span class="st">'TT'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-tt" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-tt-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.10: Динаміка індексу Доу-Джонса та час затримки</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>На представленому рисунку видно, що <span class="math inline">\(TT\)</span> зростає в (перед-)кризові стани, що вказує на потребу системи перебувати ще більший час у стані кризи.</p>
+</section>
+<section id="середня-довжина-білих-вертикальних-лінії-average-white-vertical-lines-length" class="level4" data-number="4.2.2.7">
+<h4 data-number="4.2.2.7" class="anchored" data-anchor-id="середня-довжина-білих-вертикальних-лінії-average-white-vertical-lines-length"><span class="header-section-number">4.2.2.7</span> Середня довжина білих вертикальних лінії (Average white vertical lines length)</h4>
+<p><strong>Середня довжина білих вертикальних ліній</strong> може бути визначена як</p>
+<p><span class="math display">\[
+WVL_{mean} = \sum_{w=w_{min}}^{N} w \cdot P(w) \Big / \sum_{w=w_{min}}^{N} P(w),
+\]</span></p>
+<p>де <span class="math inline">\(P(w)\)</span> — це частотний розподіл білих вертикальних ліній довжиною <span class="math inline">\(w\)</span>, а <span class="math inline">\(w_{min}\)</span> відповідає найменшій довжині білих вертикальних ліній (найменшому періоду повернення до стану рекурентності).</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по середній довжині білих вертикальних ліній
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Представлену міру можна охарактеризувати як середній горизонт <em>непередбачуваності</em> системи.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>AVG_WVERT_LINE, label<span class="op">=</span><span class="st">'WVL_</span><span class="sc">{mean}</span><span class="st">'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-avgv" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-avgv-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.11: Динаміка індексу Доу-Джонса та середньої довжини білих вертикальних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Зростання середньої довжини бiлих вертикальних лiнiй демонструє, що кризовi подiї характеризуються не лише детермiнiзмом динамiки фондового ринку, але i несхожiстю даних подiй у порiвняннi з попереднiми станами.</p>
+</section>
+<section id="ентропія-діагональних-ліній-diagonal-lines-entropy" class="level4" data-number="4.2.2.8">
+<h4 data-number="4.2.2.8" class="anchored" data-anchor-id="ентропія-діагональних-ліній-diagonal-lines-entropy"><span class="header-section-number">4.2.2.8</span> Ентропія діагональних ліній (Diagonal lines entropy)</h4>
+<p>Для відповідних діагональних сегментів можна розрахувати необхідну кількість інформації для опису всього розподілу цього типу ліній. Імовірність <span class="math inline">\(p(\ell )\)</span> того, що діагональна лінія має точну довжину <span class="math inline">\(\ell\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(\ell )\)</span> із <span class="math inline">\(p( \ell )={\frac {P(\ell )}{\sum _{{\ell = \ell_{\min }}}^{N}P(\ell )}}\)</span>. Ентропія Шеннона цієї ймовірності виглядає наступним чином:</p>
+<p><span class="math display">\[
+DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
+\]</span></p>
+<p>Даний показник відображає складність досліджуваної структури.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по ентропії діагональних ліній
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для некорельованого шуму чи осциляцiй ми тримали б мале значення цієї ентропiї. Мале значення даної ентропії вказувало би на те, що розподіл діагональних ліній представляється асиметричним: існувала б невеличка частка діагональних ліній конкретної довжини, що характеризувала би всю рекурентність досліджуваної системи. Зростання даної ентропії характеризувало би зростання симетричності розподілу довжин діагональних ліній.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_DIAG, label<span class="op">=</span><span class="st">'DLEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-dlen" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-dlen-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.12: Динаміка індексу Доу-Джонса та ентропії діагональних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Видно, що ентропія діагональних ліній зростає під час кризових явищ, що вказує на зростання впливу детермінованих процесів із різним ступенем передбачуваності.</p>
+</section>
+<section id="ентропія-вертикальних-ліній-vertical-lines-entropy" class="level4" data-number="4.2.2.9">
+<h4 data-number="4.2.2.9" class="anchored" data-anchor-id="ентропія-вертикальних-ліній-vertical-lines-entropy"><span class="header-section-number">4.2.2.9</span> Ентропія вертикальних ліній (Vertical lines entropy)</h4>
+<p>Ми можемо визначити Шеннонівську ентропію для розподілу вертикальних структур рекурентної діаграми. Імовірність <span class="math inline">\(p( v )\)</span> того, що вертикальна лінія має точну довжину <span class="math inline">\(v\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P( v )\)</span> із <span class="math inline">\(p( v )= P( v ) \Big / \sum _{{ v = v_{\min }}}^{N}P( v )\)</span>. Ентропія Шеннона цієї ймовірності визначається як</p>
+<p><span class="math display">\[
+VLEn =-\sum_{{ v = v_{\min }}}^{N}p( v )\ln p( v ).
+\]</span></p>
+<p>Ця міра, по аналогії до попередньої ентропії, також є мірою складності системи.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по ентропії вертикальних ліній
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Для синусоїдального процесу ми би очікували мале значення даної ентропії, оскільки це простий періодичний процес. Для складного процесу з пам’ятю ми би очiкуємо високе значення цього типу рекурентної ентропiї. Це означати- ме, що ламiнарнiсть процесу характеризуються рiзноманiтними перiодами довгостроковості пам’яті системи.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_VERT, label<span class="op">=</span><span class="st">'VLEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-vlen" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-vlen-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.13: Динаміка індексу Доу-Джонса та ентропії вертикальних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>На даному рисунку видно, що ентропія вертикальних ліній починає зростати під час крахових явищ, що вказує на зростання ступеню ламінарності, тобто зростання рівномірності розподілу вертикальних ліній різноманітних довжин.</p>
+</section>
+<section id="дивергенція-divergence" class="level4" data-number="4.2.2.10">
+<h4 data-number="4.2.2.10" class="anchored" data-anchor-id="дивергенція-divergence"><span class="header-section-number">4.2.2.10</span> Дивергенція (Divergence)</h4>
+<p>Показник <span class="math inline">\(L_{\max }\)</span> може надати нам інформацію про максимальний ступінь передбачуваності досліджуваного періоду. Зворотнє значення <strong>максимальної довжини діагональних ліній</strong> <span class="math inline">\(L_{\max }\)</span> або <strong>дивергенція (розбіжність)</strong> може вказати нам на швидкість та тривалість розбіжності досліджуваних траєкторій. Даний показник можна визначити як</p>
+<p><span class="math display">\[
+\text{DIV} = {\frac {1}{L_{\max }}}.
+\]</span></p>
+<p>Дана міра схожа на старший показник Ляпунова. Однак взаємозв’язок між цією мірою та позитивним максимальним показником Ляпунова набагато складніший (щоб обчислити показник Ляпунова з RP, необхідно враховувати весь розподіл частот діагональних ліній). Дивергенція може мати тенденцію позитивного максимального показника Ляпунова, але не більше.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по дивергенції
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Чим вище значення дивергенції, тим швидше розбігаються траєкторії фазового простору. І навпаки, чим нижче значення дивергенції, тим ближче досліджувані траєкторії прилягають один до одного.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DIV, label<span class="op">=</span><span class="st">'DIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-div" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-div-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.14: Динаміка індексу Доу-Джонса та дивергенції</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Даний рисунок показує, що дивергенція діагональних ліній починає спадати в кризові та передкризові періоди, що також вказує на зростання ступеня впорядкованості динаміки системи в дані періоди часу.</p>
+</section>
+<section id="дивергенція-вертикальних-ліній-vertical-line-divergence" class="level4" data-number="4.2.2.11">
+<h4 data-number="4.2.2.11" class="anchored" data-anchor-id="дивергенція-вертикальних-ліній-vertical-line-divergence"><span class="header-section-number">4.2.2.11</span> Дивергенція вертикальних ліній (Vertical line divergence)</h4>
+<p>Зворотнє значення <strong>максимальної довжини вертикальних ліній</strong> <span class="math inline">\(V_{max}\)</span> або <strong>розбіжність вертикальних ліній</strong> можна визначити як:</p>
+<p><span class="math display">\[
+VDIV = {\frac {1}{V_{\max }}}.
+\]</span></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Додаткова інформація по дивергенції вертикальних ліній
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Максимальна довижна вертикальних ліній надавала нам інформацію про максимальний ступінь незмінюваності системи. Вертикальна дивергенція дозволяє нам охарактеризувати швидкість настання або спаду ламінарності у системі. Чи вище значення <span class="math inline">\(VDIV\)</span>, тим швидше система виходить із ламінарного стану. І навпаки, чим нижчий даний показник, тим ближче траєкторії фазового простору один до одного, і тим вищий ступінь ламінарності системи в конкретний момент часу.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>VERT_DIV, label<span class="op">=</span><span class="st">'VDIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-vdiv" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-vdiv-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.15: Динаміка індексу Доу-Джонса та дивергенції вертикальних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>На даному рисунку видно, що періоди криз характеризуються спадом вертикальної дивергенції, тобто зростанням кількості вертикальних структур, що характеризують ще більший ступінь ламінарності станів.</p>
+</section>
+<section id="дивергенція-білих-вертикальних-ліній" class="level4" data-number="4.2.2.12">
+<h4 data-number="4.2.2.12" class="anchored" data-anchor-id="дивергенція-білих-вертикальних-ліній"><span class="header-section-number">4.2.2.12</span> Дивергенція білих вертикальних ліній</h4>
+<p>Зворотнє значення <strong>максимальної довжини білих вертикальних ліній</strong> (<span class="math inline">\(WVL_{max}\)</span>) можна охарактеризувати як <strong>дивергенцію білих вертикальних ліній</strong>. Її можна визначити наступним чином:</p>
+<p><span class="math display">\[
+WVDIV = \frac{1}{WVL_{max}}.
+\]</span></p>
+<p>Зростання даного показника має вказувати на зростання ступеня рекурентності системи, а його спад має демонструвати зростання непередбачуваності.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>WHITE_VERT_DIV, label<span class="op">=</span><span class="st">'WVDIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-wvdiv" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-wvdiv-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.16: Динаміка індексу Доу-Джонса та дивергенції білих вертикальних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>На даному рисунку видно, що дивергенція білих вертикальних ліній представляє доволі зашумлену динаміку, а тому не може бути використана в якості ефективного індикатора кризових явищ.</p>
+</section>
+<section id="ентропія-білих-вертикальних-ліній-white-vertical-lines-entropy" class="level4" data-number="4.2.2.13">
+<h4 data-number="4.2.2.13" class="anchored" data-anchor-id="ентропія-білих-вертикальних-ліній-white-vertical-lines-entropy"><span class="header-section-number">4.2.2.13</span> Ентропія білих вертикальних ліній (White vertical lines entropy)</h4>
+<p>Імовірність <span class="math inline">\(p( \omega )\)</span> того, що біла вертикальна лінія має точну довжину <span class="math inline">\(\omega\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(\omega )\)</span> із <span class="math inline">\(p( \omega )={\frac {P( \omega )}{\sum _{{\omega = \omega_{\min }}}^{N}P(\omega )}}\)</span>. Ентропія Шеннона цієї ймовірності,</p>
+<p><span class="math display">\[
+{\text{WVertEn}}=-\sum_{{\omega =\omega _{\min }}}^{N}p(\omega )\ln p(\omega ),
+\]</span></p>
+<p>де <span class="math inline">\(\omega_{min}\)</span> — мінімальна довжина білої вертикальної лінії.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_WHITE_VERT, label<span class="op">=</span><span class="st">'WVLEN'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-wvlen" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-wvlen-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.17: Динаміка індексу Доу-Джонса та ентропії білих вертикальних ліній</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Видно, що ентропія білих вертикальних ліній спадає у кризові та передкризові періоди фондового ринку, що вказує на зростання загальної передбачуваності системи та зміщення розподілу білих вертикальних ліній до конкретних довжин. Тобто, їх розподіл у періоди криз стає менш симетричним, що вказує на поступове заміщення білих вертикальних ліній чорними.</p>
+</section>
+<section id="співвідношення-частоти-рекурентності-до-детермінізму-detrr" class="level4" data-number="4.2.2.14">
+<h4 data-number="4.2.2.14" class="anchored" data-anchor-id="співвідношення-частоти-рекурентності-до-детермінізму-detrr"><span class="header-section-number">4.2.2.14</span> Співвідношення частоти рекурентності до детермінізму <span class="math inline">\(DET/RR\)</span></h4>
+<p>Співвідношення між <span class="math inline">\(DET\)</span> і <span class="math inline">\(RR\)</span> (<span class="math inline">\(RATIO\)</span>) можна використовувати для виявлення прихованих фазових переходів у системи:</p>
+<p><span class="math display">\[
+RATIO_1=\frac{DET}{RR}=N^2\frac{\displaystyle\sum_{l=l_{min}}^{N}lP(l)}{\left(\displaystyle\sum_{l=1}^{N}lP(l)\right)^2}
+\]</span></p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_DET_REC, label<span class="op">=</span><span class="st">'RATIO_1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-det_rr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-det_rr-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.18: Динаміка індексу Доу-Джонса та співвідношення між мірою передбачуваності та рекурентності</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Даний показник спадає під час кризових явищ фондового ринку. Це говорить про те, що має зростати загальна щільність рекурентних точок, як ізольованих, так і просто розподілу вертикальних структур. Тобто, у кризові періоди <span class="math inline">\(RR\)</span> представляється вищою за <span class="math inline">\(DET\)</span>.</p>
+</section>
+<section id="співвідношення-ламінарності-до-детермінізму-lamdet" class="level4" data-number="4.2.2.15">
+<h4 data-number="4.2.2.15" class="anchored" data-anchor-id="співвідношення-ламінарності-до-детермінізму-lamdet"><span class="header-section-number">4.2.2.15</span> Співвідношення ламінарності до детермінізму (LAM/DET)</h4>
+<p>Так само як і попередня міра, відношення ламінарності до детермінізму може дозволити нам виокремити приховані переходи в досліджуваному сигналі:</p>
+<p><span class="math display">\[
+RATIO_2=\frac{LAM}{DET}.
+\]</span></p>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_LAM_DET, label<span class="op">=</span><span class="st">'RATIO_2'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dji-lam_det" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_3_files/figure-html/fig-dji-lam_det-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;4.19: Динаміка індексу Доу-Джонса та співвідношення між мірою ламінарності та детермінізмом</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Якщо виходити з динаміки показника <span class="math inline">\(RATIO_2\)</span>, можна сказати, що загальний ступінь детермінізму починає переважати над ламінарністю під час кризових явищ.</p>
+<p>Але по результатам представлених показників ми можемо сказати, що досліджувані крахові та передкрахові події характеризуються зростанням рекурентності, і подібного роду поведінка може бути використана в якості передвісника подальших криз.</p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Скопійовано!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Скопійовано!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./lab_2.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Лабораторна робота № 2</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lab_4.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Лабораторна робота № 4</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

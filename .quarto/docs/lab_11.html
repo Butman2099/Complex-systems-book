@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.433">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Моделювання складних систем у Python - 9&nbsp; Лабораторна робота № 11</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./lab_12.html" rel="next">
+<link href="./lab_7.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Пошук не дав результату",
+    "search-matching-documents-text": "Результати пошуку",
+    "search-copy-link-title": "Скопіюйте посилання для пошуку",
+    "search-hide-matches-text": "Приховати додаткові результати",
+    "search-more-match-text": "Додатковий результат у цьому документі",
+    "search-more-matches-text": "Додаткові результати у цьому документі",
+    "search-clear-button-title": "Очистити",
+    "search-detached-cancel-button-title": "Скасувати",
+    "search-submit-button-title": "Надіслати",
+    "search-label": "Поиск"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_11.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Моделювання складних систем у Python</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Переключить темный режим"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Поиск"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Передмова</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Вступ</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Лабораторна робота № 1</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Лабораторна робота № 2</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Лабораторна робота № 3</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Лабораторна робота № 4</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Лабораторна робота № 5</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Лабораторна робота № 6</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_7.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 7</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_11.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_12.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Додатки</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Переключить раздел">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Інструкція зі встановлення Anaconda Navigator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Вступ до мови програмування Python</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Основи Jupyter Notebook</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Зміст</h2>
+   
+  <ul>
+  <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</a>
+  <ul class="collapse">
+  <li><a href="#незворотність-на-основі-діаграм-пуанкаре" id="toc-незворотність-на-основі-діаграм-пуанкаре" class="nav-link" data-scroll-target="#незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">9.1.1</span> Незворотність на основі діаграм Пуанкаре</a></li>
+  <li><a href="#методи-складних-мереж" id="toc-методи-складних-мереж" class="nav-link" data-scroll-target="#методи-складних-мереж"><span class="header-section-number">9.1.2</span> Методи складних мереж</a></li>
+  <li><a href="#незворотність-на-основі-пермутаційних-шаблонів" id="toc-незворотність-на-основі-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">9.1.3</span> Незворотність на основі пермутаційних шаблонів</a></li>
+  </ul></li>
+  <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</a>
+  <ul class="collapse">
+  <li><a href="#підключення-необхідних-бібліотек" id="toc-підключення-необхідних-бібліотек" class="nav-link" data-scroll-target="#підключення-необхідних-бібліотек"><span class="header-section-number">9.2.1</span> Підключення необхідних бібліотек</a></li>
+  <li><a href="#встановлення-параметрів-для-побудови-графіків" id="toc-встановлення-параметрів-для-побудови-графіків" class="nav-link" data-scroll-target="#встановлення-параметрів-для-побудови-графіків"><span class="header-section-number">9.2.2</span> Встановлення параметрів для побудови графіків</a></li>
+  <li><a href="#визначення-функції-для-побудови-рекурентного-графа" id="toc-визначення-функції-для-побудови-рекурентного-графа" class="nav-link" data-scroll-target="#визначення-функції-для-побудови-рекурентного-графа"><span class="header-section-number">9.2.3</span> Визначення функції для побудови рекурентного графа</a></li>
+  <li><a href="#визначення-функції-для-розрахунку-індексу-кошти" id="toc-визначення-функції-для-розрахунку-індексу-кошти" class="nav-link" data-scroll-target="#визначення-функції-для-розрахунку-індексу-кошти"><span class="header-section-number">9.2.4</span> Визначення функції для розрахунку індексу Кошти</a></li>
+  <li><a href="#оголошення-функцій-для-підрахунку-показників-незворотності" id="toc-оголошення-функцій-для-підрахунку-показників-незворотності" class="nav-link" data-scroll-target="#оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">9.2.5</span> Оголошення функцій для підрахунку показників незворотності</a></li>
+  <li><a href="#завантажуємо-дані-з-сайту-yahoo-finance" id="toc-завантажуємо-дані-з-сайту-yahoo-finance" class="nav-link" data-scroll-target="#завантажуємо-дані-з-сайту-yahoo-finance"><span class="header-section-number">9.2.6</span> Завантажуємо дані з сайту Yahoo! Finance</a></li>
+  <li><a href="#виводимо-досліджувані-ряди" id="toc-виводимо-досліджувані-ряди" class="nav-link" data-scroll-target="#виводимо-досліджувані-ряди"><span class="header-section-number">9.2.7</span> Виводимо досліджувані ряди</a></li>
+  <li><a href="#встановлення-параметрів-для-розрахунків" id="toc-встановлення-параметрів-для-розрахунків" class="nav-link" data-scroll-target="#встановлення-параметрів-для-розрахунків"><span class="header-section-number">9.2.8</span> Встановлення параметрів для розрахунків</a></li>
+  <li><a href="#виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" id="toc-виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="nav-link" data-scroll-target="#виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">9.2.9</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</a></li>
+  <li><a href="#побудова-показників-незворотності-із-використанням-ковзного-вікна" id="toc-побудова-показників-незворотності-із-використанням-ковзного-вікна" class="nav-link" data-scroll-target="#побудова-показників-незворотності-із-використанням-ковзного-вікна"><span class="header-section-number">9.2.10</span> Побудова показників незворотності із використанням ковзного вікна</a></li>
+  <li><a href="#візуалізація-показників-на-основі-діаграми-пуанкаре" id="toc-візуалізація-показників-на-основі-діаграми-пуанкаре" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">9.2.11</span> Візуалізація показників на основі діаграми Пуанкаре</a></li>
+  <li><a href="#побудова-графу-досліджуваного-ряду" id="toc-побудова-графу-досліджуваного-ряду" class="nav-link" data-scroll-target="#побудова-графу-досліджуваного-ряду"><span class="header-section-number">9.2.12</span> Побудова графу досліджуваного ряду</a></li>
+  <li><a href="#побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" id="toc-побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="nav-link" data-scroll-target="#побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">9.2.13</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</a></li>
+  <li><a href="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" id="toc-візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">9.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</a></li>
+  </ul></li>
+  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">9.3</span> Висновок</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_11.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content column-body" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>Тема.</strong> Аналіз незворотності часового ряду.</p>
+<p><strong>Мета.</strong> Навчитись розраховувати значення індексів незворотності часу для складних сигналів та досліджувати їх динаміку у випадку незворотних змін, побудови передвісників критичних і кризових явищ.</p>
+<section id="теоретичні-відомості" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</h2>
+<p>Незворотність часу є фундаментальною властивістю нерівноважних дисипативних систем, і її втрата може свідчити про розвиток деструктивних процесів.</p>
+<p>З огляду на статистичні властивості досліджуваного сигналу, його еволюцію можна було б назвати незворотною, якби була відсутня інваріантність, тобто був би отриманий той же сигнал, якби ми виміряли його в протилежному напрямку. Функція <span class="math inline">\(f\)</span> може бути застосована для знаходження характеристик, які відрізняються прямою і зворотною версіями, тобто часові ряди незворотні, якщо <span class="math inline">\(f(X^d) \neq f(X^r)\)</span>. Основна ідея цього визначення полягає в тому, що немає ніяких обмежень на <span class="math inline">\(f(\cdot )\)</span>.</p>
+<p>Передбачається, що стаціонарний процес <span class="math inline">\(X\)</span> називається статистично зворотним у часі, якщо розподіл ймовірностей прямої та зворотної систем приблизно однаковий. Незворотність часових рядів вказує на наявність нелінійних залежностей (пам’яті) в динаміці системи, далекій від рівноваги, включаючи негауссові випадкові процеси та дисипативний хаос.</p>
+<section id="незворотність-на-основі-діаграм-пуанкаре" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">9.1.1</span> Незворотність на основі діаграм Пуанкаре</h3>
+<p>Діаграма Пуанкаре для часового ряду являє собою графік, на осі <span class="math inline">\(x\)</span> якого розташовані значення для поточного часу <span class="math inline">\(t\)</span>, а на осі <span class="math inline">\(y\)</span> — його наступні значення в часі <span class="math inline">\(t+\tau\)</span>. Усі наступні значення, які рівні один одному (<span class="math inline">\(x(t) = x(t+\tau)\)</span>), розташовані на лінії ідентичності (line of identity, LI). Інтервали, що представляють зростаючу тендецію, відмічені вище LI (<span class="math inline">\(x(t)&lt;x(t+\tau)\)</span>), тоді як спадна тенденція характеризуватиметься скупченням точок нижче LI (<span class="math inline">\(x(t)&gt;x(t+\tau)\)</span>). Оцінюючи асиметрію точок на діаграмі, ми можемо вивести різні кількісні показники незворотності (асиметрії) досліджуваних систем.</p>
+<p><strong>Індекс Гузіка (GIx)</strong></p>
+<p>GIx можна визначити як відношення відстаней точок вище LI до відстаней усіх точок на діаграмі:</p>
+<p><span class="math display">\[
+GIx = \frac{\sum_{i=1}^{a} \left( D_{i}^{+} \right)^{2}}{\sum_{i=1}^{m} \left( D_{i} \right)^{2} },
+\]</span></p>
+<p>де <span class="math inline">\(a = C(P_{i}^{+})\)</span> позначає кількість точок над LI; <span class="math inline">\(m = C(P_{i}^{+}) + C(P_{i}^{-})\)</span> позначає кількість точок на графіку Пуанкаре; <span class="math inline">\(D_{i}^{+}\)</span> це відстань від точки над LI до самої LI. Відстань точки до LI можна визначити як</p>
+<p><span class="math display">\[
+D_{i} = \frac{|x(i+\tau) - x(i)|}{\sqrt{2}}.
+\]</span></p>
+<p><strong>Індекс Порти</strong></p>
+<p>Індекс Порти (PIx) визначається як кількість точок нижче LI, поділена на загальну кількість точок на графіку Пуанкаре, за винятком тих, що знаходяться на LI:</p>
+<p><span class="math display">\[
+PIx = \frac{b}{m},
+\]</span></p>
+<p>де <span class="math inline">\(b = C(P_{i}^{-})\)</span> кількість точок нижче LI.</p>
+<p><strong>Індекс Кошти</strong></p>
+<p>Індекс Кошти бере до уваги кількість інкриментів (<span class="math inline">\(x(i+1)-x(i) &gt; 0\)</span>) та декриментів (<span class="math inline">\(x(i+1)-x(i) &lt; 0\)</span>). Вони представляються симетричними, якщо рівні один одному. Даний індекс розраховується для двовимірної мультимасштабної площини (<span class="math inline">\(x(i), x(i+L)\)</span>), де новий крос-гранульований ряд <span class="math inline">\(y_{\tau}(i) = x(i+L)-x(i)\)</span> для <span class="math inline">\(1 \leq i \leq N-\tau\)</span> відображає асиметрію інкриментів та декриментів ряду, і індекс незворотності для діапазону масштабів <span class="math inline">\(\tau\)</span> визначається наступним виразом:</p>
+<p><span class="math display">\[
+CIx_{\tau} = \frac{\sum_{y_{\tau}&lt;0} H[y_{\tau}] - \sum_{y_{\tau}&gt;0} H[y_{\tau}]}{N-\tau}.
+\]</span></p>
+<p>Узагальнений індекс Кошти для діапазону мастабів <span class="math inline">\(\tau\)</span> може бути визначений як</p>
+<p><span class="math display">\[
+CIx = \frac{1}{L} \sum_{\tau=1}^{L} |CIx_{\tau}|,
+\]</span></p>
+<p>де <span class="math inline">\(L\)</span> — це максимальний масштаб.</p>
+<p><strong>Індекс Ейлера</strong></p>
+<p>Опираючись на асиметрію розподілу точок нижче та вище LI, Ейлер запропонував індекс асиметрії:</p>
+<p><span class="math display">\[
+EIx = \frac{\sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{3}}{\left[ \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{2} \right]^{\frac{3}{2}}}.
+\]</span></p>
+<p>Значне відхилення <span class="math inline">\(EIx\)</span> від 0 вказує на асиметрію системи. Якщо <span class="math inline">\(EIx&gt;0\)</span>, розподіл точок на діаграмі Пуанкаре значно зміщений у сторону вище LI. Зворотня ситуація спостерігається для <span class="math inline">\(EIx&lt;0\)</span>. Для <span class="math inline">\(EIx \approx 0\)</span> досліджувані сегменти представляються зворотніми в часі.</p>
+<p><strong>Індекс площі</strong></p>
+<p>Індекс площі (AIx) визначається як сукупна площа секторів, що сформовані точками над LI поділена на сукупну площу секторів, що відповідають усім точкам на графіку Пуанкаре (крім тих, що розташовані точно на LI). Площа сектора, що відповідає певній точці <span class="math inline">\(P_{i}\)</span> на графіку Пуанкаре, обчислюється як</p>
+<p><span class="math display">\[
+S_{i} = \frac{1}{2} \times R\theta_{i} \times r^{2},
+\]</span></p>
+<p>де <span class="math inline">\(r\)</span> — це радіус сектора; <span class="math inline">\(R\theta_{i} = \theta_{LI} - \theta_{i}\)</span>; <span class="math inline">\(\theta_{LI}\)</span> — це фазовий кут, і <span class="math inline">\(\theta_{i} = \arctan{\left[ \frac{x(i+\tau)}{x(i)} \right]}\)</span>, що визначає фазовий кут <span class="math inline">\(i\)</span>-ої точки. Далі, <span class="math inline">\(AIx\)</span> визначається за наступною формулою:</p>
+<p><span class="math display">\[
+AIx = \frac{\sum_{i=1}^{a}|S_{i}|}{\sum_{i=1}^{m}|S_{i}|}.
+\]</span></p>
+<p><strong>Індекс кута нахилу</strong></p>
+<p>На додачу до представлених вище мір, було запропоновано розраховувати незворотність сигналу з відношення кутів нахилу точок над LI до нахилу всіх точок на діаграмі:</p>
+<p><span class="math display">\[
+SIx = \frac{\sum_{i=1}^{a}|R\theta_{i}|}{\sum_{i=1}^{m}|R\theta_{i}|}.
+\]</span></p>
+</section>
+<section id="методи-складних-мереж" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="методи-складних-мереж"><span class="header-section-number">9.1.2</span> Методи складних мереж</h3>
+<p>Графи видимості (VG) базуються на простому відображенні часових рядів у мережеву область, використовуючи локальну опуклість скалярно-позначених часових рядів, де кожне спостереження є вершиною в складній мережі. Дві вершини і пов’язані ребром, якщо для всіх вершин застосовується наступна умова:</p>
+<p><span class="math display">\[
+x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right) \frac{t_{j}-t_{k}}{t_{j}-t_{i}}.
+\]</span></p>
+<p>Матрицю суміжності (<span class="math inline">\(A_{ij}\)</span>) представленого ненаправленого та незваженого VG можна представити як:</p>
+<p><span class="math display">\[
+A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left( x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right) \frac{t_{j}-t_{k}}{t_{j}-t_{i}} \right),
+\]</span></p>
+<p>де <span class="math inline">\(H( \cdot )\)</span> — це функція Гевісайда.</p>
+<p>Граф горизонтальної видимості (HVG) є спрощеною версією цього алгоритму. Для досліджуваного часового ряду набори вершин VG і HVG однакові, тоді як набір ребер HVG відображає взаємну горизонтальну видимість двох спостережень <span class="math inline">\(x_{i}\)</span> та <span class="math inline">\(x_{j}\)</span>. Тобто можна побудувати ребро <span class="math inline">\((i,j)\)</span>, якщо <span class="math inline">\(x_{k} &lt; \min(x_{i}, x_{j})\)</span> для всіх <span class="math inline">\(k\)</span> при <span class="math inline">\(t_{i} &lt; t_{k} &lt; t_{j}\)</span> так що</p>
+<p><span class="math display">\[
+A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left( x_{i} - x_{k} \right) H \left( x_{j} - x_{k} \right).
+\]</span></p>
+<p>VG і HVG фіксують по суті одні й ті ж властивості досліджуваної системи, оскільки HVG є підграфом VG з тим же набором вершин, але володіє тільки підмножиною ребер VG. Зверніть увагу, що VG інваріантний щодо суперпозиції лінійних трендів, тоді як HVG — ні.</p>
+<p>Оскільки визначення VGs та HVGs чітко враховує часовий порядок спостережень, напрямок часу нерозривно пов’язаний з отриманою структурою мережі. Щоб врахувати цей факт, ми визначаємо набір нових статистичних мережевих показників на основі двох простих характеристик вершин:</p>
+<ul>
+<li>Оскільки кількість ребер інцидентних вершині <span class="math inline">\(i\)</span> можна визначити як <span class="math inline">\(k_{i}^{r} = \sum_{j} A_{ij}\)</span>, для (H)VG ми можемо переписати дану кількісну характеристику для вершини в час <span class="math inline">\(t_{i}\)</span> відносно її минулих та майбутніх вершин:</li>
+</ul>
+<p><span class="math display">\[
+k_{i}^{r} = \sum_{j&lt;i} A_{ij} \quad \mathrm{and} \quad k_{i}^{a} \sum_{j&gt;i} A_{ij},
+\]</span></p>
+<p>де <span class="math inline">\(k_{i} = k_{i}^{r} + k_{i}^{a}\)</span>, і <span class="math inline">\(k_{i}^{r}\)</span> та <span class="math inline">\(k_{i}^{a}\)</span> сприймаються як вхідні (минулі) та вихідні (майбутні) вершини.</p>
+<ul>
+<li>Локальний коефіцієнт кластеризації <span class="math inline">\(C_{i} = \left( \begin{matrix} k_{i}\\ 2 \end{matrix} \right)^{-1} \sum_{j,k} A_{ij}A_{jk}A_{ki}\)</span> інша властивість старшного порядку структурного сусідства вершини <span class="math inline">\(i\)</span>. Для дослідження незворотності, ми можемо переписати дані характеристики наступним чином:</li>
+</ul>
+<p><span class="math display">\[
+C_{i}^{r} = \left( \begin{matrix} k_{i}^{r}\\ 2 \end{matrix} \right)^{-1} \sum_{j&lt;i,k&lt;i} A_{ij}A_{jk}A_{ki} \quad \textrm{and} \quad C_{i}^{a} = \left( \begin{matrix} k_{i}^{a}\\ 2 \end{matrix} \right)^{-1} \sum_{j&gt;i,k&gt;i} A_{ij}A_{jk}A_{ki}.
+\]</span></p>
+<p>Якщо уявити нашу систему зворотною в часі, ми припускаємо, що розподілу ймовірностей прямих і зворотних за часом характеристик повинні бути однаковими. Для незворотних процесів ми очікуємо виявити статистичну нееквівалентність. Ця нееквівалентність буде визначатися через дивергенцію Кульбака-Лейблера:</p>
+<p><span class="math display">\[
+D_{KL}(p||q) = \sum_{i=1}^{N} p(x_{i}) \cdot \log{\left[ \frac{p(x_{i})}{q(x_{i})} \right]},
+\]</span></p>
+<p>де <span class="math inline">\(p(\cdot)\)</span> відповідатиме розподілу вхідних характеристикам, а <span class="math inline">\(q(\cdot)\)</span> відповідатиме зворотнім.</p>
+</section>
+<section id="незворотність-на-основі-пермутаційних-шаблонів" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">9.1.3</span> Незворотність на основі пермутаційних шаблонів</h3>
+<p>Ідея аналізу пермутаційних шаблонів (PP — permutation patterns) спочатку була запропонована Бандтом і Помпе, щоб надати дослідникам простий та ефективний інструмент для характеристики складності динаміки реальних систем. Він уникає порогу амплітуди і замість цього має справу з порядковими шаблонами перестановок. Їх частоти дозволяють відрізнити детерміновані процеси від абсолютно випадкових. Розрахунки PP припускають, що часовий ряд розбивається на пересічні підвектори довжини <span class="math inline">\(d_{E}\)</span>:</p>
+<p><span class="math display">\[
+\vec{X}(i) = \left\{ x(i), x(i+\tau), ... , x(i+[d_{E}-1]\tau) \right\},
+\]</span></p>
+<p>де часова затримка <span class="math inline">\(\tau\)</span> відповідає часу розділення між елементами.</p>
+<p>Після цього кожен вектор представляється у вигляді порядкового шаблону <span class="math inline">\(\pi = \{ r_0, r_1, ... , r_{d_{E}-1} \}\)</span>, що має задовільняти наступній умові:</p>
+<p><span class="math display">\[
+x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
+\]</span></p>
+<p>Цікава для нас міра незворотності часу на основі PP може бути отримана шляхом врахування їх відносної частоти як для початкового, так і для оберненого часового ряду. Відповідно, якщо обидва типи мають приблизно однакові розподіли ймовірностей своїх патернів, часові ряди представляються зворотними, а для іншого випадку робиться протилежний висновок.</p>
+<p>Різницю між розподілами прямих часових рядів (<span class="math inline">\(P^{d}\)</span>) та зворотних (<span class="math inline">\(P^{r}\)</span>) можна оцінити за допомогою дивергенції Кульбака-Лейблера.</p>
+</section>
+</section>
+<section id="хід-роботи" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</h2>
+<section id="підключення-необхідних-бібліотек" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="підключення-необхідних-бібліотек"><span class="header-section-number">9.2.1</span> Підключення необхідних бібліотек</h3>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> preprocessing</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> entropy</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ordpy <span class="im">import</span> ordinal_distribution</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.integrate <span class="im">import</span> quad</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> gaussian_kde</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial <span class="im">import</span> distance</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> KDEpy <span class="im">import</span> FFTKDE</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ts2vg <span class="im">import</span> NaturalVG, HorizontalVG</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="встановлення-параметрів-для-побудови-графіків" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="встановлення-параметрів-для-побудови-графіків"><span class="header-section-number">9.2.2</span> Встановлення параметрів для побудови графіків</h3>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),         <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="визначення-функції-для-побудови-рекурентного-графа" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="визначення-функції-для-побудови-рекурентного-графа"><span class="header-section-number">9.2.3</span> Визначення функції для побудови рекурентного графа</h3>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recurrence_net(time_ser, rec_thr, dim, tau, dist_type<span class="op">=</span><span class="st">'euclidien'</span>):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    time_series <span class="op">=</span> nk.complexity_embedding(time_ser, dimension<span class="op">=</span>dim, delay<span class="op">=</span>tau)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    rp <span class="op">=</span> (distance.cdist(time_series, time_series, dist_type) <span class="op">&lt;=</span> rec_thr).astype(<span class="bu">int</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    adj_matrix_RN <span class="op">=</span> rp</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    np.fill_diagonal(adj_matrix_RN, <span class="dv">0</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    rec_nw <span class="op">=</span> nx.from_numpy_matrix(adj_matrix_RN)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> rec_nw</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> node_positions_recurrence_net(ts, xs):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {i: (xs[i], ts[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ts))}</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="визначення-функції-для-розрахунку-індексу-кошти" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="визначення-функції-для-розрахунку-індексу-кошти"><span class="header-section-number">9.2.4</span> Визначення функції для розрахунку індексу Кошти</h3>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Costa_1(time_ser, taus):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    Cst <span class="op">=</span> []</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tau <span class="kw">in</span> taus:</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        fragm_Costa <span class="op">=</span> np.array([time_ser[tau:], time_ser[:<span class="op">-</span>tau]])</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        DiffCosta <span class="op">=</span> np.diff(fragm_Costa,axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        IncCosta <span class="op">=</span> np.<span class="bu">sum</span>(DiffCosta<span class="op">&gt;</span><span class="dv">0</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        DecCosta <span class="op">=</span> np.<span class="bu">sum</span>(DiffCosta<span class="op">&lt;</span><span class="dv">0</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        C <span class="op">=</span> (IncCosta<span class="op">-</span>DecCosta)<span class="op">/</span>(<span class="bu">len</span>(time_ser)<span class="op">-</span>tau)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        Cst.append(C)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    Costa <span class="op">=</span> np.mean(np.<span class="bu">abs</span>(Cst))</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Costa</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="оголошення-функцій-для-підрахунку-показників-незворотності" class="level3" data-number="9.2.5">
+<h3 data-number="9.2.5" class="anchored" data-anchor-id="оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">9.2.5</span> Оголошення функцій для підрахунку показників незворотності</h3>
+<section id="пермутаційна-незворотність" class="level4" data-number="9.2.5.1">
+<h4 data-number="9.2.5.1" class="anchored" data-anchor-id="пермутаційна-незворотність"><span class="header-section-number">9.2.5.1</span> Пермутаційна незворотність</h4>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PermIrrever(time_ser, d_e, tau, delta<span class="op">=</span><span class="fl">1e-10</span>, distance_irr<span class="op">=</span><span class="st">"kullback"</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    pattern, dist <span class="op">=</span> ordinal_distribution(time_ser, dx<span class="op">=</span>d_e, taux<span class="op">=</span>tau, return_missing<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    m, n <span class="op">=</span> pattern.shape</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    pf <span class="op">=</span> []</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    pb <span class="op">=</span> []</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    is_used <span class="op">=</span> np.zeros((m))</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> is_used[i] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        is_used[i] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        pf.append(i)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        permb <span class="op">=</span> pattern[i,::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(m<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> np.<span class="bu">sum</span>(pattern[j,:] <span class="op">==</span> permb) <span class="op">==</span> n: </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                is_used[j] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                pb.append(j)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> distance_irr <span class="op">==</span> <span class="st">"kullback"</span>:</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        KLD_perm <span class="op">=</span> dist[pf] <span class="op">*</span> np.log((dist[pf] <span class="op">+</span> delta) <span class="op">/</span> (dist[pb] <span class="op">+</span> delta))</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> np.<span class="bu">sum</span>(KLD_perm)   </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> distance.jensenshannon(dist[pf] <span class="op">+</span> delta, dist[pb] <span class="op">+</span> delta)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="графо-динамічна-незворотність" class="level4" data-number="9.2.5.2">
+<h4 data-number="9.2.5.2" class="anchored" data-anchor-id="графо-динамічна-незворотність"><span class="header-section-number">9.2.5.2</span> Графо-динамічна незворотність</h4>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GraphIrrever(fragm_1, graph_type<span class="op">=</span><span class="st">'classic'</span>, delta<span class="op">=</span><span class="fl">1e-10</span>, d_e_rec<span class="op">=</span><span class="dv">3</span>, tau_rec<span class="op">=</span><span class="dv">1</span>, eps_rec<span class="op">=</span><span class="fl">0.1</span>, dist_rec<span class="op">=</span><span class="st">'chebyshev'</span>, distance_irr<span class="op">=</span><span class="st">'kullback'</span>):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># будуємо граф </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> graph_type <span class="op">==</span> <span class="st">'classic'</span>:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        g <span class="op">=</span> NaturalVG(directed<span class="op">=</span><span class="va">None</span>).build(fragm_1)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> graph_type <span class="op">==</span> <span class="st">'horizontal'</span>:</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        g <span class="op">=</span> HorizontalVG(directed<span class="op">=</span><span class="va">None</span>).build(fragm_1)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        g <span class="op">=</span> recurrence_net(fragm_1, rec_thr<span class="op">=</span>eps_rec<span class="op">*</span>np.<span class="bu">abs</span>(np.std(fragm_1)), dim<span class="op">=</span>d_e_rec, tau<span class="op">=</span>tau_rec, dist_type<span class="op">=</span>dist_rec)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо вхідні та вихідні характеристики </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    adjacency_mat <span class="op">=</span> g.adjacency_matrix()</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    ret_deg, adv_deg <span class="op">=</span> GetDegree(adjacency_mat)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    ret_clust, adv_clust <span class="op">=</span> GetLocalClusteringCoefficient(adjacency_mat, ret_deg, adv_deg)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># використовуємо kde для знаходження функції щільності ймовірностей </span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    pdf_ret_deg <span class="op">=</span> gaussian_kde(<span class="bu">sorted</span>(ret_deg), bw_method<span class="op">=</span><span class="st">'scott'</span>)       </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    pdf_adv_deg <span class="op">=</span> gaussian_kde(<span class="bu">sorted</span>(adv_deg), bw_method<span class="op">=</span><span class="st">'scott'</span>)    </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    pdf_ret_clust <span class="op">=</span> gaussian_kde(<span class="bu">sorted</span>(ret_clust), bw_method<span class="op">=</span><span class="st">'scott'</span>)    </span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    pdf_adv_clust <span class="op">=</span> gaussian_kde(<span class="bu">sorted</span>(adv_clust), bw_method<span class="op">=</span><span class="st">'scott'</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    a_deg <span class="op">=</span> <span class="bu">min</span>(<span class="bu">min</span>(ret_deg), <span class="bu">min</span>(adv_deg))  </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    b_deg <span class="op">=</span> <span class="bu">max</span>(<span class="bu">max</span>(ret_deg), <span class="bu">max</span>(adv_deg))  </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    a_clust <span class="op">=</span> <span class="bu">min</span>(<span class="bu">min</span>(ret_clust), <span class="bu">min</span>(adv_clust))</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    b_clust <span class="op">=</span> <span class="bu">max</span>(<span class="bu">max</span>(ret_clust), <span class="bu">max</span>(adv_clust))</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>                           </span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> distance_irr <span class="op">==</span> <span class="st">'kullback'</span>:</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        dkl_deg <span class="op">=</span> <span class="kw">lambda</span> x: pdf_ret_deg.pdf(x) <span class="op">*</span> np.log((pdf_ret_deg.pdf(x) <span class="op">+</span> delta)<span class="op">/</span>(pdf_adv_deg.pdf(x) <span class="op">+</span> delta))        </span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        dkl_clust <span class="op">=</span> <span class="kw">lambda</span> x: pdf_ret_clust.pdf(x) <span class="op">*</span> np.log((pdf_ret_clust.pdf(x) <span class="op">+</span> delta)<span class="op">/</span>(pdf_adv_clust.pdf(x) <span class="op">+</span> delta))</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        distance_deg <span class="op">=</span> quad(dkl_deg, a_deg, b_deg)[<span class="dv">0</span>]       </span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        distance_clust <span class="op">=</span> quad(dkl_clust, a_clust, b_clust)[<span class="dv">0</span>]</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> distance_irr <span class="op">==</span> <span class="st">'shannon'</span>:                                 </span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        width_deg <span class="op">=</span> (b_deg<span class="op">-</span>a_deg)<span class="op">/</span><span class="bu">len</span>(ret_deg)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        width_clust <span class="op">=</span> (b_clust<span class="op">-</span>a_clust)<span class="op">/</span><span class="bu">len</span>(ret_clust)</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>        lin_deg <span class="op">=</span> np.arange(a_deg, b_deg, width_deg) </span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        lin_clust <span class="op">=</span> np.arange(a_clust, b_clust, width_clust)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        p_ret_deg <span class="op">=</span> pdf_ret_deg.pdf(lin_deg) </span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>        p_adv_deg <span class="op">=</span> pdf_adv_deg.pdf(lin_deg) </span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>        p_ret_clust <span class="op">=</span> pdf_ret_clust.pdf(lin_clust) </span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>        p_adv_clust <span class="op">=</span> pdf_adv_clust.pdf(lin_clust)</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>        distance_deg <span class="op">=</span> distance.jensenshannon(p_ret_deg <span class="op">+</span> delta, p_adv_deg <span class="op">+</span> delta)</span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>        distance_clust <span class="op">=</span> distance.jensenshannon(p_ret_clust <span class="op">+</span> delta, p_adv_clust <span class="op">+</span> delta)</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> distance_deg, distance_clust</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації" class="level4" data-number="9.2.5.3">
+<h4 data-number="9.2.5.3" class="anchored" data-anchor-id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації"><span class="header-section-number">9.2.5.3</span> Функції для отримання ступеня вершини та локальної кластеризації</h4>
+<p>Процедура знаходження ступеню зв’язків та локальної кластеризації кожної вершини є доволі громіздкою. Для прискорення розрахунків відповідних процедур скористаємось бібліотекою <code>numba</code>. <a href="https://numba.readthedocs.io/en/stable/index.html">Numba</a> — це швидкий компілятор для Python, який найкраще працює з кодом, що використовує масиви, функції та цикли NumPy. Найпоширеніший спосіб використання Numba — це колекція декораторів, які можна застосувати до ваших функцій, щоб доручити Numba їх компілювати. Коли здійснюється виклик функції, прикрашеної Numba, вона компілюється у машинний код “just-in-time” для виконання, і весь або частина вашого коду може згодом виконуватися зі швидкістю власного машинного коду!</p>
+<p>Встановити її можна в наступний спосіб:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numba<span class="op">==</span><span class="fl">0.56.4</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Numba надає декілька утиліт для генерації коду, але центральною функцією є декоратор <code>numba.jit()</code>. За допомогою цього декоратора ви можете позначити функцію для оптимізації JIT-компілятором Numba. Різні режими виклику викликають різні варіанти компіляції та поведінки. Імпортуємо відповідний декоратор з бібліотеки <code>numba</code>:</p>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numba <span class="im">import</span> jit</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">@jit</span>(nopython<span class="op">=</span><span class="va">True</span>, nogil<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GetDegree(AM):</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    numNodes <span class="op">=</span> AM.shape[<span class="dv">0</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    retarded_degree <span class="op">=</span> np.zeros((numNodes))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    advanced_degree <span class="op">=</span> np.zeros((numNodes))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>     </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numNodes):</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        retarded_degree[i] <span class="op">=</span> AM[i, :i].<span class="bu">sum</span>()</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numNodes):</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        advanced_degree[i] <span class="op">=</span> AM[i, i:].<span class="bu">sum</span>()</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> retarded_degree, advanced_degree</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="at">@jit</span>(nopython<span class="op">=</span><span class="va">True</span>, nogil<span class="op">=</span><span class="va">True</span>) </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GetLocalClusteringCoefficient(AM, ret_deg, adv_deg):</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    numNodes <span class="op">=</span> AM.shape[<span class="dv">0</span>]</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    retardedCC <span class="op">=</span> np.zeros( (numNodes) )</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    advancedCC <span class="op">=</span> np.zeros( (numNodes) )</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    ret_norm <span class="op">=</span> ret_deg <span class="op">*</span> (ret_deg <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    adv_norm <span class="op">=</span> adv_deg <span class="op">*</span> (adv_deg <span class="op">-</span> <span class="dv">1</span>) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numNodes):</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> ret_norm[i] <span class="op">!=</span> <span class="dv">0</span>: </span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>            counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i):</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(j): </span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> AM[i, j] <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> AM[j, k] <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> AM[k, i] <span class="op">==</span> <span class="dv">1</span>: </span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                        counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>                        </span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>            retardedCC[i] <span class="op">=</span> counter <span class="op">/</span> ret_norm[i]</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(numNodes<span class="op">-</span><span class="dv">2</span>):</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> adv_norm[i] <span class="op">!=</span> <span class="dv">0</span>: </span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>            counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, numNodes):</span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(i<span class="op">+</span><span class="dv">1</span>, j): </span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">if</span> AM[i, j] <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> AM[j, k] <span class="op">==</span> <span class="dv">1</span> <span class="kw">and</span> AM[k, i] <span class="op">==</span> <span class="dv">1</span>: </span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>                        counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>                        </span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>            advancedCC[i] <span class="op">=</span> counter <span class="op">/</span> adv_norm[i]</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>                 </span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> retardedCC, advancedCC</span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="завантажуємо-дані-з-сайту-yahoo-finance" class="level3" data-number="9.2.6">
+<h3 data-number="9.2.6" class="anchored" data-anchor-id="завантажуємо-дані-з-сайту-yahoo-finance"><span class="header-section-number">9.2.6</span> Завантажуємо дані з сайту Yahoo! Finance</h3>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^RUT'</span>                       <span class="co"># Символ індексу</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol)            <span class="co"># вивантажуємо дані</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()   <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                 <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                       <span class="co"># підпис по вісі Оу</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>date_in_num <span class="op">=</span> mdates.date2num(time_ser.index)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_initial_time_series.txt'</span>, time_ser.values)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
+</div>
+</div>
+</section>
+<section id="виводимо-досліджувані-ряди" class="level3" data-number="9.2.7">
+<h3 data-number="9.2.7" class="anchored" data-anchor-id="виводимо-досліджувані-ряди"><span class="header-section-number">9.2.7</span> Виводимо досліджувані ряди</h3>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-rus-init" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-rus-init-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.1: Динаміка щоденних змін індексу Russell 2000</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Користуючись тими методами, що ми розглянули в попередній лабораторній роботі, побудуємо діаграму Пуанкаре та граф нашого часового ряду. Але перш за все, для діаграми Пункаре, треба знайти стандартизовані прибутковості. Для цього оголосимо функцію <code>transformation()</code>, що прийматиме на вхід часовий сигнал, тип ряду, і повертатиме його перетворення:</p>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="встановлення-параметрів-для-розрахунків" class="level3" data-number="9.2.8">
+<h3 data-number="9.2.8" class="anchored" data-anchor-id="встановлення-параметрів-для-розрахунків"><span class="header-section-number">9.2.8</span> Встановлення параметрів для розрахунків</h3>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span> <span class="co"># розмір ковзного вікна</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span> <span class="co"># часовий крок</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> <span class="co"># тип ряду: 1 - вихідний, 2 - детрендований</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># 3 - стандартні прибутковості, </span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># 6 - стандартизований вихідний часовий ряд</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># параметри для рекурентного графу</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>d_e_rec <span class="op">=</span> <span class="dv">3</span> <span class="co"># розмірність вкладень</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>tau_rec <span class="op">=</span> <span class="dv">1</span> <span class="co"># часова затримка</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>eps_rec <span class="op">=</span> <span class="fl">1.3</span> <span class="co"># радіус</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>dist_rec <span class="op">=</span> <span class="st">'chebyshev'</span> <span class="co"># відстань між траєкторіями: </span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># canberra’, ‘chebyshev’, ‘cityblock’, ‘correlation’, </span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># ‘cosine’, ‘dice’, ‘euclidean’, ‘hamming’, ‘jaccard’, </span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># ‘jensenshannon’, ‘kulsinski’, ‘kulczynski1’, ‘mahalanobis’, </span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># ‘matching’, ‘minkowski’, ‘rogerstanimoto’, ‘russellrao’, ‘seuclidean’, </span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># ‘sokalmichener’, ‘sokalsneath’, ‘sqeuclidean’, ‘yule’.</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co"># параметри для мір незворотності</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>d_e_perm <span class="op">=</span> <span class="dv">3</span>              <span class="co"># розмірність вкладень для пермутаційних патернів </span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>tau_perm  <span class="op">=</span> <span class="dv">1</span>             <span class="co"># часова затримка для пермутаційних патернів</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>distance_irr <span class="op">=</span> <span class="st">'kullback'</span> <span class="co"># відстань між розподілами: kullback, shannon</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>graph_type <span class="op">=</span> <span class="st">'classic'</span>    <span class="co"># тип графу: classic, horizontal, recurrent</span></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="co"># параметри для мір асиметрії</span></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>tau_assym <span class="op">=</span> <span class="dv">1</span>                 <span class="co"># часова затримка для діаграми Пуанкаре</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>tau_Costa_begin <span class="op">=</span> <span class="dv">1</span>           <span class="co"># початковий часовий масштаб для індексу Кошти</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>tau_Costa_end <span class="op">=</span> <span class="dv">20</span>            <span class="co"># кінцевий часовий масштаб для індексу Кошти</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>taus_Costa <span class="op">=</span> np.arange(tau_Costa_begin, tau_Costa_end<span class="op">+</span><span class="dv">1</span>) <span class="co"># формуємо масив масштабів</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="level3" data-number="9.2.9">
+<h3 data-number="9.2.9" class="anchored" data-anchor-id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">9.2.9</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</h3>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>for_puank <span class="op">=</span> time_ser.copy()</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>for_puank <span class="op">=</span> transformation(for_puank, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>ax1.scatter(for_puank[:<span class="op">-</span>tau_assym],for_puank[tau_assym:], marker<span class="op">=</span><span class="st">"X"</span>, s<span class="op">=</span><span class="dv">180</span>, c<span class="op">=</span><span class="st">"g"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>low_x, high_x <span class="op">=</span> ax1.get_xlim()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>low_y, high_y <span class="op">=</span> ax1.get_ylim()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ax1.axline([low_x, low_y], [high_x, high_y])</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="vs">r'$g(t)$'</span>)</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="vs">r'$g(t+\tau)$'</span>) </span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>ax1.set_xlim(left<span class="op">=</span>low_x, right<span class="op">=</span>high_x)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylim(bottom<span class="op">=</span>low_y, top<span class="op">=</span>high_y)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>plt.locator_params(axis<span class="op">=</span><span class="st">'y'</span>, nbins<span class="op">=</span><span class="dv">7</span>)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Poincare_plot_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lab_11_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Виходячи з даної діаграми, можна зазначити, що для прибутковостей індексу Russell 2000 спостерігається асиметрія у сторону зростаючих флуктуацій ряду.</p>
+</section>
+<section id="побудова-показників-незворотності-із-використанням-ковзного-вікна" class="level3" data-number="9.2.10">
+<h3 data-number="9.2.10" class="anchored" data-anchor-id="побудова-показників-незворотності-із-використанням-ковзного-вікна"><span class="header-section-number">9.2.10</span> Побудова показників незворотності із використанням ковзного вікна</h3>
+<p>Визначаємо функцію для побудови парних графіків:</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>              y1_label, </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>              y2_label,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>              x_label, </span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>              file_name, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>                  y1_values, </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>                   y2_values, </span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span>y2_label)</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Оголошуємо масиви для збереження результатів:</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>PIx <span class="op">=</span> []</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>GIx <span class="op">=</span> []</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>SIx <span class="op">=</span> []</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>AIx <span class="op">=</span> []</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>EIx <span class="op">=</span> []</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>CIx <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Розраховуємо відповідні міри у віконній процедурі:</p>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy() <span class="co"># відбираємо фрагмент ряду </span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    Temp_fragm <span class="op">=</span> np.array([fragm[:<span class="op">-</span>tau_assym], fragm[tau_assym:]])</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    T2   <span class="op">=</span> np.transpose(np.arctan(Temp_fragm[<span class="dv">1</span>,:]<span class="op">/</span>Temp_fragm[<span class="dv">0</span>,:])<span class="op">*</span><span class="dv">180</span><span class="op">/</span>np.pi)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    Dup  <span class="op">=</span> <span class="bu">abs</span>(np.diff(Temp_fragm[:,T2<span class="op">&gt;</span><span class="dv">45</span>],axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    Dtot <span class="op">=</span> <span class="bu">abs</span>(np.diff(Temp_fragm[:,T2<span class="op">!=</span><span class="dv">45</span>],axis<span class="op">=</span><span class="dv">0</span>))</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    Sup  <span class="op">=</span> np.<span class="bu">sum</span>(<span class="bu">abs</span>(T2[T2<span class="op">&gt;</span><span class="dv">45</span>]<span class="op">-</span><span class="dv">45</span>))</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    Stot <span class="op">=</span> np.<span class="bu">sum</span>(<span class="bu">abs</span>(T2[T2<span class="op">!=</span><span class="dv">45</span>]<span class="op">-</span><span class="dv">45</span>))</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    Aup  <span class="op">=</span> np.<span class="bu">sum</span>(<span class="bu">abs</span>(np.transpose(((T2[T2<span class="op">&gt;</span><span class="dv">45</span>]<span class="op">-</span><span class="dv">45</span>))<span class="op">*</span>np.sqrt(np.<span class="bu">sum</span>(Temp_fragm[:,T2<span class="op">&gt;</span><span class="dv">45</span>]<span class="op">**</span><span class="dv">2</span>,axis<span class="op">=</span><span class="dv">0</span>)))))</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    Atot <span class="op">=</span> np.<span class="bu">sum</span>(<span class="bu">abs</span>(np.transpose(((T2[T2<span class="op">!=</span><span class="dv">45</span>]<span class="op">-</span><span class="dv">45</span>))<span class="op">*</span>np.sqrt(np.<span class="bu">sum</span>(Temp_fragm[:,T2<span class="op">!=</span><span class="dv">45</span>]<span class="op">**</span><span class="dv">2</span>,axis<span class="op">=</span><span class="dv">0</span>)))))</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    Ethird <span class="op">=</span> np.<span class="bu">sum</span>(np.transpose(Temp_fragm[<span class="dv">0</span>,:]<span class="op">-</span>Temp_fragm[<span class="dv">1</span>,:])<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    Etot <span class="op">=</span> (np.<span class="bu">sum</span>(np.transpose(Temp_fragm[<span class="dv">0</span>,:]<span class="op">-</span>Temp_fragm[<span class="dv">1</span>,:])<span class="op">**</span><span class="dv">2</span>))<span class="op">**</span>(<span class="dv">3</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    Porta <span class="op">=</span> <span class="bu">sum</span>(T2<span class="op">&lt;</span><span class="dv">45</span>)<span class="op">/</span><span class="bu">sum</span>(T2<span class="op">!=</span><span class="dv">45</span>)</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    Gudzik <span class="op">=</span> np.<span class="bu">sum</span>(Dup<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>np.<span class="bu">sum</span>(Dtot<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    Slope <span class="op">=</span> Sup<span class="op">/</span>Stot</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    Area <span class="op">=</span> Aup<span class="op">/</span>Atot</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    Eiler <span class="op">=</span> Ethird<span class="op">/</span>Etot</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>    Costa <span class="op">=</span> Costa_1(fragm, taus_Costa)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    PIx.append(Porta)</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    GIx.append(Gudzik)</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    SIx.append(Slope)</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    AIx.append(Area)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    EIx.append(Eiler)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>    CIx.append(Costa)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 8569/8569 [00:14&lt;00:00, 600.95it/s]</code></pre>
+</div>
+</div>
+<p>Зберігаємо значення до .txt файлів</p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Porta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, PIx)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Gudzik_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, GIx)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Slope_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, SIx)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Area_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, AIx)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Eiler_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, EIx)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Costa_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, CIx)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="візуалізація-показників-на-основі-діаграми-пуанкаре" class="level3" data-number="9.2.11">
+<h3 data-number="9.2.11" class="anchored" data-anchor-id="візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">9.2.11</span> Візуалізація показників на основі діаграми Пуанкаре</h3>
+<section id="індекс-порти" class="level4" data-number="9.2.11.1">
+<h4 data-number="9.2.11.1" class="anchored" data-anchor-id="індекс-порти"><span class="header-section-number">9.2.11.1</span> Індекс Порти</h4>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$PIx$"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"PIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>          PIx, </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-pi" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-pi-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.2: Динаміка індексу Russell 2000 та індексу Порти</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="індекс-гузіка" class="level4" data-number="9.2.11.2">
+<h4 data-number="9.2.11.2" class="anchored" data-anchor-id="індекс-гузіка"><span class="header-section-number">9.2.11.2</span> Індекс Гузіка</h4>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$GIx$"</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"GIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>          GIx, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-gi" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-gi-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.3: Динаміка індексу Russell 2000 та індексу Гузіка</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="індекс-кута-нахилу" class="level4" data-number="9.2.11.3">
+<h4 data-number="9.2.11.3" class="anchored" data-anchor-id="індекс-кута-нахилу"><span class="header-section-number">9.2.11.3</span> Індекс кута нахилу</h4>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$SIx$"</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"SIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>          SIx, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-si" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-si-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.4: Динаміка індексу Russell 2000 та індексу кута нахилу</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="індекс-площі-секторів" class="level4" data-number="9.2.11.4">
+<h4 data-number="9.2.11.4" class="anchored" data-anchor-id="індекс-площі-секторів"><span class="header-section-number">9.2.11.4</span> Індекс площі секторів</h4>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$AIx$"</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"AIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>          AIx, </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-ai" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-ai-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.5: Динаміка індексу Russell 2000 та індексу площі секторів</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="індекс-ейлера" class="level4" data-number="9.2.11.5">
+<h4 data-number="9.2.11.5" class="anchored" data-anchor-id="індекс-ейлера"><span class="header-section-number">9.2.11.5</span> Індекс Ейлера</h4>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$EIx$"</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"EIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          EIx, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-ei" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-ei-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.6: Динаміка індексу Russell 2000 та індексу Ейлера</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="індекс-кошти" class="level4" data-number="9.2.11.6">
+<h4 data-number="9.2.11.6" class="anchored" data-anchor-id="індекс-кошти"><span class="header-section-number">9.2.11.6</span> Індекс Кошти</h4>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$CIx$"</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"CIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          CIx, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-сi" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-i-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.7: Динаміка індексу Russell 2000 та індексу Кошти</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="побудова-графу-досліджуваного-ряду" class="level3" data-number="9.2.12">
+<h3 data-number="9.2.12" class="anchored" data-anchor-id="побудова-графу-досліджуваного-ряду"><span class="header-section-number">9.2.12</span> Побудова графу досліджуваного ряду</h3>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>index_begin <span class="op">=</span> <span class="dv">2000</span>  <span class="co"># початковий індекс для графу</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>index_end <span class="op">=</span> <span class="dv">4000</span>    <span class="co"># кінцевий індекс для графу</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>        <span class="co"># вид ряду</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>for_graph_plot <span class="op">=</span> time_ser.copy()</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>for_graph_plot <span class="op">=</span> transformation(for_graph_plot, ret_type)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>date <span class="op">=</span> date_in_num[index_begin:index_end] <span class="co"># вилучаємо необхідні по індексам дати</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо граф у залежності від типу графа</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> graph_type <span class="op">==</span> <span class="st">'classic'</span>:</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> NaturalVG(directed<span class="op">=</span><span class="va">None</span>).build(for_graph_plot[index_begin:index_end], xs<span class="op">=</span>date)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> g.node_positions()</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    nxg <span class="op">=</span> g.as_networkx()</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> graph_type <span class="op">==</span> <span class="st">'horizontal'</span>:</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> HorizontalVG(directed<span class="op">=</span><span class="va">None</span>).build(for_graph_plot[index_begin:index_end], xs<span class="op">=</span>date)</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> g.node_positions()</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>    nxg <span class="op">=</span> g.as_networkx()</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> recurrence_net(for_graph_plot[index_begin:index_end], </span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>                       rec_thr<span class="op">=</span>eps_rec <span class="op">*</span> np.<span class="bu">abs</span>(np.std(for_graph_plot[index_begin:index_end])), </span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>                       dim<span class="op">=</span>d_e_rec, </span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>                       tau<span class="op">=</span>tau_rec, </span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>                       dist_type<span class="op">=</span>dist_rec)</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>    pos <span class="op">=</span> node_positions_recurrence_net(for_graph_plot[index_begin:index_end], date)</span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>    nxg <span class="op">=</span> g</span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a><span class="co"># встановлення параметрів для побудови графів</span></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>graph_plot_options <span class="op">=</span> {</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'with_labels'</span>: <span class="va">False</span>,</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">'node_size'</span>: <span class="dv">2</span>,</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>    <span class="st">'node_color'</span>: [(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>)],</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>    <span class="st">'edge_color'</span>: [(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.15</span>)],</span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Виводимо зв’язки видимості:</p>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx(nxg, ax<span class="op">=</span>ax1, pos<span class="op">=</span>pos, <span class="op">**</span>graph_plot_options)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(bottom<span class="op">=</span><span class="va">True</span>, labelbottom<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>ax1.plot(time_ser.index[index_begin:index_end], </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>         for_graph_plot[index_begin:index_end], </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>         label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Visibility Connections'</span>, fontsize<span class="op">=</span><span class="dv">22</span>)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(xlabel)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="vs">fr"</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>ax1.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Time_ser_connections_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="ss">    idx_beg=</span><span class="sc">{</span>index_begin<span class="sc">}</span><span class="ss">_idx_end=</span><span class="sc">{</span>index_end<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    network_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lab_11_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Виходячи з графу взятого нами фрагменту видно, що крах поблизу 2000-го року характеризується високою концентрацією вузлів. Це вказує на високий ступінь довготривалої пам’яті для кризових явищ фондового ринку, що в свою чергу впливає і на їх незворотність.</p>
+<p>Тепер розглянемо сам граф:</p>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>pos <span class="op">=</span> nx.spring_layout(nxg, k<span class="op">=</span><span class="fl">0.15</span>, iterations<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># знаходимо вузол близький до центру графа (0.5,0.5)</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>dmin <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>ncenter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> pos: </span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    x, y <span class="op">=</span> pos[n]</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> (x <span class="op">-</span> <span class="fl">0.5</span>)<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> (y <span class="op">-</span> <span class="fl">0.5</span>)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> d <span class="op">&lt;</span> dmin:</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>        ncenter <span class="op">=</span> n</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        dmin <span class="op">=</span> d</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co"># розфарбовуємо в залежності від ступеня вершини</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="bu">dict</span>(nx.degree(nxg))</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>fig, ax2 <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>ax2.set_title(<span class="st">'Graph representation'</span>)</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_edges(nxg, ax<span class="op">=</span>ax2, pos<span class="op">=</span>pos, nodelist<span class="op">=</span>[ncenter], alpha<span class="op">=</span><span class="fl">0.4</span>,width<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx_nodes(nxg, ax<span class="op">=</span>ax2, pos<span class="op">=</span>pos, nodelist<span class="op">=</span><span class="bu">list</span>(p.keys()),</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>                       node_size<span class="op">=</span><span class="dv">10</span>, edgecolors<span class="op">=</span><span class="st">'r'</span>, linewidths<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>                       node_color<span class="op">=</span><span class="bu">list</span>(p.values()),</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>                       cmap<span class="op">=</span>plt.cm.Blues_r)</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>vmin <span class="op">=</span> np.asarray(<span class="bu">list</span>(p.values())).<span class="bu">min</span>()</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>vmax <span class="op">=</span> np.asarray(<span class="bu">list</span>(p.values())).<span class="bu">max</span>()</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>sm <span class="op">=</span> plt.cm.ScalarMappable(cmap<span class="op">=</span>plt.cm.Blues_r, norm<span class="op">=</span>plt.Normalize(vmin<span class="op">=</span>vmin, vmax<span class="op">=</span>vmax))</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>cb <span class="op">=</span> plt.colorbar(sm, ax<span class="op">=</span>ax2)</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>cb.set_label(<span class="st">'degree'</span>)</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Graph_representation_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="ss">            idx_beg=</span><span class="sc">{</span>index_begin<span class="sc">}</span><span class="ss">_idx_end=</span><span class="sc">{</span>index_end<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="ss">            _sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_network_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="lab_11_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="level3" data-number="9.2.13">
+<h3 data-number="9.2.13" class="anchored" data-anchor-id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">9.2.13</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</h3>
+<p>Ініціалізуємо масиви для збереження результатів розрахунків:</p>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Degree <span class="op">=</span> []</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>Clust <span class="op">=</span> []</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>Perm <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Розпочинаємо процедуру рухомого вікна:</p>
+<div class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy() <span class="co"># відбираємо фрагмент ряду</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)  <span class="co"># виконуємо перетворення</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>    deg, clust <span class="op">=</span> GraphIrrever(fragm, </span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>                            graph_type<span class="op">=</span>graph_type, </span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>                            delta<span class="op">=</span><span class="fl">1e-10</span>, </span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>                            d_e_rec<span class="op">=</span>d_e_rec, </span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>                            tau_rec<span class="op">=</span>tau_rec, </span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>                            eps_rec<span class="op">=</span>eps_rec, </span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>                            dist_rec<span class="op">=</span>dist_rec, </span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>                            distance_irr<span class="op">=</span>distance_irr)  </span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    perm <span class="op">=</span> PermIrrever(fragm, </span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>                        d_e<span class="op">=</span>d_e_perm, </span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>                        tau<span class="op">=</span>tau_perm, </span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>                        delta<span class="op">=</span><span class="fl">1e-10</span>, </span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>                        distance_irr<span class="op">=</span>distance_irr)</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>    Degree.append(deg)</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>    Clust.append(clust)</span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>    Perm.append(perm)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 8569/8569 [16:54&lt;00:00,  8.45it/s]</code></pre>
+</div>
+</div>
+<p>Зберігаємо результати до .txt файлів</p>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_deg_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.txt"</span>, Degree)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.txt"</span>, Clust)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_perm_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_d_e=</span><span class="sc">{</span>d_e_perm<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_perm<span class="sc">}</span><span class="ss">.txt"</span>, Perm)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="level3" data-number="9.2.14">
+<h3 data-number="9.2.14" class="anchored" data-anchor-id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">9.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</h3>
+<section id="ступінь-незворотності-на-основі-ступеня-вершини" class="level4" data-number="9.2.14.1">
+<h4 data-number="9.2.14.1" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-ступеня-вершини"><span class="header-section-number">9.2.14.1</span> Ступінь незворотності на основі ступеня вершини</h4>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{deg}</span><span class="vs">$"</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Degree_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            _graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">_dist=</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>          Degree, </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"darkgreen"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-degree" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-degree-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.8: Динаміка індексу Russell 2000 та показника незворотності на основі ступеня вершини</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ступінь-незворотності-на-основі-показника-локальної-кластеризації" class="level4" data-number="9.2.14.2">
+<h4 data-number="9.2.14.2" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-показника-локальної-кластеризації"><span class="header-section-number">9.2.14.2</span> Ступінь незворотності на основі показника локальної кластеризації</h4>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{clust}</span><span class="vs">$"</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            _graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">_dist=</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>          Clust, </span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"darkgreen"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-clust" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-clust-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.9: Динаміка індексу Russell 2000 та показника незворотності на основі локальної кластеризації</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="ступінь-незворотності-на-основі-пермутаційних-шаблонів" class="level4" data-number="9.2.14.3">
+<h4 data-number="9.2.14.3" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-пермутаційних-шаблонів"><span class="header-section-number">9.2.14.3</span> Ступінь незворотності на основі пермутаційних шаблонів</h4>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{clust}</span><span class="vs">$"</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            d_e=</span><span class="sc">{</span>d_e_perm<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_perm<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="ss">            _graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">_dist=</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>          Perm, </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>          measure_label,</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"darkgreen"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-perm" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_11_files/figure-html/fig-wind-perm-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;9.10: Динаміка індексу Russell 2000 та показника незворотності на основі пермутаційних шаблонів</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="висновок" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">9.3</span> Висновок</h2>
+<p>У даній роботі було розглянуто показники незворотності (асиметрії) системи на основі діаграм Пуанкаре, графу видимості та пермутаційних шаблонів. Було продемонстровано побудову діграми Пуанкаре та зв’язків видимості як для всього ряду, так і для деяких із його фрагментів. Видно, що значення на діаграмі Пуанкаре характеризуються розподілом точок, що виходять за межі нормального Гаусового розподілу. Для графу видимості видно, що кризові стани характеризуються значною концентрацією зв’язків, що є довгостроковими. Таким чином, поставало актуальним проводити розрахунок показників незворотності графового типу для вихідного ряду.</p>
+<p>Показники на основі діаграми Пуанкаре демонструють зріст або спад у кризові періоди, що вказує на зростання асиметрії у даний період часу. Дані показники можуть слугувати в якості індикаторів кризових явищ.</p>
+<p>Виходячи з 3 показників незворотності, що представлені вище, видно, що дані показники починають зростати в передкризовий період, вказуючи на стартовий період хаосу. Найгірше серед них себе поводить <span class="math inline">\(Dist_{deg}\)</span>. Найращим чином <span class="math inline">\(Dist_{clust}\)</span> та <span class="math inline">\(Dist_{perm}\)</span>. Їх і варто використовувати в якості індикаторів-передвісників крахів.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Скопійовано!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Скопійовано!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation column-body">
+  <div class="nav-page nav-page-previous">
+      <a href="./lab_7.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 7</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./lab_12.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
