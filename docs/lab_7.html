@@ -652,56 +652,40 @@ Name: DCOILWTICO, dtype: float64</code></pre>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                              beta<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>                              random_state<span class="op">=</span><span class="dv">123</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="183">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install colorednoise</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Collecting colorednoise
-  Downloading colorednoise-2.1.0-py3-none-any.whl (4.5 kB)
-Requirement already satisfied: numpy&gt;=1.17.0 in c:\users\andrii\appdata\roaming\python\python38\site-packages (from colorednoise) (1.22.4)
-Installing collected packages: colorednoise
-Successfully installed colorednoise-2.1.0</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>DEPRECATION: pytorch-lightning 1.8.3.post1 has a non-standard dependency specifier torch&gt;=1.9.*. pip 23.3 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of pytorch-lightning or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063
-
-[notice] A new release of pip is available: 20.3.3 -&gt; 23.2.1
-[notice] To update, run: python.exe -m pip install --upgrade pip</code></pre>
-</div>
-</div>
 <p>І тепер приступаємо до подальшої роботи.</p>
 <section id="шум-і-випадкові-блукання-у-часовому-ряді" class="level4" data-number="8.1.4.1">
 <h4 data-number="8.1.4.1" class="anchored" data-anchor-id="шум-і-випадкові-блукання-у-часовому-ряді"><span class="header-section-number">8.1.4.1</span> Шум і випадкові блукання у часовому ряді</h4>
 <p>Мультифрактальний аналіз детрендованих флуктуацій базується на класичному аналізі детрендованих флуктуацій (DFA). Класичний DFA застосовується до часових рядів зі структурою, подібною до випадкових блукань. Однак більшість фінансових часових рядів мають коливання, які більш схожі на прирости випадкових блукань. Якщо фінансовий часовий ряд має структуру, подібну до шуму, як у прибутковостей, його слід перетворити на випадково-блукаючий часовий ряд перед застосуванням DFA. Шуми можна перетворити на випадкові блукання шляхом віднімання середнього значення та інтегрування часового ряду (знаходження його кумулятивної суми). Часовий ряд з білим шумом, монофрактал (рожевий шум) і мультифрактал є шумовими часовими рядами і перетворюються на випадкові блукання за допомогою коду, що наведеного нижче:</p>
 <div class="cell" data-execution_count="212">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>RW1 <span class="op">=</span> np.cumsum(white_noise<span class="op">-</span>np.mean(white_noise)) <span class="co"># випадкове блукання білого шуму</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>RW2 <span class="op">=</span> np.cumsum(pink_noise<span class="op">-</span>np.mean(pink_noise))   <span class="co"># випадкове блукання монофракталу</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>RW3 <span class="op">=</span> np.cumsum(wti_ret<span class="op">-</span>np.mean(wti_ret))         <span class="co"># випадкове блукання нафти</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>RW1 <span class="op">=</span> np.cumsum(white_noise<span class="op">-</span>np.mean(white_noise)) <span class="co"># випадкове блукання білого шуму</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>RW2 <span class="op">=</span> np.cumsum(pink_noise<span class="op">-</span>np.mean(pink_noise))   <span class="co"># випадкове блукання монофракталу</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>RW3 <span class="op">=</span> np.cumsum(wti_ret<span class="op">-</span>np.mean(wti_ret))         <span class="co"># випадкове блукання нафти</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="292">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], wti_ret)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], RW3, <span class="st">'r'</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Мультифрактальний часовий ряд'</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], pink_noise, label<span class="op">=</span><span class="st">'Шумоподібний часовий ряд'</span>)</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], RW2, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Випадкове блукання'</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Монофрактальний часовий ряд'</span>)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], white_noise)</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], RW1, <span class="st">'r'</span>)</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Білий шум'</span>)</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], wti_ret)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], RW3, <span class="st">'r'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Мультифрактальний часовий ряд'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], pink_noise, label<span class="op">=</span><span class="st">'Шумоподібний часовий ряд'</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], RW2, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Випадкове блукання'</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Монофрактальний часовий ряд'</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], white_noise)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], RW1, <span class="st">'r'</span>)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Білий шум'</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-step-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -716,44 +700,44 @@ Successfully installed colorednoise-2.1.0</code></pre>
 <h4 data-number="8.1.4.2" class="anchored" data-anchor-id="обчислення-середньоквадратичної-варіації-часового-ряду"><span class="header-section-number">8.1.4.2</span> Обчислення середньоквадратичної варіації часового ряду</h4>
 <p>Традиційний аналіз варіації часових рядів полягає в обчисленні середнього значення варіації як середньоквадратичного відхилення. Читач може скористатися наведеним нижче кодом для обчислення середньоквадратичного відхилення для часових рядів з білим шумом, монофрактальних і мультифрактальних даних:</p>
 <div class="cell" data-execution_count="214">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>RMS_ordinary <span class="op">=</span> np.sqrt(np.mean(white_noise<span class="op">**</span><span class="dv">2</span>))    <span class="co"># середньоквадратична варіація білого шуму</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>RMS_monofractal <span class="op">=</span> np.sqrt(np.mean(pink_noise<span class="op">**</span><span class="dv">2</span>))  <span class="co"># середньоквадратична варіація монофрактала</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>RMS_multifractal <span class="op">=</span> np.sqrt(np.mean(wti_ret<span class="op">**</span><span class="dv">2</span>))    <span class="co"># середньоквадратична варіація мультифрактала</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>RMS_ordinary <span class="op">=</span> np.sqrt(np.mean(white_noise<span class="op">**</span><span class="dv">2</span>))    <span class="co"># середньоквадратична варіація білого шуму</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>RMS_monofractal <span class="op">=</span> np.sqrt(np.mean(pink_noise<span class="op">**</span><span class="dv">2</span>))  <span class="co"># середньоквадратична варіація монофрактала</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>RMS_multifractal <span class="op">=</span> np.sqrt(np.mean(wti_ret<span class="op">**</span><span class="dv">2</span>))    <span class="co"># середньоквадратична варіація мультифрактала</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="293">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], wti_ret, label<span class="op">=</span><span class="st">'Шумоподібний часовий ряд'</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Середнє'</span>)</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret)<span class="op">+</span>RMS_multifractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="st">'+/- 1 RMS'</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret)<span class="op">-</span>RMS_multifractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylim(<span class="op">-</span><span class="dv">20</span>, <span class="dv">20</span>)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Мультифрактальний часовий ряд'</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], pink_noise)</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise)<span class="op">+</span>RMS_monofractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise)<span class="op">-</span>RMS_monofractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Монофрактальний часовий ряд'</span>)</span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], white_noise)</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise)<span class="op">+</span>RMS_ordinary, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise)<span class="op">-</span>RMS_ordinary, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Білий шум'</span>)</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="dv">0</span>].get_legend_handles_labels()</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'lower center'</span>)</span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], wti_ret, label<span class="op">=</span><span class="st">'Шумоподібний часовий ряд'</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, label<span class="op">=</span><span class="st">'Середнє'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret)<span class="op">+</span>RMS_multifractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="st">'+/- 1 RMS'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].axhline(y<span class="op">=</span>np.mean(wti_ret)<span class="op">-</span>RMS_multifractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylim(<span class="op">-</span><span class="dv">20</span>, <span class="dv">20</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Мультифрактальний часовий ряд'</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], pink_noise)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise)<span class="op">+</span>RMS_monofractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].axhline(y<span class="op">=</span>np.mean(pink_noise)<span class="op">-</span>RMS_monofractal, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Монофрактальний часовий ряд'</span>)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], white_noise)</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise), c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise)<span class="op">+</span>RMS_ordinary, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].axhline(y<span class="op">=</span>np.mean(white_noise)<span class="op">-</span>RMS_ordinary, c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Білий шум'</span>)</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="dv">0</span>].get_legend_handles_labels()</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'lower center'</span>)</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-step-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -769,48 +753,48 @@ Successfully installed colorednoise-2.1.0</code></pre>
 <h4 data-number="8.1.4.3" class="anchored" data-anchor-id="локальна-середньоквадратична-варіація-часового-ряду"><span class="header-section-number">8.1.4.3</span> Локальна середньоквадратична варіація часового ряду</h4>
 <p>Мультифрактальні часові ряди на верхній панелі мають локальні флуктуації як з великими, так і з малими величинами. Середньоквадратичне відхилення (RMS) у попередньому коді можна обчислити для сегментів часового ряду, щоб розрізнити величини локальних флуктуацій. Проста процедура полягає в тому, щоб розділи часовий ряд на однакові за розміром сегменти, що не перекриваються, і обчислити локальне середнє квадратичне відхилення для кожного сегмента. Це можна зробити за допомогою коду наведеного нижче, і це є основною MFDFA:</p>
 <div class="cell" data-execution_count="216">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_rms(arr, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># симулюємо випадкове блукання (X)</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr))</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># транспонуємо значення X </span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.T                           </span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># визначаємо довжини сегментів </span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> scale</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># визначаємо порядок полінома</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> m</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># визначаємо кількість сегментів</span></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>    segments <span class="op">=</span> np.floor(<span class="bu">len</span>(X) <span class="op">/</span> scale).astype(<span class="bu">int</span>)</span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    Index <span class="op">=</span> {}  <span class="co"># словник індексів значень</span></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> {}    <span class="co"># словник для збереження отриманих поліноміальних кривих</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                <span class="co"># для кожного сегмента</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    RMS <span class="op">=</span> []    <span class="co"># список середньоквадратичних відхилень</span></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(segments<span class="op">+</span><span class="dv">1</span>):       <span class="co"># проходимо по кожному сегменту</span></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>        Idx_start <span class="op">=</span> v <span class="op">*</span> scale         <span class="co"># визначаємо початкове значення сегмента                                           </span></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        Idx_stop <span class="op">=</span> (v <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> scale    <span class="co"># визначаємо кінцеве значення</span></span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># формуємо масив індексів значень досліджуваного сегмента</span></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>        Index[v] <span class="op">=</span> np.arange(Idx_start, <span class="bu">min</span>(Idx_stop, <span class="bu">len</span>(X)))  </span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># вилучаємо значення по індексам</span></span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>        X_Idx <span class="op">=</span> X[Index[v]]                       </span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># визначаємо поліноміальні коефіцієнти порядку m</span></span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>        C <span class="op">=</span> np.polyfit(Index[v], X_Idx, m) </span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># будуємо поліноміальну криву по визначеним коефіцієнтам</span></span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>        fit[v] <span class="op">=</span> np.polyval(C, Index[v])         </span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>                 </span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># визначаємо варіацію ряду навколо поліноміального тренда</span></span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>        RMS.append(np.sqrt(np.mean((X_Idx <span class="op">-</span> fit[v]) <span class="op">**</span> <span class="dv">2</span>)))  </span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fit, RMS, Index, X</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_rms(arr, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># симулюємо випадкове блукання (X)</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># транспонуємо значення X </span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.T                           </span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># визначаємо довжини сегментів </span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> scale</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># визначаємо порядок полінома</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> m</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># визначаємо кількість сегментів</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    segments <span class="op">=</span> np.floor(<span class="bu">len</span>(X) <span class="op">/</span> scale).astype(<span class="bu">int</span>)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    Index <span class="op">=</span> {}  <span class="co"># словник індексів значень</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> {}    <span class="co"># словник для збереження отриманих поліноміальних кривих</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                <span class="co"># для кожного сегмента</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    RMS <span class="op">=</span> []    <span class="co"># список середньоквадратичних відхилень</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(segments<span class="op">+</span><span class="dv">1</span>):       <span class="co"># проходимо по кожному сегменту</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>        Idx_start <span class="op">=</span> v <span class="op">*</span> scale         <span class="co"># визначаємо початкове значення сегмента                                           </span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>        Idx_stop <span class="op">=</span> (v <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> scale    <span class="co"># визначаємо кінцеве значення</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># формуємо масив індексів значень досліджуваного сегмента</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>        Index[v] <span class="op">=</span> np.arange(Idx_start, <span class="bu">min</span>(Idx_stop, <span class="bu">len</span>(X)))  </span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># вилучаємо значення по індексам</span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>        X_Idx <span class="op">=</span> X[Index[v]]                       </span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># визначаємо поліноміальні коефіцієнти порядку m</span></span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>        C <span class="op">=</span> np.polyfit(Index[v], X_Idx, m) </span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>        <span class="co"># будуємо поліноміальну криву по визначеним коефіцієнтам</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>        fit[v] <span class="op">=</span> np.polyval(C, Index[v])         </span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>                 </span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># визначаємо варіацію ряду навколо поліноміального тренда</span></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a>        RMS.append(np.sqrt(np.mean((X_Idx <span class="op">-</span> fit[v]) <span class="op">**</span> <span class="dv">2</span>)))  </span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fit, RMS, Index, X</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Перший рядок коду функції <code>calc_rms()</code> перетворює зашумлений часовий ряд, мультифрактал, на часовий ряд випадкового блукання <span class="math inline">\(X\)</span>. Третій рядок коду задає масштаб параметра, який визначає розмір вибірки сегментів, що не перетинаються, для яких обчислюється локальне середнє квадратичне відхилення, <code>RMS</code>. П’ятий рядок — це кількість сегментів, на які можна розбити часовий ряд <span class="math inline">\(X\)</span>, де <code>len(X)</code> — розмір вибірки часового ряду <span class="math inline">\(X\)</span>. Таким чином, <code>segments = 6</code> при <code>len(X) = 9335</code> і <code>scale = 1335</code>. З дев’ятого по шістнадцятий рядок — це цикл, який обчислює локальне середньоквадратичне значення навколо тренду <code>fit[v]</code> для кожного сегмента, оновлюючи часовий індекс. У першому циклі <code>v = 0</code>, <code>Index[0]</code> переходить від 0 до 1335 значення сегмента (не включно). У другому циклі <span class="math inline">\(v = 1\)</span>, <code>Index[1]</code> переходить від 1335 до 2670 значення другого сегмента. В останньому циклі <span class="math inline">\(v = 6\)</span>, <code>Index[6]</code> переходить від 8010-го до 9345-го значення (не включно).</p>
 </section>
@@ -818,53 +802,53 @@ Successfully installed colorednoise-2.1.0</code></pre>
 <h4 data-number="8.1.4.4" class="anchored" data-anchor-id="локальне-детрендування-часового-ряду"><span class="header-section-number">8.1.4.4</span> Локальне детрендування часового ряду</h4>
 <p>У складних системах наявні повільні мінливі тренди, тому для кількісної оцінки масштабо-інваріантності флуктуацій навколо цих трендів необхідно провести детрендування сигналу. У попередньому коді до <span class="math inline">\(X\)</span> на кожному сегменті <span class="math inline">\(v\)</span> підбирається поліноміальний тренд <code>fit[v]</code>. Параметр <span class="math inline">\(m\)</span> визначає порядок полінома. Поліноміальний тренд є лінійним, якщо <span class="math inline">\(m = 1\)</span>, квадратичним, якщо <span class="math inline">\(m = 2\)</span>, і кубічним, якщо <span class="math inline">\(m = 3\)</span>. Рядок <code>C = np.polyfit(Index[v], X[Index[v]], m)</code> визначає коефіцієнти полінома <code>C</code>, які використовуються для створення поліноміальної залежності тренду <code>fit[v]</code> для кожного сегмента. Потім для залишкової варіації, <code>X(Index[v])-fit[v]</code>, обчислюється локальне середньоквадратичне відхилення, <code>RMS[v]</code>, в межах кожного сегмента <span class="math inline">\(v\)</span>. Локальна середньоквадратична варіація, <code>RMS[v]</code>, представлено на наступному рисунку як відстань між червоними пунктирними трендами і червоними суцільними лініями.</p>
 <div class="cell" data-execution_count="296">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>fit_1, RMS_1, Index_1, X <span class="op">=</span> calc_rms(wti_ret, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], X)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> <span class="bu">list</span>(fit_1.keys()):</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(time_ser.index[Index_1[v]], fit_1[v], <span class="st">'r--'</span>)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(time_ser.index[Index_1[v]], fit_1[v]<span class="op">+</span>RMS_1[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(time_ser.index[Index_1[v]], fit_1[v]<span class="op">-</span>RMS_1[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Лінійне детрендування '</span> <span class="op">+</span> <span class="vs">r'$(m=1)$'</span>)</span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>fit_2, RMS_2, Index_2, X <span class="op">=</span> calc_rms(wti_ret, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], X, label<span class="op">=</span><span class="st">'Випадкове блукання мультифрактального сигналу'</span>)</span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> <span class="bu">list</span>(fit_2.keys()):</span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v], <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Локальний тренд'</span>)</span>
-<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">+</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="st">'+/- 1 RMS'</span>)</span>
-<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">-</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v], <span class="st">'r--'</span>)</span>
-<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">+</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">-</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
-<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Квадратичне детрендування '</span> <span class="op">+</span> <span class="vs">r'$(m=2)$'</span>)</span>
-<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>fit_3, RMS_3, Index_3, X <span class="op">=</span> calc_rms(wti_ret, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], X)</span>
-<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> <span class="bu">list</span>(fit_3.keys()):</span>
-<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">2</span>].plot(time_ser.index[Index_3[v]], fit_3[v], <span class="st">'r--'</span>)</span>
-<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">2</span>].plot(time_ser.index[Index_3[v]], fit_3[v]<span class="op">+</span>RMS_3[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-39"><a href="#cb22-39" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">2</span>].plot(time_ser.index[Index_3[v]], fit_3[v]<span class="op">-</span>RMS_3[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb22-40"><a href="#cb22-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
-<span id="cb22-41"><a href="#cb22-41" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb22-42"><a href="#cb22-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Кубічне детрендування '</span> <span class="op">+</span> <span class="vs">r'$(m=3)$'</span>)</span>
-<span id="cb22-43"><a href="#cb22-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-44"><a href="#cb22-44" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="dv">1</span>].get_legend_handles_labels()</span>
-<span id="cb22-45"><a href="#cb22-45" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'lower center'</span>)</span>
-<span id="cb22-46"><a href="#cb22-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-47"><a href="#cb22-47" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fit_1, RMS_1, Index_1, X <span class="op">=</span> calc_rms(wti_ret, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[<span class="dv">1</span>:], X)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> <span class="bu">list</span>(fit_1.keys()):</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(time_ser.index[Index_1[v]], fit_1[v], <span class="st">'r--'</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(time_ser.index[Index_1[v]], fit_1[v]<span class="op">+</span>RMS_1[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].plot(time_ser.index[Index_1[v]], fit_1[v]<span class="op">-</span>RMS_1[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid(<span class="va">False</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Лінійне детрендування '</span> <span class="op">+</span> <span class="vs">r'$(m=1)$'</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>fit_2, RMS_2, Index_2, X <span class="op">=</span> calc_rms(wti_ret, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(time_ser.index[<span class="dv">1</span>:], X, label<span class="op">=</span><span class="st">'Випадкове блукання мультифрактального сигналу'</span>)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> <span class="bu">list</span>(fit_2.keys()):</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> v <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v], <span class="st">'r--'</span>, label<span class="op">=</span><span class="st">'Локальний тренд'</span>)</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">+</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="st">'+/- 1 RMS'</span>)</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">-</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v], <span class="st">'r--'</span>)</span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">+</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>        ax[<span class="dv">1</span>].plot(time_ser.index[Index_2[v]], fit_2[v]<span class="op">-</span>RMS_2[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid(<span class="va">False</span>)</span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Квадратичне детрендування '</span> <span class="op">+</span> <span class="vs">r'$(m=2)$'</span>)</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>fit_3, RMS_3, Index_3, X <span class="op">=</span> calc_rms(wti_ret, scale<span class="op">=</span><span class="dv">1335</span>, m<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(time_ser.index[<span class="dv">1</span>:], X)</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> v <span class="kw">in</span> <span class="bu">list</span>(fit_3.keys()):</span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">2</span>].plot(time_ser.index[Index_3[v]], fit_3[v], <span class="st">'r--'</span>)</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">2</span>].plot(time_ser.index[Index_3[v]], fit_3[v]<span class="op">+</span>RMS_3[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">2</span>].plot(time_ser.index[Index_3[v]], fit_3[v]<span class="op">-</span>RMS_3[v], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].grid(<span class="va">False</span>)</span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Кубічне детрендування '</span> <span class="op">+</span> <span class="vs">r'$(m=3)$'</span>)</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="dv">1</span>].get_legend_handles_labels()</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'lower center'</span>)</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-47"><a href="#cb19-47" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-step-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -880,7 +864,108 @@ Successfully installed colorednoise-2.1.0</code></pre>
 <p>У DFA варіації локального середньоквадратичного відхилення кількісно оцінюються загальним середньоквадратичним відхиленням (<span class="math inline">\(F\)</span>).</p>
 <p>Швидкі коливання часового ряду <span class="math inline">\(X\)</span> впливатимуть на загальне середньоквадратичне відхилення, <span class="math inline">\(F\)</span>, у сегментах малої довжини (масштабу), тоді як повільні коливання впливатимуть на <span class="math inline">\(F\)</span> у сегментах великої довжини (масштабу). Таким чином, функція флуктуацій, <span class="math inline">\(F\)</span>, повинна бути обчислена для декількох масштабів, щоб виокремити вплив як швидкоплинних, так і повільних коливань, які у свою чергу визначають структурні перетворення часового ряду. Функція флуктуацій <span class="math inline">\(F(ns)\)</span> може бути обчислена для декількох масштабів шляхом модифікації попереднього коду:</p>
 <div class="cell" data-execution_count="218">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_F(arr, scale, m<span class="op">=</span><span class="dv">1</span>):</span>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_F(arr, scale, m<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr)) <span class="co"># симулюємо випадкове блукання (X)</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.T                           <span class="co"># транспонуємо значення X</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> scale</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> m</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    segments <span class="op">=</span> np.zeros(<span class="bu">len</span>(scale), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> np.zeros(<span class="bu">len</span>(scale))</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    Index <span class="op">=</span> {}  <span class="co"># словник індексів значень</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> {}    <span class="co"># словник для збереження отриманих поліноміальних кривих</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># для кожного сегмента</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    RMS <span class="op">=</span> {}    <span class="co"># словник середньоквадратичних відхилень</span></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ns <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(scale)):</span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>        segments[ns] <span class="op">=</span> np.floor(<span class="bu">len</span>(X) <span class="op">/</span> scale[ns]).astype(<span class="bu">int</span>)</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>        RMS[ns] <span class="op">=</span> np.zeros(segments[ns])</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(segments[ns]):         <span class="co"># проходимо по кожному сегменту</span></span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо початкове значення сегмента</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>            Idx_start <span class="op">=</span> v <span class="op">*</span> scale[ns]  </span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>                       </span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо кінцеве значення</span></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>            Idx_stop <span class="op">=</span> (v <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> scale[ns] <span class="cf">if</span> v <span class="op">&lt;</span> segments[ns] <span class="op">-</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">len</span>(X)    </span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># формуємо масив індексів значень досліджуваного сегмента</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>            Index[v, ns] <span class="op">=</span> np.arange(Idx_start, Idx_stop)  </span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># вилучаємо значення по індексам</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>            X_Idx <span class="op">=</span> X[Index[v, ns]]                       </span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо поліноміальні коефіцієнти порядку m</span></span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>            C <span class="op">=</span> np.polyfit(Index[v, ns], X_Idx, m) </span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># будуємо поліноміальну криву по визначеним коефіцієнтам</span></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>            fit[v, ns] <span class="op">=</span> np.polyval(C, Index[v, ns])  </span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>            <span class="co"># оцінюємо середньоквадратичне відхилення для фрагмента v на масштабі ns </span></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>            RMS[ns][v] <span class="op">=</span> np.sqrt(np.mean((X_Idx <span class="op">-</span> fit[v, ns]) <span class="op">**</span> <span class="dv">2</span>)) </span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># оцінюємо загальне середньоквадратичне відхилення в межах масштабу ns</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>        F[ns] <span class="op">=</span> np.sqrt(np.mean(RMS[ns] <span class="op">**</span> <span class="dv">2</span>))</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> F, RMS, Index, X</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="298">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>scales <span class="op">=</span> [<span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>, <span class="dv">512</span>, <span class="dv">1024</span>][::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>F, RMS, Index, X <span class="op">=</span> calc_F(wti_ret, scale<span class="op">=</span>scales)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="bu">len</span>(scales), <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> scale, val <span class="kw">in</span> <span class="bu">enumerate</span>(scales):</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    l <span class="op">=</span> [Index[val] <span class="cf">for</span> val <span class="kw">in</span> Index.keys() <span class="cf">if</span> (val[<span class="dv">1</span>] <span class="op">==</span> scale)]</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.array([])</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> l:</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> np.concatenate([x, v])</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.array([])</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx, v <span class="kw">in</span> <span class="bu">enumerate</span>(l): </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> np.concatenate([y, RMS[scale][idx]<span class="op">*</span>np.ones(<span class="bu">len</span>(v))])</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> scales[scale] <span class="op">==</span> <span class="dv">16</span>:</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>        ax[scale].plot(time_ser.index[<span class="dv">1</span>:], y, c<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">"Локальні флуктуацій: RMS"</span>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>        ax[scale].axhline(y<span class="op">=</span>F[scale], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="vs">r"RMS локальних флуктуацій: $F$"</span>)</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>        ax[scale].grid(<span class="va">False</span>)</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>        ax[scale].set_title(<span class="ss">f"Масштаб = </span><span class="sc">{</span>scales[scale]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        ax[scale].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">#ax[scale].legend(loc="upper center")</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>        ax[scale].plot(time_ser.index[<span class="dv">1</span>:], y, c<span class="op">=</span><span class="st">'b'</span>)</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>        ax[scale].axhline(y<span class="op">=</span>F[scale], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>        ax[scale].grid(<span class="va">False</span>)</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>        ax[scale].set_title(<span class="ss">f"Масштаб = </span><span class="sc">{</span>scales[scale]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>        ax[scale].margins(x<span class="op">=</span><span class="dv">0</span>)       </span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> scales[scale] <span class="op">!=</span> scales[<span class="op">-</span><span class="dv">1</span>]: </span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>        ax[scale].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="op">-</span><span class="dv">1</span>].get_legend_handles_labels()</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'upper left'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>fig.tight_layout(pad<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-step-5" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-step-5-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рисунок&nbsp;8.9: Локальні флуктуації, RMS[ns], обчислені для сегментів із різними масштабами. Функція флуктуацій F[ns] є загальним середньоквадратичним відхиленням локальних коливань RMS[ns]. Зверніть увагу, що F[ns] зменшується на менших масштабах</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>DFA визначає монофрактальну структуру часового ряду відповідно до степеневої залежність між загальним середнім квадратичним відхиленням (тобто <span class="math inline">\(F\)</span>), обчисленим для декількох масштабів. Степенева залежність між загальним середнім квадратичним відхиленням позначається нахилом (<span class="math inline">\(H\)</span>) лінії регресії, розрахованим за допомогою коду, що представлений нижче:</p>
+<div class="cell" data-execution_count="220">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.polyfit(np.log(scales), np.log(F), <span class="dv">1</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> C[<span class="dv">0</span>]</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>RegLine <span class="op">=</span> np.polyval(C, np.log(scales))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Модифікуємо попередній код, додавши нові фрагменти:</p>
+<div class="cell" data-execution_count="221">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_H(arr, scale, m<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr)) <span class="co"># симулюємо випадкове блукання (X)</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.T                           <span class="co"># транспонуємо значення X</span></span>
@@ -924,156 +1009,55 @@ Successfully installed colorednoise-2.1.0</code></pre>
 <span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># оцінюємо загальне середньоквадратичне відхилення в межах масштабу ns</span></span>
 <span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>        F[ns] <span class="op">=</span> np.sqrt(np.mean(RMS[ns] <span class="op">**</span> <span class="dv">2</span>))</span>
 <span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> F, RMS, Index, X</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="298">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>scales <span class="op">=</span> [<span class="dv">16</span>, <span class="dv">32</span>, <span class="dv">64</span>, <span class="dv">128</span>, <span class="dv">256</span>, <span class="dv">512</span>, <span class="dv">1024</span>][::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>F, RMS, Index, X <span class="op">=</span> calc_F(wti_ret, scale<span class="op">=</span>scales)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="bu">len</span>(scales), <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> scale, val <span class="kw">in</span> <span class="bu">enumerate</span>(scales):</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    l <span class="op">=</span> [Index[val] <span class="cf">for</span> val <span class="kw">in</span> Index.keys() <span class="cf">if</span> (val[<span class="dv">1</span>] <span class="op">==</span> scale)]</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.array([])</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> v <span class="kw">in</span> l:</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> np.concatenate([x, v])</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> np.array([])</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> idx, v <span class="kw">in</span> <span class="bu">enumerate</span>(l): </span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> np.concatenate([y, RMS[scale][idx]<span class="op">*</span>np.ones(<span class="bu">len</span>(v))])</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> scales[scale] <span class="op">==</span> <span class="dv">16</span>:</span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>        ax[scale].plot(time_ser.index[<span class="dv">1</span>:], y, c<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">"Локальні флуктуацій: RMS"</span>)</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>        ax[scale].axhline(y<span class="op">=</span>F[scale], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, label<span class="op">=</span><span class="vs">r"RMS локальних флуктуацій: $F$"</span>)</span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>        ax[scale].grid(<span class="va">False</span>)</span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>        ax[scale].set_title(<span class="ss">f"Масштаб = </span><span class="sc">{</span>scales[scale]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>        ax[scale].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>        <span class="co">#ax[scale].legend(loc="upper center")</span></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>        ax[scale].plot(time_ser.index[<span class="dv">1</span>:], y, c<span class="op">=</span><span class="st">'b'</span>)</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>        ax[scale].axhline(y<span class="op">=</span>F[scale], c<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>)</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>        ax[scale].grid(<span class="va">False</span>)</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>        ax[scale].set_title(<span class="ss">f"Масштаб = </span><span class="sc">{</span>scales[scale]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>        ax[scale].margins(x<span class="op">=</span><span class="dv">0</span>)       </span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> scales[scale] <span class="op">!=</span> scales[<span class="op">-</span><span class="dv">1</span>]: </span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>        ax[scale].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>handles, labels <span class="op">=</span> ax[<span class="op">-</span><span class="dv">1</span>].get_legend_handles_labels()</span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>fig.legend(handles, labels, loc<span class="op">=</span><span class="st">'upper left'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>fig.tight_layout(pad<span class="op">=</span><span class="fl">0.1</span>)</span>
-<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="fig-step-5" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-step-5-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;8.9: Локальні флуктуації, RMS[ns], обчислені для сегментів із різними масштабами. Функція флуктуацій F[ns] є загальним середньоквадратичним відхиленням локальних коливань RMS[ns]. Зверніть увагу, що F[ns] зменшується на менших масштабах</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>DFA визначає монофрактальну структуру часового ряду відповідно до степеневої залежність між загальним середнім квадратичним відхиленням (тобто <span class="math inline">\(F\)</span>), обчисленим для декількох масштабів. Степенева залежність між загальним середнім квадратичним відхиленням позначається нахилом (<span class="math inline">\(H\)</span>) лінії регресії, розрахованим за допомогою коду, що представлений нижче:</p>
-<div class="cell" data-execution_count="220">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> np.polyfit(np.log(scales), np.log(F), <span class="dv">1</span>)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> C[<span class="dv">0</span>]</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>RegLine <span class="op">=</span> np.polyval(C, np.log(scales))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Модифікуємо попередній код, додавши нові фрагменти:</p>
-<div class="cell" data-execution_count="221">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_H(arr, scale, m<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr)) <span class="co"># симулюємо випадкове блукання (X)</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.T                           <span class="co"># транспонуємо значення X</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> scale</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> m</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    segments <span class="op">=</span> np.zeros(<span class="bu">len</span>(scale), dtype<span class="op">=</span><span class="bu">int</span>)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    F <span class="op">=</span> np.zeros(<span class="bu">len</span>(scale))</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    Index <span class="op">=</span> {}  <span class="co"># словник індексів значень</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> {}    <span class="co"># словник для збереження отриманих поліноміальних кривих</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># для кожного сегмента</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    RMS <span class="op">=</span> {}    <span class="co"># словник середньоквадратичних відхилень</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ns <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(scale)):</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>        segments[ns] <span class="op">=</span> np.floor(<span class="bu">len</span>(X) <span class="op">/</span> scale[ns]).astype(<span class="bu">int</span>)</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>        RMS[ns] <span class="op">=</span> np.zeros(segments[ns])</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(segments[ns]):         <span class="co"># проходимо по кожному сегменту</span></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо початкове значення сегмента</span></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>            Idx_start <span class="op">=</span> v <span class="op">*</span> scale[ns]  </span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>                       </span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо кінцеве значення</span></span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>            Idx_stop <span class="op">=</span> (v <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> scale[ns] <span class="cf">if</span> v <span class="op">&lt;</span> segments[ns] <span class="op">-</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">len</span>(X)    </span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># формуємо масив індексів значень досліджуваного сегмента</span></span>
-<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>            Index[v, ns] <span class="op">=</span> np.arange(Idx_start, Idx_stop)  </span>
-<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># вилучаємо значення по індексам</span></span>
-<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>            X_Idx <span class="op">=</span> X[Index[v, ns]]                       </span>
-<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо поліноміальні коефіцієнти порядку m</span></span>
-<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>            C <span class="op">=</span> np.polyfit(Index[v, ns], X_Idx, m) </span>
-<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># будуємо поліноміальну криву по визначеним коефіцієнтам</span></span>
-<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>            fit[v, ns] <span class="op">=</span> np.polyval(C, Index[v, ns])  </span>
-<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>            <span class="co"># оцінюємо середньоквадратичне відхилення для фрагмента v на масштабі ns </span></span>
-<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>            RMS[ns][v] <span class="op">=</span> np.sqrt(np.mean((X_Idx <span class="op">-</span> fit[v, ns]) <span class="op">**</span> <span class="dv">2</span>)) </span>
-<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># оцінюємо загальне середньоквадратичне відхилення в межах масштабу ns</span></span>
-<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>        F[ns] <span class="op">=</span> np.sqrt(np.mean(RMS[ns] <span class="op">**</span> <span class="dv">2</span>))</span>
-<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># знаходимо коефіцієнти рівняння прямої </span></span>
-<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> np.polyfit(np.log(scale), np.log(F), <span class="dv">1</span>) </span>
-<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># беремо кут нахилу прямої в якості показника Херста</span></span>
-<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>    H <span class="op">=</span> C[<span class="dv">0</span>]</span>
-<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># будуємо саме рівняння</span></span>
-<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a>    RegLine <span class="op">=</span> np.polyval(C, np.log(scale))</span>
-<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H, RegLine, F</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># знаходимо коефіцієнти рівняння прямої </span></span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> np.polyfit(np.log(scale), np.log(F), <span class="dv">1</span>) </span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># беремо кут нахилу прямої в якості показника Херста</span></span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>    H <span class="op">=</span> C[<span class="dv">0</span>]</span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># будуємо саме рівняння</span></span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>    RegLine <span class="op">=</span> np.polyval(C, np.log(scale))</span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> H, RegLine, F</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер розглянемо залежність загальної функції флуктуацій <span class="math inline">\(F\)</span> від різних довжин (масштабів) локальних сегментів ряду для досліджуваних нами рядів:</p>
 <div class="cell" data-execution_count="222">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>scmin <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>scmax <span class="op">=</span> <span class="dv">1024</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>scres <span class="op">=</span> <span class="dv">19</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>exponents <span class="op">=</span> np.linspace(np.log(scmin), np.log(scmax), scres)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>scales_exp <span class="op">=</span> np.<span class="bu">round</span>(np.exp(<span class="dv">1</span>)<span class="op">**</span>exponents).astype(<span class="bu">int</span>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>H_multifrac, RegLine_multifrac, F_multifrac <span class="op">=</span> calc_H(arr<span class="op">=</span>wti_ret, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>H_monofrac, RegLine_monofrac, F_monofrac <span class="op">=</span> calc_H(pink_noise, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>H_white_noise, RegLine_white_noise, F_white_noise <span class="op">=</span> calc_H(white_noise, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>scmin <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>scmax <span class="op">=</span> <span class="dv">1024</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>scres <span class="op">=</span> <span class="dv">19</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>exponents <span class="op">=</span> np.linspace(np.log(scmin), np.log(scmax), scres)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>scales_exp <span class="op">=</span> np.<span class="bu">round</span>(np.exp(<span class="dv">1</span>)<span class="op">**</span>exponents).astype(<span class="bu">int</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>H_multifrac, RegLine_multifrac, F_multifrac <span class="op">=</span> calc_H(arr<span class="op">=</span>wti_ret, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>H_monofrac, RegLine_monofrac, F_monofrac <span class="op">=</span> calc_H(pink_noise, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>H_white_noise, RegLine_white_noise, F_white_noise <span class="op">=</span> calc_H(white_noise, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="225">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(np.log(scales_exp), np.log(F_multifrac), </span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="vs">fr"Мультифрактальний ряд ($H$=</span><span class="sc">{</span>H_multifrac<span class="sc">:.2f}</span><span class="vs">)"</span>, </span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>           color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(scales_exp), RegLine_multifrac,  color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>ax.scatter(np.log(scales_exp), np.log(F_monofrac), </span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="vs">fr"Монофрактальний ряд ($H$=</span><span class="sc">{</span>H_monofrac<span class="sc">:.2f}</span><span class="vs">)"</span>, </span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>           color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(scales_exp), RegLine_monofrac, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>ax.scatter(np.log(scales_exp), np.log(F_white_noise), </span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="vs">fr"Білий шум ($H$=</span><span class="sc">{</span>H_white_noise<span class="sc">:.2f}</span><span class="vs">)"</span>, </span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>           color<span class="op">=</span><span class="st">'aqua'</span>)</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(scales_exp), RegLine_white_noise, color<span class="op">=</span><span class="st">'aqua'</span>)</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$\log</span><span class="sc">{ns}</span><span class="vs">$'</span>)</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\log{F(ns)}$"</span>)</span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ax.scatter(np.log(scales_exp), np.log(F_multifrac), </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="vs">fr"Мультифрактальний ряд ($H$=</span><span class="sc">{</span>H_multifrac<span class="sc">:.2f}</span><span class="vs">)"</span>, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>           color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(scales_exp), RegLine_multifrac,  color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>ax.scatter(np.log(scales_exp), np.log(F_monofrac), </span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="vs">fr"Монофрактальний ряд ($H$=</span><span class="sc">{</span>H_monofrac<span class="sc">:.2f}</span><span class="vs">)"</span>, </span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>           color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(scales_exp), RegLine_monofrac, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>ax.scatter(np.log(scales_exp), np.log(F_white_noise), </span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>           label<span class="op">=</span><span class="vs">fr"Білий шум ($H$=</span><span class="sc">{</span>H_white_noise<span class="sc">:.2f}</span><span class="vs">)"</span>, </span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>           color<span class="op">=</span><span class="st">'aqua'</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>plt.plot(np.log(scales_exp), RegLine_white_noise, color<span class="op">=</span><span class="st">'aqua'</span>)</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$\log</span><span class="sc">{ns}</span><span class="vs">$'</span>)</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\log{F(ns)}$"</span>)</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-step-6" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1085,34 +1069,34 @@ Successfully installed colorednoise-2.1.0</code></pre>
 </div>
 <p>Як уже зазначалося в попередній лабораторній роботі, кут нахилу <span class="math inline">\(H\)</span> ліній регресії називається показником Херста. Показник Херста визначає монофрактальну структуру часового ряду, показуючи, наскільки швидко зростає загальне середньоквадратичне відхилення, <span class="math inline">\(F\)</span>, локальних коливань, <code>RMS</code>, зі збільшенням розміру локальних сегментів ряду (тобто, масштабу). <a href="#fig-step-6">Рисунок&nbsp;<span>8.10</span></a> показує, що загальне середньоквадратичне значення локальних флуктуацій, <span class="math inline">\(F\)</span>, зростає швидше зі збільшенням розміру вибірки сегментів для монофрактального рожевого шуму порівняно з індексом нафти та білим шумом. Більший показник Херста, <span class="math inline">\(H\)</span>, візуально свідчить про повільнішу еволюцію варіацій (тобто більш стійку структуру) в рожевому шумі порівняно з нафтою та білим шумом. <a href="#fig-hurst">Рисунок&nbsp;<span>8.11</span></a> ілюструє, що показник Херста визначає континуум між часовими рядами, подібними до шуму, і часовими рядами, подібними до випадкового блукання. Показник Херста знаходиться в інтервалі від 0 до 1 для часових рядів, подібних до шуму, тоді як для часових рядів, подібних до випадкових блукань, він перевищує 1. Часовий ряд має довгострокову залежну (тобто корельовану) структуру, коли показник Херста знаходиться в інтервалі 0.5-1, і антикорельовану структуру, коли показник Херста знаходиться в інтервалі 0-0.5. Часовий ряд має незалежну або короткострокову залежну структуру в окремому випадку, коли показник Херста дорівнює 0.5. Згідно з попереднім рисунком, часові ряди білого шуму та нафти представляються непередбачуваними, оскільки показник Херста близький до 0.5, тоді як рожевий шум довгостроково залежну структуру з показником Херста близьким до 1.</p>
 <div class="cell" data-execution_count="299">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>betas <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">2.0</span>, <span class="dv">12</span>)[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>scmin <span class="op">=</span> <span class="dv">16</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>scmax <span class="op">=</span> <span class="dv">1024</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>scres <span class="op">=</span> <span class="dv">19</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>exponents <span class="op">=</span> np.linspace(np.log(scmin), np.log(scmax), scres)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>scales_exp <span class="op">=</span> np.<span class="bu">round</span>(np.exp(<span class="dv">1</span>)<span class="op">**</span>exponents).astype(<span class="bu">int</span>)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="bu">iter</span>(plt.cm.rainbow(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="bu">len</span>(betas))))</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="bu">len</span>(betas), <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, beta <span class="kw">in</span> <span class="bu">enumerate</span>(betas):</span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> nk.signal_noise(duration<span class="op">=</span>wti_length,  <span class="co"># генеруємо шум із різними значеннями beta </span></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>                              sampling_rate<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>                              beta<span class="op">=</span>beta, </span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>                              random_state<span class="op">=</span><span class="dv">123</span>)   </span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    H_noise, _, _ <span class="op">=</span> calc_H(arr<span class="op">=</span>noise, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="bu">next</span>(color)</span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    ax[idx].plot(np.arange(<span class="bu">len</span>(noise)), noise, label<span class="op">=</span><span class="vs">fr"$H$ = </span><span class="sc">{</span>H_noise<span class="sc">:.2f}</span><span class="vs">"</span>, c<span class="op">=</span>c)</span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    ax[idx].grid(<span class="va">False</span>)</span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>    ax[idx].legend(loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    ax[idx].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> betas[idx] <span class="op">!=</span> betas[<span class="op">-</span><span class="dv">1</span>]: </span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>        ax[idx].get_xaxis().set_visible(<span class="va">False</span>)</span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>betas <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">2.0</span>, <span class="dv">12</span>)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>scmin <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>scmax <span class="op">=</span> <span class="dv">1024</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>scres <span class="op">=</span> <span class="dv">19</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>exponents <span class="op">=</span> np.linspace(np.log(scmin), np.log(scmax), scres)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>scales_exp <span class="op">=</span> np.<span class="bu">round</span>(np.exp(<span class="dv">1</span>)<span class="op">**</span>exponents).astype(<span class="bu">int</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="bu">iter</span>(plt.cm.rainbow(np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="bu">len</span>(betas))))</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="bu">len</span>(betas), <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, beta <span class="kw">in</span> <span class="bu">enumerate</span>(betas):</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    noise <span class="op">=</span> nk.signal_noise(duration<span class="op">=</span>wti_length,  <span class="co"># генеруємо шум із різними значеннями beta </span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>                              sampling_rate<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>                              beta<span class="op">=</span>beta, </span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>                              random_state<span class="op">=</span><span class="dv">123</span>)   </span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>    H_noise, _, _ <span class="op">=</span> calc_H(arr<span class="op">=</span>noise, scale<span class="op">=</span>scales_exp, m<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="bu">next</span>(color)</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    ax[idx].plot(np.arange(<span class="bu">len</span>(noise)), noise, label<span class="op">=</span><span class="vs">fr"$H$ = </span><span class="sc">{</span>H_noise<span class="sc">:.2f}</span><span class="vs">"</span>, c<span class="op">=</span>c)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>    ax[idx].grid(<span class="va">False</span>)</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>    ax[idx].legend(loc<span class="op">=</span><span class="st">"upper left"</span>)</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>    ax[idx].margins(x<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> betas[idx] <span class="op">!=</span> betas[<span class="op">-</span><span class="dv">1</span>]: </span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>        ax[idx].get_xaxis().set_visible(<span class="va">False</span>)</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-hurst" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1125,6 +1109,59 @@ Successfully installed colorednoise-2.1.0</code></pre>
 </section>
 <section id="мультифрактальний-аналіз-детрендованих-флуктуацій-1" class="level4" data-number="8.1.4.6">
 <h4 data-number="8.1.4.6" class="anchored" data-anchor-id="мультифрактальний-аналіз-детрендованих-флуктуацій-1"><span class="header-section-number">8.1.4.6</span> Мультифрактальний аналіз детрендованих флуктуацій</h4>
+<p>Структури монофрактального та мультифрактального часових рядів відрізняється, хоча вони мають схожі загальні середньоквадратичні значення. Мультифрактальні часові ряди мають локальні флуктуації як з екстремально малими, так і з екстремально великими значеннями, що не характерно монофрактальним часовим рядам. Відсутність флуктуацій з екстремально великими та малими значеннями призводить до нормального розподілу для монофрактального часового ряду, де варіація описується лише статистичним моментом другого порядку (тобто дисперсією). Отже, монофрактальний DFA базується на статистиці другого порядку загального середньоквадратичного відхилення (тобто, <span class="math inline">\(F\)</span>). У мультифрактальному часовому ряді локальні коливання, <code>RMS[ns][v]</code>, будуть екстремально великими для сегментів <span class="math inline">\(v\)</span> в межах часових періодів великих коливань і екстремально малими для сегментів <span class="math inline">\(v\)</span> в межах часових періодів малих коливань. Отже, мультифрактальні часові ряди не є нормально розподіленими і слід враховувати всі статистичні моменти <span class="math inline">\(q\)</span>-го порядку. Таким чином, необхідно розширити загальне середньоквадратичне значення монофрактального DFA (тобто <span class="math inline">\(F\)</span>) до середньоквадратичної функції флуктуацій <span class="math inline">\(q\)</span>-го порядку мультифрактального DFA (<span class="math inline">\(F_{q}\)</span>):</p>
+<div class="cell" data-execution_count="300">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_Fq(arr, scale, q, m<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr)) <span class="co"># симулюємо випадкове блукання (X)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> X.T                           <span class="co"># транспонуємо значення X</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    scale <span class="op">=</span> scale </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    qs <span class="op">=</span> q</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    m <span class="op">=</span> m</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    segments <span class="op">=</span> np.zeros(<span class="bu">len</span>(scale), dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    Fq <span class="op">=</span> np.zeros((<span class="bu">len</span>(qs), <span class="bu">len</span>(scale)))</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    RMS <span class="op">=</span> {}    <span class="co"># словник локальних середньоквадратичних відхилень</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    qRMS <span class="op">=</span> {}   <span class="co"># словник локальних відхилень зважених показником q</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ns <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(scale)):</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>        segments[ns] <span class="op">=</span> np.floor(<span class="bu">len</span>(X) <span class="op">/</span> scale[ns]).astype(<span class="bu">int</span>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        RMS[ns] <span class="op">=</span> np.zeros(segments[ns])</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># проходимо по кожному сегменту</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> v <span class="kw">in</span> <span class="bu">range</span>(segments[ns]): </span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо початкове значення сегмента</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>            Idx_start <span class="op">=</span> v <span class="op">*</span> scale[ns]  </span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>                       </span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо кінцеве значення</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>            Idx_stop <span class="op">=</span> (v <span class="op">+</span> <span class="dv">1</span>) <span class="op">*</span> scale[ns] <span class="cf">if</span> v <span class="op">&lt;</span> segments[ns] <span class="op">-</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">len</span>(X)    </span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>            <span class="co"># формуємо масив індексів значень досліджуваного сегмента</span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>            Index <span class="op">=</span> np.arange(Idx_start, Idx_stop)  </span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># вилучаємо значення по індексам</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>            X_Idx <span class="op">=</span> X[Index]                       </span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>            <span class="co"># визначаємо поліноміальні коефіцієнти порядку m</span></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>            C <span class="op">=</span> np.polyfit(Index, X_Idx, m) </span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>            <span class="co"># будуємо поліноміальну криву по визначеним коефіцієнтам</span></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>            fit <span class="op">=</span> np.polyval(C, Index)  </span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>            <span class="co"># оцінюємо середньоквадратичне відхилення для фрагмента v на масштабі ns </span></span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>            RMS[ns][v] <span class="op">=</span> np.sqrt(np.mean((X_Idx <span class="op">-</span> fit) <span class="op">**</span> <span class="dv">2</span>)) </span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> nq <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(qs)):</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>            qRMS[nq, ns] <span class="op">=</span> RMS[ns] <span class="op">**</span> q[nq]</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>            Fq[nq, ns] <span class="op">=</span> np.mean(qRMS[nq, ns]) <span class="op">**</span> (<span class="dv">1</span> <span class="op">/</span> q[nq])</span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>        zero_q_indices <span class="op">=</span> np.where(q <span class="op">==</span> <span class="dv">0</span>)[<span class="dv">0</span>]</span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> zero_q_idx <span class="kw">in</span> zero_q_indices:</span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a>            Fq[zero_q_idx, ns] <span class="op">=</span> np.exp(<span class="fl">0.5</span> <span class="op">*</span> np.mean(np.log(RMS[ns] <span class="op">**</span> <span class="dv">2</span>)))</span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Fq, qRMS </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
