@@ -219,7 +219,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners, breakable, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[sharp corners, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, interior hidden, frame hidden]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Зміст}
 {
@@ -490,12 +490,12 @@ Python.
 оцінки}. Для індексу \(X(t)\) визначимо зміну ціни \(G(t)\) як зміну
 логарифмів індексів,
 
-\begin{equation}\protect\hypertarget{eq-1}{}{
+\begin{equation}\protect\hypertarget{eq-1-1}{}{
 G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)},
-}\label{eq-1}\end{equation}
+}\label{eq-1-1}\end{equation}
 
 де \(\Delta t\) є часовим інтервалом затримки. Величину
-(Рівняння~\ref{eq-1}) називають прибутковістю (return). Якщо
+(Рівняння~\ref{eq-1-1}) називають прибутковістю (return). Якщо
 використовувати границі, то малі зміни \(X(t)\) приблизно відповідають
 змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи
 ринку, викидаємо ночі, вихідні та свята із набору даних, тобто,
@@ -508,9 +508,9 @@ G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)},
 Визначимо волатильність як середнє від \(G(t)\) для часових вікон
 \(T = n \cdot \Delta t\), тобто
 
-\begin{equation}\protect\hypertarget{eq-2}{}{
+\begin{equation}\protect\hypertarget{eq-1-2}{}{
 V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, 
-}\label{eq-2}\end{equation}
+}\label{eq-1-2}\end{equation}
 
 де \(n\) є цілим числом. Таке визначення може бути ще узагальнене
 заміною \(G(t)\) на \(\left| G(t) \right|^{\gamma}\), де \(\gamma > 1\)
@@ -548,9 +548,9 @@ V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|,
 Візьмемо \(N\) пар спостережень двох змінних \(x\) та \(y\). Коефіцієнт
 кореляції між парами \(x\) та \(y\) визначається як
 
-\begin{equation}\protect\hypertarget{eq-3}{}{
+\begin{equation}\protect\hypertarget{eq-1-3}{}{
 r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}}}, 
-}\label{eq-3}\end{equation}
+}\label{eq-1-3}\end{equation}
 
 де сума знаходиться по всім \(N\) спостереженням.
 
@@ -563,13 +563,13 @@ r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{
 
 Кореляція між \(x_t\) та \(x_t + 1\) визначається наступним чином:
 
-\begin{equation}\protect\hypertarget{eq-4}{}{
+\begin{equation}\protect\hypertarget{eq-1-4}{}{
 r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}, 
-}\label{eq-4}\end{equation}
+}\label{eq-1-4}\end{equation}
 
 де \(x\) --- це середнє для досліджуваного періоду.
 
-Рівняння (Рівняння~\ref{eq-4}) може бути узагальнене для отримання
+Рівняння (Рівняння~\ref{eq-1-4}) може бути узагальнене для отримання
 кореляції між спостереженнями, розділеними \(k\) часовими інтервалами:
 
 \begin{equation}\protect\hypertarget{eq-5}{}{
@@ -588,7 +588,7 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 бібліотеку \texttt{yfinance}, що дозволяє працювати з даними фінансових
 ринків засобами мови програмування Python.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 \textbf{Yahoo!, Y!Finance, and Yahoo! finance є зареєстрованими
 товарними знаками Yahoo, Inc.}
@@ -1008,7 +1008,7 @@ Date & & & & & & & & & & & & \\
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-important-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-important-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Представлені в подальшому методи є універсальними. Іншими словами, ви
 можете їх використовувати не лише для фінансових часових рядів, але й
@@ -1070,7 +1070,7 @@ Date & & & & & & & & & & & & \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Знову повертаємось до Біткоїна. Для відтворення подальших розрахунків з
 Біткоїном, блок коду в якому зчитувалась та виводилась крива
@@ -1110,9 +1110,10 @@ Date & & & & & & & & & & & & \\
 стаціонарними, а їх нормалізація стандартним відхиленням дозволяє легко
 порівнювати їх розподіл з розподілом Гауса.
 
-Прибутковості розраховуватимуться згідно (Рівняння~\ref{eq-1}). У Python
-ми використовуватимемо метод \texttt{pct\_change()} для знаходження
-прибутковостей, що доступний нам завдяки бібліотеці \texttt{pandas}.
+Прибутковості розраховуватимуться згідно (Рівняння~\ref{eq-1-1}). У
+Python ми використовуватимемо метод \texttt{pct\_change()} для
+знаходження прибутковостей, що доступний нам завдяки бібліотеці
+\texttt{pandas}.
 
 Стандартизовані прибутковості визначаються наступним шляхом:
 
@@ -1730,7 +1731,7 @@ x^1(t),x^2(t),...,x^d(t)
 сформульовано у вигляді ``теореми рекурентності'', опублікованої в 1890
 р.:
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 \textbf{Якщо система зводить свою динаміку до обмеженої підмножини
 фазового простору, то система майже напевно, тобто з вірогідністю,
@@ -2045,9 +2046,9 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 вимірювань системи, отримати \(m\)-розмірні реконструйовані часові
 вкладення
 
-\begin{equation}\protect\hypertarget{eq-1}{}{
+\begin{equation}\protect\hypertarget{eq-2-1}{}{
 \vec{y}_i = \left( y_i, y_{i+\tau}, ... , y_{i+(m-1)\tau} \right),
-}\label{eq-1}\end{equation}
+}\label{eq-2-1}\end{equation}
 
 де \(i\) проходить в діапазоні \(1,..., N-(m-1)\tau\); значення \(\tau\)
 представляє часову затримку, а \(m\) --- це розмірність вкладень
@@ -2169,7 +2170,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -3210,7 +3211,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -3721,7 +3722,7 @@ DET={\frac {\sum _{\ell =\ell _{\min }}^{N}\ell \,P(\ell )}{\sum _{\ell =1}^{N}\
 ліній (тобто підраховує кількість діагональних профілів довжини \(\ell\)
 ).
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по детермінізму}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по детермінізму}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Детерміновані системи характеризуються значною варіацією діагональних
 ліній різної довжинию. Періодичні сигнали будуть характеризуватися
@@ -3774,7 +3775,7 @@ LAM={\frac {\sum _{v=v_{\min }}^{N}vP(v)}{\sum _{v=1}^{N}vP(v)}},
 де \(P(v)\) --- частотний розподіл довжин \(v\) вертикальних ліній, які
 мають довжину принаймні \(v_{\min}\).
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ламінарності}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ламінарності}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Ламінарність характеризує ймовірність системи перебувати в ламінарному
 (незмінному) стані. Зі збільшенням ізольованих рекурентних точок у
@@ -3821,7 +3822,7 @@ L={\frac  {\sum _{{\ell =\ell _{\min }}}^{N}\ell \,P(\ell )}{\sum _{{\ell =\ell 
 траєкторії фазового простору знаходяться в достатній близькості один до
 одного.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині діагональних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині діагональних ліній}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Середня довжина діагональних ліній визначає середній час при якому
 система залишається передбачуваною.
@@ -3861,7 +3862,7 @@ time)}\label{ux447ux430ux441-ux437ux430ux445ux43eux43fux43bux435ux43dux43dux44fu
 TT={\frac {\sum _{{v=v_{\min }}}^{{N}}vP(v)}{\sum _{{v=v_{\min }}} ^{{N}}P(v)}}. 
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині вертикальних ліній}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Середня довжина вертикальних ліній визначає середній час перебування
 системи в ламінарному стані. Тобто, вона відповідає середньому періоду
@@ -3906,7 +3907,7 @@ WVL_{mean} = \sum_{w=w_{min}}^{N} w \cdot P(w) \Big / \sum_{w=w_{min}}^{N} P(w),
 \(w\), а \(w_{min}\) відповідає найменшій довжині білих вертикальних
 ліній (найменшому періоду повернення до стану рекурентності).
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині білих вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині білих вертикальних ліній}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Представлену міру можна охарактеризувати як середній горизонт
 \emph{непередбачуваності} системи.
@@ -3951,7 +3952,7 @@ DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 
 Даний показник відображає складність досліджуваної структури.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії діагональних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії діагональних ліній}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Для некорельованого шуму чи осциляцiй ми тримали б мале значення цієї
 ентропiї. Мале значення даної ентропії вказувало би на те, що розподіл
@@ -4002,7 +4003,7 @@ entropy)}\label{ux435ux43dux442ux440ux43eux43fux456ux44f-ux432ux435ux440ux442ux4
 Ця міра, по аналогії до попередньої ентропії, також є мірою складності
 системи.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії вертикальних ліній}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Для синусоїдального процесу ми би очікували мале значення даної
 ентропії, оскільки це простий періодичний процес. Для складного процесу
@@ -4055,7 +4056,7 @@ entropy)}\label{ux435ux43dux442ux440ux43eux43fux456ux44f-ux432ux435ux440ux442ux4
 весь розподіл частот діагональних ліній). Дивергенція може мати
 тенденцію позитивного максимального показника Ляпунова, але не більше.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Чим вище значення дивергенції, тим швидше розбігаються траєкторії
 фазового простору. І навпаки, чим нижче значення дивергенції, тим ближче
@@ -4095,7 +4096,7 @@ divergence)}\label{ux434ux438ux432ux435ux440ux433ux435ux43dux446ux456ux44f-ux432
 VDIV = {\frac {1}{V_{\max }}}. 
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції вертикальних ліній}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Максимальна довижна вертикальних ліній надавала нам інформацію про
 максимальний ступінь незмінюваності системи. Вертикальна дивергенція
@@ -4403,9 +4404,9 @@ KS_{D}(x) = \min\{l(y)\,|\,D(y)=x\},
 включно \((i<j)\); \(N=|S|\) --- довжина тексту \(S\). Тоді схему
 синтезу послідовності можна представити у вигляді конкатенації
 
-\[
-H(S)=S[1:i_1]S[i_1+1:i_2]...S[i_{k-1}+1:i_k]...S[i_{m−1}+1:N], \tag{1}
-\]
+\begin{equation}\protect\hypertarget{eq-4-1}{}{
+H(S)=S[1:i_1]S[i_1+1:i_2]...S[i_{k-1}+1:i_k]...S[i_{m−1}+1:N], 
+}\label{eq-4-1}\end{equation}
 
 де \(S[i_{k−1}+1:i_k]\) --- фрагмент \(S\), породжуваний на \(k\)-му
 кроці, а \$m=m\_\{H\}(S) --- число кроків процесу. З усіляких схем
@@ -4421,20 +4422,20 @@ c_{LZ}(S) = \min_{H}\{ m_{H}(S) \}.
 позначити через \(j(k)\) номер позиції, з якої починається копіювання на
 \(k\)-му кроці, то довжина фрагмента копіювання
 
-\[
-l_{j(k)} = i_k - i_{k-1} - 1 = \max_{j \leq i_{k-1}}\{ l_{j} : S[i_{k-1}+1:i_{k-1}+l_j]=S[j:j+l_{j}-1] \}, \tag{2}
-\]
+\begin{equation}\protect\hypertarget{eq-4-2}{}{
+l_{j(k)} = i_k - i_{k-1} - 1 = \max_{j \leq i_{k-1}}\{ l_{j} : S[i_{k-1}+1:i_{k-1}+l_j]=S[j:j+l_{j}-1] \},
+}\label{eq-4-2}\end{equation}
 
-а сам \(k\)-й компонент складнісного розкладання (1) можна записати у
-вигляді
+а сам \(k\)-й компонент складнісного розкладання (Рівняння~\ref{eq-4-1})
+можна записати у вигляді
 
-\[
+\begin{equation}\protect\hypertarget{eq-4-3}{}{
 S[i_{k-1}+1:i_{k}] = 
 \begin{cases}
     S[j(k):j(k)+l_{j(k)}-1] & \textrm{if} \; j(k) \neq 0, \\
     S[i_{k-1}+1] & \textrm{if} \; j(k) = 0.
-\end{cases} \tag{3}
-\]
+\end{cases} 
+}\label{eq-4-3}\end{equation}
 
 Випадок \(j(k) = 0\) відповідає ситуації, коли в позиції \(i_{k−1}+1\)
 стоїть символ, який раніше не зустрічався. При цьому ми застосовуємо
@@ -4451,13 +4452,13 @@ S[i_{k-1}+1:i_{k}] =
 задаватися поріг по середньому значенню і стани, наприклад,
 прибутковостей (\emph{ret}) кодуватимуться наступним чином:
 
-\[
+\begin{equation}\protect\hypertarget{eq-4-4}{}{
 ret = 
 \begin{cases}
 0, & ret_t < \langle ret \rangle \\
 1, & ret_t > \langle ret \rangle.
-\end{cases} \tag{4}
-\]
+\end{cases} 
+}\label{eq-4-4}\end{equation}
 
 Також можна визначити так звану пермутаційну складність Лемпеля-Зіва
 (PLZС). У даному випадку би будемо опиратись на процедуру реконструкції
@@ -5144,7 +5145,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -7511,14 +7512,14 @@ Note: 1/14 bins were empty
 лінії --- не прагне до кінцевого межі, а збільшується за степеневим
 законом
 
-\begin{equation}\protect\hypertarget{eq-1}{}{ 
+\begin{equation}\protect\hypertarget{eq-6-1}{}{ 
 L \approx l\left( \frac{R}{l} \right)^{D}, 
-}\label{eq-1}\end{equation}
+}\label{eq-6-1}\end{equation}
 
 де \(D > 1\) --- деякий степеневий показник, котрий іменується
 \textbf{фрактальною розмірністю} берегової лінії. Чим більше значення
 \(D\), тим більш ломаною або деталізованою представляється ця берегова
-лінія. Походження залежності (Рівняння~\ref{eq-1}) має бути інтуїтивно
+лінія. Походження залежності (Рівняння~\ref{eq-6-1}) має бути інтуїтивно
 зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі
 узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану
 довжину. Навпаки, збільшуючи масштаб, ми ``розгортаємо'' узбережжя,
@@ -7548,20 +7549,25 @@ L \approx l\left( \frac{R}{l} \right)^{D},
 менше, ніж \(N(l)\) куль. Тоді, якщо за досить малих \(l\) величина
 \(N(l)\) змінюється з \(l\) за степеневим законом
 
-\begin{equation}\protect\hypertarget{eq-2}{}{
+\begin{equation}\protect\hypertarget{eq-6-2}{}{
 N(l) \sim \frac{1}{l^D},
-}\label{eq-2}\end{equation}
+}\label{eq-6-2}\end{equation}
 
 тоді \(D\) --- називається \textbf{хаусдорфовою} або \textbf{фрактальною
 розмірністю} цього об'єкта. Очевидно, що ця формула еквівалентна
 відношеню \(N \approx \left( R/l \right)^{D}\), що використовувалось
 вище для визначення довжини берегової лінії.
 
-Формулу (Рівняння~\ref{eq-2}) можна переписати у вигляді
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  можна переписати у вигляді
+\end{enumerate}
 
-\begin{equation}\protect\hypertarget{eq-3}{}{
+\begin{equation}\protect\hypertarget{eq-6-3}{}{
 D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}.
-}\label{eq-3}\end{equation}
+}\label{eq-6-3}\end{equation}
 
 Це відношення й слугує загальним визначенням фрактальної розмірності
 \(D\). У відповідності до нього величина \(D\) представляє
@@ -7634,9 +7640,9 @@ D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}.
 обчислення \((R/S)_n\) для послідовностей інтервалів зі збільшенням
 часового горизонту:
 
-\begin{equation}\protect\hypertarget{eq-4}{}{
+\begin{equation}\protect\hypertarget{eq-6-4}{}{
 \log{(R/S)}_{n} = \log{c} + H\log{n}. 
-}\label{eq-4}\end{equation}
+}\label{eq-6-4}\end{equation}
 
 Знайти коефіцієнт Херста можна, побудувавши залежність \((R/S)_n\)
 vs.~\(n\) у подвійному логарифмічному масштабі і взявши коефіцієнт
@@ -7653,7 +7659,7 @@ vs.~\(n\) у подвійному логарифмічному масштабі 
 коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після ---
 близько 0.5.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка до \emph{R/S}-аналізу}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка до \emph{R/S}-аналізу}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Між фрактальною розмірністю та показником Херста також існує зв'язок
 
@@ -7676,7 +7682,7 @@ D_f = 2-H.
 базується на гіпотезі про те, що корельований часовий ряд може бути
 відображений на самоподібний процес шляхом інтегрування. Таким чином,
 вимірювання властивостей самоподібності може непрямо свідчити про
-кореляційні властивості ряду. Переваги АДФ порівняно з іншими методами
+кореляційні властивості ряду. Переваги DFA порівняно з іншими методами
 (спектральний аналіз, \emph{R/S}-аналіз) полягають в тому, що він
 виявляє довгочасові кореляції нестаціонарних часових рядів, а також
 дозволяє ігнорувати очевидні випадкові кореляції, що є наслідком
@@ -7795,18 +7801,18 @@ P(f) \sim f^{-\beta}.
 Потім обчислюється найближчий поліном \(y_{ν}(s)\) для профілю на
 кожному із \(2N_s\) сегментів \(v\) і визначається відхилення
 
-\begin{equation}\protect\hypertarget{eq-5}{}{
+\begin{equation}\protect\hypertarget{eq-6-5}{}{
 F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}.
-}\label{eq-5}\end{equation}
+}\label{eq-6-5}\end{equation}
 
 Далі знаходиться середнє значення флуктуацій всіх детрендованих
 профілів:
 
-\begin{equation}\protect\hypertarget{eq-6}{}{
+\begin{equation}\protect\hypertarget{eq-6-6}{}{
 F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
-}\label{eq-6}\end{equation}
+}\label{eq-6-6}\end{equation}
 
-Значення формули (Рівняння~\ref{eq-6}) можна трактувати як
+Значення формули (Рівняння~\ref{eq-6-6}) можна трактувати як
 середньоквадратичний зсув (переміщення) точки випадкових блукань у
 ланцюжку після \(s\) кроків.
 
@@ -8054,7 +8060,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 інтеграла від значення \(\varepsilon\). Ця залежність будується в
 логарифмічному масштабі.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по кореляційні розмірності}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по кореляційні розмірності}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Кореляційна розмірність за аналогією з попередніми показниками --- це
 теж тангенс кута нахилу лінії регресії, побудованої в логарифмічному
@@ -8164,7 +8170,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 складні рухи цін, що відповідає періодам стабільності або менш
 волатильним ринковим умовам.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка по кореляційні розмірності}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка по кореляційні розмірності}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Кореляційна розмірність розглядає кількість інформації (кубиків, кіл),
 необхідну для опису \textbf{тільки пари точок} у фазовому просторі.
@@ -8236,7 +8242,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-warning-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-warning-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -10528,7 +10534,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 де \(\alpha_{i}\) являє собою деякий показник ступеня (різний для різнок
 клітинок \(i\)).
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Спрямовуючи значення \(\varepsilon\) до нуля, можна сказати, що
 фрактальність можна розглядати локально для кожної точки (елемента)
@@ -10573,7 +10579,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 (підкреслено жирною лінією). Таким чином, сила сингулярності \(i\)-ої
 комірки дорівнює 3.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Можна сказати, що чим більш гладкою видається поверхня системи, чим
 менше елементів задіяно в її розвитку, тим менший показник
@@ -12413,7 +12419,7 @@ S(\varepsilon) \approx \varepsilon^{-D_1},
 величина \(D_{1}\) характеризує інформацію, необхідну для опису
 положення точки в деякій комірці.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по інформаційній розмірності}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по інформаційній розмірності}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Інформаційна розмірність може бути використана для опису просторової
 неоднорідності системи. Що однорідніший атрактор, то вищим має бути цей
@@ -14171,7 +14177,7 @@ Finance}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux443ux454ux43cux43e-ux43
 \textbf{Мета.} Навчитися використовувати розподіл Леві для диференціації
 флуктуацій, що виходять за межі нормального розподілу.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Анотація}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-note-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Анотація}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-note-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 У цій лабораторній ми досліджуємо розподіл прибутковості фінансових
 активів і стабільність певних показників, які ми розраховуємо,
@@ -14953,7 +14959,7 @@ et al.~(2008)}). Щоб обійти ці проблеми з розбиттям
 отримали жодних даних. Ще про одну перевагу оцінки \(\alpha\) ми
 розглянемо далі.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{ПРИМІТКА}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{ПРИМІТКА}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Не існує такого поняття, як ``подія з 10 сигмами''! Справжня подія з 10
 сигмами настільки неймовірно рідкісна, що пережити її протягом нашого
@@ -15256,7 +15262,7 @@ S\&P 500 має ексцес \(28.6\), що знову вказує на те, �
 значення зустрічаються повсюдно, що призводить до збільшення ексцесу при
 моделюванні.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Навіть якщо певні властивості розподілу ймовірностей нескінченні, ми
 завжди знайдемо кінцеві вибіркові оцінки при перегляді даного набору
@@ -15434,7 +15440,7 @@ t-розподіл Стьюдента з \(\alpha=6.0\) (\(\nu=5.0\)); відн.
 оцінки волатильності зросла в 12 разів (!) порівняно з тим, що ми
 очікували б, припускаючи, що прибутковості розподілені за Гаусом.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Чим важчі хвости розподілу прибутковостей, тим більше точок даних
 необхідно для досягнення необхідної достовірності оцінок певних
@@ -15528,8 +15534,8 @@ S(\vec{w}) = \frac{\vec{w}.\vec{\mu}}{\sqrt{\vec{w}\Sigma\vec{w}^T}}.
 жорсткої критики за відсутність врахування ``важких хвостів'',
 наприклад, з боку Нассіма Талеба:
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Нассім Талеб у \emph{Чорний лебідь: Про (не)ймовірне в реальному житті}
-(ст. 277)}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Нассім Талеб у \emph{Чорний лебідь: Про (не)ймовірне в реальному житті}
+(ст. 277)}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Після краху фондового ринку (у 1987 році) вони нагородили двох
 теоретиків, Гаррі Марковіца та Вільяма Шарпа, які побудували прекрасні
@@ -15955,7 +15961,7 @@ t-розподілу порівняно з відповідним розподі
 досягнення певної достовірності, перш ніж нова модель буде фактично
 запущена у виробництво!
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Важкі хвости розподілу прибутковостей можуть сильно вплинути на
 результати усталених математичних моделей у фінансах, або збільшуючи
@@ -16848,8 +16854,8 @@ Finance}\label{ux437ux447ux438ux442ux443ux432ux430ux43dux43dux44f-ux437-yahoo-fi
 Використовуючи алгоритм сковзного вікна, ми побачили, що параметри
 альфа-стабільного розподілу змінюються з часом.
 
-\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Література для подальшого вивчення степеневих розподілів та важких
-хвостів}]
+\begin{tcolorbox}[enhanced jigsaw, colframe=quarto-callout-tip-color-frame, toprule=.15mm, opacityback=0, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Література для подальшого вивчення степеневих розподілів та важких
+хвостів}, leftrule=.75mm, breakable, toptitle=1mm, arc=.35mm, bottomtitle=1mm, coltitle=black, titlerule=0mm, colback=white, bottomrule=.15mm, rightrule=.15mm, colbacktitle=quarto-callout-tip-color!10!white, left=2mm, opacitybacktitle=0.6]
 
 Nassim Taleb's
 \href{https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf}{\emph{Statistical
