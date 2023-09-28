@@ -157,9 +157,9 @@
   \newcommand\listtablename{Список Таблиць}
 \fi
 \ifdefined\figurename
-  \renewcommand*\figurename{Рисунок}
+  \renewcommand*\figurename{Рис.}
 \else
-  \newcommand\figurename{Рисунок}
+  \newcommand\figurename{Рис.}
 \fi
 \ifdefined\tablename
   \renewcommand*\tablename{Таблиця}
@@ -215,11 +215,11 @@
 
 \title{Моделювання складних систем у Python}
 \author{Соловйов В.М \and Бєлінський А.О.}
-\date{2023-09-27}
+\date{2023-09-28}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, enhanced, borderline west={3pt}{0pt}{shadecolor}, boxrule=0pt, breakable, sharp corners, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[interior hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners, breakable, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Зміст}
 {
@@ -490,15 +490,16 @@ Python.
 оцінки}. Для індексу \(X(t)\) визначимо зміну ціни \(G(t)\) як зміну
 логарифмів індексів,
 
-\[
-G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)}, \tag{1} 
-\]
+\begin{equation}\protect\hypertarget{eq-1}{}{
+G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)},
+}\label{eq-1}\end{equation}
 
-де \(\Delta t\) є часовим інтервалом затримки. Величину (1) називають
-прибутковістю (return). Якщо використовувати границі, то малі зміни
-\(X(t)\) приблизно відповідають змінам, визначеним другою рівністю. Ми
-лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із
-набору даних, тобто, вважається, що ринок працює без перерв.
+де \(\Delta t\) є часовим інтервалом затримки. Величину
+(Рівняння~\ref{eq-1}) називають прибутковістю (return). Якщо
+використовувати границі, то малі зміни \(X(t)\) приблизно відповідають
+змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи
+ринку, викидаємо ночі, вихідні та свята із набору даних, тобто,
+вважається, що ринок працює без перерв.
 
 Модуль \(G(t)\) описує амплітуду флуктуацій. У порівнянні із значеннями
 \(G(t)\) їх модуль не показує глобальних трендів, але великі значення
@@ -507,9 +508,9 @@ G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)}, \
 Визначимо волатильність як середнє від \(G(t)\) для часових вікон
 \(T = n \cdot \Delta t\), тобто
 
-\[
-V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, \tag{2}
-\]
+\begin{equation}\protect\hypertarget{eq-2}{}{
+V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, 
+}\label{eq-2}\end{equation}
 
 де \(n\) є цілим числом. Таке визначення може бути ще узагальнене
 заміною \(G(t)\) на \(\left| G(t) \right|^{\gamma}\), де \(\gamma > 1\)
@@ -547,9 +548,9 @@ V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, \tag{2}
 Візьмемо \(N\) пар спостережень двох змінних \(x\) та \(y\). Коефіцієнт
 кореляції між парами \(x\) та \(y\) визначається як
 
-\[
-    r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}}}, \tag{3}
-\]
+\begin{equation}\protect\hypertarget{eq-3}{}{
+r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}}}, 
+}\label{eq-3}\end{equation}
 
 де сума знаходиться по всім \(N\) спостереженням.
 
@@ -562,18 +563,18 @@ V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, \tag{2}
 
 Кореляція між \(x_t\) та \(x_t + 1\) визначається наступним чином:
 
-\[
-r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}, \tag{4}
-\]
+\begin{equation}\protect\hypertarget{eq-4}{}{
+r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}, 
+}\label{eq-4}\end{equation}
 
 де \(x\) --- це середнє для досліджуваного періоду.
 
-Рівняння (4) може бути узагальнене для отримання кореляції між
-спостереженнями, розділеними \(k\) часовими інтервалами:
+Рівняння (Рівняння~\ref{eq-4}) може бути узагальнене для отримання
+кореляції між спостереженнями, розділеними \(k\) часовими інтервалами:
 
-\[
-    r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}. \tag{4}
-\]
+\begin{equation}\protect\hypertarget{eq-5}{}{
+r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}. 
+}\label{eq-5}\end{equation}
 
 Значення \(r_k\) називається коефіцієнтом автокореляції з лагом \(k\).
 Графік функції автокореляції як залежності \(r_k\) від \(k\) також
@@ -587,7 +588,7 @@ r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{
 бібліотеку \texttt{yfinance}, що дозволяє працювати з даними фінансових
 ринків засобами мови програмування Python.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}]
 
 \textbf{Yahoo!, Y!Finance, and Yahoo! finance є зареєстрованими
 товарними знаками Yahoo, Inc.}
@@ -1007,7 +1008,7 @@ Date & & & & & & & & & & & & \\
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-important-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-important-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-important-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}]
 
 Представлені в подальшому методи є універсальними. Іншими словами, ви
 можете їх використовувати не лише для фінансових часових рядів, але й
@@ -1069,7 +1070,7 @@ Date & & & & & & & & & & & & \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
 
 Знову повертаємось до Біткоїна. Для відтворення подальших розрахунків з
 Біткоїном, блок коду в якому зчитувалась та виводилась крива
@@ -1109,8 +1110,8 @@ Date & & & & & & & & & & & & \\
 стаціонарними, а їх нормалізація стандартним відхиленням дозволяє легко
 порівнювати їх розподіл з розподілом Гауса.
 
-Прибутковості розраховуватимуться згідно формулі (1). У Python ми
-використовуватимемо метод \texttt{pct\_change()} для знаходження
+Прибутковості розраховуватимуться згідно (Рівняння~\ref{eq-1}). У Python
+ми використовуватимемо метод \texttt{pct\_change()} для знаходження
 прибутковостей, що доступний нам завдяки бібліотеці \texttt{pandas}.
 
 Стандартизовані прибутковості визначаються наступним шляхом:
@@ -1172,9 +1173,9 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 перевищують величину \(\pm 3\sigma\), що, як відомо, надзвичайно рідко
 спостерігається для незалежних подій. Цей факт можна відобразити шляхом
 порівняння функції розподілу нормалізованих флуктуацій з розподілом
-Гауса (рис. Рисунок~\ref{fig-btc-dist}). Очевидно, що хвости розподілу
-вихідного ряду містять значні флуктуації, вони досить помітні (часто
-кажуть ``важкі'' у порівнянні з самою ``головою'' розподілу).
+Гауса (Рис.~\ref{fig-btc-dist}). Очевидно, що хвости розподілу вихідного
+ряду містять значні флуктуації, вони досить помітні (часто кажуть
+``важкі'' у порівнянні з самою ``головою'' розподілу).
 
 Для побудови нормального розподілу скористаємось бібліотекою
 \texttt{scipy}. Встановити її можна по аналогії з попередніми
@@ -1464,8 +1465,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 
 Нарешті порівняємо динаміку вихідного ряду і розрахованих похідних. Для
 цього врахуємо, що автокореляцію і волатильність ми рахували для
-рухомого вікна. Результати представлено на рис.
-Рисунок~\ref{fig-btc-all}.
+рухомого вікна. Результати представлено на Рис.~\ref{fig-btc-all}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1730,7 +1730,7 @@ x^1(t),x^2(t),...,x^d(t)
 сформульовано у вигляді ``теореми рекурентності'', опублікованої в 1890
 р.:
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}]
 
 \textbf{Якщо система зводить свою динаміку до обмеженої підмножини
 фазового простору, то система майже напевно, тобто з вірогідністю,
@@ -2045,9 +2045,9 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 вимірювань системи, отримати \(m\)-розмірні реконструйовані часові
 вкладення
 
-\[
-    \vec{y}_i = \left( y_i, y_{i+\tau}, ... , y_{i+(m-1)\tau} \right), \tag{1}
-\]
+\begin{equation}\protect\hypertarget{eq-1}{}{
+\vec{y}_i = \left( y_i, y_{i+\tau}, ... , y_{i+(m-1)\tau} \right),
+}\label{eq-1}\end{equation}
 
 де \(i\) проходить в діапазоні \(1,..., N-(m-1)\tau\); значення \(\tau\)
 представляє часову затримку, а \(m\) --- це розмірність вкладень
@@ -2169,7 +2169,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -2557,11 +2557,11 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 
 \end{figure}
 
-Рисунок~\ref{fig-btc-delay-fraser1986} показує, що перший локальний
-мінімум взаємної інформації для стандартизованих вихідних значень
-Біткоїна знаходиться на 273 лагу. Для візуального огляду
-реконструйованого атрактора це значення, можливо, є найбільш адекватним.
-Але використовуючи настільки велику часову затримку, ми втрачаємо доволі
+Рис.~\ref{fig-btc-delay-fraser1986} показує, що перший локальний мінімум
+взаємної інформації для стандартизованих вихідних значень Біткоїна
+знаходиться на 273 лагу. Для візуального огляду реконструйованого
+атрактора це значення, можливо, є найбільш адекватним. Але
+використовуючи настільки велику часову затримку, ми втрачаємо доволі
 багато проміжних значень, що також можуть містити досить важливу
 приховану інформацію для кількісних розрахунків.
 
@@ -2584,7 +2584,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 
 \end{figure}
 
-Рисунок~\ref{fig-btc-delay-theiler} демонструє, що автокореляція між
+Рис.~\ref{fig-btc-delay-theiler} демонструє, що автокореляція між
 стандартизованих вихідним сигналом Біткоїна та його зміщенною версією
 при \(\tau=195\) вперше перетинає значення \(1/\exp\). Бачимо, що дане
 значення затримки є трохи меншим за те, що було отримано до цього, але
@@ -2633,7 +2633,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 
 Цього разу нам вдалося досягти оптимального результату, але приклад вище
 демонструє, що кожна процедура має свої виключення.
-Рисунок~\ref{fig-btc-delay-casdagli1991} показує, що значення
+Рис.~\ref{fig-btc-delay-casdagli1991} показує, що значення
 прибутковостей Біткоїна характеризуються певними кореляціями лише на
 перших 4-ох лагах. Подальші часові зміщення роблять значення
 прибутковостей незалежними один від одного.
@@ -2657,11 +2657,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 
 \end{figure}
 
-Рисунок~\ref{fig-btc-delay-rosenstein1993} демонструє, що при
-\(\tau=101\) функція автокореляцій перетинає значення
-\(\left( 1-1/\exp \right)\). При цьому видно, що навіть для такого лагу
-зберігається значна частка кореляцій між стандартизованими вихідними
-значеннями Біткоїна.
+Рис.~\ref{fig-btc-delay-rosenstein1993} демонструє, що при \(\tau=101\)
+функція автокореляцій перетинає значення \(\left( 1-1/\exp \right)\).
+При цьому видно, що навіть для такого лагу зберігається значна частка
+кореляцій між стандартизованими вихідними значеннями Біткоїна.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2888,7 +2887,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 
 \end{figure}
 
-Рисунок~\ref{fig-btc-dim-cd} представляє, що оптимальна розмірність
+Рис.~\ref{fig-btc-dim-cd} представляє, що оптимальна розмірність
 вкладень при якій досягається найбільш інформативна репрезентація
 фазового простору дорівнює 7.
 
@@ -3211,7 +3210,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -3722,7 +3721,7 @@ DET={\frac {\sum _{\ell =\ell _{\min }}^{N}\ell \,P(\ell )}{\sum _{\ell =1}^{N}\
 ліній (тобто підраховує кількість діагональних профілів довжини \(\ell\)
 ).
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по детермінізму}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по детермінізму}]
 
 Детерміновані системи характеризуються значною варіацією діагональних
 ліній різної довжинию. Періодичні сигнали будуть характеризуватися
@@ -3775,7 +3774,7 @@ LAM={\frac {\sum _{v=v_{\min }}^{N}vP(v)}{\sum _{v=1}^{N}vP(v)}},
 де \(P(v)\) --- частотний розподіл довжин \(v\) вертикальних ліній, які
 мають довжину принаймні \(v_{\min}\).
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ламінарності}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ламінарності}]
 
 Ламінарність характеризує ймовірність системи перебувати в ламінарному
 (незмінному) стані. Зі збільшенням ізольованих рекурентних точок у
@@ -3822,7 +3821,7 @@ L={\frac  {\sum _{{\ell =\ell _{\min }}}^{N}\ell \,P(\ell )}{\sum _{{\ell =\ell 
 траєкторії фазового простору знаходяться в достатній близькості один до
 одного.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині діагональних ліній}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині діагональних ліній}]
 
 Середня довжина діагональних ліній визначає середній час при якому
 система залишається передбачуваною.
@@ -3862,7 +3861,7 @@ time)}\label{ux447ux430ux441-ux437ux430ux445ux43eux43fux43bux435ux43dux43dux44fu
 TT={\frac {\sum _{{v=v_{\min }}}^{{N}}vP(v)}{\sum _{{v=v_{\min }}} ^{{N}}P(v)}}. 
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині вертикальних ліній}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині вертикальних ліній}]
 
 Середня довжина вертикальних ліній визначає середній час перебування
 системи в ламінарному стані. Тобто, вона відповідає середньому періоду
@@ -3907,7 +3906,7 @@ WVL_{mean} = \sum_{w=w_{min}}^{N} w \cdot P(w) \Big / \sum_{w=w_{min}}^{N} P(w),
 \(w\), а \(w_{min}\) відповідає найменшій довжині білих вертикальних
 ліній (найменшому періоду повернення до стану рекурентності).
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині білих вертикальних ліній}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині білих вертикальних ліній}]
 
 Представлену міру можна охарактеризувати як середній горизонт
 \emph{непередбачуваності} системи.
@@ -3952,7 +3951,7 @@ DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 
 Даний показник відображає складність досліджуваної структури.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії діагональних ліній}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії діагональних ліній}]
 
 Для некорельованого шуму чи осциляцiй ми тримали б мале значення цієї
 ентропiї. Мале значення даної ентропії вказувало би на те, що розподіл
@@ -4003,7 +4002,7 @@ entropy)}\label{ux435ux43dux442ux440ux43eux43fux456ux44f-ux432ux435ux440ux442ux4
 Ця міра, по аналогії до попередньої ентропії, також є мірою складності
 системи.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії вертикальних ліній}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії вертикальних ліній}]
 
 Для синусоїдального процесу ми би очікували мале значення даної
 ентропії, оскільки це простий періодичний процес. Для складного процесу
@@ -4056,7 +4055,7 @@ entropy)}\label{ux435ux43dux442ux440ux43eux43fux456ux44f-ux432ux435ux440ux442ux4
 весь розподіл частот діагональних ліній). Дивергенція може мати
 тенденцію позитивного максимального показника Ляпунова, але не більше.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції}]
 
 Чим вище значення дивергенції, тим швидше розбігаються траєкторії
 фазового простору. І навпаки, чим нижче значення дивергенції, тим ближче
@@ -4096,7 +4095,7 @@ divergence)}\label{ux434ux438ux432ux435ux440ux433ux435ux43dux446ux456ux44f-ux432
 VDIV = {\frac {1}{V_{\max }}}. 
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції вертикальних ліній}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції вертикальних ліній}]
 
 Максимальна довижна вертикальних ліній надавала нам інформацію про
 максимальний ступінь незмінюваності системи. Вертикальна дивергенція
@@ -5145,7 +5144,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -7496,8 +7495,8 @@ Note: 1/14 bins were empty
 великомасштабна карта береться, тим довшою виявляється ця берегова
 лінія. Нехай, наприклад, відстань по прямій між розсташованими на
 береговій лінії точками А та В дорівнює R (див.
-Рисунок~\ref{fig-costline}). Тоді, щоб виміряти довжину берегової лінії
-між цима точками, ми розташуємо по берегу жорстко пов'язані один з одним
+Рис.~\ref{fig-costline}). Тоді, щоб виміряти довжину берегової лінії між
+цима точками, ми розташуємо по берегу жорстко пов'язані один з одним
 вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад,
 \(l=10\) км. Довжину берегової лінії в кілометрах між точками А і В ми
 приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне
@@ -7512,18 +7511,18 @@ Note: 1/14 bins were empty
 лінії --- не прагне до кінцевого межі, а збільшується за степеневим
 законом
 
-\[ 
-L \approx l\left( \frac{R}{l} \right)^{D}, \tag{1}
-\]
+\begin{equation}\protect\hypertarget{eq-1}{}{ 
+L \approx l\left( \frac{R}{l} \right)^{D}, 
+}\label{eq-1}\end{equation}
 
 де \(D > 1\) --- деякий степеневий показник, котрий іменується
 \textbf{фрактальною розмірністю} берегової лінії. Чим більше значення
 \(D\), тим більш ломаною або деталізованою представляється ця берегова
-лінія. Походження залежності (1) має бути інтуїтивно зрозумілим: чим
-менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть
-враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки,
-збільшуючи масштаб, ми ``розгортаємо'' узбережжя, зменшуючи довжину
-\(L\).
+лінія. Походження залежності (Рівняння~\ref{eq-1}) має бути інтуїтивно
+зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі
+узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану
+довжину. Навпаки, збільшуючи масштаб, ми ``розгортаємо'' узбережжя,
+зменшуючи довжину \(L\).
 
 Таким чином, ми бачимо, що для визначення довжини берегової лінії \(L\)
 за допомогою жорсткого масштабу \(l\), необхідно зробити \(N=L/l\)
@@ -7549,20 +7548,20 @@ L \approx l\left( \frac{R}{l} \right)^{D}, \tag{1}
 менше, ніж \(N(l)\) куль. Тоді, якщо за досить малих \(l\) величина
 \(N(l)\) змінюється з \(l\) за степеневим законом
 
-\[
-N(l) \sim \frac{1}{l^D}, \tag{2}
-\]
+\begin{equation}\protect\hypertarget{eq-2}{}{
+N(l) \sim \frac{1}{l^D},
+}\label{eq-2}\end{equation}
 
 тоді \(D\) --- називається \textbf{хаусдорфовою} або \textbf{фрактальною
 розмірністю} цього об'єкта. Очевидно, що ця формула еквівалентна
 відношеню \(N \approx \left( R/l \right)^{D}\), що використовувалось
 вище для визначення довжини берегової лінії.
 
-Формулу (2) можна переписати у вигляді
+Формулу (Рівняння~\ref{eq-2}) можна переписати у вигляді
 
-\[
-D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}. \tag{3}
-\]
+\begin{equation}\protect\hypertarget{eq-3}{}{
+D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}.
+}\label{eq-3}\end{equation}
 
 Це відношення й слугує загальним визначенням фрактальної розмірності
 \(D\). У відповідності до нього величина \(D\) представляє
@@ -7635,9 +7634,9 @@ D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}. \tag{3}
 обчислення \((R/S)_n\) для послідовностей інтервалів зі збільшенням
 часового горизонту:
 
-\[
-\log{(R/S)}_{n} = \log{c} + H\log{n}. \tag{4}
-\]
+\begin{equation}\protect\hypertarget{eq-4}{}{
+\log{(R/S)}_{n} = \log{c} + H\log{n}. 
+}\label{eq-4}\end{equation}
 
 Знайти коефіцієнт Херста можна, побудувавши залежність \((R/S)_n\)
 vs.~\(n\) у подвійному логарифмічному масштабі і взявши коефіцієнт
@@ -7654,7 +7653,7 @@ vs.~\(n\) у подвійному логарифмічному масштабі 
 коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після ---
 близько 0.5.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка до \emph{R/S}-аналізу}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка до \emph{R/S}-аналізу}]
 
 Між фрактальною розмірністю та показником Херста також існує зв'язок
 
@@ -7771,9 +7770,9 @@ C(L) \sim L^{-\gamma}.
 На додачу до цього, спектральна густина також спадає за степеневим
 законом:
 
-\[
+\begin{equation}\protect\hypertarget{eq-spec-dens}{}{
 P(f) \sim f^{-\beta}. 
-\]
+}\label{eq-spec-dens}\end{equation}
 
 Відповідні показники виражаються через наступні відношення:
 
@@ -7796,19 +7795,20 @@ P(f) \sim f^{-\beta}.
 Потім обчислюється найближчий поліном \(y_{ν}(s)\) для профілю на
 кожному із \(2N_s\) сегментів \(v\) і визначається відхилення
 
-\[
-F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}. \tag{5}
-\]
+\begin{equation}\protect\hypertarget{eq-5}{}{
+F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}.
+}\label{eq-5}\end{equation}
 
 Далі знаходиться середнє значення флуктуацій всіх детрендованих
 профілів:
 
-\[
-F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}. \tag{6}
-\]
+\begin{equation}\protect\hypertarget{eq-6}{}{
+F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
+}\label{eq-6}\end{equation}
 
-Значення формули (6) можна трактувати як середньоквадратичний зсув
-(переміщення) точки випадкових блукань у ланцюжку після \(s\) кроків.
+Значення формули (Рівняння~\ref{eq-6}) можна трактувати як
+середньоквадратичний зсув (переміщення) точки випадкових блукань у
+ланцюжку після \(s\) кроків.
 
 \hypertarget{ux444ux440ux430ux43aux442ux430ux43bux44cux43dux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-ux445ux456ux433ux443ux447ux456}{%
 \subsubsection{Фрактальна розмірність
@@ -8054,7 +8054,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 інтеграла від значення \(\varepsilon\). Ця залежність будується в
 логарифмічному масштабі.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по кореляційні розмірності}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по кореляційні розмірності}]
 
 Кореляційна розмірність за аналогією з попередніми показниками --- це
 теж тангенс кута нахилу лінії регресії, побудованої в логарифмічному
@@ -8078,9 +8078,9 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 
 \end{figure}
 
-За фазовим простором цієї хмари точок ( Рисунок~\ref{fig-d2} ) можна
-бачити, що більша згуртованість точок одна до одної має асоціюватися з
-меншою кореляційною розмірністю. Рисунок (а) характеризується найвищою
+За фазовим простором цієї хмари точок (Рис.~\ref{fig-d2}) можна бачити,
+що більша згуртованість точок одна до одної має асоціюватися з меншою
+кореляційною розмірністю. Рисунок (а) характеризується найвищою
 близькістю точок одна до одної, але при цьому найменшою кореляційною
 розмірністю. Це можна пояснити так: якщо ми будуємо сітку з кіл радіусом
 \(\varepsilon\) і поступово її збільшуємо, ми вже перестаємо бачити нові
@@ -8155,7 +8155,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 і регуляції генів. Висока кореляційна розмірність --- висока складність
 ланцюжка ДНК. Мала кореляційна розмірність --- спрощений ланцюжок ДНК.
 
-\textbf{Фінансові ринки} Вища кореляційна розмірність у даних часових
+\textbf{Фінансові ринки}: Вища кореляційна розмірність у даних часових
 рядів фінансового ринку свідчить про більшу складність та існування в
 їхній основі самоподібних моделей або фрактальних структур. Хаотична
 поведінка цін на акції може бути пов'язана з періодами високої
@@ -8164,7 +8164,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 складні рухи цін, що відповідає періодам стабільності або менш
 волатильним ринковим умовам.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка по кореляційні розмірності}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка по кореляційні розмірності}]
 
 Кореляційна розмірність розглядає кількість інформації (кубиків, кіл),
 необхідну для опису \textbf{тільки пари точок} у фазовому просторі.
@@ -8236,7 +8236,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-warning-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-warning-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-warning-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
 власного файлу
@@ -8431,11 +8431,11 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 
 \end{figure}
 
-Як ми можемо бачити з Рисунок~\ref{fig-gold-rs-all}, значення
-\(h=0.53\), що свідчить про подібність динаміки золота до випадкового
-блукання. Але оскільки закони, що регулюють ринок, змінюються з часом,
-мають змінюватись і кореляції всередині системи, а одже коефіцієнт
-Херста також має залежати від періоду в якому він розглядається.
+Як ми можемо бачити з Рис.~\ref{fig-gold-rs-all}, значення \(h=0.53\),
+що свідчить про подібність динаміки золота до випадкового блукання. Але
+оскільки закони, що регулюють ринок, змінюються з часом, мають
+змінюватись і кореляції всередині системи, а одже коефіцієнт Херста
+також має залежати від періоду в якому він розглядається.
 
 \hypertarget{ux432ux456ux43aux43eux43dux43dux430-ux43fux440ux43eux446ux435ux434ux443ux440ux430-1}{%
 \subsubsection{Віконна
@@ -8570,9 +8570,9 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 
 \end{figure}
 
-На представленому рисунку ( Рисунок~\ref{fig-gold-wind-rs} ) можемо
-бачити, що показник Херста зростає в передкризовий період та спадає під
-час кризи. Перед кризою динаміка ринку характеризується зростанням
+На представленому рисунку (Рис.~\ref{fig-gold-wind-rs}) можемо бачити,
+що показник Херста зростає в передкризовий період та спадає під час
+кризи. Перед кризою динаміка ринку характеризується зростанням
 трендостійкості (персистентності), що відзеркалює зростання
 скорельованості дій між трейдерами ринку.
 
@@ -8841,14 +8841,13 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-Якщо порівнювати з \emph{R/S}-аналізом,
-Рисунок~\ref{fig-gold-wind-alpha} демонструє, що динаміка
-\emph{узагальненого показника Херста} отриманого за допомогою DFA є
-набагато стабільнішою. Тепер ми здатні диференціювати значну частку
-крахових подій, що мали місце на ринку золота. Узагальнений Херст
-показує, що передкризові явища характеризуються зростанням
-трендостійкості ринку або, іншими словами, підвищенням ступеня
-самоорганізації системи.
+Якщо порівнювати з \emph{R/S}-аналізом, Рис.~\ref{fig-gold-wind-alpha}
+демонструє, що динаміка \emph{узагальненого показника Херста} отриманого
+за допомогою DFA є набагато стабільнішою. Тепер ми здатні диференціювати
+значну частку крахових подій, що мали місце на ринку золота.
+Узагальнений Херст показує, що передкризові явища характеризуються
+зростанням трендостійкості ринку або, іншими словами, підвищенням
+ступеня самоорганізації системи.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8873,8 +8872,8 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-Рисунок~\ref{fig-gold-wind-df} показує, що \(D_f\) характеризується
-спадом при кризових станах. Це є індикатором того, що вищий ступень
+Рис.~\ref{fig-gold-wind-df} показує, що \(D_f\) характеризується спадом
+при кризових станах. Це є індикатором того, що вищий ступень
 організованості ринку відзеркалюється в більш згладженій або менш
 шорстких флуктуаціях досліджуваного сигналу.
 
@@ -8902,10 +8901,10 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 \end{figure}
 
 На даному рисунку ми бачимо динаміку показника \(\beta\), що відноситься
-до спектральної густини потужності (\(P(f)=1/f^{\beta}\)), зростає в
-кризові періоди, що говорить про спад потужності сигналу, що припадає на
-одиничний інтервал частоти. Це також є свідченням зростання кореляційних
-властивостей системи.
+до спектральної густини потужності (Рівняння~\ref{eq-spec-dens}),
+зростає в кризові періоди, що говорить про спад потужності сигналу, що
+припадає на одиничний інтервал частоти. Це також є свідченням зростання
+кореляційних властивостей системи.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8930,9 +8929,9 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-На Рисунок~\ref{fig-gold-wind-gamma} видно, що показник \(\gamma\)
-спадає в кризові та передкризові періоди. Це є показником сповільнення
-спаду функції автокореляції, що в свою чергу також вказує на зростання
+На Рис.~\ref{fig-gold-wind-gamma} видно, що показник \(\gamma\) спадає в
+кризові та передкризові періоди. Це є показником сповільнення спаду
+функції автокореляції, що в свою чергу також вказує на зростання
 корельованності динаміки системи.
 
 \hypertarget{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux457-ux440ux43eux437ux43cux456ux440ux43dux43eux441ux442ux456-ux445ux456ux433ux443ux447ux456}{%
@@ -9355,7 +9354,7 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-Рисунок~\ref{fig-gold-wind-petro} показує, що показник Петросяна також
+Рис.~\ref{fig-gold-wind-petro} показує, що показник Петросяна також
 спадає під час кризових подій, що вказує на зростання періодизації ринку
 та синхронізації активності трейдерів у відповідні моменти часу.
 
@@ -9780,7 +9779,7 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-Рисунок~\ref{fig-gold-wind-nld} показує, що \(NLDFD\) спадає під час
+Рис.~\ref{fig-gold-wind-nld} показує, що \(NLDFD\) спадає під час
 кризових та передкризових подій, що вказує на зростання кореляцій у дані
 періоди.
 
@@ -10197,10 +10196,10 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-Рисунок~\ref{fig-gold-wind-cd} демонструє, що кореляційна розмірність
-для індексу золота також спадає у кризові та передкризові періоди,
-вказуючи на зростання корельованості теперішніх цін на золото з
-попередніми. Можна сказати і по іншому: у період криз трейдери починають
+Рис.~\ref{fig-gold-wind-cd} демонструє, що кореляційна розмірність для
+індексу золота також спадає у кризові та передкризові періоди, вказуючи
+на зростання корельованості теперішніх цін на золото з попередніми.
+Можна сказати і по іншому: у період криз трейдери починають
 самоорганізовуватись та колективно скупати або продавати відповідний
 актив; іншими словами, їх динаміка стає більш синхронною. Оскільки
 кореляційна розмірність вимірюється для траєкторій фазового простору,
@@ -10286,8 +10285,8 @@ DFA}\label{ux43eux431ux447ux438ux441ux43bux435ux43dux43dux44f-ux43dux430-ux43eux
 
 \end{figure}
 
-Рисунок~\ref{fig-dist-serp} більш детально демонструє результуючий
-розподіл точок по трикутнику Серпинського. Цифри в кожному з маленьких
+Рис.~\ref{fig-dist-serp} більш детально демонструє результуючий розподіл
+точок по трикутнику Серпинського. Цифри в кожному з маленьких
 трикутників показують його відносну заселеність точками множини.
 
 Однак, не дивлячись на нерівномірність розподілу точок фрактала, його
@@ -10420,9 +10419,9 @@ D_{q} = \frac{\tau(q)}{q-1},
 \textbf{нелінійною} функцією \(\tau(q)\), що визначає поведінку
 статистичної суми \(Z(q,\varepsilon)\) при \(\varepsilon\to 0\)
 
-\[\tag{1}
+\begin{equation}\protect\hypertarget{eq-1}{}{
 Z(q,\varepsilon)=\sum_{i=1}^{N(\varepsilon)}p_{i}^{q}(\varepsilon) \approx \varepsilon^{\tau(q)}.
-\]
+}\label{eq-1}\end{equation}
 
 Слід мати на увазі, що в реальній ситуації ми завжди маємо скінченне,
 хоча й дуже велике число дискретних точок \(N\), тому при комп'ютерному
@@ -10442,28 +10441,29 @@ n_{i}(\varepsilon)=\frac{N}{N(\varepsilon)},
 відносні населеності клітинок, \(p_{i}(\varepsilon)=1/N(\varepsilon)\),
 також однакові, і узагальнена статистична сума набуває вигляду
 
-\[\tag{2}
-Z(q,\varepsilon) = N^{1-q}(\varepsilon).
-\]
+\begin{equation}\protect\hypertarget{eq-2}{}{
+Z(q,\varepsilon) = N^{1-q}(\varepsilon). 
+}\label{eq-2}\end{equation}
 
 Врахуємо тепер, що, згідно визначеню фрактальної розмірності \(D\),
 кількість зайнятих клітинок при достатньо малому \(\varepsilon\)
 поводить себе наступним чином:
 
-\[\tag{3}
+\begin{equation}\protect\hypertarget{eq-3}{}{
 N(\varepsilon) \approx \varepsilon^{-D}.
-\]
+}\label{eq-3}\end{equation}
 
-Підставляючи (3) у формулу (2), і порівнюючи з (1), отримуємо
+Підставляючи (Рівняння~\ref{eq-3}) у формулу (Рівняння~\ref{eq-2}), і
+порівнюючи з (Рівняння~\ref{eq-1}), отримуємо
 
-\[\tag{4}
+\begin{equation}\protect\hypertarget{eq-4}{}{
 \varepsilon^{\tau(q)} = \varepsilon^{-D(1-q)} \to \tau(q)=(q-1)D. 
-\]
+}\label{eq-4}\end{equation}
 
-Ми приходимо до висновку, що у випадку звичайного фрактала функція (4) є
-лінійною. Тоді всі \(D_{q}\) дійсно не залежать від \(q\). Фрактал у
-якого всі узагальнені фрактальні розмірності \(D_{q}\) співпадають
-називається \textbf{монофракталом}.
+Ми приходимо до висновку, що у випадку звичайного фрактала функція
+(Рівняння~\ref{eq-4}) є лінійною. Тоді всі \(D_{q}\) дійсно не залежать
+від \(q\). Фрактал у якого всі узагальнені фрактальні розмірності
+\(D_{q}\) співпадають називається \textbf{монофракталом}.
 
 Якщо розподіл точок по клітинкам неоднаковий, тоді фрактал називається
 неоднорідним, тобто представляє із себе мультифрактал, і для його
@@ -10472,13 +10472,13 @@ N(\varepsilon) \approx \varepsilon^{-D}.
 нескінченна.
 
 Так, наприклад, при \(q \to +\infty\) основний внесок в узагальнену
-статистичну суму (1) вносять комірки, що містять найбільшу кількість
-частинок \(n_{i}\) у них і, відповідно, що характеризуються найбільшою
-ймовірністю їх заповнення \(p_{i}\). Навпаки, при \(q \to -\infty\)
-основний внесок в узагальнену статистичну суму вносять найбільш
-розрідженні комірки з найменшою ймовірністю їх заповнення \(p_{i}\).
-Таким чином, функція \(D_{q}\) показує, наскільки неоднорідним
-представляється досліджувана множина точок \(\Omega\).
+статистичну суму (Рівняння~\ref{eq-1}) вносять комірки, що містять
+найбільшу кількість частинок \(n_{i}\) у них і, відповідно, що
+характеризуються найбільшою ймовірністю їх заповнення \(p_{i}\).
+Навпаки, при \(q \to -\infty\) основний внесок в узагальнену статистичну
+суму вносять найбільш розрідженні комірки з найменшою ймовірністю їх
+заповнення \(p_{i}\). Таким чином, функція \(D_{q}\) показує, наскільки
+неоднорідним представляється досліджувана множина точок \(\Omega\).
 
 У подальшому для характеристики розподілу точок необхідно знати не
 тільки функцію \(\tau(q)\), але і її похідну:
@@ -10528,7 +10528,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 де \(\alpha_{i}\) являє собою деякий показник ступеня (різний для різнок
 клітинок \(i\)).
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}]
 
 Спрямовуючи значення \(\varepsilon\) до нуля, можна сказати, що
 фрактальність можна розглядати локально для кожної точки (елемента)
@@ -10563,7 +10563,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 збільшується. Розмір ящика \(\varepsilon\) збільшується, що
 підкреслюється жирною лінією. Проте, через те, що далі ми не
 спостерігаємо зростання щільності, показник \(\alpha\) залишається
-нульовим. На рисунку (b) Усі комірки мають однакову щільність.
+нульовим. На рисунку (b) усі комірки мають однакову щільність.
 Імовірнісні міри комірок дорівнюють \(\rho\), \(9\rho\) і \(25\rho\) для
 найменшої, другої найменшої та найбільшої комірки (підкреслено жирною
 лінією). Таким чином, сила сингулярності \(i\)-го осередку дорівнює 2.
@@ -10573,7 +10573,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 (підкреслено жирною лінією). Таким чином, сила сингулярності \(i\)-ої
 комірки дорівнює 3.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}]
 
 Можна сказати, що чим більш гладкою видається поверхня системи, чим
 менше елементів задіяно в її розвитку, тим менший показник
@@ -10590,7 +10590,8 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 p_{i} = \frac{1}{N(\varepsilon)} \approx \varepsilon^{D}.
 \]
 
-У даному випадку статистична сума (1) приймає наступний вигляд:
+У даному випадку статистична сума (Рівняння~\ref{eq-1}) приймає
+наступний вигляд:
 
 \[
 Z(q,\varepsilon) = \sum_{i=1}^{N(\varepsilon)}p_{i}^{q}(\varepsilon) = N(\varepsilon)\varepsilon^{Dq}=\varepsilon^{-D}\varepsilon^{Dq} \approx \varepsilon^{D(q-1)}. 
@@ -10628,9 +10629,9 @@ p_{min} \approx \varepsilon^{\alpha_{max}}, \; \text{a} \; p_{max} \approx \vare
 величиною \(D\), а різними (в залежності від \(\alpha\)) значеннями
 показниками ступеня \(f(\alpha)\),
 
-\[\tag{5}
+\begin{equation}\protect\hypertarget{eq-5}{}{
 n(\alpha) \approx \varepsilon^{-f(\alpha)}.
-\]
+}\label{eq-5}\end{equation}
 
 Таким чином, фізичний сенс функції \(f(\alpha)\) полягає в тому, що вона
 представляє собою розмірність хаусдорфа деякої однорідної підмножини
@@ -10679,12 +10680,12 @@ f(\alpha) \leq \alpha.
 \(\tau(q)\). Обчислимо для цього статистичну суму \(Z(q,\varepsilon)\).
 Підставляє у статистичну суму ймовірності
 \(p_i \approx \varepsilon^{\alpha_i}\), та переходячи від підсумовування
-по \(i\) до інтегрування по \(\alpha\) з плотністю ймовірностей (5), ми
-отримаємо
+по \(i\) до інтегрування по \(\alpha\) з плотністю ймовірностей
+(Рівняння~\ref{eq-5}), ми отримаємо
 
-\[\tag{6}
+\begin{equation}\protect\hypertarget{eq-6}{}{
 Z(q,\varepsilon) = \sum_{i=1}^{N(\varepsilon)} p_{i}^{q}(\varepsilon) \approx \int d\alpha n(\alpha)\varepsilon^{q\alpha} \approx \int d\alpha\varepsilon^{q\alpha-f(\alpha)}. 
-\]
+}\label{eq-6}\end{equation}
 
 Так як величина \(\varepsilon\) дуже мала, основний внесок у цей
 інтеграл вноситимуть ті значення \(\alpha(q)\), при яких показник
@@ -10706,7 +10707,7 @@ Z(q,\varepsilon) = \sum_{i=1}^{N(\varepsilon)} p_{i}^{q}(\varepsilon) \approx \i
 У результаті отримуємо, що залежність \(\alpha(q)\) неявним чином
 визначається з рівняння
 
-\[\tag{7}
+\[
 q = \frac{df(\alpha)}{d\alpha}
 \]
 
@@ -10718,32 +10719,33 @@ f^{''}(\alpha)>0.
 
 Це значить, що величина \(f(\alpha(q))\) дійсно визначає фрактальну
 розмірність підмножини \(\Omega_{\alpha(q)}\), що має найбільший
-домінуючий внесок у статистичну суму (6) при заданій величині показника
-ступеня \(q\).
+домінуючий внесок у статистичну суму (Рівняння~\ref{eq-6}) при заданій
+величині показника ступеня \(q\).
 
 Оскільки \(Z(q,\varepsilon)=\tau(q)\), приходимо до висновку, що
 
-\[
+\begin{equation}\protect\hypertarget{eq-7}{}{
 \tau(q) = q\alpha(q) - f(\alpha(q)). 
-\]
+}\label{eq-7}\end{equation}
 
 Пам'ятаючи, що \(\tau(q)=D(q-1)\), можемо віднайти функцію \(D_{q}\):
 
-\[\tag{8}
+\begin{equation}\protect\hypertarget{eq-8}{}{
 D_{q} = \frac{1}{q-1}[ q\alpha(q)-f(\alpha(q)) ]. 
-\]
+}\label{eq-8}\end{equation}
 
 Таким чином, якщо ми знаємо функцію мультифрактального спектра
-\(f(\alpha)\), то з домомогою співвідношень (7) та (8) ми можемо знайти
-функцію \(D_{q}\). Навпаки, знаючи \(D_{q}\), ми можемо знайти
-залежність \(\alpha(q)\) з допомогою рівняння
+\(f(\alpha)\), то за домомогою співвідношень (Рівняння~\ref{eq-8}) та
+(Рівняння~\ref{eq-9}) ми можемо знайти функцію \(D_{q}\). Навпаки,
+знаючи \(D_{q}\), ми можемо знайти залежність \(\alpha(q)\) з допомогою
+рівняння
 
-\[\tag{9}
+\begin{equation}\protect\hypertarget{eq-9}{}{
 \alpha(q) = \frac{d}{dq}[(q-1)D_{q}]
-\]
+}\label{eq-9}\end{equation}
 
-і після цього знайти із (8) залежність \(f(\alpha(q))\). Ці два рівняння
-і визначають функцію \(f(\alpha)\).
+і після цього знайти із (Рівняння~\ref{eq-9}) залежність
+\(f(\alpha(q))\). Ці два рівняння і визначають функцію \(f(\alpha)\).
 
 \[
 \frac{d\tau}{dq}\frac{dq}{d\alpha} = q + \alpha\frac{dq}{d\alpha} - \frac{df}{d\alpha}.
@@ -10756,21 +10758,21 @@ D_{q} = \frac{1}{q-1}[ q\alpha(q)-f(\alpha(q)) ].
 \alpha = \frac{d\tau(q)}{dq}, 
 \]
 
-що еквівалентне виразу (9).
+що еквівалентне виразу (Рівняння~\ref{eq-9}).
 
 Вирази для \(\tau(q)\) та \(\alpha(q)\) задають \textbf{перетворення
 Лежандра} від змінних \(\{ q, \tau(q) \}\) до змінних
 \(\{\alpha, f(\alpha)\}\):
 
-\[\tag{10}
+\begin{equation}\protect\hypertarget{eq-10}{}{
 \alpha = \frac{d\tau}{dq}
-\]
+}\label{eq-10}\end{equation}
 
 та
 
-\[\tag{11}
+\begin{equation}\protect\hypertarget{eq-11}{}{
 f(\alpha) = q\frac{d\tau}{dq} - \tau.
-\]
+}\label{eq-11}\end{equation}
 
 Як відомо, для однорідного фрактала \(D_{q}=D=\text{const}\). Тому
 \(\alpha=d\tau/dq=D\) і \(f(\alpha)=q\alpha-\tau(q)=qD-D(q-1)=D\). У
@@ -10835,8 +10837,10 @@ MFDFA отримують шляхом розширення на \(q\)-й пор�
 \(q\)-го порядку чисельно визначається як показник Херста \(q\)-го
 порядку. - У розділі \emph{``Мультифрактальний спектр часових рядів''}
 на основі показника Херста \(q\)-го порядку обчислено декілька
-мультифрактальних спектрів. - Розділ \emph{``Аналогії мультифракталів із
-термодинамікою''} показує, що отримані кількісні мультифрактальні
+мультифрактальних спектрів. - Розділ \emph{``Узагальнені фрактальні
+розмірності''} представляє більш детальний опис показників \(D_{q}\), що
+будуть описані в подальшому. - Розділ \emph{``Аналогії мультифракталів
+із термодинамікою''} показує, що отримані кількісні мультифрактальні
 показники мають зв'язок із термодинамічними показниками, що дозволило
 нам вивести мультифрактальну ``теплоємність''.
 
@@ -11266,7 +11270,7 @@ Name: DCOILWTICO, dtype: float64
 
 \end{figure}
 
-Рисунок~\ref{fig-step-2} ілюструє, що середня амплітуда варіації (тобто
+Рис.~\ref{fig-step-2} ілюструє, що середня амплітуда варіації (тобто
 середньоквадратичне відхилення) є однаковою для всіх трьох часових рядів
 --- білого шуму, монофрактального та мультифрактального, навіть якщо
 вони мають досить різну структуру. MFDFA може розрізняти ці структури,
@@ -11717,14 +11721,14 @@ DFA визначає монофрактальну структуру часов�
 монофрактальну структуру часового ряду, показуючи, наскільки швидко
 зростає загальне середньоквадратичне відхилення, \(F\), локальних
 коливань, \texttt{RMS}, зі збільшенням розміру локальних сегментів ряду
-(тобто, масштабу). Рисунок~\ref{fig-step-6} показує, що загальне
+(тобто, масштабу). Рис.~\ref{fig-step-6} показує, що загальне
 середньоквадратичне значення локальних флуктуацій, \(F\), зростає швидше
 зі збільшенням розміру вибірки сегментів для монофрактального рожевого
 шуму порівняно з індексом нафти та білим шумом. Більший показник Херста,
 \(H\), візуально свідчить про повільнішу еволюцію варіацій (тобто більш
 стійку структуру) в рожевому шумі порівняно з нафтою та білим шумом.
-Рисунок~\ref{fig-hurst} ілюструє, що показник Херста визначає континуум
-між часовими рядами, подібними до шуму, і часовими рядами, подібними до
+Рис.~\ref{fig-hurst} ілюструє, що показник Херста визначає континуум між
+часовими рядами, подібними до шуму, і часовими рядами, подібними до
 випадкового блукання. Показник Херста знаходиться в інтервалі від 0 до 1
 для часових рядів, подібних до шуму, тоді як для часових рядів, подібних
 до випадкових блукань, він перевищує 1. Часовий ряд має довгострокову
@@ -12051,7 +12055,11 @@ DFA визначає монофрактальну структуру часов�
 \NormalTok{scmax }\OperatorTok{=} \DecValTok{1024}
 \NormalTok{scres }\OperatorTok{=} \DecValTok{19}
 
-\NormalTok{nq }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{{-}}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\NormalTok{q\_min }\OperatorTok{=} \OperatorTok{{-}}\FloatTok{5.0}
+\NormalTok{q\_max }\OperatorTok{=} \FloatTok{5.0}
+\NormalTok{q\_step }\OperatorTok{=} \FloatTok{0.1}
+
+\NormalTok{nq }\OperatorTok{=}\NormalTok{ np.arange(q\_min, q\_max}\OperatorTok{+}\NormalTok{q\_step, q\_step)}
 
 \NormalTok{exponents }\OperatorTok{=}\NormalTok{ np.linspace(np.log(scmin), np.log(scmax), scres)}
 \NormalTok{scales\_exp }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{round}\NormalTok{(np.exp(}\DecValTok{1}\NormalTok{)}\OperatorTok{**}\NormalTok{exponents).astype(}\BuiltInTok{int}\NormalTok{)}
@@ -12206,7 +12214,7 @@ DFA визначає монофрактальну структуру часов�
 
 Таким чином, сила мультифрактальності описується великим відхиленням
 експоненти локальної сингулярності \(\alpha\) від центральної тенденції
-\(\alpha(q=0)\). Монофрактальний сигнал --- це випадок, коли \(\alpha\)
+\(\alpha(0)\). Монофрактальний сигнал --- це випадок, коли \(\alpha\)
 залишається майже константної, і в деяких випадках мультифрактальний
 спектр зводиться в одну точку за даною \(\alpha\).
 
@@ -12247,7 +12255,10 @@ DFA визначає монофрактальну структуру часов�
 \NormalTok{scmax }\OperatorTok{=} \DecValTok{1024}
 \NormalTok{scres }\OperatorTok{=} \DecValTok{19}
 
-\NormalTok{nq\_levy }\OperatorTok{=}\NormalTok{ np.arange(}\OperatorTok{{-}}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\NormalTok{q\_min }\OperatorTok{=} \OperatorTok{{-}}\FloatTok{5.0}
+\NormalTok{q\_max }\OperatorTok{=} \FloatTok{5.0}
+\NormalTok{q\_step }\OperatorTok{=} \FloatTok{0.1}
+\NormalTok{nq\_levy }\OperatorTok{=}\NormalTok{ np.arange(q\_min, q\_max}\OperatorTok{+}\NormalTok{q\_step, q\_step)}
 
 \NormalTok{exponents }\OperatorTok{=}\NormalTok{ np.linspace(np.log(scmin), np.log(scmax), scres)}
 \NormalTok{scales\_exp }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{round}\NormalTok{(np.exp(}\DecValTok{1}\NormalTok{)}\OperatorTok{**}\NormalTok{exponents).astype(}\BuiltInTok{int}\NormalTok{)}
@@ -12320,6 +12331,308 @@ DFA визначає монофрактальну структуру часов�
 (великих) флуктуацій. При \(\alpha=2.0\) спектр усе сильніше звужується
 до сингулярної точки.
 
+\hypertarget{ux443ux437ux430ux433ux430ux43bux44cux43dux435ux43dux456-ux444ux440ux430ux43aux442ux430ux43bux44cux43dux456-ux440ux43eux437ux43cux456ux440ux43dux43eux441ux442ux456}{%
+\subsubsection{Узагальнені фрактальні
+розмірності}\label{ux443ux437ux430ux433ux430ux43bux44cux43dux435ux43dux456-ux444ux440ux430ux43aux442ux430ux43bux44cux43dux456-ux440ux43eux437ux43cux456ux440ux43dux43eux441ux442ux456}}
+
+Наряду з мультифрактальним спектром корисно буде розглянути спектр
+узагальнених фрактальних розмірностей або по іншому, \emph{розмірностей
+Реньї}, оскільки вони також мають інформаційно-теоретичне значення.
+З'ясуємо фізичний сенс узагальнених фрактальних розмірностей для деяких
+значень \(q\). При \(q=0\) слідує, що
+
+\[
+Z(0, \varepsilon) = N(\varepsilon). 
+\]
+
+З іншого боку, можна визначити, що
+
+\[
+Z(0, \varepsilon) \approx \varepsilon^{\tau(0)} = \varepsilon^{-D_{0}}. 
+\]
+
+Співставляючи зазначені рівності, можемо прийти до співвідношення
+\(N(\varepsilon) \approx \varepsilon^{-D_{0}}\). Таким чином можна
+сказати, що величина \(D_{0}\) представляє собою звичайну хаусдорфову
+розмірність множини \(\Omega\). Також вона відповідає максимуму
+мультифрактального спектра, \(f(\alpha)\), що завжди дорівнює одиниці
+для одновимірного сигналу. Отже для задач передчасного розпізнавання
+кризових явищ ця характеристика є найгрубішою і не несе інформації про
+статистичні властивості системи.
+
+Тепер з'ясуємо сенс величини \(D_{1}\). Оскільки при \(q=1\) статистична
+сума рівна
+
+\[
+Z(1, \varepsilon) = 1, 
+\]
+
+то \(\tau(1)=0\). Таким чином, ми маємо невизначеність коли
+\(D_{1}=\tau(1)/(1-1)\). Розкриємо цю невизначеність за допомогою
+наступної рівності:
+
+\[
+Z(q, \varepsilon) = \sum_{i=1}^{N(\varepsilon)} p_{i}^{q} = \sum_{i=1}^{N(\varepsilon)} p_{i}\exp{[(q-1)\ln{p_{i}}]}. 
+\]
+
+Тепер, спрямовуючи \(q \to 1\), розкладаючи експоненту і враховуючи
+умову нормування ймовірностей \(p_{i}\), отримуємо
+
+\[
+Z(q \to 1, \varepsilon) \approx \sum_{i=1}^{N(\varepsilon)} [p_{i} + (q-1)p_{i}\ln{p_{i}}] = 1 + (q-1)\sum_{i=1}^{N(\varepsilon)} p_{i}\ln{p_{i}}. 
+\]
+
+У результаті ми приходимо до наступного виразу:
+
+\[
+D_{1} = \lim_{\varepsilon \to 0}\frac{\sum_{i=1}^{N(\varepsilon)}p_{i}\ln{p_{i}}}{\ln{\varepsilon}}. 
+\]
+
+З точністю до знака, чисельник у цій формулі представляє собою
+\textbf{інформаційну ентропію} фрактальної множини \(S(\varepsilon)\):
+
+\[
+S(\varepsilon) = -\sum_{i=1}^{N(\varepsilon)}p_i\ln{p_i}. 
+\]
+
+Таким чином, результуюча величина узагальненої фрактальної розмірності
+\(D_{1}\) пов'язана з ентропією \(S(\varepsilon)\) наступним
+співвідношенням:
+
+\[
+D_{1} = - \lim_{\varepsilon \to 0}\frac{S(\varepsilon)}{\ln{\varepsilon}}
+\]
+
+Повертаючись до задачі о розподілі точок на фрактальній множині
+\(\Omega\), можно сказати, що оскільки
+
+\[
+S(\varepsilon) \approx \varepsilon^{-D_1}, 
+\]
+
+величина \(D_{1}\) характеризує інформацію, необхідну для опису
+положення точки в деякій комірці.
+
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по інформаційній розмірності}]
+
+Інформаційна розмірність може бути використана для опису просторової
+неоднорідності системи. Що однорідніший атрактор, то вищим має бути цей
+показник. Тобто, чим більшу кількість конфігурацій здатні займати
+елементи даної системи, тим більша кількість інформації нам потрібна для
+обліку кожного елемента. За просторової однорідності інформаційна
+ентропія так само зростає, що пов'язує інформаційну розмірність із
+поняттям ентропії. Оскільки \(D_{1}\) це тангенс кута нахилу лінії
+регресії, що будується для залежності між ентропією та радіусом кіл, у
+яких вимірюється частота влучання окремих елементів атрактора, можна
+сказати, що інформаційна розмірність відображає швидкість (крутизну)
+зміни інформаційної ентропії. Чим вища \(D_{1}\), тим стрімкіше зростає
+ентропія --- міра нашого нинішнього незнання про систему. Чим нижча
+\(D_{1}\), тим менша сама ентропія. Інакше кажучи, тим більша просторова
+асиметрія, упорядкованіша складність, вищі наші знання про поточний стан
+системи, і тим менше інформації нам потрібно для опису тих конфігурацій,
+які система може займати.
+
+\end{tcolorbox}
+
+Для узагальненої фрактальної розмірності при \(q=2\) справедливий
+наступний вираз:
+
+\[
+D_{2} = \lim_{\varepsilon \to 0}\frac{\ln{\sum_{i=1}^{N(\varepsilon)}p_{i}^{2}}}{\ln{\varepsilon}}. 
+\]
+
+Величина \(p_{i}\), згідно своєму визначеню, представляє собою
+ймовірність попадання точки в комірку розміром \(\varepsilon\). Таким
+чином величина \(p_{i}^{2}\) представляє собою ймовірність попадання в
+цю комірку двох точок. Знаходячи суму \(p_{i}^{2}\) по всім зайнятим
+коміркам, ми отримуємо ймовірність того, що дві навмання обрані точки з
+множини \(\Omega\) знаходяться всередині однієї комірки з розміром
+\(\varepsilon\). Отже, відстань між цима двома точками буде менше або
+порядку \(\varepsilon\). Ймовірність знаходження двох траєкторій у межах
+околиці з радіусом \(\varepsilon\) можна знайти за допомогою
+кореляційного інтеграла, що був представлений у попередній роботі.
+
+У такому разі ми приходимо до висновку, що узагальнена розмірність
+визначає залежність кореляційного інтеграла \(C(\varepsilon)\) від
+\(\varepsilon\). З цієї причини величину \(D_{2}\) в літературі іменують
+\textbf{кореляційною розмірністю}.
+
+Проаналізуємо тепер поведінку \(f(\alpha)\). Значення функції в
+максимумі легко визначити, якщо скористатися виразом
+(Рівняння~\ref{eq-7}), де
+
+\[
+\tau(q) = q\alpha(q) - f(\alpha(q))
+\]
+
+або
+
+\[
+(q-1)D_{q} = q\alpha(q) - f(\alpha(q)). 
+\]
+
+При \(q=0\) ми отримаємо, що \(f(\alpha_0)=D_{0}\), тобто максимальне
+значення спектра дорівнює хаусдорфовій розмірності.
+
+\begin{figure}
+
+{\centering 
+
+\includegraphics{Images/lab_7/D-0.jpg}
+
+}
+
+\caption{\label{fig-D0}Максимум функції \(f(\alpha)\) дорівнює
+фрактальній розмірності \(D_{0}\)}
+
+\end{figure}
+
+Розглянемо випадок, коли \(q=1\). Оскільки \(\tau(1) = 0\), тоді з
+рівняння вище слідує, що \$\alpha(1) = f(\alpha(1)). З іншого боку ми
+знаємо, що оскільки
+
+\[
+q = \frac{df(\alpha)}{d\alpha}, 
+\]
+
+похідна \(f(\alpha)\) в цій точці дорівнює 1. Диференцюючи
+співвідношення \(\tau(q) = (q-1)D_{q}\) по \(q\),
+
+\[
+\frac{d\tau}{dq} = D_{q} + (q-1)D_{q}^{'} = \alpha(q), 
+\]
+
+і припускаючи, що \(q=1\), ми отримуємо, що \(\alpha(1)=D_{1}\). Таким
+чином, ми маємо
+
+\[
+D_{1} = \alpha(1) = f(\alpha(1)).  
+\]
+
+Отже, інформаційна розмірність \(D_{1}\) лежить на кривій \(f(\alpha)\)
+в точці, де \(\alpha=f(\alpha)\) і \(f^{'}(\alpha)=1\).
+
+\begin{figure}
+
+{\centering 
+
+\includegraphics{Images/lab_7/D-1.jpg}
+
+}
+
+\caption{\label{fig-D1}Положення інформаційної розмірності
+\(D_{1}: D_{1}=\alpha=f(\alpha)\)}
+
+\end{figure}
+
+Тепер розглянемо випадок, коли \(q=2\). Користуючись попередньою
+формулою, отримаємо, що
+
+\[
+D_{2} = 2\alpha(2) - f(\alpha(2))
+\]
+
+або \(f(\alpha(2)) = 2\alpha(2)-D_{2}\).
+
+\begin{figure}
+
+{\centering 
+
+\includegraphics{Images/lab_7/D-2.jpg}
+
+}
+
+\caption{\label{fig-D2}Геометричне визначення кореляційної розмірності
+\(D_{2}\)}
+
+\end{figure}
+
+Далі розглянемо залежність узагальненої фрактальної розмірності
+\(D_{q}\) від різних значень \(q\) для мультифрактального ряду,
+монофрактального та білого шуму.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{difference\_zero }\OperatorTok{=}\NormalTok{ np.absolute(nq}\OperatorTok{{-}}\DecValTok{0}\NormalTok{)}
+\NormalTok{idx\_zero }\OperatorTok{=}\NormalTok{ difference\_zero.argmin()}
+
+\NormalTok{difference\_one }\OperatorTok{=}\NormalTok{ np.absolute(nq}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{idx\_one }\OperatorTok{=}\NormalTok{ difference\_one.argmin()}
+
+\NormalTok{difference\_two }\OperatorTok{=}\NormalTok{ np.absolute(nq}\OperatorTok{{-}}\DecValTok{2}\NormalTok{)}
+\NormalTok{idx\_two }\OperatorTok{=}\NormalTok{ difference\_two.argmin()}
+
+\CommentTok{\# ініціалізуємо масиви під розмірності}
+\NormalTok{Dq\_multifrac }\OperatorTok{=}\NormalTok{ np.zeros(}\BuiltInTok{len}\NormalTok{(nq))}
+\NormalTok{Dq\_monofrac }\OperatorTok{=}\NormalTok{ np.zeros(}\BuiltInTok{len}\NormalTok{(nq))}
+\NormalTok{Dq\_white\_noise }\OperatorTok{=}\NormalTok{ np.zeros(}\BuiltInTok{len}\NormalTok{(nq))}
+
+\CommentTok{\# Визначаємо узагальнені фрактальні розмірності там де q!=1 }
+\NormalTok{Dq\_multifrac[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{=}\NormalTok{ tau\_multifrac[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{/}\NormalTok{ (nq[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{Dq\_monofrac[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{=}\NormalTok{ tau\_monofrac[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{/}\NormalTok{ (nq[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+\NormalTok{Dq\_white\_noise[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{=}\NormalTok{ tau\_white\_noise[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{/}\NormalTok{ (nq[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Визначаємо окремо узагальнені фрактальні розмірності при q=1}
+\NormalTok{Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]] }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{tau\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]] }
+\NormalTok{Dq\_monofrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]] }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{tau\_monofrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]]}
+\NormalTok{Dq\_white\_noise[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]] }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{tau\_white\_noise[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{10}\NormalTok{, }\DecValTok{8}\NormalTok{))}
+
+\NormalTok{ax.plot(nq, Dq\_multifrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Мультифрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}darkblue\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.plot(nq, Dq\_monofrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Монофрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}magenta\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.plot(nq, Dq\_white\_noise, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Білий шум"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax.set\_xlabel(}\VerbatimStringTok{r"$q$"}\NormalTok{)}
+\NormalTok{ax.set\_ylabel(}\VerbatimStringTok{r"$D\_}\SpecialCharTok{\{q\}}\VerbatimStringTok{$"}\NormalTok{)}
+\NormalTok{ax.legend(loc}\OperatorTok{=}\StringTok{"upper right"}\NormalTok{)}
+
+\NormalTok{ax.annotate(}\VerbatimStringTok{fr\textquotesingle{}$D\_}\SpecialCharTok{\{}\DecValTok{0}\SpecialCharTok{\}}\VerbatimStringTok{$=}\SpecialCharTok{\{}\NormalTok{Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_zero]][}\DecValTok{0}\NormalTok{]}\SpecialCharTok{:.2f\}}\VerbatimStringTok{\textquotesingle{}}\NormalTok{, }
+\NormalTok{            xy}\OperatorTok{=}\NormalTok{(nq[idx\_zero], Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_zero]]), }
+\NormalTok{            xytext}\OperatorTok{=}\NormalTok{(nq[idx\_zero]}\OperatorTok{{-}}\DecValTok{2}\NormalTok{, Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_zero]]}\OperatorTok{+}\DecValTok{2}\NormalTok{),}
+\NormalTok{            arrowprops}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, shrink}\OperatorTok{=}\FloatTok{0.05}\NormalTok{))}
+
+\NormalTok{ax.annotate(}\VerbatimStringTok{fr\textquotesingle{}$D\_}\SpecialCharTok{\{}\DecValTok{1}\SpecialCharTok{\}}\VerbatimStringTok{$=}\SpecialCharTok{\{}\NormalTok{Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]][}\DecValTok{0}\NormalTok{]}\SpecialCharTok{:.3f\}}\VerbatimStringTok{\textquotesingle{}}\NormalTok{, }
+\NormalTok{            xy}\OperatorTok{=}\NormalTok{(nq[idx\_one], Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]]), }
+\NormalTok{            xytext}\OperatorTok{=}\NormalTok{(nq[idx\_one]}\OperatorTok{{-}}\DecValTok{3}\NormalTok{, Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]]}\OperatorTok{{-}}\FloatTok{1.5}\NormalTok{),}
+\NormalTok{            arrowprops}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, shrink}\OperatorTok{=}\FloatTok{0.05}\NormalTok{))}
+
+\NormalTok{ax.annotate(}\VerbatimStringTok{fr\textquotesingle{}$D\_}\SpecialCharTok{\{}\DecValTok{2}\SpecialCharTok{\}}\VerbatimStringTok{$=}\SpecialCharTok{\{}\NormalTok{Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_two]][}\DecValTok{0}\NormalTok{]}\SpecialCharTok{:.2f\}}\VerbatimStringTok{\textquotesingle{}}\NormalTok{, }
+\NormalTok{            xy}\OperatorTok{=}\NormalTok{(nq[idx\_two], Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_two]]), }
+\NormalTok{            xytext}\OperatorTok{=}\NormalTok{(nq[idx\_two], Dq\_multifrac[nq}\OperatorTok{==}\NormalTok{nq[idx\_two]]}\OperatorTok{{-}}\FloatTok{1.5}\NormalTok{),}
+\NormalTok{            arrowprops}\OperatorTok{=}\BuiltInTok{dict}\NormalTok{(facecolor}\OperatorTok{=}\StringTok{\textquotesingle{}black\textquotesingle{}}\NormalTok{, shrink}\OperatorTok{=}\FloatTok{0.05}\NormalTok{))}
+
+\NormalTok{plt.show()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-gen-frac-output-1.png}
+
+}
+
+\caption{\label{fig-gen-frac}Залежність узагальнених фрактальних
+розмірностей \(D(q)\) від \(q\)}
+
+\end{figure}
+
+З представленого рисунку видно, що, по-переше, для всіх сигналів
+\(D_{0}=1\), що відповідає теоретичним міркуванням. Інформаційна
+розмірність \(D_{1}\) для мультифрактала та білого шуму однакова, що
+може говорити і про інформаційну зачущість обох сигналів. Для
+монофрактала вона близька до нуля. Кореляційна розмірність \(D_{2}\)
+показує, що загалом як WTI, так і білий шум доволі схожі: їх значення в
+більшості своїй постають незалежними один від одного. Це розбігається з
+тими висновками, що були зробені в попередній роботі, те наближення
+\(D_{2}\) до нуля вказувало на зростання ступеня корельованості системи.
+Для монофракталу \(D_{2}\) знаходиться на рівні 1, що вказує на вищий
+ступінь кореляцій у цьому сигналі, порівнюючи з мульти- та
+монофракталами.
+
 \hypertarget{ux430ux43dux430ux43bux43eux433ux456ux457-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux456ux432-ux456ux437-ux442ux435ux440ux43cux43eux434ux438ux43dux430ux43cux456ux43aux43eux44e}{%
 \subsubsection{Аналогії мультифракталів із
 термодинамікою}\label{ux430ux43dux430ux43bux43eux433ux456ux457-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux456ux432-ux456ux437-ux442ux435ux440ux43cux43eux434ux438ux43dux430ux43cux456ux43aux43eux44e}}
@@ -12377,14 +12690,19 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{12}\NormalTok{, }\DecValTok{8}\NormalTok{))}
 
-\NormalTok{ax.plot(nq, C\_q\_multifrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Мультифрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}darkblue\textquotesingle{}}\NormalTok{)}
-\NormalTok{ax.plot(nq, C\_q\_monofrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Монофрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}magenta\textquotesingle{}}\NormalTok{)}
-\NormalTok{ax.plot(nq, C\_q\_white\_noise, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Білий шум"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
-\NormalTok{ax.set\_xlabel(}\VerbatimStringTok{r"$q$"}\NormalTok{)}
-\NormalTok{ax.set\_ylabel(}\VerbatimStringTok{r"$C(q)$"}\NormalTok{)}
-\NormalTok{ax.legend()}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].plot(nq, C\_q\_multifrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Мультифрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}darkblue\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].plot(nq, C\_q\_monofrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Монофрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}magenta\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].plot(nq, C\_q\_white\_noise, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Білий шум"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].set\_xlabel(}\VerbatimStringTok{r"$q$"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].set\_ylabel(}\VerbatimStringTok{r"$C(q)$"}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{0}\NormalTok{].legend()}
+
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].plot(alpha\_multifrac, C\_q\_multifrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Мультифрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}darkblue\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].plot(alpha\_monofrac, C\_q\_monofrac, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Монофрактал"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}magenta\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].plot(alpha\_white\_noise, C\_q\_white\_noise, linestyle}\OperatorTok{=}\StringTok{\textquotesingle{}{-}\textquotesingle{}}\NormalTok{, marker}\OperatorTok{=}\StringTok{\textquotesingle{}o\textquotesingle{}}\NormalTok{, label}\OperatorTok{=}\StringTok{"Білий шум"}\NormalTok{, color}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\NormalTok{ax[}\DecValTok{1}\NormalTok{].set\_xlabel(}\VerbatimStringTok{r"$\textbackslash{}alpha$"}\NormalTok{)}
 
 \NormalTok{fig.tight\_layout(pad}\OperatorTok{=}\FloatTok{0.3}\NormalTok{) }
 
@@ -12399,11 +12717,11 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 }
 
 \caption{\label{fig-step10}Залежність мультифрактальної теплоємності
-\(C(q)\) від \(q\)}
+\(C(q)\) від \(q\) та \(\alpha\)}
 
 \end{figure}
 
-Рисунок~\ref{fig-step10} демонструє, що \(C(q)\) досягає максимуму в
+Рис.~\ref{fig-step10} демонструє, що \(C(q)\) досягає максимуму в
 діапазоні \(q\) від 2 до 3, що свідчить про те, що індекс WTI стає вкрай
 нерегулярним через велику флуктуацію катастрофи ``COVID-19'', яка слугує
 квазіфазовим переходом досліджуваного індексу. Можна стверджувати, що
@@ -13853,7 +14171,7 @@ Finance}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux443ux454ux43cux43e-ux43
 \textbf{Мета.} Навчитися використовувати розподіл Леві для диференціації
 флуктуацій, що виходять за межі нормального розподілу.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-note-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Анотація}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-note-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-note-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Анотація}]
 
 У цій лабораторній ми досліджуємо розподіл прибутковості фінансових
 активів і стабільність певних показників, які ми розраховуємо,
@@ -14635,7 +14953,7 @@ et al.~(2008)}). Щоб обійти ці проблеми з розбиттям
 отримали жодних даних. Ще про одну перевагу оцінки \(\alpha\) ми
 розглянемо далі.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{ПРИМІТКА}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{ПРИМІТКА}]
 
 Не існує такого поняття, як ``подія з 10 сигмами''! Справжня подія з 10
 сигмами настільки неймовірно рідкісна, що пережити її протягом нашого
@@ -14938,7 +15256,7 @@ S\&P 500 має ексцес \(28.6\), що знову вказує на те, �
 значення зустрічаються повсюдно, що призводить до збільшення ексцесу при
 моделюванні.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
 
 Навіть якщо певні властивості розподілу ймовірностей нескінченні, ми
 завжди знайдемо кінцеві вибіркові оцінки при перегляді даного набору
@@ -15116,7 +15434,7 @@ t-розподіл Стьюдента з \(\alpha=6.0\) (\(\nu=5.0\)); відн.
 оцінки волатильності зросла в 12 разів (!) порівняно з тим, що ми
 очікували б, припускаючи, що прибутковості розподілені за Гаусом.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
 
 Чим важчі хвости розподілу прибутковостей, тим більше точок даних
 необхідно для досягнення необхідної достовірності оцінок певних
@@ -15210,8 +15528,8 @@ S(\vec{w}) = \frac{\vec{w}.\vec{\mu}}{\sqrt{\vec{w}\Sigma\vec{w}^T}}.
 жорсткої критики за відсутність врахування ``важких хвостів'',
 наприклад, з боку Нассіма Талеба:
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Нассім Талеб у \emph{Чорний лебідь: Про (не)ймовірне в реальному житті}
-(ст. 277)}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Нассім Талеб у \emph{Чорний лебідь: Про (не)ймовірне в реальному житті}
+(ст. 277)}]
 
 Після краху фондового ринку (у 1987 році) вони нагородили двох
 теоретиків, Гаррі Марковіца та Вільяма Шарпа, які побудували прекрасні
@@ -15637,7 +15955,7 @@ t-розподілу порівняно з відповідним розподі
 досягнення певної достовірності, перш ніж нова модель буде фактично
 запущена у виробництво!
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
 
 Важкі хвости розподілу прибутковостей можуть сильно вплинути на
 результати усталених математичних моделей у фінансах, або збільшуючи
@@ -16530,8 +16848,8 @@ Finance}\label{ux437ux447ux438ux442ux443ux432ux430ux43dux43dux44f-ux437-yahoo-fi
 Використовуючи алгоритм сковзного вікна, ми побачили, що параметри
 альфа-стабільного розподілу змінюються з часом.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, opacityback=0, colframe=quarto-callout-tip-color-frame, bottomtitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Література для подальшого вивчення степеневих розподілів та важких
-хвостів}, rightrule=.15mm, bottomrule=.15mm, breakable, toptitle=1mm, titlerule=0mm, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, toprule=.15mm, leftrule=.75mm, coltitle=black, left=2mm, colback=white]
+\begin{tcolorbox}[enhanced jigsaw, coltitle=black, leftrule=.75mm, bottomrule=.15mm, bottomtitle=1mm, left=2mm, opacityback=0, colbacktitle=quarto-callout-tip-color!10!white, breakable, rightrule=.15mm, colframe=quarto-callout-tip-color-frame, toprule=.15mm, titlerule=0mm, toptitle=1mm, colback=white, arc=.35mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Література для подальшого вивчення степеневих розподілів та важких
+хвостів}]
 
 Nassim Taleb's
 \href{https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf}{\emph{Statistical

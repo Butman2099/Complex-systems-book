@@ -304,28 +304,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="fig-costline" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Images\lab_6\costline.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.1: Визначення довжини берегової лінії між точками А та В</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.1: Визначення довжини берегової лінії між точками А та В</figcaption>
 </figure>
 </div>
-<p>Першочергово поняття фрактала у фізиці виникло у зв’язку із завданням про визначення довжини берегової лінії. Під час її вимірювання за наявною картою місцевості з’ясувалася цікава деталь — чим більш великомасштабна карта береться, тим довшою виявляється ця берегова лінія. Нехай, наприклад, відстань по прямій між розсташованими на береговій лінії точками А та В дорівнює R (див. <a href="#fig-costline">Рисунок&nbsp;<span>7.1</span></a>). Тоді, щоб виміряти довжину берегової лінії між цима точками, ми розташуємо по берегу жорстко пов’язані один з одним вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад, <span class="math inline">\(l=10\)</span> км. Довжину берегової лінії в кілометрах між точками А і В ми приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне вимірювання цієї довжини ми зробимо так само, але відстань між сусідніми вузлами зробимо вже рівною <span class="math inline">\(l=1\)</span> км.</p>
+<p>Першочергово поняття фрактала у фізиці виникло у зв’язку із завданням про визначення довжини берегової лінії. Під час її вимірювання за наявною картою місцевості з’ясувалася цікава деталь — чим більш великомасштабна карта береться, тим довшою виявляється ця берегова лінія. Нехай, наприклад, відстань по прямій між розсташованими на береговій лінії точками А та В дорівнює R (див. <a href="#fig-costline">Рис.&nbsp;<span>7.1</span></a>). Тоді, щоб виміряти довжину берегової лінії між цима точками, ми розташуємо по берегу жорстко пов’язані один з одним вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад, <span class="math inline">\(l=10\)</span> км. Довжину берегової лінії в кілометрах між точками А і В ми приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне вимірювання цієї довжини ми зробимо так само, але відстань між сусідніми вузлами зробимо вже рівною <span class="math inline">\(l=1\)</span> км.</p>
 <p>Виявляється, що результат цих вимірювань буде різним. При зменшенні масштабу <span class="math inline">\(l\)</span> ми отримуватимемо все більші й більші значення довжини. На відміну від гладкої кривої, лінія морського узбережжя виявляється найчастіше настільки порізаною (аж до найменших масштабів), що зі зменшенням довжини ланки <span class="math inline">\(l\)</span> величина <span class="math inline">\(L\)</span> — довжина берегової лінії — не прагне до кінцевого межі, а збільшується за степеневим законом</p>
-<p><span class="math display">\[
-L \approx l\left( \frac{R}{l} \right)^{D}, \tag{1}
-\]</span></p>
-<p>де <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (1) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
+<p><span id="eq-1"><span class="math display">\[
+L \approx l\left( \frac{R}{l} \right)^{D},
+\tag{7.1}\]</span></span></p>
+<p>де <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="lab_7.html#eq-1">Рівняння&nbsp;<span>8.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
 <p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/I)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
 </section>
 <section id="фрактальна-розмірність-множин" class="level3" data-number="7.1.3">
 <h3 data-number="7.1.3" class="anchored" data-anchor-id="фрактальна-розмірність-множин"><span class="header-section-number">7.1.3</span> Фрактальна розмірність множин</h3>
 <p>Вище було введено поняття про фрактальну розмірність берегової лінії. Дамо тепер загальне визначення цієї величини. Нехай <span class="math inline">\(d\)</span> — звичайна Евклідова розмірність простору, в якому розташований наш фрактальний об’єкт (<span class="math inline">\(d=1\)</span> — лінія, <span class="math inline">\(d=2\)</span> — площина, <span class="math inline">\(d=3\)</span> — звичайний тривимірний простір). Покриємо тепер цей об’єкт цілком <span class="math inline">\(d\)</span>-мірними “кулями” радіуса 1. Припустимо, що нам потребувалося для цього не менше, ніж <span class="math inline">\(N(l)\)</span> куль. Тоді, якщо за досить малих <span class="math inline">\(l\)</span> величина <span class="math inline">\(N(l)\)</span> змінюється з <span class="math inline">\(l\)</span> за степеневим законом</p>
-<p><span class="math display">\[
-N(l) \sim \frac{1}{l^D}, \tag{2}
-\]</span></p>
+<p><span id="eq-2"><span class="math display">\[
+N(l) \sim \frac{1}{l^D},
+\tag{7.2}\]</span></span></p>
 <p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії.</p>
-<p>Формулу (2) можна переписати у вигляді</p>
-<p><span class="math display">\[
-D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}. \tag{3}
-\]</span></p>
+<p>Формулу (<a href="lab_7.html#eq-2">Рівняння&nbsp;<span>8.2</span></a>) можна переписати у вигляді</p>
+<p><span id="eq-3"><span class="math display">\[
+D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}.
+\tag{7.3}\]</span></span></p>
 <p>Це відношення й слугує загальним визначенням фрактальної розмірності <span class="math inline">\(D\)</span>. У відповідності до нього величина <span class="math inline">\(D\)</span> представляє <strong>локальну</strong> характеристику досліджуваного об’єкта.</p>
 </section>
 <section id="процедури-обчислення-монофрактальних-розмірностей" class="level3" data-number="7.1.4">
@@ -344,9 +344,9 @@ D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}. \tag{3}
 <li>обчислюється середнє <span class="math inline">\((R/S)_n\)</span> нормованих значень розмаху для всіх підпослідовностей довжини <span class="math inline">\(n\)</span>.</li>
 </ol>
 <p><em>R/S</em>-статистика, обрахована таким чином, відповідає співвідношенню <span class="math inline">\((R/S)_{n} \cong cn^{H}\)</span>, де значення <span class="math inline">\(H\)</span> може бути отримане шляхом обчислення <span class="math inline">\((R/S)_n\)</span> для послідовностей інтервалів зі збільшенням часового горизонту:</p>
-<p><span class="math display">\[
-\log{(R/S)}_{n} = \log{c} + H\log{n}. \tag{4}
-\]</span></p>
+<p><span id="eq-4"><span class="math display">\[
+\log{(R/S)}_{n} = \log{c} + H\log{n}.
+\tag{7.4}\]</span></span></p>
 <p>Знайти коефіцієнт Херста можна, побудувавши залежність <span class="math inline">\((R/S)_n\)</span> vs.&nbsp;<span class="math inline">\(n\)</span> у подвійному логарифмічному масштабі і взявши коефіцієнт нахилу прямої, яка інтерполює точки отриманого графіка. Якщо значення <span class="math inline">\(H=0.5\)</span>, говорять про послідовність, що представляє собою білий шум; <span class="math inline">\(0.5 &lt; H \leq 1\)</span> свідчить про персистентний ряд, коли існує тенденція слідування великих значень ряду за великими і навпаки; <span class="math inline">\(H&lt;0.5\)</span> вказує на антиперсистентний ряд.</p>
 <p>При збільшенні часового горизонту коефіцієнт нахилу інтерполюючої прямої повинен прямувати до значення <span class="math inline">\(H=0.5\)</span>; сам процес переходу свідчить про втрату впливу початкових умов на поточні значення, і, таким чином, можна говорити про горизонт довгої пам’яті — це точка, до якої коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після — близько 0.5.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -403,9 +403,9 @@ F_n = \sqrt{\frac{1}{m}\bar{y_t}},
 C(L) \sim L^{-\gamma}.
 \]</span></p>
 <p>На додачу до цього, спектральна густина також спадає за степеневим законом:</p>
-<p><span class="math display">\[
+<p><span id="eq-spec-dens"><span class="math display">\[
 P(f) \sim f^{-\beta}.
-\]</span></p>
+\tag{7.5}\]</span></span></p>
 <p>Відповідні показники виражаються через наступні відношення:</p>
 <ul>
 <li><span class="math inline">\(\gamma=2-2\alpha\)</span>;</li>
@@ -413,14 +413,14 @@ P(f) \sim f^{-\beta}.
 </ul>
 <p>У DFA другого порядку (DFA2) обчислюються відхилення <span class="math inline">\(F^2(v,s)\)</span> профілю від інтерполяційного многочлена другого порядку. Таким чином, вилучаються впливи можливих лінійних та параболічних трендів для масштабів, більших за розглядувані. Взагалі, у DFA порядку <span class="math inline">\(n\)</span> обчислюються відхилення профілю від інтерполяційного многочлена <span class="math inline">\(n\)</span>-го порядку, що вилучає вплив всіх можливих трендів порядків до (<span class="math inline">\(n-1\)</span>) для масштабів, більших від розміру вікна.</p>
 <p>Потім обчислюється найближчий поліном <span class="math inline">\(y_{ν}(s)\)</span> для профілю на кожному із <span class="math inline">\(2N_s\)</span> сегментів <span class="math inline">\(v\)</span> і визначається відхилення</p>
-<p><span class="math display">\[
-F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}. \tag{5}
-\]</span></p>
+<p><span id="eq-5"><span class="math display">\[
+F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}.
+\tag{7.6}\]</span></span></p>
 <p>Далі знаходиться середнє значення флуктуацій всіх детрендованих профілів:</p>
-<p><span class="math display">\[
-F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}. \tag{6}
-\]</span></p>
-<p>Значення формули (6) можна трактувати як середньоквадратичний зсув (переміщення) точки випадкових блукань у ланцюжку після <span class="math inline">\(s\)</span> кроків.</p>
+<p><span id="eq-6"><span class="math display">\[
+F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
+\tag{7.7}\]</span></span></p>
+<p>Значення формули (<a href="lab_7.html#eq-6">Рівняння&nbsp;<span>8.6</span></a>) можна трактувати як середньоквадратичний зсув (переміщення) точки випадкових блукань у ланцюжку після <span class="math inline">\(s\)</span> кроків.</p>
 </section>
 <section id="фрактальна-розмірність-хігучі" class="level4" data-number="7.1.4.3">
 <h4 data-number="7.1.4.3" class="anchored" data-anchor-id="фрактальна-розмірність-хігучі"><span class="header-section-number">7.1.4.3</span> Фрактальна розмірність Хігучі</h4>
@@ -559,10 +559,10 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-d2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Images\lab_6\corrdim.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.2: Зміна значення кореляційного інтеграла в залежності від ступеня розкиданості точок по фазовому простору системи</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.2: Зміна значення кореляційного інтеграла в залежності від ступеня розкиданості точок по фазовому простору системи</figcaption>
 </figure>
 </div>
-<p>За фазовим простором цієї хмари точок ( <a href="#fig-d2">Рисунок&nbsp;<span>7.2</span></a> ) можна бачити, що більша згуртованість точок одна до одної має асоціюватися з меншою кореляційною розмірністю. Рисунок (а) характеризується найвищою близькістю точок одна до одної, але при цьому найменшою кореляційною розмірністю. Це можна пояснити так: якщо ми будуємо сітку з кіл радіусом <span class="math inline">\(\varepsilon\)</span> і поступово її збільшуємо, ми вже перестаємо бачити нові прилеглі траєкторії до тих <span class="math inline">\(i\)</span>-их траєкторій, які ми розглядали із самого спочатку, на початкових значеннях <span class="math inline">\(\varepsilon\)</span>. На рисунках (b) і (c) видно, що хмара траєкторій фазового простору є більш рівномірно розподіленою. За поступового збільшення радіуса кіл із центрами в кожній <span class="math inline">\(i\)</span>-ій траєкторії ми повинні спостерігати пропорційне збільшення значення кореляційного інтеграла. У даному випадку при поступовому збільшенні <span class="math inline">\(\varepsilon\)</span> ми спостерігаємо появу все більшої і більшої кількості точок.</p>
+<p>За фазовим простором цієї хмари точок (<a href="#fig-d2">Рис.&nbsp;<span>7.2</span></a>) можна бачити, що більша згуртованість точок одна до одної має асоціюватися з меншою кореляційною розмірністю. Рисунок (а) характеризується найвищою близькістю точок одна до одної, але при цьому найменшою кореляційною розмірністю. Це можна пояснити так: якщо ми будуємо сітку з кіл радіусом <span class="math inline">\(\varepsilon\)</span> і поступово її збільшуємо, ми вже перестаємо бачити нові прилеглі траєкторії до тих <span class="math inline">\(i\)</span>-их траєкторій, які ми розглядали із самого спочатку, на початкових значеннях <span class="math inline">\(\varepsilon\)</span>. На рисунках (b) і (c) видно, що хмара траєкторій фазового простору є більш рівномірно розподіленою. За поступового збільшення радіуса кіл із центрами в кожній <span class="math inline">\(i\)</span>-ій траєкторії ми повинні спостерігати пропорційне збільшення значення кореляційного інтеграла. У даному випадку при поступовому збільшенні <span class="math inline">\(\varepsilon\)</span> ми спостерігаємо появу все більшої і більшої кількості точок.</p>
 <p>У періодичних системах кореляційна розмірність залишається постійною і дорівнює розмірності вкладення. Наприклад, для простої періодичної системи, такої як синусоїда, кореляційна розмірність дорівнюватиме 1 (оскільки вона лежить на одновимірній кривій), а якщо систему реконструюють у двовимірному фазовому просторі (за двома координатами), то кореляційна розмірність дорівнюватиме 2. У таких системах кореляційна розмірність не змінюється.</p>
 <p>Для хаотичних систем кореляційна розмірність має характерну поведінку, яка залежить від кількості змінних (розмірностей), необхідних для точного опису динаміки системи. На відміну від періодичних систем, кореляційна розмірність зростає в міру збільшення розмірності фазового простору, поки не досягне плато.</p>
 <p><strong>Електрокардіограма</strong> (ЕКГ): ЕКГ-сигнали відображають електричну активність серця. Складність ЕКГ-сигналу може бути оцінена за допомогою кореляційної розмірності. Очікується, що кореляційна розмірність ЕКГ здорового серця буде вищою через наявність складних патернів і варіабельності. З іншого боку, аномальні ЕКГ-сигнали, наприклад, від пацієнтів з аритміями або серцевими захворюваннями, можуть мати нижчу кореляційну розмірність через втрату складності сигналу.</p>
@@ -571,7 +571,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong>Аналіз ходи</strong>: Кореляційна розмірність може бути використана для аналізу моделей ходи. Вона може допомогти в розумінні складності рухів людини під час ходьби або бігу. Зміни в кореляційній розмірності сигналів ходи можуть свідчити про зміну стабільності ходи або про наявність відхилень у ході, викликаних неврологічними або опорно-руховими захворюваннями.</p>
 <p><strong>Варіативність динаміки серцевого ритму</strong> (ВСР): ВСР являє собою зміну часових інтервалів між послідовними ударами серця. Вона перебуває під впливом вегетативної нервової системи і відображає адаптивність і складність серцево-судинної системи. Вищий рівень ВСР, що відповідає вищій кореляційній розмірності, зазвичай асоціюється з кращим станом серцево-судинної системи та її адаптивністю до фізіологічних змін і змін навколишнього середовища. Її падіння може асоціюватися з аномальною динамікою серця.</p>
 <p><strong>Послідовності ДНК</strong>: Кореляційна розмірність може бути використана і при аналізі послідовностей ДНК. Вона допомагає виявити самоподібні або фрактальні патерни всередині послідовностей, що може мати значення для розуміння генетичної складності, еволюційних зв’язків і регуляції генів. Висока кореляційна розмірність — висока складність ланцюжка ДНК. Мала кореляційна розмірність — спрощений ланцюжок ДНК.</p>
-<p><strong>Фінансові ринки</strong> Вища кореляційна розмірність у даних часових рядів фінансового ринку свідчить про більшу складність та існування в їхній основі самоподібних моделей або фрактальних структур. Хаотична поведінка цін на акції може бути пов’язана з періодами високої волатильності та непередбачуваності. З іншого боку, нижча величина кореляційної розмірності може свідчити про більш передбачувані та менш складні рухи цін, що відповідає періодам стабільності або менш волатильним ринковим умовам.</p>
+<p><strong>Фінансові ринки</strong>: Вища кореляційна розмірність у даних часових рядів фінансового ринку свідчить про більшу складність та існування в їхній основі самоподібних моделей або фрактальних структур. Хаотична поведінка цін на акції може бути пов’язана з періодами високої волатильності та непередбачуваності. З іншого боку, нижча величина кореляційної розмірності може свідчити про більш передбачувані та менш складні рухи цін, що відповідає періодам стабільності або менш волатильним ринковим умовам.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -676,7 +676,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-init" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.3: Динаміка щоденних змін індексу золота</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.3: Динаміка щоденних змін індексу золота</figcaption>
 </figure>
 </div>
 </div>
@@ -759,12 +759,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-rs-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-rs-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.4: Залежність значень R/S від скейлінгу побудованих в логарифмічному масштабі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.4: Залежність значень R/S від скейлінгу побудованих в логарифмічному масштабі</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як ми можемо бачити з <a href="#fig-gold-rs-all">Рисунок&nbsp;<span>7.4</span></a>, значення <span class="math inline">\(h=0.53\)</span>, що свідчить про подібність динаміки золота до випадкового блукання. Але оскільки закони, що регулюють ринок, змінюються з часом, мають змінюватись і кореляції всередині системи, а одже коефіцієнт Херста також має залежати від періоду в якому він розглядається.</p>
+<p>Як ми можемо бачити з <a href="#fig-gold-rs-all">Рис.&nbsp;<span>7.4</span></a>, значення <span class="math inline">\(h=0.53\)</span>, що свідчить про подібність динаміки золота до випадкового блукання. Але оскільки закони, що регулюють ринок, змінюються з часом, мають змінюватись і кореляції всередині системи, а одже коефіцієнт Херста також має залежати від періоду в якому він розглядається.</p>
 </section>
 <section id="віконна-процедура" class="level4" data-number="7.2.1.2">
 <h4 data-number="7.2.1.2" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">7.2.1.2</span> Віконна процедура</h4>
@@ -866,12 +866,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-rs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-rs-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.5: Динаміка індексу золота та показника Херста</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.5: Динаміка індексу золота та показника Херста</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На представленому рисунку ( <a href="#fig-gold-wind-rs">Рисунок&nbsp;<span>7.5</span></a> ) можемо бачити, що показник Херста зростає в передкризовий період та спадає під час кризи. Перед кризою динаміка ринку характеризується зростанням трендостійкості (персистентності), що відзеркалює зростання скорельованості дій між трейдерами ринку.</p>
+<p>На представленому рисунку (<a href="#fig-gold-wind-rs">Рис.&nbsp;<span>7.5</span></a>) можемо бачити, що показник Херста зростає в передкризовий період та спадає під час кризи. Перед кризою динаміка ринку характеризується зростанням трендостійкості (персистентності), що відзеркалює зростання скорельованості дій між трейдерами ринку.</p>
 </section>
 </section>
 <section id="обчислення-на-основі-dfa" class="level3" data-number="7.2.2">
@@ -950,7 +950,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-dfa-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-dfa-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.6: Логарифмічна залежність значень функції флуктуацій від скейлінгу</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.6: Логарифмічна залежність значень функції флуктуацій від скейлінгу</figcaption>
 </figure>
 </div>
 </div>
@@ -1071,12 +1071,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-alpha" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-alpha-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.7: Динаміка індексу золота та показника альфа</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.7: Динаміка індексу золота та показника альфа</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Якщо порівнювати з <em>R/S</em>-аналізом, <a href="#fig-gold-wind-alpha">Рисунок&nbsp;<span>7.7</span></a> демонструє, що динаміка <em>узагальненого показника Херста</em> отриманого за допомогою DFA є набагато стабільнішою. Тепер ми здатні диференціювати значну частку крахових подій, що мали місце на ринку золота. Узагальнений Херст показує, що передкризові явища характеризуються зростанням трендостійкості ринку або, іншими словами, підвищенням ступеня самоорганізації системи.</p>
+<p>Якщо порівнювати з <em>R/S</em>-аналізом, <a href="#fig-gold-wind-alpha">Рис.&nbsp;<span>7.7</span></a> демонструє, що динаміка <em>узагальненого показника Херста</em> отриманого за допомогою DFA є набагато стабільнішою. Тепер ми здатні диференціювати значну частку крахових подій, що мали місце на ринку золота. Узагальнений Херст показує, що передкризові явища характеризуються зростанням трендостійкості ринку або, іншими словами, підвищенням ступеня самоорганізації системи.</p>
 <div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
@@ -1089,12 +1089,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-df" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-df-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.8: Динаміка індексу золота та фрактальної розмірності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.8: Динаміка індексу золота та фрактальної розмірності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-df">Рисунок&nbsp;<span>7.8</span></a> показує, що <span class="math inline">\(D_f\)</span> характеризується спадом при кризових станах. Це є індикатором того, що вищий ступень організованості ринку відзеркалюється в більш згладженій або менш шорстких флуктуаціях досліджуваного сигналу.</p>
+<p><a href="#fig-gold-wind-df">Рис.&nbsp;<span>7.8</span></a> показує, що <span class="math inline">\(D_f\)</span> характеризується спадом при кризових станах. Це є індикатором того, що вищий ступень організованості ринку відзеркалюється в більш згладженій або менш шорстких флуктуаціях досліджуваного сигналу.</p>
 <div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
@@ -1107,12 +1107,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-beta" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-beta-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.9: Динаміка індексу золота та показника спектральної щільності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.9: Динаміка індексу золота та показника спектральної щільності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На даному рисунку ми бачимо динаміку показника <span class="math inline">\(\beta\)</span>, що відноситься до спектральної густини потужності (<span class="math inline">\(P(f)=1/f^{\beta}\)</span>), зростає в кризові періоди, що говорить про спад потужності сигналу, що припадає на одиничний інтервал частоти. Це також є свідченням зростання кореляційних властивостей системи.</p>
+<p>На даному рисунку ми бачимо динаміку показника <span class="math inline">\(\beta\)</span>, що відноситься до спектральної густини потужності (<a href="#eq-spec-dens">Рівняння&nbsp;<span>7.5</span></a>), зростає в кризові періоди, що говорить про спад потужності сигналу, що припадає на одиничний інтервал частоти. Це також є свідченням зростання кореляційних властивостей системи.</p>
 <div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
@@ -1125,12 +1125,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-gamma" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-gamma-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.10: Динаміка індексу золота та показника автокореляції</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.10: Динаміка індексу золота та показника автокореляції</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-gold-wind-gamma">Рисунок&nbsp;<span>7.10</span></a> видно, що показник <span class="math inline">\(\gamma\)</span> спадає в кризові та передкризові періоди. Це є показником сповільнення спаду функції автокореляції, що в свою чергу також вказує на зростання корельованності динаміки системи.</p>
+<p>На <a href="#fig-gold-wind-gamma">Рис.&nbsp;<span>7.10</span></a> видно, що показник <span class="math inline">\(\gamma\)</span> спадає в кризові та передкризові періоди. Це є показником сповільнення спаду функції автокореляції, що в свою чергу також вказує на зростання корельованності динаміки системи.</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-хігучі" class="level3" data-number="7.2.3">
@@ -1172,7 +1172,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-kmax-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-kmax-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.11: Залежність розмірності Хігучі від діапазону значень kmax</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.11: Залежність розмірності Хігучі від діапазону значень kmax</figcaption>
 </figure>
 </div>
 </div>
@@ -1196,7 +1196,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-higuchi-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-higuchi-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.12: Залежність довжини сигналу від часового зміщення</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.12: Залежність довжини сигналу від часового зміщення</figcaption>
 </figure>
 </div>
 </div>
@@ -1270,7 +1270,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-higuchi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-higuchi-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.13: Динаміка індексу золота та фрактальної розмірності Хігучі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.13: Динаміка індексу золота та фрактальної розмірності Хігучі</figcaption>
 </figure>
 </div>
 </div>
@@ -1364,12 +1364,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-petro" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-petro-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.14: Динаміка індексу золота та фрактальної розмірності Петросяна</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.14: Динаміка індексу золота та фрактальної розмірності Петросяна</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-petro">Рисунок&nbsp;<span>7.14</span></a> показує, що показник Петросяна також спадає під час кризових подій, що вказує на зростання періодизації ринку та синхронізації активності трейдерів у відповідні моменти часу.</p>
+<p><a href="#fig-gold-wind-petro">Рис.&nbsp;<span>7.14</span></a> показує, що показник Петросяна також спадає під час кризових подій, що вказує на зростання періодизації ринку та синхронізації активності трейдерів у відповідні моменти часу.</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-каца" class="level3" data-number="7.2.5">
@@ -1448,7 +1448,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-katz" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-katz-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.15: Динаміка індексу золота та фрактальної розмірності Каца</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.15: Динаміка індексу золота та фрактальної розмірності Каца</figcaption>
 </figure>
 </div>
 </div>
@@ -1531,7 +1531,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-sevcik" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-sevcik-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.16: Динаміка індексу золота та фрактальної розмірності Севчика</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.16: Динаміка індексу золота та фрактальної розмірності Севчика</figcaption>
 </figure>
 </div>
 </div>
@@ -1621,12 +1621,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-nld" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-nld-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.17: Динаміка індексу золота та фрактальної розмірності через нормалізовану щільність довжини</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.17: Динаміка індексу золота та фрактальної розмірності через нормалізовану щільність довжини</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-nld">Рисунок&nbsp;<span>7.17</span></a> показує, що <span class="math inline">\(NLDFD\)</span> спадає під час кризових та передкризових подій, що вказує на зростання кореляцій у дані періоди.</p>
+<p><a href="#fig-gold-wind-nld">Рис.&nbsp;<span>7.17</span></a> показує, що <span class="math inline">\(NLDFD\)</span> спадає під час кризових та передкризових подій, що вказує на зростання кореляцій у дані періоди.</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" class="level3" data-number="7.2.8">
@@ -1669,7 +1669,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-psd-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-psd-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.18: Залежність спектральної щільності потужності від частоти в логарифмічному масштабі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.18: Залежність спектральної щільності потужності від частоти в логарифмічному масштабі</figcaption>
 </figure>
 </div>
 </div>
@@ -1743,7 +1743,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-psd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-psd-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.19: Динаміка індексу золота та фрактальної розмірності через нахил спектральної щільності потужності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.19: Динаміка індексу золота та фрактальної розмірності через нахил спектральної щільності потужності</figcaption>
 </figure>
 </div>
 </div>
@@ -1797,7 +1797,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-corr-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-corr-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.20: Залежність кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій. Графік побудований у логарифмічному масштабі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.20: Залежність кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій. Графік побудований у логарифмічному масштабі</figcaption>
 </figure>
 </div>
 </div>
@@ -1876,12 +1876,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-cd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-cd-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;7.21: Динаміка індексу золота та кореляційної фрактальної розмірності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.21: Динаміка індексу золота та кореляційної фрактальної розмірності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-cd">Рисунок&nbsp;<span>7.21</span></a> демонструє, що кореляційна розмірність для індексу золота також спадає у кризові та передкризові періоди, вказуючи на зростання корельованості теперішніх цін на золото з попередніми. Можна сказати і по іншому: у період криз трейдери починають самоорганізовуватись та колективно скупати або продавати відповідний актив; іншими словами, їх динаміка стає більш синхронною. Оскільки кореляційна розмірність вимірюється для траєкторій фазового простору, спад цього показника свідчить про зростання щільності досліджуваних траєкторій. Тобто, фазовий простір стає більш розрідженим, а всі його траєкторії концентрованими лише в одній конкретній області, що є індикатором згуртованості прихованих змінних досліджуваної системи.</p>
+<p><a href="#fig-gold-wind-cd">Рис.&nbsp;<span>7.21</span></a> демонструє, що кореляційна розмірність для індексу золота також спадає у кризові та передкризові періоди, вказуючи на зростання корельованості теперішніх цін на золото з попередніми. Можна сказати і по іншому: у період криз трейдери починають самоорганізовуватись та колективно скупати або продавати відповідний актив; іншими словами, їх динаміка стає більш синхронною. Оскільки кореляційна розмірність вимірюється для траєкторій фазового простору, спад цього показника свідчить про зростання щільності досліджуваних траєкторій. Тобто, фазовий простір стає більш розрідженим, а всі його траєкторії концентрованими лише в одній конкретній області, що є індикатором згуртованості прихованих змінних досліджуваної системи.</p>
 
 
 </section>

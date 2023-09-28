@@ -302,15 +302,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="визначення-волатильності" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="визначення-волатильності"><span class="header-section-number">2.1.2</span> Визначення волатильності</h3>
 <p>Термін волатильність представляє узагальнену міру величини ринкових флуктуацій (відхилень). У літературі існує досить багато визначень волатильності, проте ми будемо використовувати наступне: <em>волатильність є локальним середнім модуля зміни ціни на відповідному часовому інтервалі <span class="math inline">\(T\)</span>, що є рухомим параметром нашої оцінки</em>. Для індексу <span class="math inline">\(X(t)\)</span> визначимо зміну ціни <span class="math inline">\(G(t)\)</span> як зміну логарифмів індексів,</p>
-<p><span class="math display">\[
-G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)}, \tag{1}
-\]</span></p>
-<p>де <span class="math inline">\(\Delta t\)</span> є часовим інтервалом затримки. Величину (1) називають прибутковістю (return). Якщо використовувати границі, то малі зміни <span class="math inline">\(X(t)\)</span> приблизно відповідають змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із набору даних, тобто, вважається, що ринок працює без перерв.</p>
+<p><span id="eq-1"><span class="math display">\[
+G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \frac{X(t+\Delta t) - X(t)}{X(t)},
+\tag{2.1}\]</span></span></p>
+<p>де <span class="math inline">\(\Delta t\)</span> є часовим інтервалом затримки. Величину (<a href="lab_7.html#eq-1">Рівняння&nbsp;<span>8.1</span></a>) називають прибутковістю (return). Якщо використовувати границі, то малі зміни <span class="math inline">\(X(t)\)</span> приблизно відповідають змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із набору даних, тобто, вважається, що ринок працює без перерв.</p>
 <p>Модуль <span class="math inline">\(G(t)\)</span> описує амплітуду флуктуацій. У порівнянні із значеннями <span class="math inline">\(G(t)\)</span> їх модуль не показує глобальних трендів, але великі значення <span class="math inline">\(G(t)\)</span> відповідають крахам та великим миттєвим змінам на ринках.</p>
 <p>Визначимо волатильність як середнє від <span class="math inline">\(G(t)\)</span> для часових вікон <span class="math inline">\(T = n \cdot \Delta t\)</span>, тобто</p>
-<p><span class="math display">\[
-V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, \tag{2}
-\]</span></p>
+<p><span id="eq-2"><span class="math display">\[
+V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|,
+\tag{2.2}\]</span></span></p>
 <p>де <span class="math inline">\(n\)</span> є цілим числом. Таке визначення може бути ще узагальнене заміною <span class="math inline">\(G(t)\)</span> на <span class="math inline">\(\left| G(t) \right|^{\gamma}\)</span>, де <span class="math inline">\(\gamma &gt; 1\)</span> дає більш виражені великі значення <span class="math inline">\(G(t)\)</span>, в той час як <span class="math inline">\(0 &lt; \gamma &lt; 1\)</span> виділяє малі значення <span class="math inline">\(G(t)\)</span>.</p>
 <p>У цьому визначенні волатильності використовується два параметри, <span class="math inline">\(\Delta t\)</span> та <span class="math inline">\(n\)</span>. Параметр <span class="math inline">\(n\)</span> є шаблонним (чи модельним) часовим інтервалом для даних, а параметр <span class="math inline">\(\Delta t\)</span> є кроком переміщення часового вікна. Зауважимо, що вказане визначення волатильності має внутрішню помилку, а саме: вибір більшого часового інтервалу <span class="math inline">\(T\)</span> веде до збільшення точності визначення волатильності. Однак, велике значення <span class="math inline">\(T\)</span> також включає погане розбиття часу на інтервали, що веде, у свою чергу, до врахування не всієї прихованої у ряді інформації.</p>
 </section>
@@ -319,20 +319,20 @@ V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|, \tag{2}
 <p>Для визначення кореляцій часового ряду використовується функція автокореляції. Саме поняття <em>автокореляції</em> означає кореляцію часового ряду самого з собою (між попередніми та наступними значеннями). Автокореляцію іноді називають <em>послідовною кореляцією</em>, що означає кореляцію між членами ряду чисел, розташованих у певному порядку. Також синонімами цього терміну є <em>лагова кореляція</em> та <em>персистентність</em>. Наприклад, часто зустрічається автокореляція геофізичних процесів, що означає перенесення залишкового процесу на наступні часові проміжки.</p>
 <p>Позитивно автокорельований часовий ряд часто називають персистентним, що значить існування тенденції слідування великих значень за великими та малих за малими, інакше позитивно корельований часовий ряд можна назвати інертним.</p>
 <p>Візьмемо <span class="math inline">\(N\)</span> пар спостережень двох змінних <span class="math inline">\(x\)</span> та <span class="math inline">\(y\)</span>. Коефіцієнт кореляції між парами <span class="math inline">\(x\)</span> та <span class="math inline">\(y\)</span> визначається як</p>
-<p><span class="math display">\[
-    r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}}}, \tag{3}
-\]</span></p>
+<p><span id="eq-3"><span class="math display">\[
+r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}}},
+\tag{2.3}\]</span></span></p>
 <p>де сума знаходиться по всім <span class="math inline">\(N\)</span> спостереженням.</p>
 <p>Таким же чином можна визначати й автокореляцію, або ж кореляцію всередині досліджуваного часового ряду. Для автокореляції першого порядку береться лаг (часова затримка), рівний 1 часовій одиниці. Таким чином, автокореляція першого порядку використовує перші <span class="math inline">\(N−1\)</span> спостережень <span class="math inline">\(x_t, t = 1,..., N−1\)</span>, та наступні <span class="math inline">\(N−1\)</span> спостережень <span class="math inline">\(x_t , t = 2,..., N\)</span>.</p>
 <p>Кореляція між <span class="math inline">\(x_t\)</span> та <span class="math inline">\(x_t + 1\)</span> визначається наступним чином:</p>
-<p><span class="math display">\[
-r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}, \tag{4}
-\]</span></p>
+<p><span id="eq-4"><span class="math display">\[
+r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2},
+\tag{2.4}\]</span></span></p>
 <p>де <span class="math inline">\(x\)</span> — це середнє для досліджуваного періоду.</p>
-<p>Рівняння (4) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
-<p><span class="math display">\[
-    r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}. \tag{4}
-\]</span></p>
+<p>Рівняння (<a href="lab_7.html#eq-4">Рівняння&nbsp;<span>8.4</span></a>) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
+<p><span id="eq-5"><span class="math display">\[
+r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}.
+\tag{2.5}\]</span></span></p>
 <p>Значення <span class="math inline">\(r_k\)</span> називається коефіцієнтом автокореляції з лагом <span class="math inline">\(k\)</span>. Графік функції автокореляції як залежності <span class="math inline">\(r_k\)</span> від <span class="math inline">\(k\)</span> також називають корелограмою.</p>
 </section>
 </section>
@@ -918,7 +918,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <div id="fig-smpa-init" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_1_files/figure-html/fig-smpa-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;2.1: Діаграма деформації металевого матеріалу</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;2.1: Діаграма деформації металевого матеріалу</figcaption>
 </figure>
 </div>
 </div>
@@ -954,13 +954,13 @@ Name: Stock Splits, dtype: float64</code></pre>
 <div id="fig-btc-init" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_1_files/figure-html/fig-btc-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;2.2: Динаміка щоденних змін індексу Біткоїна</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;2.2: Динаміка щоденних змін індексу Біткоїна</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Видно, що ряд нестаціонарний, що викликає певні ускладнення для подальшого аналізу. Тому перейдемо до прибутковостей, які вже є стаціонарними, а їх нормалізація стандартним відхиленням дозволяє легко порівнювати їх розподіл з розподілом Гауса.</p>
-<p>Прибутковості розраховуватимуться згідно формулі (1). У Python ми використовуватимемо метод <code>pct_change()</code> для знаходження прибутковостей, що доступний нам завдяки бібліотеці <code>pandas</code>.</p>
+<p>Прибутковості розраховуватимуться згідно (<a href="lab_7.html#eq-1">Рівняння&nbsp;<span>8.1</span></a>). У Python ми використовуватимемо метод <code>pct_change()</code> для знаходження прибутковостей, що доступний нам завдяки бібліотеці <code>pandas</code>.</p>
 <p>Стандартизовані прибутковості визначаються наступним шляхом:</p>
 <p><span class="math display">\[
 g(t) = \frac{G(t) - \mu}{\sigma},  
@@ -996,12 +996,12 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <div id="fig-btc-ret" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_1_files/figure-html/fig-btc-ret-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;2.3: Нормалізовані прибутковості досліджуваного часового ряду</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;2.3: Нормалізовані прибутковості досліджуваного часового ряду</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Зверніть увагу, що флуктуації нормалізованих прибутковостей досить часто перевищують величину <span class="math inline">\(\pm 3\sigma\)</span>, що, як відомо, надзвичайно рідко спостерігається для незалежних подій. Цей факт можна відобразити шляхом порівняння функції розподілу нормалізованих флуктуацій з розподілом Гауса (рис. <a href="#fig-btc-dist">Рисунок&nbsp;<span>2.4</span></a>). Очевидно, що хвости розподілу вихідного ряду містять значні флуктуації, вони досить помітні (часто кажуть “важкі” у порівнянні з самою “головою” розподілу).</p>
+<p>Зверніть увагу, що флуктуації нормалізованих прибутковостей досить часто перевищують величину <span class="math inline">\(\pm 3\sigma\)</span>, що, як відомо, надзвичайно рідко спостерігається для незалежних подій. Цей факт можна відобразити шляхом порівняння функції розподілу нормалізованих флуктуацій з розподілом Гауса (<a href="#fig-btc-dist">Рис.&nbsp;<span>2.4</span></a>). Очевидно, що хвости розподілу вихідного ряду містять значні флуктуації, вони досить помітні (часто кажуть “важкі” у порівнянні з самою “головою” розподілу).</p>
 <p>Для побудови нормального розподілу скористаємось бібліотекою <code>scipy</code>. Встановити її можна по аналогії з попередніми бібліотеками.</p>
 <div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Для встановлення останньої версії scipy</span></span>
@@ -1043,7 +1043,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <div id="fig-btc-dist" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_1_files/figure-html/fig-btc-dist-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;2.4: Порівняння функцій розподілу нормалізованих прибутковостей з нормальним розподілом</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;2.4: Порівняння функцій розподілу нормалізованих прибутковостей з нормальним розподілом</figcaption>
 </figure>
 </div>
 </div>
@@ -1094,7 +1094,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <div id="fig-btc-autocorr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_1_files/figure-html/fig-btc-autocorr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;2.5: Зміна з часом парних автокореляційних функцій для вихідного ряду x, нормалізованих прибутковостей g та їх модулів mod(g)</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;2.5: Зміна з часом парних автокореляційних функцій для вихідного ряду x, нормалізованих прибутковостей g та їх модулів mod(g)</figcaption>
 </figure>
 </div>
 </div>
@@ -1181,7 +1181,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, volatility)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Нарешті порівняємо динаміку вихідного ряду і розрахованих похідних. Для цього врахуємо, що автокореляцію і волатильність ми рахували для рухомого вікна. Результати представлено на рис. <a href="#fig-btc-all">Рисунок&nbsp;<span>2.6</span></a>.</p>
+<p>Нарешті порівняємо динаміку вихідного ряду і розрахованих похідних. Для цього врахуємо, що автокореляцію і волатильність ми рахували для рухомого вікна. Результати представлено на <a href="#fig-btc-all">Рис.&nbsp;<span>2.6</span></a>.</p>
 <div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>,<span class="dv">8</span>))</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1227,7 +1227,7 @@ g(t) = \frac{G(t) - \mu}{\sigma},
 <div id="fig-btc-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_1_files/figure-html/fig-btc-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рисунок&nbsp;2.6: Динаміка індексу Біткоїна, нормалізованих прибутковостей, віконних автокореляції та волатильності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;2.6: Динаміка індексу Біткоїна, нормалізованих прибутковостей, віконних автокореляції та волатильності</figcaption>
 </figure>
 </div>
 </div>
