@@ -794,8 +794,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <p>Тепер подивимось як це виглядатиме для об’єднаного підбору параметрів</p>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    delay_max<span class="op">=</span>np.arange(<span class="dv">1</span>, <span class="dv">30</span>, <span class="dv">1</span>), <span class="co"># діапазон значень затримки</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    dimension_max<span class="op">=</span><span class="dv">20</span>,              <span class="co"># максимальна розмірність вкладень</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    delay_max<span class="op">=</span>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="co"># діапазон значень затримки</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    dimension_max<span class="op">=</span><span class="dv">10</span>,              <span class="co"># максимальна розмірність вкладень</span></span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"gautama2003"</span>,</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    surrogate_n<span class="op">=</span><span class="dv">5</span>,                 <span class="co"># Кількість сурогатних сигналів </span></span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># для генерації</span></span>
@@ -815,10 +815,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>dimension <span class="op">=</span> parameters[<span class="st">"Dimension"</span>]</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>dimension</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>20</code></pre>
+<pre><code>10</code></pre>
 </div>
 </div>
-<p>Оскільки представлена вище процедура є доволі громіздкою в плані обчислювальних потужностей, ми обрали діапазон <span class="math inline">\(\tau\)</span> в межах від 1 до 30. Видно, що при <span class="math inline">\(\tau\)</span> близької до 10 оптимальне значення розмірності атрактора дорівнює 20. Можливо, при значеннях <span class="math inline">\(\tau\)</span> близьких до 100 або 200, ми могли б отримати зовсім інше значення розмірності, але це потребує додаткових експериментів.</p>
+<p>Оскільки представлена вище процедура є доволі громіздкою в плані обчислювальних потужностей, ми обрали діапазон <span class="math inline">\(\tau\)</span> в межах від 1 до 10. Видно, що при <span class="math inline">\(\tau\)</span> близької до 3 оптимальне значення розмірності атрактора дорівнює 10. Можливо, при значеннях <span class="math inline">\(\tau\)</span> близьких до 100 або 200, ми могли б отримати зовсім інше значення розмірності, але це потребує додаткових експериментів.</p>
 </section>
 <section id="автоматизований-підбір-параметра-розмірності-вкладень-m" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">3.2.3</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></h3>
