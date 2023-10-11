@@ -38,7 +38,6 @@ book:
   site-url: https://butman2099.github.io/Complex-systems-book/
   chapters:
     - index.qmd
-    - intro.ipynb
     - lab_1.ipynb
     - lab_2.ipynb
     - lab_3.ipynb
