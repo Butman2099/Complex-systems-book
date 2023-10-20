@@ -2271,7 +2271,12 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <span id="cb58-38"><a href="#cb58-38" aria-hidden="true" tabindex="-1"></a><span class="ss">            wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb58-39"><a href="#cb58-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="lab_7_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
+<div id="fig-wti-wind-alphas" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-wti-wind-alphas-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.27: Динаміка індексу сирої нафти WTI та показників сингулярності</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2300,12 +2305,12 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <div id="fig-wti-wind-delta-s" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-delta-s-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.27: Динаміка індексу сирої нафти WTI та показника типу хвоста мультифрактального спектра <span class="math inline">\(\Delta S\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.28: Динаміка індексу сирої нафти WTI та показника типу хвоста мультифрактального спектра <span class="math inline">\(\Delta S\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>З огляду на цей рисунок (<a href="#fig-wti-wind-delta-s">Рис.&nbsp;<span>7.27</span></a>) видно, що <span class="math inline">\(\Delta S &lt; 0\)</span>, що свідчить про те, що найбільш крахові ділянки нафтового ринку зумовлені флуктуаціями з великою амплітудою коливань.</p>
+<p>З огляду на цей рисунок (<a href="#fig-wti-wind-delta-s">Рис.&nbsp;<span>7.28</span></a>) видно, що <span class="math inline">\(\Delta S &lt; 0\)</span>, що свідчить про те, що найбільш крахові ділянки нафтового ринку зумовлені флуктуаціями з великою амплітудою коливань.</p>
 </section>
 <section id="показник-асиметрії-a" class="level3" data-number="7.2.6">
 <h3 data-number="7.2.6" class="anchored" data-anchor-id="показник-асиметрії-a"><span class="header-section-number">7.2.6</span> Показник асиметрії (<span class="math inline">\(A\)</span>)</h3>
@@ -2332,7 +2337,7 @@ A = \frac{\Delta\alpha_{L} - \Delta\alpha_{R}}{\Delta\alpha_{R} + \Delta\alpha_{
 <div id="fig-wti-wind-a" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-a-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.28: Динаміка індексу сирої нафти WTI та показника асиметрії мультифрактального спектра <span class="math inline">\(A\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.29: Динаміка індексу сирої нафти WTI та показника асиметрії мультифрактального спектра <span class="math inline">\(A\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2363,7 +2368,7 @@ hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + 
 <div id="fig-wti-wind-hfi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-hfi-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.29: Динаміка індексу сирої нафти WTI та індексу <span class="math inline">\(h\)</span>-флуктуацій <span class="math inline">\(hFI\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.30: Динаміка індексу сирої нафти WTI та індексу <span class="math inline">\(h\)</span>-флуктуацій <span class="math inline">\(hFI\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2390,7 +2395,7 @@ hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + 
 <div id="fig-wti-wind-alphacf" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-alphacf-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.30: Динаміка індексу сирої нафти WTI та кумулятивний індексу інкрементів узагальнених показників Херста <span class="math inline">\(\alpha CF\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.31: Динаміка індексу сирої нафти WTI та кумулятивний індексу інкрементів узагальнених показників Херста <span class="math inline">\(\alpha CF\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2420,7 +2425,7 @@ C_{area} = \int C(q)dq.
 <div id="fig-wti-wind-c-q-arad" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-c-q-arad-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.31: Динаміка індексу сирої нафти WTI та інтегральної мультифрактальної теплоємності <span class="math inline">\(C_{area}\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.32: Динаміка індексу сирої нафти WTI та інтегральної мультифрактальної теплоємності <span class="math inline">\(C_{area}\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2447,7 +2452,7 @@ C_{area} = \int C(q)dq.
 <div id="fig-wti-wind-d-0" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-d-0-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.32: Динаміка індексу сирої нафти WTI та хаусдорфової розмірності цього часового сигналу <span class="math inline">\(D_{0}\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.33: Динаміка індексу сирої нафти WTI та хаусдорфової розмірності цього часового сигналу <span class="math inline">\(D_{0}\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2474,7 +2479,7 @@ C_{area} = \int C(q)dq.
 <div id="fig-wti-wind-d-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-d-1-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.33: Динаміка індексу сирої нафти WTI та інформаційної розмірності цього часового сигналу <span class="math inline">\(D_{1}\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.34: Динаміка індексу сирої нафти WTI та інформаційної розмірності цього часового сигналу <span class="math inline">\(D_{1}\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2501,7 +2506,7 @@ C_{area} = \int C(q)dq.
 <div id="fig-wti-wind-d-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-wti-wind-d-2-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.34: Динаміка індексу сирої нафти WTI та кореляційної розмірності цього часового сигналу <span class="math inline">\(D_{2}\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.35: Динаміка індексу сирої нафти WTI та кореляційної розмірності цього часового сигналу <span class="math inline">\(D_{2}\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2560,7 +2565,7 @@ C_{area} = \int C(q)dq.
 <div id="fig-delta-d-left-right" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_7_files/figure-html/fig-delta-d-left-right-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;7.35: Динаміка індексу сирої нафти WTI та кривизни лівого і правого хвостів спектра узагальнених фрактальних розмірностей</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;7.36: Динаміка індексу сирої нафти WTI та кривизни лівого і правого хвостів спектра узагальнених фрактальних розмірностей</figcaption>
 </figure>
 </div>
 </div>
