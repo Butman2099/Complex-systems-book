@@ -215,11 +215,11 @@
 
 \title{Моделювання складних систем у Python}
 \author{Соловйов В.М \and Бєлінський А.О.}
-\date{2023-10-11}
+\date{2023-10-20}
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, frame hidden, interior hidden, borderline west={3pt}{0pt}{shadecolor}, breakable, sharp corners, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[borderline west={3pt}{0pt}{shadecolor}, frame hidden, sharp corners, interior hidden, enhanced, boxrule=0pt, breakable]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Зміст}
 {
@@ -580,7 +580,7 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 бібліотеку \texttt{yfinance}, що дозволяє працювати з даними фінансових
 ринків засобами мови програмування Python.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Yahoo!, Y!Finance, and Yahoo! finance є зареєстрованими
 товарними знаками Yahoo, Inc.}
@@ -1000,7 +1000,7 @@ Date & & & & & & & & & & & & \\
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-important-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-important-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-important-color!10!white]
 
 Представлені в подальшому методи є універсальними. Іншими словами, ви
 можете їх використовувати не лише для фінансових часових рядів, але й
@@ -1010,7 +1010,8 @@ Date & & & & & & & & & & & & \\
 форматі текстового документа (.txt). Нижче представлено приклад
 зчитування текстового файлу, що представляє залежність між напруженням і
 деформацією. Представлену далі залежність було отримано в результаті
-механічних випробувань певного металу.
+механічних випробувань певного металу. Зрозуміло, що й аналіз
+результатів, і висновки залежать від того з яким рядом ми працюємо.
 
 \end{tcolorbox}
 
@@ -1062,7 +1063,7 @@ Date & & & & & & & & & & & & \\
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
 
 Знову повертаємось до Біткоїна. Для відтворення подальших розрахунків з
 Біткоїном, блок коду в якому зчитувалась та виводилась крива
@@ -1723,7 +1724,7 @@ x^1(t),x^2(t),...,x^d(t)
 сформульовано у вигляді ``теореми рекурентності'', опублікованої в 1890
 р.:
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-note-color!10!white]
 
 \textbf{Якщо система зводить свою динаміку до обмеженої підмножини
 фазового простору, то система майже напевно, тобто з вірогідністю,
@@ -2162,10 +2163,11 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
 
-Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
-власного файлу
+Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а із
+власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать
+від того з яким рядом ми працюємо.
 
 \end{tcolorbox}
 
@@ -3203,10 +3205,11 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
 
-Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
-власного файлу
+Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а із
+власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать
+від того з яким рядом ми працюємо.
 
 \end{tcolorbox}
 
@@ -3714,7 +3717,7 @@ DET={\frac {\sum _{\ell =\ell _{\min }}^{N}\ell \,P(\ell )}{\sum _{\ell =1}^{N}\
 ліній (тобто підраховує кількість діагональних профілів довжини \(\ell\)
 ).
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по детермінізму}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по детермінізму}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Детерміновані системи характеризуються значною варіацією діагональних
 ліній різної довжинию. Періодичні сигнали будуть характеризуватися
@@ -3767,7 +3770,7 @@ LAM={\frac {\sum _{v=v_{\min }}^{N}vP(v)}{\sum _{v=1}^{N}vP(v)}},
 де \(P(v)\) --- частотний розподіл довжин \(v\) вертикальних ліній, які
 мають довжину принаймні \(v_{\min}\).
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ламінарності}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ламінарності}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Ламінарність характеризує ймовірність системи перебувати в ламінарному
 (незмінному) стані. Зі збільшенням ізольованих рекурентних точок у
@@ -3814,7 +3817,7 @@ L={\frac  {\sum _{{\ell =\ell _{\min }}}^{N}\ell \,P(\ell )}{\sum _{{\ell =\ell 
 траєкторії фазового простору знаходяться в достатній близькості один до
 одного.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині діагональних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині діагональних ліній}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Середня довжина діагональних ліній визначає середній час при якому
 система залишається передбачуваною.
@@ -3854,7 +3857,7 @@ time)}\label{ux447ux430ux441-ux437ux430ux445ux43eux43fux43bux435ux43dux43dux44fu
 TT={\frac {\sum _{{v=v_{\min }}}^{{N}}vP(v)}{\sum _{{v=v_{\min }}} ^{{N}}P(v)}}. 
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині вертикальних ліній}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Середня довжина вертикальних ліній визначає середній час перебування
 системи в ламінарному стані. Тобто, вона відповідає середньому періоду
@@ -3899,7 +3902,7 @@ WVL_{mean} = \sum_{w=w_{min}}^{N} w \cdot P(w) \Big / \sum_{w=w_{min}}^{N} P(w),
 \(w\), а \(w_{min}\) відповідає найменшій довжині білих вертикальних
 ліній (найменшому періоду повернення до стану рекурентності).
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині білих вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по середній довжині білих вертикальних ліній}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Представлену міру можна охарактеризувати як середній горизонт
 \emph{непередбачуваності} системи.
@@ -3944,7 +3947,7 @@ DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 
 Даний показник відображає складність досліджуваної структури.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії діагональних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії діагональних ліній}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Для некорельованого шуму чи осциляцiй ми тримали б мале значення цієї
 ентропiї. Мале значення даної ентропії вказувало би на те, що розподіл
@@ -3995,7 +3998,7 @@ entropy)}\label{ux435ux43dux442ux440ux43eux43fux456ux44f-ux432ux435ux440ux442ux4
 Ця міра, по аналогії до попередньої ентропії, також є мірою складності
 системи.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по ентропії вертикальних ліній}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Для синусоїдального процесу ми би очікували мале значення даної
 ентропії, оскільки це простий періодичний процес. Для складного процесу
@@ -4048,7 +4051,7 @@ entropy)}\label{ux435ux43dux442ux440ux43eux43fux456ux44f-ux432ux435ux440ux442ux4
 весь розподіл частот діагональних ліній). Дивергенція може мати
 тенденцію позитивного максимального показника Ляпунова, але не більше.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Чим вище значення дивергенції, тим швидше розбігаються траєкторії
 фазового простору. І навпаки, чим нижче значення дивергенції, тим ближче
@@ -4088,7 +4091,7 @@ divergence)}\label{ux434ux438ux432ux435ux440ux433ux435ux43dux446ux456ux44f-ux432
 VDIV = {\frac {1}{V_{\max }}}. 
 \]
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції вертикальних ліній}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по дивергенції вертикальних ліній}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Максимальна довижна вертикальних ліній надавала нам інформацію про
 максимальний ступінь незмінюваності системи. Вертикальна дивергенція
@@ -5137,10 +5140,11 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
 
 Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а із
-власного файлу
+власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать
+від того з яким рядом ми працюємо.
 
 \end{tcolorbox}
 
@@ -5283,7 +5287,7 @@ Date & & \\
 
 \end{figure}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-important-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-important-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Важливо}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-important-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-important-color!10!white]
 
 Не виконуйте блоки коду, що відповідають секції ``Розрахунок взаємної
 інформації'', якщо ви працюєте з текстовим файлом.
@@ -7658,7 +7662,7 @@ vs.~\(n\) у подвійному логарифмічному масштабі 
 коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після ---
 близько 0.5.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка до \emph{R/S}-аналізу}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка до \emph{R/S}-аналізу}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-note-color!10!white]
 
 Між фрактальною розмірністю та показником Херста також існує зв'язок
 
@@ -8059,7 +8063,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 інтеграла від значення \(\varepsilon\). Ця залежність будується в
 логарифмічному масштабі.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по кореляційні розмірності}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по кореляційні розмірності}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Кореляційна розмірність за аналогією з попередніми показниками --- це
 теж тангенс кута нахилу лінії регресії, побудованої в логарифмічному
@@ -8169,7 +8173,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 складні рухи цін, що відповідає періодам стабільності або менш
 волатильним ринковим умовам.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка по кореляційні розмірності}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Примітка по кореляційні розмірності}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-note-color!10!white]
 
 Кореляційна розмірність розглядає кількість інформації (кубиків, кіл),
 необхідну для опису \textbf{тільки пари точок} у фазовому просторі.
@@ -8241,10 +8245,11 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 [*********************100%%**********************]  1 of 1 completed
 \end{verbatim}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-warning-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-warning-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
 
-Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а з
-власного файлу
+Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а із
+власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать
+від того з яким рядом ми працюємо.
 
 \end{tcolorbox}
 
@@ -10533,7 +10538,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 де \(\alpha_{i}\) являє собою деякий показник ступеня (різний для різнок
 клітинок \(i\)).
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Спрямовуючи значення \(\varepsilon\) до нуля, можна сказати, що
 фрактальність можна розглядати локально для кожної точки (елемента)
@@ -10578,7 +10583,7 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 (підкреслено жирною лінією). Таким чином, сила сингулярності \(i\)-ої
 комірки дорівнює 3.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додатково по \(\alpha\)}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Можна сказати, що чим більш гладкою видається поверхня системи, чим
 менше елементів задіяно в її розвитку, тим менший показник
@@ -10861,6 +10866,7 @@ MFDFA отримують шляхом розширення на \(q\)-й пор�
 \ImportTok{import}\NormalTok{ yfinance }\ImportTok{as}\NormalTok{ yf}
 \ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
 \ImportTok{import}\NormalTok{ scienceplots}
+\ImportTok{from}\NormalTok{ scipy.integrate }\ImportTok{import}\NormalTok{ cumulative\_trapezoid}
 \ImportTok{from}\NormalTok{ tqdm }\ImportTok{import}\NormalTok{ tqdm}
 
 \OperatorTok{\%}\NormalTok{matplotlib inline}
@@ -12418,7 +12424,7 @@ S(\varepsilon) \approx \varepsilon^{-D_1},
 величина \(D_{1}\) характеризує інформацію, необхідну для опису
 положення точки в деякій комірці.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по інформаційній розмірності}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Додаткова інформація по інформаційній розмірності}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Інформаційна розмірність може бути використана для опису просторової
 неоднорідності системи. Що однорідніший атрактор, то вищим має бути цей
@@ -12747,6 +12753,1146 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 індикатори-провісники аномальних явищ, або можуть бути використані як
 базис для побудови іншої прогностичної моделі. Мультифрактальний спектр
 може послужити хорошою основою для побудови таких показників.
+
+Повторно зчитаємо значення ряду із сайту FRED:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{symbol }\OperatorTok{=} \StringTok{\textquotesingle{}DCOILWTICO\textquotesingle{}}    \CommentTok{\# cимвол індексу, як указано на сайті FRED}
+\NormalTok{start }\OperatorTok{=} \StringTok{"1986{-}01{-}01"}     \CommentTok{\# Дата початку зчитування даних}
+\NormalTok{end }\OperatorTok{=} \StringTok{"2023{-}01{-}21"}       \CommentTok{\# Дата закінчення зчитування даних}
+
+\NormalTok{wti }\OperatorTok{=}\NormalTok{ web.DataReader(symbol, }\StringTok{\textquotesingle{}fred\textquotesingle{}}\NormalTok{, start, end) }\CommentTok{\# зчитуємо значення ряду }
+\NormalTok{time\_ser }\OperatorTok{=}\NormalTok{ wti[symbol].copy()                    }\CommentTok{\# зберігаємо саме ціни закриття}
+
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-} фільтрація від\textquotesingle{}ємних значень {-}{-}{-}{-}{-}{-}{-}}
+\NormalTok{time\_ser }\OperatorTok{=}\NormalTok{ time\_ser.dropna()    }\CommentTok{\# видаляємо значення NaN}
+\NormalTok{time\_ser[time\_ser.values}\OperatorTok{\textless{}}\DecValTok{0}\NormalTok{] }\OperatorTok{=} \DecValTok{5} \CommentTok{\# замінюємо від\textquotesingle{}ємне значення на 5}
+\CommentTok{\#{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}}
+
+\NormalTok{xlabel }\OperatorTok{=} \StringTok{\textquotesingle{}time, days\textquotesingle{}}    \CommentTok{\# підпис по вісі Ох }
+\NormalTok{ylabel }\OperatorTok{=}\NormalTok{ symbol          }\CommentTok{\# підпис по вісі Оу}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-warning-color}{\faExclamationTriangle}\hspace{0.5em}{Увага}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-warning-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-warning-color!10!white]
+
+Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance або
+FRED, а із власного файлу. Зрозуміло, що й аналіз результатів, і
+висновки залежать від того з яким рядом ми працюємо.
+
+\end{tcolorbox}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{symbol }\OperatorTok{=} \StringTok{\textquotesingle{}sMpa11\textquotesingle{}}                  \CommentTok{\# Символ індексу}
+
+\NormalTok{path }\OperatorTok{=} \StringTok{"databases\textbackslash{}sMpa11.txt"}      \CommentTok{\# шлях по якому здійснюється зчитування файлу}
+\NormalTok{data }\OperatorTok{=}\NormalTok{ pd.read\_csv(path,           }\CommentTok{\# зчитування даних }
+\NormalTok{                   names}\OperatorTok{=}\NormalTok{[symbol])}
+\NormalTok{time\_ser }\OperatorTok{=}\NormalTok{ data[symbol].copy()     }\CommentTok{\# копіюємо значення кривої }
+                                   \CommentTok{\# "напруга{-}видовження" до окремої змінної}
+
+\NormalTok{xlabel }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$\textbackslash{}varepsilon$\textquotesingle{}}          \CommentTok{\# підпис по вісі Ох }
+\NormalTok{ylabel }\OperatorTok{=}\NormalTok{ symbol                    }\CommentTok{\# підпис по вісі Оу}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+Виводимо досліджуваний ряд:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots()                   }\CommentTok{\# Створюємо порожній графік}
+\NormalTok{ax.plot(time\_ser.index, time\_ser.values)   }\CommentTok{\# Додаємо дані до графіку}
+\NormalTok{ax.legend([symbol])                        }\CommentTok{\# Додаємо легенду}
+\NormalTok{ax.set\_xlabel(xlabel)                      }\CommentTok{\# Встановимо підпис по вісі Ох}
+\NormalTok{ax.set\_ylabel(ylabel)                      }\CommentTok{\# Встановимо підпис по вісі Oy}
+
+\NormalTok{plt.xticks(rotation}\OperatorTok{=}\DecValTok{45}\NormalTok{)                    }\CommentTok{\# оберт позначок по осі Ох на 45 градусів}
+
+\NormalTok{plt.savefig(}\SpecialStringTok{f\textquotesingle{}}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{.jpg\textquotesingle{}}\NormalTok{)               }\CommentTok{\# Зберігаємо графік }
+\NormalTok{plt.show()}\OperatorTok{;}                                \CommentTok{\# Виводимо графік}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-init-2-output-1.png}
+
+}
+
+\caption{\label{fig-wti-init-2}Динаміка щоденних змін індексу сирої
+нафти, що використовуватиметься для подальших розрахунків}
+
+\end{figure}
+
+Деякі графіки будуть представляти парну побудову лише часового ряду та
+мультифрактального індикатора. Скористаємось функцією
+\texttt{plot\_pair()}, що ми визначали в попередніх лабораторних:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ plot\_pair(x\_values, }
+\NormalTok{              y1\_values,}
+\NormalTok{              y2\_values,  }
+\NormalTok{              y1\_label, }
+\NormalTok{              y2\_label,}
+\NormalTok{              x\_label, }
+\NormalTok{              file\_name, clr}\OperatorTok{=}\StringTok{"magenta"}\NormalTok{):}
+
+\NormalTok{    fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots()}
+
+\NormalTok{    ax2 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+
+\NormalTok{    ax2.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.03}\NormalTok{))}
+
+\NormalTok{    p1, }\OperatorTok{=}\NormalTok{ ax.plot(x\_values, }
+\NormalTok{                  y1\_values, }
+                  \StringTok{"b{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{fr"}\SpecialCharTok{\{}\NormalTok{y1\_label}\SpecialCharTok{\}}\VerbatimStringTok{"}\NormalTok{)}
+\NormalTok{    p2, }\OperatorTok{=}\NormalTok{ ax2.plot(x\_values,}
+\NormalTok{                   y2\_values, }
+\NormalTok{                   color}\OperatorTok{=}\NormalTok{clr, }
+\NormalTok{                   label}\OperatorTok{=}\NormalTok{y2\_label)}
+
+\NormalTok{    ax.set\_xlabel(x\_label)}
+\NormalTok{    ax.set\_ylabel(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{y1\_label}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\NormalTok{    ax.yaxis.label.set\_color(p1.get\_color())}
+\NormalTok{    ax2.yaxis.label.set\_color(p2.get\_color())}
+
+\NormalTok{    tkw }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(size}\OperatorTok{=}\DecValTok{2}\NormalTok{, width}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+
+\NormalTok{    ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{    ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p1.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{    ax2.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p2.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+
+
+\NormalTok{    ax2.legend(handles}\OperatorTok{=}\NormalTok{[p1, p2])}
+
+\NormalTok{    plt.savefig(file\_name }\OperatorTok{+} \StringTok{".jpg"}\NormalTok{)}
+        
+\NormalTok{    plt.show()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{ux432ux456ux43aux43eux43dux43dux430-ux43fux440ux43eux446ux435ux434ux443ux440ux430-10}{%
+\subsubsection{Віконна
+процедура}\label{ux432ux456ux43aux43eux43dux43dux430-ux43fux440ux43eux446ux435ux434ux443ux440ux430-10}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ fathon}
+\ImportTok{from}\NormalTok{ fathon }\ImportTok{import}\NormalTok{ fathonUtils }\ImportTok{as}\NormalTok{ fu}
+\end{Highlighting}
+\end{Shaded}
+
+Приступимо до ініціалізації параметрів.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{window }\OperatorTok{=} \DecValTok{500}        \CommentTok{\# розмір вікна}
+\NormalTok{tstep }\OperatorTok{=} \DecValTok{5}           \CommentTok{\# крок вікна}
+\NormalTok{ret\_type }\OperatorTok{=} \DecValTok{4}        \CommentTok{\# вид ряду: }
+                    \CommentTok{\# 1 {-} вихідний, }
+                    \CommentTok{\# 2 {-} детрендований (різниця між теп. значенням та попереднім)}
+                    \CommentTok{\# 3 {-} прибутковості звичайні, }
+                    \CommentTok{\# 4 {-} стандартизовані прибутковості, }
+                    \CommentTok{\# 5 {-} абсолютні значення (волатильності)}
+                    \CommentTok{\# 6 {-} стандартизований ряд}
+
+\NormalTok{win\_beg }\OperatorTok{=} \DecValTok{10}        \CommentTok{\# Початкова ширина сегменту}
+\NormalTok{win\_end }\OperatorTok{=}\NormalTok{ window}\OperatorTok{{-}}\DecValTok{1}  \CommentTok{\# Кінцева ширина сегменту}
+
+\NormalTok{scales\_exp\_wind }\OperatorTok{=}\NormalTok{ fu.linRangeByStep(win\_beg, win\_end) }\CommentTok{\# генеруємо масив }
+                                                      \CommentTok{\# лінійно розділених }
+                                                      \CommentTok{\# елементів}
+
+\NormalTok{rev }\OperatorTok{=} \VariableTok{True}      \CommentTok{\# чи повторювати розрахунок ф{-}ції флуктуацій з кінця}
+
+\NormalTok{length }\OperatorTok{=} \BuiltInTok{len}\NormalTok{(time\_ser.values)}
+
+\NormalTok{q\_min }\OperatorTok{=} \OperatorTok{{-}}\DecValTok{5}         \CommentTok{\# мінімальне значення q}
+\NormalTok{q\_max }\OperatorTok{=} \DecValTok{5}          \CommentTok{\# максимальне значення q}
+\NormalTok{q\_step }\OperatorTok{=} \DecValTok{1}         \CommentTok{\# крок збільшення q}
+
+\NormalTok{nq }\OperatorTok{=}\NormalTok{ np.arange(q\_min, }
+\NormalTok{               q\_max}\OperatorTok{+}\NormalTok{q\_step, }
+\NormalTok{               q\_step)}
+
+\NormalTok{order }\OperatorTok{=} \DecValTok{2}           \CommentTok{\# порядок поліноміального тренду}
+
+\NormalTok{delta\_alph }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{delta\_spec }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{max\_alph }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{min\_alph }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{mean\_alph }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{alpha\_zero }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{delta\_alph\_right }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{delta\_alph\_left }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{assym }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{delta\_s }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{D\_0 }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{D\_1 }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{D\_2 }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{D\_left }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{D\_right }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{C\_q }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{h\_q }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{tau\_q }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{D\_q }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{mfSpect }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{alpha }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{hFI }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{alphaCF }\OperatorTok{=}\NormalTok{ []}
+\NormalTok{C\_q\_area\_wind }\OperatorTok{=}\NormalTok{ []}
+\end{Highlighting}
+\end{Shaded}
+
+Розпочнемо процедуру рухомого вікна, що об'єднуватиме у собі попередні
+етапи розрахунків:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ i }\KeywordTok{in}\NormalTok{ tqdm(}\BuiltInTok{range}\NormalTok{(}\DecValTok{0}\NormalTok{,length}\OperatorTok{{-}}\NormalTok{window,tstep)):}
+    
+    \CommentTok{\# відбираємо фрагменти}
+\NormalTok{    fragm }\OperatorTok{=}\NormalTok{ time\_ser.iloc[i:i}\OperatorTok{+}\NormalTok{window].copy()  }
+
+    \CommentTok{\# виконуємо процедуру трансформації ряду }
+\NormalTok{    fragm }\OperatorTok{=}\NormalTok{ transformation(fragm, ret\_type)}
+
+    \CommentTok{\# знаходження кумулятивного ряду}
+\NormalTok{    cumulative }\OperatorTok{=}\NormalTok{ fu.toAggregated(fragm)}
+
+    \CommentTok{\# інціалізації процедури mfdfa}
+\NormalTok{    pymfdfa }\OperatorTok{=}\NormalTok{ fathon.MFDFA(cumulative)}
+
+    \CommentTok{\# обчислення функції флуктуацій та отримання узагальненого показника Херста}
+\NormalTok{    n, F }\OperatorTok{=}\NormalTok{ pymfdfa.computeFlucVec(scales\_exp\_wind, nq, revSeg}\OperatorTok{=}\NormalTok{rev, polOrd}\OperatorTok{=}\NormalTok{order)}
+\NormalTok{    Hq\_fragm, \_ }\OperatorTok{=}\NormalTok{ pymfdfa.fitFlucVec()}
+
+    \CommentTok{\# отримання показника tau}
+\NormalTok{    tau\_wind }\OperatorTok{=}\NormalTok{ nq }\OperatorTok{*}\NormalTok{ Hq\_fragm }\OperatorTok{{-}} \DecValTok{1}
+
+    \CommentTok{\# отримання показника сингулярності}
+\NormalTok{    alpha\_wind }\OperatorTok{=}\NormalTok{ np.gradient(tau\_wind, nq, edge\_order}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+
+    \CommentTok{\# отримання мультифрактального спектра}
+\NormalTok{    f\_wind }\OperatorTok{=}\NormalTok{ nq }\OperatorTok{*}\NormalTok{ alpha\_wind }\OperatorTok{{-}}\NormalTok{ tau\_wind}
+
+    \CommentTok{\# отримання мультифрактальної теплоємності}
+\NormalTok{    C\_q\_wind }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{np.gradient(alpha\_wind, nq, edge\_order}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+
+    \CommentTok{\# інтегральний показник C(q) }
+\NormalTok{    C\_q\_area }\OperatorTok{=}\NormalTok{ cumulative\_trapezoid(np.}\BuiltInTok{abs}\NormalTok{(C\_q\_wind), nq, initial}\OperatorTok{=}\DecValTok{0}\NormalTok{)[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{]}
+
+    \CommentTok{\# ширина спектра мультифрактальності}
+\NormalTok{    delta\_alpha\_wind }\OperatorTok{=}\NormalTok{ alpha\_wind.}\BuiltInTok{max}\NormalTok{() }\OperatorTok{{-}}\NormalTok{ alpha\_wind.}\BuiltInTok{min}\NormalTok{()}
+
+    \CommentTok{\# відстань між кінцями спектра мультифрактальності}
+\NormalTok{    delta\_phi }\OperatorTok{=}\NormalTok{ f\_wind[}\OperatorTok{{-}}\DecValTok{1}\NormalTok{] }\OperatorTok{{-}}\NormalTok{ f\_wind[}\DecValTok{0}\NormalTok{]}
+
+    \CommentTok{\# максимальне значення альфи}
+\NormalTok{    maximal\_alpha }\OperatorTok{=}\NormalTok{ alpha\_wind.}\BuiltInTok{max}\NormalTok{()}
+
+    \CommentTok{\# мінімальне значення альфи}
+\NormalTok{    minimal\_alpha }\OperatorTok{=}\NormalTok{ alpha\_wind.}\BuiltInTok{min}\NormalTok{()}
+
+    \CommentTok{\# середнє значення альфи}
+\NormalTok{    mean\_alpha }\OperatorTok{=}\NormalTok{ np.mean(alpha\_wind)}
+
+    \CommentTok{\# значення сингулярності при якому спектр приймає максимальне значення (α0)}
+\NormalTok{    alpha\_0 }\OperatorTok{=}\NormalTok{ alpha\_wind[np.nanargmax(f\_wind)]}
+
+    \CommentTok{\# ширина правого хвоста спектра}
+\NormalTok{    delt\_alpha\_right }\OperatorTok{=}\NormalTok{ maximal\_alpha }\OperatorTok{{-}}\NormalTok{ alpha\_0}
+
+    \CommentTok{\# ширина лівого хвоста спектра}
+\NormalTok{    delt\_alpha\_left }\OperatorTok{=}\NormalTok{ alpha\_0 }\OperatorTok{{-}}\NormalTok{ minimal\_alpha}
+
+    \CommentTok{\# різниця між шириною лівого та правого хвостів}
+\NormalTok{    delt\_s }\OperatorTok{=}\NormalTok{ delt\_alpha\_right }\OperatorTok{{-}}\NormalTok{ delt\_alpha\_left}
+
+    \CommentTok{\# показник асиметрії}
+\NormalTok{    A }\OperatorTok{=}\NormalTok{ (delt\_alpha\_left }\OperatorTok{{-}}\NormalTok{ delt\_alpha\_right)}\OperatorTok{/}\NormalTok{(delt\_alpha\_left }\OperatorTok{+}\NormalTok{ delt\_alpha\_right)}
+
+    \CommentTok{\# визначаємо індекс при q=0}
+\NormalTok{    difference\_zero }\OperatorTok{=}\NormalTok{ np.absolute(nq}\OperatorTok{{-}}\DecValTok{0}\NormalTok{)}
+\NormalTok{    idx\_zero }\OperatorTok{=}\NormalTok{ difference\_zero.argmin()}
+
+    \CommentTok{\# визначаємо індекс при q=1}
+\NormalTok{    difference\_one }\OperatorTok{=}\NormalTok{ np.absolute(nq}\OperatorTok{{-}}\DecValTok{1}\NormalTok{)}
+\NormalTok{    idx\_one }\OperatorTok{=}\NormalTok{ difference\_one.argmin()}
+
+    \CommentTok{\# визначаємо індекс при q=2}
+\NormalTok{    difference\_two }\OperatorTok{=}\NormalTok{ np.absolute(nq}\OperatorTok{{-}}\DecValTok{2}\NormalTok{)}
+\NormalTok{    idx\_two }\OperatorTok{=}\NormalTok{ difference\_two.argmin()}
+
+    \CommentTok{\# ініціалізуємо масиви під розмірності}
+\NormalTok{    Dq\_wind }\OperatorTok{=}\NormalTok{ np.zeros(}\BuiltInTok{len}\NormalTok{(nq))}
+
+    \CommentTok{\# Визначаємо узагальнені фрактальні розмірності там де q!=1 }
+\NormalTok{    Dq\_wind[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{=}\NormalTok{ tau\_wind[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{/}\NormalTok{ (nq[nq}\OperatorTok{!=}\NormalTok{nq[idx\_one]] }\OperatorTok{{-}} \DecValTok{1}\NormalTok{)}
+
+    \CommentTok{\# Визначаємо окремо узагальнені фрактальні розмірності при q=1}
+\NormalTok{    Dq\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]] }\OperatorTok{=} \OperatorTok{{-}}\NormalTok{tau\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]] }
+
+    \CommentTok{\# Узагальнені фрактальні розмірності отримані з мультифрактального спектра}
+\NormalTok{    D\_zero }\OperatorTok{=}\NormalTok{ f\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_zero]]}
+\NormalTok{    D\_one }\OperatorTok{=}\NormalTok{ f\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_one]]}
+\NormalTok{    D\_two }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ alpha\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_two]] }\OperatorTok{{-}}\NormalTok{ f\_wind[np.where(alpha\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_two]])]}
+
+    \CommentTok{\# відстань від центру розподілу узагальнених розмірностей до лівого кінця}
+\NormalTok{    delta\_D\_Q\_left }\OperatorTok{=}\NormalTok{ Dq\_wind[nq}\OperatorTok{==}\NormalTok{q\_min] }\OperatorTok{{-}}\NormalTok{ Dq\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_zero]]}
+
+    \CommentTok{\# відстань від центру розподілу узагальнених розмірностей до правого кінця}
+\NormalTok{    delta\_D\_Q\_right }\OperatorTok{=}\NormalTok{ Dq\_wind[nq}\OperatorTok{==}\NormalTok{nq[idx\_zero]] }\OperatorTok{{-}}\NormalTok{ Dq\_wind[nq}\OperatorTok{==}\NormalTok{q\_max]}
+
+    \CommentTok{\# індекс h{-}флуктуацій (hFI)}
+\NormalTok{    fluct }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(np.gradient(np.gradient(Hq\_fragm, nq, edge\_order}\OperatorTok{=}\DecValTok{2}\NormalTok{), nq, edge\_order}\OperatorTok{=}\DecValTok{2}\NormalTok{) }\OperatorTok{**} \DecValTok{2}\NormalTok{)}\OperatorTok{/}\NormalTok{(}\DecValTok{2} \OperatorTok{*}\NormalTok{ np.}\BuiltInTok{max}\NormalTok{(np.}\BuiltInTok{abs}\NormalTok{(nq)) }\OperatorTok{+} \DecValTok{2}\NormalTok{)}
+
+    \CommentTok{\# кумулятивний індекс інкрементів узагальнених показників Херста (αCF)}
+\NormalTok{    incr }\OperatorTok{=}\NormalTok{ np.}\BuiltInTok{sum}\NormalTok{(np.gradient(Hq\_fragm, edge\_order}\OperatorTok{=}\DecValTok{2}\NormalTok{) }\OperatorTok{**} \DecValTok{2} \OperatorTok{/}\NormalTok{ np.gradient(nq, edge\_order}\OperatorTok{=}\DecValTok{2}\NormalTok{))}
+
+\NormalTok{    delta\_alph.append(delta\_alpha\_wind)}
+\NormalTok{    delta\_spec.append(delta\_phi)}
+\NormalTok{    max\_alph.append(maximal\_alpha)}
+\NormalTok{    min\_alph.append(minimal\_alpha)}
+\NormalTok{    mean\_alph.append(mean\_alpha)}
+\NormalTok{    alpha\_zero.append(alpha\_0)}
+\NormalTok{    delta\_alph\_right.append(delt\_alpha\_right)}
+\NormalTok{    delta\_alph\_left.append(delt\_alpha\_left)}
+\NormalTok{    delta\_s.append(delt\_s)}
+\NormalTok{    assym.append(A)}
+\NormalTok{    D\_0.append(D\_zero)}
+\NormalTok{    D\_1.append(D\_one)}
+\NormalTok{    D\_2.append(D\_two)}
+\NormalTok{    D\_left.append(delta\_D\_Q\_left)}
+\NormalTok{    D\_right.append(delta\_D\_Q\_right)}
+\NormalTok{    C\_q.append(C\_q\_wind)}
+\NormalTok{    mfSpect.append(f\_wind)}
+\NormalTok{    alpha.append(alpha\_wind)}
+\NormalTok{    hFI.append(fluct)}
+\NormalTok{    alphaCF.append(incr)}
+\NormalTok{    C\_q\_area\_wind.append(C\_q\_area)}
+\NormalTok{    h\_q.append(Hq\_fragm)}
+\NormalTok{    tau\_q.append(tau\_wind)}
+\NormalTok{    D\_q.append(Dq\_wind)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+100%|██████████| 1768/1768 [06:19<00:00,  4.66it/s]
+\end{verbatim}
+
+Зберігаємо абсолютні значення показників до текстових файлів.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_alpha\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, delta\_alph)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_f\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, delta\_spec)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_max\_alpha\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, max\_alph)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_min\_alpha\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, min\_alph)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_mean\_alpha\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, mean\_alph)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_zero\_alpha\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, alpha\_zero)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_alpha\_right\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, delta\_alph\_right)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_alpha\_left\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, delta\_alph\_left)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_assymetry\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, assym)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_s\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, delta\_s)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_D\_0\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, D\_0)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_D\_1\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, D\_1)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_D\_2\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{txt"}\NormalTok{, D\_2)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_hFI\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, hFI)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_alphaCF\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{txt"}\NormalTok{, alphaCF)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_C\_q\_area\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, C\_q\_area\_wind)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_d\_left\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, D\_left)}
+
+\NormalTok{np.savetxt(}\SpecialStringTok{f"mfdfa\_delta\_d\_right\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.txt"}\NormalTok{, D\_right)}
+\end{Highlighting}
+\end{Shaded}
+
+Розглянемо динаміку отриманих індикаторів.
+
+\hypertarget{ux448ux438ux440ux438ux43dux430-ux441ux43fux435ux43aux442ux440ux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux441ux442ux456-deltaalpha}{%
+\subsection{\texorpdfstring{Ширина спектра мультифрактальності
+(\(\Delta\alpha\))}{Ширина спектра мультифрактальності (\textbackslash Delta\textbackslash alpha)}}\label{ux448ux438ux440ux438ux43dux430-ux441ux43fux435ux43aux442ux440ux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux441ux442ux456-deltaalpha}}
+
+Першим і одним із найпрактичніших індикаторів складності системи є
+ширина спектра мультифрактальності, \(\Delta\alpha\), яку можна подати
+як різницю між максимальним ступенем синґулярності та мінімальним:
+
+\begin{equation}\protect\hypertarget{eq-7-1}{}{
+\Delta\alpha = \alpha_{max} - \alpha_{min}. 
+}\label{eq-7-1}\end{equation}
+
+Якщо проводити аналогію з термодинамічними показниками, то в такому разі
+ширина спектра мультифрактальності становитиме різницю між найбільшим і
+найменшим значенням внутрішньої енергії системи. Розглянемо динаміку
+даного показника для ринку нафти.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$\textbackslash{}Delta\textbackslash{}alpha$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_delta\_alpha\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          delta\_alph, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}red\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-delta-alpha-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-delta-alpha}Динаміка індексу сирої нафти
+WTI та показника ширини спектра мультифрактальності \(\Delta\alpha\)}
+
+\end{figure}
+
+\hypertarget{ux440ux456ux437ux43dux438ux446ux44f-ux43cux456ux436-ux43aux456ux43dux446ux44fux43cux438-ux441ux43fux435ux43aux442ux440ux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux441ux442ux456-delta-f}{%
+\subsection{\texorpdfstring{Різниця між кінцями спектра
+мультифрактальності
+(\(\Delta f\))}{Різниця між кінцями спектра мультифрактальності (\textbackslash Delta f)}}\label{ux440ux456ux437ux43dux438ux446ux44f-ux43cux456ux436-ux43aux456ux43dux446ux44fux43cux438-ux441ux43fux435ux43aux442ux440ux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux441ux442ux456-delta-f}}
+
+Однак проста ширина спектра мультифрактальності не показує, наприклад,
+флуктуації якого типу є найвірогіднішими, елементи якого типу щільності
+відіграють найбільшу роль у зростанні або зниженні складності системи.
+Надалі було запропоновано такий показник мультифрактальності як
+\(\Delta f\), який можна представити наступним чином:
+
+\begin{equation}\protect\hypertarget{eq-7-2}{}{
+\Delta f = f(\alpha_{min}) - f(\alpha_{max}). 
+}\label{eq-7-2}\end{equation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$\textbackslash{}Delta f$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_delta\_f\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          delta\_spec, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}brown\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-delta-f-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-delta-f}Динаміка індексу сирої нафти WTI та
+показника відстані між кінцями спектра мультифрактальності \(\Delta f\)}
+
+\end{figure}
+
+Сенс даного показника полягає в тому, що він дає нам змогу визначити
+ступінь імовірності появи елементів з великими щільностями і малими.
+Якщо цей показник менший за нуль, тоді флуктуації, що відображають
+елементи з найбільшою концентрацією (найбільшими фруктуаціями), мають
+найбільшу ймовірність. Якщо цей показник вищий за нуль, тоді флуктуації,
+що відображають малоконцентровані елементи (малі флуктуації), визначають
+динаміку системи. Якщо цей показник перебуває в нулі, тоді як
+високосингулярні, так і малосингулярні елементи мають рівномірний внесок
+у динаміку системи.
+
+Звертаючись до термодинаміки, можна згадати, що \(f(\alpha)\) --- це
+ентропія системи. Тоді стає зрозуміло, що варіативність спектра
+мультифрактальності дає нам змогу визначити ступінь внеску
+висококонцентрованих і малоконцентрованих елементів у мінімізацію
+ентропії системи. Лівостороння асиметрія мультифрактального спектра
+(\(\Delta f > 0\)) підказує нам, що висококонцентровані елементи
+фазового простору роблять найбільший внесок у мінімум термодинамічної
+ентропії. Іншими словами, ці елементи і є двигуном зростання
+впорядкованості динаміки системи. Своєю чергою, правостороння асиметрія
+мультифрактального спектра (\(\Delta f < 0\)) вказує на мінімізацію
+ентропії за рахунок малоконцентрованих елементів. Симетрія кінців
+спектра вказує на рівний внесок високощільних і розріджених областей на
+мінімізацію ентропії. Як уже згадувалося, трапляються випадки, коли
+мультифрактальний спектр практично сходиться в сингулярність. У такому
+разі ми маємо справу з простою монофрактальною системою, яка в нашому
+випадку характеризувалася незалежними і нормально розподіленими
+випадковими величинами. Для такого спектра і \(\Delta\alpha\), і
+\(\Delta f\) будуть прагнути до нуля. Для такого часового ряду вже
+спостерігається не множина фрактальних розмірностей, а тільки один
+фрактальний показник, \(f[\alpha(q=0)] = 1\). Це саме та область, де
+система досягає своєї термодинамічної рівноваги --- максимуму ентропії.
+У свою чергу \(\Delta f\) можна охарактеризувати як різницю ентропій за
+граничної максимальної та мінімальної внутрішньої енергії системи.
+
+\hypertarget{ux448ux438ux440ux438ux43dux430-ux43bux456ux432ux43eux433ux43e-deltaalpha_l-ux442ux430-ux43fux440ux430ux432ux43eux433ux43e-deltaalpha_r-ux445ux432ux43eux441ux442ux456ux432-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux433ux43e-ux441ux43fux435ux43aux442ux440ux430}{%
+\subsection{\texorpdfstring{Ширина лівого (\(\Delta\alpha_{L}\)) та
+правого (\(\Delta\alpha_{R}\)) хвостів мультифрактального
+спектра}{Ширина лівого (\textbackslash Delta\textbackslash alpha\_\{L\}) та правого (\textbackslash Delta\textbackslash alpha\_\{R\}) хвостів мультифрактального спектра}}\label{ux448ux438ux440ux438ux43dux430-ux43bux456ux432ux43eux433ux43e-deltaalpha_l-ux442ux430-ux43fux440ux430ux432ux43eux433ux43e-deltaalpha_r-ux445ux432ux43eux441ux442ux456ux432-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux433ux43e-ux441ux43fux435ux43aux442ux440ux430}}
+
+Крім цього, ми можемо дослідити ступінь складності динаміки окремо
+високощільних областей (з великими флуктуаціями) і низькощільних (з
+малими флуктуаціями). Для цього ми можемо виміряти ширину окремо лівого
+і правого хвостів. Ширину лівого хвоста можна визначити як
+
+\begin{equation}\protect\hypertarget{eq-7-3}{}{
+\Delta\alpha_{L} = \alpha_{0} - \alpha_{min},
+}\label{eq-7-3}\end{equation}
+
+а ширина правого хвоста визначається як
+
+\begin{equation}\protect\hypertarget{eq-7-4}{}{
+\Delta\alpha_{R} = \alpha_{max} - \alpha_{0}.
+}\label{eq-7-4}\end{equation}
+
+У свою чергу ширина лівого хвоста вимірює ступінь складності флуктуацій
+з великою амплітудою, а ширина правого хвоста вимірює ступінь складності
+малих флуктуацій, які рефлексують малоконцентровані елементи.
+
+Зростання ширини кожного з хвостів відображатиме зростання ступеня
+кореляцій між елементами
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ax2 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+\NormalTok{ax3 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+
+\NormalTok{ax2.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.03}\NormalTok{))}
+\NormalTok{ax3.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.12}\NormalTok{))}
+
+\NormalTok{p1, }\OperatorTok{=}\NormalTok{ ax.plot(time\_ser.index[window:length:tstep], }
+\NormalTok{              time\_ser.values[window:length:tstep], }
+              \StringTok{"b{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{fr"}\SpecialCharTok{\{}\NormalTok{ylabel}\SpecialCharTok{\}}\VerbatimStringTok{"}\NormalTok{)}
+\NormalTok{p2, }\OperatorTok{=}\NormalTok{ ax2.plot(time\_ser.index[window:length:tstep], }
+\NormalTok{               delta\_alph\_left, color}\OperatorTok{=}\StringTok{"r"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}Delta\textbackslash{}alpha\_}\SpecialCharTok{\{L\}}\VerbatimStringTok{$"}\NormalTok{)}
+\NormalTok{p3, }\OperatorTok{=}\NormalTok{ ax3.plot(time\_ser.index[window:length:tstep], }
+\NormalTok{               delta\_alph\_right, color}\OperatorTok{=}\StringTok{"g"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}Delta\textbackslash{}alpha\_}\SpecialCharTok{\{R\}}\VerbatimStringTok{$"}\NormalTok{)}
+
+
+\NormalTok{ax.set\_xlabel(xlabel)}
+\NormalTok{ax.set\_ylabel(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{ylabel}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\NormalTok{ax.yaxis.label.set\_color(p1.get\_color())}
+\NormalTok{ax2.yaxis.label.set\_color(p2.get\_color())}
+\NormalTok{ax3.yaxis.label.set\_color(p3.get\_color())}
+
+\NormalTok{tkw }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(size}\OperatorTok{=}\DecValTok{4}\NormalTok{, width}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p1.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax2.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p2.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax3.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p3.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, }\OperatorTok{**}\NormalTok{tkw)}
+
+\NormalTok{ax3.legend(handles}\OperatorTok{=}\NormalTok{[p1, p2, p3])}
+
+\NormalTok{plt.savefig(}\SpecialStringTok{f"mfdfa\_delta\_alpha\_left\_right\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.jpg"}\NormalTok{)}
+\NormalTok{plt.show()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-delta-alpha-left-right-output-1.png}
+
+}
+
+\caption{\label{fig-delta-alpha-left-right}Динаміка індексу сирої нафти
+WTI та ширини лівого і правого хвостів мультифрактального спектра}
+
+\end{figure}
+
+\hypertarget{ux43fux43eux43aux430ux437ux43dux438ux43a-ux441ux438ux43dux433ux443ux43bux44fux440ux43dux43eux441ux442ux456-alpha-ux442ux430-ux439ux43eux433ux43e-ux440ux456ux437ux43dux43eux432ux438ux434ux438}{%
+\subsection{\texorpdfstring{Показник сингулярності \(\alpha\) та його
+різновиди}{Показник сингулярності \textbackslash alpha та його різновиди}}\label{ux43fux43eux43aux430ux437ux43dux438ux43a-ux441ux438ux43dux433ux443ux43bux44fux440ux43dux43eux441ux442ux456-alpha-ux442ux430-ux439ux43eux433ux43e-ux440ux456ux437ux43dux43eux432ux438ux434ux438}}
+
+В якості можливих індикаторів складності системи можна взяти
+\(\alpha_{min}\), \(\alpha_{max}\), \(\alpha_{mean}\) і \(\alpha_0\),
+які, відповідно, характеризують мінімальну силу сингулярності,
+максимальну, середню і сингулярність за умови рівноважного врахування як
+великих флуктуацій, так і малих.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ax2 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+\NormalTok{ax3 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+\NormalTok{ax4 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+\NormalTok{ax5 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+
+\NormalTok{ax3.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.08}\NormalTok{))}
+\NormalTok{ax4.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.18}\NormalTok{))}
+\NormalTok{ax5.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.27}\NormalTok{))}
+
+\NormalTok{p1, }\OperatorTok{=}\NormalTok{ ax.plot(time\_ser.index[window:length:tstep], time\_ser[window:length:tstep], }\StringTok{"b{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{fr"}\SpecialCharTok{\{}\NormalTok{ylabel}\SpecialCharTok{\}}\VerbatimStringTok{"}\NormalTok{)}
+\NormalTok{p2, }\OperatorTok{=}\NormalTok{ ax2.plot(time\_ser.index[window:length:tstep], max\_alph, }\StringTok{"r{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}alpha\_}\SpecialCharTok{\{max\}}\VerbatimStringTok{$"}\NormalTok{)}
+\NormalTok{p3, }\OperatorTok{=}\NormalTok{ ax3.plot(time\_ser.index[window:length:tstep], min\_alph, }\StringTok{"g{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}alpha\_}\SpecialCharTok{\{min\}}\VerbatimStringTok{$"}\NormalTok{)}
+\NormalTok{p4, }\OperatorTok{=}\NormalTok{ ax4.plot(time\_ser.index[window:length:tstep], mean\_alph, }\StringTok{"c{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}alpha\_}\SpecialCharTok{\{mean\}}\VerbatimStringTok{$"}\NormalTok{)}
+\NormalTok{p5, }\OperatorTok{=}\NormalTok{ ax5.plot(time\_ser.index[window:length:tstep], alpha\_zero, }\StringTok{"m{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}alpha\_}\SpecialCharTok{\{0\}}\VerbatimStringTok{$"}\NormalTok{)}
+
+\NormalTok{ax.set\_xlabel(xlabel)}
+\NormalTok{ax.set\_ylabel(}\VerbatimStringTok{fr"}\SpecialCharTok{\{}\NormalTok{ylabel}\SpecialCharTok{\}}\VerbatimStringTok{"}\NormalTok{)}
+
+\NormalTok{ax.yaxis.label.set\_color(p1.get\_color())}
+\NormalTok{ax2.yaxis.label.set\_color(p2.get\_color())}
+\NormalTok{ax3.yaxis.label.set\_color(p3.get\_color())}
+\NormalTok{ax4.yaxis.label.set\_color(p4.get\_color())}
+\NormalTok{ax5.yaxis.label.set\_color(p5.get\_color())}
+
+\NormalTok{tkw }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(size}\OperatorTok{=}\DecValTok{4}\NormalTok{, width}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p1.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax2.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p2.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax3.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p3.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax4.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p4.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax5.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p5.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, }\OperatorTok{**}\NormalTok{tkw, pad}\OperatorTok{=}\DecValTok{10}\NormalTok{)}
+
+\NormalTok{ax5.legend(handles}\OperatorTok{=}\NormalTok{[p1, p2, p3, p4, p5])}
+
+\NormalTok{plt.savefig(}\SpecialStringTok{f"mfdfa\_alpha\_min\_max\_mean\_zero\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{            wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.jpg"}\NormalTok{, bbox\_inches}\OperatorTok{=}\StringTok{"tight"}\NormalTok{)}
+\NormalTok{plt.show()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/cell-57-output-1.png}
+
+}
+
+\end{figure}
+
+\hypertarget{ux442ux438ux43f-ux434ux43eux432ux433ux43eux433ux43e-ux445ux432ux43eux441ux442ux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux433ux43e-ux441ux43fux435ux43aux442ux440ux430-delta-s}{%
+\subsection{\texorpdfstring{Тип довгого хвоста мультифрактального
+спектра
+(\(\Delta S\))}{Тип довгого хвоста мультифрактального спектра (\textbackslash Delta S)}}\label{ux442ux438ux43f-ux434ux43eux432ux433ux43eux433ux43e-ux445ux432ux43eux441ux442ux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux43eux433ux43e-ux441ux43fux435ux43aux442ux440ux430-delta-s}}
+
+Крім такої міри як, наприклад, \(\Delta f\) можна представити й інші
+міри асиметрії мультифрактального спектра. Наприклад, ми можемо
+визначити тип довгого хвоста мультифрактального спектра за допомогою
+показника \(\Delta S\), що визначається як
+
+\begin{equation}\protect\hypertarget{eq-7-5}{}{
+\Delta S = \Delta\alpha_{R} - \Delta\alpha_{L}. 
+}\label{eq-7-5}\end{equation}
+
+Якщо \(\Delta S < 0\), тоді мультифрактальний спектр має довгий лівий
+хвіст, що свідчить про те, що структура часового ряду чутлива до
+локальних флуктуацій з великою амплітудою. Якщо \(\Delta S > 0\), тоді
+мультифрактальний спектр має довгий правий хвіст, який вказує на те, що
+структура сигналу чутлива до локальних флуктуацій з малою амплітудою
+коливань. У тих випадках, коли високо- і низькофлуктуаційні компоненти
+сигналу характеризуються однаковою мірою складністю, спектр
+сингулярностей буде приблизно симетричним і
+\(\Delta\alpha_{R} = \Delta\alpha_{L}\). У разі більшої складності
+однієї з цих компонент спектр сингулярності стає несиметричним,
+унаслідок чого один із хвостів виявляється ширшим за інший.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$\textbackslash{}Delta S$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_delta\_s\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          delta\_s, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}darkorange\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-delta-s-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-delta-s}Динаміка індексу сирої нафти WTI та
+показника типу хвоста мультифрактального спектра \(\Delta S\)}
+
+\end{figure}
+
+З огляду на цей рисунок (Рис.~\ref{fig-wti-wind-delta-s}) видно, що
+\(\Delta S < 0\), що свідчить про те, що найбільш крахові ділянки
+нафтового ринку зумовлені флуктуаціями з великою амплітудою коливань.
+
+\hypertarget{ux43fux43eux43aux430ux437ux43dux438ux43a-ux430ux441ux438ux43cux435ux442ux440ux456ux457-a}{%
+\subsection{\texorpdfstring{Показник асиметрії
+(\(A\))}{Показник асиметрії (A)}}\label{ux43fux43eux43aux430ux437ux43dux438ux43a-ux430ux441ux438ux43cux435ux442ux440ux456ux457-a}}
+
+Далі ми можемо визначити наступний параметр асиметрії:
+
+\begin{equation}\protect\hypertarget{eq-7-6}{}{
+A = \frac{\Delta\alpha_{L} - \Delta\alpha_{R}}{\Delta\alpha_{R} + \Delta\alpha_{L}} = \frac{-\Delta S}{\Delta\alpha}.
+}\label{eq-7-6}\end{equation}
+
+Параметр асиметрії пов'язаний з предомінуючим типом коливань у
+досліджуваній системі. Якщо \(A=0\)
+(\(\Delta\alpha_{L}=\Delta\alpha_{R}\)), тоді динаміку системи
+представляє симетричний спектр. Якщо \(A<0\)
+(\(\Delta\alpha_{L}<\Delta\alpha_{R}\)), тоді мультифрактальний спектр
+має правосторонню асиметрію, що підкреслює сильніший вплив малих
+флуктуацій на мультифрактальність системи, тобто в часовому ряду
+переважає мультифрактальна природа малих шумоподібних флуктуацій. І
+навпаки, коли \(A>0\) (\(\Delta\alpha_{L}>\Delta\alpha_{R}\)), тоді ми
+маємо справу з лівостороннім спектром, який позначає більшу
+неоднорідність для великих флуктуацій і вказує на те, що в часовому ряді
+переважає мультифрактальна природа неоднорідностей з високими
+щільностями. Оскільки асиметрію виявляють за знаком \(A\), який
+еквівалентний знаку \(\Delta S\), то, ґрунтуючись тільки по знаку
+\(\Delta S\), можна зробити висновки як про тип довгого хвоста, так і
+про знак показника \(A\) мультифрактального спектра, тобто нечутливість
+і тип домінантних коливань мультифрактальності часового ряду.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$A$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_A\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          assym, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}darkviolet\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-a-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-a}Динаміка індексу сирої нафти WTI та
+показника асиметрії мультифрактального спектра \(A\)}
+
+\end{figure}
+
+\hypertarget{ux456ux43dux434ux435ux43aux441-h-ux444ux43bux443ux43aux442ux443ux430ux446ux456ux439-hfi}{%
+\subsection{\texorpdfstring{Індекс \(h\)-флуктуацій
+(\(hFI\))}{Індекс h-флуктуацій (hFI)}}\label{ux456ux43dux434ux435ux43aux441-h-ux444ux43bux443ux43aux442ux443ux430ux446ux456ux439-hfi}}
+
+Флуктуацію можна проаналізувати за допомогою другої похідної
+узагальненого показника Херста. Зауважимо, що амплітуда другої похідної
+у випадку мультифрактальних сигналів більша, ніж для монофрактальних.
+Для вилучення потрібної інформації з \(h(q)\) було запропоновано
+наступну міру, яка називається \(h\)-індекс флуктуації (\(hFI\)), яка
+визначається як степінь другої похідної від \(h(q)\),
+
+\begin{equation}\protect\hypertarget{eq-7-7}{}{
+hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + h(q-2) \right]^{2}.
+}\label{eq-7-7}\end{equation}
+
+Чим вище значення даного показника, тим вища самоорганізованість
+системи.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$hFI$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_hFI\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          hFI, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}green\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-hfi-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-hfi}Динаміка індексу сирої нафти WTI та
+індексу \(h\)-флуктуацій \(hFI\)}
+
+\end{figure}
+
+\hypertarget{ux43aux443ux43cux443ux43bux44fux442ux438ux432ux43dux438ux439-ux456ux43dux434ux435ux43aux441-ux456ux43dux43aux440ux435ux43cux435ux43dux442ux456ux432-ux443ux437ux430ux433ux430ux43bux44cux43dux435ux43dux438ux445-ux43fux43eux43aux430ux437ux43dux438ux43aux456ux432-ux445ux435ux440ux441ux442ux430-alpha-cf}{%
+\subsection{\texorpdfstring{Кумулятивний індекс інкрементів узагальнених
+показників Херста
+(\(\alpha CF\))}{Кумулятивний індекс інкрементів узагальнених показників Херста (\textbackslash alpha CF)}}\label{ux43aux443ux43cux443ux43bux44fux442ux438ux432ux43dux438ux439-ux456ux43dux434ux435ux43aux441-ux456ux43dux43aux440ux435ux43cux435ux43dux442ux456ux432-ux443ux437ux430ux433ux430ux43bux44cux43dux435ux43dux438ux445-ux43fux43eux43aux430ux437ux43dux438ux43aux456ux432-ux445ux435ux440ux441ux442ux430-alpha-cf}}
+
+Кумулятивна функція квадратів інкриментів (\(\alpha CF\)) узагальнених
+показників Херста між послідовними моментними порядками є більш надійним
+показником розподілу узагальнених показників Херста.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$\textbackslash{}alpha CF$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_alphaCF\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          alphaCF, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}crimson\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-alphacf-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-alphacf}Динаміка індексу сирої нафти WTI та
+кумулятивний індексу інкрементів узагальнених показників Херста
+\(\alpha CF\)}
+
+\end{figure}
+
+\hypertarget{ux456ux43dux442ux435ux433ux440ux430ux43bux44cux43dux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux430-ux442ux435ux43fux43bux43eux454ux43cux43dux456ux441ux442ux44c-cq}{%
+\subsection{\texorpdfstring{Інтегральна мультифрактальна теплоємність
+\(C(q)\)}{Інтегральна мультифрактальна теплоємність C(q)}}\label{ux456ux43dux442ux435ux433ux440ux430ux43bux44cux43dux430-ux43cux443ux43bux44cux442ux438ux444ux440ux430ux43aux442ux430ux43bux44cux43dux430-ux442ux435ux43fux43bux43eux454ux43cux43dux456ux441ux442ux44c-cq}}
+
+Загальний ступінь мультифрактальності, інтегральну мультифрактальну
+питому теплоємність (\(C_{area}\)), можна виразити через рівняння
+(Рівняння~\ref{eq-7-8}):
+
+\begin{equation}\protect\hypertarget{eq-7-8}{}{
+C_{area} = \int C(q)dq.
+}\label{eq-7-8}\end{equation}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$C\_}\SpecialCharTok{\{area\}}\VerbatimStringTok{$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_C\_q\_area\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          C\_q\_area\_wind, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}darkslateblue\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-c-q-arad-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-c-q-arad}Динаміка індексу сирої нафти WTI
+та інтегральної мультифрактальної теплоємності \(C_{area}\)}
+
+\end{figure}
+
+\hypertarget{ux445ux430ux443ux441ux434ux43eux440ux444ux43eux432ux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-d_0}{%
+\subsection{\texorpdfstring{Хаусдорфова розмірність
+(\(D_{0}\))}{Хаусдорфова розмірність (D\_\{0\})}}\label{ux445ux430ux443ux441ux434ux43eux440ux444ux43eux432ux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-d_0}}
+
+Як уже зазначалось, \(D_{0}\) представляє верхню межу змін розмірностей
+фрактальних підмножин атрактора системи. Інформацію про статистичні
+властивості системи він не має нести, тому не представляє особливої
+цікавості.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$D\_}\SpecialCharTok{\{0\}}\VerbatimStringTok{$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_D\_0\_area\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          D\_0, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}darkred\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-d-0-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-d-0}Динаміка індексу сирої нафти WTI та
+хаусдорфової розмірності цього часового сигналу \(D_{0}\)}
+
+\end{figure}
+
+\hypertarget{ux456ux43dux444ux43eux440ux43cux430ux446ux456ux439ux43dux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-d_1}{%
+\subsection{\texorpdfstring{Інформаційна розмірність
+(\(D_{1}\))}{Інформаційна розмірність (D\_\{1\})}}\label{ux456ux43dux444ux43eux440ux43cux430ux446ux456ux439ux43dux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-d_1}}
+
+Як уже зазначалося в теорії, інформаційна розмірність тісно пов'язана з
+інформаційною ентропією Шеннона. Чим вище значення \(D_1\), тим швидше
+збільшується ентропія, що є показником того, наскільки мало ми знаємо
+про поточний стан системи. Зі зменшенням \(D_1\) ентропія знижується,
+що, своєю чергою, свідчить про збільшення асиметрії в просторі,
+зменшення складності та розширення нашого розуміння поточного стану
+системи. Це також означає, що для опису можливих конфігурацій системи
+нам буде потрібно менше інформації.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$D\_}\SpecialCharTok{\{1\}}\VerbatimStringTok{$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_D\_1\_area\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          D\_1, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}darkred\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-d-1-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-d-1}Динаміка індексу сирої нафти WTI та
+інформаційної розмірності цього часового сигналу \(D_{1}\)}
+
+\end{figure}
+
+\hypertarget{ux43aux43eux440ux435ux43bux44fux446ux456ux439ux43dux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-d_2}{%
+\subsection{\texorpdfstring{Кореляційна розмірність
+(\(D_{2}\))}{Кореляційна розмірність (D\_\{2\})}}\label{ux43aux43eux440ux435ux43bux44fux446ux456ux439ux43dux430-ux440ux43eux437ux43cux456ux440ux43dux456ux441ux442ux44c-d_2}}
+
+Кореляційну розмірність, аналогічно інформаційній розмірності, можна
+подати як тангенс кута нахилу лінії регресії, побудованої в
+логарифмічному масштабі, щодо залежності кореляційного інтеграла
+\(C(\varepsilon)\) від \(\varepsilon\). Подібно до \(D_1\), кореляційна
+розмірність також визначає, як швидко змінюється значення кореляційного
+інтеграла.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{measure\_label }\OperatorTok{=} \VerbatimStringTok{r\textquotesingle{}$D\_}\SpecialCharTok{\{2\}}\VerbatimStringTok{$\textquotesingle{}}
+\NormalTok{file\_name }\OperatorTok{=} \SpecialStringTok{f"mfdfa\_D\_2\_area\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot\_pair(time\_ser.index[window:length:tstep],}
+\NormalTok{          time\_ser.values[window:length:tstep],}
+\NormalTok{          D\_2, }
+\NormalTok{          ylabel, }
+\NormalTok{          measure\_label,}
+\NormalTok{          xlabel,}
+\NormalTok{          file\_name, }
+\NormalTok{          clr}\OperatorTok{=}\StringTok{\textquotesingle{}darkred\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-wti-wind-d-2-output-1.png}
+
+}
+
+\caption{\label{fig-wti-wind-d-2}Динаміка індексу сирої нафти WTI та
+кореляційної розмірності цього часового сигналу \(D_{2}\)}
+
+\end{figure}
+
+\hypertarget{ux43aux440ux438ux432ux438ux437ux43dux430-ux43bux456ux432ux43eux433ux43e-delta-d_l-ux442ux430-ux43fux440ux430ux432ux43eux433ux43e-delta-d_r-ux445ux432ux43eux441ux442ux456ux432-ux440ux43eux437ux43fux43eux434ux456ux43bux443-ux443ux437ux430ux433ux430ux43bux44cux43dux435ux43dux438ux439-ux444ux440ux430ux43aux442ux430ux43bux44cux43dux438ux445-ux440ux43eux437ux43cux456ux440ux43dux43eux441ux442ux435ux439}{%
+\subsection{\texorpdfstring{Кривизна лівого (\(\Delta D_{L}\)) та
+правого (\(\Delta D_{R}\)) хвостів розподілу узагальнений фрактальних
+розмірностей}{Кривизна лівого (\textbackslash Delta D\_\{L\}) та правого (\textbackslash Delta D\_\{R\}) хвостів розподілу узагальнений фрактальних розмірностей}}\label{ux43aux440ux438ux432ux438ux437ux43dux430-ux43bux456ux432ux43eux433ux43e-delta-d_l-ux442ux430-ux43fux440ux430ux432ux43eux433ux43e-delta-d_r-ux445ux432ux43eux441ux442ux456ux432-ux440ux43eux437ux43fux43eux434ux456ux43bux443-ux443ux437ux430ux433ux430ux43bux44cux43dux435ux43dux438ux439-ux444ux440ux430ux43aux442ux430ux43bux44cux43dux438ux445-ux440ux43eux437ux43cux456ux440ux43dux43eux441ux442ux435ux439}}
+
+Якщо фрактальні показники дорівнюють один одному, це може вказувати на
+те, що система є доволі простою, і її елементи значною мірою незалежні
+один від одного, а її поведінка наближається до нормального Гаусового
+розподілу. Однак, якщо поведінка системи є досить складною, тоді
+узагальнені фрактальні розмірності в сукупності можуть мати форму
+сигмоїди, вказуючи на більш складні внутрішні взаємозв'язки в системі.
+
+Охарактеризувати ступінь цієї складності можна за кривизною окремо
+правого та лівого хвостів узагальнених фрактальних розмірностей. Праву
+сторону (\(\Delta D_{R}\)) можна визначити як
+
+\begin{equation}\protect\hypertarget{eq-7-9}{}{
+\Delta D_{R} = D_0 - D_{q_{max}}.
+}\label{eq-7-9}\end{equation}
+
+І чим більшим буде значення цієї міри, тим сильнішим буде ступінь впливу
+елементів із найбільшою концентрацією (щільністю, амплітудою флуктуацій)
+на загальну складність системи.
+
+Ми можемо дізнатися так само кривизну лівого хвоста кривої узагальнених
+фрактальних розмірностей (\(\Delta D_{L}\)). Вона визначатиметься як
+
+\begin{equation}\protect\hypertarget{eq-7-10}{}{
+\Delta D_{L} = D_{q_{min}} - D_{0}. 
+}\label{eq-7-10}\end{equation}
+
+Він буде говорити нам про те, наскільки сильний вплив найменш
+концентрованих елементів на складність системи.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fig, ax }\OperatorTok{=}\NormalTok{ plt.subplots(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\NormalTok{ax2 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+\NormalTok{ax3 }\OperatorTok{=}\NormalTok{ ax.twinx()}
+
+\NormalTok{ax2.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.03}\NormalTok{))}
+\NormalTok{ax3.spines.right.set\_position((}\StringTok{"axes"}\NormalTok{, }\FloatTok{1.12}\NormalTok{))}
+
+\NormalTok{p1, }\OperatorTok{=}\NormalTok{ ax.plot(time\_ser.index[window:length:tstep], }
+\NormalTok{              time\_ser.values[window:length:tstep], }
+              \StringTok{"b{-}"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{fr"}\SpecialCharTok{\{}\NormalTok{ylabel}\SpecialCharTok{\}}\VerbatimStringTok{"}\NormalTok{)}
+\NormalTok{p2, }\OperatorTok{=}\NormalTok{ ax2.plot(time\_ser.index[window:length:tstep], }
+\NormalTok{               D\_left, color}\OperatorTok{=}\StringTok{"g"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}Delta D\_}\SpecialCharTok{\{L\}}\VerbatimStringTok{$"}\NormalTok{)}
+\NormalTok{p3, }\OperatorTok{=}\NormalTok{ ax3.plot(time\_ser.index[window:length:tstep], }
+\NormalTok{               D\_right, color}\OperatorTok{=}\StringTok{"r"}\NormalTok{, label}\OperatorTok{=}\VerbatimStringTok{r"$\textbackslash{}Delta D\_}\SpecialCharTok{\{R\}}\VerbatimStringTok{$"}\NormalTok{)}
+
+
+\NormalTok{ax.set\_xlabel(xlabel)}
+\NormalTok{ax.set\_ylabel(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{ylabel}\SpecialCharTok{\}}\SpecialStringTok{"}\NormalTok{)}
+
+\NormalTok{ax.yaxis.label.set\_color(p1.get\_color())}
+\NormalTok{ax2.yaxis.label.set\_color(p2.get\_color())}
+\NormalTok{ax3.yaxis.label.set\_color(p3.get\_color())}
+
+\NormalTok{tkw }\OperatorTok{=} \BuiltInTok{dict}\NormalTok{(size}\OperatorTok{=}\DecValTok{4}\NormalTok{, width}\OperatorTok{=}\FloatTok{1.5}\NormalTok{)}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p1.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax2.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p2.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax3.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}y\textquotesingle{}}\NormalTok{, colors}\OperatorTok{=}\NormalTok{p3.get\_color(), }\OperatorTok{**}\NormalTok{tkw)}
+\NormalTok{ax.tick\_params(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{, }\OperatorTok{**}\NormalTok{tkw)}
+
+\NormalTok{ax3.legend(handles}\OperatorTok{=}\NormalTok{[p1, p2, p3])}
+
+\NormalTok{plt.savefig(}\SpecialStringTok{f"mfdfa\_delta\_D\_left\_right\_name=}\SpecialCharTok{\{}\NormalTok{symbol}\SpecialCharTok{\}}\SpecialStringTok{\_ret=}\SpecialCharTok{\{}\NormalTok{ret\_type}\SpecialCharTok{\}}\SpecialStringTok{\_order=}\SpecialCharTok{\{}\NormalTok{order}\SpecialCharTok{\}}\SpecialStringTok{\_qmin=}\SpecialCharTok{\{}\NormalTok{q\_min}\SpecialCharTok{\}}\SpecialStringTok{\_qmax=}\SpecialCharTok{\{}\NormalTok{q\_max}\SpecialCharTok{\}}\SpecialStringTok{\_qinc=}\SpecialCharTok{\{}\NormalTok{q\_step}\SpecialCharTok{\}}\SpecialStringTok{\_ }\CharTok{\textbackslash{}}
+\SpecialStringTok{           wind=}\SpecialCharTok{\{}\NormalTok{window}\SpecialCharTok{\}}\SpecialStringTok{\_step=}\SpecialCharTok{\{}\NormalTok{tstep}\SpecialCharTok{\}}\SpecialStringTok{\_windbeg=}\SpecialCharTok{\{}\NormalTok{win\_beg}\SpecialCharTok{\}}\SpecialStringTok{\_winden=}\SpecialCharTok{\{}\NormalTok{win\_end}\SpecialCharTok{\}}\SpecialStringTok{.jpg"}\NormalTok{)}
+\NormalTok{plt.show()}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{lab_7_files/figure-pdf/fig-delta-d-left-right-output-1.png}
+
+}
+
+\caption{\label{fig-delta-d-left-right}Динаміка індексу сирої нафти WTI
+та кривизни лівого і правого хвостів спектра узагальнених фрактальних
+розмірностей}
+
+\end{figure}
 
 \bookmarksetup{startatroot}
 
@@ -14176,7 +15322,7 @@ Finance}\label{ux437ux430ux432ux430ux43dux442ux430ux436ux443ux454ux43cux43e-ux43
 \textbf{Мета.} Навчитися використовувати розподіл Леві для диференціації
 флуктуацій, що виходять за межі нормального розподілу.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-note-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Анотація}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Анотація}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-note-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-note-color!10!white]
 
 У цій лабораторній ми досліджуємо розподіл прибутковості фінансових
 активів і стабільність певних показників, які ми розраховуємо,
@@ -14958,7 +16104,7 @@ et al.~(2008)}). Щоб обійти ці проблеми з розбиттям
 отримали жодних даних. Ще про одну перевагу оцінки \(\alpha\) ми
 розглянемо далі.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{ПРИМІТКА}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{ПРИМІТКА}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Не існує такого поняття, як ``подія з 10 сигмами''! Справжня подія з 10
 сигмами настільки неймовірно рідкісна, що пережити її протягом нашого
@@ -15261,7 +16407,7 @@ S\&P 500 має ексцес \(28.6\), що знову вказує на те, �
 значення зустрічаються повсюдно, що призводить до збільшення ексцесу при
 моделюванні.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Навіть якщо певні властивості розподілу ймовірностей нескінченні, ми
 завжди знайдемо кінцеві вибіркові оцінки при перегляді даного набору
@@ -15439,7 +16585,7 @@ t-розподіл Стьюдента з \(\alpha=6.0\) (\(\nu=5.0\)); відн.
 оцінки волатильності зросла в 12 разів (!) порівняно з тим, що ми
 очікували б, припускаючи, що прибутковості розподілені за Гаусом.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Чим важчі хвости розподілу прибутковостей, тим більше точок даних
 необхідно для досягнення необхідної достовірності оцінок певних
@@ -15533,8 +16679,8 @@ S(\vec{w}) = \frac{\vec{w}.\vec{\mu}}{\sqrt{\vec{w}\Sigma\vec{w}^T}}.
 жорсткої критики за відсутність врахування ``важких хвостів'',
 наприклад, з боку Нассіма Талеба:
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Нассім Талеб у \emph{Чорний лебідь: Про (не)ймовірне в реальному житті}
-(ст. 277)}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Нассім Талеб у \emph{Чорний лебідь: Про (не)ймовірне в реальному житті}
+(ст. 277)}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Після краху фондового ринку (у 1987 році) вони нагородили двох
 теоретиків, Гаррі Марковіца та Вільяма Шарпа, які побудували прекрасні
@@ -15960,7 +17106,7 @@ t-розподілу порівняно з відповідним розподі
 досягнення певної достовірності, перш ніж нова модель буде фактично
 запущена у виробництво!
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Примітка}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Важкі хвости розподілу прибутковостей можуть сильно вплинути на
 результати усталених математичних моделей у фінансах, або збільшуючи
@@ -16853,8 +17999,8 @@ Finance}\label{ux437ux447ux438ux442ux443ux432ux430ux43dux43dux44f-ux437-yahoo-fi
 Використовуючи алгоритм сковзного вікна, ми побачили, що параметри
 альфа-стабільного розподілу змінюються з часом.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, bottomrule=.15mm, left=2mm, colback=white, bottomtitle=1mm, leftrule=.75mm, toprule=.15mm, opacityback=0, titlerule=0mm, colframe=quarto-callout-tip-color-frame, breakable, coltitle=black, colbacktitle=quarto-callout-tip-color!10!white, opacitybacktitle=0.6, arc=.35mm, toptitle=1mm, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Література для подальшого вивчення степеневих розподілів та важких
-хвостів}]
+\begin{tcolorbox}[enhanced jigsaw, opacityback=0, opacitybacktitle=0.6, bottomtitle=1mm, breakable, title=\textcolor{quarto-callout-tip-color}{\faLightbulb}\hspace{0.5em}{Література для подальшого вивчення степеневих розподілів та важких
+хвостів}, titlerule=0mm, rightrule=.15mm, left=2mm, toptitle=1mm, leftrule=.75mm, colframe=quarto-callout-tip-color-frame, coltitle=black, arc=.35mm, bottomrule=.15mm, toprule=.15mm, colback=white, colbacktitle=quarto-callout-tip-color!10!white]
 
 Nassim Taleb's
 \href{https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf}{\emph{Statistical
