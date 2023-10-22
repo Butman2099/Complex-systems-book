@@ -263,6 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#інформаційна-розмірність-d_1" id="toc-інформаційна-розмірність-d_1" class="nav-link" data-scroll-target="#інформаційна-розмірність-d_1"><span class="header-section-number">7.2.11</span> Інформаційна розмірність (<span class="math inline">\(D_{1}\)</span>)</a></li>
   <li><a href="#кореляційна-розмірність-d_2" id="toc-кореляційна-розмірність-d_2" class="nav-link" data-scroll-target="#кореляційна-розмірність-d_2"><span class="header-section-number">7.2.12</span> Кореляційна розмірність (<span class="math inline">\(D_{2}\)</span>)</a></li>
   <li><a href="#кривизна-лівого-delta-d_l-та-правого-delta-d_r-хвостів-розподілу-узагальнений-фрактальних-розмірностей" id="toc-кривизна-лівого-delta-d_l-та-правого-delta-d_r-хвостів-розподілу-узагальнений-фрактальних-розмірностей" class="nav-link" data-scroll-target="#кривизна-лівого-delta-d_l-та-правого-delta-d_r-хвостів-розподілу-узагальнений-фрактальних-розмірностей"><span class="header-section-number">7.2.13</span> Кривизна лівого (<span class="math inline">\(\Delta D_{L}\)</span>) та правого (<span class="math inline">\(\Delta D_{R}\)</span>) хвостів розподілу узагальнений фрактальних розмірностей</a></li>
+  <li><a href="#дво--та-тривимірна-візуалізація-показників-мультифрактальності" id="toc-дво--та-тривимірна-візуалізація-показників-мультифрактальності" class="nav-link" data-scroll-target="#дво--та-тривимірна-візуалізація-показників-мультифрактальності"><span class="header-section-number">7.2.14</span> Дво- та тривимірна візуалізація показників мультифрактальності</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_7.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
@@ -511,7 +512,7 @@ f(\alpha) = q\frac{d\tau}{dq} - \tau.
 <p>Монофрактальні та мультифрактальні структури фінансових сигналів є особливим різновидом масштабно-інваріантних структур. Найчастіше монофрактальна структура фінансових часових рядів визначається одним степеневим показником і передбачає, що масштабо-інваріантність не залежить від часу і простору. Однак, часто ми маємо змогу спостерігати просторово-часову варіацію масштабно-інваріантної структури досліджуваної складної системи. Ці просторово-часові варіації вказують на мультифрактальність фінансового сигналу, яка визначається мультифрактальним спектром. Ширина і форма мультифрактального спектра можуть також допомогти диференціювати варіативність серцевого ритму у пацієнтів із серцевими захворюваннями, такими як шлуночкова тахікардія, фібриляція шлуночків і застійна серцева недостатність. Мультифрактальний спектр може допомогти кількісно визначити асиметрію підйомів та спадів на фондовому чи криптовалютному ринках, передбачити фінансову кризу, що поступово наближується, і, таким чином, сприяти успішності подальших торгівельних рішень. Основна мета цього розділу — представити одну з найточніших процедур для визначення множини фрактальних показників — <strong>мультифрактальний аналіз детрендованих флуктуацій</strong> (multifractal detrended fluctuation analysis, MFDFA).</p>
 <p>Побудова MFDFA складається з восьми кроків: - Розділ <em>“Шум і випадкові блукання у часовому ряді”</em> представляє метод приведення часового ряду до такого, що подібний до випадкового блукання, що є попереднім кроком для MFDFA. - Розділ <em>“Обчислення середньоквадратичної варіації часового ряду”</em> представляє середньоквадратичну варіацію, яка є основною процедурою для подальших обчислень в MFDFA і типовим способом обчислення середньої варіації часових рядів різної природи. - Розділ <em>“Локальна середньоквадратична варіація часового ряду”</em> представляє обчислення локальної варіації часового ряду як середньоквадратичного відхилення часового ряду в межах сегментів, що можуть як перекриватися, так і не перекриватися. - У розділі <em>“Локальне детрендування часового ряду”</em> таке ж локальне середньоквадратичне відхилення обчислюється навколо трендів, які часто зустрічаються у фінансових часових рядах. - У розділі <em>“Монофрактальний аналіз детрендованих флуктуацій”</em> амплітуди локальних середніх квадратичних відхилень підсумовуються в узагальнене середнє квадратичне відхилення. У сумарному середньоквадратичному відхиленні для сегментів з малими розмірами вибірки переважають швидкі флуктуації часового ряду. На противагу цьому, у сумарному середньоквадратичному відхиленні для сегментів з великими розмірами вибірки переважають повільні коливання. Степенева залежність між загальним середнім квадратичним відхиленням для декількох розмірів вибірки (тобто масштабів) визначається за допомогою монофрактального аналізу дентрендованих флуктуацій (monofractal detrended fluctuation analysis, DFA) і називається показником Херста (Hurst exponent, <span class="math inline">\(H\)</span>). - У розділі <em>“Мультифрактальний аналіз детрендованих флуктуацій”</em> MFDFA отримують шляхом розширення на <span class="math inline">\(q\)</span>-й порядок узагальненого середньоквадратичного відхилення. Середньоквадратичне відхилення <span class="math inline">\(q\)</span>-го порядку може розрізняти сегменти з малими та великими флуктуаціями. Степенева залежність між середньоквадратичним відхиленням <span class="math inline">\(q\)</span>-го порядку чисельно визначається як показник Херста <span class="math inline">\(q\)</span>-го порядку. - У розділі <em>“Мультифрактальний спектр часових рядів”</em> на основі показника Херста <span class="math inline">\(q\)</span>-го порядку обчислено декілька мультифрактальних спектрів. - Розділ <em>“Узагальнені фрактальні розмірності”</em> представляє більш детальний опис показників <span class="math inline">\(D_{q}\)</span>, що будуть описані в подальшому. - Розділ <em>“Аналогії мультифракталів із термодинамікою”</em> показує, що отримані кількісні мультифрактальні показники мають зв’язок із термодинамічними показниками, що дозволило нам вивести мультифрактальну “теплоємність”.</p>
 <p>Для подальшої візуалізації кожного кроку процедури MFDFA імпортуємо наступні модулі:</p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -547,11 +548,11 @@ f(\alpha) = q\frac{d\tau}{dq} - \tau.
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install pandas<span class="op">-</span>datareader</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер імпортуємо відповідну бібліотеку:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas_datareader.data <span class="im">as</span> web</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>та виконаємо зчитування індексу з FRED, використовуючи функціонал даної бібліотеки. Завантажимо дані за весь період, що нам буде доступний:</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'DCOILWTICO'</span>    <span class="co"># cимвол індексу, як указано на сайті FRED</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"1986-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-01-21"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -563,7 +564,7 @@ f(\alpha) = q\frac{d\tau}{dq} - \tau.
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol          <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виведемо досліджуваний ряд:</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -625,7 +626,7 @@ Name: DCOILWTICO, dtype: float64</code></pre>
 </div>
 </div>
 <p>Останнє, що нам залишається, це приведення вихідного ряду до прибутковостей. Для цього визначимо функцію <code>transformation()</code> та знайдемо з її допомогою прибутковості:</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -654,7 +655,7 @@ Name: DCOILWTICO, dtype: float64</code></pre>
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
@@ -1270,7 +1271,7 @@ Name: DCOILWTICO, dtype: float64</code></pre>
 </div>
 </div>
 <p>Тепер можна визначити показники Херста <span class="math inline">\(q\)</span>-го порядку як нахили (<span class="math inline">\(h(q)\)</span>) ліній регресії для кожного середньоквадратичного значення <span class="math inline">\(q\)</span>-го порядку (<span class="math inline">\(F_{q}\)</span>). І <span class="math inline">\(h(q)\)</span>, і лінія регресії визначаються в циклі для кожного <span class="math inline">\(q\)</span>-го порядку:</p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_Hq(arr, scale, q, m<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.cumsum(arr <span class="op">-</span> np.mean(arr)) <span class="co"># симулюємо випадкове блукання (X)</span></span>
@@ -1630,7 +1631,7 @@ D_{2} = 2\alpha(2) - f(\alpha(2))
 </figure>
 </div>
 <p>Далі розглянемо залежність узагальненої фрактальної розмірності <span class="math inline">\(D_{q}\)</span> від різних значень <span class="math inline">\(q\)</span> для мультифрактального ряду, монофрактального та білого шуму.</p>
-<div class="cell" data-execution_count="96">
+<div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>difference_zero <span class="op">=</span> np.absolute(nq<span class="op">-</span><span class="dv">0</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>idx_zero <span class="op">=</span> difference_zero.argmin()</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1655,7 +1656,7 @@ D_{2} = 2\alpha(2) - f(\alpha(2))
 <span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>Dq_monofrac[nq<span class="op">==</span>nq[idx_one]] <span class="op">=</span> <span class="op">-</span>tau_monofrac[nq<span class="op">==</span>nq[idx_one]]</span>
 <span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>Dq_white_noise[nq<span class="op">==</span>nq[idx_one]] <span class="op">=</span> <span class="op">-</span>tau_white_noise[nq<span class="op">==</span>nq[idx_one]]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="97">
+<div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>ax.plot(nq, Dq_multifrac, linestyle<span class="op">=</span><span class="st">'-'</span>, marker<span class="op">=</span><span class="st">'o'</span>, label<span class="op">=</span><span class="st">"Мультифрактал"</span>, color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
@@ -1711,7 +1712,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>C_q_monofrac <span class="op">=</span> <span class="op">-</span>np.gradient(alpha_monofrac, nq, edge_order<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>C_q_white_noise <span class="op">=</span> <span class="op">-</span>np.gradient(alpha_white_noise, nq, edge_order<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="59">
+<div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(nq, C_q_multifrac, linestyle<span class="op">=</span><span class="st">'-'</span>, marker<span class="op">=</span><span class="st">'o'</span>, label<span class="op">=</span><span class="st">"Мультифрактал"</span>, color<span class="op">=</span><span class="st">'darkblue'</span>)</span>
@@ -1746,7 +1747,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <h2 data-number="7.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">7.2</span> Хід роботи</h2>
 <p>Звісно ж фрактальний аналіз усього ряду є важливим, але такий підхід ігнорує припущення про існування в часовій послідовності як монофрактальних, так і мультифрактальних ділянок. Тобто, ігнорується припущення про зміну ступеня складності з плином часу. Кількісні міри мультифрактальності, розраховані в рамках підходу ковзного вікна, є найбільш об’єктивними та практичними при аналізі систем. Окрім цього кількісні показники можуть бути використані як індикатори або індикатори-провісники аномальних явищ, або можуть бути використані як базис для побудови іншої прогностичної моделі. Мультифрактальний спектр може послужити хорошою основою для побудови таких показників.</p>
 <p>Повторно зчитаємо значення ряду із сайту FRED:</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'DCOILWTICO'</span>    <span class="co"># cимвол індексу, як указано на сайті FRED</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"1986-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-01-21"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -1776,7 +1777,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 <hr>
-<div class="cell">
+<div class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
@@ -1790,7 +1791,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -1811,7 +1812,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 <p>Деякі графіки будуть представляти парну побудову лише часового ряду та мультифрактального індикатора. Скористаємось функцією <code>plot_pair()</code>, що ми визначали в попередніх лабораторних:</p>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -1855,12 +1856,14 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 <section id="віконна-процедура" class="level4" data-number="7.2.0.1">
 <h4 data-number="7.2.0.1" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">7.2.0.1</span> Віконна процедура</h4>
-<div class="cell" data-execution_count="30">
+<p>Для подальших розрахунків скористаємось бібліотекою <code>fathon</code>, що ми використовували попередньо для виконання класичного аналізу детрендованих флуктуацій. Переваги саме цієї бібліотеки полягають у можливості використання процедури розрахунку розбиття ряду на сегменти починаючи з кінця ряду, оскільки довжина ряду не завжди дозволяє поділити нам сам на локальні сегменти націло. Тобто, теоретично у нас залишається сегмент ряду, що не піддається розбиттю на локальні сегменти. Тому повторна процедура розбиття на локальні сегменти починаючи з кінця ряду дозволяє обійти дану проблему. Для спрощення представлення теоретичного матеріалу ми не стали імплементувати дану процедуру, але вона доступна в бібліотеці <code>fathon</code>. Окрім цього, бібліотека надає можливість для обчислення крос-кореляційного аналізу детрендованих флуктуацій та його мультифрактального аналогу.</p>
+<p>Далі імпортуємо бібліотеку та приступимо до розрахунків.</p>
+<div class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fathon</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fathon <span class="im">import</span> fathonUtils <span class="im">as</span> fu</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Приступимо до ініціалізації параметрів.</p>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="133">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>        <span class="co"># розмір вікна</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>           <span class="co"># крок вікна</span></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>        <span class="co"># вид ряду: </span></span>
@@ -1890,7 +1893,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <span id="cb49-27"><a href="#cb49-27" aria-hidden="true" tabindex="-1"></a>               q_max<span class="op">+</span>q_step, </span>
 <span id="cb49-28"><a href="#cb49-28" aria-hidden="true" tabindex="-1"></a>               q_step)</span>
 <span id="cb49-29"><a href="#cb49-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="dv">2</span>           <span class="co"># порядок поліноміального тренду</span></span>
+<span id="cb49-30"><a href="#cb49-30" aria-hidden="true" tabindex="-1"></a>order <span class="op">=</span> <span class="dv">1</span>           <span class="co"># порядок поліноміального тренду</span></span>
 <span id="cb49-31"><a href="#cb49-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-32"><a href="#cb49-32" aria-hidden="true" tabindex="-1"></a>delta_alph <span class="op">=</span> []</span>
 <span id="cb49-33"><a href="#cb49-33" aria-hidden="true" tabindex="-1"></a>delta_spec <span class="op">=</span> []</span>
@@ -1918,7 +1921,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <span id="cb49-55"><a href="#cb49-55" aria-hidden="true" tabindex="-1"></a>C_q_area_wind <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочнемо процедуру рухомого вікна, що об’єднуватиме у собі попередні етапи розрахунків:</p>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="134">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -2045,64 +2048,26 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <span id="cb50-124"><a href="#cb50-124" aria-hidden="true" tabindex="-1"></a>    tau_q.append(tau_wind)</span>
 <span id="cb50-125"><a href="#cb50-125" aria-hidden="true" tabindex="-1"></a>    D_q.append(Dq_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 1768/1768 [06:19&lt;00:00,  4.66it/s]</code></pre>
+<pre><code>100%|██████████| 1768/1768 [04:43&lt;00:00,  6.24it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо абсолютні значення показників до текстових файлів.</p>
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_alpha_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, delta_alph)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_f_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, delta_spec)</span>
+<div class="cell" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># перелік назв кожного індикатора для збереження до txt</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>subtitle_of_txts <span class="op">=</span> [<span class="st">'delta_alpha'</span>, <span class="st">'delta_f'</span>, <span class="st">'max_alpha'</span>, <span class="st">'min_alpha'</span>, <span class="st">'mean_alpha'</span>, </span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'zero_alpha'</span>, <span class="st">'delta_alpha_right'</span>, <span class="st">'delta_alpha_left'</span>, <span class="st">'assymetry'</span>,</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'delta_s'</span>, <span class="st">'D_0'</span>, <span class="st">'D_1'</span>, <span class="st">'D_2'</span>, <span class="st">'hFI'</span>, <span class="st">'alphaCF'</span>, <span class="st">'C_q_area'</span>,</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'delta_d_left'</span>, <span class="st">'delta_d_right'</span>]</span>
 <span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_max_alpha_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, max_alph)</span>
-<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_min_alpha_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, min_alph)</span>
-<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_mean_alpha_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, mean_alph)</span>
-<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_zero_alpha_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, alpha_zero)</span>
-<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_alpha_right_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, delta_alph_right)</span>
-<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_alpha_left_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, delta_alph_left)</span>
-<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_assymetry_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, assym)</span>
-<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_s_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, delta_s)</span>
-<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_D_0_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, D_0)</span>
-<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_D_1_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, D_1)</span>
-<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_D_2_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">txt"</span>, D_2)</span>
-<span id="cb52-39"><a href="#cb52-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-40"><a href="#cb52-40" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_hFI_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-41"><a href="#cb52-41" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, hFI)</span>
-<span id="cb52-42"><a href="#cb52-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-43"><a href="#cb52-43" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_alphaCF_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-44"><a href="#cb52-44" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">txt"</span>, alphaCF)</span>
-<span id="cb52-45"><a href="#cb52-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-46"><a href="#cb52-46" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_C_q_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-47"><a href="#cb52-47" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, C_q_area_wind)</span>
-<span id="cb52-48"><a href="#cb52-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-49"><a href="#cb52-49" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_d_left_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-50"><a href="#cb52-50" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, D_left)</span>
-<span id="cb52-51"><a href="#cb52-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb52-52"><a href="#cb52-52" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mfdfa_delta_d_right_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb52-53"><a href="#cb52-53" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, D_right)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># перелік вихідних значень індикаторів для збереження до txt</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>mfdfa_indicators <span class="op">=</span> [delta_alph, delta_spec, max_alph, min_alph, mean_alph, alpha_zero,</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>                    delta_alph_right, delta_alph_left, assym, delta_s, D_0, D_1, D_2,</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>                    hFI, alphaCF, C_q_area_wind, D_left, D_right]</span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(subtitle_of_txts)):</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    np.savetxt(<span class="ss">f"mfdfa_</span><span class="sc">{</span>subtitle_of_txts[i]<span class="sc">}</span><span class="ss">_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="ss">               order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="ss">               wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, mfdfa_indicators[i])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розглянемо динаміку отриманих індикаторів.</p>
 </section>
@@ -2113,12 +2078,12 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 \Delta\alpha = \alpha_{max} - \alpha_{min}.
 \tag{7.12}\]</span></span></p>
 <p>Якщо проводити аналогію з термодинамічними показниками, то в такому разі ширина спектра мультифрактальності становитиме різницю між найбільшим і найменшим значенням внутрішньої енергії системи. Розглянемо динаміку даного показника для ринку нафти.</p>
-<div class="cell" data-execution_count="34">
+<div class="cell" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\Delta\alpha$'</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_delta_alpha_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>          delta_alph, </span>
@@ -2136,6 +2101,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 </div>
+<p>На рисунку (<a href="#fig-wti-wind-delta-alpha">Рис.&nbsp;<span>7.24</span></a>) видно, що ширина спектра мультифрактальності зростає під час кризових подій, що вказує на зростання загального ступеня складності та періодизації. Тобто, даний показник слугує ще одним підтвердженням, що трейдери на ринку, наприклад, нафти поводять себе у синхронній манері в ході кризи. Зростання загального ступеня мультифрактальності є індикатором зростання кореляцій в системі, що підтверджувалось і попередніми індикаторами складності.</p>
 </section>
 <section id="різниця-між-кінцями-спектра-мультифрактальності-delta-f" class="level3" data-number="7.2.2">
 <h3 data-number="7.2.2" class="anchored" data-anchor-id="різниця-між-кінцями-спектра-мультифрактальності-delta-f"><span class="header-section-number">7.2.2</span> Різниця між кінцями спектра мультифрактальності (<span class="math inline">\(\Delta f\)</span>)</h3>
@@ -2143,12 +2109,12 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <p><span id="eq-7-2"><span class="math display">\[
 \Delta f = f(\alpha_{min}) - f(\alpha_{max}).
 \tag{7.13}\]</span></span></p>
-<div class="cell" data-execution_count="36">
+<div class="cell" data-execution_count="138">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\Delta f$'</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_delta_f_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="139">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>          delta_spec, </span>
@@ -2181,7 +2147,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 \tag{7.15}\]</span></span></p>
 <p>У свою чергу ширина лівого хвоста вимірює ступінь складності флуктуацій з великою амплітудою, а ширина правого хвоста вимірює ступінь складності малих флуктуацій, які рефлексують малоконцентровані елементи.</p>
 <p>Зростання ширини кожного з хвостів відображатиме зростання ступеня кореляцій між елементами</p>
-<div class="cell" data-execution_count="41">
+<div class="cell" data-execution_count="140">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
@@ -2226,11 +2192,13 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 </div>
+<p>На рисунку (<a href="#fig-delta-alpha-left-right">Рис.&nbsp;<span>7.26</span></a>) видно, що досліджувані індикатори реагують у характерний спосіб на кризові події. Ширина лівої сторони спектра мультифрактальності зростає під час 1992, 1996-2000, під час 2008, 2016 та коронавірусної пандемії. Це вказує на зростання домінації висококонцентрованих флуктуацій (з великою амплітудою коливань). Окрім цього, зростання ширини лівого хвоста вказує на те, що флуктуації з великою амплітудою коливань характеризуються зростанням ступеня кореляцій під час кризових подій, що в свою чергу може слугувати індикатором зростання процесів самоорганізації.</p>
+<p>Хоча і меншою, але не менш примітною є динаміка ширини правого хвоста мультифрактального спектра. Як ми можемо бачити з представленого рисунку, цей індикатор працює майже аналогічно до ширини лівого хвоста, але сам характеризує динаміку малоконцентрованих величин — флуктуацій з малою амплітудою коливань. Майже синхронна динаміка двох показників указує на зростання впливу коливань як флуктуацій з великою амлпітудою коливань, так і флуктуацій з малою амплітудою коливань. Тобто, два типи флуктуацій в ряді є джерелом зростання нелінійних кореляцій під час кризових подій.</p>
 </section>
 <section id="показник-сингулярності-alpha-та-його-різновиди" class="level3" data-number="7.2.4">
 <h3 data-number="7.2.4" class="anchored" data-anchor-id="показник-сингулярності-alpha-та-його-різновиди"><span class="header-section-number">7.2.4</span> Показник сингулярності <span class="math inline">\(\alpha\)</span> та його різновиди</h3>
 <p>В якості можливих індикаторів складності системи можна взяти <span class="math inline">\(\alpha_{min}\)</span>, <span class="math inline">\(\alpha_{max}\)</span>, <span class="math inline">\(\alpha_{mean}\)</span> і <span class="math inline">\(\alpha_0\)</span>, які, відповідно, характеризують мінімальну силу сингулярності, максимальну, середню і сингулярність за умови рівноважного врахування як великих флуктуацій, так і малих.</p>
-<div class="cell" data-execution_count="55">
+<div class="cell" data-execution_count="141">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
@@ -2279,6 +2247,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 </div>
+<p>Як видно з рисунку (<a href="#fig-wti-wind-alphas">Рис.&nbsp;<span>7.27</span></a>), усі показники сингулярності зростають в області фінансового фазового переходу зі стану стабільності до стану кризи. Це говорить про зростання складності системи: різькому прирості кількості агентів, що задіяні в самоорганізованому розвитку досліджуваної системи. З погляду термодинаміки можна було б сказати, що при фінансових крахових подіях зростає внутрішня енергія системи.</p>
 </section>
 <section id="тип-довгого-хвоста-мультифрактального-спектра-delta-s" class="level3" data-number="7.2.5">
 <h3 data-number="7.2.5" class="anchored" data-anchor-id="тип-довгого-хвоста-мультифрактального-спектра-delta-s"><span class="header-section-number">7.2.5</span> Тип довгого хвоста мультифрактального спектра (<span class="math inline">\(\Delta S\)</span>)</h3>
@@ -2287,12 +2256,12 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 \Delta S = \Delta\alpha_{R} - \Delta\alpha_{L}.
 \tag{7.16}\]</span></span></p>
 <p>Якщо <span class="math inline">\(\Delta S &lt; 0\)</span>, тоді мультифрактальний спектр має довгий лівий хвіст, що свідчить про те, що структура часового ряду чутлива до локальних флуктуацій з великою амплітудою. Якщо <span class="math inline">\(\Delta S &gt; 0\)</span>, тоді мультифрактальний спектр має довгий правий хвіст, який вказує на те, що структура сигналу чутлива до локальних флуктуацій з малою амплітудою коливань. У тих випадках, коли високо- і низькофлуктуаційні компоненти сигналу характеризуються однаковою мірою складністю, спектр сингулярностей буде приблизно симетричним і <span class="math inline">\(\Delta\alpha_{R} = \Delta\alpha_{L}\)</span>. У разі більшої складності однієї з цих компонент спектр сингулярності стає несиметричним, унаслідок чого один із хвостів виявляється ширшим за інший.</p>
-<div class="cell" data-execution_count="56">
+<div class="cell" data-execution_count="142">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\Delta S$'</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_delta_s_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="143">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>          delta_s, </span>
@@ -2310,7 +2279,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 </div>
-<p>З огляду на цей рисунок (<a href="#fig-wti-wind-delta-s">Рис.&nbsp;<span>7.28</span></a>) видно, що <span class="math inline">\(\Delta S &lt; 0\)</span>, що свідчить про те, що найбільш крахові ділянки нафтового ринку зумовлені флуктуаціями з великою амплітудою коливань.</p>
+<p>З огляду на цей рисунок (<a href="#fig-wti-wind-delta-s">Рис.&nbsp;<span>7.28</span></a>) видно, що <span class="math inline">\(\Delta S &lt; 0\)</span>, що свідчить про те, що найбільш крахові ділянки нафтового ринку зумовлені флуктуаціями з великою амплітудою коливань. Особливо помітними тут предстають кризи 1992 та 2020 років.</p>
 </section>
 <section id="показник-асиметрії-a" class="level3" data-number="7.2.6">
 <h3 data-number="7.2.6" class="anchored" data-anchor-id="показник-асиметрії-a"><span class="header-section-number">7.2.6</span> Показник асиметрії (<span class="math inline">\(A\)</span>)</h3>
@@ -2319,12 +2288,12 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 A = \frac{\Delta\alpha_{L} - \Delta\alpha_{R}}{\Delta\alpha_{R} + \Delta\alpha_{L}} = \frac{-\Delta S}{\Delta\alpha}.
 \tag{7.17}\]</span></span></p>
 <p>Параметр асиметрії пов’язаний з предомінуючим типом коливань у досліджуваній системі. Якщо <span class="math inline">\(A=0\)</span> (<span class="math inline">\(\Delta\alpha_{L}=\Delta\alpha_{R}\)</span>), тоді динаміку системи представляє симетричний спектр. Якщо <span class="math inline">\(A&lt;0\)</span> (<span class="math inline">\(\Delta\alpha_{L}&lt;\Delta\alpha_{R}\)</span>), тоді мультифрактальний спектр має правосторонню асиметрію, що підкреслює сильніший вплив малих флуктуацій на мультифрактальність системи, тобто в часовому ряду переважає мультифрактальна природа малих шумоподібних флуктуацій. І навпаки, коли <span class="math inline">\(A&gt;0\)</span> (<span class="math inline">\(\Delta\alpha_{L}&gt;\Delta\alpha_{R}\)</span>), тоді ми маємо справу з лівостороннім спектром, який позначає більшу неоднорідність для великих флуктуацій і вказує на те, що в часовому ряді переважає мультифрактальна природа неоднорідностей з високими щільностями. Оскільки асиметрію виявляють за знаком <span class="math inline">\(A\)</span>, який еквівалентний знаку <span class="math inline">\(\Delta S\)</span>, то, ґрунтуючись тільки по знаку <span class="math inline">\(\Delta S\)</span>, можна зробити висновки як про тип довгого хвоста, так і про знак показника <span class="math inline">\(A\)</span> мультифрактального спектра, тобто нечутливість і тип домінантних коливань мультифрактальності часового ряду.</p>
-<div class="cell" data-execution_count="61">
+<div class="cell" data-execution_count="144">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$A$'</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_A_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="145">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>          assym, </span>
@@ -2342,6 +2311,7 @@ A = \frac{\Delta\alpha_{L} - \Delta\alpha_{R}}{\Delta\alpha_{R} + \Delta\alpha_{
 </div>
 </div>
 </div>
+<p>На представленому рисунку видно, що, як правило, показник асиметрії зростає під час крахових подій, що вказує на домінацію лівостороннього спектра (висококонцентрованих флуктуацій з великою амплітудою коливань). Окрім цього видно, що, наприклад, для криз 2008 та 2015-2016 років спостерігалась помітна короткочасна правостороння асиметрія, що характеризується швидкоплинним сплеском показника асиметрії у сторону від’ємних значень. Асоціювати малі та великі флуктуації з конкретними настроями або поведінковими патернами ринку доволі складно. На даний момент ми можемо відзначити тільки те, що дані події представляли найбільш багату варіацію як короткострокових, так і довгострокових кореляцій.</p>
 </section>
 <section id="індекс-h-флуктуацій-hfi" class="level3" data-number="7.2.7">
 <h3 data-number="7.2.7" class="anchored" data-anchor-id="індекс-h-флуктуацій-hfi"><span class="header-section-number">7.2.7</span> Індекс <span class="math inline">\(h\)</span>-флуктуацій (<span class="math inline">\(hFI\)</span>)</h3>
@@ -2350,12 +2320,12 @@ A = \frac{\Delta\alpha_{L} - \Delta\alpha_{R}}{\Delta\alpha_{R} + \Delta\alpha_{
 hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + h(q-2) \right]^{2}.
 \tag{7.18}\]</span></span></p>
 <p>Чим вище значення даного показника, тим вища самоорганізованість системи.</p>
-<div class="cell" data-execution_count="63">
+<div class="cell" data-execution_count="146">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$hFI$'</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_hFI_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="65">
+<div class="cell" data-execution_count="147">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>          hFI, </span>
@@ -2365,24 +2335,25 @@ hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + 
 <span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb64-8"><a href="#cb64-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'green'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wti-wind-hfi" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-wti-hfi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-wti-wind-hfi-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="lab_7_files/figure-html/fig-wti-hfi-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;7.30: Динаміка індексу сирої нафти WTI та індексу <span class="math inline">\(h\)</span>-флуктуацій <span class="math inline">\(hFI\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>З рисунку (<a href="#fig-wti-hfi">Рис.&nbsp;<span>7.30</span></a>) видно, що найвищий ступінь мультифрактальності, згідно <span class="math inline">\(hFI\)</span>, проявляється саме для криз 1992, 2008, 2016 та 2020 років. Це свідчить про те, що дані крахові події включають в себе найбільшу кількість різноманітних факторів, що впливали на динаміку досліджуваної системи. Особливо помітно це для коронавірусної пандемії, що має найвищу амплітуду другої похідної узагальненого показника Херста.</p>
 </section>
 <section id="кумулятивний-індекс-інкрементів-узагальнених-показників-херста-alpha-cf" class="level3" data-number="7.2.8">
 <h3 data-number="7.2.8" class="anchored" data-anchor-id="кумулятивний-індекс-інкрементів-узагальнених-показників-херста-alpha-cf"><span class="header-section-number">7.2.8</span> Кумулятивний індекс інкрементів узагальнених показників Херста (<span class="math inline">\(\alpha CF\)</span>)</h3>
 <p>Кумулятивна функція квадратів інкриментів (<span class="math inline">\(\alpha CF\)</span>) узагальнених показників Херста між послідовними моментними порядками є більш надійним показником розподілу узагальнених показників Херста.</p>
-<div class="cell" data-execution_count="66">
+<div class="cell" data-execution_count="148">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\alpha CF$'</span></span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_alphaCF_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="67">
+<div class="cell" data-execution_count="149">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>          alphaCF, </span>
@@ -2400,6 +2371,7 @@ hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + 
 </div>
 </div>
 </div>
+<p>Представлений кумулятивний індекс дещо відрізняється від <span class="math inline">\(hFI\)</span>, але хід думок приблизно однаковий: події з найвищим ступенем мультифрактальності характеризуються вищою амплітудою <span class="math inline">\(\alpha CF\)</span>. Представлений показник виділяє ті самі кризи, що й попередній, але динаміка цього показника більш виразна, що, в теорії, робить його більш надійним для ідентифікації періодів самоорганізації системи.</p>
 </section>
 <section id="інтегральна-мультифрактальна-теплоємність-cq" class="level3" data-number="7.2.9">
 <h3 data-number="7.2.9" class="anchored" data-anchor-id="інтегральна-мультифрактальна-теплоємність-cq"><span class="header-section-number">7.2.9</span> Інтегральна мультифрактальна теплоємність <span class="math inline">\(C(q)\)</span></h3>
@@ -2407,12 +2379,13 @@ hFI = \frac{1}{2|q_{max}|+2}\sum_{q=q_{min}-2}^{q_{max}}\left[ h(q) - 2h(q-1) + 
 <p><span id="eq-7-8"><span class="math display">\[
 C_{area} = \int C(q)dq.
 \tag{7.19}\]</span></span></p>
-<div class="cell" data-execution_count="68">
+<p>Розглянемо динаміку цього показника.</p>
+<div class="cell" data-execution_count="150">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$C_</span><span class="sc">{area}</span><span class="vs">$'</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_C_q_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="70">
+<div class="cell" data-execution_count="151">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>          C_q_area_wind, </span>
@@ -2430,16 +2403,17 @@ C_{area} = \int C(q)dq.
 </div>
 </div>
 </div>
+<p>З представленого рисунку видно, що динаміка інтегральної теплоємності дуже подібна до ширини спектра мультифрактальності. Тобто, <span class="math inline">\(C_{area}\)</span> є показником складності, що вказує на ступінь самоорганізованості фінансового фазового переходу. Видно, що фінансові крахи представляють доволі трендостійку динаміку, що є наслідком цілеспрямованих та колективних дій трейдерів на ринку.</p>
 </section>
 <section id="хаусдорфова-розмірність-d_0" class="level3" data-number="7.2.10">
 <h3 data-number="7.2.10" class="anchored" data-anchor-id="хаусдорфова-розмірність-d_0"><span class="header-section-number">7.2.10</span> Хаусдорфова розмірність (<span class="math inline">\(D_{0}\)</span>)</h3>
 <p>Як уже зазначалось, <span class="math inline">\(D_{0}\)</span> представляє верхню межу змін розмірностей фрактальних підмножин атрактора системи. Інформацію про статистичні властивості системи він не має нести, тому не представляє особливої цікавості.</p>
-<div class="cell" data-execution_count="71">
+<div class="cell" data-execution_count="152">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$D_</span><span class="sc">{0}</span><span class="vs">$'</span></span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_D_0_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="74">
+<div class="cell" data-execution_count="153">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>          D_0, </span>
@@ -2461,12 +2435,12 @@ C_{area} = \int C(q)dq.
 <section id="інформаційна-розмірність-d_1" class="level3" data-number="7.2.11">
 <h3 data-number="7.2.11" class="anchored" data-anchor-id="інформаційна-розмірність-d_1"><span class="header-section-number">7.2.11</span> Інформаційна розмірність (<span class="math inline">\(D_{1}\)</span>)</h3>
 <p>Як уже зазначалося в теорії, інформаційна розмірність тісно пов’язана з інформаційною ентропією Шеннона. Чим вище значення <span class="math inline">\(D_1\)</span>, тим швидше збільшується ентропія, що є показником того, наскільки мало ми знаємо про поточний стан системи. Зі зменшенням <span class="math inline">\(D_1\)</span> ентропія знижується, що, своєю чергою, свідчить про збільшення асиметрії в просторі, зменшення складності та розширення нашого розуміння поточного стану системи. Це також означає, що для опису можливих конфігурацій системи нам буде потрібно менше інформації.</p>
-<div class="cell" data-execution_count="75">
+<div class="cell" data-execution_count="154">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$D_</span><span class="sc">{1}</span><span class="vs">$'</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_D_1_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="76">
+<div class="cell" data-execution_count="155">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>          D_1, </span>
@@ -2488,12 +2462,12 @@ C_{area} = \int C(q)dq.
 <section id="кореляційна-розмірність-d_2" class="level3" data-number="7.2.12">
 <h3 data-number="7.2.12" class="anchored" data-anchor-id="кореляційна-розмірність-d_2"><span class="header-section-number">7.2.12</span> Кореляційна розмірність (<span class="math inline">\(D_{2}\)</span>)</h3>
 <p>Кореляційну розмірність, аналогічно інформаційній розмірності, можна подати як тангенс кута нахилу лінії регресії, побудованої в логарифмічному масштабі, щодо залежності кореляційного інтеграла <span class="math inline">\(C(\varepsilon)\)</span> від <span class="math inline">\(\varepsilon\)</span>. Подібно до <span class="math inline">\(D_1\)</span>, кореляційна розмірність також визначає, як швидко змінюється значення кореляційного інтеграла.</p>
-<div class="cell" data-execution_count="77">
+<div class="cell" data-execution_count="156">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$D_</span><span class="sc">{2}</span><span class="vs">$'</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_D_2_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="78">
+<div class="cell" data-execution_count="157">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>          D_2, </span>
@@ -2524,8 +2498,8 @@ C_{area} = \int C(q)dq.
 <p><span id="eq-7-10"><span class="math display">\[
 \Delta D_{L} = D_{q_{min}} - D_{0}.
 \tag{7.21}\]</span></span></p>
-<p>Він буде говорити нам про те, наскільки сильний вплив найменш концентрованих елементів на складність системи.</p>
-<div class="cell" data-execution_count="81">
+<p>Цей показник буде говорити нам про те, наскільки сильним є вплив найменш концентрованих елементів на складність системи.</p>
+<div class="cell" data-execution_count="158">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
@@ -2562,16 +2536,284 @@ C_{area} = \int C(q)dq.
 <span id="cb75-34"><a href="#cb75-34" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
 <span id="cb75-35"><a href="#cb75-35" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-delta-d-left-right" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-delta-lr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-delta-d-left-right-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="lab_7_files/figure-html/fig-delta-lr-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;7.36: Динаміка індексу сирої нафти WTI та кривизни лівого і правого хвостів спектра узагальнених фрактальних розмірностей</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>На рисунку (<a href="#fig-delta-lr">Рис.&nbsp;<span>7.36</span></a>) видно, що спостерігаються етапи при який два показники можуть вести себе як асинхронно, так і синхронно. Для 1992 року видно, що у передкризовий етап спостерігалась короткочасна домінація великих флуктуацій, на що і вказує <span class="math inline">\(\Delta D_{R}\)</span>. Під час краху спостерігалась домінація малоконцентрованих елементів, що демонструє зростання <span class="math inline">\(\Delta D_{L}\)</span>. Для 2001 року ми бачимо зростання впливу правого хвоста і зменшення впливу лівого. Для краху 2008 року видно зростання впливу висококонцентрованих елементів напередодні кризи. Після цього домінація малоконцентрованих елементів, що відзеркалює зростання зеленої кривої. Бачимо зростання впливу малоконцентрованих елементів під час кризи 2016 року, і закономірне зменшення участі великоконцентрованих елементів. Пандемія 2020-2021 років характеризувалась активною участю як малоконцентрованих елементів, так і великоконцентрованих, на що вказує зростання двох показників кривизни хвостів узагальнених розмірностей.</p>
+</section>
+<section id="дво--та-тривимірна-візуалізація-показників-мультифрактальності" class="level3" data-number="7.2.14">
+<h3 data-number="7.2.14" class="anchored" data-anchor-id="дво--та-тривимірна-візуалізація-показників-мультифрактальності"><span class="header-section-number">7.2.14</span> Дво- та тривимірна візуалізація показників мультифрактальності</h3>
+<p>Попередньо ми дивилися на залежність <span class="math inline">\(h(q)\)</span>, <span class="math inline">\(\tau(q)\)</span>, <span class="math inline">\(D(q)\)</span>, <span class="math inline">\(C(q)\)</span> та <span class="math inline">\(f(\alpha)\)</span> для всього часового ряду. Тепер, скориставшись процедурою ковзного вікна, ми можемо подивитися на їх зміну з плином часу.</p>
+<p>Перш за все огосимо функції для побудови двовимірних графіків</p>
+<div class="cell" data-execution_count="246">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_2d(X, Y, Z, subtitle_jpg, subtitle_fig, ylabel, barlabel, cmap, lims):</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">5</span>))</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    cp <span class="op">=</span> ax.contourf(X, Y, Z, alpha<span class="op">=</span><span class="fl">0.8</span>, cmap<span class="op">=</span>cmap)</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>    plt.colorbar(cp, ax<span class="op">=</span>ax, extend<span class="op">=</span><span class="st">'both'</span>, label<span class="op">=</span>barlabel)</span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim((time_ser.index[window:length:tstep][<span class="dv">0</span>], </span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>                 time_ser.index[window:length:tstep][<span class="op">-</span><span class="dv">1</span>]))</span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim((np.<span class="bu">min</span>(lims), np.<span class="bu">max</span>(lims)))</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(ylabel)</span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a>    ax.set_title(subtitle_fig, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, pad<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a>    fig.tight_layout()</span>
+<span id="cb76-20"><a href="#cb76-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-21"><a href="#cb76-21" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"mfdfa_</span><span class="sc">{</span>subtitle_jpg<span class="sc">}</span><span class="ss">_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb76-22"><a href="#cb76-22" aria-hidden="true" tabindex="-1"></a><span class="ss">                qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.jpg"</span>, </span>
+<span id="cb76-23"><a href="#cb76-23" aria-hidden="true" tabindex="-1"></a>                bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb76-24"><a href="#cb76-24" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>та тривимірних</p>
+<div class="cell" data-execution_count="234">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_3d(X, Y, Z, subtitle_jpg, ylabel, zlabel, cmap):</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">"projection"</span>: <span class="st">"3d"</span>}, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>    surf <span class="op">=</span> ax.plot_surface(X, Y, Z, cmap<span class="op">=</span>cmap, rstride<span class="op">=</span><span class="dv">2</span>, cstride<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(ylabel)</span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>    ax.set_zlabel(zlabel)</span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>    fig.colorbar(surf, shrink<span class="op">=</span><span class="fl">0.5</span>, aspect<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>    fig.tight_layout()</span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="ss">f"mfdfa_</span><span class="sc">{</span>subtitle_jpg<span class="sc">}</span><span class="ss">_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="ss">                qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="ss">                winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb77-18"><a href="#cb77-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb77-19"><a href="#cb77-19" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Після оголошення необхідний функцій можна приступати до візуалізації.</p>
+<section id="динаміка-hq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.1">
+<h4 data-number="7.2.14.1" class="anchored" data-anchor-id="динаміка-hq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.1</span> Динаміка <span class="math inline">\(h(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
+<div class="cell" data-execution_count="247">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(time_ser.index[window:length:tstep], nq)</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(h_q).T</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>plot_2d(X, Y, Z, </span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'contour_h(q)'</span>, </span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>        subtitle_fig<span class="op">=</span><span class="vs">fr"Colormap of $h(q)$"</span>, </span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>        barlabel<span class="op">=</span><span class="vs">r"$h(q)$"</span>,</span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'jet'</span>,</span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>        lims<span class="op">=</span>nq)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-hq-2d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-hq-2d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.37: Двовимірна контурна діаграма динаміки узагальненого показника Херста <span class="math inline">\(h(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="219">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(np.arange(window, length, tstep), nq)</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(h_q).T</span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>plot_3d(X, Y, Z, </span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'3d_h(q)'</span>, </span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>        zlabel<span class="op">=</span><span class="vs">r"$h(q)$"</span>,</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'jet'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-hq-3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-hq-3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.38: Тривимірна діаграма динаміки узагальненого показника Херста <span class="math inline">\(h(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="динаміка-tauq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.2">
+<h4 data-number="7.2.14.2" class="anchored" data-anchor-id="динаміка-tauq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.2</span> Динаміка <span class="math inline">\(\tau(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
+<div class="cell" data-execution_count="236">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(time_ser.index[window:length:tstep], nq)</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(tau_q).T</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>plot_2d(X, Y, Z, </span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'contour_tau(q)'</span>, </span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>        subtitle_fig<span class="op">=</span><span class="vs">fr"Colormap of $\tau(q)$"</span>, </span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>        barlabel<span class="op">=</span><span class="vs">r"$\tau(q)$"</span>,</span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'viridis'</span>,</span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>        lims<span class="op">=</span>nq)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-tauq-2d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-tauq-2d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.39: Двовимірна контурна діаграма динаміки показника <span class="math inline">\(\tau(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="221">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(np.arange(window, length, tstep), nq)</span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(tau_q).T</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>plot_3d(X, Y, Z, </span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'3d_tau(q)'</span>, </span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>        zlabel<span class="op">=</span><span class="vs">r"$\tau(q)$"</span>,</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'viridis'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-tauq-3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-tauq-3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.40: Тривимірна діаграма динаміки показника <span class="math inline">\(\tau(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="динаміка-dq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.3">
+<h4 data-number="7.2.14.3" class="anchored" data-anchor-id="динаміка-dq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.3</span> Динаміка <span class="math inline">\(D(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
+<div class="cell" data-execution_count="237">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(time_ser.index[window:length:tstep], nq)</span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(D_q).T</span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>plot_2d(X, Y, Z, </span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'contour_D(q)'</span>, </span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>        subtitle_fig<span class="op">=</span><span class="vs">fr"Colormap of $D(q)$"</span>, </span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>        barlabel<span class="op">=</span><span class="vs">r"$D(q)$"</span>,</span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'magma'</span>,</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>        lims<span class="op">=</span>nq)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dq-2d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-dq-2d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.41: Двовимірна контурна діаграма динаміки узагальненої фрактальної розмірності <span class="math inline">\(D(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="223">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(np.arange(window, length, tstep), nq)</span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(D_q).T</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>plot_3d(X, Y, Z, </span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'3d_D(q)'</span>, </span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a>        zlabel<span class="op">=</span><span class="vs">r"$D(q)$"</span>,</span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'magma'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-dq-3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-dq-3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.42: Тривимірна діаграма динаміки узагальненої фрактальної розмірності <span class="math inline">\(D(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="динаміка-cq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.4">
+<h4 data-number="7.2.14.4" class="anchored" data-anchor-id="динаміка-cq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.4</span> Динаміка <span class="math inline">\(C(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
+<div class="cell" data-execution_count="238">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(time_ser.index[window:length:tstep], nq)</span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(C_q).T</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>plot_2d(X, Y, Z, </span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'contour_C(q)'</span>, </span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>        subtitle_fig<span class="op">=</span><span class="vs">fr"Colormap of $C(q)$"</span>, </span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>        barlabel<span class="op">=</span><span class="vs">r"$C(q)$"</span>,</span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'hot'</span>,</span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>        lims<span class="op">=</span>nq)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-cq-2d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-cq-2d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.43: Двовимірна контурна діаграма динаміки мультифрактальної теплоємності <span class="math inline">\(C(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>X, Y <span class="op">=</span> np.meshgrid(np.arange(window, length, tstep), nq)</span>
+<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(C_q).T</span>
+<span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="#cb85-4" aria-hidden="true" tabindex="-1"></a>plot_3d(X, Y, Z, </span>
+<span id="cb85-5"><a href="#cb85-5" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'3d_C(q)'</span>, </span>
+<span id="cb85-6"><a href="#cb85-6" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$q$"</span>, </span>
+<span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>        zlabel<span class="op">=</span><span class="vs">r"$C(q)$"</span>,</span>
+<span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'hot'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-cq-3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-cq-3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.44: Тривимірна контурна діаграма динаміки мультифрактальної теплоємності <span class="math inline">\(C(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="динаміка-falpha-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.5">
+<h4 data-number="7.2.14.5" class="anchored" data-anchor-id="динаміка-falpha-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.5</span> Динаміка <span class="math inline">\(f(\alpha)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
+<div class="cell" data-execution_count="248">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> time_ser.index[window:length:tstep].values</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.expand_dims(X, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.repeat(a<span class="op">=</span>X, repeats<span class="op">=</span>nq.shape[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb86-4"><a href="#cb86-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-5"><a href="#cb86-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array(alpha)</span>
+<span id="cb86-6"><a href="#cb86-6" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(mfSpect)</span>
+<span id="cb86-7"><a href="#cb86-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-8"><a href="#cb86-8" aria-hidden="true" tabindex="-1"></a>plot_2d(X, Y, Z, </span>
+<span id="cb86-9"><a href="#cb86-9" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'contour_f(alpha)'</span>, </span>
+<span id="cb86-10"><a href="#cb86-10" aria-hidden="true" tabindex="-1"></a>        subtitle_fig<span class="op">=</span><span class="vs">fr"Colormap of $f(\alpha)$"</span>, </span>
+<span id="cb86-11"><a href="#cb86-11" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$\alpha$"</span>, </span>
+<span id="cb86-12"><a href="#cb86-12" aria-hidden="true" tabindex="-1"></a>        barlabel<span class="op">=</span><span class="vs">r"$f(\alpha)$"</span>,</span>
+<span id="cb86-13"><a href="#cb86-13" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'hsv'</span>,</span>
+<span id="cb86-14"><a href="#cb86-14" aria-hidden="true" tabindex="-1"></a>        lims<span class="op">=</span>alpha)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-falpha-2d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-falpha-2d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.45: Двовимірна контурна діаграма динаміки мультифрактального спектра <span class="math inline">\(f(\alpha)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="250">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(window, length, tstep)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.expand_dims(X, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.repeat(a<span class="op">=</span>X, repeats<span class="op">=</span>nq.shape[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array(alpha)</span>
+<span id="cb87-6"><a href="#cb87-6" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(mfSpect)</span>
+<span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>plot_3d(X, Y, Z, </span>
+<span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a>        subtitle_jpg<span class="op">=</span><span class="st">'3d_f(alpha)'</span>, </span>
+<span id="cb87-10"><a href="#cb87-10" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="vs">r"$\alpha$"</span>, </span>
+<span id="cb87-11"><a href="#cb87-11" aria-hidden="true" tabindex="-1"></a>        zlabel<span class="op">=</span><span class="vs">r"$f(\alpha)$"</span>,</span>
+<span id="cb87-12"><a href="#cb87-12" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'hsv'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-falpha-3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_7_files/figure-html/fig-falpha-3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;7.46: Тривимірна діаграма динаміки мультифрактального спектра <span class="math inline">\(f(\alpha)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 </section>
 </section>
 
