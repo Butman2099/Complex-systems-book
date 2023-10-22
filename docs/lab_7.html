@@ -1819,40 +1819,41 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>              y1_label, </span>
 <span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>              y2_label,</span>
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>              x_label, </span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>              file_name, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>                  y1_values, </span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>                   y2_values, </span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span>y2_label)</span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
-<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>              file_name, </span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>              clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>                  y1_values, </span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>                   y2_values, </span>
+<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
+<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span>y2_label)</span>
+<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
+<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb47-29"><a href="#cb47-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-30"><a href="#cb47-30" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb47-31"><a href="#cb47-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-32"><a href="#cb47-32" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb47-33"><a href="#cb47-33" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb47-34"><a href="#cb47-34" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb47-35"><a href="#cb47-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
-<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
-<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb47-36"><a href="#cb47-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-37"><a href="#cb47-37" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb47-38"><a href="#cb47-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-39"><a href="#cb47-39" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
+<span id="cb47-40"><a href="#cb47-40" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb47-41"><a href="#cb47-41" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="віконна-процедура" class="level4" data-number="7.2.0.1">
 <h4 data-number="7.2.0.1" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">7.2.0.1</span> Віконна процедура</h4>
@@ -2450,21 +2451,22 @@ C_{area} = \int C(q)dq.
 <span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'darkred'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wti-wind-d-1" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-wti-informdim" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-wti-wind-d-1-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="lab_7_files/figure-html/fig-wti-informdim-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;7.34: Динаміка індексу сирої нафти WTI та інформаційної розмірності цього часового сигналу <span class="math inline">\(D_{1}\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>На представленому рисунку (<a href="#fig-wti-informdim">Рис.&nbsp;<span>7.34</span></a>) видно, що інформаційна розмірність характеризується спадом під час крахових подій. Це вказує на зростання ступеня впорядкованості в системі та колективного скупчення агентів ринку в межах конкретної області фазового простору досліджуваної системи. Для рівномірнорозподіленої динаміки цього ринку інформаційна розмірність зростала б, вказуючи на незалежність агентів ринку один від одного.</p>
 </section>
 <section id="кореляційна-розмірність-d_2" class="level3" data-number="7.2.12">
 <h3 data-number="7.2.12" class="anchored" data-anchor-id="кореляційна-розмірність-d_2"><span class="header-section-number">7.2.12</span> Кореляційна розмірність (<span class="math inline">\(D_{2}\)</span>)</h3>
 <p>Кореляційну розмірність, аналогічно інформаційній розмірності, можна подати як тангенс кута нахилу лінії регресії, побудованої в логарифмічному масштабі, щодо залежності кореляційного інтеграла <span class="math inline">\(C(\varepsilon)\)</span> від <span class="math inline">\(\varepsilon\)</span>. Подібно до <span class="math inline">\(D_1\)</span>, кореляційна розмірність також визначає, як швидко змінюється значення кореляційного інтеграла.</p>
 <div class="cell" data-execution_count="156">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$D_</span><span class="sc">{2}</span><span class="vs">$'</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_D_2_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mfdfa_D_2_area_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_order=</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_step<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_windbeg=</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_winden=</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="157">
@@ -2477,14 +2479,15 @@ C_{area} = \int C(q)dq.
 <span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'darkred'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wti-wind-d-2" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-wti-corrdim" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-wti-wind-d-2-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="lab_7_files/figure-html/fig-wti-corrdim-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;7.35: Динаміка індексу сирої нафти WTI та кореляційної розмірності цього часового сигналу <span class="math inline">\(D_{2}\)</span></figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>Кореляційна розмірність на представленому рисунку (<a href="#fig-wti-corrdim">Рис.&nbsp;<span>7.35</span></a>) характеризується зростанням у передкризовий період та спадом під час кризи. Як уже було показано в попередній лабораторній роботі, спадаючи, кореляційна розмірність вказує на зростання ступеня періодизації у системі та зміщення всіх траєкторій фазового простору в одну конкретну область. Це говорить про те, що більшість агентів ринку починає орієнтуватися на один конкретний вектор розвитку системи в котру вони залучені. Тобто, їх думки в цей момент стають більш синхронізованими.</p>
 </section>
 <section id="кривизна-лівого-delta-d_l-та-правого-delta-d_r-хвостів-розподілу-узагальнений-фрактальних-розмірностей" class="level3" data-number="7.2.13">
 <h3 data-number="7.2.13" class="anchored" data-anchor-id="кривизна-лівого-delta-d_l-та-правого-delta-d_r-хвостів-розподілу-узагальнений-фрактальних-розмірностей"><span class="header-section-number">7.2.13</span> Кривизна лівого (<span class="math inline">\(\Delta D_{L}\)</span>) та правого (<span class="math inline">\(\Delta D_{R}\)</span>) хвостів розподілу узагальнений фрактальних розмірностей</h3>
@@ -2639,6 +2642,7 @@ C_{area} = \int C(q)dq.
 </div>
 </div>
 </div>
+<p>На представлений рисунках (<a href="#fig-hq-2d">Рис.&nbsp;<span>7.37</span></a> та <a href="#fig-hq-3d">Рис.&nbsp;<span>7.38</span></a>) видно, що узагальнений показник Херста характеризується значним ростом саме в період криз. Особливо високим <span class="math inline">\(h(q)\)</span> предстає для <span class="math inline">\(q &lt; 0\)</span>, що говорить про значну персистентність малих флуктуацій в періоди турбулентності. Найвищим ступінь нелінійності в даному випадку представляють кризи 1992, 2008-2009, 2015-2016 та 2020-2021 років, що підтверджується й попередніми індикаторами.</p>
 </section>
 <section id="динаміка-tauq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.2">
 <h4 data-number="7.2.14.2" class="anchored" data-anchor-id="динаміка-tauq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.2</span> Динаміка <span class="math inline">\(\tau(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
@@ -2680,6 +2684,7 @@ C_{area} = \int C(q)dq.
 </div>
 </div>
 </div>
+<p>Як видно з представлений рисунків (<a href="#fig-tauq-2d">Рис.&nbsp;<span>7.39</span></a> та <a href="#fig-tauq-3d">Рис.&nbsp;<span>7.40</span></a>), <span class="math inline">\(\tau(q)\)</span> стає більш нелінійним для всіх значень <span class="math inline">\(q\)</span>. На кінцях хвостів цього індикатора можна помітити значні впадини, що можуть слугувати індикаторами крахових подій, але в порівнянні з тим же показником Херста даний індикатор є менш виразним.</p>
 </section>
 <section id="динаміка-dq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.3">
 <h4 data-number="7.2.14.3" class="anchored" data-anchor-id="динаміка-dq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.3</span> Динаміка <span class="math inline">\(D(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
@@ -2721,6 +2726,7 @@ C_{area} = \int C(q)dq.
 </div>
 </div>
 </div>
+<p>Дво- та тривимірні представлення узагальненої фрактальної розмірності показують, що <span class="math inline">\(D(q)\)</span> зростає під час кризових подій, що вже згадувались попередньо. Узагальнена фрактальна розмірність також представляє найбільш індикативну динаміку для негативних значень <span class="math inline">\(q\)</span>, хоча для позитивних <span class="math inline">\(q\)</span> також спостерігаються незначні коливання.</p>
 </section>
 <section id="динаміка-cq-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.4">
 <h4 data-number="7.2.14.4" class="anchored" data-anchor-id="динаміка-cq-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.4</span> Динаміка <span class="math inline">\(C(q)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
@@ -2736,9 +2742,9 @@ C_{area} = \int C(q)dq.
 <span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'hot'</span>,</span>
 <span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>        lims<span class="op">=</span>nq)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-cq-2d" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-heat-2d" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-cq-2d-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="lab_7_files/figure-html/fig-heat-2d-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;7.43: Двовимірна контурна діаграма динаміки мультифрактальної теплоємності <span class="math inline">\(C(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
 </figure>
 </div>
@@ -2754,14 +2760,15 @@ C_{area} = \int C(q)dq.
 <span id="cb85-7"><a href="#cb85-7" aria-hidden="true" tabindex="-1"></a>        zlabel<span class="op">=</span><span class="vs">r"$C(q)$"</span>,</span>
 <span id="cb85-8"><a href="#cb85-8" aria-hidden="true" tabindex="-1"></a>        cmap<span class="op">=</span><span class="st">'hot'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-cq-3d" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-heat-3d" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_7_files/figure-html/fig-cq-3d-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="lab_7_files/figure-html/fig-heat-3d-output-1.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;7.44: Тривимірна контурна діаграма динаміки мультифрактальної теплоємності <span class="math inline">\(C(q)\)</span>, що змінюється з плином часу. Даний показник було розраховано в ковзному вікні для індеку сирої нафти WTI</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>На даних рисунках (<a href="#fig-heat-2d">Рис.&nbsp;<span>7.43</span></a> та <a href="#fig-heat-3d">Рис.&nbsp;<span>7.44</span></a>) спостерігається мультифрактальної теплоємності під час кризових подій, що у свою чергу вказує схожість фізичних фазових переходів та кризових подій. Можна бачити, що при різних ринкових режимах <span class="math inline">\(C(q)\)</span> може бути симетричною, демонструючи рівномірний вплив на динаміку ринку як висококонцентрованих елементів, так і низькоконцентрованих. Також <span class="math inline">\(C(q)\)</span> може зміщуватись як у ліву сторону, так і вправу, що говорить про мінливість ринку та впливовість різних початкових умов на його структуризацію.</p>
 </section>
 <section id="динаміка-falpha-з-ходом-часу-в-дво--та-тривимірному-просторах" class="level4" data-number="7.2.14.5">
 <h4 data-number="7.2.14.5" class="anchored" data-anchor-id="динаміка-falpha-з-ходом-часу-в-дво--та-тривимірному-просторах"><span class="header-section-number">7.2.14.5</span> Динаміка <span class="math inline">\(f(\alpha)\)</span> з ходом часу в дво- та тривимірному просторах</h4>
@@ -2811,6 +2818,7 @@ C_{area} = \int C(q)dq.
 </div>
 </div>
 </div>
+<p>Як ми можемо бачити з представлених рисунків (<a href="#fig-falpha-2d">Рис.&nbsp;<span>7.45</span></a> та <a href="#fig-falpha-3d">Рис.&nbsp;<span>7.46</span></a>), ширина спектра мультифрактальності змінюється у формі з плином часу, і стає ширшою під час кризових подій, що підтверджувалось таким індикатором як, наприклад, <span class="math inline">\(\Delta\alpha\)</span>. Видно, що у передкризові періоди зростає лівостороння асиметрія, що характеризує флуктуації значної амплітуди коливань. Самі кризи представляють зміщення <span class="math inline">\(f(\alpha)\)</span> у праву сторону, що вказує на домінацію флуктуацій з малою амплітудою. У будь-якому разі, зростання ширини спектра є індикатором зростання ступеня самоорганізованості елементів, що залучені до досліджуваної системи. Тобто, як <span class="math inline">\(f(\alpha)\)</span>, так і попередні індикатори можна пробувати використовувати в якості індикаторів або індикаторів-передвісників кризових подій.</p>
 
 
 </section>
