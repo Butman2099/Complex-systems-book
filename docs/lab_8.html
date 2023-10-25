@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 8&nbsp; Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць</title>
+<title>Моделювання складних систем у Python - 8&nbsp; Лабораторна робота № 8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -196,7 +196,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab_8.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></h1>
 </div>
 
 
@@ -285,10 +285,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><strong>Тема.</strong> Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць.</p>
 <p><strong>Мета.</strong> Навчитись використовувати методи теорії випадкових матриць для отримання «прихованої» інформації в складних економічних системах.</p>
 <section id="теоретичні-відомості" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">8.1</span> Теоретичні відомості</h2>
-<p>Вивчення статистичних властивостей матриць з незалежними випадковими елементами — випадкових матриць — має багату історію, що починається з ядерної фізики, де проблема з’явилася 50 років тому при дослідженні енергетичних рівнів складних ядер, що існуючі на той час моделі були не в змозі пояснити. Теорія випадкової матриці (ТВМ) була розвинена в цьому контексті Вігнером (Wigner), Дайсоном (Dyson), Метою (Mehta) та іншими для пояснення статистики рівнів енергії складних квантових систем. Дослідники постулювали, що функція Гамільтона, яка описує важкі ядра, може бути задана матрицею <span class="math inline">\(H\)</span> з незалежними випадковими елементами <span class="math inline">\(H_{ij}\)</span>, отриманими з розподілу імовірності. Відштовхуючись від цього припущення було зроблено низку вражаючих передбачень, які було підтверджено експериментально. Для складних квантових систем передбачення на основі ТВМ представляють середнє за всіма можливими взаємодіями. Відхилення від універсальних передбачень ТВМ відображують системну специфіку, невипадкові властивості системи, забезпечуючи ключові підходи до розуміння базової взаємодії системи. Недавні дослідження, що використовували методи аналізу ТВМ до аналізу властивостей матриці взаємних кореляцій <span class="math inline">\(C\)</span>, показують, що близько 98% власних значень матриці C співпадають зі значеннями, отримуваними з використанням ТВМ, таким чином пропонуючи задовільний рівень хаотичності у вимірюваних крос-кореляціях. Також було знайдено, що існують відхилення від передбачень за допомогою ТВМ у близько 2% найбільших власних значень. Ці результати викликають наступні питання:</p>
+<p>Вивчення статистичних властивостей матриць з незалежними випадковими елементами — випадкових матриць — має багату історію, що починається з ядерної фізики, де проблема з’явилася 50 років тому при дослідженні енергетичних рівнів складних ядер, що існуючі на той час моделі були не в змозі пояснити. Теорія випадкової матриці (ТВМ) була розвинена в цьому контексті Вігнером (Wigner), Дайсоном (Dyson), Метою (Mehta) та іншими для пояснення статистики рівнів енергії складних квантових систем. Дослідники постулювали, що функція Гамільтона, яка описує важкі ядра, може бути задана матрицею <span class="math inline">\(H\)</span> з незалежними випадковими елементами <span class="math inline">\(H_{ij}\)</span>, отриманими з розподілу імовірності. Відштовхуючись від цього припущення було зроблено низку вражаючих передбачень, які було підтверджено експериментально. Для складних квантових систем передбачення на основі ТВМ представляють середнє за всіма можливими взаємодіями. Відхилення від універсальних передбачень ТВМ відображують системну специфіку, невипадкові властивості системи, забезпечуючи ключові підходи до розуміння базової взаємодії системи. Недавні дослідження, що використовували методи аналізу ТВМ до аналізу властивостей матриці взаємних кореляцій <span class="math inline">\(C\)</span>, показують, що близько 98% власних значень матриці <span class="math inline">\(C\)</span> співпадають зі значеннями, отримуваними з використанням ТВМ, таким чином пропонуючи задовільний рівень хаотичності у вимірюваних крос-кореляціях. Також було знайдено, що існують відхилення від передбачень за допомогою ТВМ у близько 2% найбільших власних значень. Ці результати викликають наступні питання:</p>
 <ol type="1">
 <li>Яка можлива інтерпретація для відхилень від ТВМ?</li>
 <li>Що можна сказати про структуру C з цих результатів?</li>
@@ -344,7 +345,7 @@ P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \l
 </section>
 <section id="обернене-відношення-участі" class="level3" data-number="8.1.3">
 <h3 data-number="8.1.3" class="anchored" data-anchor-id="обернене-відношення-участі"><span class="header-section-number">8.1.3</span> Обернене відношення участі</h3>
-<p>Вивчивши інтерпретацію найбільшого власного значення, що значно відхиляється від результатів ТВМ, зосередимось на власних значеннях, що залишаються. Відхилення розподілу компонентів власного вектора <span class="math inline">\(u_k\)</span> від ТВМ Гаусового передбачення більш явне, коли відстань від верхньої границі ТВМ <span class="math inline">\(\lambda_k --- \lambda_{+}\)</span> збільшується. Оскільки близькість до <span class="math inline">\(\lambda_{+}\)</span> збільшує ефекти хаотичності визначаємо кількість компонентів, що беруть значну участь в кожному власному векторі, що, у свою чергу, відображає ступінь відхилення від ТВМ для розподілу компонентів власного вектора. Для цього використовується поняття оберненого відношення участі (ОВУ), що часто застосовується в теорії локалізації. ОВУ власного вектора <span class="math inline">\(u_k\)</span> визначається як</p>
+<p>Вивчивши інтерпретацію найбільшого власного значення, що значно відхиляється від результатів ТВМ, зосередимось на власних значеннях, що залишаються. Відхилення розподілу компонентів власного вектора <span class="math inline">\(u_k\)</span> від ТВМ Гаусового передбачення більш явне, коли відстань від верхньої границі ТВМ <span class="math inline">\(\lambda_k - \lambda_{+}\)</span> збільшується. Оскільки близькість до <span class="math inline">\(\lambda_{+}\)</span> збільшує ефекти хаотичності визначаємо кількість компонентів, що беруть значну участь в кожному власному векторі, що, у свою чергу, відображає ступінь відхилення від ТВМ для розподілу компонентів власного вектора. Для цього використовується поняття оберненого відношення участі (ОВУ), що часто застосовується в теорії локалізації. ОВУ власного вектора <span class="math inline">\(u_k\)</span> визначається як</p>
 <p><span id="eq-8-8"><span class="math display">\[
 I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 \tag{8.8}\]</span></span></p>
@@ -637,26 +638,26 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 <p>Визначаємо найпередовіші акцій за їх капіталізацією:</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tickers_list <span class="op">=</span> df.iloc[:top][<span class="st">'symbol'</span>].tolist()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tickers_list[:<span class="dv">10</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="102">
 <pre><code>['AAPL', 'GOOG', 'GOOGL', 'MSFT', 'AMZN', 'ACN', 'JNJ', 'UNH', 'CRM', 'CVX']</code></pre>
 </div>
 </div>
 <p>Зчитуємо дані з Yahoo Finance згідно створенного списку акцій:</p>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="109">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2001-12-31"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-10-25"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(tickers_list, start, end)[<span class="st">"Adj Close"</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>perc <span class="op">=</span> <span class="fl">15.0</span> </span>
+<div class="cell" data-execution_count="114">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>perc <span class="op">=</span> <span class="fl">5.0</span> </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>min_count <span class="op">=</span>  <span class="bu">int</span>(((<span class="dv">100</span><span class="op">-</span>perc)<span class="op">/</span><span class="dv">100</span>)<span class="op">*</span>data.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna(axis<span class="op">=</span><span class="dv">1</span>, thresh<span class="op">=</span>min_count)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="114">
 <div>
 
 
@@ -716,121 +717,121 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <td data-quarto-table-cell-role="th">2001-12-31</td>
 <td>0.331940</td>
 <td>0.284807</td>
-<td>14.984421</td>
-<td>19.391699</td>
-<td>15.452659</td>
-<td>28.258896</td>
-<td>8.876992</td>
+<td>14.984426</td>
+<td>19.391705</td>
+<td>15.452660</td>
+<td>28.258905</td>
+<td>8.876990</td>
 <td>17.383923</td>
 <td>17.229757</td>
 <td>4.500000</td>
 <td>...</td>
-<td>5.445520</td>
-<td>14.341557</td>
-<td>9.328089</td>
-<td>30.550997</td>
-<td>10.333235</td>
-<td>14.899984</td>
-<td>5.713787</td>
-<td>21.294720</td>
-<td>38.050945</td>
-<td>19.562269</td>
+<td>5.445521</td>
+<td>14.341556</td>
+<td>9.328091</td>
+<td>30.550989</td>
+<td>10.333231</td>
+<td>14.899978</td>
+<td>5.713789</td>
+<td>21.294727</td>
+<td>38.050941</td>
+<td>19.562275</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2002-01-02</td>
 <td>0.353160</td>
 <td>0.308827</td>
-<td>15.008622</td>
-<td>18.880259</td>
-<td>15.845818</td>
-<td>28.870066</td>
-<td>8.765649</td>
-<td>17.551651</td>
-<td>16.954994</td>
+<td>15.008610</td>
+<td>18.880257</td>
+<td>15.845817</td>
+<td>28.870050</td>
+<td>8.765645</td>
+<td>17.551647</td>
+<td>16.954996</td>
 <td>4.300000</td>
 <td>...</td>
-<td>5.502246</td>
-<td>14.270626</td>
-<td>9.262628</td>
-<td>30.528564</td>
-<td>10.145625</td>
-<td>15.223347</td>
-<td>5.709141</td>
+<td>5.502244</td>
+<td>14.270627</td>
+<td>9.262630</td>
+<td>30.528574</td>
+<td>10.145624</td>
+<td>15.223341</td>
+<td>5.709144</td>
 <td>20.927788</td>
-<td>38.381516</td>
-<td>19.711603</td>
+<td>38.381535</td>
+<td>19.711607</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-01-03</td>
 <td>0.357404</td>
 <td>0.308827</td>
-<td>15.022054</td>
-<td>18.289566</td>
-<td>16.462925</td>
-<td>30.340626</td>
-<td>8.672853</td>
-<td>17.427837</td>
+<td>15.022053</td>
+<td>18.289574</td>
+<td>16.462931</td>
+<td>30.340614</td>
+<td>8.672855</td>
+<td>17.427847</td>
 <td>16.635281</td>
 <td>4.480000</td>
 <td>...</td>
-<td>5.655399</td>
-<td>14.110528</td>
-<td>9.603023</td>
-<td>31.089142</td>
-<td>10.194989</td>
-<td>15.728803</td>
-<td>5.685913</td>
-<td>21.769201</td>
-<td>38.335255</td>
+<td>5.655400</td>
+<td>14.110532</td>
+<td>9.603026</td>
+<td>31.089144</td>
+<td>10.194996</td>
+<td>15.728801</td>
+<td>5.685916</td>
+<td>21.769196</td>
+<td>38.335232</td>
 <td>19.741465</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2002-01-04</td>
-<td>0.359072</td>
+<td>0.359071</td>
 <td>0.308827</td>
-<td>14.995178</td>
-<td>19.953571</td>
-<td>17.866358</td>
-<td>30.525229</td>
-<td>8.351183</td>
-<td>17.280088</td>
-<td>16.395493</td>
+<td>14.995171</td>
+<td>19.953569</td>
+<td>17.866360</td>
+<td>30.525223</td>
+<td>8.351179</td>
+<td>17.280092</td>
+<td>16.395496</td>
 <td>4.500000</td>
 <td>...</td>
 <td>5.604348</td>
-<td>14.185517</td>
-<td>9.819044</td>
-<td>31.756222</td>
-<td>10.387536</td>
-<td>15.888925</td>
-<td>5.690561</td>
-<td>21.864094</td>
-<td>38.083977</td>
+<td>14.185513</td>
+<td>9.819045</td>
+<td>31.756235</td>
+<td>10.387540</td>
+<td>15.888920</td>
+<td>5.690560</td>
+<td>21.864100</td>
+<td>38.083996</td>
 <td>19.910711</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-01-07</td>
-<td>0.347097</td>
+<td>0.347098</td>
 <td>0.308827</td>
-<td>14.890349</td>
-<td>19.053135</td>
-<td>17.995752</td>
-<td>29.824961</td>
-<td>8.307875</td>
-<td>17.551651</td>
-<td>15.915917</td>
+<td>14.890348</td>
+<td>19.053139</td>
+<td>17.995756</td>
+<td>29.824957</td>
+<td>8.307874</td>
+<td>17.551647</td>
+<td>15.915919</td>
 <td>5.010000</td>
 <td>...</td>
-<td>5.485228</td>
-<td>14.094323</td>
-<td>9.807585</td>
-<td>32.014091</td>
-<td>10.362858</td>
-<td>15.791589</td>
-<td>5.597654</td>
-<td>22.066544</td>
-<td>37.945133</td>
-<td>19.736490</td>
+<td>5.485227</td>
+<td>14.094324</td>
+<td>9.807587</td>
+<td>32.014080</td>
+<td>10.362859</td>
+<td>15.791601</td>
+<td>5.597653</td>
+<td>22.066542</td>
+<td>37.945152</td>
+<td>19.736486</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -979,14 +980,14 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tbody>
 </table>
 
-<p>5492 rows × 142 columns</p>
+<p>5492 rows × 135 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="115">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="115">
 <div>
 
 
@@ -1043,124 +1044,124 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2004-11-19</td>
-<td>0.836216</td>
-<td>0.891186</td>
-<td>13.159102</td>
-<td>18.311184</td>
-<td>28.898273</td>
-<td>25.516338</td>
-<td>13.569958</td>
-<td>16.210627</td>
-<td>15.971463</td>
-<td>10.660000</td>
+<td data-quarto-table-cell-role="th">2002-12-16</td>
+<td>0.225083</td>
+<td>0.23162</td>
+<td>11.242016</td>
+<td>12.822151</td>
+<td>13.237535</td>
+<td>17.169249</td>
+<td>8.008354</td>
+<td>11.473660</td>
+<td>15.008780</td>
+<td>3.430000</td>
 <td>...</td>
-<td>2.426260</td>
-<td>33.161335</td>
-<td>10.805549</td>
-<td>48.411308</td>
-<td>16.340147</td>
-<td>14.549393</td>
-<td>9.954161</td>
-<td>24.456373</td>
-<td>37.230267</td>
-<td>27.068447</td>
+<td>2.165762</td>
+<td>16.765938</td>
+<td>10.106949</td>
+<td>36.486992</td>
+<td>10.987369</td>
+<td>13.026583</td>
+<td>6.303859</td>
+<td>18.376917</td>
+<td>34.474094</td>
+<td>18.295858</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2004-11-22</td>
-<td>0.929887</td>
-<td>0.891186</td>
-<td>13.196038</td>
-<td>18.181520</td>
-<td>29.717941</td>
-<td>25.196583</td>
-<td>13.628675</td>
-<td>16.572975</td>
-<td>15.960764</td>
-<td>10.530000</td>
+<td data-quarto-table-cell-role="th">2002-12-17</td>
+<td>0.228569</td>
+<td>0.23162</td>
+<td>11.255742</td>
+<td>13.023845</td>
+<td>13.377089</td>
+<td>17.131050</td>
+<td>7.819630</td>
+<td>11.700225</td>
+<td>14.826304</td>
+<td>3.280000</td>
 <td>...</td>
-<td>2.386915</td>
-<td>33.266834</td>
-<td>10.863768</td>
-<td>48.889122</td>
-<td>16.428463</td>
-<td>14.510458</td>
-<td>10.188372</td>
-<td>24.552650</td>
-<td>37.520027</td>
-<td>27.353210</td>
+<td>2.136574</td>
+<td>16.697002</td>
+<td>10.053861</td>
+<td>36.271317</td>
+<td>10.901052</td>
+<td>12.772179</td>
+<td>6.336473</td>
+<td>18.503960</td>
+<td>33.810364</td>
+<td>18.122383</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2004-11-23</td>
-<td>0.928674</td>
-<td>0.881304</td>
-<td>13.005194</td>
-<td>18.152706</td>
-<td>30.322697</td>
-<td>24.947168</td>
-<td>13.700435</td>
-<td>16.606346</td>
-<td>16.030344</td>
-<td>10.370000</td>
+<td data-quarto-table-cell-role="th">2002-12-18</td>
+<td>0.220839</td>
+<td>0.23162</td>
+<td>11.189867</td>
+<td>12.959014</td>
+<td>12.973382</td>
+<td>16.074289</td>
+<td>7.687520</td>
+<td>11.755794</td>
+<td>14.577931</td>
+<td>3.050000</td>
 <td>...</td>
-<td>2.393473</td>
-<td>33.481903</td>
-<td>10.882599</td>
-<td>48.830856</td>
-<td>16.555431</td>
-<td>14.503373</td>
-<td>10.075955</td>
-<td>24.526987</td>
-<td>37.499813</td>
-<td>27.509014</td>
+<td>2.043172</td>
+<td>16.626055</td>
+<td>9.954317</td>
+<td>36.294014</td>
+<td>10.677649</td>
+<td>12.801530</td>
+<td>6.103514</td>
+<td>18.364222</td>
+<td>33.487984</td>
+<td>18.132597</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2004-11-24</td>
-<td>0.970811</td>
-<td>0.885795</td>
-<td>13.048287</td>
-<td>18.620935</td>
-<td>30.422657</td>
-<td>24.883221</td>
-<td>13.811342</td>
-<td>16.782764</td>
-<td>16.383600</td>
-<td>10.240000</td>
+<td data-quarto-table-cell-role="th">2002-12-19</td>
+<td>0.215230</td>
+<td>0.23162</td>
+<td>11.085575</td>
+<td>12.634859</td>
+<td>12.729166</td>
+<td>15.883307</td>
+<td>7.681227</td>
+<td>11.657471</td>
+<td>14.496831</td>
+<td>2.900000</td>
 <td>...</td>
-<td>2.413146</td>
-<td>33.380447</td>
-<td>10.874038</td>
-<td>48.825005</td>
-<td>16.505745</td>
-<td>14.475060</td>
-<td>10.118112</td>
-<td>24.738817</td>
-<td>37.398727</td>
-<td>27.664825</td>
+<td>2.037334</td>
+<td>16.624023</td>
+<td>9.954317</td>
+<td>36.118042</td>
+<td>10.652270</td>
+<td>12.651503</td>
+<td>6.178061</td>
+<td>18.408678</td>
+<td>33.341740</td>
+<td>17.933613</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2004-11-26</td>
-<td>0.978389</td>
-<td>0.888490</td>
-<td>13.109851</td>
-<td>18.685766</td>
-<td>30.317698</td>
-<td>24.748922</td>
-<td>13.843967</td>
-<td>16.787535</td>
-<td>16.394304</td>
-<td>10.300000</td>
+<td data-quarto-table-cell-role="th">2002-12-20</td>
+<td>0.214321</td>
+<td>0.23162</td>
+<td>10.621729</td>
+<td>12.353925</td>
+<td>12.828848</td>
+<td>16.201601</td>
+<td>7.807046</td>
+<td>11.875497</td>
+<td>14.689438</td>
+<td>3.050000</td>
 <td>...</td>
-<td>2.354128</td>
-<td>34.037830</td>
-<td>10.856913</td>
-<td>48.901012</td>
-<td>16.527834</td>
-<td>14.524616</td>
-<td>10.207114</td>
-<td>24.790161</td>
-<td>37.277443</td>
-<td>27.750805</td>
+<td>2.049009</td>
+<td>16.439529</td>
+<td>10.101971</td>
+<td>36.203201</td>
+<td>11.119382</td>
+<td>13.046148</td>
+<td>6.289883</td>
+<td>18.866041</td>
+<td>33.760506</td>
+<td>18.214230</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -1189,7 +1190,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2023-10-09</td>
 <td>178.990005</td>
-<td>2.530000</td>
+<td>2.53000</td>
 <td>96.227318</td>
 <td>310.721283</td>
 <td>529.289978</td>
@@ -1213,7 +1214,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tr class="even">
 <td data-quarto-table-cell-role="th">2023-10-10</td>
 <td>178.389999</td>
-<td>2.600000</td>
+<td>2.60000</td>
 <td>97.022911</td>
 <td>311.029999</td>
 <td>532.719971</td>
@@ -1237,7 +1238,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2023-10-11</td>
 <td>179.800003</td>
-<td>2.600000</td>
+<td>2.60000</td>
 <td>92.129997</td>
 <td>312.540009</td>
 <td>549.909973</td>
@@ -1261,7 +1262,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tr class="even">
 <td data-quarto-table-cell-role="th">2023-10-12</td>
 <td>180.710007</td>
-<td>2.540000</td>
+<td>2.54000</td>
 <td>90.190002</td>
 <td>304.359985</td>
 <td>559.630005</td>
@@ -1285,7 +1286,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2023-10-13</td>
 <td>178.850006</td>
-<td>2.550000</td>
+<td>2.55000</td>
 <td>90.870003</td>
 <td>301.829987</td>
 <td>548.760010</td>
@@ -1309,14 +1310,14 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tbody>
 </table>
 
-<p>4757 rows × 142 columns</p>
+<p>5243 rows × 135 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.T</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="116">
 <div>
 
 
@@ -1324,16 +1325,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Date</th>
-<th data-quarto-table-cell-role="th">2004-11-19</th>
-<th data-quarto-table-cell-role="th">2004-11-22</th>
-<th data-quarto-table-cell-role="th">2004-11-23</th>
-<th data-quarto-table-cell-role="th">2004-11-24</th>
-<th data-quarto-table-cell-role="th">2004-11-26</th>
-<th data-quarto-table-cell-role="th">2004-11-29</th>
-<th data-quarto-table-cell-role="th">2004-11-30</th>
-<th data-quarto-table-cell-role="th">2004-12-01</th>
-<th data-quarto-table-cell-role="th">2004-12-02</th>
-<th data-quarto-table-cell-role="th">2004-12-03</th>
+<th data-quarto-table-cell-role="th">2002-12-16</th>
+<th data-quarto-table-cell-role="th">2002-12-17</th>
+<th data-quarto-table-cell-role="th">2002-12-18</th>
+<th data-quarto-table-cell-role="th">2002-12-19</th>
+<th data-quarto-table-cell-role="th">2002-12-20</th>
+<th data-quarto-table-cell-role="th">2002-12-23</th>
+<th data-quarto-table-cell-role="th">2002-12-24</th>
+<th data-quarto-table-cell-role="th">2002-12-26</th>
+<th data-quarto-table-cell-role="th">2002-12-27</th>
+<th data-quarto-table-cell-role="th">2002-12-30</th>
 <th data-quarto-table-cell-role="th">...</th>
 <th data-quarto-table-cell-role="th">2023-10-02</th>
 <th data-quarto-table-cell-role="th">2023-10-03</th>
@@ -1350,16 +1351,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">AAPL</td>
-<td>0.836216</td>
-<td>0.929887</td>
-<td>0.928674</td>
-<td>0.970811</td>
-<td>0.978389</td>
-<td>1.037351</td>
-<td>1.016282</td>
-<td>1.027499</td>
-<td>0.988393</td>
-<td>0.950046</td>
+<td>0.225083</td>
+<td>0.228569</td>
+<td>0.220839</td>
+<td>0.215230</td>
+<td>0.214321</td>
+<td>0.219626</td>
+<td>0.217656</td>
+<td>0.218262</td>
+<td>0.213108</td>
+<td>0.213260</td>
 <td>...</td>
 <td>173.750000</td>
 <td>172.399994</td>
@@ -1374,16 +1375,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">ABEV</td>
-<td>0.891186</td>
-<td>0.891186</td>
-<td>0.881304</td>
-<td>0.885795</td>
-<td>0.888490</td>
-<td>0.888490</td>
-<td>0.880405</td>
-<td>0.880405</td>
-<td>0.872140</td>
-<td>0.872140</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
+<td>0.231620</td>
 <td>...</td>
 <td>2.550000</td>
 <td>2.500000</td>
@@ -1398,16 +1399,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABT</td>
-<td>13.159102</td>
-<td>13.196038</td>
-<td>13.005194</td>
-<td>13.048287</td>
-<td>13.109851</td>
-<td>13.060599</td>
-<td>12.915928</td>
-<td>13.313013</td>
-<td>13.442290</td>
-<td>13.368418</td>
+<td>11.242016</td>
+<td>11.255742</td>
+<td>11.189867</td>
+<td>11.085575</td>
+<td>10.621729</td>
+<td>10.465286</td>
+<td>10.347263</td>
+<td>10.059079</td>
+<td>10.094759</td>
+<td>10.182588</td>
 <td>...</td>
 <td>95.202988</td>
 <td>95.262657</td>
@@ -1422,16 +1423,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">ACN</td>
-<td>18.311184</td>
-<td>18.181520</td>
-<td>18.152706</td>
-<td>18.620935</td>
-<td>18.685766</td>
-<td>18.685766</td>
-<td>18.685766</td>
-<td>19.312466</td>
-<td>19.514151</td>
-<td>19.463741</td>
+<td>12.822151</td>
+<td>13.023845</td>
+<td>12.959014</td>
+<td>12.634859</td>
+<td>12.353925</td>
+<td>12.389941</td>
+<td>12.584430</td>
+<td>12.865371</td>
+<td>12.742911</td>
+<td>12.836556</td>
 <td>...</td>
 <td>306.986786</td>
 <td>304.965179</td>
@@ -1446,16 +1447,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ADBE</td>
-<td>28.898273</td>
-<td>29.717941</td>
-<td>30.322697</td>
-<td>30.422657</td>
-<td>30.317698</td>
-<td>30.357683</td>
-<td>30.267721</td>
-<td>30.782511</td>
-<td>31.142366</td>
-<td>31.467232</td>
+<td>13.237535</td>
+<td>13.377089</td>
+<td>12.973382</td>
+<td>12.729166</td>
+<td>12.828848</td>
+<td>13.232551</td>
+<td>13.073062</td>
+<td>12.803926</td>
+<td>12.549742</td>
+<td>12.405205</td>
 <td>...</td>
 <td>521.130005</td>
 <td>507.029999</td>
@@ -1494,16 +1495,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">VZ</td>
-<td>14.549393</td>
-<td>14.510458</td>
-<td>14.503373</td>
-<td>14.475060</td>
-<td>14.524616</td>
-<td>14.581252</td>
-<td>14.595415</td>
-<td>14.726393</td>
-<td>14.839680</td>
-<td>14.875080</td>
+<td>13.026583</td>
+<td>12.772179</td>
+<td>12.801530</td>
+<td>12.651503</td>
+<td>13.046148</td>
+<td>13.013534</td>
+<td>12.883075</td>
+<td>12.945032</td>
+<td>12.687381</td>
+<td>12.713467</td>
 <td>...</td>
 <td>31.096254</td>
 <td>31.311655</td>
@@ -1518,16 +1519,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">WAB</td>
-<td>9.954161</td>
-<td>10.188372</td>
-<td>10.075955</td>
-<td>10.118112</td>
-<td>10.207114</td>
-<td>9.977583</td>
-<td>9.635630</td>
-<td>9.523204</td>
-<td>9.659050</td>
-<td>9.354569</td>
+<td>6.303859</td>
+<td>6.336473</td>
+<td>6.103514</td>
+<td>6.178061</td>
+<td>6.289883</td>
+<td>6.219993</td>
+<td>6.294541</td>
+<td>6.397041</td>
+<td>6.322494</td>
+<td>6.471588</td>
 <td>...</td>
 <td>105.239998</td>
 <td>104.500000</td>
@@ -1542,16 +1543,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">WBA</td>
-<td>24.456373</td>
-<td>24.552650</td>
-<td>24.526987</td>
-<td>24.738817</td>
-<td>24.790161</td>
-<td>24.687454</td>
-<td>24.507723</td>
-<td>25.021250</td>
-<td>24.982733</td>
-<td>25.021250</td>
+<td>18.376917</td>
+<td>18.503960</td>
+<td>18.364222</td>
+<td>18.408678</td>
+<td>18.866041</td>
+<td>18.554777</td>
+<td>18.453140</td>
+<td>18.357862</td>
+<td>18.294350</td>
+<td>18.345161</td>
 <td>...</td>
 <td>22.420000</td>
 <td>22.549999</td>
@@ -1566,16 +1567,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">WMT</td>
-<td>37.230267</td>
-<td>37.520027</td>
-<td>37.499813</td>
-<td>37.398727</td>
-<td>37.277443</td>
-<td>35.815193</td>
-<td>35.080688</td>
-<td>35.592808</td>
-<td>35.714092</td>
-<td>35.666939</td>
+<td>34.474094</td>
+<td>33.810364</td>
+<td>33.487984</td>
+<td>33.341740</td>
+<td>33.760506</td>
+<td>32.962849</td>
+<td>33.035984</td>
+<td>33.075851</td>
+<td>32.677044</td>
+<td>33.660805</td>
 <td>...</td>
 <td>160.100006</td>
 <td>159.089996</td>
@@ -1590,16 +1591,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">XOM</td>
-<td>27.068447</td>
-<td>27.353210</td>
-<td>27.509014</td>
-<td>27.664825</td>
-<td>27.750805</td>
-<td>27.600348</td>
-<td>27.535883</td>
-<td>27.482151</td>
-<td>26.955626</td>
-<td>27.009338</td>
+<td>18.295858</td>
+<td>18.122383</td>
+<td>18.132597</td>
+<td>17.933613</td>
+<td>18.214230</td>
+<td>18.239742</td>
+<td>18.071362</td>
+<td>18.020346</td>
+<td>17.673412</td>
+<td>17.729530</td>
 <td>...</td>
 <td>115.629997</td>
 <td>115.830002</td>
@@ -1615,28 +1616,28 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </tbody>
 </table>
 
-<p>142 rows × 4757 columns</p>
+<p>135 rows × 5243 columns</p>
 </div>
 </div>
 </div>
 <section id="знаходження-коефіцієнтів-матриці-крос-кореляцій-1" class="level3" data-number="8.2.1">
 <h3 data-number="8.2.1" class="anchored" data-anchor-id="знаходження-коефіцієнтів-матриці-крос-кореляцій-1"><span class="header-section-number">8.2.1</span> Знаходження коефіцієнтів матриці крос-кореляцій</h3>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="117">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> data.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:,<span class="dv">1</span>:]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> log_ret.values</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> (log_ret <span class="op">-</span> np.mean(log_ret, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)) <span class="op">/</span> np.std(log_ret, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="118">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>N, T <span class="op">=</span> log_ret.shape</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="119">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>T)<span class="op">*</span>np.dot(log_ret, log_ret.T)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>di <span class="op">=</span> np.diag_indices(N)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ccoef <span class="op">=</span> np.ma.asarray(C)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ccoef[di] <span class="op">=</span> np.ma.masked</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ccoef_flat <span class="op">=</span> ccoef.compressed()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="120">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>random_stocks <span class="op">=</span> np.random.normal(size<span class="op">=</span>(N,T))</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>T)<span class="op">*</span>np.dot(random_stocks, random_stocks.T)</span>
@@ -1645,7 +1646,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>ccoef_rand[di_rand] <span class="op">=</span> np.ma.masked</span>
 <span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>ccoef_flat_rand <span class="op">=</span> ccoef_rand.compressed()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="121">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1673,41 +1674,41 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </section>
 <section id="розподіл-власних-значень-та-векторів" class="level3" data-number="8.2.2">
 <h3 data-number="8.2.2" class="anchored" data-anchor-id="розподіл-власних-значень-та-векторів"><span class="header-section-number">8.2.2</span> Розподіл власних значень та векторів</h3>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="122">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>w, v <span class="op">=</span> np.linalg.eig(C)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>w_rand, v_rand <span class="op">=</span> np.linalg.eig(R)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="123">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> T<span class="op">/</span>N</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lambda_plus <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>Q <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.sqrt(<span class="dv">1</span><span class="op">/</span>Q)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lambda_minus <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">1</span><span class="op">/</span>Q <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>np.sqrt(<span class="dv">1</span><span class="op">/</span>Q)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="125">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lambda_plus</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>1.3754407185513393</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="125">
+<pre><code>1.3467116522335216</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="126">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lambda_minus</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
-<pre><code>0.6245592814486605</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="126">
+<pre><code>0.6532883477664784</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="31">
+<div class="cell" data-execution_count="127">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lambda_random <span class="op">=</span> np.linspace(lambda_minus, lambda_plus, <span class="dv">1000</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> (Q<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>np.pi))<span class="op">*</span>np.sqrt((lambda_plus<span class="op">-</span>lambda_random)<span class="op">*</span>(lambda_random<span class="op">-</span>lambda_minus))<span class="op">/</span>lambda_random</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="128">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lambda_max <span class="op">=</span> w.<span class="bu">max</span>()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>lambda_max</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>57.18871610030752</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="128">
+<pre><code>53.422930355995014</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="80">
+<div class="cell" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(w, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{init}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(w_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{rand}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
@@ -1731,24 +1732,24 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <p><img src="lab_8_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="45">
+<div class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(v[:,<span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(v_rand[:,<span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(v[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(v_rand[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{1}</span><span class="st">$'</span>)</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Eigenvector components of $ \lambda_</span><span class="sc">{1}</span><span class="st"> $'</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend()</span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(v[:,<span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(v_rand[:,<span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(v[:, <span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(v_rand[:, <span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{30}</span><span class="st">$'</span>)</span>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Eigenvector components of $ \lambda_</span><span class="sc">{30}</span><span class="st"> $'</span>)</span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
 <span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(v[:,<span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(v_rand[:,<span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(v[:, <span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(v_rand[:, <span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
 <span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{70}</span><span class="st">$'</span>)</span>
 <span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
 <span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Eigenvector components of $ \lambda_</span><span class="sc">{70}</span><span class="st"> $'</span>)</span>
@@ -1763,11 +1764,11 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </section>
 <section id="обернене-відношення-участі-1" class="level3" data-number="8.2.3">
 <h3 data-number="8.2.3" class="anchored" data-anchor-id="обернене-відношення-участі-1"><span class="header-section-number">8.2.3</span> Обернене відношення участі</h3>
-<div class="cell" data-execution_count="46">
+<div class="cell" data-execution_count="131">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>IPR <span class="op">=</span> np.<span class="bu">sum</span>(v<span class="op">**</span><span class="dv">4</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>IPR_rand <span class="op">=</span> np.<span class="bu">sum</span>(v_rand<span class="op">**</span><span class="dv">4</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="48">
+<div class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(w, IPR, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="vs">r'$IPR_{\it</span><span class="sc">{init}</span><span class="vs">}$'</span>, s<span class="op">=</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
