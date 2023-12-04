@@ -29,6 +29,7 @@ book:
           city: Кривий Ріг
           state: Дніпропетровська область
           url: https://www.duet.edu.ua/ua
+  downloads: [pdf, epub]
   date: today 
   cover-image: title_book.jpeg
   date-format: iso 
