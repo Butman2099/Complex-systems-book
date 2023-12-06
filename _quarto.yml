@@ -61,6 +61,8 @@ callout-appearance: default
 
 format:
   html:
+    grid:
+      body-width: 1050px
     highlight-style: oblivion
     css: style.css
     page-layout: full
