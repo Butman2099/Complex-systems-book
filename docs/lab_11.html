@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 9&nbsp; Лабораторна робота № 11</title>
+<title>Моделювання складних систем у Python - 11&nbsp; Лабораторна робота № 11</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./lab_12.html" rel="next">
-<link href="./lab_8.html" rel="prev">
+<link href="./lab_10.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_11.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Переключить боковую панель навигации" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -215,14 +215,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./lab_9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 9</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lab_10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./lab_11.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lab_12.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -264,30 +276,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Зміст</h2>
    
   <ul>
-  <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</a>
+  <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">11.1</span> Теоретичні відомості</a>
   <ul class="collapse">
-  <li><a href="#незворотність-на-основі-діаграм-пуанкаре" id="toc-незворотність-на-основі-діаграм-пуанкаре" class="nav-link" data-scroll-target="#незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">9.1.1</span> Незворотність на основі діаграм Пуанкаре</a></li>
-  <li><a href="#методи-складних-мереж" id="toc-методи-складних-мереж" class="nav-link" data-scroll-target="#методи-складних-мереж"><span class="header-section-number">9.1.2</span> Методи складних мереж</a></li>
-  <li><a href="#незворотність-на-основі-пермутаційних-шаблонів" id="toc-незворотність-на-основі-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">9.1.3</span> Незворотність на основі пермутаційних шаблонів</a></li>
+  <li><a href="#незворотність-на-основі-діаграм-пуанкаре" id="toc-незворотність-на-основі-діаграм-пуанкаре" class="nav-link" data-scroll-target="#незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">11.1.1</span> Незворотність на основі діаграм Пуанкаре</a></li>
+  <li><a href="#методи-складних-мереж" id="toc-методи-складних-мереж" class="nav-link" data-scroll-target="#методи-складних-мереж"><span class="header-section-number">11.1.2</span> Методи складних мереж</a></li>
+  <li><a href="#незворотність-на-основі-пермутаційних-шаблонів" id="toc-незворотність-на-основі-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.1.3</span> Незворотність на основі пермутаційних шаблонів</a></li>
   </ul></li>
-  <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</a>
+  <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">11.2</span> Хід роботи</a>
   <ul class="collapse">
-  <li><a href="#підключення-необхідних-бібліотек" id="toc-підключення-необхідних-бібліотек" class="nav-link" data-scroll-target="#підключення-необхідних-бібліотек"><span class="header-section-number">9.2.1</span> Підключення необхідних бібліотек</a></li>
-  <li><a href="#встановлення-параметрів-для-побудови-графіків" id="toc-встановлення-параметрів-для-побудови-графіків" class="nav-link" data-scroll-target="#встановлення-параметрів-для-побудови-графіків"><span class="header-section-number">9.2.2</span> Встановлення параметрів для побудови графіків</a></li>
-  <li><a href="#визначення-функції-для-побудови-рекурентного-графа" id="toc-визначення-функції-для-побудови-рекурентного-графа" class="nav-link" data-scroll-target="#визначення-функції-для-побудови-рекурентного-графа"><span class="header-section-number">9.2.3</span> Визначення функції для побудови рекурентного графа</a></li>
-  <li><a href="#визначення-функції-для-розрахунку-індексу-кошти" id="toc-визначення-функції-для-розрахунку-індексу-кошти" class="nav-link" data-scroll-target="#визначення-функції-для-розрахунку-індексу-кошти"><span class="header-section-number">9.2.4</span> Визначення функції для розрахунку індексу Кошти</a></li>
-  <li><a href="#оголошення-функцій-для-підрахунку-показників-незворотності" id="toc-оголошення-функцій-для-підрахунку-показників-незворотності" class="nav-link" data-scroll-target="#оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">9.2.5</span> Оголошення функцій для підрахунку показників незворотності</a></li>
-  <li><a href="#завантажуємо-дані-з-сайту-yahoo-finance" id="toc-завантажуємо-дані-з-сайту-yahoo-finance" class="nav-link" data-scroll-target="#завантажуємо-дані-з-сайту-yahoo-finance"><span class="header-section-number">9.2.6</span> Завантажуємо дані з сайту Yahoo! Finance</a></li>
-  <li><a href="#виводимо-досліджувані-ряди" id="toc-виводимо-досліджувані-ряди" class="nav-link" data-scroll-target="#виводимо-досліджувані-ряди"><span class="header-section-number">9.2.7</span> Виводимо досліджувані ряди</a></li>
-  <li><a href="#встановлення-параметрів-для-розрахунків" id="toc-встановлення-параметрів-для-розрахунків" class="nav-link" data-scroll-target="#встановлення-параметрів-для-розрахунків"><span class="header-section-number">9.2.8</span> Встановлення параметрів для розрахунків</a></li>
-  <li><a href="#виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" id="toc-виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="nav-link" data-scroll-target="#виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">9.2.9</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</a></li>
-  <li><a href="#побудова-показників-незворотності-із-використанням-ковзного-вікна" id="toc-побудова-показників-незворотності-із-використанням-ковзного-вікна" class="nav-link" data-scroll-target="#побудова-показників-незворотності-із-використанням-ковзного-вікна"><span class="header-section-number">9.2.10</span> Побудова показників незворотності із використанням ковзного вікна</a></li>
-  <li><a href="#візуалізація-показників-на-основі-діаграми-пуанкаре" id="toc-візуалізація-показників-на-основі-діаграми-пуанкаре" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">9.2.11</span> Візуалізація показників на основі діаграми Пуанкаре</a></li>
-  <li><a href="#побудова-графу-досліджуваного-ряду" id="toc-побудова-графу-досліджуваного-ряду" class="nav-link" data-scroll-target="#побудова-графу-досліджуваного-ряду"><span class="header-section-number">9.2.12</span> Побудова графу досліджуваного ряду</a></li>
-  <li><a href="#побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" id="toc-побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="nav-link" data-scroll-target="#побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">9.2.13</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</a></li>
-  <li><a href="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" id="toc-візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">9.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</a></li>
+  <li><a href="#підключення-необхідних-бібліотек" id="toc-підключення-необхідних-бібліотек" class="nav-link" data-scroll-target="#підключення-необхідних-бібліотек"><span class="header-section-number">11.2.1</span> Підключення необхідних бібліотек</a></li>
+  <li><a href="#встановлення-параметрів-для-побудови-графіків" id="toc-встановлення-параметрів-для-побудови-графіків" class="nav-link" data-scroll-target="#встановлення-параметрів-для-побудови-графіків"><span class="header-section-number">11.2.2</span> Встановлення параметрів для побудови графіків</a></li>
+  <li><a href="#визначення-функції-для-побудови-рекурентного-графа" id="toc-визначення-функції-для-побудови-рекурентного-графа" class="nav-link" data-scroll-target="#визначення-функції-для-побудови-рекурентного-графа"><span class="header-section-number">11.2.3</span> Визначення функції для побудови рекурентного графа</a></li>
+  <li><a href="#визначення-функції-для-розрахунку-індексу-кошти" id="toc-визначення-функції-для-розрахунку-індексу-кошти" class="nav-link" data-scroll-target="#визначення-функції-для-розрахунку-індексу-кошти"><span class="header-section-number">11.2.4</span> Визначення функції для розрахунку індексу Кошти</a></li>
+  <li><a href="#оголошення-функцій-для-підрахунку-показників-незворотності" id="toc-оголошення-функцій-для-підрахунку-показників-незворотності" class="nav-link" data-scroll-target="#оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">11.2.5</span> Оголошення функцій для підрахунку показників незворотності</a></li>
+  <li><a href="#завантажуємо-дані-з-сайту-yahoo-finance" id="toc-завантажуємо-дані-з-сайту-yahoo-finance" class="nav-link" data-scroll-target="#завантажуємо-дані-з-сайту-yahoo-finance"><span class="header-section-number">11.2.6</span> Завантажуємо дані з сайту Yahoo! Finance</a></li>
+  <li><a href="#виводимо-досліджувані-ряди" id="toc-виводимо-досліджувані-ряди" class="nav-link" data-scroll-target="#виводимо-досліджувані-ряди"><span class="header-section-number">11.2.7</span> Виводимо досліджувані ряди</a></li>
+  <li><a href="#встановлення-параметрів-для-розрахунків" id="toc-встановлення-параметрів-для-розрахунків" class="nav-link" data-scroll-target="#встановлення-параметрів-для-розрахунків"><span class="header-section-number">11.2.8</span> Встановлення параметрів для розрахунків</a></li>
+  <li><a href="#виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" id="toc-виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="nav-link" data-scroll-target="#виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">11.2.9</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</a></li>
+  <li><a href="#побудова-показників-незворотності-із-використанням-ковзного-вікна" id="toc-побудова-показників-незворотності-із-використанням-ковзного-вікна" class="nav-link" data-scroll-target="#побудова-показників-незворотності-із-використанням-ковзного-вікна"><span class="header-section-number">11.2.10</span> Побудова показників незворотності із використанням ковзного вікна</a></li>
+  <li><a href="#візуалізація-показників-на-основі-діаграми-пуанкаре" id="toc-візуалізація-показників-на-основі-діаграми-пуанкаре" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">11.2.11</span> Візуалізація показників на основі діаграми Пуанкаре</a></li>
+  <li><a href="#побудова-графу-досліджуваного-ряду" id="toc-побудова-графу-досліджуваного-ряду" class="nav-link" data-scroll-target="#побудова-графу-досліджуваного-ряду"><span class="header-section-number">11.2.12</span> Побудова графу досліджуваного ряду</a></li>
+  <li><a href="#побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" id="toc-побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="nav-link" data-scroll-target="#побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">11.2.13</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</a></li>
+  <li><a href="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" id="toc-візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">11.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</a></li>
   </ul></li>
-  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">9.3</span> Висновок</a></li>
+  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">11.3</span> Висновок</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_11.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -296,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></h1>
 </div>
 
 
@@ -313,13 +325,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p><strong>Тема.</strong> Аналіз незворотності часового ряду.</p>
 <p><strong>Мета.</strong> Навчитись розраховувати значення індексів незворотності часу для складних сигналів та досліджувати їх динаміку у випадку незворотних змін, побудови передвісників критичних і кризових явищ.</p>
-<section id="теоретичні-відомості" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</h2>
+<section id="теоретичні-відомості" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">11.1</span> Теоретичні відомості</h2>
 <p>Незворотність часу є фундаментальною властивістю нерівноважних дисипативних систем, і її втрата може свідчити про розвиток деструктивних процесів.</p>
 <p>З огляду на статистичні властивості досліджуваного сигналу, його еволюцію можна було б назвати незворотною, якби була відсутня інваріантність, тобто був би отриманий той же сигнал, якби ми виміряли його в протилежному напрямку. Функція <span class="math inline">\(f\)</span> може бути застосована для знаходження характеристик, які відрізняються прямою і зворотною версіями, тобто часові ряди незворотні, якщо <span class="math inline">\(f(X^d) \neq f(X^r)\)</span>. Основна ідея цього визначення полягає в тому, що немає ніяких обмежень на <span class="math inline">\(f(\cdot )\)</span>.</p>
 <p>Передбачається, що стаціонарний процес <span class="math inline">\(X\)</span> називається статистично зворотним у часі, якщо розподіл ймовірностей прямої та зворотної систем приблизно однаковий. Незворотність часових рядів вказує на наявність нелінійних залежностей (пам’яті) в динаміці системи, далекій від рівноваги, включаючи негауссові випадкові процеси та дисипативний хаос.</p>
-<section id="незворотність-на-основі-діаграм-пуанкаре" class="level3" data-number="9.1.1">
-<h3 data-number="9.1.1" class="anchored" data-anchor-id="незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">9.1.1</span> Незворотність на основі діаграм Пуанкаре</h3>
+<section id="незворотність-на-основі-діаграм-пуанкаре" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">11.1.1</span> Незворотність на основі діаграм Пуанкаре</h3>
 <p>Діаграма Пуанкаре для часового ряду являє собою графік, на осі <span class="math inline">\(x\)</span> якого розташовані значення для поточного часу <span class="math inline">\(t\)</span>, а на осі <span class="math inline">\(y\)</span> — його наступні значення в часі <span class="math inline">\(t+\tau\)</span>. Усі наступні значення, які рівні один одному (<span class="math inline">\(x(t) = x(t+\tau)\)</span>), розташовані на лінії ідентичності (line of identity, LI). Інтервали, що представляють зростаючу тендецію, відмічені вище LI (<span class="math inline">\(x(t)&lt;x(t+\tau)\)</span>), тоді як спадна тенденція характеризуватиметься скупченням точок нижче LI (<span class="math inline">\(x(t)&gt;x(t+\tau)\)</span>). Оцінюючи асиметрію точок на діаграмі, ми можемо вивести різні кількісні показники незворотності (асиметрії) досліджуваних систем.</p>
 <p><strong>Індекс Гузіка (GIx)</strong></p>
 <p>GIx можна визначити як відношення відстаней точок вище LI до відстаней усіх точок на діаграмі:</p>
@@ -367,8 +379,8 @@ AIx = \frac{\sum_{i=1}^{a}|S_{i}|}{\sum_{i=1}^{m}|S_{i}|}.
 SIx = \frac{\sum_{i=1}^{a}|R\theta_{i}|}{\sum_{i=1}^{m}|R\theta_{i}|}.
 \]</span></p>
 </section>
-<section id="методи-складних-мереж" class="level3" data-number="9.1.2">
-<h3 data-number="9.1.2" class="anchored" data-anchor-id="методи-складних-мереж"><span class="header-section-number">9.1.2</span> Методи складних мереж</h3>
+<section id="методи-складних-мереж" class="level3" data-number="11.1.2">
+<h3 data-number="11.1.2" class="anchored" data-anchor-id="методи-складних-мереж"><span class="header-section-number">11.1.2</span> Методи складних мереж</h3>
 <p>Графи видимості (VG) базуються на простому відображенні часових рядів у мережеву область, використовуючи локальну опуклість скалярно-позначених часових рядів, де кожне спостереження є вершиною в складній мережі. Дві вершини і пов’язані ребром, якщо для всіх вершин застосовується наступна умова:</p>
 <p><span class="math display">\[
 x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right) \frac{t_{j}-t_{k}}{t_{j}-t_{i}}.
@@ -403,8 +415,8 @@ D_{KL}(p||q) = \sum_{i=1}^{N} p(x_{i}) \cdot \log{\left[ \frac{p(x_{i})}{q(x_{i}
 \]</span></p>
 <p>де <span class="math inline">\(p(\cdot)\)</span> відповідатиме розподілу вхідних характеристикам, а <span class="math inline">\(q(\cdot)\)</span> відповідатиме зворотнім.</p>
 </section>
-<section id="незворотність-на-основі-пермутаційних-шаблонів" class="level3" data-number="9.1.3">
-<h3 data-number="9.1.3" class="anchored" data-anchor-id="незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">9.1.3</span> Незворотність на основі пермутаційних шаблонів</h3>
+<section id="незворотність-на-основі-пермутаційних-шаблонів" class="level3" data-number="11.1.3">
+<h3 data-number="11.1.3" class="anchored" data-anchor-id="незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.1.3</span> Незворотність на основі пермутаційних шаблонів</h3>
 <p>Ідея аналізу пермутаційних шаблонів (PP — permutation patterns) спочатку була запропонована Бандтом і Помпе, щоб надати дослідникам простий та ефективний інструмент для характеристики складності динаміки реальних систем. Він уникає порогу амплітуди і замість цього має справу з порядковими шаблонами перестановок. Їх частоти дозволяють відрізнити детерміновані процеси від абсолютно випадкових. Розрахунки PP припускають, що часовий ряд розбивається на пересічні підвектори довжини <span class="math inline">\(d_{E}\)</span>:</p>
 <p><span class="math display">\[
 \vec{X}(i) = \left\{ x(i), x(i+\tau), ... , x(i+[d_{E}-1]\tau) \right\},
@@ -418,10 +430,10 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <p>Різницю між розподілами прямих часових рядів (<span class="math inline">\(P^{d}\)</span>) та зворотних (<span class="math inline">\(P^{r}\)</span>) можна оцінити за допомогою дивергенції Кульбака-Лейблера.</p>
 </section>
 </section>
-<section id="хід-роботи" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</h2>
-<section id="підключення-необхідних-бібліотек" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="підключення-необхідних-бібліотек"><span class="header-section-number">9.2.1</span> Підключення необхідних бібліотек</h3>
+<section id="хід-роботи" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">11.2</span> Хід роботи</h2>
+<section id="підключення-необхідних-бібліотек" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="підключення-необхідних-бібліотек"><span class="header-section-number">11.2.1</span> Підключення необхідних бібліотек</h3>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> preprocessing</span>
@@ -440,8 +452,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="встановлення-параметрів-для-побудови-графіків" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="встановлення-параметрів-для-побудови-графіків"><span class="header-section-number">9.2.2</span> Встановлення параметрів для побудови графіків</h3>
+<section id="встановлення-параметрів-для-побудови-графіків" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="встановлення-параметрів-для-побудови-графіків"><span class="header-section-number">11.2.2</span> Встановлення параметрів для побудови графіків</h3>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
@@ -460,8 +472,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="визначення-функції-для-побудови-рекурентного-графа" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="визначення-функції-для-побудови-рекурентного-графа"><span class="header-section-number">9.2.3</span> Визначення функції для побудови рекурентного графа</h3>
+<section id="визначення-функції-для-побудови-рекурентного-графа" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="визначення-функції-для-побудови-рекурентного-графа"><span class="header-section-number">11.2.3</span> Визначення функції для побудови рекурентного графа</h3>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recurrence_net(time_ser, rec_thr, dim, tau, dist_type<span class="op">=</span><span class="st">'euclidien'</span>):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    time_series <span class="op">=</span> nk.complexity_embedding(time_ser, dimension<span class="op">=</span>dim, delay<span class="op">=</span>tau)</span>
@@ -477,8 +489,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {i: (xs[i], ts[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ts))}</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="визначення-функції-для-розрахунку-індексу-кошти" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="визначення-функції-для-розрахунку-індексу-кошти"><span class="header-section-number">9.2.4</span> Визначення функції для розрахунку індексу Кошти</h3>
+<section id="визначення-функції-для-розрахунку-індексу-кошти" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="визначення-функції-для-розрахунку-індексу-кошти"><span class="header-section-number">11.2.4</span> Визначення функції для розрахунку індексу Кошти</h3>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Costa_1(time_ser, taus):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    Cst <span class="op">=</span> []</span>
@@ -493,10 +505,10 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Costa</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="оголошення-функцій-для-підрахунку-показників-незворотності" class="level3" data-number="9.2.5">
-<h3 data-number="9.2.5" class="anchored" data-anchor-id="оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">9.2.5</span> Оголошення функцій для підрахунку показників незворотності</h3>
-<section id="пермутаційна-незворотність" class="level4" data-number="9.2.5.1">
-<h4 data-number="9.2.5.1" class="anchored" data-anchor-id="пермутаційна-незворотність"><span class="header-section-number">9.2.5.1</span> Пермутаційна незворотність</h4>
+<section id="оголошення-функцій-для-підрахунку-показників-незворотності" class="level3" data-number="11.2.5">
+<h3 data-number="11.2.5" class="anchored" data-anchor-id="оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">11.2.5</span> Оголошення функцій для підрахунку показників незворотності</h3>
+<section id="пермутаційна-незворотність" class="level4" data-number="11.2.5.1">
+<h4 data-number="11.2.5.1" class="anchored" data-anchor-id="пермутаційна-незворотність"><span class="header-section-number">11.2.5.1</span> Пермутаційна незворотність</h4>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PermIrrever(time_ser, d_e, tau, delta<span class="op">=</span><span class="fl">1e-10</span>, distance_irr<span class="op">=</span><span class="st">"kullback"</span>):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -521,8 +533,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> distance.jensenshannon(dist_dir <span class="op">+</span> delta, dist_rev <span class="op">+</span> delta)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="функція-для-підрахунку-ймовірностей" class="level4" data-number="9.2.5.2">
-<h4 data-number="9.2.5.2" class="anchored" data-anchor-id="функція-для-підрахунку-ймовірностей"><span class="header-section-number">9.2.5.2</span> Функція для підрахунку ймовірностей</h4>
+<section id="функція-для-підрахунку-ймовірностей" class="level4" data-number="11.2.5.2">
+<h4 data-number="11.2.5.2" class="anchored" data-anchor-id="функція-для-підрахунку-ймовірностей"><span class="header-section-number">11.2.5.2</span> Функція для підрахунку ймовірностей</h4>
 <div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_prob_dist(p, q):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -545,8 +557,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p_dist, q_dist</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="дивергеція-кульбака-лейблера" class="level4" data-number="9.2.5.3">
-<h4 data-number="9.2.5.3" class="anchored" data-anchor-id="дивергеція-кульбака-лейблера"><span class="header-section-number">9.2.5.3</span> Дивергеція Кульбака-Лейблера</h4>
+<section id="дивергеція-кульбака-лейблера" class="level4" data-number="11.2.5.3">
+<h4 data-number="11.2.5.3" class="anchored" data-anchor-id="дивергеція-кульбака-лейблера"><span class="header-section-number">11.2.5.3</span> Дивергеція Кульбака-Лейблера</h4>
 <div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> KLD(p_dist, q_dist, delta<span class="op">=</span><span class="fl">1e-10</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,8 +571,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> kld</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="дивергенція-йенсена-шеннона" class="level4" data-number="9.2.5.4">
-<h4 data-number="9.2.5.4" class="anchored" data-anchor-id="дивергенція-йенсена-шеннона"><span class="header-section-number">9.2.5.4</span> Дивергенція Йенсена-Шеннона</h4>
+<section id="дивергенція-йенсена-шеннона" class="level4" data-number="11.2.5.4">
+<h4 data-number="11.2.5.4" class="anchored" data-anchor-id="дивергенція-йенсена-шеннона"><span class="header-section-number">11.2.5.4</span> Дивергенція Йенсена-Шеннона</h4>
 <div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> JS(p_dist, q_dist, delta<span class="op">=</span><span class="fl">1e-10</span>):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -571,8 +583,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> js</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="графо-динамічна-незворотність" class="level4" data-number="9.2.5.5">
-<h4 data-number="9.2.5.5" class="anchored" data-anchor-id="графо-динамічна-незворотність"><span class="header-section-number">9.2.5.5</span> Графо-динамічна незворотність</h4>
+<section id="графо-динамічна-незворотність" class="level4" data-number="11.2.5.5">
+<h4 data-number="11.2.5.5" class="anchored" data-anchor-id="графо-динамічна-незворотність"><span class="header-section-number">11.2.5.5</span> Графо-динамічна незворотність</h4>
 <div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GraphIrrever(fragm, </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                 graph_type<span class="op">=</span><span class="st">'classic'</span>, </span>
@@ -617,8 +629,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> distance_deg, distance_clust</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації" class="level4" data-number="9.2.5.6">
-<h4 data-number="9.2.5.6" class="anchored" data-anchor-id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації"><span class="header-section-number">9.2.5.6</span> Функції для отримання ступеня вершини та локальної кластеризації</h4>
+<section id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації" class="level4" data-number="11.2.5.6">
+<h4 data-number="11.2.5.6" class="anchored" data-anchor-id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації"><span class="header-section-number">11.2.5.6</span> Функції для отримання ступеня вершини та локальної кластеризації</h4>
 <p>Процедура знаходження ступеню зв’язків та локальної кластеризації кожної вершини є доволі громіздкою. Для прискорення розрахунків відповідних процедур скористаємось бібліотекою <code>numba</code>. <a href="https://numba.readthedocs.io/en/stable/index.html">Numba</a> — це швидкий компілятор для Python, який найкраще працює з кодом, що використовує масиви, функції та цикли NumPy. Найпоширеніший спосіб використання Numba — це колекція декораторів, які можна застосувати до ваших функцій, щоб доручити Numba їх компілювати. Коли здійснюється виклик функції, прикрашеної Numba, вона компілюється у машинний код “just-in-time” для виконання, і весь або частина вашого коду може згодом виконуватися зі швидкістю власного машинного коду!</p>
 <p>Встановити її можна в наступний спосіб:</p>
 <div class="cell" data-execution_count="7">
@@ -681,8 +693,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 </div>
 </section>
 </section>
-<section id="завантажуємо-дані-з-сайту-yahoo-finance" class="level3" data-number="9.2.6">
-<h3 data-number="9.2.6" class="anchored" data-anchor-id="завантажуємо-дані-з-сайту-yahoo-finance"><span class="header-section-number">9.2.6</span> Завантажуємо дані з сайту Yahoo! Finance</h3>
+<section id="завантажуємо-дані-з-сайту-yahoo-finance" class="level3" data-number="11.2.6">
+<h3 data-number="11.2.6" class="anchored" data-anchor-id="завантажуємо-дані-з-сайту-yahoo-finance"><span class="header-section-number">11.2.6</span> Завантажуємо дані з сайту Yahoo! Finance</h3>
 <div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^RUT'</span>                       <span class="co"># Символ індексу</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -729,8 +741,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 </div>
 <hr>
 </section>
-<section id="виводимо-досліджувані-ряди" class="level3" data-number="9.2.7">
-<h3 data-number="9.2.7" class="anchored" data-anchor-id="виводимо-досліджувані-ряди"><span class="header-section-number">9.2.7</span> Виводимо досліджувані ряди</h3>
+<section id="виводимо-досліджувані-ряди" class="level3" data-number="11.2.7">
+<h3 data-number="11.2.7" class="anchored" data-anchor-id="виводимо-досліджувані-ряди"><span class="header-section-number">11.2.7</span> Виводимо досліджувані ряди</h3>
 <div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
@@ -746,7 +758,7 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-rus-init" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-rus-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.1: Динаміка щоденних змін індексу Russell 2000</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.1: Динаміка щоденних змін індексу Russell 2000</figcaption>
 </figure>
 </div>
 </div>
@@ -782,8 +794,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="встановлення-параметрів-для-розрахунків" class="level3" data-number="9.2.8">
-<h3 data-number="9.2.8" class="anchored" data-anchor-id="встановлення-параметрів-для-розрахунків"><span class="header-section-number">9.2.8</span> Встановлення параметрів для розрахунків</h3>
+<section id="встановлення-параметрів-для-розрахунків" class="level3" data-number="11.2.8">
+<h3 data-number="11.2.8" class="anchored" data-anchor-id="встановлення-параметрів-для-розрахунків"><span class="header-section-number">11.2.8</span> Встановлення параметрів для розрахунків</h3>
 <div class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>    <span class="co"># розмір ковзного вікна</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># часовий крок</span></span>
@@ -805,8 +817,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="level3" data-number="9.2.9">
-<h3 data-number="9.2.9" class="anchored" data-anchor-id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">9.2.9</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</h3>
+<section id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="level3" data-number="11.2.9">
+<h3 data-number="11.2.9" class="anchored" data-anchor-id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">11.2.9</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</h3>
 <div class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>for_puank <span class="op">=</span> time_ser.copy()</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -836,8 +848,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 </div>
 <p>Виходячи з даної діаграми, можна зазначити, що для прибутковостей індексу Russell 2000 спостерігається асиметрія у сторону зростаючих флуктуацій ряду.</p>
 </section>
-<section id="побудова-показників-незворотності-із-використанням-ковзного-вікна" class="level3" data-number="9.2.10">
-<h3 data-number="9.2.10" class="anchored" data-anchor-id="побудова-показників-незворотності-із-використанням-ковзного-вікна"><span class="header-section-number">9.2.10</span> Побудова показників незворотності із використанням ковзного вікна</h3>
+<section id="побудова-показників-незворотності-із-використанням-ковзного-вікна" class="level3" data-number="11.2.10">
+<h3 data-number="11.2.10" class="anchored" data-anchor-id="побудова-показників-незворотності-із-використанням-ковзного-вікна"><span class="header-section-number">11.2.10</span> Побудова показників незворотності із використанням ковзного вікна</h3>
 <p>Визначаємо функцію для побудови парних графіків:</p>
 <div class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
@@ -937,10 +949,10 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Costa_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, CIx)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="візуалізація-показників-на-основі-діаграми-пуанкаре" class="level3" data-number="9.2.11">
-<h3 data-number="9.2.11" class="anchored" data-anchor-id="візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">9.2.11</span> Візуалізація показників на основі діаграми Пуанкаре</h3>
-<section id="індекс-порти" class="level4" data-number="9.2.11.1">
-<h4 data-number="9.2.11.1" class="anchored" data-anchor-id="індекс-порти"><span class="header-section-number">9.2.11.1</span> Індекс Порти</h4>
+<section id="візуалізація-показників-на-основі-діаграми-пуанкаре" class="level3" data-number="11.2.11">
+<h3 data-number="11.2.11" class="anchored" data-anchor-id="візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">11.2.11</span> Візуалізація показників на основі діаграми Пуанкаре</h3>
+<section id="індекс-порти" class="level4" data-number="11.2.11.1">
+<h4 data-number="11.2.11.1" class="anchored" data-anchor-id="індекс-порти"><span class="header-section-number">11.2.11.1</span> Індекс Порти</h4>
 <div class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$PIx$"</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"PIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -958,14 +970,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-pi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-pi-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.2: Динаміка індексу Russell 2000 та індексу Порти</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.2: Динаміка індексу Russell 2000 та індексу Порти</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="індекс-гузіка" class="level4" data-number="9.2.11.2">
-<h4 data-number="9.2.11.2" class="anchored" data-anchor-id="індекс-гузіка"><span class="header-section-number">9.2.11.2</span> Індекс Гузіка</h4>
+<section id="індекс-гузіка" class="level4" data-number="11.2.11.2">
+<h4 data-number="11.2.11.2" class="anchored" data-anchor-id="індекс-гузіка"><span class="header-section-number">11.2.11.2</span> Індекс Гузіка</h4>
 <div class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$GIx$"</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"GIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -983,14 +995,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-gi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-gi-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.3: Динаміка індексу Russell 2000 та індексу Гузіка</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.3: Динаміка індексу Russell 2000 та індексу Гузіка</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="індекс-кута-нахилу" class="level4" data-number="9.2.11.3">
-<h4 data-number="9.2.11.3" class="anchored" data-anchor-id="індекс-кута-нахилу"><span class="header-section-number">9.2.11.3</span> Індекс кута нахилу</h4>
+<section id="індекс-кута-нахилу" class="level4" data-number="11.2.11.3">
+<h4 data-number="11.2.11.3" class="anchored" data-anchor-id="індекс-кута-нахилу"><span class="header-section-number">11.2.11.3</span> Індекс кута нахилу</h4>
 <div class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$SIx$"</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"SIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1008,14 +1020,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-si" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-si-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.4: Динаміка індексу Russell 2000 та індексу кута нахилу</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.4: Динаміка індексу Russell 2000 та індексу кута нахилу</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="індекс-площі-секторів" class="level4" data-number="9.2.11.4">
-<h4 data-number="9.2.11.4" class="anchored" data-anchor-id="індекс-площі-секторів"><span class="header-section-number">9.2.11.4</span> Індекс площі секторів</h4>
+<section id="індекс-площі-секторів" class="level4" data-number="11.2.11.4">
+<h4 data-number="11.2.11.4" class="anchored" data-anchor-id="індекс-площі-секторів"><span class="header-section-number">11.2.11.4</span> Індекс площі секторів</h4>
 <div class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$AIx$"</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"AIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1033,14 +1045,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-ai" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-ai-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.5: Динаміка індексу Russell 2000 та індексу площі секторів</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.5: Динаміка індексу Russell 2000 та індексу площі секторів</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="індекс-ейлера" class="level4" data-number="9.2.11.5">
-<h4 data-number="9.2.11.5" class="anchored" data-anchor-id="індекс-ейлера"><span class="header-section-number">9.2.11.5</span> Індекс Ейлера</h4>
+<section id="індекс-ейлера" class="level4" data-number="11.2.11.5">
+<h4 data-number="11.2.11.5" class="anchored" data-anchor-id="індекс-ейлера"><span class="header-section-number">11.2.11.5</span> Індекс Ейлера</h4>
 <div class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$EIx$"</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"EIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1058,14 +1070,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-ei" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-ei-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.6: Динаміка індексу Russell 2000 та індексу Ейлера</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.6: Динаміка індексу Russell 2000 та індексу Ейлера</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="індекс-кошти" class="level4" data-number="9.2.11.6">
-<h4 data-number="9.2.11.6" class="anchored" data-anchor-id="індекс-кошти"><span class="header-section-number">9.2.11.6</span> Індекс Кошти</h4>
+<section id="індекс-кошти" class="level4" data-number="11.2.11.6">
+<h4 data-number="11.2.11.6" class="anchored" data-anchor-id="індекс-кошти"><span class="header-section-number">11.2.11.6</span> Індекс Кошти</h4>
 <div class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$CIx$"</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"CIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1083,15 +1095,15 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-сi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-i-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.7: Динаміка індексу Russell 2000 та індексу Кошти</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.7: Динаміка індексу Russell 2000 та індексу Кошти</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="побудова-графу-досліджуваного-ряду" class="level3" data-number="9.2.12">
-<h3 data-number="9.2.12" class="anchored" data-anchor-id="побудова-графу-досліджуваного-ряду"><span class="header-section-number">9.2.12</span> Побудова графу досліджуваного ряду</h3>
+<section id="побудова-графу-досліджуваного-ряду" class="level3" data-number="11.2.12">
+<h3 data-number="11.2.12" class="anchored" data-anchor-id="побудова-графу-досліджуваного-ряду"><span class="header-section-number">11.2.12</span> Побудова графу досліджуваного ряду</h3>
 <div class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>graph_type <span class="op">=</span> <span class="st">'classic'</span>    <span class="co"># тип графу: classic, horizontal, recurrent</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1214,8 +1226,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 </div>
 </div>
 </section>
-<section id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="level3" data-number="9.2.13">
-<h3 data-number="9.2.13" class="anchored" data-anchor-id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">9.2.13</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</h3>
+<section id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="level3" data-number="11.2.13">
+<h3 data-number="11.2.13" class="anchored" data-anchor-id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">11.2.13</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</h3>
 <p>Ініціалізуємо масиви для збереження результатів розрахунків:</p>
 <div class="cell" data-execution_count="114">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
@@ -1292,10 +1304,10 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_d_e=</span><span class="sc">{</span>d_e_perm<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_perm<span class="sc">}</span><span class="ss">.txt"</span>, Perm)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="level3" data-number="9.2.14">
-<h3 data-number="9.2.14" class="anchored" data-anchor-id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">9.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</h3>
-<section id="ступінь-незворотності-на-основі-ступеня-вершини" class="level4" data-number="9.2.14.1">
-<h4 data-number="9.2.14.1" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-ступеня-вершини"><span class="header-section-number">9.2.14.1</span> Ступінь незворотності на основі ступеня вершини</h4>
+<section id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="level3" data-number="11.2.14">
+<h3 data-number="11.2.14" class="anchored" data-anchor-id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">11.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</h3>
+<section id="ступінь-незворотності-на-основі-ступеня-вершини" class="level4" data-number="11.2.14.1">
+<h4 data-number="11.2.14.1" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-ступеня-вершини"><span class="header-section-number">11.2.14.1</span> Ступінь незворотності на основі ступеня вершини</h4>
 <div class="cell" data-execution_count="117">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{deg}</span><span class="vs">$"</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Degree_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1315,14 +1327,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-degree" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-degree-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.8: Динаміка індексу Russell 2000 та показника незворотності на основі ступеня вершини</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.8: Динаміка індексу Russell 2000 та показника незворотності на основі ступеня вершини</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="ступінь-незворотності-на-основі-показника-локальної-кластеризації" class="level4" data-number="9.2.14.2">
-<h4 data-number="9.2.14.2" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-показника-локальної-кластеризації"><span class="header-section-number">9.2.14.2</span> Ступінь незворотності на основі показника локальної кластеризації</h4>
+<section id="ступінь-незворотності-на-основі-показника-локальної-кластеризації" class="level4" data-number="11.2.14.2">
+<h4 data-number="11.2.14.2" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-показника-локальної-кластеризації"><span class="header-section-number">11.2.14.2</span> Ступінь незворотності на основі показника локальної кластеризації</h4>
 <div class="cell" data-execution_count="119">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{clust}</span><span class="vs">$"</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1342,14 +1354,14 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-clust" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-clust-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.9: Динаміка індексу Russell 2000 та показника незворотності на основі локальної кластеризації</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.9: Динаміка індексу Russell 2000 та показника незворотності на основі локальної кластеризації</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="ступінь-незворотності-на-основі-пермутаційних-шаблонів" class="level4" data-number="9.2.14.3">
-<h4 data-number="9.2.14.3" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-пермутаційних-шаблонів"><span class="header-section-number">9.2.14.3</span> Ступінь незворотності на основі пермутаційних шаблонів</h4>
+<section id="ступінь-незворотності-на-основі-пермутаційних-шаблонів" class="level4" data-number="11.2.14.3">
+<h4 data-number="11.2.14.3" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.2.14.3</span> Ступінь незворотності на основі пермутаційних шаблонів</h4>
 <div class="cell" data-execution_count="121">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{perm}</span><span class="vs">$"</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Perm_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1370,7 +1382,7 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="fig-wind-perm" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_11_files/figure-html/fig-wind-perm-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.10: Динаміка індексу Russell 2000 та показника незворотності на основі пермутаційних шаблонів</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;11.10: Динаміка індексу Russell 2000 та показника незворотності на основі пермутаційних шаблонів</figcaption>
 </figure>
 </div>
 </div>
@@ -1378,8 +1390,8 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 </section>
 </section>
 </section>
-<section id="висновок" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">9.3</span> Висновок</h2>
+<section id="висновок" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">11.3</span> Висновок</h2>
 <p>У даній роботі було розглянуто показники незворотності (асиметрії) системи на основі діаграм Пуанкаре, графу видимості та пермутаційних шаблонів. Було продемонстровано побудову діграми Пуанкаре та зв’язків видимості як для всього ряду, так і для деяких із його фрагментів. Видно, що значення на діаграмі Пуанкаре характеризуються розподілом точок, що виходять за межі нормального Гаусового розподілу. Для графу видимості видно, що кризові стани характеризуються значною концентрацією зв’язків, що є довгостроковими. Таким чином, поставало актуальним проводити розрахунок показників незворотності графового типу для вихідного ряду.</p>
 <p>Показники на основі діаграми Пуанкаре демонструють зріст або спад у кризові періоди, що вказує на зростання асиметрії у даний період часу. Дані показники можуть слугувати в якості індикаторів кризових явищ.</p>
 <p>Виходячи з 3 показників незворотності, що представлені вище, видно, що дані показники починають зростати в передкризовий період, вказуючи на стартовий період хаосу. Найгірше серед них себе поводить <span class="math inline">\(Dist_{deg}\)</span>. Найращим чином <span class="math inline">\(Dist_{clust}\)</span> та <span class="math inline">\(Dist_{perm}\)</span>. Їх і варто використовувати в якості індикаторів-передвісників крахів.</p>
@@ -1738,13 +1750,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./lab_8.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></span>
+      <a href="./lab_10.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./lab_12.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
