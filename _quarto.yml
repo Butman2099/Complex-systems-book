@@ -51,6 +51,7 @@ book:
     - lab_10.ipynb
     - lab_11.ipynb
     - lab_12.ipynb
+    - lab_13.ipynb
   appendices:
     - appa.ipynb
     - appb.ipynb
