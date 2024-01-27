@@ -3,7 +3,6 @@ project:
   output-dir: docs
 
 language: _language-ukr.yml
-lang: ru
 
 book:
   title: "Моделювання складних систем у Python"
@@ -52,12 +51,15 @@ book:
     - lab_11.ipynb
     - lab_12.ipynb
     - lab_13.ipynb
+    - lab_14.ipynb
   appendices:
     - appa.ipynb
     - appb.ipynb
     - appc.ipynb
+    - references.qmd
 
 bibliography: references.bib
+csl: physics-letters-b.csl
 toc: true
 number-sections: true
 callout-appearance: default
