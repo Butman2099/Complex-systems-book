@@ -383,7 +383,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># для візуалізації графіків</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np              <span class="co"># для роботи з матрицями</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np              <span class="co"># для роботи з матрицями</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Пам’ятайте, що оператори <code>import</code> знаходяться у верхній частині вашого коду, вказуючи Python завантажити зовнішній модуль. У цьому випадку ми хочемо завантажити NetworkX, але дамо йому короткий псевдонім <code>nx</code>, оскільки нам доведеться вводити його неодноразово, звідси й інструкція <code>as</code>.</p>
 <p>Давайте перевіримо встановлену версію NetworkX. Ми хочемо переконатися, що не використовуємо застарілий пакет.</p>
@@ -1717,10 +1719,15 @@ T = \frac{\sum_{i,k,j=1}^{N}A_{ik}A_{kj}A_{ji}}{\sum_{i,k,j=1}^{N}A_{ik}A_{ji}}.
 <span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a>node_colors <span class="op">=</span> [v <span class="cf">for</span> v <span class="kw">in</span> degCent.values()]</span>
 <span id="cb186-3"><a href="#cb186-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb186-4"><a href="#cb186-4" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо граф</span></span>
-<span id="cb186-5"><a href="#cb186-5" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx(G_karate, with_labels<span class="op">=</span><span class="va">True</span>, node_size<span class="op">=</span>node_sizes,pos<span class="op">=</span>nx.spring_layout(G_karate), node_color<span class="op">=</span>node_colors, cmap<span class="op">=</span>plt.cm.PuBu)</span>
-<span id="cb186-6"><a href="#cb186-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb186-7"><a href="#cb186-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PuBu розшифровується як "Pu" (фіолетовий) - "Bu" (синій), </span></span>
-<span id="cb186-8"><a href="#cb186-8" aria-hidden="true" tabindex="-1"></a><span class="co"># і це послідовна карта кольорів, яка варіюється від світло-фіолетового до темно-синього.</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb186-5"><a href="#cb186-5" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx(G_karate, </span>
+<span id="cb186-6"><a href="#cb186-6" aria-hidden="true" tabindex="-1"></a>                 with_labels<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb186-7"><a href="#cb186-7" aria-hidden="true" tabindex="-1"></a>                 node_size<span class="op">=</span>node_sizes,</span>
+<span id="cb186-8"><a href="#cb186-8" aria-hidden="true" tabindex="-1"></a>                 pos<span class="op">=</span>nx.spring_layout(G_karate), </span>
+<span id="cb186-9"><a href="#cb186-9" aria-hidden="true" tabindex="-1"></a>                 node_color<span class="op">=</span>node_colors, </span>
+<span id="cb186-10"><a href="#cb186-10" aria-hidden="true" tabindex="-1"></a>                 cmap<span class="op">=</span>plt.cm.PuBu)</span>
+<span id="cb186-11"><a href="#cb186-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb186-12"><a href="#cb186-12" aria-hidden="true" tabindex="-1"></a><span class="co"># PuBu розшифровується як "Pu" (фіолетовий) - "Bu" (синій), </span></span>
+<span id="cb186-13"><a href="#cb186-13" aria-hidden="true" tabindex="-1"></a><span class="co"># і це послідовна карта кольорів, яка варіюється від світло-фіолетового до темно-синього.</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="lab_13_files/figure-html/cell-109-output-1.png" class="img-fluid"></p>
 </div>
@@ -1794,12 +1801,12 @@ T = \frac{\sum_{i,k,j=1}^{N}A_{ik}A_{kj}A_{ji}}{\sum_{i,k,j=1}^{N}A_{ik}A_{ji}}.
 </div>
 </div>
 <div class="cell" data-execution_count="450">
-<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># намалювати мережу з розмірами вершин на основі їх ступеня впливовості</span></span>
+<div class="sourceCode cell-code" id="cb196"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="co"># намалювати мережу з розмірами вершин на основі їх ступеню впливовості</span></span>
 <span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-3"><a href="#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="co"># створити список розмірів вершин на основі ступеня впливовості</span></span>
+<span id="cb196-3"><a href="#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="co"># створити список розмірів вершин на основі ступеню впливовості</span></span>
 <span id="cb196-4"><a href="#cb196-4" aria-hidden="true" tabindex="-1"></a>node_sizes <span class="op">=</span> [<span class="dv">3000</span><span class="op">*</span>v<span class="op">*</span>v <span class="cf">for</span> v <span class="kw">in</span> closeness.values()]</span>
 <span id="cb196-5"><a href="#cb196-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb196-6"><a href="#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="co"># кольори на основі ступеневої центральності</span></span>
+<span id="cb196-6"><a href="#cb196-6" aria-hidden="true" tabindex="-1"></a><span class="co"># кольори на основі степеневої впливовості</span></span>
 <span id="cb196-7"><a href="#cb196-7" aria-hidden="true" tabindex="-1"></a>node_colors <span class="op">=</span> [v <span class="cf">for</span> v <span class="kw">in</span> closeness.values()]</span>
 <span id="cb196-8"><a href="#cb196-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb196-9"><a href="#cb196-9" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо граф</span></span>
