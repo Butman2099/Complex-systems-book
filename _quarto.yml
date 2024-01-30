@@ -59,7 +59,7 @@ book:
     - references.qmd
 
 bibliography: references.bib
-csl: physics-letters-b.csl
+csl: physical-review-b.csl
 toc: true
 number-sections: true
 callout-appearance: default

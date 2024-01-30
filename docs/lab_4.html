@@ -369,7 +369,7 @@ div.csl-indent {
 <section id="складність.-кількісні-міри-складності.-інформаційні-методи-оцінки-складності." class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="складність.-кількісні-міри-складності.-інформаційні-методи-оцінки-складності."><span class="header-section-number">4.1.1</span> Складність. Кількісні міри складності. Інформаційні методи оцінки складності.</h3>
 <p>Дане століття називають століттям складності. Сьогодні питання “що таке складність?” вивчають фізики, біологи, математики і інформатики, хоча при теперішніх досягненнях у розумінні оточуючого світу, однозначної відповіді на це питання немає.</p>
-<p>З цієї причини, відповідно до ідеї І. Пригожина, будемо досліджувати прояви складності системи, застосовуючи при цьому сучасні методи кількісного аналізу складності.</p>
+<p>З цієї причини, відповідно до ідеї І. Пригожина, будемо досліджувати прояви складності системи, застосовуючи при цьому сучасні методи кількісного аналізу складності <span class="citation" data-cites="e19070310">&nbsp;[<a href="references.html#ref-e19070310" role="doc-biblioref">1</a>]</span>.</p>
 <p>Серед таких методів на увагу заслуговують:</p>
 <ul>
 <li>інформаційно-ентропійні;</li>
@@ -377,7 +377,7 @@ div.csl-indent {
 <li>скейлінгово-мультифрактальні.</li>
 </ul>
 <p>Зрозуміло, виходячи з різної природи методів, покладених в основу формування міри складності, вони приділяють певні вимоги до часових рядів, що слугують вхідними даними. Наприклад, перші дві групи методів вимагають стаціонарності вхідних даних. При цьому мають різну чутливість до таких характеристик, як детермінованність, стохастичність, причинність та кореляції. Тому у подальшому, порівнюючи комплексно ефективність різних показників складності, на вказані обставини ми будемо звертати увагу, підкреслюючи спеціально застосовність того чи іншого показника для характеристики різних сторін складності досліджуваних систем.</p>
-<p>Розгляд першої групи методів почнемо з добре відомої міри складності, запропонованої А. Колмогоровим.</p>
+<p>Розгляд першої групи методів почнемо з добре відомої міри складності, запропонованої А. Колмогоровим <span class="citation" data-cites="doi:10.1080/00207166808803030">&nbsp;[<a href="references.html#ref-doi:10.1080/00207166808803030" role="doc-biblioref">2</a>]</span>.</p>
 <p><strong>Колмогорівська складність</strong>. Поняття колмогорівської складності (або, як ще говорять, алгоритмічної ентропії) з’явилося в 1960-і роки на стику теорії алгоритмів, теорії інформації і теорії ймовірностей.</p>
 <p>Ідея А. Колмогорова полягала в тому, щоб вимірювати кількість інформації, що міститься в індивідуальних скінчених об’єктах (а не у випадкових величинах, як у шеннонівській теорії інформації). Виявилось, що це можливо (хоча лише з точністю до обмеженого доданку). А. Колмогоров запропонував вимірювати кількість інформації в скінчених об’єктах за допомогою теорії алгоритмів, визначивши складність об’єкту як мінімальну довжину програми, що породжує цей об’єкт. Дане визначення стало базисом алгоритмічної теорії інформації, а також алгоритмічної теорії ймовірностей: об’єкт вважається випадковим, якщо його складність наближена до максимальної.</p>
 <p>Що ж собою являє колмогорівська складність і як її виміряти? На практиці ми часто стикаємося з програмами, які стискують файли (для економії місця в архіві). Найбільш поширені називаються zip, gzip, compress, rar, arj та інші. Застосувавши таку програму до деякого файлу (з текстом, даними, програмою), ми отримуємо його стислу версію (яка, як правило, коротше початкового файлу). За нею можна відновити початковий файл з допомогою парної програми-“декомпресора”. Отже, у першому наближенні колмогорівську складність файлу можна описати як довжину його стислої версії. Тим самим файл, що має регулярну структуру і добре стискуваний, має малу колмогорівську складність (порівняно з його довжиною). Навпаки, погано стискуваний файл має складність, близьку до довжини.</p>
@@ -387,11 +387,11 @@ KS_{D}(x) = \min\{l(y)\,|\,D(y)=x\},
 \]</span></p>
 <p>де <span class="math inline">\(l(y)\)</span> позначає довжину слова <span class="math inline">\(y\)</span>. Індекс <span class="math inline">\(D\)</span> підкреслює, що визначення залежить від вибору способу <span class="math inline">\(D\)</span>.</p>
 <p>Можна показати, що існують оптимальні способи опису. Спосіб опису тим краще, чим він коротше. Тому природно дати таке визначення: спосіб <span class="math inline">\(D_1\)</span> не гірше за спосіб <span class="math inline">\(D_2\)</span>, якщо <span class="math inline">\(KS_{D_1}(x) \leq KS_{D_2}(x)+c\)</span> при деякому <span class="math inline">\(c\)</span> і при всіх <span class="math inline">\(x\)</span>.</p>
-<p>Отже, за Колмогоровим, складність об’єкту (наприклад, тексту — послідовності символів) — це довжина мінімальної програми яка виводить даний текст, а ентропія — це складність, що ділиться на довжину тексту. На жаль, це визначення чисто умоглядне. Надійного способу однозначно визначити цю програму не існує. Але є алгоритми, які фактично якраз і намагаються обчислити колмогорівські складність тексту і ентропію.</p>
+<p>Отже, за Колмогоровим, складність об’єкту (наприклад, тексту — послідовності символів) — це довжина мінімальної програми яка виводить даний текст, а ентропія — це складність, що ділиться на довжину тексту. Також можна розглядати алгоритмічну складність як мінімальний час (або інші обчислювальні ресурси), необхідний для виконання цієї задачі на комп’ютері. А ще ми можемо говорити про комунікаційну складність завдань, в яких задіяно більше одного процесора: це кількість бітів, які потрібно передати при розв’язанні цього завдання <span class="citation" data-cites="Bonchev2009 10.1162/ARTL_a_00157">&nbsp;[<a href="references.html#ref-Bonchev2009" role="doc-biblioref">3</a>,<a href="references.html#ref-10.1162/ARTL_a_00157" role="doc-biblioref">4</a>]</span>. На жаль, це визначення чисто умоглядне. Надійного способу однозначно визначити цю програму не існує. Але є алгоритми, які фактично якраз і намагаються обчислити колмогорівську складність тексту <span class="citation" data-cites="Li2008">&nbsp;[<a href="references.html#ref-Li2008" role="doc-biblioref">5</a>]</span> і ентропію <span class="citation" data-cites="shannon">&nbsp;[<a href="references.html#ref-shannon" role="doc-biblioref">6</a>]</span>.</p>
 </section>
 <section id="оцінка-складності-колмогорова-за-схемою-лемпела-зіва" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="оцінка-складності-колмогорова-за-схемою-лемпела-зіва"><span class="header-section-number">4.1.2</span> Оцінка складності Колмогорова за схемою Лемпела-Зіва</h3>
-<p>Універсальна (в сенсі застосовності до різних мовних систем) міра складності кінцевої символьної послідовності була запропонована Лемпелем і Зівом. У рамках їх підходу складність послідовності оцінюється числом кроків процесу, що її породжує. Припустимими (редакційними) операціями при цьому є:</p>
+<p>Універсальна (в сенсі застосовності до різних мовних систем) міра складності кінцевої символьної послідовності була запропонована Лемпелем і Зівом (LZ) <span class="citation" data-cites="1055501">&nbsp;[<a href="references.html#ref-1055501" role="doc-biblioref">7</a>]</span>. Складність Лемпеля-Зіва (LZC) є класичною мірою, яка для ергодичних джерел пов’язує поняття складності (у розумінні Колмогорова-Чайтіна) та швидкості ентропії <span class="citation" data-cites="PhysRevE.84.036214 ZOZOR2005285">&nbsp;[<a href="references.html#ref-PhysRevE.84.036214" role="doc-biblioref">8</a>,<a href="references.html#ref-ZOZOR2005285" role="doc-biblioref">9</a>]</span>. Для ергодичного динамічного процесу кількість нової інформації, отриманої за одиницю часу (швидкість ентропії), може бути оцінена шляхом вимірювання здатності цього джерела генерувати нові патерни. Завдяки простоті методу LZC, швидкість ентропії може бути оцінена з однієї дискретної послідовності вимірювань з низькими обчислювальними витратами <span class="citation" data-cites="10.1063/1.4808251">&nbsp;[<a href="references.html#ref-10.1063/1.4808251" role="doc-biblioref">10</a>]</span>. У рамках їх підходу складність послідовності оцінюється числом кроків процесу, що її породжує. Припустимими (редакційними) операціями при цьому є:</p>
 <ol type="1">
 <li>генерація символу (необхідна, як мінімум, для синтезу елементів алфавіту) і</li>
 <li>копіювання “готового” фрагмента з передісторії (тобто з уже синтезованої частини тексту).</li>
@@ -400,7 +400,7 @@ KS_{D}(x) = \min\{l(y)\,|\,D(y)=x\},
 <p><span id="eq-4-1"><span class="math display">\[
 H(S)=S[1:i_1]S[i_1+1:i_2]...S[i_{k-1}+1:i_k]...S[i_{m−1}+1:N],
 \tag{4.1}\]</span></span></p>
-<p>де <span class="math inline">\(S[i_{k−1}+1:i_k]\)</span> — фрагмент <span class="math inline">\(S\)</span>, породжуваний на <span class="math inline">\(k\)</span>-му кроці, а $m=m_{H}(S) — число кроків процесу. З усіляких схем породження <span class="math inline">\(S\)</span> обирається мінімальна за числом кроків. Таким чином, складність послідовності <span class="math inline">\(S\)</span> за Лемпелем-Зівом</p>
+<p>де <span class="math inline">\(S[i_{k−1}+1:i_k]\)</span> — фрагмент <span class="math inline">\(S\)</span>, породжуваний на <span class="math inline">\(k\)</span>-му кроці, а <span class="math inline">\(m=m_{H}(S)\)</span> — число кроків процесу. З усіляких схем породження <span class="math inline">\(S\)</span> обирається мінімальна за числом кроків. Таким чином, складність послідовності <span class="math inline">\(S\)</span> за LZ</p>
 <p><span class="math display">\[
 c_{LZ}(S) = \min_{H}\{ m_{H}(S) \}.
 \]</span></p>
@@ -417,19 +417,18 @@ S[i_{k-1}+1:i_{k}] =
 \end{cases}
 \tag{4.3}\]</span></span></p>
 <p>Випадок <span class="math inline">\(j(k) = 0\)</span> відповідає ситуації, коли в позиції <span class="math inline">\(i_{k−1}+1\)</span> стоїть символ, який раніше не зустрічався. При цьому ми застосовуємо операцію генерації символу.</p>
-<p>Будемо знаходити складність за Лемпелем-Зівом (LZ) для часового ряду, який являє собою, наприклад, щоденні значення індексу фондового ринку. Для дослідження динаміки LZ та порівняння з іншими фондовими ринками будемо знаходити дану міру складності для підряду фіксованої довжини (вікна). Для цього обчислимо логарифмічні прибутковості та перетворимо їх у послідовність бітів. При цьому можна задавати кількість станів, які диференційовані (система числення). Так, для двох різних станів маємо 0, 1, для трьох — 0, 1, 2 і т.д. Для двійкової системи кодування буде задаватися поріг по середньому значенню і стани, наприклад, прибутковостей (<em>ret</em>) кодуватимуться наступним чином:</p>
+<p>Будемо знаходити складність за LZ для часового ряду, який являє собою, наприклад, щоденні значення індексу фондового ринку або криптовалютного. Для дослідження динаміки LZ та порівняння з іншими складними системами будемо знаходити дану міру складності для підряду фіксованої довжини (вікна). Для цього обчислимо логарифмічні прибутковості та перетворимо їх у послідовність бітів. При цьому можна задавати кількість станів, які диференційовані (система числення). Так, для двох різних станів маємо 0, 1, для трьох — 0, 1, 2 і т.д. Для двійкової системи кодування буде задаватися поріг по середньому значенню і стани, наприклад, прибутковостей (<em>ret</em>) кодуватимуться наступним чином <span class="citation" data-cites="Giglio_2008 RePEc:ebl:ecbull:eb-11-00319 RePEc:pra:mprapa:22720">&nbsp;[<a href="references.html#ref-Giglio_2008" role="doc-biblioref">11</a>–<a href="references.html#ref-RePEc:pra:mprapa:22720" role="doc-biblioref">13</a>]</span>:</p>
 <p><span id="eq-4-4"><span class="math display">\[
-ret =
-\begin{cases}
-0, &amp; ret_t &lt; \langle ret \rangle \\
-1, &amp; ret_t &gt; \langle ret \rangle.
-\end{cases}
+ret = \begin{cases}
+    0, &amp; ret_t &lt; \langle ret \rangle \\
+    1, &amp; ret_t &gt; \langle ret \rangle.
+    \end{cases}
 \tag{4.4}\]</span></span></p>
-<p>Також можна визначити так звану пермутаційну складність Лемпеля-Зіва (PLZС). У даному випадку би будемо опиратись на процедуру реконструкції фазового простору, що згадувалась в лабораторних 2 і 3. Згідно пермутаційній процедурі ми будемо брати фрагмент ряду довжини <span class="math inline">\(m\)</span>, що слугує розмірностю реконструйованого атрактора, та замінюємо кожне значення ряду його порядковим індексом. На подальшому ресунку представлено часовий ряд та його можливі порядкові шаблони:</p>
+<p>Також можна визначити так звану пермутаційну складність Лемпеля-Зіва (PLZС) <span class="citation" data-cites="BAI2015102 e23070832">&nbsp;[<a href="references.html#ref-BAI2015102" role="doc-biblioref">14</a>,<a href="references.html#ref-e23070832" role="doc-biblioref">15</a>]</span>. У даному випадку би будемо опиратись на процедуру реконструкції фазового простору, що згадувалась в лабораторних 2 і 3. Згідно пермутаційній процедурі ми будемо брати фрагмент ряду довжини <span class="math inline">\(m\)</span>, що слугує розмірностю реконструйованого атрактора, та замінювати кожне значення ряду його порядковим індексом. На подальшому ресунку представлено часовий ряд та його можливі порядкові шаблони:</p>
 <div id="fig-permutation" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Images\lab_4\Permutation-entropy-method-Permutation-entropy-PE-was-calculated-for-both-unaveraged.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.1: Фрагмент часового ряду (а) та 6 можливих порядкових шаблонів, що можуть бути в цьому сигналі (b)</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.1: Фрагмент часового ряду (а) та 6 можливих порядкових шаблонів, що можуть бути в цьому сигналі (b) <span class="citation" data-cites="hillen2013joint">&nbsp;[<a href="references.html#ref-hillen2013joint" role="doc-biblioref">16</a>]</span></figcaption>
 </figure>
 </div>
 <p>Алгоритм Лемпеля-Зіва виконує дві операції: (1) додає новий біт в уже існуючу послідовність; (2) копіює вже сформовану послідовність. Алгоритмічна складність представляє собою кількість таких операцій, необхідних для формування заданої послідовності.</p>
@@ -444,7 +443,7 @@ ret =
 <li>процес “грубого дроблення” (coarse graining — “грануляції”) початкового часового ряду — усереднення даних на сегментах, що не перетинаються, розмір яких (вікно усереднення) збільшуватиметься на одиницю при переході на наступний за величиною масштаб;</li>
 <li>обчислення на кожному з масштабів певного (до сих пір мономасштабного) показника складності.</li>
 </ol>
-<p>Процес “грубого дроблення” (“грануляція”) полягає в усереднені послідовних відліків ряду в межах вікон, що не перетинаються, а розмір яких <span class="math inline">\(\tau\)</span> — збільшується при переході від масштабу до масштабу. Кожен елемент “гранульованого” часового ряду <span class="math inline">\(y_{j}^{\tau}\)</span> знаходиться у відповідності до виразу:</p>
+<p>Процес “грубого дроблення” (“грануляція”) полягає в усереднені послідовних відліків ряду в межах вікон, що не перетинаються, а розмір яких <span class="math inline">\(\tau\)</span> — збільшується при переході від масштабу до масштабу. Кожен елемент “гранульованого” часового ряду <span class="math inline">\(y_{j}^{\tau}\)</span> знаходиться у відповідності до виразу <span class="citation" data-cites="costa2008multiscale">&nbsp;[<a href="references.html#ref-costa2008multiscale" role="doc-biblioref">17</a>]</span>:</p>
 <p><span class="math display">\[
 y_{j}^{\tau} = \frac{1}{\tau}\sum_{i=(j-1)\tau+1}^{j\tau}x_i, \; 1 \leq j \leq N/\tau,
 \]</span></p>
@@ -493,7 +492,7 @@ y_{j}^{\tau} = \frac{1}{\tau}\sum_{i=(j-1)\tau+1}^{j\tau}x_i, \; 1 \leq j \leq N
 <section id="шеннонівська-складність" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="шеннонівська-складність"><span class="header-section-number">4.1.4</span> Шеннонівська складність</h3>
 <p>Ентропійний аналіз часових рядів за допомогою ентропійних показників різного роду буде проведено у наступних роботах. Зараз же ми розглянемо найпростішу з ентропій — ентропію Шеннона та порівняємо її можливості кількісно оцінювати складність часових послідовностей у порівнянні з мірою Лемпеля-Зіва.</p>
-<p>Ентропія Шеннона — це статистичний квантифікатор, який широко використовується для характеристики складних процесів. Він здатний виявляти аспекти нелінійності в досліджуваних сигналах, сприяючи більш надійному поясненню нелінійної динаміки різних точок аналізу, що, в свою чергу, покращує розуміння природи складних систем, які характеризуються складністю та нерівноважністю. Окрім складності та нерівноважності, більшість, але не всі, складні системи також характеризуються неоднорідним розподілом зв’язків. Поняття ентропії було використано Шенноном в теорії інформації для передачі даних <span class="citation" data-cites="shannon">[<a href="references.html#ref-shannon" role="doc-biblioref">1</a>]</span>.</p>
+<p>Ентропія Шеннона — це статистичний квантифікатор, який широко використовується для характеристики складних процесів. Він здатний виявляти аспекти нелінійності в досліджуваних сигналах, сприяючи більш надійному поясненню нелінійної динаміки різних точок аналізу, що, в свою чергу, покращує розуміння природи складних систем, які характеризуються складністю та нерівноважністю. Окрім складності та нерівноважності, більшість, але не всі, складні системи також характеризуються неоднорідним розподілом зв’язків. Поняття ентропії було використано Шенноном в теорії інформації для передачі даних <span class="citation" data-cites="shannon">&nbsp;[<a href="references.html#ref-shannon" role="doc-biblioref">6</a>]</span>.</p>
 <p>Ентропія - це міра невизначеності та випадковості в системі. Якщо припустити, що всі наявні дані належать до одного класу, то неважко передбачити клас нових даних. У цьому випадку ентропія дорівнює 0. Будучи величиною між 0 і 1, коли всі ймовірності рівні, ентропія набуває найбільшого значення. Невизначеність, що виникає, коли подія <span class="math inline">\(E\)</span> відбувається з ймовірністю <span class="math inline">\(p\)</span>, можна позначити як <span class="math inline">\(S(p)\)</span>. Якщо ймовірність появи класу дорівнює 1, тоді ентропія мінімальна, <span class="math inline">\(S(1) = 0\)</span>. Відповідно до концепції Шеннона, якщо у нас наявні ймовірності реалізації певної події <span class="math inline">\(p_1, p_2, p_3, ..., p_n\)</span>, на виході отримується кількість інформації, що необхідна для опису цієї події. Тоді, Шеннонівська ентропія може бути визначена як</p>
 <p><span class="math display">\[
 S = -\sum_{i=1}^{n}p_i \ln p_{i}.  
@@ -517,7 +516,7 @@ S = -\sum_{i=1}^{n}p_i \ln p_{i}.
 </section>
 <section id="інформація-фішера" class="level3" data-number="4.1.5">
 <h3 data-number="4.1.5" class="anchored" data-anchor-id="інформація-фішера"><span class="header-section-number">4.1.5</span> Інформація Фішера</h3>
-<p>Інформацію Фішера було введено Р. А. Фішером у 1922 році як міру “внутрішньої точності” в теорії статистичних оцінок <span class="citation" data-cites="doi:10.1098/rsta.1922.0009">[<a href="references.html#ref-doi:10.1098/rsta.1922.0009" role="doc-biblioref">2</a>]</span>. Вона є центральною для багатьох статистичних галузей, що виходять далеко за межі теорії складності. Даний показник вимірює кількість інформації, яку спостережувана випадкова величина несе про невідомий параметр. В аналізі складності вимірюється кількість інформації, яку система несе “про себе”. Він базується на розкладанні за сингулярним значенням реконструйованого фазового простору. Значення показника Фішера зазвичай антикорельоване з іншими показниками складності (чим більше інформації система приховує про себе, тим більш передбачуваною і, відповідно, менш складною вона є).</p>
+<p>Інформацію Фішера було введено Р. А. Фішером у 1922 році як міру “внутрішньої точності” в теорії статистичних оцінок <span class="citation" data-cites="doi:10.1098/rsta.1922.0009">&nbsp;[<a href="references.html#ref-doi:10.1098/rsta.1922.0009" role="doc-biblioref">18</a>]</span>. Вона є центральною для багатьох статистичних галузей, що виходять далеко за межі теорії складності. Даний показник вимірює кількість інформації, яку спостережувана випадкова величина несе про невідомий параметр. В аналізі складності вимірюється кількість інформації, яку система несе “про себе”. Він базується на розкладанні за сингулярним значенням реконструйованого фазового простору. Значення показника Фішера зазвичай антикорельоване з іншими показниками складності (чим більше інформації система приховує про себе, тим більш передбачуваною і, відповідно, менш складною вона є).</p>
 <p>Інформацію Фішера можна визначити, використовуючи метод <code>fisher_information()</code> бібліотеки <code>neurokit2</code>. Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>fisher_information(signal, delay=1, dimension=2)</code></strong></p>
 <p><strong>Параметри</strong></p>
@@ -534,7 +533,7 @@ S = -\sum_{i=1}^{n}p_i \ln p_{i}.
 </section>
 <section id="складність-та-параметри-хьорта" class="level3" data-number="4.1.6">
 <h3 data-number="4.1.6" class="anchored" data-anchor-id="складність-та-параметри-хьорта"><span class="header-section-number">4.1.6</span> Складність та параметри Хьорта</h3>
-<p>Параметри Хьорта — це показники статистичних властивостей, які спочатку були введені Хьортом <span class="citation" data-cites="HJORTH1970306">[<a href="references.html#ref-HJORTH1970306" role="doc-biblioref">3</a>]</span> для опису загальних характеристик сигналів електроенцифалограми у кількох кількісних термінах, але які можуть бути застосовані до будь-якого часового ряду. Параметрами є активність, рухливість і складність:</p>
+<p>Параметри Хьорта — це показники статистичних властивостей, які спочатку були введені Хьортом <span class="citation" data-cites="HJORTH1970306">&nbsp;[<a href="references.html#ref-HJORTH1970306" role="doc-biblioref">19</a>]</span> для опису загальних характеристик сигналів електроенцифалограми у кількох кількісних термінах, але які можуть бути застосовані до будь-якого часового ряду. Параметрами є активність, рухливість і складність:</p>
 <ul>
 <li>Параметр <strong>активності</strong> (<span class="math inline">\(Activity\)</span>) — це просто дисперсія сигналу, яка відповідає середній потужності сигналу (якщо його середнє значення дорівнює 0).</li>
 </ul>
@@ -574,7 +573,7 @@ Complexity = \frac{\sigma_d}{\sigma_{signal}},
 </section>
 <section id="час-декореляції" class="level3" data-number="4.1.7">
 <h3 data-number="4.1.7" class="anchored" data-anchor-id="час-декореляції"><span class="header-section-number">4.1.7</span> Час декореляції</h3>
-<p>Час декореляції (decorrelation time, DT) визначається як час (у відліках) першого перетину нуля функції автокореляції. Коротший час декореляції відповідає менш корельованому сигналу. Наприклад, зменшення часу декореляції в сигналах електроенцифалограми спостерігається перед нападами, що пов’язано зі зменшенням потужності низьких частот <span class="citation" data-cites="MORMANN2005569">[<a href="references.html#ref-MORMANN2005569" role="doc-biblioref">4</a>]</span>.</p>
+<p>Час декореляції (decorrelation time, DT) визначається як час (у відліках) першого перетину нуля функції автокореляції. Коротший час декореляції відповідає менш корельованому сигналу. Наприклад, зменшення часу декореляції в сигналах електроенцифалограми спостерігається перед нападами, що пов’язано зі зменшенням потужності низьких частот <span class="citation" data-cites="MORMANN2005569">&nbsp;[<a href="references.html#ref-MORMANN2005569" role="doc-biblioref">20</a>]</span>.</p>
 <p>Бібліотека <code>neurokit2</code> представляє функціонал для визначення часу декореляції, а саме метод <code>complexity_decorrelation()</code>. Її синтаксис є наступним:</p>
 <p><strong><code>complexity_decorrelation(signal)</code></strong></p>
 <p><strong>Параметри</strong></p>
@@ -589,7 +588,7 @@ Complexity = \frac{\sigma_d}{\sigma_{signal}},
 </section>
 <section id="відносна-грубість-нерівність-шорсткість" class="level3" data-number="4.1.8">
 <h3 data-number="4.1.8" class="anchored" data-anchor-id="відносна-грубість-нерівність-шорсткість"><span class="header-section-number">4.1.8</span> Відносна грубість (нерівність, шорсткість)</h3>
-<p>Відносна шорсткість — це відношення локальної дисперсії (автоковаріації з лагом 1) до глобальної дисперсії (автоковаріації з лагом 0), яке можна використовувати для класифікації різних “шумів”. Його також можна використовувати як індекс для перевірки застосовності фрактального аналізу (показники фрактальності будуть використовуватись у наступних роботах) <span class="citation" data-cites="10.3389/fphys.2012.00208">[<a href="references.html#ref-10.3389/fphys.2012.00208" role="doc-biblioref">5</a>]</span>.</p>
+<p>Відносна шорсткість — це відношення локальної дисперсії (автоковаріації з лагом 1) до глобальної дисперсії (автоковаріації з лагом 0), яке можна використовувати для класифікації різних “шумів”. Його також можна використовувати як індекс для перевірки застосовності фрактального аналізу (показники фрактальності будуть використовуватись у наступних роботах) <span class="citation" data-cites="10.3389/fphys.2012.00208">&nbsp;[<a href="references.html#ref-10.3389/fphys.2012.00208" role="doc-biblioref">21</a>]</span>.</p>
 <p>Синтаксис даного методу в бібліотеці <code>neurokit2</code> виглядає наступним чином:</p>
 <p><strong><code>complexity_relativeroughness(signal, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
@@ -605,7 +604,7 @@ Complexity = \frac{\sigma_d}{\sigma_{signal}},
 </section>
 <section id="взаємна-інформація" class="level3" data-number="4.1.9">
 <h3 data-number="4.1.9" class="anchored" data-anchor-id="взаємна-інформація"><span class="header-section-number">4.1.9</span> Взаємна інформація</h3>
-<p>Коли йдеться про виявлення зв’язків між змінними, ми часто використовуємо кореляцію Пірсона. Проблема полягає в тому, що цей показник знаходить лише <em>лінійні</em> зв’язки, що іноді може призвести до неправильної інтерпретації зв’язку між двома змінними. Тим не менш, інші статистичні методи вимірюють нелінійні зв’язки, такі як <strong>взаємна інформація (mutual information, MI)</strong> <span class="citation" data-cites="cover1999elements">[<a href="references.html#ref-cover1999elements" role="doc-biblioref">6</a>]</span>.</p>
+<p>Коли йдеться про виявлення зв’язків між змінними, ми часто використовуємо кореляцію Пірсона. Проблема полягає в тому, що цей показник знаходить лише <em>лінійні</em> зв’язки, що іноді може призвести до неправильної інтерпретації зв’язку між двома змінними. Тим не менш, інші статистичні методи вимірюють нелінійні зв’язки, такі як <strong>взаємна інформація (mutual information, MI)</strong> <span class="citation" data-cites="cover1999elements">&nbsp;[<a href="references.html#ref-cover1999elements" role="doc-biblioref">22</a>]</span>.</p>
 <p>Взаємна інформація між двома випадковими величинами вимірює нелінійний зв’язок між ними. Крім того, вона показує, <strong>скільки інформації можна отримати з випадкової величини</strong>, спостерігаючи за іншою випадковою величиною.</p>
 <p>Вона тісно пов’язана з поняттям ентропії. Тобто, зменшення невизначеності випадкової величини пов’язане з отриманням інформації з іншої випадкової величини. Отже, високе значення взаємної інформації вказує на велике зменшення невизначеності, тоді як низьке значення вказує на мале зменшення. Якщо взаємна інформація дорівнює нулю, це означає, що дві випадкові величини є незалежними.</p>
 <p>Взаємну інформацію можна розрахувати наступним чином:</p>
@@ -1666,23 +1665,71 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-e19070310" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. S. Kanwal, J. A. Grochow, and N. Ay, <em><a href="https://doi.org/10.3390/e19070310">Comparing Information-Theoretic Measures of Complexity in Boltzmann Machines</a></em>, Entropy <strong>19</strong>, (2017).</div>
+</div>
+<div id="ref-doi:10.1080/00207166808803030" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A. N. Kolmogorov, <em><a href="https://doi.org/10.1080/00207166808803030">Three Approaches to the Quantitative Definition of Information</a></em>, International Journal of Computer Mathematics <strong>2</strong>, 157 (1968).</div>
+</div>
+<div id="ref-Bonchev2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">D. G. Bonchev, <em><a href="https://doi.org/10.1007/978-0-387-30440-3_285">Information Theoretic Complexity Measures</a></em>, in <em>Encyclopedia of Complexity and Systems Science</em>, edited by R. A. Meyers (Springer New York, New York, NY, 2009), pp. 4820–4839.</div>
+</div>
+<div id="ref-10.1162/ARTL_a_00157" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">L. T. Lui, G. Terrazas, H. Zenil, C. Alexander, and N. Krasnogor, <em><a href="https://doi.org/10.1162/ARTL_a_00157"><span class="nocase">Complexity Measurement Based on Information Theory and Kolmogorov Complexity</span></a></em>, Artificial Life <strong>21</strong>, 205 (2015).</div>
+</div>
+<div id="ref-Li2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Li and P. Vitányi, <em><a href="https://doi.org/10.1007/978-0-387-49820-1_1">Preliminaries</a></em>, in <em>An Introduction to Kolmogorov Complexity and Its Applications</em> (Springer New York, New York, NY, 2008), pp. 1–99.</div>
+</div>
 <div id="ref-shannon" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">C.E. Shannon, A mathematical theory of communication, Bell System Technical Journal 27 (1948) 379–423. https://doi.org/<a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">10.1002/j.1538-7305.1948.tb01338.x</a>.</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">C. E. Shannon, <em><a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">A Mathematical Theory of Communication</a></em>, Bell System Technical Journal <strong>27</strong>, 379 (1948).</div>
+</div>
+<div id="ref-1055501" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Lempel and J. Ziv, <em><a href="https://doi.org/10.1109/TIT.1976.1055501">On the Complexity of Finite Sequences</a></em>, IEEE Transactions on Information Theory <strong>22</strong>, 75 (1976).</div>
+</div>
+<div id="ref-PhysRevE.84.036214" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J.-L. Blanc, L. Pezard, and A. Lesne, <em><a href="https://doi.org/10.1103/PhysRevE.84.036214">Delay Independence of Mutual-Information Rate of Two Symbolic Sequences</a></em>, Phys. Rev. E <strong>84</strong>, 036214 (2011).</div>
+</div>
+<div id="ref-ZOZOR2005285" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">S. Zozor, P. Ravier, and O. Buttelli, <em><a href="https://doi.org/10.1016/j.physa.2004.07.025">On Lempel–Ziv Complexity for Multidimensional Data Analysis</a></em>, Physica A: Statistical Mechanics and Its Applications <strong>345</strong>, 285 (2005).</div>
+</div>
+<div id="ref-10.1063/1.4808251" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">E. Estevez-Rams, R. Lora Serrano, B. Aragón Fernández, and I. Brito Reyes, <em><a href="https://doi.org/10.1063/1.4808251"><span class="nocase">On the non-randomness of maximum Lempel Ziv complexity sequences of finite size</span></a></em>, Chaos: An Interdisciplinary Journal of Nonlinear Science <strong>23</strong>, 023118 (2013).</div>
+</div>
+<div id="ref-Giglio_2008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">R. Giglio, R. Matsushita, A. Figueiredo, I. Gleria, and S. D. Silva, <em><a href="https://doi.org/10.1209/0295-5075/84/48005">Algorithmic Complexity Theory and the Relative Efficiency of Financial Markets</a></em>, Europhysics Letters <strong>84</strong>, 48005 (2008).</div>
+</div>
+<div id="ref-RePEc:ebl:ecbull:eb-11-00319" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">C. Taufemback, R. Giglio, and S. D. Silva, <em><a href="https://ideas.repec.org/a/ebl/ecbull/eb-11-00319.html"><span class="nocase">Algorithmic complexity theory detects decreases in the relative efficiency of stock markets in the aftermath of the 2008 financial crisis</span></a></em>, Economics Bulletin <strong>31</strong>, 1631 (2011).</div>
+</div>
+<div id="ref-RePEc:pra:mprapa:22720" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">R. Giglio and S. Da Silva, <a href="https://EconPapers.repec.org/RePEc:pra:mprapa:22720">Ranking the Stocks Listed on Bovespa According to Their Relative Efficiency</a>, MPRA Paper, University Library of Munich, Germany, 2009.</div>
+</div>
+<div id="ref-BAI2015102" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">Y. Bai, Z. Liang, and X. Li, <em><a href="https://doi.org/10.1016/j.bspc.2015.04.002">A Permutation Lempel-Ziv Complexity Measure for EEG Analysis</a></em>, Biomedical Signal Processing and Control <strong>19</strong>, 102 (2015).</div>
+</div>
+<div id="ref-e23070832" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Borowska, <em><a href="https://doi.org/10.3390/e23070832">Multiscale Permutation Lempel–Ziv Complexity Measure for Biomedical Signal Analysis: Interpretation and Application to Focal EEG Signals</a></em>, Entropy <strong>23</strong>, (2021).</div>
+</div>
+<div id="ref-hillen2013joint" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">B. K. Hillen, G. T. Yamaguchi, J. J. Abbas, and R. Jung, <em><a href="https://doi.org/10.1186/1743-0003-10-97">Joint-Specific Changes in Locomotor Complexity in the Absence of Muscle Atrophy Following Incomplete Spinal Cord Injury</a></em>, Journal of NeuroEngineering and Rehabilitation <strong>10</strong>, 1 (2013).</div>
+</div>
+<div id="ref-costa2008multiscale" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">M. D. Costa, C.-K. Peng, and A. L. Goldberger, <em>Multiscale Analysis of Heart Rate Dynamics: Entropy and Time Irreversibility Measures</em>, Cardiovascular Engineering <strong>8</strong>, 88 (2008).</div>
 </div>
 <div id="ref-doi:10.1098/rsta.1922.0009" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">R.A. Fisher, E.J. Russell, On the mathematical foundations of theoretical statistics, Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character 222 (1922) 309–368. https://doi.org/<a href="https://doi.org/10.1098/rsta.1922.0009">10.1098/rsta.1922.0009</a>.</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">R. A. Fisher and E. J. Russell, <em><a href="https://doi.org/10.1098/rsta.1922.0009">On the Mathematical Foundations of Theoretical Statistics</a></em>, Philosophical Transactions of the Royal Society of London. Series A, Containing Papers of a Mathematical or Physical Character <strong>222</strong>, 309 (1922).</div>
 </div>
 <div id="ref-HJORTH1970306" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">B. Hjorth, EEG analysis based on time domain properties, Electroencephalography and Clinical Neurophysiology 29 (1970) 306–310. https://doi.org/<a href="https://doi.org/10.1016/0013-4694(70)90143-4">10.1016/0013-4694(70)90143-4</a>.</div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B. Hjorth, <em><a href="https://doi.org/10.1016/0013-4694(70)90143-4">EEG Analysis Based on Time Domain Properties</a></em>, Electroencephalography and Clinical Neurophysiology <strong>29</strong>, 306 (1970).</div>
 </div>
 <div id="ref-MORMANN2005569" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">F. Mormann, T. Kreuz, C. Rieke, R.G. Andrzejak, A. Kraskov, P. David, C.E. Elger, K. Lehnertz, On the predictability of epileptic seizures, Clinical Neurophysiology 116 (2005) 569–587. https://doi.org/<a href="https://doi.org/10.1016/j.clinph.2004.08.025">10.1016/j.clinph.2004.08.025</a>.</div>
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">F. Mormann, T. Kreuz, C. Rieke, R. G. Andrzejak, A. Kraskov, P. David, C. E. Elger, and K. Lehnertz, <em><a href="https://doi.org/10.1016/j.clinph.2004.08.025">On the Predictability of Epileptic Seizures</a></em>, Clinical Neurophysiology <strong>116</strong>, 569 (2005).</div>
 </div>
 <div id="ref-10.3389/fphys.2012.00208" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">V. Marmelat, K. Torre, D. Delignieres, Relative roughness: An index for testing the suitability of the monofractal model, Frontiers in Physiology 3 (2012). https://doi.org/<a href="https://doi.org/10.3389/fphys.2012.00208">10.3389/fphys.2012.00208</a>.</div>
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">V. Marmelat, K. Torre, and D. Delignieres, <em><a href="https://doi.org/10.3389/fphys.2012.00208">Relative Roughness: An Index for Testing the Suitability of the Monofractal Model</a></em>, Frontiers in Physiology <strong>3</strong>, (2012).</div>
 </div>
 <div id="ref-cover1999elements" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">T.M. Cover, Elements of information theory, John Wiley &amp; Sons, 1999.</div>
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">T. M. Cover, <em>Elements of Information Theory</em> (John Wiley &amp; Sons, 1999).</div>
 </div>
 </div>
 </section>
