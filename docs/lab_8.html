@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -301,13 +320,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#знаходження-коефіцієнтів-матриці-крос-кореляцій" id="toc-знаходження-коефіцієнтів-матриці-крос-кореляцій" class="nav-link" data-scroll-target="#знаходження-коефіцієнтів-матриці-крос-кореляцій"><span class="header-section-number">8.1.1</span> Знаходження коефіцієнтів матриці крос-кореляцій</a></li>
   <li><a href="#розподіл-власних-значень" id="toc-розподіл-власних-значень" class="nav-link" data-scroll-target="#розподіл-власних-значень"><span class="header-section-number">8.1.2</span> Розподіл власних значень</a></li>
-  <li><a href="#обернене-відношення-участі" id="toc-обернене-відношення-участі" class="nav-link" data-scroll-target="#обернене-відношення-участі"><span class="header-section-number">8.1.3</span> Обернене відношення участі</a></li>
+  <li><a href="#розподіл-власних-векторів" id="toc-розподіл-власних-векторів" class="nav-link" data-scroll-target="#розподіл-власних-векторів"><span class="header-section-number">8.1.3</span> Розподіл власних векторів</a></li>
+  <li><a href="#обернене-відношення-участі" id="toc-обернене-відношення-участі" class="nav-link" data-scroll-target="#обернене-відношення-участі"><span class="header-section-number">8.1.4</span> Обернене відношення участі</a></li>
   </ul></li>
   <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">8.2</span> Хід роботи</a>
   <ul class="collapse">
   <li><a href="#знаходження-коефіцієнтів-матриці-крос-кореляцій-1" id="toc-знаходження-коефіцієнтів-матриці-крос-кореляцій-1" class="nav-link" data-scroll-target="#знаходження-коефіцієнтів-матриці-крос-кореляцій-1"><span class="header-section-number">8.2.1</span> Знаходження коефіцієнтів матриці крос-кореляцій</a></li>
   <li><a href="#розподіл-власних-значень-та-векторів" id="toc-розподіл-власних-значень-та-векторів" class="nav-link" data-scroll-target="#розподіл-власних-значень-та-векторів"><span class="header-section-number">8.2.2</span> Розподіл власних значень та векторів</a></li>
   <li><a href="#обернене-відношення-участі-1" id="toc-обернене-відношення-участі-1" class="nav-link" data-scroll-target="#обернене-відношення-участі-1"><span class="header-section-number">8.2.3</span> Обернене відношення участі</a></li>
+  <li><a href="#коефіцієнт-поглинання" id="toc-коефіцієнт-поглинання" class="nav-link" data-scroll-target="#коефіцієнт-поглинання"><span class="header-section-number">8.2.4</span> Коефіцієнт поглинання</a></li>
+  <li><a href="#віконна-процедура" id="toc-віконна-процедура" class="nav-link" data-scroll-target="#віконна-процедура"><span class="header-section-number">8.2.5</span> Віконна процедура</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_8.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
@@ -336,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Мета.</strong> Навчитись використовувати методи теорії випадкових матриць для отримання «прихованої» інформації в складних економічних системах.</p>
 <section id="теоретичні-відомості" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">8.1</span> Теоретичні відомості</h2>
-<p>Вивчення статистичних властивостей матриць з незалежними випадковими елементами — випадкових матриць — має багату історію, що починається з ядерної фізики, де проблема з’явилася 50 років тому при дослідженні енергетичних рівнів складних ядер, що існуючі на той час моделі були не в змозі пояснити. Теорія випадкової матриці (ТВМ) була розвинена в цьому контексті Вігнером (Wigner), Дайсоном (Dyson), Метою (Mehta) та іншими для пояснення статистики рівнів енергії складних квантових систем. Дослідники постулювали, що функція Гамільтона, яка описує важкі ядра, може бути задана матрицею <span class="math inline">\(H\)</span> з незалежними випадковими елементами <span class="math inline">\(H_{ij}\)</span>, отриманими з розподілу імовірності. Відштовхуючись від цього припущення було зроблено низку вражаючих передбачень, які було підтверджено експериментально. Для складних квантових систем передбачення на основі ТВМ представляють середнє за всіма можливими взаємодіями. Відхилення від універсальних передбачень ТВМ відображують системну специфіку, невипадкові властивості системи, забезпечуючи ключові підходи до розуміння базової взаємодії системи. Недавні дослідження, що використовували методи аналізу ТВМ до аналізу властивостей матриці взаємних кореляцій <span class="math inline">\(C\)</span>, показують, що близько 98% власних значень матриці <span class="math inline">\(C\)</span> співпадають зі значеннями, отримуваними з використанням ТВМ, таким чином пропонуючи задовільний рівень хаотичності у вимірюваних крос-кореляціях. Також було знайдено, що існують відхилення від передбачень за допомогою ТВМ у близько 2% найбільших власних значень. Ці результати викликають наступні питання:</p>
+<p>Вивчення статистичних властивостей матриць з незалежними випадковими елементами — випадкових матриць — має багату історію, що починається з ядерної фізики <span class="citation" data-cites="Wigner_1951_1 Wigner_1951_2 10.1063/1.1703773 10.1063/1.1704008 10.1063/1.1704009 mehta1991random RevModPhys.53.385">[<a href="references.html#ref-Wigner_1951_1" role="doc-biblioref">1</a>–<a href="references.html#ref-RevModPhys.53.385" role="doc-biblioref">7</a>]</span>, де проблема з’явилася 50 років тому при дослідженні енергетичних рівнів складних ядер, що існуючі на той час моделі були не в змозі пояснити. Теорія випадкової матриці (ТВМ) була розвинена в цьому контексті Вігнером (Wigner), Дайсоном (Dyson), Метою (Mehta) та іншими для пояснення статистики рівнів енергії складних квантових систем. Дослідники постулювали, що функція Гамільтона, яка описує важкі ядра, може бути задана матрицею <span class="math inline">\(H\)</span> з незалежними випадковими елементами <span class="math inline">\(H_{ij}\)</span>, отриманими з розподілу імовірності. Відштовхуючись від цього припущення було зроблено низку вражаючих передбачень, які було підтверджено експериментально. Для складних квантових систем передбачення на основі ТВМ представляють середнє за всіма можливими взаємодіями. Відхилення від універсальних передбачень ТВМ відображують системну специфіку, невипадкові властивості системи, забезпечуючи ключові підходи до розуміння базової взаємодії системи. Недавні дослідження, що використовували методи аналізу ТВМ до аналізу властивостей матриці взаємних кореляцій <span class="math inline">\(C\)</span>, показують, що близько 98% власних значень матриці <span class="math inline">\(C\)</span> співпадають зі значеннями, отримуваними з використанням ТВМ, таким чином пропонуючи задовільний рівень хаотичності у вимірюваних крос-кореляціях. Також було знайдено, що існують відхилення від передбачень за допомогою ТВМ у близько 2% найбільших власних значень. Ці результати викликають наступні питання:</p>
 <ol type="1">
 <li>Яка можлива інтерпретація для відхилень від ТВМ?</li>
 <li>Що можна сказати про структуру C з цих результатів?</li>
@@ -369,7 +391,7 @@ C_{ij} \equiv \left\langle g_i(t)g_j(t) \right\rangle.
 </section>
 <section id="розподіл-власних-значень" class="level3" data-number="8.1.2">
 <h3 data-number="8.1.2" class="anchored" data-anchor-id="розподіл-власних-значень"><span class="header-section-number">8.1.2</span> Розподіл власних значень</h3>
-<p>Для отримання інформації про взаємні кореляції <span class="math inline">\(C\)</span> необхідно порівняти властивості <span class="math inline">\(C\)</span> з такими ж властивостями випадкової матриці крос-кореляцій. У матричній нотації така матриця може бути виражена як</p>
+<p>Для отримання інформації про взаємні кореляції <span class="math inline">\(C\)</span> необхідно порівняти властивості <span class="math inline">\(C\)</span> з такими ж властивостями випадкової матриці крос-кореляцій <span class="citation" data-cites="PhysRevLett.83.1467">[<a href="references.html#ref-PhysRevLett.83.1467" role="doc-biblioref">8</a>]</span>. У матричній нотації така матриця може бути виражена як</p>
 <p><span id="eq-8-4"><span class="math display">\[
 C = \frac{1}{L} GG^{T},
 \tag{8.4}\]</span></span></p>
@@ -377,8 +399,8 @@ C = \frac{1}{L} GG^{T},
 <p><span id="eq-8-5"><span class="math display">\[
 R = \frac{1}{L} AA^{T},
 \tag{8.5}\]</span></span></p>
-<p>де <span class="math inline">\(A\)</span> — матриця розміру <span class="math inline">\(N \times L\)</span>, що містить <span class="math inline">\(N\)</span> часових рядів із <span class="math inline">\(L\)</span> випадковими елементів <span class="math inline">\(a_{im}\)</span> з нульовим середнім і одиничним відхиленням, що означають взаємну некорельованість.</p>
-<p>Статистичні властивості випадкових матриць <span class="math inline">\(R\)</span> відомі. Зокрема, у наближенні <span class="math inline">\(N \to \infty\)</span>, <span class="math inline">\(L \to \infty\)</span>, такому, що <span class="math inline">\(Q \equiv \frac{L}{N}(&gt;1)\)</span> фіксоване, показано аналітично, що функція розподілу щільності імовірності <span class="math inline">\(P_{rm}(\lambda)\)</span> власних значень <span class="math inline">\(\lambda\)</span> випадкової матриці кореляції <span class="math inline">\(R\)</span> визначається як</p>
+<p>де <span class="math inline">\(A\)</span> — матриця розміру <span class="math inline">\(N \times L\)</span>, що містить <span class="math inline">\(N\)</span> часових рядів із <span class="math inline">\(L\)</span> випадковими елементів <span class="math inline">\(a_{im}\)</span> з нульовим середнім і одиничним відхиленням, що означають взаємну некорельованість. За побудовою <span class="math inline">\(R\)</span> належить до типу матриць, які часто називають матрицями Вішарта у багатовимірній статистиці <span class="citation" data-cites="Muirhead">[<a href="references.html#ref-Muirhead" role="doc-biblioref">9</a>]</span>.</p>
+<p>Статистичні властивості випадкових матриць <span class="math inline">\(R\)</span> відомі <span class="citation" data-cites="dyson1971distribution PhysRevE.60.3389">[<a href="references.html#ref-dyson1971distribution" role="doc-biblioref">10</a>,<a href="references.html#ref-PhysRevE.60.3389" role="doc-biblioref">11</a>]</span>. Зокрема, у наближенні <span class="math inline">\(N \to \infty\)</span>, <span class="math inline">\(L \to \infty\)</span>, такому, що <span class="math inline">\(Q \equiv \frac{L}{N}(&gt;1)\)</span> фіксоване, показано аналітично <span class="citation" data-cites="PhysRevE.60.3389">[<a href="references.html#ref-PhysRevE.60.3389" role="doc-biblioref">11</a>]</span>, що функція розподілу щільності імовірності <span class="math inline">\(P_{rm}(\lambda)\)</span> власних значень <span class="math inline">\(\lambda\)</span> випадкової матриці кореляції <span class="math inline">\(R\)</span> визначається як</p>
 <p><span id="eq-8-6"><span class="math display">\[
 P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \lambda_{-})}}{\lambda}
 \tag{8.6}\]</span></span></p>
@@ -390,9 +412,16 @@ P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \l
 <p>Порівняємо розподіл власних значень <span class="math inline">\(P(\lambda)\)</span> для <span class="math inline">\(C\)</span> з <span class="math inline">\(P_{rm}(\lambda)\)</span>. Для цього обчислимо власні значення <span class="math inline">\(\lambda_i\)</span> матриці <span class="math inline">\(C\)</span>, причому <span class="math inline">\(\lambda_i\)</span> впорядкуємо за зростанням (<span class="math inline">\(\lambda_{i+1} &gt; \lambda_{i}\)</span>). При дослідженнях зверніть увагу на присутність чіткої “великої частини” власних значень, що спадають у межах границь <span class="math inline">\([\lambda_{-}, \lambda_{+}]\)</span> для <span class="math inline">\(P_{rm}(\lambda)\)</span>. Також зверніть увагу на відхилення для деяких найбільших і найменших власних значень власних значень отриманих за допомогою ТВМ.</p>
 <p>Оскільки рівняння (<a href="#eq-8-6">Рівняння&nbsp;<span>8.6</span></a>) є таким, що строго відповідає лише для <span class="math inline">\(L \to \infty\)</span> і <span class="math inline">\(N \to \infty\)</span>, необхідно перевірити також відхилення від ідеального випадку, оскільки робота проводиться завжди із <strong>скінченими</strong> рядами. При дослідженнях виявляється, що для кількох найбільших (найменших) власних значень ефект впливу скінчених величин <span class="math inline">\(L\)</span> і <span class="math inline">\(N\)</span> відсутній.</p>
 </section>
-<section id="обернене-відношення-участі" class="level3" data-number="8.1.3">
-<h3 data-number="8.1.3" class="anchored" data-anchor-id="обернене-відношення-участі"><span class="header-section-number">8.1.3</span> Обернене відношення участі</h3>
-<p>Вивчивши інтерпретацію найбільшого власного значення, що значно відхиляється від результатів ТВМ, зосередимось на власних значеннях, що залишаються. Відхилення розподілу компонентів власного вектора <span class="math inline">\(u_k\)</span> від ТВМ Гаусового передбачення більш явне, коли відстань від верхньої границі ТВМ <span class="math inline">\(\lambda_k - \lambda_{+}\)</span> збільшується. Оскільки близькість до <span class="math inline">\(\lambda_{+}\)</span> збільшує ефекти хаотичності визначаємо кількість компонентів, що беруть значну участь в кожному власному векторі, що, у свою чергу, відображає ступінь відхилення від ТВМ для розподілу компонентів власного вектора. Для цього використовується поняття оберненого відношення участі (ОВУ), що часто застосовується в теорії локалізації. ОВУ власного вектора <span class="math inline">\(u_k\)</span> визначається як</p>
+<section id="розподіл-власних-векторів" class="level3" data-number="8.1.3">
+<h3 data-number="8.1.3" class="anchored" data-anchor-id="розподіл-власних-векторів"><span class="header-section-number">8.1.3</span> Розподіл власних векторів</h3>
+<p>Відхилення <span class="math inline">\(P(\lambda)\)</span> від передбачення ТВМ <span class="math inline">\(P_{rm}(\lambda)\)</span> свідчить про те, що ці відхилення також повинні відображатися в статистиці відповідних компонент власного вектора <span class="citation" data-cites="PhysRevLett.83.1467">[<a href="references.html#ref-PhysRevLett.83.1467" role="doc-biblioref">8</a>]</span>. Відповідно, у даній лабораторній ми будемо аналізувати розподіл компонент власного вектора. Розподіл компонент <span class="math inline">\(\left\{ u_{l}^{k}; l=1,...,N \right\}\)</span> власного вектора <span class="math inline">\(u^k\)</span> випадкової кореляційної матриці <span class="math inline">\(R\)</span> має відповідати розподілу Гауса з нульовим середнім та одиничною дисперсією,</p>
+<p><span class="math display">\[
+\rho_{rm}(u) = \frac{1}{\sqrt{2\pi}}\exp\left( \frac{-u^{2}}{2} \right).
+\]</span></p>
+</section>
+<section id="обернене-відношення-участі" class="level3" data-number="8.1.4">
+<h3 data-number="8.1.4" class="anchored" data-anchor-id="обернене-відношення-участі"><span class="header-section-number">8.1.4</span> Обернене відношення участі</h3>
+<p>Вивчивши інтерпретацію найбільшого власного значення, що значно відхиляється від результатів ТВМ, зосередимось на власних значеннях, що залишаються. Відхилення розподілу компонентів власного вектора <span class="math inline">\(u_k\)</span> від ТВМ Гаусового передбачення більш явне, коли відстань від верхньої границі ТВМ <span class="math inline">\(\lambda_k - \lambda_{+}\)</span> збільшується. Оскільки близькість до <span class="math inline">\(\lambda_{+}\)</span> збільшує ефекти хаотичності визначаємо кількість компонентів, що беруть значну участь в кожному власному векторі, що, у свою чергу, відображає ступінь відхилення від ТВМ для розподілу компонентів власного вектора. Для цього використовується поняття оберненого відношення участі (ОВУ) <span class="citation" data-cites="PhysRevLett.83.1471 GUHR1998189 PhysRevLett.69.1093">[<a href="references.html#ref-PhysRevLett.83.1471" role="doc-biblioref">12</a>–<a href="references.html#ref-PhysRevLett.69.1093" role="doc-biblioref">14</a>]</span>, що часто застосовується в теорії локалізації. ОВУ власного вектора <span class="math inline">\(u_k\)</span> визначається як</p>
 <p><span id="eq-8-8"><span class="math display">\[
 I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 \tag{8.8}\]</span></span></p>
@@ -402,23 +431,27 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </li>
 <li>вектор з одним компонентом <span class="math inline">\(u_{1}^{k}=1\)</span> і нульовими іншими має <span class="math inline">\(I^{k}=1\)</span>.</li>
 </ol>
-<p>Таким чином, ОВУ визначає кількість даних з числа компонентів власного вектора, що значний впливають на ринок, заданий системою часових рядів. Наявність векторів з великими значеннями <span class="math inline">\(I^{k}\)</span> також виникає в теорії локалізації Андерсона. У контексті теорії локалізації часто знаходять “випадкову смугу матриць”, що містять узагальнені стани з маленьким <span class="math inline">\(I^{k}\)</span> в більшій частині спектра власних значень, тоді як основні стани локалізовані і мають великі <span class="math inline">\(I^{k}\)</span>. Виявлення локалізованих станів для маленьких і великих власних значень матриці крос-кореляцій <span class="math inline">\(C\)</span> нагадує про локалізацію Андерсона і припускає, що C може мати випадкову зону матричної структури.</p>
+<p>Таким чином, ОВУ визначає кількість даних з числа компонентів власного вектора, що значний впливають на ринок, заданий системою часових рядів. Наявність векторів з великими значеннями <span class="math inline">\(I^{k}\)</span> також виникає в теорії локалізації Андерсона. У контексті теорії локалізації часто знаходять “випадкову смугу матриць”, що містять узагальнені стани з маленьким <span class="math inline">\(I^{k}\)</span> в більшій частині спектра власних значень, тоді як основні стани локалізовані і мають великі <span class="math inline">\(I^{k}\)</span>. Виявлення локалізованих станів для маленьких і великих власних значень матриці крос-кореляцій <span class="math inline">\(C\)</span> нагадує про локалізацію Андерсона і припускає, що <span class="math inline">\(C\)</span> може мати випадкову зону матричної структури.</p>
 </section>
 </section>
 <section id="хід-роботи" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">8.2</span> Хід роботи</h2>
 <p>Імпортуємо необхідні бібліотеки:</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="374">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.ticker <span class="im">as</span> mticker</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо стиль рисунків:</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -435,7 +468,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виконуємо парсинг та фільтрацію заголовків акцій компаній:</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'authority'</span>: <span class="st">'api.nasdaq.com'</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'accept'</span>: <span class="st">'application/json, text/plain, */*'</span>,</span>
@@ -461,7 +494,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>{<span class="st">'marketCap'</span>})</span>
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[<span class="op">~</span>df[<span class="st">'symbol'</span>].<span class="bu">str</span>.contains(<span class="st">"\/|\.|\^"</span>)]</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -488,13 +521,13 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <td data-quarto-table-cell-role="th">0</td>
 <td>A</td>
 <td>Agilent Technologies Inc. Common Stock</td>
-<td>$103.68</td>
-<td>-1.96</td>
-<td>-1.855%</td>
-<td>30335448465.00</td>
+<td>$131.55</td>
+<td>0.56</td>
+<td>0.428%</td>
+<td>38544689618.00</td>
 <td>United States</td>
 <td>1999</td>
-<td>2255378</td>
+<td>121107</td>
 <td>Industrials</td>
 <td>Electrical Products</td>
 <td>/market-activity/stocks/a</td>
@@ -503,61 +536,61 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <td data-quarto-table-cell-role="th">1</td>
 <td>AA</td>
 <td>Alcoa Corporation Common Stock</td>
-<td>$23.86</td>
-<td>0.42</td>
-<td>1.792%</td>
-<td>4257807575.00</td>
+<td>$30.011</td>
+<td>-0.599</td>
+<td>-1.957%</td>
+<td>5356120431.00</td>
 <td>United States</td>
 <td>2016</td>
-<td>4466232</td>
+<td>934231</td>
 <td>Industrials</td>
 <td>Aluminum</td>
 <td>/market-activity/stocks/aa</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>AAC</td>
-<td>Ares Acquisition Corporation Class A Ordinary ...</td>
-<td>$10.77</td>
-<td>-0.01</td>
-<td>-0.093%</td>
-<td>760407880.00</td>
-<td></td>
-<td>2021</td>
-<td>62409</td>
-<td>Industrials</td>
-<td>Metal Fabrications</td>
-<td>/market-activity/stocks/aac</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
 <td>AACG</td>
 <td>ATA Creativity Global American Depositary Shares</td>
-<td>$1.02</td>
-<td>-0.0089</td>
-<td>-0.865%</td>
-<td>32254613.00</td>
+<td>$1.08</td>
+<td>0.00</td>
+<td>0.00%</td>
+<td>34151944.00</td>
 <td>China</td>
 <td>2008</td>
-<td>2205</td>
+<td>1076</td>
 <td>Real Estate</td>
 <td>Other Consumer Services</td>
 <td>/market-activity/stocks/aacg</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>AACIW</td>
-<td>Armada Acquisition Corp. I Warrant</td>
-<td>$0.0869</td>
-<td>-0.0011</td>
-<td>-1.25%</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>AACI</td>
+<td>Armada Acquisition Corp. I Common Stock</td>
+<td>$10.90</td>
+<td>0.00</td>
+<td>0.00%</td>
 <td>0.00</td>
 <td>United States</td>
 <td>2021</td>
-<td>1100</td>
+<td>111</td>
 <td>Finance</td>
 <td>Blank Checks</td>
-<td>/market-activity/stocks/aaciw</td>
+<td>/market-activity/stocks/aaci</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>AACIU</td>
+<td>Armada Acquisition Corp. I Unit</td>
+<td>$10.70</td>
+<td>0.00</td>
+<td>0.00%</td>
+<td>0.00</td>
+<td>United States</td>
+<td>2021</td>
+<td>4</td>
+<td>Finance</td>
+<td>Blank Checks</td>
+<td>/market-activity/stocks/aaciu</td>
 </tr>
 </tbody>
 </table>
@@ -566,7 +599,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 <p>Фільтруємо та сортуємо заголовків акцій за їх капіталізацією:</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cust_filter(mkt_cap):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'M'</span> <span class="kw">in</span> mkt_cap:</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(mkt_cap[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])</span>
@@ -580,7 +613,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'marketCap'</span>] <span class="op">=</span> df[<span class="st">'marketCap'</span>].<span class="bu">apply</span>(cust_filter)</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.sort_values(<span class="st">'marketCap'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -604,79 +637,79 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
+<td data-quarto-table-cell-role="th">17</td>
 <td>AAPL</td>
 <td>Apple Inc. Common Stock</td>
-<td>$171.13</td>
-<td>-2.31</td>
-<td>-1.332%</td>
-<td>675486.122160</td>
+<td>$190.935</td>
+<td>-1.485</td>
+<td>-0.772%</td>
+<td>952217.112760</td>
 <td>United States</td>
 <td>1980</td>
-<td>42331738</td>
+<td>11805837</td>
 <td>Technology</td>
 <td>Computer Manufacturing</td>
 <td>/market-activity/stocks/aapl</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2995</td>
+<td data-quarto-table-cell-role="th">2944</td>
 <td>GOOG</td>
 <td>Alphabet Inc. Class C Capital Stock</td>
-<td>$126.83</td>
-<td>-13.29</td>
-<td>-9.485%</td>
-<td>599199.470000</td>
+<td>$153.43</td>
+<td>-0.36</td>
+<td>-0.234%</td>
+<td>920329.880000</td>
 <td>United States</td>
 <td>2004</td>
-<td>53289059</td>
+<td>4722822</td>
 <td>Technology</td>
 <td>Computer Software: Programming Data Processing</td>
 <td>/market-activity/stocks/goog</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2996</td>
+<td data-quarto-table-cell-role="th">2945</td>
 <td>GOOGL</td>
 <td>Alphabet Inc. Class A Common Stock</td>
-<td>$125.74</td>
-<td>-13.07</td>
-<td>-9.416%</td>
-<td>585455.660000</td>
+<td>$151.96</td>
+<td>-0.225</td>
+<td>-0.148%</td>
+<td>901931.360000</td>
 <td>United States</td>
 <td>2004</td>
-<td>74470572</td>
+<td>6069308</td>
 <td>Technology</td>
 <td>Computer Software: Programming Data Processing</td>
 <td>/market-activity/stocks/googl</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">4477</td>
-<td>MSFT</td>
-<td>Microsoft Corporation Common Stock</td>
-<td>$340.64</td>
-<td>10.11</td>
-<td>3.059%</td>
-<td>530874.714262</td>
-<td>United States</td>
-<td>1986</td>
-<td>47823790</td>
-<td>Technology</td>
-<td>Computer Software: Prepackaged Software</td>
-<td>/market-activity/stocks/msft</td>
-</tr>
-<tr class="odd">
 <td data-quarto-table-cell-role="th">408</td>
 <td>AMZN</td>
 <td>Amazon.com Inc. Common Stock</td>
-<td>$121.35</td>
-<td>-7.21</td>
-<td>-5.608%</td>
-<td>252059.059095</td>
+<td>$159.435</td>
+<td>0.315</td>
+<td>0.198%</td>
+<td>647606.166479</td>
 <td>United States</td>
 <td>1997</td>
-<td>64091789</td>
+<td>9424297</td>
 <td>Consumer Discretionary</td>
 <td>Catalog/Specialty Distribution</td>
 <td>/market-activity/stocks/amzn</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4744</td>
+<td>NVDA</td>
+<td>NVIDIA Corporation Common Stock</td>
+<td>$617.655</td>
+<td>7.345</td>
+<td>1.203%</td>
+<td>525607.850000</td>
+<td>United States</td>
+<td>1999</td>
+<td>9545670</td>
+<td>Technology</td>
+<td>Semiconductors</td>
+<td>/market-activity/stocks/nvda</td>
 </tr>
 </tbody>
 </table>
@@ -685,26 +718,54 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 <p>Визначаємо найпередовіші акцій за їх капіталізацією:</p>
-<div class="cell" data-execution_count="102">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tickers_list <span class="op">=</span> df.iloc[:top][<span class="st">'symbol'</span>].tolist()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tickers_list[:<span class="dv">10</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
-<pre><code>['AAPL', 'GOOG', 'GOOGL', 'MSFT', 'AMZN', 'ACN', 'JNJ', 'UNH', 'CRM', 'CVX']</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>['AAPL', 'GOOG', 'GOOGL', 'AMZN', 'NVDA', 'V', 'JPM', 'LIN', 'ABT', 'ABBV']</code></pre>
 </div>
 </div>
 <p>Зчитуємо дані з Yahoo Finance згідно створенного списку акцій:</p>
-<div class="cell" data-execution_count="109">
+<div class="cell" data-execution_count="235">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2001-12-31"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-10-25"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(tickers_list, start, end)[<span class="st">"Adj Close"</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2024-01-29"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data_init <span class="op">=</span> yf.download(tickers_list, start, end)[<span class="st">"Adj Close"</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="114">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>perc <span class="op">=</span> <span class="fl">5.0</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>min_count <span class="op">=</span>  <span class="bu">int</span>(((<span class="dv">100</span><span class="op">-</span>perc)<span class="op">/</span><span class="dv">100</span>)<span class="op">*</span>data.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna(axis<span class="op">=</span><span class="dv">1</span>, thresh<span class="op">=</span>min_count)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="114">
+<p>Далі нам потребується обрати фінансовий індекс для порівняння з розрахованими індикаторами. Далі надається список усіх доступних для нас акцій:</p>
+<div class="cell" data-execution_count="232">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> <span class="st">'A'</span>             <span class="co"># підпис по вісі Оу           </span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data_init.columns.values</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="232">
+<pre><code>array(['A', 'AAPL', 'ABT', 'ACGL', 'ACN', 'ADBE', 'AFL', 'AIG', 'AJG',
+       'AMAT', 'AMD', 'AMGN', 'AMZN', 'ANSS', 'AON', 'APH', 'ASML',
+       'AXON', 'AXP', 'BA', 'BAC', 'BAX', 'BCS', 'BDX', 'BHP', 'BKNG',
+       'BLK', 'BMO', 'BSX', 'CAT', 'CCJ', 'CDNS', 'CHKP', 'CL', 'CMCSA',
+       'CNC', 'CNI', 'CNQ', 'COP', 'CRH', 'CSCO', 'CSX', 'CTRA', 'CTSH',
+       'CVX', 'DE', 'DECK', 'DHR', 'DIS', 'DLTR', 'DRI', 'ELV', 'EPD',
+       'ERIC', 'ES', 'EXPD', 'FAST', 'FMX', 'GE', 'GILD', 'GPC', 'GS',
+       'GSK', 'HBAN', 'HD', 'HDB', 'HON', 'HPQ', 'HSBC', 'HSY', 'IBM',
+       'INTC', 'INTU', 'IRM', 'ISRG', 'ITW', 'JNJ', 'JPM', 'K', 'KO',
+       'KOF', 'LH', 'LHX', 'LIN', 'LLY', 'LNG', 'LOW', 'LRCX', 'LYG',
+       'MCD', 'MDT', 'MFC', 'MKL', 'MRVL', 'MS', 'MSFT', 'MUFG', 'NEE',
+       'NEM', 'NFLX', 'NKE', 'NVDA', 'NVO', 'NVS', 'O', 'ORCL', 'PBR',
+       'PCG', 'PEG', 'PEP', 'PFE', 'PFG', 'PG', 'PHG', 'PLD', 'PPL',
+       'PUK', 'QCOM', 'RIO', 'RMD', 'ROP', 'RTX', 'RY', 'RYAAY', 'SAP',
+       'SCHW', 'SLF', 'SNY', 'SONY', 'SPGI', 'STLD', 'STM', 'STX', 'SYK',
+       'T', 'TD', 'TDY', 'TJX', 'TM', 'TMO', 'TS', 'TSN', 'TTE', 'TXN',
+       'UL', 'UMC', 'UNH', 'UNP', 'UPS', 'VMC', 'VRTX', 'VTR', 'VZ',
+       'WAT', 'WBA', 'WCN', 'WDC', 'WDS', 'WFC', 'WMT'], dtype=object)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="226">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>perc <span class="op">=</span> <span class="fl">5.0</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>min_count <span class="op">=</span>  <span class="bu">int</span>(((<span class="dv">100</span><span class="op">-</span>perc)<span class="op">/</span><span class="dv">100</span>)<span class="op">*</span>data_init.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data_init <span class="op">=</span> data_init.dropna(axis<span class="op">=</span><span class="dv">1</span>, thresh<span class="op">=</span>min_count)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data_init</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="226">
 <div>
 
 
@@ -712,27 +773,27 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">A</th>
 <th data-quarto-table-cell-role="th">AAPL</th>
-<th data-quarto-table-cell-role="th">ABEV</th>
 <th data-quarto-table-cell-role="th">ABT</th>
+<th data-quarto-table-cell-role="th">ACGL</th>
 <th data-quarto-table-cell-role="th">ACN</th>
 <th data-quarto-table-cell-role="th">ADBE</th>
-<th data-quarto-table-cell-role="th">ADI</th>
-<th data-quarto-table-cell-role="th">ADM</th>
-<th data-quarto-table-cell-role="th">AEP</th>
+<th data-quarto-table-cell-role="th">AFL</th>
+<th data-quarto-table-cell-role="th">AIG</th>
 <th data-quarto-table-cell-role="th">AJG</th>
-<th data-quarto-table-cell-role="th">ALGN</th>
+<th data-quarto-table-cell-role="th">AMAT</th>
 <th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">UMC</th>
-<th data-quarto-table-cell-role="th">UNH</th>
-<th data-quarto-table-cell-role="th">UNP</th>
-<th data-quarto-table-cell-role="th">UPS</th>
-<th data-quarto-table-cell-role="th">USB</th>
+<th data-quarto-table-cell-role="th">VRTX</th>
+<th data-quarto-table-cell-role="th">VTR</th>
 <th data-quarto-table-cell-role="th">VZ</th>
-<th data-quarto-table-cell-role="th">WAB</th>
+<th data-quarto-table-cell-role="th">WAT</th>
 <th data-quarto-table-cell-role="th">WBA</th>
+<th data-quarto-table-cell-role="th">WCN</th>
+<th data-quarto-table-cell-role="th">WDC</th>
+<th data-quarto-table-cell-role="th">WDS</th>
+<th data-quarto-table-cell-role="th">WFC</th>
 <th data-quarto-table-cell-role="th">WMT</th>
-<th data-quarto-table-cell-role="th">XOM</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">Date</th>
@@ -762,123 +823,123 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2001-12-31</td>
-<td>0.331940</td>
-<td>0.284807</td>
-<td>14.984426</td>
-<td>19.391705</td>
-<td>15.452660</td>
-<td>28.258905</td>
-<td>8.876990</td>
-<td>17.383923</td>
-<td>17.229757</td>
-<td>4.500000</td>
+<td>17.297586</td>
+<td>0.331503</td>
+<td>14.912388</td>
+<td>2.861111</td>
+<td>19.321150</td>
+<td>15.452659</td>
+<td>7.743106</td>
+<td>979.726379</td>
+<td>17.191076</td>
+<td>14.783871</td>
 <td>...</td>
-<td>5.445521</td>
-<td>14.341556</td>
-<td>9.328091</td>
-<td>30.550989</td>
-<td>10.333231</td>
-<td>14.899978</td>
-<td>5.713789</td>
-<td>21.294727</td>
-<td>38.050941</td>
-<td>19.562275</td>
+<td>24.590000</td>
+<td>4.431195</td>
+<td>14.652889</td>
+<td>38.750000</td>
+<td>20.802359</td>
+<td>5.453039</td>
+<td>5.033543</td>
+<td>2.791204</td>
+<td>11.735176</td>
+<td>37.910130</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2002-01-02</td>
-<td>0.353160</td>
-<td>0.308827</td>
-<td>15.008610</td>
-<td>18.880257</td>
+<td>17.746569</td>
+<td>0.352695</td>
+<td>14.936458</td>
+<td>2.945556</td>
+<td>18.811562</td>
 <td>15.845817</td>
-<td>28.870050</td>
-<td>8.765645</td>
-<td>17.551647</td>
-<td>16.954996</td>
-<td>4.300000</td>
+<td>7.497190</td>
+<td>971.706116</td>
+<td>16.916937</td>
+<td>15.362686</td>
 <td>...</td>
-<td>5.502244</td>
-<td>14.270627</td>
-<td>9.262630</td>
-<td>30.528574</td>
-<td>10.145624</td>
-<td>15.223341</td>
-<td>5.709144</td>
-<td>20.927788</td>
-<td>38.381535</td>
-<td>19.711607</td>
+<td>24.540001</td>
+<td>4.569910</td>
+<td>14.970884</td>
+<td>38.750000</td>
+<td>20.443911</td>
+<td>5.303473</td>
+<td>4.929180</td>
+<td>2.770977</td>
+<td>11.727076</td>
+<td>38.239510</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-01-03</td>
-<td>0.357404</td>
-<td>0.308827</td>
-<td>15.022053</td>
-<td>18.289574</td>
+<td>18.868996</td>
+<td>0.356933</td>
+<td>14.949837</td>
+<td>3.008889</td>
+<td>18.223030</td>
 <td>16.462931</td>
-<td>30.340614</td>
-<td>8.672855</td>
-<td>17.427847</td>
-<td>16.635281</td>
-<td>4.480000</td>
+<td>7.415218</td>
+<td>969.608521</td>
+<td>16.597942</td>
+<td>16.771030</td>
 <td>...</td>
-<td>5.655400</td>
-<td>14.110532</td>
-<td>9.603026</td>
-<td>31.089144</td>
-<td>10.194996</td>
-<td>15.728801</td>
-<td>5.685916</td>
-<td>21.769196</td>
-<td>38.335232</td>
-<td>19.741465</td>
+<td>24.170000</td>
+<td>4.785689</td>
+<td>15.467970</td>
+<td>37.990002</td>
+<td>21.265877</td>
+<td>5.322829</td>
+<td>4.929180</td>
+<td>2.791204</td>
+<td>11.770274</td>
+<td>38.193398</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2002-01-04</td>
-<td>0.359071</td>
-<td>0.308827</td>
-<td>14.995171</td>
-<td>19.953569</td>
+<td>19.888290</td>
+<td>0.358599</td>
+<td>14.923080</td>
+<td>2.984444</td>
+<td>19.880976</td>
 <td>17.866360</td>
-<td>30.525223</td>
-<td>8.351179</td>
-<td>17.280092</td>
-<td>16.395496</td>
-<td>4.500000</td>
+<td>7.541327</td>
+<td>959.984192</td>
+<td>16.358702</td>
+<td>16.671478</td>
 <td>...</td>
-<td>5.604348</td>
-<td>14.185513</td>
-<td>9.819045</td>
-<td>31.756235</td>
-<td>10.387540</td>
-<td>15.888920</td>
-<td>5.690560</td>
-<td>21.864100</td>
-<td>38.083996</td>
-<td>19.910711</td>
+<td>23.950001</td>
+<td>4.700920</td>
+<td>15.625427</td>
+<td>38.889999</td>
+<td>21.358564</td>
+<td>5.122231</td>
+<td>5.178046</td>
+<td>2.831656</td>
+<td>11.799970</td>
+<td>37.943069</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-01-07</td>
-<td>0.347098</td>
-<td>0.308827</td>
-<td>14.890348</td>
-<td>19.053139</td>
-<td>17.995756</td>
-<td>29.824957</td>
-<td>8.307874</td>
-<td>17.551647</td>
-<td>15.915919</td>
-<td>5.010000</td>
+<td>19.809412</td>
+<td>0.346641</td>
+<td>14.818761</td>
+<td>2.997778</td>
+<td>18.983816</td>
+<td>17.995752</td>
+<td>7.289105</td>
+<td>947.644836</td>
+<td>15.880191</td>
+<td>16.494522</td>
 <td>...</td>
-<td>5.485227</td>
-<td>14.094324</td>
-<td>9.807587</td>
-<td>32.014080</td>
-<td>10.362859</td>
-<td>15.791601</td>
-<td>5.597653</td>
-<td>22.066542</td>
-<td>37.945152</td>
-<td>19.736486</td>
+<td>23.790001</td>
+<td>4.758718</td>
+<td>15.529716</td>
+<td>38.740002</td>
+<td>21.556326</td>
+<td>4.999060</td>
+<td>5.507194</td>
+<td>2.892334</td>
+<td>11.818866</td>
+<td>37.804741</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -905,136 +966,136 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-10-18</td>
-<td>175.839996</td>
-<td>2.450000</td>
-<td>95.559998</td>
-<td>303.769989</td>
-<td>557.869995</td>
-<td>171.270004</td>
-<td>74.519997</td>
-<td>75.169998</td>
-<td>234.339996</td>
-<td>272.399994</td>
+<td data-quarto-table-cell-role="th">2024-01-22</td>
+<td>132.550003</td>
+<td>193.889999</td>
+<td>114.190002</td>
+<td>80.470001</td>
+<td>367.209991</td>
+<td>603.590027</td>
+<td>84.500000</td>
+<td>69.260002</td>
+<td>237.520004</td>
+<td>168.300003</td>
 <td>...</td>
-<td>7.400000</td>
-<td>536.059998</td>
-<td>205.919998</td>
-<td>153.820007</td>
-<td>33.369999</td>
-<td>31.049999</td>
-<td>101.660004</td>
-<td>21.250000</td>
-<td>161.539993</td>
-<td>112.949997</td>
+<td>440.109985</td>
+<td>48.439999</td>
+<td>39.580002</td>
+<td>317.049988</td>
+<td>22.559999</td>
+<td>152.600006</td>
+<td>57.000000</td>
+<td>20.430000</td>
+<td>48.529999</td>
+<td>162.389999</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-10-19</td>
-<td>175.460007</td>
-<td>2.450000</td>
-<td>95.440002</td>
-<td>302.940002</td>
-<td>555.739990</td>
-<td>168.720001</td>
-<td>73.839996</td>
-<td>74.419998</td>
-<td>231.029999</td>
-<td>270.290009</td>
+<td data-quarto-table-cell-role="th">2024-01-23</td>
+<td>131.639999</td>
+<td>195.179993</td>
+<td>114.000000</td>
+<td>80.339996</td>
+<td>369.859985</td>
+<td>597.179993</td>
+<td>84.639999</td>
+<td>69.000000</td>
+<td>239.679993</td>
+<td>167.050003</td>
 <td>...</td>
-<td>7.550000</td>
-<td>531.630005</td>
-<td>210.330002</td>
-<td>152.059998</td>
-<td>32.750000</td>
-<td>31.580000</td>
-<td>100.080002</td>
-<td>20.959999</td>
-<td>160.770004</td>
-<td>113.019997</td>
+<td>439.700012</td>
+<td>47.680000</td>
+<td>42.230000</td>
+<td>316.440002</td>
+<td>22.580000</td>
+<td>153.350006</td>
+<td>57.730000</td>
+<td>20.510000</td>
+<td>49.119999</td>
+<td>162.800003</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-10-20</td>
-<td>172.880005</td>
-<td>2.460000</td>
-<td>96.779999</td>
-<td>297.000000</td>
-<td>540.960022</td>
-<td>166.520004</td>
-<td>72.849998</td>
-<td>73.349998</td>
-<td>227.570007</td>
-<td>269.880005</td>
+<td data-quarto-table-cell-role="th">2024-01-24</td>
+<td>129.779999</td>
+<td>194.500000</td>
+<td>110.769997</td>
+<td>80.129997</td>
+<td>368.899994</td>
+<td>606.479980</td>
+<td>85.000000</td>
+<td>69.160004</td>
+<td>239.070007</td>
+<td>174.139999</td>
 <td>...</td>
-<td>7.430000</td>
-<td>527.030029</td>
-<td>211.339996</td>
-<td>151.960007</td>
-<td>30.930000</td>
-<td>31.570000</td>
-<td>99.699997</td>
-<td>21.260000</td>
-<td>158.759995</td>
-<td>111.080002</td>
+<td>427.559998</td>
+<td>47.549999</td>
+<td>41.279999</td>
+<td>312.420013</td>
+<td>22.370001</td>
+<td>151.800003</td>
+<td>58.029999</td>
+<td>20.379999</td>
+<td>49.490002</td>
+<td>160.500000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-10-23</td>
-<td>173.000000</td>
-<td>2.450000</td>
-<td>95.779999</td>
-<td>294.940002</td>
-<td>540.409973</td>
-<td>163.869995</td>
-<td>72.400002</td>
-<td>73.349998</td>
-<td>227.699997</td>
-<td>265.720001</td>
+<td data-quarto-table-cell-role="th">2024-01-25</td>
+<td>129.880005</td>
+<td>194.169998</td>
+<td>112.449997</td>
+<td>79.599998</td>
+<td>371.940002</td>
+<td>622.580017</td>
+<td>84.889999</td>
+<td>68.980003</td>
+<td>237.750000</td>
+<td>172.630005</td>
 <td>...</td>
-<td>7.420000</td>
-<td>521.570007</td>
-<td>207.759995</td>
-<td>148.160004</td>
-<td>31.260000</td>
-<td>31.389999</td>
-<td>98.739998</td>
-<td>21.959999</td>
-<td>161.009995</td>
-<td>109.449997</td>
+<td>429.959991</td>
+<td>47.439999</td>
+<td>42.290001</td>
+<td>312.000000</td>
+<td>23.110001</td>
+<td>153.429993</td>
+<td>60.330002</td>
+<td>20.660000</td>
+<td>49.880001</td>
+<td>162.839996</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-10-24</td>
-<td>173.440002</td>
-<td>2.500000</td>
-<td>94.809998</td>
-<td>296.089996</td>
-<td>539.559998</td>
-<td>164.929993</td>
-<td>69.470001</td>
-<td>74.739998</td>
-<td>231.210007</td>
-<td>265.459991</td>
+<td data-quarto-table-cell-role="th">2024-01-26</td>
+<td>130.990005</td>
+<td>192.419998</td>
+<td>112.010002</td>
+<td>79.900002</td>
+<td>371.070007</td>
+<td>613.929993</td>
+<td>85.309998</td>
+<td>69.529999</td>
+<td>233.029999</td>
+<td>166.899994</td>
 <td>...</td>
-<td>7.440000</td>
-<td>525.000000</td>
-<td>205.440002</td>
-<td>149.320007</td>
-<td>31.389999</td>
-<td>34.299999</td>
-<td>99.940002</td>
-<td>21.370001</td>
-<td>163.250000</td>
-<td>108.389999</td>
+<td>430.170013</td>
+<td>47.400002</td>
+<td>42.400002</td>
+<td>316.119995</td>
+<td>22.850000</td>
+<td>154.410004</td>
+<td>58.230000</td>
+<td>20.670000</td>
+<td>50.320000</td>
+<td>164.270004</td>
 </tr>
 </tbody>
 </table>
 
-<p>5492 rows × 135 columns</p>
+<p>5556 rows × 160 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.dropna(axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="115">
+<div class="cell" data-execution_count="228">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_init <span class="op">=</span> data_init.dropna(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data_init</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="228">
 <div>
 
 
@@ -1042,27 +1103,27 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">A</th>
 <th data-quarto-table-cell-role="th">AAPL</th>
-<th data-quarto-table-cell-role="th">ABEV</th>
 <th data-quarto-table-cell-role="th">ABT</th>
+<th data-quarto-table-cell-role="th">ACGL</th>
 <th data-quarto-table-cell-role="th">ACN</th>
 <th data-quarto-table-cell-role="th">ADBE</th>
-<th data-quarto-table-cell-role="th">ADI</th>
-<th data-quarto-table-cell-role="th">ADM</th>
-<th data-quarto-table-cell-role="th">AEP</th>
+<th data-quarto-table-cell-role="th">AFL</th>
+<th data-quarto-table-cell-role="th">AIG</th>
 <th data-quarto-table-cell-role="th">AJG</th>
-<th data-quarto-table-cell-role="th">ALGN</th>
+<th data-quarto-table-cell-role="th">AMAT</th>
 <th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">UMC</th>
-<th data-quarto-table-cell-role="th">UNH</th>
-<th data-quarto-table-cell-role="th">UNP</th>
-<th data-quarto-table-cell-role="th">UPS</th>
-<th data-quarto-table-cell-role="th">USB</th>
+<th data-quarto-table-cell-role="th">VRTX</th>
+<th data-quarto-table-cell-role="th">VTR</th>
 <th data-quarto-table-cell-role="th">VZ</th>
-<th data-quarto-table-cell-role="th">WAB</th>
+<th data-quarto-table-cell-role="th">WAT</th>
 <th data-quarto-table-cell-role="th">WBA</th>
+<th data-quarto-table-cell-role="th">WCN</th>
+<th data-quarto-table-cell-role="th">WDC</th>
+<th data-quarto-table-cell-role="th">WDS</th>
+<th data-quarto-table-cell-role="th">WFC</th>
 <th data-quarto-table-cell-role="th">WMT</th>
-<th data-quarto-table-cell-role="th">XOM</th>
 </tr>
 <tr class="odd">
 <th data-quarto-table-cell-role="th">Date</th>
@@ -1092,123 +1153,123 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-12-16</td>
-<td>0.225083</td>
-<td>0.23162</td>
-<td>11.242016</td>
-<td>12.822151</td>
+<td>10.690413</td>
+<td>0.224787</td>
+<td>11.187967</td>
+<td>3.474444</td>
+<td>12.775499</td>
 <td>13.237535</td>
-<td>17.169249</td>
-<td>8.008354</td>
-<td>11.473660</td>
-<td>15.008780</td>
-<td>3.430000</td>
+<td>9.424965</td>
+<td>758.508911</td>
+<td>14.975086</td>
+<td>10.662081</td>
 <td>...</td>
-<td>2.165762</td>
-<td>16.765938</td>
-<td>10.106949</td>
-<td>36.486992</td>
-<td>10.987369</td>
-<td>13.026583</td>
-<td>6.303859</td>
-<td>18.376917</td>
-<td>34.474094</td>
-<td>18.295858</td>
+<td>16.790001</td>
+<td>4.659505</td>
+<td>12.810547</td>
+<td>20.959999</td>
+<td>17.952019</td>
+<td>6.325806</td>
+<td>5.659726</td>
+<td>2.912350</td>
+<td>12.977189</td>
+<td>34.346539</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2002-12-17</td>
-<td>0.228569</td>
-<td>0.23162</td>
-<td>11.255742</td>
-<td>13.023845</td>
+<td>10.556931</td>
+<td>0.228268</td>
+<td>11.201620</td>
+<td>3.402222</td>
+<td>12.976459</td>
 <td>13.377089</td>
-<td>17.131050</td>
-<td>7.819630</td>
-<td>11.700225</td>
-<td>14.826304</td>
-<td>3.280000</td>
+<td>9.348700</td>
+<td>749.475708</td>
+<td>14.793025</td>
+<td>10.219672</td>
 <td>...</td>
-<td>2.136574</td>
-<td>16.697002</td>
-<td>10.053861</td>
-<td>36.271317</td>
-<td>10.901052</td>
-<td>12.772179</td>
-<td>6.336473</td>
-<td>18.503960</td>
-<td>33.810364</td>
-<td>18.122383</td>
+<td>16.950001</td>
+<td>4.597099</td>
+<td>12.560366</td>
+<td>20.950001</td>
+<td>18.076126</td>
+<td>6.466575</td>
+<td>5.563388</td>
+<td>2.848576</td>
+<td>12.927494</td>
+<td>33.685261</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-12-18</td>
-<td>0.220839</td>
-<td>0.23162</td>
-<td>11.189867</td>
-<td>12.959014</td>
-<td>12.973382</td>
-<td>16.074289</td>
-<td>7.687520</td>
-<td>11.755794</td>
-<td>14.577931</td>
-<td>3.050000</td>
+<td>10.223237</td>
+<td>0.220548</td>
+<td>11.136068</td>
+<td>3.372222</td>
+<td>12.911861</td>
+<td>12.973383</td>
+<td>9.374124</td>
+<td>730.544128</td>
+<td>14.545205</td>
+<td>9.777258</td>
 <td>...</td>
-<td>2.043172</td>
-<td>16.626055</td>
-<td>9.954317</td>
-<td>36.294014</td>
-<td>10.677649</td>
-<td>12.801530</td>
-<td>6.103514</td>
-<td>18.364222</td>
-<td>33.487984</td>
-<td>18.132597</td>
+<td>16.879999</td>
+<td>4.659505</td>
+<td>12.589236</td>
+<td>20.969999</td>
+<td>17.939608</td>
+<td>6.514087</td>
+<td>5.202130</td>
+<td>2.857079</td>
+<td>12.775632</td>
+<td>33.364067</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2002-12-19</td>
-<td>0.215230</td>
-<td>0.23162</td>
-<td>11.085575</td>
-<td>12.634859</td>
+<td>10.168632</td>
+<td>0.214947</td>
+<td>11.032280</td>
+<td>3.383333</td>
+<td>12.588892</td>
 <td>12.729166</td>
-<td>15.883307</td>
-<td>7.681227</td>
-<td>11.657471</td>
-<td>14.496831</td>
-<td>2.900000</td>
+<td>9.227955</td>
+<td>718.789368</td>
+<td>14.464287</td>
+<td>9.976346</td>
 <td>...</td>
-<td>2.037334</td>
-<td>16.624023</td>
-<td>9.954317</td>
-<td>36.118042</td>
-<td>10.652270</td>
-<td>12.651503</td>
-<td>6.178061</td>
-<td>18.408678</td>
-<td>33.341740</td>
-<td>17.933613</td>
+<td>16.610001</td>
+<td>4.659505</td>
+<td>12.441692</td>
+<td>20.590000</td>
+<td>17.983047</td>
+<td>6.419065</td>
+<td>5.194102</td>
+<td>2.891092</td>
+<td>12.748014</td>
+<td>33.218376</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2002-12-20</td>
-<td>0.214321</td>
-<td>0.23162</td>
-<td>10.621729</td>
-<td>12.353925</td>
-<td>12.828848</td>
-<td>16.201601</td>
-<td>7.807046</td>
-<td>11.875497</td>
-<td>14.689438</td>
-<td>3.050000</td>
+<td>10.920969</td>
+<td>0.214039</td>
+<td>10.570665</td>
+<td>3.388889</td>
+<td>12.308981</td>
+<td>12.828847</td>
+<td>9.278793</td>
+<td>730.915466</td>
+<td>14.656469</td>
+<td>9.814127</td>
 <td>...</td>
-<td>2.049009</td>
-<td>16.439529</td>
-<td>10.101971</td>
-<td>36.203201</td>
-<td>11.119382</td>
-<td>13.046148</td>
-<td>6.289883</td>
-<td>18.866041</td>
-<td>33.760506</td>
-<td>18.214230</td>
+<td>16.670000</td>
+<td>4.655344</td>
+<td>12.829791</td>
+<td>20.799999</td>
+<td>18.429834</td>
+<td>6.686528</td>
+<td>5.410858</td>
+<td>2.891092</td>
+<td>12.996518</td>
+<td>33.635590</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -1235,136 +1296,136 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-10-09</td>
-<td>178.990005</td>
-<td>2.53000</td>
-<td>96.227318</td>
-<td>310.721283</td>
-<td>529.289978</td>
-<td>173.320007</td>
-<td>73.900002</td>
-<td>73.660004</td>
-<td>233.110001</td>
-<td>283.940002</td>
+<td data-quarto-table-cell-role="th">2024-01-22</td>
+<td>132.550003</td>
+<td>193.889999</td>
+<td>114.190002</td>
+<td>80.470001</td>
+<td>367.209991</td>
+<td>603.590027</td>
+<td>84.500000</td>
+<td>69.260002</td>
+<td>237.520004</td>
+<td>168.300003</td>
 <td>...</td>
-<td>7.090000</td>
-<td>526.510010</td>
-<td>204.300003</td>
-<td>154.339996</td>
-<td>32.009998</td>
-<td>31.450001</td>
-<td>103.370003</td>
-<td>22.270000</td>
-<td>155.839996</td>
-<td>110.919998</td>
+<td>440.109985</td>
+<td>48.439999</td>
+<td>39.580002</td>
+<td>317.049988</td>
+<td>22.559999</td>
+<td>152.600006</td>
+<td>57.000000</td>
+<td>20.430000</td>
+<td>48.529999</td>
+<td>162.389999</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-10-10</td>
-<td>178.389999</td>
-<td>2.60000</td>
-<td>97.022911</td>
-<td>311.029999</td>
-<td>532.719971</td>
-<td>175.970001</td>
-<td>74.150002</td>
-<td>74.230003</td>
-<td>233.490005</td>
-<td>286.510010</td>
+<td data-quarto-table-cell-role="th">2024-01-23</td>
+<td>131.639999</td>
+<td>195.179993</td>
+<td>114.000000</td>
+<td>80.339996</td>
+<td>369.859985</td>
+<td>597.179993</td>
+<td>84.639999</td>
+<td>69.000000</td>
+<td>239.679993</td>
+<td>167.050003</td>
 <td>...</td>
-<td>7.170000</td>
-<td>524.239990</td>
-<td>206.350006</td>
-<td>155.550003</td>
-<td>32.590000</td>
-<td>31.760000</td>
-<td>104.940002</td>
-<td>22.379999</td>
-<td>157.600006</td>
-<td>110.449997</td>
+<td>439.700012</td>
+<td>47.680000</td>
+<td>42.230000</td>
+<td>316.440002</td>
+<td>22.580000</td>
+<td>153.350006</td>
+<td>57.730000</td>
+<td>20.510000</td>
+<td>49.119999</td>
+<td>162.800003</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-10-11</td>
-<td>179.800003</td>
-<td>2.60000</td>
-<td>92.129997</td>
-<td>312.540009</td>
-<td>549.909973</td>
-<td>174.919998</td>
-<td>73.699997</td>
-<td>75.279999</td>
-<td>234.899994</td>
-<td>277.519989</td>
+<td data-quarto-table-cell-role="th">2024-01-24</td>
+<td>129.779999</td>
+<td>194.500000</td>
+<td>110.769997</td>
+<td>80.129997</td>
+<td>368.899994</td>
+<td>606.479980</td>
+<td>85.000000</td>
+<td>69.160004</td>
+<td>239.070007</td>
+<td>174.139999</td>
 <td>...</td>
-<td>7.250000</td>
-<td>524.130005</td>
-<td>209.479996</td>
-<td>155.300003</td>
-<td>32.509998</td>
-<td>31.459999</td>
-<td>105.739998</td>
-<td>22.600000</td>
-<td>158.229996</td>
-<td>106.489998</td>
+<td>427.559998</td>
+<td>47.549999</td>
+<td>41.279999</td>
+<td>312.420013</td>
+<td>22.370001</td>
+<td>151.800003</td>
+<td>58.029999</td>
+<td>20.379999</td>
+<td>49.490002</td>
+<td>160.500000</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-10-12</td>
-<td>180.710007</td>
-<td>2.54000</td>
-<td>90.190002</td>
-<td>304.359985</td>
-<td>559.630005</td>
-<td>173.600006</td>
-<td>72.769997</td>
-<td>73.480003</td>
-<td>233.440002</td>
-<td>268.000000</td>
+<td data-quarto-table-cell-role="th">2024-01-25</td>
+<td>129.880005</td>
+<td>194.169998</td>
+<td>112.449997</td>
+<td>79.599998</td>
+<td>371.940002</td>
+<td>622.580017</td>
+<td>84.889999</td>
+<td>68.980003</td>
+<td>237.750000</td>
+<td>172.630005</td>
 <td>...</td>
-<td>7.210000</td>
-<td>525.539978</td>
-<td>207.990005</td>
-<td>155.380005</td>
-<td>32.259998</td>
-<td>30.910000</td>
-<td>104.010002</td>
-<td>24.190001</td>
-<td>158.949997</td>
-<td>106.470001</td>
+<td>429.959991</td>
+<td>47.439999</td>
+<td>42.290001</td>
+<td>312.000000</td>
+<td>23.110001</td>
+<td>153.429993</td>
+<td>60.330002</td>
+<td>20.660000</td>
+<td>49.880001</td>
+<td>162.839996</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-10-13</td>
-<td>178.850006</td>
-<td>2.55000</td>
-<td>90.870003</td>
-<td>301.829987</td>
-<td>548.760010</td>
-<td>171.070007</td>
-<td>73.320000</td>
-<td>74.470001</td>
-<td>233.880005</td>
-<td>265.989990</td>
+<td data-quarto-table-cell-role="th">2024-01-26</td>
+<td>130.990005</td>
+<td>192.419998</td>
+<td>112.010002</td>
+<td>79.900002</td>
+<td>371.070007</td>
+<td>613.929993</td>
+<td>85.309998</td>
+<td>69.529999</td>
+<td>233.029999</td>
+<td>166.899994</td>
 <td>...</td>
-<td>7.100000</td>
-<td>539.400024</td>
-<td>207.750000</td>
-<td>155.080002</td>
-<td>32.169998</td>
-<td>30.670000</td>
-<td>102.570000</td>
-<td>23.250000</td>
-<td>159.830002</td>
-<td>109.870003</td>
+<td>430.170013</td>
+<td>47.400002</td>
+<td>42.400002</td>
+<td>316.119995</td>
+<td>22.850000</td>
+<td>154.410004</td>
+<td>58.230000</td>
+<td>20.670000</td>
+<td>50.320000</td>
+<td>164.270004</td>
 </tr>
 </tbody>
 </table>
 
-<p>5243 rows × 135 columns</p>
+<p>5314 rows × 160 columns</p>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data.T</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
+<div class="cell" data-execution_count="229">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data_init.T</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="229">
 <div>
 
 
@@ -1383,138 +1444,138 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <th data-quarto-table-cell-role="th">2002-12-27</th>
 <th data-quarto-table-cell-role="th">2002-12-30</th>
 <th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">2023-10-02</th>
-<th data-quarto-table-cell-role="th">2023-10-03</th>
-<th data-quarto-table-cell-role="th">2023-10-04</th>
-<th data-quarto-table-cell-role="th">2023-10-05</th>
-<th data-quarto-table-cell-role="th">2023-10-06</th>
-<th data-quarto-table-cell-role="th">2023-10-09</th>
-<th data-quarto-table-cell-role="th">2023-10-10</th>
-<th data-quarto-table-cell-role="th">2023-10-11</th>
-<th data-quarto-table-cell-role="th">2023-10-12</th>
-<th data-quarto-table-cell-role="th">2023-10-13</th>
+<th data-quarto-table-cell-role="th">2024-01-12</th>
+<th data-quarto-table-cell-role="th">2024-01-16</th>
+<th data-quarto-table-cell-role="th">2024-01-17</th>
+<th data-quarto-table-cell-role="th">2024-01-18</th>
+<th data-quarto-table-cell-role="th">2024-01-19</th>
+<th data-quarto-table-cell-role="th">2024-01-22</th>
+<th data-quarto-table-cell-role="th">2024-01-23</th>
+<th data-quarto-table-cell-role="th">2024-01-24</th>
+<th data-quarto-table-cell-role="th">2024-01-25</th>
+<th data-quarto-table-cell-role="th">2024-01-26</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">AAPL</td>
-<td>0.225083</td>
-<td>0.228569</td>
-<td>0.220839</td>
-<td>0.215230</td>
-<td>0.214321</td>
-<td>0.219626</td>
-<td>0.217656</td>
-<td>0.218262</td>
-<td>0.213108</td>
-<td>0.213260</td>
+<td data-quarto-table-cell-role="th">A</td>
+<td>10.690413</td>
+<td>10.556931</td>
+<td>10.223237</td>
+<td>10.168632</td>
+<td>10.920969</td>
+<td>11.248591</td>
+<td>11.060510</td>
+<td>11.102981</td>
+<td>11.042307</td>
+<td>10.927034</td>
 <td>...</td>
-<td>173.750000</td>
-<td>172.399994</td>
-<td>173.660004</td>
-<td>174.910004</td>
-<td>177.490005</td>
-<td>178.990005</td>
-<td>178.389999</td>
-<td>179.800003</td>
-<td>180.710007</td>
-<td>178.850006</td>
+<td>130.539993</td>
+<td>130.529999</td>
+<td>128.119995</td>
+<td>130.460007</td>
+<td>131.220001</td>
+<td>132.550003</td>
+<td>131.639999</td>
+<td>129.779999</td>
+<td>129.880005</td>
+<td>130.990005</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">ABEV</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
-<td>0.231620</td>
+<td data-quarto-table-cell-role="th">AAPL</td>
+<td>0.224787</td>
+<td>0.228268</td>
+<td>0.220548</td>
+<td>0.214947</td>
+<td>0.214039</td>
+<td>0.219337</td>
+<td>0.217370</td>
+<td>0.217975</td>
+<td>0.212828</td>
+<td>0.212980</td>
 <td>...</td>
-<td>2.550000</td>
-<td>2.500000</td>
-<td>2.550000</td>
-<td>2.490000</td>
-<td>2.540000</td>
-<td>2.530000</td>
-<td>2.600000</td>
-<td>2.600000</td>
-<td>2.540000</td>
-<td>2.550000</td>
+<td>185.919998</td>
+<td>183.630005</td>
+<td>182.679993</td>
+<td>188.630005</td>
+<td>191.559998</td>
+<td>193.889999</td>
+<td>195.179993</td>
+<td>194.500000</td>
+<td>194.169998</td>
+<td>192.419998</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABT</td>
-<td>11.242016</td>
-<td>11.255742</td>
-<td>11.189867</td>
-<td>11.085575</td>
-<td>10.621729</td>
-<td>10.465286</td>
-<td>10.347263</td>
-<td>10.059079</td>
-<td>10.094759</td>
-<td>10.182588</td>
+<td>11.187967</td>
+<td>11.201620</td>
+<td>11.136068</td>
+<td>11.032280</td>
+<td>10.570665</td>
+<td>10.414969</td>
+<td>10.297520</td>
+<td>10.010720</td>
+<td>10.046227</td>
+<td>10.133636</td>
 <td>...</td>
-<td>95.202988</td>
-<td>95.262657</td>
-<td>95.123428</td>
-<td>95.670395</td>
-<td>96.346657</td>
-<td>96.227318</td>
-<td>97.022911</td>
-<td>92.129997</td>
-<td>90.190002</td>
-<td>90.870003</td>
+<td>113.919998</td>
+<td>113.760002</td>
+<td>113.930000</td>
+<td>114.019997</td>
+<td>114.690002</td>
+<td>114.190002</td>
+<td>114.000000</td>
+<td>110.769997</td>
+<td>112.449997</td>
+<td>112.010002</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">ACN</td>
-<td>12.822151</td>
-<td>13.023845</td>
-<td>12.959014</td>
-<td>12.634859</td>
-<td>12.353925</td>
-<td>12.389941</td>
-<td>12.584430</td>
-<td>12.865371</td>
-<td>12.742911</td>
-<td>12.836556</td>
+<td data-quarto-table-cell-role="th">ACGL</td>
+<td>3.474444</td>
+<td>3.402222</td>
+<td>3.372222</td>
+<td>3.383333</td>
+<td>3.388889</td>
+<td>3.397778</td>
+<td>3.425556</td>
+<td>3.432222</td>
+<td>3.387778</td>
+<td>3.343333</td>
 <td>...</td>
-<td>306.986786</td>
-<td>304.965179</td>
-<td>308.112122</td>
-<td>308.380981</td>
-<td>310.900543</td>
-<td>310.721283</td>
-<td>311.029999</td>
-<td>312.540009</td>
-<td>304.359985</td>
-<td>301.829987</td>
+<td>77.690002</td>
+<td>78.169998</td>
+<td>78.669998</td>
+<td>78.959999</td>
+<td>80.879997</td>
+<td>80.470001</td>
+<td>80.339996</td>
+<td>80.129997</td>
+<td>79.599998</td>
+<td>79.900002</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">ADBE</td>
-<td>13.237535</td>
-<td>13.377089</td>
-<td>12.973382</td>
-<td>12.729166</td>
-<td>12.828848</td>
-<td>13.232551</td>
-<td>13.073062</td>
-<td>12.803926</td>
-<td>12.549742</td>
-<td>12.405205</td>
+<td data-quarto-table-cell-role="th">ACN</td>
+<td>12.775499</td>
+<td>12.976459</td>
+<td>12.911861</td>
+<td>12.588892</td>
+<td>12.308981</td>
+<td>12.344862</td>
+<td>12.538649</td>
+<td>12.818563</td>
+<td>12.696548</td>
+<td>12.789855</td>
 <td>...</td>
-<td>521.130005</td>
-<td>507.029999</td>
-<td>518.419983</td>
-<td>516.440002</td>
-<td>526.679993</td>
-<td>529.289978</td>
-<td>532.719971</td>
-<td>549.909973</td>
-<td>559.630005</td>
-<td>548.760010</td>
+<td>355.033539</td>
+<td>353.269989</td>
+<td>353.649994</td>
+<td>359.549988</td>
+<td>363.899994</td>
+<td>367.209991</td>
+<td>369.859985</td>
+<td>368.899994</td>
+<td>371.940002</td>
+<td>371.070007</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -1541,298 +1602,803 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">VZ</td>
-<td>13.026583</td>
-<td>12.772179</td>
-<td>12.801530</td>
-<td>12.651503</td>
-<td>13.046148</td>
-<td>13.013534</td>
-<td>12.883075</td>
-<td>12.945032</td>
-<td>12.687381</td>
-<td>12.713467</td>
+<td data-quarto-table-cell-role="th">WCN</td>
+<td>6.325806</td>
+<td>6.466575</td>
+<td>6.514087</td>
+<td>6.419065</td>
+<td>6.686528</td>
+<td>6.670691</td>
+<td>6.640778</td>
+<td>6.704123</td>
+<td>6.635498</td>
+<td>6.726998</td>
 <td>...</td>
-<td>31.096254</td>
-<td>31.311655</td>
-<td>30.880852</td>
-<td>31.154999</td>
-<td>30.850000</td>
-<td>31.450001</td>
-<td>31.760000</td>
-<td>31.459999</td>
-<td>30.910000</td>
-<td>30.670000</td>
+<td>148.919998</td>
+<td>146.830002</td>
+<td>146.720001</td>
+<td>149.589996</td>
+<td>152.199997</td>
+<td>152.600006</td>
+<td>153.350006</td>
+<td>151.800003</td>
+<td>153.429993</td>
+<td>154.410004</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">WAB</td>
-<td>6.303859</td>
-<td>6.336473</td>
-<td>6.103514</td>
-<td>6.178061</td>
-<td>6.289883</td>
-<td>6.219993</td>
-<td>6.294541</td>
-<td>6.397041</td>
-<td>6.322494</td>
-<td>6.471588</td>
+<td data-quarto-table-cell-role="th">WDC</td>
+<td>5.659726</td>
+<td>5.563388</td>
+<td>5.202130</td>
+<td>5.194102</td>
+<td>5.410858</td>
+<td>5.178046</td>
+<td>5.418886</td>
+<td>5.322549</td>
+<td>5.186075</td>
+<td>5.073682</td>
 <td>...</td>
-<td>105.239998</td>
-<td>104.500000</td>
-<td>105.000000</td>
-<td>102.099998</td>
-<td>102.930000</td>
-<td>103.370003</td>
-<td>104.940002</td>
-<td>105.739998</td>
-<td>104.010002</td>
-<td>102.570000</td>
+<td>50.009998</td>
+<td>52.230000</td>
+<td>52.320000</td>
+<td>53.549999</td>
+<td>54.770000</td>
+<td>57.000000</td>
+<td>57.730000</td>
+<td>58.029999</td>
+<td>60.330002</td>
+<td>58.230000</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">WBA</td>
-<td>18.376917</td>
-<td>18.503960</td>
-<td>18.364222</td>
-<td>18.408678</td>
-<td>18.866041</td>
-<td>18.554777</td>
-<td>18.453140</td>
-<td>18.357862</td>
-<td>18.294350</td>
-<td>18.345161</td>
+<td data-quarto-table-cell-role="th">WDS</td>
+<td>2.912350</td>
+<td>2.848576</td>
+<td>2.857079</td>
+<td>2.891092</td>
+<td>2.891092</td>
+<td>2.891092</td>
+<td>2.869833</td>
+<td>2.869833</td>
+<td>2.869833</td>
+<td>2.976125</td>
 <td>...</td>
-<td>22.420000</td>
-<td>22.549999</td>
-<td>22.290001</td>
-<td>22.180000</td>
-<td>21.809999</td>
-<td>22.270000</td>
-<td>22.379999</td>
-<td>22.600000</td>
-<td>24.190001</td>
-<td>23.250000</td>
+<td>20.940001</td>
+<td>20.360001</td>
+<td>20.190001</td>
+<td>20.219999</td>
+<td>20.309999</td>
+<td>20.430000</td>
+<td>20.510000</td>
+<td>20.379999</td>
+<td>20.660000</td>
+<td>20.670000</td>
 </tr>
 <tr class="even">
+<td data-quarto-table-cell-role="th">WFC</td>
+<td>12.977189</td>
+<td>12.927494</td>
+<td>12.775632</td>
+<td>12.748014</td>
+<td>12.996518</td>
+<td>12.993757</td>
+<td>12.955107</td>
+<td>12.933015</td>
+<td>12.783907</td>
+<td>12.999282</td>
+<td>...</td>
+<td>47.400002</td>
+<td>46.820000</td>
+<td>46.669998</td>
+<td>46.439999</td>
+<td>48.119999</td>
+<td>48.529999</td>
+<td>49.119999</td>
+<td>49.490002</td>
+<td>49.880001</td>
+<td>50.320000</td>
+</tr>
+<tr class="odd">
 <td data-quarto-table-cell-role="th">WMT</td>
-<td>34.474094</td>
-<td>33.810364</td>
-<td>33.487984</td>
-<td>33.341740</td>
-<td>33.760506</td>
-<td>32.962849</td>
-<td>33.035984</td>
-<td>33.075851</td>
-<td>32.677044</td>
-<td>33.660805</td>
+<td>34.346539</td>
+<td>33.685261</td>
+<td>33.364067</td>
+<td>33.218376</td>
+<td>33.635590</td>
+<td>32.840885</td>
+<td>32.913738</td>
+<td>32.953480</td>
+<td>32.556122</td>
+<td>33.536232</td>
 <td>...</td>
-<td>160.100006</td>
-<td>159.089996</td>
-<td>161.000000</td>
-<td>159.080002</td>
-<td>156.410004</td>
-<td>155.839996</td>
-<td>157.600006</td>
-<td>158.229996</td>
-<td>158.949997</td>
-<td>159.830002</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">XOM</td>
-<td>18.295858</td>
-<td>18.122383</td>
-<td>18.132597</td>
-<td>17.933613</td>
-<td>18.214230</td>
-<td>18.239742</td>
-<td>18.071362</td>
-<td>18.020346</td>
-<td>17.673412</td>
-<td>17.729530</td>
-<td>...</td>
-<td>115.629997</td>
-<td>115.830002</td>
-<td>111.500000</td>
-<td>108.989998</td>
-<td>107.169998</td>
-<td>110.919998</td>
-<td>110.449997</td>
-<td>106.489998</td>
-<td>106.470001</td>
-<td>109.870003</td>
+<td>161.320007</td>
+<td>161.830002</td>
+<td>161.070007</td>
+<td>163.240005</td>
+<td>162.380005</td>
+<td>162.389999</td>
+<td>162.800003</td>
+<td>160.500000</td>
+<td>162.839996</td>
+<td>164.270004</td>
 </tr>
 </tbody>
 </table>
 
-<p>135 rows × 5243 columns</p>
+<p>160 rows × 5314 columns</p>
 </div>
 </div>
 </div>
 <section id="знаходження-коефіцієнтів-матриці-крос-кореляцій-1" class="level3" data-number="8.2.1">
 <h3 data-number="8.2.1" class="anchored" data-anchor-id="знаходження-коефіцієнтів-матриці-крос-кореляцій-1"><span class="header-section-number">8.2.1</span> Знаходження коефіцієнтів матриці крос-кореляцій</h3>
-<div class="cell" data-execution_count="117">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> data.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:,<span class="dv">1</span>:]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> log_ret.values</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> (log_ret <span class="op">-</span> np.mean(log_ret, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)) <span class="op">/</span> np.std(log_ret, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Перш за все нам потребується процедура для перетворення ряду до потрібного нам виду. Для цього визначимо функцію <code>transformation()</code>. З її допомогою для всього ряду та у віконній процедурі будемо рахувати прибутковості та розраховувати всі необхідні індикатори.</p>
+<div class="cell" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    for_rmt <span class="op">=</span> signal.copy()</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        for_rmt.values</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.diff(axis<span class="op">=</span><span class="dv">1</span>).iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.values</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">-=</span> np.mean(for_rmt, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">/=</span> np.std(for_rmt, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.pct_change(axis<span class="op">=</span><span class="dv">1</span>).iloc[:,<span class="dv">1</span>:]</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.values</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">-=</span> np.mean(for_rmt, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">/=</span> np.std(for_rmt, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> np.<span class="bu">abs</span>(for_rmt)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">=</span> for_rmt.values</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">-=</span> np.mean(for_rmt, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>        for_rmt <span class="op">/=</span> np.std(for_rmt, axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rmt</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="118">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>N, T <span class="op">=</span> log_ret.shape</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="211">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> transformation(data, <span class="bu">type</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="119">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>T)<span class="op">*</span>np.dot(log_ret, log_ret.T)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>di <span class="op">=</span> np.diag_indices(N)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ccoef <span class="op">=</span> np.ma.asarray(C)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ccoef[di] <span class="op">=</span> np.ma.masked</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>ccoef_flat <span class="op">=</span> ccoef.compressed()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="212">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>N, T <span class="op">=</span> log_ret.shape</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="120">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>random_stocks <span class="op">=</span> np.random.normal(size<span class="op">=</span>(N,T))</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>T)<span class="op">*</span>np.dot(random_stocks, random_stocks.T)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>di_rand <span class="op">=</span> np.diag_indices(N)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>ccoef_rand <span class="op">=</span> np.ma.asarray(R)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>ccoef_rand[di_rand] <span class="op">=</span> np.ma.masked</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>ccoef_flat_rand <span class="op">=</span> ccoef_rand.compressed()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Будуємо матрицю кореляцій для матриці прибутковостей наших активів:</p>
+<div class="cell" data-execution_count="441">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_cross_corr(data):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>T)<span class="op">*</span>np.dot(data, data.T)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    di <span class="op">=</span> np.diag_indices(N)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    ccoef <span class="op">=</span> np.ma.asarray(C)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    ccoef[di] <span class="op">=</span> np.ma.masked</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    ccoef_flat <span class="op">=</span> ccoef.compressed()</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C, ccoef_flat</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="121">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">0</span>])</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>im1 <span class="op">=</span> ax1.imshow(C, cmap<span class="op">=</span><span class="st">'hot'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>fig.colorbar(im1, ax<span class="op">=</span>ax1)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">1</span>])</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>im2 <span class="op">=</span> ax2.imshow(R, cmap<span class="op">=</span><span class="st">'hot'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>fig.colorbar(im2, ax<span class="op">=</span>ax2)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, :])</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ax3.hist(ccoef_flat, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$P^</span><span class="sc">{init}</span><span class="vs">(C_</span><span class="sc">{ij}</span><span class="vs">)$'</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax3.hist(ccoef_flat_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$P^</span><span class="sc">{rand}</span><span class="vs">(C_</span><span class="sc">{ij}</span><span class="vs">)$'</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>ax3.set_xlabel(<span class="vs">r'$C_</span><span class="sc">{ij}</span><span class="vs">$'</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="vs">r'$P(C_</span><span class="sc">{ij}</span><span class="vs">)$'</span>)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax3.legend()</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>fig.align_labels()</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="442">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>C, ccoef_flat <span class="op">=</span> calc_cross_corr(log_ret)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="443">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>C</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="443">
+<pre><code>array([[1.        , 0.42979246, 0.43304736, ..., 0.3747332 , 0.40580156,
+        0.33566806],
+       [0.42979246, 1.        , 0.33253841, ..., 0.30379772, 0.33559457,
+        0.29955249],
+       [0.43304736, 0.33253841, 1.        , ..., 0.26114239, 0.33433625,
+        0.36327203],
+       ...,
+       [0.3747332 , 0.30379772, 0.26114239, ..., 1.        , 0.37569424,
+        0.21525548],
+       [0.40580156, 0.33559457, 0.33433625, ..., 0.37569424, 1.        ,
+        0.28825913],
+       [0.33566806, 0.29955249, 0.36327203, ..., 0.21525548, 0.28825913,
+        1.        ]])</code></pre>
+</div>
+</div>
+<p>і матрицю кореляцій для перемішаної матриці прибутковостей:</p>
+<div class="cell" data-execution_count="444">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>random_stocks <span class="op">=</span> np.random.normal(size<span class="op">=</span>(N,T))</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>R, ccoef_flat_rand <span class="op">=</span> calc_cross_corr(random_stocks)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Виводимо результат:</p>
+<div class="cell" data-execution_count="448">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>))</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">0</span>])</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>im1 <span class="op">=</span> ax1.imshow(C, cmap<span class="op">=</span><span class="st">'hot'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>ax1.invert_yaxis()</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>fig.colorbar(im1, ax<span class="op">=</span>ax1)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">0</span>, <span class="dv">1</span>])</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>im2 <span class="op">=</span> ax2.imshow(R, cmap<span class="op">=</span><span class="st">'hot'</span>, interpolation<span class="op">=</span><span class="st">'nearest'</span>)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>ax2.invert_yaxis()</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>fig.colorbar(im2, ax<span class="op">=</span>ax2)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> fig.add_subplot(gs[<span class="dv">1</span>, :])</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>ax3.hist(ccoef_flat, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$P^</span><span class="sc">{init}</span><span class="vs">(C_</span><span class="sc">{ij}</span><span class="vs">)$'</span>)</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>ax3.hist(ccoef_flat_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$P^</span><span class="sc">{rand}</span><span class="vs">(C_</span><span class="sc">{ij}</span><span class="vs">)$'</span>)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>ax3.set_xlabel(<span class="vs">r'$C_</span><span class="sc">{ij}</span><span class="vs">$'</span>)</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>ax3.set_ylabel(<span class="vs">r'$P(C_</span><span class="sc">{ij}</span><span class="vs">)$'</span>)</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>ax3.legend()</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>fig.align_labels()</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="lab_8_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<div id="matrix_cor" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/matrix_cor-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Карти полів кореляцій вихідної і перемішаної матриць. На третому рисунку (нижній) представлено порівняння розподілів значень коефіцієнтів кореляції вихідної та перемішаної матриць</figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="розподіл-власних-значень-та-векторів" class="level3" data-number="8.2.2">
 <h3 data-number="8.2.2" class="anchored" data-anchor-id="розподіл-власних-значень-та-векторів"><span class="header-section-number">8.2.2</span> Розподіл власних значень та векторів</h3>
-<div class="cell" data-execution_count="122">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>w, v <span class="op">=</span> np.linalg.eig(C)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>w_rand, v_rand <span class="op">=</span> np.linalg.eig(R)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="406">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_lambd_eig(C):</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.linalg.eig(C)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> T<span class="op">/</span>N</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lambda_plus <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>Q <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.sqrt(<span class="dv">1</span><span class="op">/</span>Q)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>lambda_minus <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">1</span><span class="op">/</span>Q <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>np.sqrt(<span class="dv">1</span><span class="op">/</span>Q)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="125">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>lambda_plus</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
-<pre><code>1.3467116522335216</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="126">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lambda_minus</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="126">
-<pre><code>0.6532883477664784</code></pre>
+<div class="cell" data-execution_count="407">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lambdas, u <span class="op">=</span> calc_lambd_eig(C)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>lambdas_rand, u_rand <span class="op">=</span> calc_lambd_eig(R)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>Q <span class="op">=</span> T<span class="op">/</span>N</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>lambda_plus <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">1</span><span class="op">/</span>Q <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>np.sqrt(<span class="dv">1</span><span class="op">/</span>Q)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>lambda_minus <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> <span class="dv">1</span><span class="op">/</span>Q <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>np.sqrt(<span class="dv">1</span><span class="op">/</span>Q)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Верхня границя розподілу власних значень, що прогнозується ТВМ: "</span>, lambda_plus)</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Нижня границя розподілу власних значень, що прогнозується ТВМ: "</span>, lambda_minus)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Верхня границя розподілу власних значень, що прогнозується ТВМ:  1.3771872127988147
+Нижня границя розподілу власних значень, що прогнозується ТВМ:  0.6228127872011853</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="127">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lambda_random <span class="op">=</span> np.linspace(lambda_minus, lambda_plus, <span class="dv">1000</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> (Q<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>np.pi))<span class="op">*</span>np.sqrt((lambda_plus<span class="op">-</span>lambda_random)<span class="op">*</span>(lambda_random<span class="op">-</span>lambda_minus))<span class="op">/</span>lambda_random</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Генеруємо 1000 випадкових значень в діапазоні від <span class="math inline">\(\lambda_{-}\)</span> до <span class="math inline">\(\lambda_{+}\)</span>, і генеруємо <span class="math inline">\(P_{rm}(\lambda)\)</span>.</p>
+<div class="cell" data-execution_count="408">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lambda_random <span class="op">=</span> np.linspace(lambda_minus, lambda_plus, <span class="dv">1000</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>P_rm <span class="op">=</span> (Q<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>np.pi))<span class="op">*</span>np.sqrt((lambda_plus<span class="op">-</span>lambda_random)<span class="op">*</span>(lambda_random<span class="op">-</span>lambda_minus))<span class="op">/</span>lambda_random</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="128">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>lambda_max <span class="op">=</span> w.<span class="bu">max</span>()</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>lambda_max</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="128">
-<pre><code>53.422930355995014</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="129">
+<p>Виводимо результат:</p>
+<div class="cell" data-execution_count="409">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(w, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{init}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(w_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{rand}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(lambdas, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{init}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(lambdas_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{rand}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$\lambda_</span><span class="sc">{i}</span><span class="st">$'</span>)</span>
 <span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$P(\lambda_</span><span class="sc">{i}</span><span class="st">)$'</span>)</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].text(<span class="dv">20</span>, <span class="fl">0.5</span>, <span class="st">'$\lambda_</span><span class="sc">{max}</span><span class="st">=$'</span><span class="op">+</span><span class="ss">f'</span><span class="sc">{</span>lambda_max<span class="sc">:.2f}</span><span class="ss">'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].text(<span class="dv">20</span>, <span class="fl">0.5</span>, <span class="st">'$\lambda_</span><span class="sc">{max}</span><span class="st">=$'</span><span class="op">+</span><span class="ss">f'</span><span class="sc">{</span>lambdas<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.2f}</span><span class="ss">'</span>, ha<span class="op">=</span><span class="st">'center'</span>, va<span class="op">=</span><span class="st">'center'</span>)</span>
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_yscale(<span class="st">'log'</span>)</span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend()</span>
 <span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(w, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{init}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(w_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{rand}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(lambdas, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{init}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(lambdas_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{rand}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
 <span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$\lambda_</span><span class="sc">{i}</span><span class="st">$'</span>)</span>
 <span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$P(\lambda_</span><span class="sc">{i}</span><span class="st">)$'</span>)</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlim(lambda_minus<span class="op">-</span><span class="dv">3</span><span class="op">*</span>np.std(w_rand), lambda_plus<span class="op">+</span><span class="dv">3</span><span class="op">*</span>np.std(w_rand))</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].scatter(lambda_random, P, label<span class="op">=</span><span class="st">'$P_{\it</span><span class="sc">{RMT}</span><span class="st">}$'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlim(lambda_minus<span class="op">-</span><span class="dv">3</span><span class="op">*</span>np.std(lambdas_rand), lambda_plus<span class="op">+</span><span class="dv">3</span><span class="op">*</span>np.std(lambdas_rand))</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].scatter(lambda_random, P_rm, label<span class="op">=</span><span class="st">'$P_{\it</span><span class="sc">{RMT}</span><span class="st">}$'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
 <span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
 <span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="lab_8_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div id="matrix_lambda" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/matrix_lambda-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Щільність розподілу ймовірностей для матриці прибутковостей фінансових активів <span class="math inline">\(P_{empiric}^{init}\)</span> та випадкової матриці <span class="math inline">\(P_{empiric}^{rand}\)</span>. На рисунку нижче представлено щільність розподілу, що прогнозується ТВМ (зелена крива)$</figcaption>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(v[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(v_rand[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+</div>
+<div class="cell" data-execution_count="410">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(u[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(u_rand[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{1}</span><span class="st">$'</span>)</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Eigenvector components of $ \lambda_</span><span class="sc">{1}</span><span class="st"> $'</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'Компоненти власного вектора при $ \lambda_</span><span class="sc">{1}</span><span class="st"> $'</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend()</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(v[:, <span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(v_rand[:, <span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{30}</span><span class="st">$'</span>)</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Eigenvector components of $ \lambda_</span><span class="sc">{30}</span><span class="st"> $'</span>)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(v[:, <span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(v_rand[:, <span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{70}</span><span class="st">$'</span>)</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Eigenvector components of $ \lambda_</span><span class="sc">{70}</span><span class="st"> $'</span>)</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].legend()</span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(u[:, <span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(u_rand[:, <span class="dv">30</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{30}</span><span class="st">$'</span>)</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'Компоненти власного вектора при $ \lambda_</span><span class="sc">{30}</span><span class="st"> $'</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(u[:, <span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].hist(u_rand[:, <span class="dv">70</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$u_</span><span class="sc">{70}</span><span class="st">$'</span>)</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="st">'$P(u)$'</span>)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'Компоненти власного вектора при $ \lambda_</span><span class="sc">{70}</span><span class="st"> $'</span>)</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].legend()</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="lab_8_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div id="matrix_eigen" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/matrix_eigen-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей та пвипадкової матриці при <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_30\)</span> та <span class="math inline">\(\lambda_70\)</span></figcaption>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="обернене-відношення-участі-1" class="level3" data-number="8.2.3">
 <h3 data-number="8.2.3" class="anchored" data-anchor-id="обернене-відношення-участі-1"><span class="header-section-number">8.2.3</span> Обернене відношення участі</h3>
-<div class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>IPR <span class="op">=</span> np.<span class="bu">sum</span>(v<span class="op">**</span><span class="dv">4</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>IPR_rand <span class="op">=</span> np.<span class="bu">sum</span>(v_rand<span class="op">**</span><span class="dv">4</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="411">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ipr(u):</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(u<span class="op">**</span><span class="dv">4</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(w, IPR, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="vs">r'$IPR_{\it</span><span class="sc">{init}</span><span class="vs">}$'</span>, s<span class="op">=</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>ax.scatter(w_rand, IPR_rand, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="vs">r'$IPR_{\it</span><span class="sc">{rand}</span><span class="vs">}$'</span>, s<span class="op">=</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$\lambda_</span><span class="sc">{i}</span><span class="vs">$'</span>)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$IPR$'</span>)</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>ax.set_xscale(<span class="st">'log'</span>)</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="412">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>IPR <span class="op">=</span> calc_ipr(u)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>IPR_rand <span class="op">=</span> calc_ipr(u_rand)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="413">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(lambdas, IPR, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="vs">r'$IPR_</span><span class="sc">{init}</span><span class="vs">$'</span>, s<span class="op">=</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>ax.scatter(lambdas_rand, IPR_rand, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="vs">r'$IPR_</span><span class="sc">{rand}</span><span class="vs">$'</span>, s<span class="op">=</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r'$\lambda_</span><span class="sc">{i}</span><span class="vs">$'</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r'$IPR$'</span>)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>ax.set_xscale(<span class="st">'log'</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="lab_8_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div id="dist_ipr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/dist_ipr-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Обернене відношення участі для вихідного та перемішаного рядів$</figcaption>
+</figure>
 </div>
 </div>
+</div>
+</section>
+<section id="коефіцієнт-поглинання" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="коефіцієнт-поглинання"><span class="header-section-number">8.2.4</span> Коефіцієнт поглинання</h3>
+<p>Цікаво буде буде порівняти максимальне власне значення <span class="math inline">\(\lambda_{max}\)</span> з середнім значенням коефіцієнта кореляції і так званим коефіцієнтом поглинання (absorption ratio, AR), який є кумулятивною мірою ризику і визначається формулою:</p>
+<p><span id="eq-8-9"><span class="math display">\[
+AR = \frac{\sum_{k=1}^{n}\lambda_k}{\sum_{k=1}^{N}\lambda_k}
+\tag{8.9}\]</span></span></p>
+<p>і вказує, яку частину загальної варіації описують <span class="math inline">\(n\)</span> із загальної кількості <span class="math inline">\(N\)</span> власних значень.</p>
+<p>Щоб вирішити, який власний вектор можна відкинути для розрахунків у чисельнику формули вище, не втрачаючи занадто багато інформації, нам потрібно перевірити відповідні власні значення: власні вектори з найменшими власними значеннями несуть найменшу інформацію про розподіл даних; це ті, які можна відкинути.</p>
+<p>Загальний підхід полягає в ранжируванні власних значень від найвищого до найнижчого.</p>
+<p>Після сортування власних пар наступне запитання: “скільки основних компонентів ми збираємось вибрати для розрахунку коефіцієнту поглинання?”. Корисною мірою є так звана “врахована (пояснена) дисперсія”, яка може бути обчислена за власними значеннями. Пояснена дисперсія говорить нам, скільки інформації (дисперсії) можна віднести до кожної із головних компонент.</p>
+<p>Визначимо слідуючу функцію для коефіцієнту поглинання:</p>
+<div class="cell" data-execution_count="414">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ar(lambdas, proc):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># сортуємо власні значення у спадному порядку</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    sorted_lambdas <span class="op">=</span> np.sort(lambdas)[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо кумулятивну варіацію </span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    cumulative_variance <span class="op">=</span> np.cumsum(sorted_lambdas) <span class="op">/</span> np.<span class="bu">sum</span>(sorted_lambdas)</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># знаходимо індекс, де кумулятивна варіація перетинає "proc"</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>    index_percent <span class="op">=</span> np.argmax(cumulative_variance <span class="op">&gt;=</span> proc) <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виділяємо верхні власні значення, які описують встановлений відсоток даних</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>    selected_lambdas <span class="op">=</span> sorted_lambdas[:index_percent]</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># повертаємо коефіцієнт поглинання та кількість значень, що пояснюють обраний відсоток варіації</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(selected_lambdas)<span class="op">/</span>np.<span class="bu">sum</span>(sorted_lambdas), <span class="bu">len</span>(selected_lambdas)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Розрахуємо коефіцієнт поглинання як для власних значень вихідної матриці кореляцій, так і для випадкової. Тут ми розглянемо як варіюється коефіцієнт поглинання при різних значеннях поясненої варіації власними значеннями матриці кореляцій:</p>
+<div class="cell" data-execution_count="415">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>proc_variance <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">0.99</span>, <span class="dv">100</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>ar_init <span class="op">=</span> np.array([ar(lambdas, proc)[<span class="dv">0</span>] <span class="cf">for</span> proc <span class="kw">in</span> proc_variance])</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>ar_rand <span class="op">=</span> np.array([ar(lambdas_rand, proc)[<span class="dv">0</span>] <span class="cf">for</span> proc <span class="kw">in</span> proc_variance])</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>lambdas_init_cnt <span class="op">=</span> np.array([ar(lambdas, proc)[<span class="dv">1</span>] <span class="cf">for</span> proc <span class="kw">in</span> proc_variance])</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>lambdas_rand_cnt <span class="op">=</span> np.array([ar(lambdas_rand, proc)[<span class="dv">1</span>] <span class="cf">for</span> proc <span class="kw">in</span> proc_variance])</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">8</span>))</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(proc_variance, ar_init, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="vs">r'$AR_</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(proc_variance, ar_rand, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="vs">r'$AR_</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'Відсоток варіації'</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$AR$'</span>)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend()</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(proc_variance, lambdas_init_cnt, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="vs">r'$\#\lambda_</span><span class="sc">{i}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(proc_variance, lambdas_rand_cnt, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="vs">r'$\#\lambda_</span><span class="sc">{i}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'Відсоток варіації'</span>)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="vs">r'Кі-ть $\lambda_i$'</span>)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].legend()</span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="absorption_ration" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/absorption_ration-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових (рисунок ліворуч). Залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток (рисунок праворуч)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Як ми можемо бачити на даних рисунках, коефіцієнт поглинання для вихідної матриці кореляцій залишається сталим при перших 40% варіації. На рисунку справа видно, що лише одного власного значення достатньо для опису майже половини всього ринку. Для випадкової матриці кількість власних значень необхідних для опису системи зростає прямо пропоційно відсотку варіації. Отже, для нашої задачі при розрахунку коефіцієнту поглинання достатньо буде взяти до 40% варіації при врахуванні кількості необхідних власних значень у чисельнику (<a href="#eq-8-9">Рівняння&nbsp;<span>8.9</span></a>).</p>
+</section>
+<section id="віконна-процедура" class="level3" data-number="8.2.5">
+<h3 data-number="8.2.5" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">8.2.5</span> Віконна процедура</h3>
+<p>Перш ніж розпочинати розрахунки визначимо функцію для побудови графіків. Вона буде виводити один із часових рядів досліджуваної бази акцій компаній та розраховані індикатори. Ми будемо виводити як двовимірні, так і тривимірні графіки.</p>
+<div class="cell" data-execution_count="246">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_2d(time_ser_index, </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>            time_ser_values,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>            y1_values,  </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>            time_ser_label, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>            y1_label, </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>            x_label,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>            file_name, </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>            clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(time_ser_index, </span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>                time_ser_values, </span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>time_ser_label<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(time_ser_index, </span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>                y1_values, color<span class="op">=</span>clr, label<span class="op">=</span>y1_label)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">4</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="451">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>        <span class="co"># розмір вікна</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>           <span class="co"># крок вікна</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>        <span class="co"># вид ряду: </span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># 1 - вихідний, </span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># 3 - прибутковості звичайні, </span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># 6 - стандартизований ряд</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> data.shape[<span class="dv">1</span>]</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>num_bins <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>mean_corr_init <span class="op">=</span> []</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>mean_corr_rand <span class="op">=</span> []</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>C_vals_init <span class="op">=</span> [] </span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>C_vals_rand <span class="op">=</span> []</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>C_hist_vals_init <span class="op">=</span> []</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>C_hist_vals_rand <span class="op">=</span> []</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>u_hist_vals_init <span class="op">=</span> []</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>u_hist_vals_rand <span class="op">=</span> []</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a>lambdas_vals_init <span class="op">=</span> []</span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>lambdas_vals_rand <span class="op">=</span> []</span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>lambdas_vals_max_init <span class="op">=</span> []</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>lambdas_vals_max_rand <span class="op">=</span> []</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>lambdas_hist_vals_init <span class="op">=</span> []</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>lambdas_hist_vals_rand <span class="op">=</span> []</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>ipr_vals_init <span class="op">=</span> []</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a>ipr_vals_rand <span class="op">=</span> []</span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a>absorb_vals_init <span class="op">=</span> []</span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a>absorb_vals_rand <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="452">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> data.iloc[:, i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># генеруємо випадковий фрагмент</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    fragm_random <span class="op">=</span> np.random.normal(size<span class="op">=</span>(fragm.shape[<span class="dv">0</span>], fragm.shape[<span class="dv">1</span>]))</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо крос-кореляції</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    C_fragm, ccoef_flat_fragm <span class="op">=</span> calc_cross_corr(fragm)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    C_fragm_random, ccoef_flat_fragm_random <span class="op">=</span> calc_cross_corr(fragm_random)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо гістограму крос-кореляцій</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>    C_fragm_hist <span class="op">=</span> np.histogram(ccoef_flat_fragm, bins<span class="op">=</span>num_bins, density<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>    C_fragm_hist_rand <span class="op">=</span> np.histogram(ccoef_flat_fragm_random, bins<span class="op">=</span>num_bins, density<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок середнього значення коефіцієнта кореляції</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    mean_correlation <span class="op">=</span> np.mean(ccoef_flat_fragm)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>    mean_correlation_random <span class="op">=</span> np.mean(ccoef_flat_fragm_random)</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок власних значень та векторів</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>    lambdas_fragm, u_fragm <span class="op">=</span> calc_lambd_eig(C_fragm)</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a>    lambdas_fragm_random, u_fragm_random <span class="op">=</span> calc_lambd_eig(C_fragm_random)</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо гістограму власних значень</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    lambdas_fragm_hist <span class="op">=</span> np.histogram(lambdas_fragm, bins<span class="op">=</span>num_bins, density<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>    u_fragm_hist_init <span class="op">=</span> np.histogram(u_fragm, bins<span class="op">=</span>num_bins, density<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a>    lambdas_fragm_hist_rand <span class="op">=</span> np.histogram(lambdas_fragm_random, bins<span class="op">=</span>num_bins, density<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    u_fragm_hist_rand <span class="op">=</span> np.histogram(u_fragm_random, bins<span class="op">=</span>num_bins, density<span class="op">=</span><span class="va">True</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># отримання максимального власного значення</span></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a>    lambdas_fragm_max <span class="op">=</span> lambdas_fragm.<span class="bu">max</span>()</span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a>    lambdas_fragm_max_random <span class="op">=</span> lambdas_fragm_random.<span class="bu">max</span>()</span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># отримання оберненого відношення участі</span></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a>    ipr_fragm <span class="op">=</span> calc_ipr(u_fragm)</span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a>    ipr_random <span class="op">=</span> calc_ipr(u_fragm_random)</span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок коефіцієнта поглинання </span></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>    absorb_init <span class="op">=</span> ar(lambdas_fragm, <span class="fl">0.05</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>    absorb_rand <span class="op">=</span> ar(lambdas_fragm_random, <span class="fl">0.05</span>)[<span class="dv">0</span>]</span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># додаємо індикатори до масивів</span></span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>    mean_corr_init.append(mean_correlation)</span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>    mean_corr_rand.append(mean_correlation_random)</span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>    C_vals_init.append(ccoef_flat_fragm)</span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>    C_vals_rand.append(ccoef_flat_fragm_random)</span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>    C_hist_vals_init.append(C_fragm_hist)</span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a>    C_hist_vals_rand.append(C_fragm_hist_rand)</span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>    lambdas_hist_vals_init.append(lambdas_fragm_hist)</span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>    lambdas_hist_vals_rand.append(lambdas_fragm_hist_rand)</span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>    u_hist_vals_init.append(u_fragm_hist_init)</span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>    u_hist_vals_rand.append(u_fragm_hist_rand)</span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>    lambdas_vals_init.append(lambdas_fragm)</span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>    lambdas_vals_rand.append(lambdas_fragm_random)</span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a>    lambdas_vals_max_init.append(lambdas_fragm_max)</span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>    lambdas_vals_max_rand.append(lambdas_fragm_max_random)</span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a>    ipr_vals_init.append(ipr_fragm)</span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>    ipr_vals_rand.append(ipr_random)</span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a>    absorb_vals_init.append(absorb_init)</span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>    absorb_vals_rand.append(absorb_rand)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 5064/5064 [05:25&lt;00:00, 15.54it/s]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="453">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ind_names <span class="op">=</span> [<span class="st">'avg_corr_init'</span>, <span class="st">'lambda_max'</span>, <span class="st">'ar'</span>]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="op">=</span> [mean_corr_init, lambdas_vals_max_init, absorb_vals_init]</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>measure_labels <span class="op">=</span> [<span class="vs">r'$\langle C \rangle_</span><span class="sc">{init}</span><span class="vs">$'</span>, <span class="vs">r'$\lambda_</span><span class="sc">{max}</span><span class="vs">$'</span>, <span class="vs">r'$AR$'</span>]</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ind_names)):</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="ss">f"RMT_</span><span class="sc">{</span>ind_names[i]<span class="sc">}</span><span class="ss">_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    np.savetxt(name <span class="op">+</span> <span class="st">".txt"</span>, indicators[i])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="середній-коефіцієнт-крос-кореляцій" class="level4" data-number="8.2.5.1">
+<h4 data-number="8.2.5.1" class="anchored" data-anchor-id="середній-коефіцієнт-крос-кореляцій"><span class="header-section-number">8.2.5.1</span> Середній коефіцієнт крос-кореляцій</h4>
+<div class="cell" data-execution_count="459">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"avg_corr_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plot_2d(data_init.loc[:, ylabel].index[window:length:tstep],</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>        data_init.loc[:, ylabel].values[window:length:tstep],</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>        mean_corr_init, </span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>        ylabel,</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>        measure_labels[<span class="dv">0</span>],</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>        xlabel,</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>        file_name,</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>        clr<span class="op">=</span><span class="st">"magenta"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-crosscorr" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/fig-wind-crosscorr-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.1: Динаміка індексу цін акцій компанії Agilent Technologies та середнього показника крос-кореляцій прибутковостей досліджуваних акцій</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="463">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, num_bins)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(window, length, tstep)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.expand_dims(X, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.repeat(a<span class="op">=</span>X, repeats<span class="op">=</span>Y.shape[<span class="dv">0</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(C_hist_vals_init)</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">"projection"</span>: <span class="st">"3d"</span>}, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_surface(X, Y, Z, cmap<span class="op">=</span><span class="st">'hot'</span>, rstride<span class="op">=</span><span class="dv">2</span>, cstride<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel, fontsize<span class="op">=</span><span class="dv">22</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$C$"</span>, fontsize<span class="op">=</span><span class="dv">22</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="vs">r"$P(C)$"</span>, fontsize<span class="op">=</span><span class="dv">22</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'both'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">18</span>, pad<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>ax.view_init(<span class="dv">60</span>, <span class="dv">140</span>)</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"RMT_3D_P(C)_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-3d-pc" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/fig-wind-3d-pc-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.2: Віконна функція щільності розподілу коефіцієнтів кореляції вихідної матриці фінансових активів</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="максимальне-значення-lambda" class="level4" data-number="8.2.5.2">
+<h4 data-number="8.2.5.2" class="anchored" data-anchor-id="максимальне-значення-lambda"><span class="header-section-number">8.2.5.2</span> Максимальне значення <span class="math inline">\(\lambda\)</span></h4>
+<div class="cell" data-execution_count="460">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"lambda_max_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plot_2d(data_init.loc[:, ylabel].index[window:length:tstep],</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>        data_init.loc[:, ylabel].values[window:length:tstep],</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>        lambdas_vals_max_init, </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>        ylabel,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>        measure_labels[<span class="dv">1</span>],</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>        xlabel,</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        file_name,</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>        clr<span class="op">=</span><span class="st">"red"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-lambda" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/fig-wind-lambda-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.3: Динаміка індексу цін акцій компанії Agilent Technologies та показника <span class="math inline">\(\lambda_{max}\)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="обернене-відношення-участі-2" class="level4" data-number="8.2.5.3">
+<h4 data-number="8.2.5.3" class="anchored" data-anchor-id="обернене-відношення-участі-2"><span class="header-section-number">8.2.5.3</span> Обернене відношення участі</h4>
+<div class="cell" data-execution_count="457">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_tick_formatter(val, pos<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"$10^</span><span class="ch">{{</span><span class="sc">{</span><span class="bu">int</span>(val)<span class="sc">}</span><span class="ch">}}</span><span class="ss">$"</span>  </span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.array(lambdas_vals_init)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(window, length, tstep)</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.expand_dims(X, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.repeat(a<span class="op">=</span>X, repeats<span class="op">=</span>Y.shape[<span class="dv">1</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> np.array(ipr_vals_init)</span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">"projection"</span>: <span class="st">"3d"</span>}, figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_surface(X, np.log(Y), Z, cmap<span class="op">=</span><span class="st">'magma'</span>, rstride<span class="op">=</span><span class="dv">2</span>, cstride<span class="op">=</span><span class="dv">2</span>, linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel, fontsize<span class="op">=</span><span class="dv">22</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\lambda_i$"</span>, fontsize<span class="op">=</span><span class="dv">22</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="vs">r"$IPR$"</span>, fontsize<span class="op">=</span><span class="dv">22</span>, labelpad<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'both'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">18</span>, pad<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_formatter(mticker.FuncFormatter(log_tick_formatter))</span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a>ax.yaxis.set_major_locator(mticker.MaxNLocator(integer<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"RMT_3D_IPR_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-ipr3d" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/fig-wind-ipr3d-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.4: Тривимірна віконна динаміка показника оберненого відношення участі</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="коефіцієнт-поглинання-1" class="level4" data-number="8.2.5.4">
+<h4 data-number="8.2.5.4" class="anchored" data-anchor-id="коефіцієнт-поглинання-1"><span class="header-section-number">8.2.5.4</span> Коефіцієнт поглинання</h4>
+<div class="cell" data-execution_count="461">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"ar_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>plot_2d(data_init.loc[:, ylabel].index[window:length:tstep],</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>        data_init.loc[:, ylabel].values[window:length:tstep],</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>        absorb_vals_init, </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>        ylabel,</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>        measure_labels[<span class="dv">2</span>],</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>        xlabel,</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>        file_name,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>        clr<span class="op">=</span><span class="st">"black"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="fig-wind-ar" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="lab_8_files/figure-html/fig-wind-ar-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.5: Динаміка індексу цін акцій компаній Agilent Technologies та коефіцієнту поглинання</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Таким чином, при наявності сукупності часових рядів, що є даними діяльності економічних об’єктів однієї області, можна провести дослідження стосовно структури вказаної області та взаємодії об’єктів всередині неї. Дослідження проводяться на основі теорії випадкових матриць, що дозволяє отримувати інформацію шляхом аналізу матриці крос-кореляцій, побудованої для сукупної бази економічних об’єктів.</p>
 
 
+<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-Wigner_1951_1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">E.P. Wigner, On the statistical distribution of the widths and spacings of nuclear resonance levels, Mathematical Proceedings of the Cambridge Philosophical Society 47 (1951) 790–798. https://doi.org/<a href="https://doi.org/10.1017/S0305004100027237">10.1017/S0305004100027237</a>.</div>
+</div>
+<div id="ref-Wigner_1951_2" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">E.P. Wigner, On a class of analytic functions from the quantum theory of collisions, Annals of Mathematics 53 (1951) 36–67. <a href="http://www.jstor.org/stable/1969342">http://www.jstor.org/stable/1969342</a> (accessed January 29, 2024).</div>
+</div>
+<div id="ref-10.1063/1.1703773" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">F.J. Dyson, <span class="nocase">Statistical Theory of the Energy Levels of Complex Systems. I</span>, Journal of Mathematical Physics 3 (2004) 140–156. https://doi.org/<a href="https://doi.org/10.1063/1.1703773">10.1063/1.1703773</a>.</div>
+</div>
+<div id="ref-10.1063/1.1704008" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">F.J. Dyson, M.L. Mehta, <span class="nocase">Statistical Theory of the Energy Levels of Complex Systems. IV</span>, Journal of Mathematical Physics 4 (2004) 701–712. https://doi.org/<a href="https://doi.org/10.1063/1.1704008">10.1063/1.1704008</a>.</div>
+</div>
+<div id="ref-10.1063/1.1704009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M.L. Mehta, F.J. Dyson, <span class="nocase">Statistical Theory of the Energy Levels of Complex Systems. V</span>, Journal of Mathematical Physics 4 (2004) 713–719. https://doi.org/<a href="https://doi.org/10.1063/1.1704009">10.1063/1.1704009</a>.</div>
+</div>
+<div id="ref-mehta1991random" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">M.L. Mehta, Random matrices, Academic Press, 1991.</div>
+</div>
+<div id="ref-RevModPhys.53.385" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">T.A. Brody, J. Flores, J.B. French, P.A. Mello, A. Pandey, S.S.M. Wong, Random-matrix physics: Spectrum and strength fluctuations, Rev. Mod. Phys. 53 (1981) 385–479. https://doi.org/<a href="https://doi.org/10.1103/RevModPhys.53.385">10.1103/RevModPhys.53.385</a>.</div>
+</div>
+<div id="ref-PhysRevLett.83.1467" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">L. Laloux, P. Cizeau, J.-P. Bouchaud, M. Potters, Noise dressing of financial correlation matrices, Phys. Rev. Lett. 83 (1999) 1467–1470. https://doi.org/<a href="https://doi.org/10.1103/PhysRevLett.83.1467">10.1103/PhysRevLett.83.1467</a>.</div>
+</div>
+<div id="ref-Muirhead" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">Aspects of multivariate statistical theory, Wiley, New York, 1982. https://doi.org/<a href="https://doi.org/10.1002/9780470316559">10.1002/9780470316559</a>.</div>
+</div>
+<div id="ref-dyson1971distribution" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">F.J. Dyson, Distribution of eigenvalues for a class of real symmetric matrices, Revista Mexicana de Fisica 20 (1971) 231–237.</div>
+</div>
+<div id="ref-PhysRevE.60.3389" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A.M. Sengupta, P.P. Mitra, Distributions of singular values for some random matrices, Phys. Rev. E 60 (1999) 3389–3392. https://doi.org/<a href="https://doi.org/10.1103/PhysRevE.60.3389">10.1103/PhysRevE.60.3389</a>.</div>
+</div>
+<div id="ref-PhysRevLett.83.1471" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">V. Plerou, P. Gopikrishnan, B. Rosenow, L.A. Nunes Amaral, H.E. Stanley, Universal and nonuniversal properties of cross correlations in financial time series, Phys. Rev. Lett. 83 (1999) 1471–1474. https://doi.org/<a href="https://doi.org/10.1103/PhysRevLett.83.1471">10.1103/PhysRevLett.83.1471</a>.</div>
+</div>
+<div id="ref-GUHR1998189" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">T. Guhr, A. Müller–Groeling, H.A. Weidenmüller, Random-matrix theories in quantum physics: Common concepts, Physics Reports 299 (1998) 189–425. https://doi.org/<a href="https://doi.org/10.1016/S0370-1573(97)00088-4">10.1016/S0370-1573(97)00088-4</a>.</div>
+</div>
+<div id="ref-PhysRevLett.69.1093" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">Y.V. Fyodorov, A.D. Mirlin, Analytical derivation of the scaling law for the inverse participation ratio in quasi-one-dimensional disordered systems, Phys. Rev. Lett. 69 (1992) 1093–1096. https://doi.org/<a href="https://doi.org/10.1103/PhysRevLett.69.1093">10.1103/PhysRevLett.69.1093</a>.</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
