@@ -146,9 +146,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             Download ePub
             </a>
           </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
       </ul>
     </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
     </div>
       </div>
@@ -388,7 +399,7 @@ x^1(t),x^2(t),...,x^d(t)
 <p>У 1987 р. Екман (Eckmann) і співавтори запропонували спосіб відображення <span class="math inline">\(m\)</span>-вимірної фазової траєкторії станів системи <span class="math inline">\(\vec x(t)\)</span> завдовжки <span class="math inline">\(N\)</span> на двовимірну квадратну двійкову матрицю розміром <span class="math inline">\(N \times N\)</span> , в якій 1 (чорна точка) відповідає повторенню стану при деякому часі <span class="math inline">\(i\)</span> в деякий інший час <span class="math inline">\(j\)</span>, а обидві координатні осі є осями часу. Таке представлення було назване рекурентною картою або діаграмою (recurrence plot, RP), оскільки воно фіксує інформацію про рекурентну поведінку системи.</p>
 <p>Математично вищесказане описується як</p>
 <p><span class="math display">\[
-R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot \vec x \in \Re^m, \cdot i, j=1...N
+R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad \vec x \in \Re^m, \quad i, j=1,...,N,
 \]</span></p>
 <p>де <span class="math inline">\(N\)</span> — кількість даних станів, <span class="math inline">\(x_i, \varepsilon_i\)</span> — розмір околиці точки <span class="math inline">\(\vec x\)</span> у момент <span class="math inline">\(i\)</span>, <span class="math inline">\(\| \cdot \|\)</span> — норма і <span class="math inline">\(\Theta(\cdot)\)</span> — функція Хевісайда.</p>
 <p>Непрактично і, як правило, неможливо знайти повну рекурентність у значенні <span class="math inline">\(\vec x_i \equiv \vec x_j\)</span> (стан динамічної, а особливо — хаотичної системи не повторюється повністю еквівалентно початковому стану, а підходить до нього скільки завгодно близько). Таким чином, рекурентність визначається як достатня близькість стану <span class="math inline">\(\vec x_j\)</span> до стану <span class="math inline">\(\vec x_i\)</span>. Іншими словами, рекурентними є стани <span class="math inline">\(\vec x_j\)</span>, які потрапляють в <span class="math inline">\(m\)</span>-вимірну околицю з радіусом <span class="math inline">\(\varepsilon_i\)</span> і центром в <span class="math inline">\(\vec x_i\)</span>. Ці точки <span class="math inline">\(\vec x_j\)</span> називаються <strong>рекурентними точками</strong> (recurrence points).</p>
@@ -431,7 +442,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <p></p><figcaption class="figure-caption">Рис.&nbsp;2.3: Характернi топологiї рекурентних дiаграм: (а) — однорiдна (нормально розподiлений шум); (b) — перiодична (генератор Ван дер Поля); (c) — дрейф (вiдображення Iкеди з накладеною послiдовнiстю, що лiнiйно росте); (d) — контрастнi областi або смуги (узагальнений броунiвський рух)</figcaption><p></p>
 </figure>
 </div>
-<p>Докладний розгляд рекурентних діаграм дозволяє виявити дрібномасштабні структури — текстуру, яка складається з простих точок, діагональних, горизонтальних і вертикальних ліній. Комбінації вертикальних і горизонтальних ліній формують прямокутні кластери точок.</p>
+<p>Докладний розгляд рекурентних діаграм дозволяє виявити дрібномасштабні структури — текстуру, яка складається з простих точок, діагональних, горизонтальних і вертикальних ліній. Комбінації вертикальних і горизонтальних ліній формують прямокутні кластери точок:</p>
 <ul>
 <li><strong><em>самотні</em></strong>, окремо розташовані рекурентні точки з’являються в тому разі, коли відповідні стани рідкісні, або нестійкі в часі, або викликані сильною флуктуацією. При цьому вони не є ознаками випадковості або шуму;</li>
 <li><strong><em>діагональні лінії</em></strong> <span class="math inline">\(R_{i+k, j+k}=1\)</span> (при <span class="math inline">\(k = 1...l\)</span> де <span class="math inline">\(l\)</span> — довжина діагональної лінії) з’являються у разі, коли сегмент траєкторії у фазовому просторі пролягає паралельно іншому сегменту, тобто траєкторія повторює саму себе, повертаючись в одну і ту ж область фазового простору у різний час. Довжина таких ліній визначається часом, протягом якого сегменти траєкторії залишаються паралельними; напрям (кут нахилу) ліній характеризує внутрішній час підпроцесів, відповідних даним сегментам траєкторії. Проходження ліній паралельно лінії ідентичності (під кутом <span class="math inline">\(\pi/4\)</span> до осей координат) свідчить про однаковий напрям сегментів траєкторії, перпендикулярно — про протилежний («відображені» сегменти), що може також бути ознакою реконструкції фазового простору з невідповідною розмірністю вкладення. Нерегулярна поява діагональних ліній є ознакою хаотичного процесу;</li>
@@ -439,7 +450,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 </ul>
 <div id="fig-recurrence-concept" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Images\lab_2\recurrence_lines.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="Images\lab_2\recurrence_lines.png" style="height:10cm" class="figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;2.4: Основнi концепцiї рекурентного аналiзу. Вiдображена дiаграма рекурентностi базується на часовому ряду, що було реконструйовано до 11 реконструйованих векторiв, вiд <span class="math inline">\(\vec{X}(0)\)</span> до <span class="math inline">\(\vec{X}(10)\)</span>. Видiлено дiагональну лiнiю довжиною <span class="math inline">\(d = 3\)</span>, вертикальна лiнiя довжиною <span class="math inline">\(v = 3\)</span> i бiлу вертикальну лiнiю довжиною <span class="math inline">\(w = 5\)</span></figcaption>
 </figure>
 </div>
@@ -467,7 +478,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <p>Як візуалізувати динаміку системи? Послідовність значень стану в часі називається траєкторією. Залежно від системи, різні траєкторії можуть еволюціонувати до спільної підмножини простору станів, яка називається атрактором. Наявність та поведінка атракторів дає інтуїтивне уявлення про досліджувану динамічну систему.</p>
 <p>Одже, згідно Такенсу, ідея полягає в тому, щоб на основі одиничних вимірювань системи, отримати <span class="math inline">\(m\)</span>-розмірні реконструйовані часові вкладення</p>
 <p><span id="eq-2-1"><span class="math display">\[
-\vec{y}_i = \left( y_i, y_{i+\tau}, ... , y_{i+(m-1)\tau} \right),
+\vec{x}_i = \left( x_i, x_{i+\tau}, ... , x_{i+(m-1)\tau} \right),
 \tag{2.1}\]</span></span></p>
 <p>де <span class="math inline">\(i\)</span> проходить в діапазоні <span class="math inline">\(1,..., N-(m-1)\tau\)</span>; значення <span class="math inline">\(\tau\)</span> представляє часову затримку, а <span class="math inline">\(m\)</span> — це розмірність вкладень (кількість змінних, що включає кожна траєкторія).</p>
 <p>Код для реконструкції фазового простору може виглядати наступним чином:</p>
@@ -496,7 +507,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <ul>
 <li><em>array</em> — реконструйований атрактор розміру <code>length - (dimension - 1) * delay</code></li>
 </ul>
-<p>Далі імпортуємо необхідні для подальшої роботи модулі</p>
+<p>Далі імпортуємо необхідні для подальшої роботи модулі:</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -507,7 +518,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>І виконаємо налаштування рисунків для виводу</p>
+<p>І виконаємо налаштування рисунків для виводу:</p>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
@@ -563,7 +574,15 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
-<p>Спочатку оберемо вид ряду: 1. вихідний ряд 2. детермінований (різниця між теперішнім та попереднім значенням) 3. прибутковості звичайні 4. стандартизовані прибутковості 5. абсолютні значення (волатильності) 6. стандартизований ряд</p>
+<p>Спочатку оберемо вид ряду:</p>
+<ul>
+<li>вихідний ряд;</li>
+<li>детермінований (різниця між теперішнім та попереднім значенням);</li>
+<li>прибутковості звичайні;</li>
+<li>стандартизовані прибутковості;</li>
+<li>абсолютні значення (волатильності);</li>
+<li>стандартизований ряд.</li>
+</ul>
 <p>Для подальших розрахунків накращим варіантом буде вибір стандартизованого вихідного ряду або прибутковостей, оскільки значення вихідного часового ряду відрізняються на декілька порядків, і можуть сильно перевищувати встановлений параметр <span class="math inline">\(\varepsilon\)</span>. Тобто, для вихідних значень, що сильно різняться між собою, увесь часовий діапазон буде розглядатися як нерекурентний.</p>
 <p>Спочатку визначимо функції для виконання перетворення ряду:</p>
 <div class="cell" data-execution_count="4">
@@ -608,13 +627,13 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оскільки ми не матимемо змоги візуалізувати багатовимірний фазовий простір (<span class="math inline">\(m&gt;3\)</span>), ми послуговуватимемось значеннями <span class="math inline">\(m=2\)</span> та <span class="math inline">\(m=3\)</span>. Значення <span class="math inline">\(\tau\)</span> будемо варіювати як із власних переконань, так і з опорою на функціонал бібліотеки <code>neuralkit2</code>.</p>
-<p>Скористаємось методом <code>complexity_simulate()</code> для генерації різних тестових сигналів.</p>
+<p>Скористаємось методом <code>complexity_simulate()</code> для генерації різних тестових сигналів:</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>signal_random_walk <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>, </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                                            sampling_rate<span class="op">=</span><span class="dv">100</span>, </span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                            method<span class="op">=</span><span class="st">"randomwalk"</span>) <span class="co"># симуляція випадкового блукання</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(embedded<span class="op">=</span>nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -627,7 +646,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \cdot
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>

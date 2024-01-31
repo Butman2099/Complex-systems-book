@@ -146,9 +146,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             Download ePub
             </a>
           </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
       </ul>
     </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
     </div>
       </div>
@@ -300,6 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#віконна-процедура" id="toc-віконна-процедура" class="nav-link" data-scroll-target="#віконна-процедура"><span class="header-section-number">3.2.1</span> Віконна процедура</a></li>
   <li><a href="#рекурентні-міри" id="toc-рекурентні-міри" class="nav-link" data-scroll-target="#рекурентні-міри"><span class="header-section-number">3.2.2</span> Рекурентні міри</a></li>
   </ul></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">3.3</span> Завдання для самостійної роботи</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_3.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -685,7 +697,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 data-number="3.2.2.1" class="anchored" data-anchor-id="частота-рекурентності-recurrence-rate"><span class="header-section-number">3.2.2.1</span> Частота рекурентності (Recurrence rate)</h4>
 <p>Найпростішим показником є частота рекурентності, яка визначає щільністю рекурентних точок на рекурентній діаграмі, ігноруючи лінію ідентичності:</p>
 <p><span class="math display">\[
-RR = \frac{1}{N^2}\displaystyle\sum_{i,j=1}^{N}R(i,j)
+RR = \frac{1}{N^2}\displaystyle\sum_{i,j=1}^{N}R(i,j),
 \]</span></p>
 <p>де <span class="math inline">\(N\)</span> — кількість точок на траєкторії фазового простору.</p>
 <p><strong>Частота рекурентності</strong> відповідає ймовірності того, що певний стан повториться.</p>
@@ -721,11 +733,11 @@ RR = \frac{1}{N^2}\displaystyle\sum_{i,j=1}^{N}R(i,j)
 </section>
 <section id="детермінізм-determinism" class="level4" data-number="3.2.2.3">
 <h4 data-number="3.2.2.3" class="anchored" data-anchor-id="детермінізм-determinism"><span class="header-section-number">3.2.2.3</span> Детермінізм (Determinism)</h4>
-<p>Наступним показником можна визначити частку рекурентних траєкторій, які формують діагональні лінії мінімальної довжини <span class="math inline">\({\displaystyle \ell _{\min }}\)</span>. Ця міра називається <strong>детермінізмом</strong> і пов’язана з передбачуваністю динамічної системи:</p>
+<p>Наступним показником можна визначити частку рекурентних траєкторій, які формують діагональні лінії мінімальної довжини <span class="math inline">\({\displaystyle \ell_{\min}}\)</span>. Ця міра називається <strong>детермінізмом</strong> і пов’язана з передбачуваністю динамічної системи:</p>
 <p><span class="math display">\[
-DET={\frac {\sum _{\ell =\ell _{\min }}^{N}\ell \,P(\ell )}{\sum _{\ell =1}^{N}\ell P(\ell )}},
+DET=\left. \sum_{\ell=\ell_{\min }}^{N}\ell \cdot P(\ell) \middle/ \sum_{\ell=1}^{N}\ell \cdot P(\ell) \right.,
 \]</span></p>
-<p>де <span class="math inline">\(P(\ell )\)</span> — частотний розподіл довжин <span class="math inline">\(\ell\)</span> діагональних ліній (тобто підраховує кількість діагональних профілів довжини <span class="math inline">\(\ell\)</span> ).</p>
+<p>де <span class="math inline">\(P(\ell )\)</span> — частотний розподіл довжин <span class="math inline">\(\ell\)</span> діагональних ліній (тобто підраховує кількість діагональних профілів довжини <span class="math inline">\(\ell\)</span>).</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -757,7 +769,7 @@ DET={\frac {\sum _{\ell =\ell _{\min }}^{N}\ell \,P(\ell )}{\sum _{\ell =1}^{N}\
 <h4 data-number="3.2.2.4" class="anchored" data-anchor-id="ламінарність-laminarity"><span class="header-section-number">3.2.2.4</span> Ламінарність (Laminarity)</h4>
 <p>Кількість рекурентних станів, які утворюють вертикальні лінії, можна кількісно визначити таким же чином. Ця міра називається <strong>ламінарністю</strong> і пов’язана з кількістю ламінарних фаз (незмінностей) у системі:</p>
 <p><span class="math display">\[
-LAM={\frac {\sum _{v=v_{\min }}^{N}vP(v)}{\sum _{v=1}^{N}vP(v)}},
+LAM = \left. \sum_{v=v_{\min}}^{N}v \cdot P(v) \middle/ \sum_{v=1}^{N}v \cdot P(v) \right.,
 \]</span></p>
 <p>де <span class="math inline">\(P(v)\)</span> — частотний розподіл довжин <span class="math inline">\(v\)</span> вертикальних ліній, які мають довжину принаймні <span class="math inline">\(v_{\min}\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -786,11 +798,11 @@ LAM={\frac {\sum _{v=v_{\min }}^{N}vP(v)}{\sum _{v=1}^{N}vP(v)}},
 </div>
 <p>Можна бачити, що при кризових станах ступінь ламінарності зростає. Як ми могли бачити, зростає і щільність діагональних точок, і загалом зростає кількість рекурентних траєкторій у фазовому просторі. Це вказує на те, що фінасовий індекс Доу-Джонса “застрягає” у стані кризи. Кризи характеризуються трендостійкістю, персистентністю та детермінованістю своєї поведінки.</p>
 </section>
-<section id="середня-довжина-діагональних-ліній-the-average-diagonal-lines-length" class="level4" data-number="3.2.2.5">
-<h4 data-number="3.2.2.5" class="anchored" data-anchor-id="середня-довжина-діагональних-ліній-the-average-diagonal-lines-length"><span class="header-section-number">3.2.2.5</span> Середня довжина діагональних ліній (The average diagonal lines length)</h4>
+<section id="середня-довжина-діагональних-ліній-average-diagonal-lines-length" class="level4" data-number="3.2.2.5">
+<h4 data-number="3.2.2.5" class="anchored" data-anchor-id="середня-довжина-діагональних-ліній-average-diagonal-lines-length"><span class="header-section-number">3.2.2.5</span> Середня довжина діагональних ліній (Average diagonal lines length)</h4>
 <p>Також можна виміряти <strong>середню довжину діагональних ліній</strong>. Cередня довжина діагональних лінії визначається як</p>
 <p><span class="math display">\[
-L={\frac  {\sum _{{\ell =\ell _{\min }}}^{N}\ell \,P(\ell )}{\sum _{{\ell =\ell _{\min }}}^{N}P(\ell )}}.
+L = \left. \sum_{{\ell=\ell_{\min}}}^{N}\ell \cdot P(\ell) \middle/ \sum_{{\ell=\ell_{\min}}}^{N}P(\ell) \right..
 \]</span></p>
 <p>Загалом цей показник характеризує середній період часу при якому дві траєкторії фазового простору знаходяться в достатній близькості один до одного.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -821,9 +833,9 @@ L={\frac  {\sum _{{\ell =\ell _{\min }}}^{N}\ell \,P(\ell )}{\sum _{{\ell =\ell 
 </section>
 <section id="час-захопленнязатримки-trapping-time" class="level4" data-number="3.2.2.6">
 <h4 data-number="3.2.2.6" class="anchored" data-anchor-id="час-захопленнязатримки-trapping-time"><span class="header-section-number">3.2.2.6</span> Час захоплення/затримки (Trapping time)</h4>
-<p>Усереднена довжина діагональної лінії пов’язана із часом передбачуваності динамічної системи та <strong>часом затримки</strong>. У даному випадку ми середню довжину вертикальних ліній:</p>
+<p>Усереднена довжина діагональної лінії пов’язана з часом передбачуваності динамічної системи та <strong>часом затримки</strong>. У даному випадку індикатором часу затримки в певному стані є <strong>середня довжина вертикальних ліній</strong> або <strong>час захоплення</strong>, що виражається через наступну формулу:</p>
 <p><span class="math display">\[
-TT={\frac {\sum _{{v=v_{\min }}}^{{N}}vP(v)}{\sum _{{v=v_{\min }}} ^{{N}}P(v)}}.
+TT = \left. \sum_{{v=v_{\min}}}^{{N}}v \cdot P(v) \middle/ \sum_{{v=v_{\min}}}^{{N}}P(v) \right..
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -882,11 +894,11 @@ WVL_{mean} = \sum_{w=w_{min}}^{N} w \cdot P(w) \Big / \sum_{w=w_{min}}^{N} P(w),
 </div>
 </div>
 </div>
-<p>Зростання середньої довжини бiлих вертикальних лiнiй демонструє, що кризовi подiї характеризуються не лише детермiнiзмом динамiки фондового ринку, але i несхожiстю даних подiй у порiвняннi з попереднiми станами.</p>
+<p>Зростання середньої довжини бiлих вертикальних лiнiй демонструє, що кризовi подiї характеризуються не лише детермiнiзмом динамiки фондового ринку, але й несхожiстю даних подiй у порiвняннi з попереднiми станами.</p>
 </section>
 <section id="ентропія-діагональних-ліній-diagonal-lines-entropy" class="level4" data-number="3.2.2.8">
 <h4 data-number="3.2.2.8" class="anchored" data-anchor-id="ентропія-діагональних-ліній-diagonal-lines-entropy"><span class="header-section-number">3.2.2.8</span> Ентропія діагональних ліній (Diagonal lines entropy)</h4>
-<p>Для відповідних діагональних сегментів можна розрахувати необхідну кількість інформації для опису всього розподілу цього типу ліній. Імовірність <span class="math inline">\(p(\ell )\)</span> того, що діагональна лінія має точну довжину <span class="math inline">\(\ell\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(\ell )\)</span> із <span class="math inline">\(p( \ell )={\frac {P(\ell )}{\sum _{{\ell = \ell_{\min }}}^{N}P(\ell )}}\)</span>. Ентропія Шеннона цієї ймовірності виглядає наступним чином:</p>
+<p>Для відповідних діагональних сегментів можна розрахувати необхідну кількість інформації для опису всього розподілу цього типу ліній. Імовірність <span class="math inline">\(p(\ell )\)</span> того, що діагональна лінія має точну довжину <span class="math inline">\(\ell\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(\ell )\)</span> із <span class="math inline">\(p( \ell ) = \left. P(\ell) \middle/ \sum_{{\ell=\ell_{\min}}}^{N}P(\ell) \right.\)</span>. Ентропія Шеннона цієї ймовірності виглядає наступним чином:</p>
 <p><span class="math display">\[
 DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 \]</span></p>
@@ -901,7 +913,7 @@ DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Для некорельованого шуму чи осциляцiй ми тримали б мале значення цієї ентропiї. Мале значення даної ентропії вказувало би на те, що розподіл діагональних ліній представляється асиметричним: існувала б невеличка частка діагональних ліній конкретної довжини, що характеризувала би всю рекурентність досліджуваної системи. Зростання даної ентропії характеризувало би зростання симетричності розподілу довжин діагональних ліній.</p>
+<p>Для некорельованого шуму чи осциляцiй ми тримали б мале значення цієї ентропiї. Мале значення даної ентропії вказувало б на те, що розподіл діагональних ліній представляється асиметричним: існувала б невеличка частка діагональних ліній конкретної довжини, що характеризувала б усю рекурентність досліджуваної системи. Зростання даної ентропії вказувало б на зростання симетричності розподілу довжин діагональних ліній.</p>
 </div>
 </div>
 <div class="cell" data-execution_count="22">
@@ -919,7 +931,7 @@ DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 </section>
 <section id="ентропія-вертикальних-ліній-vertical-lines-entropy" class="level4" data-number="3.2.2.9">
 <h4 data-number="3.2.2.9" class="anchored" data-anchor-id="ентропія-вертикальних-ліній-vertical-lines-entropy"><span class="header-section-number">3.2.2.9</span> Ентропія вертикальних ліній (Vertical lines entropy)</h4>
-<p>Ми можемо визначити Шеннонівську ентропію для розподілу вертикальних структур рекурентної діаграми. Імовірність <span class="math inline">\(p( v )\)</span> того, що вертикальна лінія має точну довжину <span class="math inline">\(v\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P( v )\)</span> із <span class="math inline">\(p( v )= P( v ) \Big / \sum _{{ v = v_{\min }}}^{N}P( v )\)</span>. Ентропія Шеннона цієї ймовірності визначається як</p>
+<p>Ми можемо визначити Шеннонівську ентропію для розподілу вертикальних структур рекурентної діаграми. Імовірність <span class="math inline">\(p( v )\)</span> того, що вертикальна лінія має точну довжину <span class="math inline">\(v\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(v)\)</span> із <span class="math inline">\(\left. p(v) = P(v) \middle / \sum_{{v=v_{\min}}}^{N}P(v) \right.\)</span>. Ентропія Шеннона цієї ймовірності визначається як</p>
 <p><span class="math display">\[
 VLEn =-\sum_{{ v = v_{\min }}}^{N}p( v )\ln p( v ).
 \]</span></p>
@@ -934,7 +946,7 @@ VLEn =-\sum_{{ v = v_{\min }}}^{N}p( v )\ln p( v ).
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Для синусоїдального процесу ми би очікували мале значення даної ентропії, оскільки це простий періодичний процес. Для складного процесу з пам’ятю ми би очiкуємо високе значення цього типу рекурентної ентропiї. Це означати- ме, що ламiнарнiсть процесу характеризуються рiзноманiтними перiодами довгостроковості пам’яті системи.</p>
+<p>Для синусоїдального процесу ми би очікували мале значення даної ентропії, оскільки це простий періодичний процес. Для складного процесу з пам’ятю ми би очiкуємо високе значення цього типу рекурентної ентропiї. Це означатиме, що ламiнарнiсть процесу характеризуються рiзноманiтними перiодами довгостроковості пам’яті системи.</p>
 </div>
 </div>
 <div class="cell" data-execution_count="23">
@@ -954,7 +966,7 @@ VLEn =-\sum_{{ v = v_{\min }}}^{N}p( v )\ln p( v ).
 <h4 data-number="3.2.2.10" class="anchored" data-anchor-id="дивергенція-divergence"><span class="header-section-number">3.2.2.10</span> Дивергенція (Divergence)</h4>
 <p>Показник <span class="math inline">\(L_{\max }\)</span> може надати нам інформацію про максимальний ступінь передбачуваності досліджуваного періоду. Зворотнє значення <strong>максимальної довжини діагональних ліній</strong> <span class="math inline">\(L_{\max }\)</span> або <strong>дивергенція (розбіжність)</strong> може вказати нам на швидкість та тривалість розбіжності досліджуваних траєкторій. Даний показник можна визначити як</p>
 <p><span class="math display">\[
-\text{DIV} = {\frac {1}{L_{\max }}}.
+\text{DIV} = \left. 1 \middle/ L_{\max} \right..
 \]</span></p>
 <p>Дана міра схожа на старший показник Ляпунова. Однак взаємозв’язок між цією мірою та позитивним максимальним показником Ляпунова набагато складніший (щоб обчислити показник Ляпунова з RP, необхідно враховувати весь розподіл частот діагональних ліній). Дивергенція може мати тенденцію позитивного максимального показника Ляпунова, але не більше.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -985,9 +997,9 @@ VLEn =-\sum_{{ v = v_{\min }}}^{N}p( v )\ln p( v ).
 </section>
 <section id="дивергенція-вертикальних-ліній-vertical-line-divergence" class="level4" data-number="3.2.2.11">
 <h4 data-number="3.2.2.11" class="anchored" data-anchor-id="дивергенція-вертикальних-ліній-vertical-line-divergence"><span class="header-section-number">3.2.2.11</span> Дивергенція вертикальних ліній (Vertical line divergence)</h4>
-<p>Зворотнє значення <strong>максимальної довжини вертикальних ліній</strong> <span class="math inline">\(V_{max}\)</span> або <strong>розбіжність вертикальних ліній</strong> можна визначити як:</p>
+<p>Зворотнє значення <strong>максимальної довжини вертикальних ліній</strong> <span class="math inline">\(V_{max}\)</span> або <strong>розбіжність вертикальних ліній</strong> можна визначити як</p>
 <p><span class="math display">\[
-VDIV = {\frac {1}{V_{\max }}}.
+VDIV = 1 / V_{\max}.
 \]</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1019,7 +1031,7 @@ VDIV = {\frac {1}{V_{\max }}}.
 <h4 data-number="3.2.2.12" class="anchored" data-anchor-id="дивергенція-білих-вертикальних-ліній"><span class="header-section-number">3.2.2.12</span> Дивергенція білих вертикальних ліній</h4>
 <p>Зворотнє значення <strong>максимальної довжини білих вертикальних ліній</strong> (<span class="math inline">\(WVL_{max}\)</span>) можна охарактеризувати як <strong>дивергенцію білих вертикальних ліній</strong>. Її можна визначити наступним чином:</p>
 <p><span class="math display">\[
-WVDIV = \frac{1}{WVL_{max}}.
+WVDIV = \left. 1 \middle/ WVL_{max} \right..
 \]</span></p>
 <p>Зростання даного показника має вказувати на зростання ступеня рекурентності системи, а його спад має демонструвати зростання непередбачуваності.</p>
 <div class="cell" data-execution_count="26">
@@ -1037,7 +1049,7 @@ WVDIV = \frac{1}{WVL_{max}}.
 </section>
 <section id="ентропія-білих-вертикальних-ліній-white-vertical-lines-entropy" class="level4" data-number="3.2.2.13">
 <h4 data-number="3.2.2.13" class="anchored" data-anchor-id="ентропія-білих-вертикальних-ліній-white-vertical-lines-entropy"><span class="header-section-number">3.2.2.13</span> Ентропія білих вертикальних ліній (White vertical lines entropy)</h4>
-<p>Імовірність <span class="math inline">\(p( \omega )\)</span> того, що біла вертикальна лінія має точну довжину <span class="math inline">\(\omega\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(\omega )\)</span> із <span class="math inline">\(p( \omega )={\frac {P( \omega )}{\sum _{{\omega = \omega_{\min }}}^{N}P(\omega )}}\)</span>. Ентропія Шеннона цієї ймовірності,</p>
+<p>Імовірність <span class="math inline">\(p( \omega )\)</span> того, що біла вертикальна лінія має точну довжину <span class="math inline">\(\omega\)</span>, можна оцінити за частотним розподілом <span class="math inline">\(P(\omega)\)</span> із <span class="math inline">\(p(\omega) = \left. P(\omega) \middle/ \sum_{{\omega=\omega_{\min}}}^{N} P(\omega) \right.\)</span>. Ентропія Шеннона цієї ймовірності,</p>
 <p><span class="math display">\[
 {\text{WVertEn}}=-\sum_{{\omega =\omega _{\min }}}^{N}p(\omega )\ln p(\omega ),
 \]</span></p>
@@ -1059,7 +1071,7 @@ WVDIV = \frac{1}{WVL_{max}}.
 <h4 data-number="3.2.2.14" class="anchored" data-anchor-id="співвідношення-частоти-рекурентності-до-детермінізму-detrr"><span class="header-section-number">3.2.2.14</span> Співвідношення частоти рекурентності до детермінізму <span class="math inline">\(DET/RR\)</span></h4>
 <p>Співвідношення між <span class="math inline">\(DET\)</span> і <span class="math inline">\(RR\)</span> (<span class="math inline">\(RATIO\)</span>) можна використовувати для виявлення прихованих фазових переходів у системи:</p>
 <p><span class="math display">\[
-RATIO_1=\frac{DET}{RR}=N^2\frac{\displaystyle\sum_{l=l_{min}}^{N}lP(l)}{\left(\displaystyle\sum_{l=1}^{N}lP(l)\right)^2}
+RATIO_1 = \left. DET \middle/ RR = N^2 \cdot \left( \sum_{l=l_{min}}^{N}l \cdot P(l) \right) \middle/ \left(\sum_{l=1}^{N}lP(l)\right)^2 \right..
 \]</span></p>
 <div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_DET_REC, label<span class="op">=</span><span class="st">'RATIO_1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1078,7 +1090,7 @@ RATIO_1=\frac{DET}{RR}=N^2\frac{\displaystyle\sum_{l=l_{min}}^{N}lP(l)}{\left(\d
 <h4 data-number="3.2.2.15" class="anchored" data-anchor-id="співвідношення-ламінарності-до-детермінізму-lamdet"><span class="header-section-number">3.2.2.15</span> Співвідношення ламінарності до детермінізму (LAM/DET)</h4>
 <p>Так само як і попередня міра, відношення ламінарності до детермінізму може дозволити нам виокремити приховані переходи в досліджуваному сигналі:</p>
 <p><span class="math display">\[
-RATIO_2=\frac{LAM}{DET}.
+RATIO_2 = \left. LAM \middle/ DET \right..
 \]</span></p>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_LAM_DET, label<span class="op">=</span><span class="st">'RATIO_2'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1093,10 +1105,18 @@ RATIO_2=\frac{LAM}{DET}.
 </div>
 <p>Якщо виходити з динаміки показника <span class="math inline">\(RATIO_2\)</span>, можна сказати, що загальний ступінь детермінізму починає переважати над ламінарністю під час кризових явищ.</p>
 <p>Але по результатам представлених показників ми можемо сказати, що досліджувані крахові та передкрахові події характеризуються зростанням рекурентності, і подібного роду поведінка може бути використана в якості передвісника подальших криз.</p>
-
-
 </section>
 </section>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">3.3</span> Завдання для самостійної роботи</h2>
+<ol type="1">
+<li>Виберіть за рекомендацією викладача свій варіант часового ряду</li>
+<li>Проведіть дослідження динаміки кількісних мір рекурентності згідно інструкції</li>
+<li>Зробити висновки</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->

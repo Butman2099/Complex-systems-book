@@ -168,9 +168,20 @@ div.csl-indent {
             Download ePub
             </a>
           </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
+              <i class="bi bi-bi-file-word pe-1"></i>
+            Download Docx
+            </a>
+          </li>
       </ul>
     </div>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
     </div>
       </div>
@@ -339,6 +350,8 @@ div.csl-indent {
   <li><a href="#обчислення-відносної-шорсткості" id="toc-обчислення-відносної-шорсткості" class="nav-link" data-scroll-target="#обчислення-відносної-шорсткості"><span class="header-section-number">4.2.7</span> Обчислення відносної шорсткості</a></li>
   <li><a href="#розрахунок-показників-складності-хьорта" id="toc-розрахунок-показників-складності-хьорта" class="nav-link" data-scroll-target="#розрахунок-показників-складності-хьорта"><span class="header-section-number">4.2.8</span> Розрахунок показників складності Хьорта</a></li>
   </ul></li>
+  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">4.3</span> Висновок</a></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">4.4</span> Завдання для самостійної роботи</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_4.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -553,12 +566,6 @@ Mobility = \frac{\sigma_{dd}/\sigma_{d}}{Complexity}.
 Complexity = \frac{\sigma_d}{\sigma_{signal}},
 \]</span></p>
 <p>де <span class="math inline">\(d\)</span> та <span class="math inline">\(dd\)</span> представляють перші та другі похідні сигналу, відповідно.</p>
-<div id="fig-Hjorth" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_4\hjorth1970.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.3: Характеристичні зміни форми кривої, що ілюструє залежність кожного параметра</figcaption>
-</figure>
-</div>
 <p>Бібліотека <code>neurokit2</code> представляє метод для отримання відповідних показників. Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>complexity_hjorth(signal)</code></strong></p>
 <p><strong>Параметри</strong></p>
@@ -876,7 +883,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-btc-pair" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-btc-pair-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.4: Динаміка індексу S&amp;P 500 та Біткоїна за досліджуваний період</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.3: Динаміка індексу S&amp;P 500 та Біткоїна за досліджуваний період</figcaption>
 </figure>
 </div>
 </div>
@@ -1009,7 +1016,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-btc-mi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-btc-mi-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.5: Динаміка індексу S&amp;P 500, Біткоїна та взаємної інформації</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.4: Динаміка індексу S&amp;P 500, Біткоїна та взаємної інформації</figcaption>
 </figure>
 </div>
 </div>
@@ -1060,7 +1067,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> np.arange(<span class="dv">0</span>, max_lag, dtype<span class="op">=</span><span class="st">"int"</span>) <span class="co"># оголошуємо масив лагів від 0 до maxlag</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="125">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                     <span class="co"># Створюємо порожній графік</span></span>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ax.plot(lags, mu_sp_init, label<span class="op">=</span><span class="vs">r'$MI $ '</span> <span class="op">+</span> <span class="ss">f'</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">'</span>)  <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>ax.plot(lags, mu_sp_ret, label<span class="op">=</span><span class="vs">r'$MI$ '</span> <span class="op">+</span> <span class="vs">r'$g(t)$'</span>)                          </span>
@@ -1076,7 +1083,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-mi-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-mi-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.6: Зміна з часом автовзаємної інформації для вихідного ряду x, нормалізованих прибутковостей g та модулів mod(g) фондового індексу S&amp;P 500</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.5: Зміна з часом автовзаємної інформації для вихідного ряду x, нормалізованих прибутковостей g та модулів mod(g) фондового індексу S&amp;P 500</figcaption>
 </figure>
 </div>
 </div>
@@ -1098,7 +1105,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-btc-mi-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-btc-mi-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.7: Зміна з часом автовзаємної інформації для вихідного ряду x, нормалізованих прибутковостей g та модулів mod(g) криптовалютного індексу BTC</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.6: Зміна з часом автовзаємної інформації для вихідного ряду x, нормалізованих прибутковостей g та модулів mod(g) криптовалютного індексу BTC</figcaption>
 </figure>
 </div>
 </div>
@@ -1201,7 +1208,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-lzc-plzc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-lzc-plzc-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.8: Динаміка індексу S&amp;P 500, класичної мономасштабної складності Лемпеля-Зіва та її пермутаційного аналогу</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.7: Динаміка індексу S&amp;P 500, класичної мономасштабної складності Лемпеля-Зіва та її пермутаційного аналогу</figcaption>
 </figure>
 </div>
 </div>
@@ -1221,7 +1228,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-lzc-mult" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-lzc-mult-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.9: Залежність від масштабу класичної складності Лемпеля-Зіва для S&amp;P 500</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.8: Залежність від масштабу класичної складності Лемпеля-Зіва для S&amp;P 500</figcaption>
 </figure>
 </div>
 </div>
@@ -1239,7 +1246,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-plzc-mult" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-plzc-mult-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.10: Залежність від масштабу пермутаційної складності Лемпеля-Зіва для S&amp;P 500</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.9: Залежність від масштабу пермутаційної складності Лемпеля-Зіва для S&amp;P 500</figcaption>
 </figure>
 </div>
 </div>
@@ -1337,7 +1344,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-mslzc-msplzc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-mslzc-msplzc-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.11: Динаміка індексу S&amp;P 500, класичної мультимасштабної складності Лемпеля-Зіва та її пермутаційного аналогу</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.10: Динаміка індексу S&amp;P 500, класичної мультимасштабної складності Лемпеля-Зіва та її пермутаційного аналогу</figcaption>
 </figure>
 </div>
 </div>
@@ -1401,7 +1408,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-shannon" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-shannon-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.12: Динаміка індексу S&amp;P 500 та ентропії Шеннона</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.11: Динаміка індексу S&amp;P 500 та ентропії Шеннона</figcaption>
 </figure>
 </div>
 </div>
@@ -1457,7 +1464,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-fisher" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-fisher-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.13: Динаміка індексу S&amp;P 500 та інформаційного показника Фішера</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.12: Динаміка індексу S&amp;P 500 та інформаційного показника Фішера</figcaption>
 </figure>
 </div>
 </div>
@@ -1509,7 +1516,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-dt" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-dt-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.14: Динаміка індексу S&amp;P 500 та часу декореляції</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.13: Динаміка індексу S&amp;P 500 та часу декореляції</figcaption>
 </figure>
 </div>
 </div>
@@ -1561,7 +1568,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-rr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-rr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.15: Динаміка індексу S&amp;P 500 та показника відносної шорсткості</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.14: Динаміка індексу S&amp;P 500 та показника відносної шорсткості</figcaption>
 </figure>
 </div>
 </div>
@@ -1654,7 +1661,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div id="fig-sp-hjorth" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_4_files/figure-html/fig-sp-hjorth-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;4.16: Динаміка індексу S&amp;P500 наряду з показниками активності, мобільності та складності Хьорта</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;4.15: Динаміка індексу S&amp;P500 наряду з показниками активності, мобільності та складності Хьорта</figcaption>
 </figure>
 </div>
 </div>
@@ -1662,6 +1669,20 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <p>На даному рисунку видно, що параметр активності (<span class="math inline">\(Act\)</span>) представляється найменш інформативним, оскільки він вказує тільки на зростання сукупної дисперсії сигналу. Видно тільки те, що активність значно почала зростати напередодні 2022 року, але для попередніх кризових станів ми не бачимо передвісницької поведінки цього індикатора, тому він ще вимагатиме додактових досліджень та експериментів, що виходять за рамки даного посібника.</p>
 <p>Питання передчасної ідентифікації наростання кризового явища найкраще вирішує показник мобільності (<span class="math inline">\(Mob\)</span>). Ми бачимо, що даний показник зростає під час 2015-2016 років, напередодні 2019, при настанні коронавірусної пандемії, перед 2023 роком та 2024.</p>
 <p>Показник складності Хьорта (<span class="math inline">\(Comp\)</span>) реагує асиметричним чином: у той час коли мобільність зростає, показник складності спадає, вказуючи на те, що динаміки системи прагне до вищого ступеня періодичності або корельованості.</p>
+</section>
+</section>
+<section id="висновок" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">4.3</span> Висновок</h2>
+<p>Таким чином, розглянуті інформаційні міри складності дозволяють дослідити певні аспекти складності систем будь-якої природи. Особливо продуктивним являється мультимасштабна версія введених мір. Ретельний аналіз часових рядів для систем різної природи, різного рівня складності, порівняння їх із тестовими сигналами, вивчення поведінки систем у різних (не обов’язково рівноважних, стаціонарних) умовах дозволить зрозуміти природу складності і спрогнозувати можливу поведінку систем у критичних умовах. Так, порівняння вихідного часового ряду з відповідними мірами складності свідчить про очевидне їх реагування на кризові явища. Однак питання використання їх у якості передвісників вимагає додаткових досліджень.</p>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">4.4</span> Завдання для самостійної роботи</h2>
+<ol type="1">
+<li>Дослідіть і порівняйте результати для тестових рядів різного ступеня складності</li>
+<li>Проведіть аналіз фондових індексів для країн з розвиненою економікою і таких, що розвиваються. Порівняйте результати. Поясніть, в чому їх схожість та відмінності</li>
+<li>Яким чином поводять себе міри складності у період фінансових шоків і криз?</li>
+<li>Наскільки чутливими є результати розрахунків до вибору ширини вікна та кроку?</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
@@ -1732,7 +1753,6 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <div class="csl-left-margin">[22] </div><div class="csl-right-inline">T. M. Cover, <em>Elements of Information Theory</em> (John Wiley &amp; Sons, 1999).</div>
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->
