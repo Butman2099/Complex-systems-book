@@ -153,35 +153,8 @@ div.csl-indent {
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
-              <i class="bi bi-bi-file-word pe-1"></i>
-            Download Docx
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
     </div>
       </div>
@@ -375,8 +348,8 @@ div.csl-indent {
 
 </header>
 
-<p><strong>Тема.</strong> Інформаційні методи оцінки складності.</p>
-<p><strong>Мета.</strong> Навчитися використовувати основні показники складності з теорії інформації для аналізу часових рядів.</p>
+<p><strong>Тема.</strong> Інформаційні методи оцінки складності</p>
+<p><strong>Мета.</strong> Навчитися використовувати основні показники складності з теорії інформації для аналізу часових рядів</p>
 <section id="теоретичні-відомості" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">4.1</span> Теоретичні відомості</h2>
 <section id="складність.-кількісні-міри-складності.-інформаційні-методи-оцінки-складності." class="level3" data-number="4.1.1">
@@ -425,22 +398,22 @@ l_{j(k)} = i_k - i_{k-1} - 1 = \max_{j \leq i_{k-1}}\{ l_{j} : S[i_{k-1}+1:i_{k-
 <p><span id="eq-4-3"><span class="math display">\[
 S[i_{k-1}+1:i_{k}] =
 \begin{cases}
-    S[j(k):j(k)+l_{j(k)}-1] &amp; \textrm{if} \; j(k) \neq 0, \\
-    S[i_{k-1}+1] &amp; \textrm{if} \; j(k) = 0.
+    S[j(k):j(k)+l_{j(k)}-1] &amp; \textrm{якщо} \; j(k) \neq 0, \\
+    S[i_{k-1}+1] &amp; \textrm{якщо} \; j(k) = 0.
 \end{cases}
 \tag{4.3}\]</span></span></p>
 <p>Випадок <span class="math inline">\(j(k) = 0\)</span> відповідає ситуації, коли в позиції <span class="math inline">\(i_{k−1}+1\)</span> стоїть символ, який раніше не зустрічався. При цьому ми застосовуємо операцію генерації символу.</p>
 <p>Будемо знаходити складність за LZ для часового ряду, який являє собою, наприклад, щоденні значення індексу фондового ринку або криптовалютного. Для дослідження динаміки LZ та порівняння з іншими складними системами будемо знаходити дану міру складності для підряду фіксованої довжини (вікна). Для цього обчислимо логарифмічні прибутковості та перетворимо їх у послідовність бітів. При цьому можна задавати кількість станів, які диференційовані (система числення). Так, для двох різних станів маємо 0, 1, для трьох — 0, 1, 2 і т.д. Для двійкової системи кодування буде задаватися поріг по середньому значенню і стани, наприклад, прибутковостей (<em>ret</em>) кодуватимуться наступним чином <span class="citation" data-cites="Giglio_2008 RePEc:ebl:ecbull:eb-11-00319 RePEc:pra:mprapa:22720">&nbsp;[<a href="references.html#ref-Giglio_2008" role="doc-biblioref">11</a>–<a href="references.html#ref-RePEc:pra:mprapa:22720" role="doc-biblioref">13</a>]</span>:</p>
 <p><span id="eq-4-4"><span class="math display">\[
 ret = \begin{cases}
-    0, &amp; ret_t &lt; \langle ret \rangle \\
+    0, &amp; ret_t &lt; \langle ret \rangle, \\
     1, &amp; ret_t &gt; \langle ret \rangle.
     \end{cases}
 \tag{4.4}\]</span></span></p>
 <p>Також можна визначити так звану пермутаційну складність Лемпеля-Зіва (PLZС) <span class="citation" data-cites="BAI2015102 e23070832">&nbsp;[<a href="references.html#ref-BAI2015102" role="doc-biblioref">14</a>,<a href="references.html#ref-e23070832" role="doc-biblioref">15</a>]</span>. У даному випадку би будемо опиратись на процедуру реконструкції фазового простору, що згадувалась в лабораторних 2 і 3. Згідно пермутаційній процедурі ми будемо брати фрагмент ряду довжини <span class="math inline">\(m\)</span>, що слугує розмірностю реконструйованого атрактора, та замінювати кожне значення ряду його порядковим індексом. На подальшому ресунку представлено часовий ряд та його можливі порядкові шаблони:</p>
 <div id="fig-permutation" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Images\lab_4\Permutation-entropy-method-Permutation-entropy-PE-was-calculated-for-both-unaveraged.png" class="img-fluid figure-img"></p>
+<p><img src="Images\lab_4\Permutation-entropy-method-Permutation-entropy-PE-was-calculated-for-both-unaveraged.png" style="height:50.0%" class="figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;4.1: Фрагмент часового ряду (а) та 6 можливих порядкових шаблонів, що можуть бути в цьому сигналі (b) <span class="citation" data-cites="hillen2013joint">&nbsp;[<a href="references.html#ref-hillen2013joint" role="doc-biblioref">16</a>]</span></figcaption>
 </figure>
 </div>
@@ -463,7 +436,7 @@ y_{j}^{\tau} = \frac{1}{\tau}\sum_{i=(j-1)\tau+1}^{j\tau}x_i, \; 1 \leq j \leq N
 <p>де <span class="math inline">\(\tau\)</span> характеризує фактор масштабування. Довжина кожного “гранульованого” ряду залежить від розміру вікна <span class="math inline">\(і\)</span> рівна <span class="math inline">\(N/\tau\)</span>. Для масштабу рівного 1 “гранульований” ряд просто тотожний оригінальному.</p>
 <div id="fig-granulation" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Images\lab_4\3-Figure1-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\lab_4\3-Figure1-1.png" style="height:50.0%" class="figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;4.2: Схематична ілюстрація процесу грубого дроблення (“грануляції”) початкового часового ряду для масштабів 2 і 3</figcaption>
 </figure>
 </div>
@@ -472,33 +445,33 @@ y_{j}^{\tau} = \frac{1}{\tau}\sum_{i=(j-1)\tau+1}^{j\tau}x_i, \; 1 \leq j \leq N
 <p><strong><code>complexity_lempelziv(signal, delay=1, dimension=2, permutation=False, symbolize='mean', **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>delay</strong> (<em>int</em>) — часова затримка, <span class="math inline">\(\tau\)</span>. Використовується лише тоді, коли <code>permutation=True</code>.</li>
-<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень, <span class="math inline">\(m\)</span>. Використовується лише коли <code>permutation=True</code>.</li>
-<li><strong>permutation</strong> (<em>bool</em>) — якщо значення <code>True</code>, поверне складність Лемпеля-Зіва на основі порядкових патернів.</li>
-<li><strong>symbolize</strong> (<em>str</em>) — використовується тільки коли <code>permutation=False</code>. Метод перетворення неперервного сигналу на вході у символьний (дискретний) сигнал. За замовчуванням присвоює 0 та 1 значенням нижче та вище середнього. Може мати значення <code>None</code>, щоб пропустити процес (якщо вхідний сигнал вже є дискретним). Можна скористатися методом <code>complexity_symbolize()</code> для використання іншої процедури символізації ряду.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>delay</strong> (<em>int</em>) — часова затримка, <span class="math inline">\(\tau\)</span>. Використовується лише тоді, коли <code>permutation=True</code>;</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень, <span class="math inline">\(m\)</span>. Використовується лише коли <code>permutation=True</code>;</li>
+<li><strong>permutation</strong> (<em>bool</em>) — якщо значення <code>True</code>, поверне складність Лемпеля-Зіва на основі порядкових патернів;</li>
+<li><strong>symbolize</strong> (<em>str</em>) — використовується тільки коли <code>permutation=False</code>. Метод перетворення неперервного сигналу на вході у символьний (дискретний) сигнал. За замовчуванням присвоює 0 та 1 значенням нижче та вище середнього. Може мати значення <code>None</code>, щоб пропустити процес (якщо вхідний сигнал вже є дискретним). Можна скористатися методом <code>complexity_symbolize()</code> для використання іншої процедури символізації ряду;</li>
 <li><strong>kwargs</strong> — інші аргументи, які передаються до <code>complexity_ordinalpatterns()</code> (якщо <code>permutation=True</code>) або <code>complexity_symbolize()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>lzc</strong> (<em>float</em>) — складність Лемпеля-Зіва (LZC).</li>
+<li><strong>lzc</strong> (<em>float</em>) — складність Лемпеля-Зіва (LZC);</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення LZC.</li>
 </ul>
 <p>Синтаксис мультимасштабної процедури вже інший:</p>
 <p><strong><code>entropy_multiscale(signal, scale='default', dimension=3, tolerance='sd', method='MSEn', show=False, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень або датафрейму.</li>
-<li><strong>scale</strong> (<em>str</em> або <em>int</em> або <em>list</em>) — список масштабних коефіцієнтів, що використовуються для процедури крос-грануляції часового ряду. Якщо значення <code>"default"</code>, буде використано <code>range(len(signal) / (dimension + 10))</code>. Якщо <code>"max"</code>, використовуватиме всі масштаби до половини довжини сигналу. Якщо ціле число, створить діапазон до вказаного цілого числа.</li>
-<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладення, <span class="math inline">\(m\)</span>.</li>
-<li><strong>tolerance</strong> (<em>float</em>) — поріг пропускання <span class="math inline">\(\varepsilon\)</span> (часто позначається як <span class="math inline">\(r\)</span>), відстань, на якій дві точки даних вважаються подібними. Якщо <code>"sd"</code> (за замовчуванням), буде встановлено значення <span class="math inline">\(0.2 \cdot SD_{signal}\)</span>.</li>
-<li><strong>method</strong> (<em>str</em>) — яку версію мультимасштабного показника обчислювати. Переважна кількість показників за цим методом відповідають саме ентропійним підходам. Нас цікавитиме саме <code>"LZC"</code>.</li>
-<li><strong>show</strong> (<em>bool</em>) — візуалізувати залежність показника від масштабу.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень або датафрейму;</li>
+<li><strong>scale</strong> (<em>str</em> або <em>int</em> або <em>list</em>) — список масштабних коефіцієнтів, що використовуються для процедури крос-грануляції часового ряду. Якщо значення <code>"default"</code>, буде використано <code>range(len(signal) / (dimension + 10))</code>. Якщо <code>"max"</code>, використовуватиме всі масштаби до половини довжини сигналу. Якщо ціле число, створить діапазон до вказаного цілого числа;</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладення, <span class="math inline">\(m\)</span>;</li>
+<li><strong>tolerance</strong> (<em>float</em>) — поріг пропускання <span class="math inline">\(\varepsilon\)</span> (часто позначається як <span class="math inline">\(r\)</span>), відстань, на якій дві точки даних вважаються подібними. Якщо <code>"sd"</code> (за замовчуванням), буде встановлено значення <span class="math inline">\(0.2 \cdot SD_{signal}\)</span>;</li>
+<li><strong>method</strong> (<em>str</em>) — яку версію мультимасштабного показника обчислювати. Переважна кількість показників за цим методом відповідають саме ентропійним підходам. Нас цікавитиме саме <code>"LZC"</code>;</li>
+<li><strong>show</strong> (<em>bool</em>) — візуалізувати залежність показника від масштабу;</li>
 <li><strong>kwargs</strong> — необов’язкові аргументи.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><em>float</em> — точкова оцінка мультимасштабного показника окремого часового ряду, що відповідає площі під кривою значень цього показника, яка, по суті, є сумою вибіркових значень, наприклад, <code>"LZC"</code> в діапазоні масштабних коефіцієнтів.</li>
+<li><em>float</em> — точкова оцінка мультимасштабного показника окремого часового ряду, що відповідає площі під кривою значень цього показника, яка, по суті, є сумою вибіркових значень, наприклад, <code>"LZC"</code> в діапазоні масштабних коефіцієнтів;</li>
 <li><em>dict</em> — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення мультимасштабного показника. Значення показника, що відповідають кожному фактору <code>"Scale"</code>, зберігаються під ключем <code>"Value"</code>.</li>
 </ul>
 </section>
@@ -514,16 +487,16 @@ S = -\sum_{i=1}^{n}p_i \ln p_{i}.
 <p><strong><code>entropy_shannon(signal=None, base=2, symbolize=None, show=False, freq=None, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>base</strong> (<em>float</em>) — основа логарифму, що за замовчуванням дорівнює 2, що дає одиницю в бітах. Зауважте, що <code>scipy.stats.entropy()</code> за замовчуванням використовує число Ейлера (<code>np.e</code>) (натуральний логарифм), що дає міру інформації, виражену в натах.</li>
-<li><strong>symbolize</strong> (<em>str</em>) — метод приведення неперервного сигналу на вході у символьний (дискретний) сигнал. За замовчуванням дорівнює нулю, що пропускає процес (і припускає, що вхідні дані вже є дискретними).</li>
-<li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, виводить дискретність сигналу.</li>
-<li><strong>freq</strong> (<em>np.array</em>) — замість сигналу можна надати вектор ймовірностей.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>base</strong> (<em>float</em>) — основа логарифму, що за замовчуванням дорівнює 2, що дає одиницю в бітах. Зауважте, що <code>scipy.stats.entropy()</code> за замовчуванням використовує число Ейлера (<code>np.e</code>) (натуральний логарифм), що дає міру інформації, виражену в натах;</li>
+<li><strong>symbolize</strong> (<em>str</em>) — метод приведення неперервного сигналу на вході у символьний (дискретний) сигнал. За замовчуванням дорівнює нулю, що пропускає процес (і припускає, що вхідні дані вже є дискретними);</li>
+<li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, виводить дискретність сигналу;</li>
+<li><strong>freq</strong> (<em>np.array</em>) — замість сигналу можна надати вектор ймовірностей;</li>
 <li><strong>kwargs</strong> — необов’язкові аргументи. Наразі не використовуються.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>shanen</strong> (<em>float</em>) — Шеннонівську ентропію.</li>
+<li><strong>shanen</strong> (<em>float</em>) — Шеннонівську ентропію;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення Шеннонівської ентопії.</li>
 </ul>
 </section>
@@ -534,36 +507,36 @@ S = -\sum_{i=1}^{n}p_i \ln p_{i}.
 <p><strong><code>fisher_information(signal, delay=1, dimension=2)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
 <li><strong>delay</strong> (<em>int</em>) — затримка в часі, <span class="math inline">\(\tau\)</span>.</li>
 <li><strong>dimension</strong> (<em>int</em>) — розмірність векторів фазового простору, <span class="math inline">\(m\)</span>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>fi</strong> (<em>float</em>) — обчислена міра інформації Фішера.</li>
+<li><strong>fi</strong> (<em>float</em>) — обчислена міра інформації Фішера;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення інформації Фішера.</li>
 </ul>
 </section>
 <section id="складність-та-параметри-хьорта" class="level3" data-number="4.1.6">
 <h3 data-number="4.1.6" class="anchored" data-anchor-id="складність-та-параметри-хьорта"><span class="header-section-number">4.1.6</span> Складність та параметри Хьорта</h3>
 <p>Параметри Хьорта — це показники статистичних властивостей, які спочатку були введені Хьортом <span class="citation" data-cites="HJORTH1970306">&nbsp;[<a href="references.html#ref-HJORTH1970306" role="doc-biblioref">19</a>]</span> для опису загальних характеристик сигналів електроенцифалограми у кількох кількісних термінах, але які можуть бути застосовані до будь-якого часового ряду. Параметрами є активність, рухливість і складність:</p>
-<ul>
-<li>Параметр <strong>активності</strong> (<span class="math inline">\(Activity\)</span>) — це просто дисперсія сигналу, яка відповідає середній потужності сигналу (якщо його середнє значення дорівнює 0).</li>
-</ul>
+<ol type="1">
+<li>Параметр <strong>активності</strong> (<span class="math inline">\(Activity\)</span>) — це просто дисперсія сигналу, яка відповідає середній потужності сигналу (якщо його середнє значення дорівнює 0):</li>
+</ol>
 <p><span class="math display">\[
 Activity = \sigma^{2}_{signal}.
 \]</span></p>
-<ul>
-<li>Параметр <strong>рухливості</strong> (<span class="math inline">\(Mobility\)</span>) являє собою середню частоту або частку середньоквадратичного відхилення спектра потужності. Він визначається як квадратний корінь з дисперсії першої похідної сигналу, поділений на дисперсію сигналу.</li>
-</ul>
+<ol start="2" type="1">
+<li>Параметр <strong>рухливості</strong> (<span class="math inline">\(Mobility\)</span>) являє собою середню частоту або частку середньоквадратичного відхилення спектра потужності. Він визначається як квадратний корінь з дисперсії першої похідної сигналу, поділений на дисперсію сигналу:</li>
+</ol>
 <p><span class="math display">\[
 Mobility = \frac{\sigma_{dd}/\sigma_{d}}{Complexity}.
 \]</span></p>
-<ul>
-<li>Параметр <strong>складності</strong> (<span class="math inline">\(Complexity\)</span>) дає оцінку смуги пропускання сигналу, яка вказує на схожість форми сигналу з чистою синусоїдою (для якої значення сходиться до 1). Іншими словами, це міра “надмірної деталізації” по відношенню до “найм’якшої” можливої форми кривої. Параметр “Складність” визначається як відношення рухливості першої похідної сигналу до рухливості самого сигналу.</li>
-</ul>
+<ol start="3" type="1">
+<li>Параметр <strong>складності</strong> (<span class="math inline">\(Complexity\)</span>) дає оцінку смуги пропускання сигналу, яка вказує на схожість форми сигналу з чистою синусоїдою (для якої значення сходиться до 1). Іншими словами, це міра “надмірної деталізації” по відношенню до “найм’якшої” можливої форми кривої. Параметр “Складність” визначається як відношення рухливості першої похідної сигналу до рухливості самого сигналу:</li>
+</ol>
 <p><span class="math display">\[
-Complexity = \frac{\sigma_d}{\sigma_{signal}},
+Complexity = \left. \sigma_d \middle/ \sigma_{signal} \right.,
 \]</span></p>
 <p>де <span class="math inline">\(d\)</span> та <span class="math inline">\(dd\)</span> представляють перші та другі похідні сигналу, відповідно.</p>
 <p>Бібліотека <code>neurokit2</code> представляє метод для отримання відповідних показників. Її синтаксис виглядає наступним чином:</p>
@@ -589,7 +562,7 @@ Complexity = \frac{\sigma_d}{\sigma_{signal}},
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><em>float</em> — час декореляції.</li>
+<li><em>float</em> — час декореляції;</li>
 <li><em>dict</em> — словник, що містить додаткову інформацію про додаткові показники.</li>
 </ul>
 </section>
@@ -600,12 +573,12 @@ Complexity = \frac{\sigma_d}{\sigma_{signal}},
 <p><strong><code>complexity_relativeroughness(signal, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (часовий ряд) у вигляді вектора значень.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (часовий ряд) у вигляді вектора значень;</li>
 <li><strong>kwargs</strong> (<em>optional</em>) — інші аргументи, що потребуються методу <code>nk.signal_autocor()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>rr</strong> (<em>float</em>) — значення відносної грубості.</li>
+<li><strong>rr</strong> (<em>float</em>) — значення відносної грубості;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить інформацію відносно параметрів, що використовувались для обчислення показника грубості.</li>
 </ul>
 </section>
@@ -625,10 +598,10 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <p><strong><code>mutual_information(x, y, method='varoquaux', bins='default', **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>x</strong> (<em>Union[list, np.array, pd.Series]</em>) — масив значень.</li>
-<li><strong>y</strong> (<em>Union[list, np.array, pd.Series]</em>) — масив значень.</li>
-<li><strong>method</strong> (<em>str</em>) — метод для обчислення взаємної інформації: <code>"nolitsa"</code>, <code>"varoquaux"</code>, <code>"knn"</code>, <code>"max"</code>.</li>
-<li><strong>bins</strong> (<em>int</em>) — кількість бінів гістограми. Використовується лише для <code>"nolitsa"</code> та <code>"varoquaux"</code>. Якщо <code>"default"</code>, кількість бінів оцінюється згідно методики Hacine-Gharbi (2018).</li>
+<li><strong>x</strong> (<em>Union[list, np.array, pd.Series]</em>) — масив значень;</li>
+<li><strong>y</strong> (<em>Union[list, np.array, pd.Series]</em>) — масив значень;</li>
+<li><strong>method</strong> (<em>str</em>) — метод для обчислення взаємної інформації: <code>"nolitsa"</code>, <code>"varoquaux"</code>, <code>"knn"</code>, <code>"max"</code>’;</li>
+<li><strong>bins</strong> (<em>int</em>) — кількість бінів гістограми. Використовується лише для <code>"nolitsa"</code> та <code>"varoquaux"</code>. Якщо <code>"default"</code>, кількість бінів оцінюється згідно методики Hacine-Gharbi (2018);</li>
 <li><strong>kwargs</strong> — додаткові ключові аргументи для обраного методу.</li>
 </ul>
 <p><strong>Повертає</strong></p>
@@ -637,9 +610,9 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </ul>
 <p>Існують різноманітні підходи до розрахунку взаємної інформації:</p>
 <ul>
-<li><strong>nolitsa</strong>: Класична взаємна інформація (трохи швидше, ніж метод <code>"sklearn"</code>).</li>
-<li><strong>varoquaux</strong>: Застосовує фільтр Гауса до об’єднаної гістограми. Величину згладжування можна налаштовувати за допомогою аргументу <code>sigma</code> (за замовчуванням <code>sigma=1</code>).</li>
-<li><strong>knn</strong>: Непараметрична (тобто не заснована на біннінгу) оцінка за найближчими сусідами. Додаткові параметри включають <code>k</code> (за замовчуванням, <code>k=3</code>), кількість найближчих сусідів для використання.</li>
+<li><strong>nolitsa</strong>: Класична взаємна інформація (трохи швидше, ніж метод <code>"sklearn"</code>);</li>
+<li><strong>varoquaux</strong>: Застосовує фільтр Гауса до об’єднаної гістограми. Величину згладжування можна налаштовувати за допомогою аргументу <code>sigma</code> (за замовчуванням <code>sigma=1</code>);</li>
+<li><strong>knn</strong>: Непараметрична (тобто не заснована на біннінгу) оцінка за найближчими сусідами. Додаткові параметри включають <code>k</code> (за замовчуванням, <code>k=3</code>), кількість найближчих сусідів для використання;</li>
 <li><strong>max</strong>: Максимальний коефіцієнт взаємної інформації, тобто <span class="math inline">\(MI\)</span> є максимальним при певній комбінації кількості бінів.</li>
 </ul>
 <p>Існує безліч різноманітних показників складності, що базуються на теорії інформації та інших парадигах, які ми ще представлятимемо в подальшому. Розглянемо ефективність використання зазначених показників у якості індикаторів або індикаторів-передвісників крахових подій.</p>
@@ -871,7 +844,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>і тепер візуалізуємо отримані ряди:</p>
+<p>І тепер візуалізуємо отримані ряди:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> joined.iloc[:,<span class="dv">0</span>].values, joined.iloc[:,<span class="dv">1</span>].values</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, ylabel_2</span>
@@ -1042,7 +1015,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mi</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виведемо залежність автовзаємної інформації від лагу для всього ряду S&amp;P 500 та Біткоїна. Спочатку розрахуємо вихідні значення ряду, далі прибутковості і потім волатильності. Для кожного з відповідних сигналів виведемо взаємну інформацію.</p>
-<p><strong>Виконуємо перетворення S&amp;P 500 та Біткоїна</strong></p>
+<p>Виконуємо перетворення S&amp;P 500 та Біткоїна:</p>
 <div class="cell" data-execution_count="114">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sp_init <span class="op">=</span> transformation(time_ser_1, ret_type<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sp_ret <span class="op">=</span> transformation(time_ser_1, ret_type<span class="op">=</span><span class="dv">4</span>)</span>
@@ -1052,7 +1025,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>btc_ret <span class="op">=</span> transformation(time_ser_2, ret_type<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>btc_vol <span class="op">=</span> np.<span class="bu">abs</span>(btc_ret.copy())</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Розраховуємо автовзаємну інформацію S&amp;P 500 та Біткоїна</strong></p>
+<p>Розраховуємо автовзаємну інформацію S&amp;P 500 та Біткоїна:</p>
 <div class="cell" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>max_lag <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1233,7 +1206,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 </div>
 </div>
-<p><strong>Мультимасштабна динаміка пермутаційного показника складності Лемпеля-Зіва</strong></p>
+<p>Мультимасштабна динаміка пермутаційного показника складності Лемпеля-Зіва:</p>
 <div class="cell" data-execution_count="199">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>msplzc, info <span class="op">=</span> nk.entropy_multiscale(ret_sp, </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"LZC"</span>,  </span>
@@ -1354,7 +1327,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="обчислення-шеннонівської-ентропії" class="level3" data-number="4.2.4">
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="обчислення-шеннонівської-ентропії"><span class="header-section-number">4.2.4</span> Обчислення Шеннонівської ентропії</h3>
 <p>Як уже зазначалося, Шеннонівська ентропія — це міра непередбачуваності стану, або, еквівалентно, його середнього інформаційного вмісту. Ентропія Шеннона є однією з перших і найбільш базових мір ентропії та фундаментальним поняттям теорії інформації.</p>
-<p>Розраховуватимемо її в ковзному вікні.</p>
+<p>Розраховуватимемо її в ковзному вікні:</p>
 <div class="cell" data-execution_count="256">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
@@ -1678,8 +1651,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="завдання-для-самостійної-роботи" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">4.4</span> Завдання для самостійної роботи</h2>
 <ol type="1">
-<li>Дослідіть і порівняйте результати для тестових рядів різного ступеня складності</li>
-<li>Проведіть аналіз фондових індексів для країн з розвиненою економікою і таких, що розвиваються. Порівняйте результати. Поясніть, в чому їх схожість та відмінності</li>
+<li>Дослідіть і порівняйте результати для фінансових рядів, що представляють розвинені компанії (країни, криптовалюти) і такі, що розвиваються. Порівняйте результати. Поясніть, в чому їх схожість та відмінності</li>
 <li>Яким чином поводять себе міри складності у період фінансових шоків і криз?</li>
 <li>Наскільки чутливими є результати розрахунків до вибору ширини вікна та кроку?</li>
 </ol>

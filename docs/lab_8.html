@@ -153,35 +153,8 @@ div.csl-indent {
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
-              <i class="bi bi-bi-file-word pe-1"></i>
-            Download Docx
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
     </div>
       </div>
@@ -342,6 +315,8 @@ div.csl-indent {
   <li><a href="#коефіцієнт-поглинання" id="toc-коефіцієнт-поглинання" class="nav-link" data-scroll-target="#коефіцієнт-поглинання"><span class="header-section-number">8.2.4</span> Коефіцієнт поглинання</a></li>
   <li><a href="#віконна-процедура" id="toc-віконна-процедура" class="nav-link" data-scroll-target="#віконна-процедура"><span class="header-section-number">8.2.5</span> Віконна процедура</a></li>
   </ul></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">8.3</span> Завдання для самостійної роботи</a></li>
+  <li><a href="#контрольні-запитання" id="toc-контрольні-запитання" class="nav-link" data-scroll-target="#контрольні-запитання"><span class="header-section-number">8.4</span> Контрольні запитання</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_8.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -385,7 +360,7 @@ G_{i}(t) = \ln S_i(t+\Delta t) - \ln S_i(t),
 \tag{8.1}\]</span></span></p>
 <p>де <span class="math inline">\(S_i(t)\)</span> позначає ціну акції <span class="math inline">\(i\)</span>. Оскільки різні ціни мають різні рівні змінюванності (стандартні відхилення), визначатимемо стандартизовану прибутковість</p>
 <p><span id="eq-8-2"><span class="math display">\[
-g_i(t) \equiv \frac{G_i(t) - \left\langle G_i \right\rangle}{\sigma_i},
+g_i(t) \equiv \left. \left[ G_i(t) - \left\langle G_i \right\rangle \right] \middle/ \sigma_i \right.,
 \tag{8.2}\]</span></span></p>
 <p>де <span class="math inline">\(\sigma_i \equiv \sqrt{\left\langle G_{i}^{2} \right\rangle - \left\langle G_i \right\rangle^{2}}\)</span> — стандартне відхилення <span class="math inline">\(G_i\)</span>, а <span class="math inline">\(\left\langle...\right\rangle\)</span> позначає середнє значення за досліджуваний період часу. Тобі обчислення кореляцій <span class="math inline">\(C\)</span> зводиться до обчислення формули:</p>
 <p><span id="eq-8-3"><span class="math display">\[
@@ -417,7 +392,7 @@ P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \l
 \tag{8.6}\]</span></span></p>
 <p>де <span class="math inline">\(\lambda\)</span> в межах границь <span class="math inline">\(\lambda_{-} \leq \lambda_{i} \leq \lambda_{+}\)</span>, де <span class="math inline">\(\lambda_{-}\)</span> і <span class="math inline">\(\lambda_{+}\)</span> — найменше та найбільше власні значення <span class="math inline">\(R\)</span>, які можна визначити аналітично як</p>
 <p><span id="eq-8-7"><span class="math display">\[
-\lambda_{\pm} = 1 + \frac{1}{Q} \pm 2\sqrt{\frac{1}{Q}}.
+\lambda_{\pm} = 1 + 1/Q \pm 2\sqrt{1/Q}.
 \tag{8.7}\]</span></span></p>
 <p>Звертаємо вашу увагу, що вираз (<a href="#eq-8-6">Рівняння&nbsp;<span>8.6</span></a>) є точним для випадку розподілених за Гаусом матричних елементів <span class="math inline">\(a_{im}\)</span>.</p>
 <p>Порівняємо розподіл власних значень <span class="math inline">\(P(\lambda)\)</span> для <span class="math inline">\(C\)</span> з <span class="math inline">\(P_{rm}(\lambda)\)</span>. Для цього обчислимо власні значення <span class="math inline">\(\lambda_i\)</span> матриці <span class="math inline">\(C\)</span>, причому <span class="math inline">\(\lambda_i\)</span> впорядкуємо за зростанням (<span class="math inline">\(\lambda_{i+1} &gt; \lambda_{i}\)</span>). При дослідженнях зверніть увагу на присутність чіткої “великої частини” власних значень, що спадають у межах границь <span class="math inline">\([\lambda_{-}, \lambda_{+}]\)</span> для <span class="math inline">\(P_{rm}(\lambda)\)</span>. Також зверніть увагу на відхилення для деяких найбільших і найменших власних значень власних значень отриманих за допомогою ТВМ.</p>
@@ -427,7 +402,7 @@ P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \l
 <h3 data-number="8.1.3" class="anchored" data-anchor-id="розподіл-власних-векторів"><span class="header-section-number">8.1.3</span> Розподіл власних векторів</h3>
 <p>Відхилення <span class="math inline">\(P(\lambda)\)</span> від передбачення ТВМ <span class="math inline">\(P_{rm}(\lambda)\)</span> свідчить про те, що ці відхилення також повинні відображатися в статистиці відповідних компонент власного вектора <span class="citation" data-cites="PhysRevLett.83.1467">&nbsp;[<a href="references.html#ref-PhysRevLett.83.1467" role="doc-biblioref">8</a>]</span>. Відповідно, у даній лабораторній ми будемо аналізувати розподіл компонент власного вектора. Розподіл компонент <span class="math inline">\(\left\{ u_{l}^{k}; l=1,...,N \right\}\)</span> власного вектора <span class="math inline">\(u^k\)</span> випадкової кореляційної матриці <span class="math inline">\(R\)</span> має відповідати розподілу Гауса з нульовим середнім та одиничною дисперсією,</p>
 <p><span class="math display">\[
-\rho_{rm}(u) = \frac{1}{\sqrt{2\pi}}\exp\left( \frac{-u^{2}}{2} \right).
+\rho_{rm}(u) = \frac{1}{\sqrt{2\pi}}\exp\left( -u^{2} \middle/ 2 \right).
 \]</span></p>
 </section>
 <section id="обернене-відношення-участі" class="level3" data-number="8.1.4">
@@ -438,7 +413,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 \tag{8.8}\]</span></span></p>
 <p>де <span class="math inline">\(u_{l}^{k}\)</span>, <span class="math inline">\(l=1,...,N\)</span> — компоненти власного вектора <span class="math inline">\(u^{k}\)</span>. Значення <span class="math inline">\(I^{k}\)</span> може бути проілюстровано двома граничними випадками:</p>
 <ol type="1">
-<li>вектор з ідентичними компонентами <span class="math inline">\(u_{l}^{k} \equiv \frac{1}{\sqrt{N}}\)</span> має <span class="math inline">\(I^{k}=\frac{1}{N}\)</span>;<br>
+<li>вектор з ідентичними компонентами <span class="math inline">\(u_{l}^{k} \equiv \left. 1 \middle/ \sqrt{N} \right.\)</span> має <span class="math inline">\(I^{k}= \left. 1 \middle/ N \right.\)</span>;<br>
 </li>
 <li>вектор з одним компонентом <span class="math inline">\(u_{1}^{k}=1\)</span> і нульовими іншими має <span class="math inline">\(I^{k}=1\)</span>.</li>
 </ol>
@@ -1982,9 +1957,9 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </section>
 <section id="коефіцієнт-поглинання" class="level3" data-number="8.2.4">
 <h3 data-number="8.2.4" class="anchored" data-anchor-id="коефіцієнт-поглинання"><span class="header-section-number">8.2.4</span> Коефіцієнт поглинання</h3>
-<p>Цікаво буде буде порівняти максимальне власне значення <span class="math inline">\(\lambda_{max}\)</span> з середнім значенням коефіцієнта кореляції і так званим коефіцієнтом поглинання (absorption ratio, AR), який є кумулятивною мірою ризику і визначається формулою:</p>
+<p>Цікаво буде буде порівняти максимальне власне значення <span class="math inline">\(\lambda_{max}\)</span> з середнім значенням коефіцієнта кореляції і так званим коефіцієнтом поглинання (absorption ratio, AR), який є кумулятивною мірою ризику і визначається як</p>
 <p><span id="eq-8-9"><span class="math display">\[
-AR = \frac{\sum_{k=1}^{n}\lambda_k}{\sum_{k=1}^{N}\lambda_k}
+AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 \tag{8.9}\]</span></span></p>
 <p>і вказує, яку частину загальної варіації описують <span class="math inline">\(n\)</span> із загальної кількості <span class="math inline">\(N\)</span> власних значень.</p>
 <p>Щоб вирішити, який власний вектор можна відкинути для розрахунків у чисельнику формули вище, не втрачаючи занадто багато інформації, нам потрібно перевірити відповідні власні значення: власні вектори з найменшими власними значеннями несуть найменшу інформацію про розподіл даних; це ті, які можна відкинути.</p>
@@ -2363,6 +2338,26 @@ AR = \frac{\sum_{k=1}^{n}\lambda_k}{\sum_{k=1}^{N}\lambda_k}
 </div>
 </div>
 <p>Таким чином, при наявності сукупності часових рядів, що є даними діяльності економічних об’єктів однієї області, можна провести дослідження стосовно структури вказаної області та взаємодії об’єктів всередині неї. Дослідження проводяться на основі теорії випадкових матриць, що дозволяє отримувати інформацію шляхом аналізу матриці крос-кореляцій, побудованої для сукупної бази економічних об’єктів.</p>
+</section>
+</section>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">8.3</span> Завдання для самостійної роботи</h2>
+<p>Оберіть певний фондовий індекс і проведіть дослідження крахових подій для ринку, що він представляє за допомогою теорії випадкових матриць.</p>
+</section>
+<section id="контрольні-запитання" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="контрольні-запитання"><span class="header-section-number">8.4</span> Контрольні запитання</h2>
+<ol type="1">
+<li>Поясніть основну ідею теорії випадкових матриць</li>
+<li>Про що свідчить відмінність кореляційних і спектральних властивостей матриці даних і випадкової?</li>
+<li>Дослідіть, як змінюється розподіл власних значень у випадках:
+<ul>
+<li><span class="math inline">\(\lambda_{-} &lt; \lambda &lt; \lambda_{+}\)</span>;</li>
+<li><span class="math inline">\(\lambda &gt; \lambda_{+}\)</span>;</li>
+<li><span class="math inline">\(\lambda &lt; \lambda_{-}\)</span>.</li>
+</ul></li>
+<li>Порівняйте кольорову карту поля взаємних кореляцій випадкової матриці і заданої. Зробіть висновки</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
@@ -2409,8 +2404,6 @@ AR = \frac{\sum_{k=1}^{n}\lambda_k}{\sum_{k=1}^{N}\lambda_k}
 <div class="csl-left-margin">[14] </div><div class="csl-right-inline">Y. V. Fyodorov and A. D. Mirlin, <em><a href="https://doi.org/10.1103/PhysRevLett.69.1093">Analytical Derivation of the Scaling Law for the Inverse Participation Ratio in Quasi-One-Dimensional Disordered Systems</a></em>, Phys. Rev. Lett. <strong>69</strong>, 1093 (1992).</div>
 </div>
 </div>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

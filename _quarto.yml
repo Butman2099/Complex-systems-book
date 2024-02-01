@@ -28,8 +28,8 @@ book:
           city: Кривий Ріг
           state: Дніпропетровська область
           url: https://www.duet.edu.ua/ua
-  downloads: [pdf, epub, docx]
-  reader-mode: true
+  downloads: [docx]
+  reader-mode: false
   date: today 
   cover-image: title_book.jpeg
   date-format: iso 
@@ -75,21 +75,9 @@ format:
     theme:
       light: cosmo
       dark: superhero
-  pdf:
-    title: "Моделювання складних систем у Python"
-    keep-tex: true
-    pdf-engine: lualatex
-    documentclass: book
-    toc: true 
-    colorlinks: true
   docx: 
     toc: true
     number-sections: true
-  epub: 
-    toc: true
-    number-sections: true
-
-latex-auto-install: true
     
 
 

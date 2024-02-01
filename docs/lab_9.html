@@ -131,35 +131,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
-              <i class="bi bi-bi-file-word pe-1"></i>
-            Download Docx
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
     </div>
       </div>
@@ -313,6 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#обчислення-показників-ляпунова-із-використанням-віконної-процедури" id="toc-обчислення-показників-ляпунова-із-використанням-віконної-процедури" class="nav-link" data-scroll-target="#обчислення-показників-ляпунова-із-використанням-віконної-процедури"><span class="header-section-number">9.2.1</span> Обчислення показників Ляпунова із використанням віконної процедури</a></li>
   </ul></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">9.3</span> Завдання для самостійної роботи</a></li>
+  <li><a href="#контрольні-запитання" id="toc-контрольні-запитання" class="nav-link" data-scroll-target="#контрольні-запитання"><span class="header-section-number">9.4</span> Контрольні запитання</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_9.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -336,8 +311,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Тема.</strong> Використання показників Ляпунова для дослідження хаотичних процесів у складних системах.</p>
-<p><strong>Мета.</strong> Навчитися розпізавати та передчасно ідентифікувати катастрофічні події, використовуючи показники Ляпунова.</p>
+<p><strong>Тема.</strong> Використання показників Ляпунова для дослідження хаотичних процесів у складних системах</p>
+<p><strong>Мета.</strong> Навчитися розпізавати та передчасно ідентифікувати катастрофічні події, використовуючи показники Ляпунова</p>
 <section id="теоретичні-відомості" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">9.1</span> Теоретичні відомості</h2>
 <p>Здавалося б, випадкові коливання у складних системах часто демонструють різний рівень складності та хаотичності. В умовах обмеженості даних стає важко визначити межі їх передбачуваності. Аналіз таких систем, процесів, що визначають їх динаміку, теорія хаосу розглядалася в різних галузях, таких як економіка, фінанси, фізика та ін. Що стосується аналізу, наприклад, динаміки Біткоїна, то знання про його абсолютно випадкові і, водночас, детерміновані процеси потенційно можуть пояснити флуктуації часових рядів різної природи. З огляду на фінансовий сектор, докази детермінованого хаосу, знання таких моментів, коли дві спочатку близькі траєкторії починають розходитися, і періодів, протягом яких вони залишатимуться близькими одна до одної, матимуть важливе значення для регуляторів і трейдерів, які розроблятимуть ефективні короткострокові торгівельні стратегії. Протягом багатьох років теорія хаосу надавала підходи до вивчення деяких цікавих властивостей часових рядів. Найбільш поширеними є: кореляційна розмірність, BDS тест, ентропія Колмогорова, показники Ляпунова тощо.</p>
@@ -348,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Щоб представити ідею більш точно, розглянемо дві послідовні траєкторії — <span class="math inline">\(x(t)\)</span> та наближчого сусіда цієї траєкторії з невеликим зміщенням, <span class="math inline">\(x(t) + \delta(t)\)</span>, де <span class="math inline">\(\delta(t)\)</span> представляє собою крихітне відхилення в часі <span class="math inline">\(t\)</span>, як показано на наступному рисунку (<a href="#fig-sensitivity">Рис.&nbsp;<span>9.1</span></a>).</p>
 <div id="fig-sensitivity" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="Images\lab_9\Orbital_instability_(Lyapunov_exponent).png" class="img-fluid figure-img"></p>
+<p><img src="Images\lab_9\Orbital_instability_(Lyapunov_exponent).png" style="height:12cm" class="figure-img"></p>
 <figcaption class="figure-caption">Рис.&nbsp;9.1: Розбіжність двох початково близьких траєкторій у динамічній системі</figcaption>
 </figure>
 </div>
@@ -587,26 +562,26 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="обчислення-показників-ляпунова-із-використанням-віконної-процедури"><span class="header-section-number">9.2.1</span> Обчислення показників Ляпунова із використанням віконної процедури</h3>
 <p>Для подальших розрахунків використовуватимемо бібліотеку <code>neurokit2</code>. Ключовою функцією для отримання відповідних показників є <code>complexity_lyapunov()</code>. Вона надає доступ до розрахунків згідно з наступними алгоритмами:</p>
 <ul>
-<li><strong>Розенштейна та ін. (1993)</strong> запропонували алгоритм для обчислення СПЛ з невеликих наборів даних. Спочатку часовий ряд реконструюється за допомогою методу вбудовування затримки, а найближчий сусід кожного вектора обчислюється за допомогою евклідової відстані. Потім ці дві сусідні точки відстежуються вздовж їхніх траєкторій відстані для ряду точок даних. Нахил лінії з використанням методу найменших квадратів до середньої логарифмічної траєкторії відстаней дає остаточне значення LLE.</li>
-<li><strong>Маковскі</strong> — це спеціальна модифікація алгоритму Розенштейна, що використовує процедуру <span class="math inline">\(k\)</span>-вимірного дерева для більш ефективного обчислення найближчих сусідів. Крім того, СПЛ обчислюється як нахил до точки зміни швидкості розбіжності (точки, де вона вирівнюється), що робить його більш стійким до параметра довжини траєкторії.</li>
+<li><strong>Розенштейна та ін. (1993)</strong> запропонували алгоритм для обчислення СПЛ з невеликих наборів даних. Спочатку часовий ряд реконструюється за допомогою методу вбудовування затримки, а найближчий сусід кожного вектора обчислюється за допомогою евклідової відстані. Потім ці дві сусідні точки відстежуються вздовж їхніх траєкторій відстані для ряду точок даних. Нахил лінії з використанням методу найменших квадратів до середньої логарифмічної траєкторії відстаней дає остаточне значення LLE;</li>
+<li><strong>Маковскі</strong> — це спеціальна модифікація алгоритму Розенштейна, що використовує процедуру <span class="math inline">\(k\)</span>-вимірного дерева для більш ефективного обчислення найближчих сусідів. Крім того, СПЛ обчислюється як нахил до точки зміни швидкості розбіжності (точки, де вона вирівнюється), що робить його більш стійким до параметра довжини траєкторії;</li>
 <li><strong>Екман та ін. (1986)</strong> обчислюють ПЛ, спочатку реконструюючи часовий ряд за допомогою методу вбудовуваних вкладень, і отримують дотичну, яка відображає реконструйовану динаміку за допомогою методу найменших квадратів.</li>
 </ul>
 <p>Розглянемо її синтаксис більш детально:</p>
 <p><strong><code>complexity_lyapunov(signal, delay=1, dimension=2, method='rosenstein1993', separation='auto', **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>delay</strong> (<em>int</em>) — часова затримка (часто позначається <span class="math inline">\(\tau\)</span> іноді називають запізненням). Ще розглянемо метод <code>complexity_delay()</code> для оцінки оптимального значення цього параметра.</li>
-<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>, іноді позначається як <span class="math inline">\(d\)</span> або порядок). Далі звернемось до методу <code>complexity_dimension()</code>, щоб оцінити оптимальне значення для цього параметра. Якщо метод має значення <code>"eckmann1986"</code>, рекомендується використовувати більші значення розмірності.</li>
-<li><strong>method</strong> (<em>str</em>) — метод, який визначає алгоритм обчислення ПЛ. Може бути <code>"rosenstein1993"</code>, <code>"makowski"</code> або <code>"eckmann1986"</code>.</li>
-<li><strong>len_trajectory</strong> (<em>int</em>) — застосовується, якщо метод <code>"rosenstein1993"</code>. Кількість точок даних, в яких простежуються сусідні траєкторії.</li>
-<li><strong>matrix_dim</strong> (<em>int</em>) — застосовується, якщо метод <code>"eckmann1986"</code>. Відповідає кількості ПЛ, які потрібно повернути.</li>
-<li><strong>min_neighbors</strong> (<em>int</em>, <em>str</em>) — застосовується, якщо метод <code>"eckmann1986"</code>. Мінімальна кількість сусідів. Якщо <code>"default"</code>, використовується <code>min(2 * matrix_dim, matrix_dim + 4)</code>.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>delay</strong> (<em>int</em>) — часова затримка (часто позначається <span class="math inline">\(\tau\)</span> іноді називають запізненням). Ще розглянемо метод <code>complexity_delay()</code> для оцінки оптимального значення цього параметра;</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>, іноді позначається як <span class="math inline">\(d\)</span> або порядок). Далі звернемось до методу <code>complexity_dimension()</code>, щоб оцінити оптимальне значення для цього параметра. Якщо метод має значення <code>"eckmann1986"</code>, рекомендується використовувати більші значення розмірності;</li>
+<li><strong>method</strong> (<em>str</em>) — метод, який визначає алгоритм обчислення ПЛ. Може бути <code>"rosenstein1993"</code>, <code>"makowski"</code> або <code>"eckmann1986"</code>;</li>
+<li><strong>len_trajectory</strong> (<em>int</em>) — застосовується, якщо метод <code>"rosenstein1993"</code>. Кількість точок даних, в яких простежуються сусідні траєкторії;</li>
+<li><strong>matrix_dim</strong> (<em>int</em>) — застосовується, якщо метод <code>"eckmann1986"</code>. Відповідає кількості ПЛ, які потрібно повернути;</li>
+<li><strong>min_neighbors</strong> (<em>int</em>, <em>str</em>) — застосовується, якщо метод <code>"eckmann1986"</code>. Мінімальна кількість сусідів. Якщо <code>"default"</code>, використовується <code>min(2 * matrix_dim, matrix_dim + 4)</code>;</li>
 <li><strong>kwargs</strong> (необов’язково) — інші аргументи, які передаються до <code>signal_psd()</code> для обчислення мінімального часового розділення двох сусідів.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>lle</strong> (<em>float</em>) — оцінка СПЛ, якщо метод <code>"rosenstein1993"</code>, і масив ПЛ, якщо <code>"eckmann1986"</code>.</li>
+<li><strong>lle</strong> (<em>float</em>) — оцінка СПЛ, якщо метод <code>"rosenstein1993"</code>, і масив ПЛ, якщо <code>"eckmann1986"</code>;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію щодо параметрів, які використовуються для обчислення СПЛ.</li>
 </ul>
 <p>Перед розрахунками виконаємо оновлення бібліотеки <code>neurokit2</code>:</p>
@@ -824,10 +799,25 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 </div>
 <p>Як показано на даному рисунку (<a href="#fig-dji-wind-spec-le">Рис.&nbsp;<span>9.5</span></a>), спектр показників Ляпунова реагує особливим чином на кризові події фондового ринку. Видно, що, по-перше, <span class="math inline">\(\lambda\)</span> спадає в передкризові періоди та зростає під час кризи. Особливо характерною є дана динаміка перед кризами 1997, 2001, 2008, 2011, 2015, 2020 років. У передкризові періоди спостерігається конвергенція траєкторій у фазовому просторі системі, що говорить про зростання її впорядкованості. Сам кризовий та посткризовий період характеризується дивергенцією, тобто розбіжністю траєкторій системи. По-друге, видно, що, спускаючись від 1-го до 4-го показника Ляпунова, ми поступово втрачаємо інформацію про динаміку системи. Тобто, перші найбільші показники представляються в даному випадку найбільш інформативними. Можливо, у даному випадку, має сенс розглядати лише найперший ПЛ.</p>
-
-
 </section>
 </section>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">9.3</span> Завдання для самостійної роботи</h2>
+<ol type="1">
+<li>Оберіть часовий варіант згідно вашого варіанту</li>
+<li>Визначіть період прогнозованості досліджуваної системи за діаграмою розбіжності фазових траєкторій</li>
+<li>Проаналізуйте динаміку старшого показника Ляпунова та його спектру за описаними в лабораторній роботі алгоритмами</li>
+</ol>
+</section>
+<section id="контрольні-запитання" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="контрольні-запитання"><span class="header-section-number">9.4</span> Контрольні запитання</h2>
+<ol type="1">
+<li>Поясніть, які відмінності хаотичного ряду динаміки від інших процесів.</li>
+<li>Яким чином наявність або відсутність хаотичності може впливати на можливість прогнозування розвитку певного процесу?</li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->

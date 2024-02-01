@@ -150,35 +150,8 @@ div.csl-indent {
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
-              <i class="bi bi-bi-file-word pe-1"></i>
-            Download Docx
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
     </div>
       </div>
@@ -343,6 +316,7 @@ div.csl-indent {
   <li><a href="#обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" id="toc-обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності"><span class="header-section-number">6.2.8</span> Обчислення фрактальної розмірності через нахил спектральної щільності потужності</a></li>
   <li><a href="#обчислення-кореляційної-розмірності" id="toc-обчислення-кореляційної-розмірності" class="nav-link" data-scroll-target="#обчислення-кореляційної-розмірності"><span class="header-section-number">6.2.9</span> Обчислення кореляційної розмірності</a></li>
   </ul></li>
+  <li><a href="#завдання-для-виконання" id="toc-завдання-для-виконання" class="nav-link" data-scroll-target="#завдання-для-виконання"><span class="header-section-number">6.3</span> Завдання для виконання</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_6.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -366,8 +340,8 @@ div.csl-indent {
 
 </header>
 
-<p><strong>Тема.</strong> Фрактальний аналіз складних систем.</p>
-<p><strong>Мета.</strong> Навчитися використовувати методи монофрактального аналізу для дослідження нелінійних характеристик складних систем.</p>
+<p><strong>Тема.</strong> Фрактальний аналіз складних систем</p>
+<p><strong>Мета.</strong> Навчитися використовувати методи монофрактального аналізу для дослідження нелінійних характеристик складних систем</p>
 <section id="теоретичні-відомості" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">6.1</span> Теоретичні відомості</h2>
 <section id="означення-фрактала" class="level3" data-number="6.1.1">
@@ -387,16 +361,16 @@ div.csl-indent {
 <p>Першочергово поняття фрактала у фізиці виникло у зв’язку із завданням про визначення довжини берегової лінії. Під час її вимірювання за наявною картою місцевості з’ясувалася цікава деталь — чим більш великомасштабна карта береться, тим довшою виявляється ця берегова лінія <span class="citation" data-cites="steinhaus1954length vulpiani2014lewis 0c446163-c0a0-36ed-a942-0e71e56cd938 science.156.3775.636">&nbsp;[<a href="references.html#ref-steinhaus1954length" role="doc-biblioref">5</a>–<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">8</a>]</span>. Нехай, наприклад, відстань по прямій між розсташованими на береговій лінії точками А та В дорівнює R (див. <a href="#fig-costline">Рис.&nbsp;<span>6.1</span></a>). Тоді, щоб виміряти довжину берегової лінії між цима точками, ми розташуємо по берегу жорстко пов’язані один з одним вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад, <span class="math inline">\(l=10\)</span> км. Довжину берегової лінії в кілометрах між точками А і В ми приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне вимірювання цієї довжини ми зробимо так само, але відстань між сусідніми вузлами зробимо вже рівною <span class="math inline">\(l=1\)</span> км.</p>
 <p>Виявляється, що результат цих вимірювань буде різним. При зменшенні масштабу <span class="math inline">\(l\)</span> ми отримуватимемо все більші й більші значення довжини. На відміну від гладкої кривої, лінія морського узбережжя виявляється найчастіше настільки порізаною (аж до найменших масштабів), що зі зменшенням довжини ланки <span class="math inline">\(l\)</span> величина <span class="math inline">\(L\)</span> — довжина берегової лінії — не прагне до кінцевого межі, а збільшується за степеневим законом</p>
 <p><span id="eq-6-1"><span class="math display">\[
-L \approx l\left( \frac{R}{l} \right)^{D},
+L \approx l\left( R \middle/ l \right)^{D},
 \tag{6.1}\]</span></span></p>
 <p>де <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">8</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="#eq-6-1">Рівняння&nbsp;<span>6.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
-<p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/I)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
+<p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/l)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
 </section>
 <section id="фрактальна-розмірність-множин" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="фрактальна-розмірність-множин"><span class="header-section-number">6.1.3</span> Фрактальна розмірність множин</h3>
 <p>Вище було введено поняття про фрактальну розмірність берегової лінії. Дамо тепер загальне визначення цієї величини. Нехай <span class="math inline">\(d\)</span> — звичайна Евклідова розмірність простору, в якому розташований наш фрактальний об’єкт (<span class="math inline">\(d=1\)</span> — лінія, <span class="math inline">\(d=2\)</span> — площина, <span class="math inline">\(d=3\)</span> — звичайний тривимірний простір). Покриємо тепер цей об’єкт цілком <span class="math inline">\(d\)</span>-мірними “кулями” радіуса 1. Припустимо, що нам потребувалося для цього не менше, ніж <span class="math inline">\(N(l)\)</span> куль. Тоді, якщо за досить малих <span class="math inline">\(l\)</span> величина <span class="math inline">\(N(l)\)</span> змінюється з <span class="math inline">\(l\)</span> за степеневим законом</p>
 <p><span id="eq-6-2"><span class="math display">\[
-N(l) \sim \frac{1}{l^D},
+N(l) \sim \left. 1 \middle/ l^D \right.,
 \tag{6.2}\]</span></span></p>
 <p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії.</p>
 <ol class="example" type="1">
@@ -416,11 +390,11 @@ D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}.
 <p>Аналіз починається з побудови ряду логарифмічних прибутковостей, <span class="math inline">\(G(t) \equiv \ln{x(t + \Delta t)} - \ln{x(t)}\)</span>, де <span class="math inline">\(x(t)\)</span> — значення вихідного часового ряду в момент <span class="math inline">\(t\)</span>, <span class="math inline">\(\Delta t\)</span> — часовий крок. Отримана послідовність <span class="math inline">\(G(t)\)</span> розбивається на <span class="math inline">\(d\)</span> підпослідовностей довжини <span class="math inline">\(n\)</span>.</p>
 <p>Для кожної підпослідовності <span class="math inline">\(m=1,...,d\)</span>:</p>
 <ol type="1">
-<li>шукається середнє значення <span class="math inline">\(\mu_m\)</span> та стандартне відхилення <span class="math inline">\(S_m\)</span>;</li>
-<li>дані нормалізуються шляхом віднімання середнього значення послідовності <span class="math inline">\(X_{i,m}=G_{i,m}-\mu_m\)</span>, <span class="math inline">\(i=1,...,n\)</span>;</li>
-<li>знаходиться кумулятивна сума послідовності <span class="math inline">\(X\)</span>ів: <span class="math inline">\(Y_{i,m}=\sum_{j=1}^{i}X_{j,m}\)</span>, <span class="math inline">\(i=1,...,n\)</span>;</li>
-<li>у межах кожної підпослідовності знаходиться розмах між максимальним та мінімальним значеннями: <span class="math inline">\(R_m = \max\{Y_{1,m},...,Y_{n,m}\}-\min\{Y_{1,m},...,Y_{n,m}\}\)</span>, який стандартизується середнім квадратичним відхиленням <span class="math inline">\(R_{m}/S_{m}\)</span>;</li>
-<li>обчислюється середнє <span class="math inline">\((R/S)_n\)</span> нормованих значень розмаху для всіх підпослідовностей довжини <span class="math inline">\(n\)</span>.</li>
+<li>Шукається середнє значення <span class="math inline">\(\mu_m\)</span> та стандартне відхилення <span class="math inline">\(S_m\)</span>.</li>
+<li>Дані нормалізуються шляхом віднімання середнього значення послідовності <span class="math inline">\(X_{i,m}=G_{i,m}-\mu_m\)</span>, <span class="math inline">\(i=1,...,n\)</span>.</li>
+<li>Знаходиться кумулятивна сума послідовності <span class="math inline">\(X\)</span>ів: <span class="math inline">\(Y_{i,m}=\sum_{j=1}^{i}X_{j,m}\)</span>, <span class="math inline">\(i=1,...,n\)</span>.</li>
+<li>У межах кожної підпослідовності знаходиться розмах між максимальним та мінімальним значеннями: <span class="math inline">\(R_m = \max\{Y_{1,m},...,Y_{n,m}\}-\min\{Y_{1,m},...,Y_{n,m}\}\)</span>, який стандартизується середнім квадратичним відхиленням <span class="math inline">\(R_{m}/S_{m}\)</span>.</li>
+<li>Обчислюється середнє <span class="math inline">\((R/S)_n\)</span> нормованих значень розмаху для всіх підпослідовностей довжини <span class="math inline">\(n\)</span>.</li>
 </ol>
 <p><em>R/S</em>-статистика, обрахована таким чином, відповідає співвідношенню <span class="math inline">\((R/S)_{n} \cong cn^{H}\)</span>, де значення <span class="math inline">\(H\)</span> може бути отримане шляхом обчислення <span class="math inline">\((R/S)_n\)</span> для послідовностей інтервалів зі збільшенням часового горизонту:</p>
 <p><span id="eq-6-4"><span class="math display">\[
@@ -463,7 +437,7 @@ D_f = 2-H.
 </ol>
 <p>Для отриманих таким чином значень на всіх підпослідовностях знаходиться:</p>
 <p><span class="math display">\[
-F_n = \sqrt{\frac{1}{m}\bar{y_t}},
+F_n = \sqrt{\bar{y_t} \cdot m^{-1}},
 \]</span></p>
 <p>де <span class="math inline">\(n\)</span> — кількість точок у підпослідовності (ширина вікна), <span class="math inline">\(m\)</span> — кількість підпослідовностей, <span class="math inline">\(\bar{y_t}\)</span> — середнє детрендованих значень для підпослідовності <span class="math inline">\(t\)</span>.</p>
 <p>Вказана процедура повторюється для різних значень <span class="math inline">\(n\)</span>, внаслідок чого ми отримує набір залежностей <span class="math inline">\(F_n\)</span> від <span class="math inline">\(n\)</span>. Побудова залежності <span class="math inline">\(\log{F(n)}\)</span> від <span class="math inline">\(\log{n}\)</span> та інтерполяція отриманих значень лінією регресії дає змогу обчислити показник скейлінга <span class="math inline">\(\alpha\)</span>, що є коефіцієнтом кута нахилу інтерполяційної прямої і характеризує зміну кореляцій флуктуацій часового ряду <span class="math inline">\(F_n\)</span> при збільшенні часового інтервалу <span class="math inline">\(n\)</span>.</p>
@@ -504,32 +478,11 @@ F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
 <section id="фрактальна-розмірність-хігучі" class="level4" data-number="6.1.4.3">
 <h4 data-number="6.1.4.3" class="anchored" data-anchor-id="фрактальна-розмірність-хігучі"><span class="header-section-number">6.1.4.3</span> Фрактальна розмірність Хігучі</h4>
 <p>Фрактальна розмірність Хігучі <span class="citation" data-cites="HIGUCHI1988277 7168285">&nbsp;[<a href="references.html#ref-HIGUCHI1988277" role="doc-biblioref">14</a>,<a href="references.html#ref-7168285" role="doc-biblioref">15</a>]</span> — це один з різновидів монофрактальної розмірності, яка визначається наступним чином:</p>
-<p>Припустимо, що у нас є часовий ряд</p>
+<p>Припустимо, що у нас є часовий ряд <span class="math inline">\(x(1), x(2),...,x(N)\)</span> і реконструйований часовий ряд <span class="math inline">\(x_{m}^{k} = \{ x(m), x(m+k), x(m+2k),..., x\left( m+\left[ (N-m) \middle/ k \right] \cdot k \right) \}\)</span> для <span class="math inline">\(m=1,2,...,k\)</span>, де <span class="math inline">\(m\)</span> представляє початковий час; <span class="math inline">\(k=2,...,k_{max}\)</span> представляють ступінь часового зміщення. Позначення <span class="math inline">\([\cdot]\)</span> представляє цілу частину <span class="math inline">\(x\)</span>. Для кожного реконструйованого часового ряду <span class="math inline">\(x_{m}^{k}\)</span> розраховується середня довжина часової послідовності <span class="math inline">\(L_{m}(k)\)</span>:</p>
 <p><span class="math display">\[
-x(1), x(2),...,x(N)
+L_{m}(k) = \frac{\sum_{i=1}^{\left[ (N-m) \middle/ k \right]} | x(m+ik) - x(m+(i-1)\cdot k) | \cdot (N-1)}{\left[ (N-m) \middle/ k \right] \cdot k}.
 \]</span></p>
-<p>і реконструйований часовий ряд <span class="math inline">\(x_{m}^{k}\)</span>:</p>
-<p><span class="math display">\[\begin{align*}
-x_{m}^{k} = \{ x(m), x(m+k), x(m+2k), ..., \\
-x\left( m+\left[ \frac{N-m}{k} \right] \cdot k \right) \},
-\end{align*}\]</span></p>
-<p>для <span class="math inline">\(m=1,2,...,k\)</span>; де <span class="math inline">\(m\)</span> представляє початковий час; <span class="math inline">\(k=2,...,k_{max}\)</span> представляють ступінь часового зміщення. Позначення <span class="math inline">\([\cdot]\)</span> представляє цілу частину <span class="math inline">\(x\)</span>. Для кожного реконструйованого часового ряду <span class="math inline">\(x_{m}^{k}\)</span> розраховується середня довжина часової послідовності <span class="math inline">\(L_{m}(k)\)</span>:</p>
-<p><span class="math display">\[
-L_{m}(k) = \frac{\sum_{i=1}^{[\frac{(N-m)}{k}]} | x(m+ik) - x(m+(i-1)\cdot k) | \cdot (N-1)}{[\frac{N-m}{k}] \cdot k}
-\]</span></p>
-<p>Далі, для всіх середніх довжин <span class="math inline">\(L_{m}(k)\)</span>, знаходиться загальне середнє:</p>
-<p><span class="math display">\[
-L(k) = \frac{1}{k}\sum_{m=1}^{k}L_{m}(k).
-\]</span></p>
-<p>Згідно методу Хігучі узагальне середнє значення <span class="math inline">\(L(k)\)</span> пропорційне масштабу <span class="math inline">\(k\)</span>, тобто</p>
-<p><span class="math display">\[
-L(k) \propto k^{-D}.
-\]</span></p>
-<p>Далі логарифмуємо обидві сторони й отримуємо наступну рівність:</p>
-<p><span class="math display">\[
-\ln{L(k)} \propto D \cdot \ln{\left( \frac{1}{k} \right)}.
-\]</span></p>
-<p>Інтерполювавши лінію регресії через залежність <span class="math inline">\(\ln{L(k)}\)</span> від <span class="math inline">\(\ln{\left( \frac{1}{k} \right)}\)</span>, ми можемо отримати показник фрактальності <span class="math inline">\(D\)</span>, отримавши кут нахилу цієї лінії. Показник <span class="math inline">\(D\)</span> і представлятиме фрактальну розмірність Хігучі.</p>
+<p>Далі, для всіх середніх довжин <span class="math inline">\(L_{m}(k)\)</span>, знаходиться загальне середнє <span class="math inline">\(L(k) = \frac{1}{k}\sum_{m=1}^{k}L_{m}(k)\)</span>. Згідно методу Хігучі узагальне середнє значення <span class="math inline">\(L(k)\)</span> пропорційне масштабу <span class="math inline">\(k\)</span>, тобто <span class="math inline">\(L(k) \propto k^{-D}\)</span>. Далі логарифмуємо обидві сторони й отримуємо рівність <span class="math inline">\(\ln{L(k)} \propto D \cdot \ln{\left( 1 \middle/ k \right)}\)</span>. Інтерполювавши лінію регресії через залежність <span class="math inline">\(\ln{L(k)}\)</span> від <span class="math inline">\(\ln{\left( \frac{1}{k} \right)}\)</span>, ми можемо отримати показник фрактальності <span class="math inline">\(D\)</span>, отримавши кут нахилу цієї лінії. Показник <span class="math inline">\(D\)</span> і представлятиме фрактальну розмірність Хігучі.</p>
 </section>
 <section id="фрактальна-розмірність-петросяна" class="level4" data-number="6.1.4.4">
 <h4 data-number="6.1.4.4" class="anchored" data-anchor-id="фрактальна-розмірність-петросяна"><span class="header-section-number">6.1.4.4</span> Фрактальна розмірність Петросяна</h4>
@@ -543,58 +496,46 @@ z_i =
 \]</span></p>
 <p>Фрактальну розмірність Петросяна <span class="citation" data-cites="465426 904882 goh:inria-00442374">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">16</a>–<a href="references.html#ref-goh:inria-00442374" role="doc-biblioref">18</a>]</span> може бути визначена як</p>
 <p><span class="math display">\[
-D = \frac{\log_{10}{N}}{\log_{10} + \log_{10}{\left( \frac{N}{N+0.4N_{\Delta}} \right)}},
+D = \left. \log_{10}{N} \middle/ \left( \log_{10} + \log_{10}{\left[ N \middle/ (N+0.4N_{\Delta}) \right]} \right) \right.,
 \]</span></p>
-<p>де <span class="math inline">\(N_{\Delta}\)</span> — кількість загальних змін знаку змінної <span class="math inline">\(z_i\)</span>:</p>
-<p><span class="math display">\[
-N_{\Delta} = \sum_{i=1}^{N-2} \left|\frac{z_{i+1}-z_i}{2}\right|.
-\]</span></p>
+<p>де <span class="math inline">\(N_{\Delta}\)</span> — кількість загальних змін знаку змінної <span class="math inline">\(z_i\)</span>: <span class="math inline">\(N_{\Delta} = \sum_{i=1}^{N-2} \left| (z_{i+1}-z_i) \middle/ 2 \right|\)</span>.</p>
 </section>
 <section id="фрактальна-розмірність-каца" class="level4" data-number="6.1.4.5">
 <h4 data-number="6.1.4.5" class="anchored" data-anchor-id="фрактальна-розмірність-каца"><span class="header-section-number">6.1.4.5</span> Фрактальна розмірність Каца</h4>
 <p>Представимо, що сигнал складається з пари точок <span class="math inline">\(\left( x_i, y_i \right)\)</span>. Тоді, фрактальна розмірність Каца <span class="citation" data-cites="KATZ1988145">&nbsp;[<a href="references.html#ref-KATZ1988145" role="doc-biblioref">19</a>]</span> визначається як</p>
 <p><span class="math display">\[
-D = \frac{\log{N}}{\log{N} + \log{\frac{d}{L}}},
+D = \log{N}/\left(\log{N} + \log{d/L}\right),
 \]</span></p>
-<p>де <span class="math inline">\(L\)</span> визначається наступним чином:</p>
-<p><span class="math display">\[
-L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}-y_{i} \right)^{2} + \left( x_{i+1}-x_{i} \right)^{2}}.
-\]</span></p>
-<p>Значення <span class="math inline">\(d\)</span> визначається як максимальна відстань від початкової точки <span class="math inline">\(\left( x_1, y_1 \right)\)</span> до всіх інших точок, а саме <span class="math inline">\(d\)</span> може бути розраховане наступним чином:</p>
+<p>де <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}-y_{i} \right)^{2} + \left( x_{i+1}-x_{i} \right)^{2}}\)</span>.</p>
+<p>Значення <span class="math inline">\(d\)</span> визначається як максимальна відстань від початкової точки <span class="math inline">\(\left( x_1, y_1 \right)\)</span> до всіх інших точок, а саме <span class="math inline">\(d\)</span> може бути розраховане як</p>
 <p><span class="math display">\[
 d = \max{\left( \sqrt{\left( x_i - x_1 \right)^{2} - \left( y_i - y_1 \right)^{2}} \right)}.
 \]</span></p>
 </section>
 <section id="фрактальна-розмірність-севчика" class="level4" data-number="6.1.4.6">
 <h4 data-number="6.1.4.6" class="anchored" data-anchor-id="фрактальна-розмірність-севчика"><span class="header-section-number">6.1.4.6</span> Фрактальна розмірність Севчика</h4>
-<p>Спочатку, для множини значень <span class="math inline">\(\left( x_i, y_i \right)\)</span> виконується нормалізація:</p>
-<p><span class="math display">\[
-x_{i}^{*} = \frac{x_i-x_{min}}{x_{max}-x_{min}}, \; y_{i}^{*} = \frac{y_i-y_{min}}{y_{max}-y_{min}}.
-\]</span></p>
+<p>Спочатку, для множини значень <span class="math inline">\(\left( x_i, y_i \right)\)</span> виконується нормалізація: <span class="math inline">\(x_{i}^{*} = \left.\left( x_i-x_{min} \right) \middle/ \left( x_{max}-x_{min} \right)\right.\)</span> і <span class="math inline">\(y_{i}^{*} = \left.\left( y_i-y_{min} \right) \middle/ \left( y_{max}-y_{min} \right)\right.\)</span>.</p>
 <p>Фрактальна розмірність Севчика <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">20</a>]</span> може бути визначена як</p>
 <p><span class="math display">\[
-D = 1 + \frac{\ln{L}}{\ln{[2 \cdot \left( N-1 \right)]}},
+D = 1 + \left. \ln{L} \middle/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
 \]</span></p>
-<p>де <span class="math inline">\(L\)</span> — це довжина сигналу, що може бути визначена як</p>
-<p><span class="math display">\[
-L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}^{*}-y_{i}^{*} \right)^{2} + \left( x_{i+1}^{*}-x_{i}^{*} \right)^{2}}.
-\]</span></p>
+<p>де <span class="math inline">\(L\)</span> — це довжина сигналу, що може бути розрахована за формулою <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}^{*}-y_{i}^{*} \right)^{2} + \left( x_{i+1}^{*}-x_{i}^{*} \right)^{2}}\)</span>.</p>
 </section>
 <section id="фрактальна-розмірність-через-нормалізовану-щільність-довжини" class="level4" data-number="6.1.4.7">
 <h4 data-number="6.1.4.7" class="anchored" data-anchor-id="фрактальна-розмірність-через-нормалізовану-щільність-довжини"><span class="header-section-number">6.1.4.7</span> Фрактальна розмірність через нормалізовану щільність довжини</h4>
 <p>Даний показник розраховується в наступний спосіб <span class="citation" data-cites="kalauzi2009extracting">&nbsp;[<a href="references.html#ref-kalauzi2009extracting" role="doc-biblioref">21</a>]</span>:</p>
 <ol type="1">
-<li>Для часового ряду <span class="math inline">\(\{ x_1, x_2,...,x_n \}\)</span> виконується стандартизація: <span class="math inline">\(y_i = \frac{x_i - \mu}{\sigma}\)</span>, де <span class="math inline">\(\mu\)</span> — це середнє значення ряду, <span class="math inline">\(\sigma\)</span> — це стандартне відхилення.</li>
+<li>Для часового ряду <span class="math inline">\(\{ x_1, x_2,...,x_n \}\)</span> виконується стандартизація: <span class="math inline">\(y_i = (x_i - \mu)/\sigma\)</span>, де <span class="math inline">\(\mu\)</span> — це середнє значення ряду, <span class="math inline">\(\sigma\)</span> — це стандартне відхилення.</li>
 <li>Розраховується нормалізована щільність довжини:</li>
 </ol>
 <p><span class="math display">\[
-NLD = \frac{1}{N}\sum_{i=2}^{N}\left| y_i - y_{i-1} \right|
+NLD = \frac{1}{N}\sum_{i=2}^{N}\left| y_i - y_{i-1} \right|.
 \]</span></p>
 <p>Фактичний розрахунок фрактальної розмірності сигналу базується на побудові монотонної калібрувальної кривої, <span class="math inline">\(D = f(NLD)\)</span>, за набором функцій Вейєрштрасса, для яких значення <span class="math inline">\(D\)</span> задаються теоретично.</p>
 <ol start="3" type="1">
 <li>Для обчислювальних цілей необхідно створити математичну модель цієї залежності. Автори даного підходу тестували дві моделі:
 <ul>
-<li>логарифмічну модель: <span class="math inline">\(D = a \cdot \log{\left(NLD - NLD_{0} \right)} + C\)</span></li>
+<li>логарифмічну модель: <span class="math inline">\(D = a \cdot \log{\left(NLD - NLD_{0} \right)} + C\)</span>;</li>
 <li>степеневу модель: <span class="math inline">\(D = a \cdot \left(NLD - NLD_{0} \right)^{k}\)</span>. Бібліотека <code>neurokit2</code> використовує саме степеневу модель. Параметр <span class="math inline">\(a=1.9079\)</span>, <span class="math inline">\(k=0.18383\)</span> і <span class="math inline">\(NLD_{0}=0.097178\)</span>, згідно статті <em>Kalauzi et al.&nbsp;2009</em>.</li>
 </ul></li>
 </ol>
@@ -805,14 +746,14 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong><code>fractal_hurst(signal, scale='default', corrected=True, show=False)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень або датафрейму бібліотеки <code>pandas</code>.</li>
-<li><strong>scale</strong> (<em>list</em>) — список, що містить довжини вікон (кількість точок даних у кожній підмножині ряду), на які розбито сигнал.</li>
-<li><strong>corrected</strong> (<em>bool</em>) — якщо значення <code>True</code>, до вихідних даних буде застосовано поправочний коефіцієнт Аніса-Ллойда-Пітерса відповідно до очікуваного значення для окремих значень (<em>R/S</em>).</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень або датафрейму бібліотеки <code>pandas</code>;</li>
+<li><strong>scale</strong> (<em>list</em>) — список, що містить довжини вікон (кількість точок даних у кожній підмножині ряду), на які розбито сигнал;</li>
+<li><strong>corrected</strong> (<em>bool</em>) — якщо значення <code>True</code>, до вихідних даних буде застосовано поправочний коефіцієнт Аніса-Ллойда-Пітерса відповідно до очікуваного значення для окремих значень (<em>R/S</em>);</li>
 <li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, виводить залежність <span class="math inline">\((R/S)_n\)</span> від <span class="math inline">\(n\)</span> (<strong>scale</strong>) у подвійному логарифмічному масштабі.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>h</strong> (<em>float</em>) — показник Херста.</li>
+<li><strong>h</strong> (<em>float</em>) — показник Херста;</li>
 <li><strong>kwargs</strong> — словник, що містить інформацію відносно використовуваних у процедурі параметрів.</li>
 </ul>
 <p>Розглянемо ступінь трендостійкості в динаміці фондового індексу золота, використовуючи весь часовий ряд. Далі знайдемо значення показника Херста в рамках віконної процедури.</p>
@@ -959,9 +900,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <section id="для-всього-ряду" class="level4" data-number="6.2.2.1">
 <h4 data-number="6.2.2.1" class="anchored" data-anchor-id="для-всього-ряду"><span class="header-section-number">6.2.2.1</span> Для всього ряду</h4>
 <p>Спочатку представимо значення <span class="math inline">\(\alpha\)</span> для всього ряду. Процедура розрахунків на основі бібліотеки <code>fathon</code> виглядатиме наступним чином:</p>
-<ol type="1">
-<li>знаходимо стандартизовані прибутковості ряду</li>
-</ol>
+<p>Знаходимо стандартизовані прибутковості ряду:</p>
 <div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -1220,13 +1159,13 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong><code>complexity_k(signal, k_max='max', show=False)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити. Якщо <span class="math inline">\(k_{max}\)</span>=<code>default</code>, тоді вибирається максимально можливе значення, що відповідає половині довжини сигналу.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити. Якщо <span class="math inline">\(k_{max}\)</span>=<code>default</code>, тоді вибирається максимально можливе значення, що відповідає половині довжини сигналу;</li>
 <li><strong>show</strong> (<em>bool</em>) — візуалізовується нахил кривої для обраного значення <span class="math inline">\(k_{max}\)</span>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>k</strong> (<em>float</em>) — оптимальний <span class="math inline">\(k_{max}\)</span> часового ряду.</li>
+<li><strong>k</strong> (<em>float</em>) — оптимальний <span class="math inline">\(k_{max}\)</span> часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення оптимального <span class="math inline">\(k_{max}\)</span>.</li>
 </ul>
 <section id="для-всього-ряду-1" class="level4" data-number="6.2.3.1">
@@ -1260,13 +1199,13 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong><code>fractal_higuchi(signal, k_max='default', show=False, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити;</li>
 <li><strong>show</strong> (<em>bool</em>) — візуалізовується нахил кривої для обраного значення <span class="math inline">\(k_{max}\)</span>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>HFD</strong> (<em>float</em>) — фрактальна розмірність Хігучі для досліджуваного часового ряду.</li>
+<li><strong>HFD</strong> (<em>float</em>) — фрактальна розмірність Хігучі для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення фрактальної розмірності Хігучі.</li>
 </ul>
 <div class="cell" data-execution_count="54">
@@ -1463,7 +1402,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>KFD</strong> (<em>float</em>) — фрактальна розмірність Каца для досліджуваного часового ряду.</li>
+<li><strong>KFD</strong> (<em>float</em>) — фрактальна розмірність Каца для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію (наразі порожній, але повертається для узгодженості з іншими функціями).</li>
 </ul>
 <section id="віконна-процедура-4" class="level4" data-number="6.2.5.1">
@@ -1546,7 +1485,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>SFD</strong> (<em>float</em>) — фрактальна розмірність Севчика для досліджуваного часового ряду.</li>
+<li><strong>SFD</strong> (<em>float</em>) — фрактальна розмірність Севчика для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію (наразі порожній, але повертається для узгодженості з іншими функціями).</li>
 </ul>
 <section id="віконна-процедура-5" class="level4" data-number="6.2.6.1">
@@ -1626,12 +1565,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong><code>fractal_nld(signal, corrected=False)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
 <li><strong>corrected</strong> (<em>bool</em>) — якщо значення <code>True</code>, змінює масштаб вихідного значення фрактальної розмірності відповідно до степеневої моделі, щоб зробити його більш порівнянним з “істинним” значенням: <code>FD = 1.9079*((NLD-0.097178)^0.18383)</code>. Зауважте, що це може призвести до <code>np.nan</code>, якщо результат різниці буде від’ємним.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>NLDFD</strong> (<em>float</em>) — фрактальна розмірність через нормалізовану щільність довжини.</li>
+<li><strong>NLDFD</strong> (<em>float</em>) — фрактальна розмірність через нормалізовану щільність довжини;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію (наразі порожній, але повертається для узгодженості з іншими функціями).</li>
 </ul>
 <section id="віконна-процедура-6" class="level4" data-number="6.2.7.1">
@@ -1714,14 +1653,14 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong><code>fractal_psdslope(signal, method='voss1988', show=False, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>method</strong> (<em>str</em>) — метод оцінки фрактальної розмірності за нахилом, може бути <code>"voss1988"</code> (за замовчуванням) або <code>"hasselman2013"</code>.</li>
-<li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, повертає графік залежності спектральної щільності потужності від частоти в логарифмічному масштабі.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>method</strong> (<em>str</em>) — метод оцінки фрактальної розмірності за нахилом, може бути <code>"voss1988"</code> (за замовчуванням) або <code>"hasselman2013"</code>;</li>
+<li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, повертає графік залежності спектральної щільності потужності від частоти в логарифмічному масштабі;</li>
 <li><strong>kwargs</strong> — інші аргументи, які слід передати до <code>signal_psd()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>slope</strong> (<em>float</em>) — оцінка фрактальної розмірності, отримана в результаті аналізу нахилу спектральної щільності потужності.</li>
+<li><strong>slope</strong> (<em>float</em>) — оцінка фрактальної розмірності, отримана в результаті аналізу нахилу спектральної щільності потужності;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для аналізу нахилу спектральної щільності потужності.</li>
 </ul>
 <section id="для-всього-ряду-2" class="level4" data-number="6.2.8.1">
@@ -1838,16 +1777,16 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <p><strong><code>fractal_correlation(signal, delay=1, dimension=2, radius=64, show=False, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>delay</strong> (<em>int</em>) — часова затримка (<span class="math inline">\(\tau\)</span>).</li>
-<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>).</li>
-<li><strong>radius</strong> (<em>Union[str, int, list]</em>) — послідовність радіусів для перевірки. Якщо передано ціле число, буде отримано експоненціальну послідовність довжиною заданим скалярним значенням <code>radius</code> у межах від 2.5% до 50% від діапазону відстані. Методи, реалізовані в інших пакетах, можна використовувати, вказуючи <code>"nolds"</code>, <code>"Corr_Dim"</code> або <code>"boon2008"</code>.</li>
-<li><strong>show</strong> (<em>bool</em>) — графік кореляційної розмірності, якщо <code>True</code>. За замовчуванням — <code>False</code>.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>delay</strong> (<em>int</em>) — часова затримка (<span class="math inline">\(\tau\)</span>);</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>);</li>
+<li><strong>radius</strong> (<em>Union[str, int, list]</em>) — послідовність радіусів для перевірки. Якщо передано ціле число, буде отримано експоненціальну послідовність довжиною заданим скалярним значенням <code>radius</code> у межах від 2.5% до 50% від діапазону відстані. Методи, реалізовані в інших пакетах, можна використовувати, вказуючи <code>"nolds"</code>, <code>"Corr_Dim"</code> або <code>"boon2008"</code>;</li>
+<li><strong>show</strong> (<em>bool</em>) — графік кореляційної розмірності, якщо <code>True</code>. За замовчуванням — <code>False</code>;</li>
 <li><strong>kwargs</strong> — інші аргументи для передачі (наразі не використовуються).</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><strong>cd</strong> (<em>float</em>) — кореляційна розмірність часового ряду.</li>
+<li><strong>cd</strong> (<em>float</em>) — кореляційна розмірність часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення кореляційної розмірності.</li>
 </ul>
 <section id="для-всього-часового-ряду" class="level4" data-number="6.2.9.1">
@@ -1961,6 +1900,18 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 </div>
 </div>
 <p><a href="#fig-gold-wind-cd">Рис.&nbsp;<span>6.21</span></a> демонструє, що кореляційна розмірність для індексу золота також спадає у кризові та передкризові періоди, вказуючи на зростання корельованості теперішніх цін на золото з попередніми. Можна сказати і по іншому: у період криз трейдери починають самоорганізовуватись та колективно скупати або продавати відповідний актив; іншими словами, їх динаміка стає більш синхронною. Оскільки кореляційна розмірність вимірюється для траєкторій фазового простору, спад цього показника свідчить про зростання щільності досліджуваних траєкторій. Тобто, фазовий простір стає більш розрідженим, а всі його траєкторії концентрованими лише в одній конкретній області, що є індикатором згуртованості прихованих змінних досліджуваної системи.</p>
+</section>
+</section>
+</section>
+<section id="завдання-для-виконання" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="завдання-для-виконання"><span class="header-section-number">6.3</span> Завдання для виконання</h2>
+<ol type="1">
+<li>Вибрати із запропонованої бази даних варіант завдання</li>
+<li>Виконати дослідження фрактальних характеристик заданих часових рядів. Зберегти результати в окремому файлі</li>
+<li>Порівняти значення коефіцієнтів Херста, одержаних методом R/S-аналізу та DFA</li>
+<li>Провести повний аналіз різних методів розрахунку монофрактальних розмірностей</li>
+<li>Дати інтерпретацію отриманим результатам</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
@@ -2043,8 +1994,6 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div class="csl-left-margin">[26] </div><div class="csl-right-inline">P. Grassberger, <em><a href="https://doi.org/10.1016/0375-9601(83)90753-3">Generalized Dimensions of Strange Attractors</a></em>, Physics Letters A <strong>97</strong>, 227 (1983).</div>
 </div>
 </div>
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

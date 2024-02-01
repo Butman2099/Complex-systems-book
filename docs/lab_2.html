@@ -131,35 +131,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download"><i class="bi bi-download"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.pdf">
-              <i class="bi bi-bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.epub">
-              <i class="bi bi-bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Моделювання-складних-систем-у-Python.docx">
-              <i class="bi bi-bi-file-word pe-1"></i>
-            Download Docx
-            </a>
-          </li>
-      </ul>
-    </div>
+    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
     </div>
       </div>
@@ -342,8 +315,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p><strong>Тема.</strong> Використання рекурентного аналізу для моделювання і прогнозування нелінійних динамічних властивостей складних систем.</p>
-<p><strong>Мета.</strong> Навчитися інструментарію нелінійної динаміки, який відноситься до рекурентних властивостей нестаціонарних динамічних рядів.</p>
+<p><strong>Тема.</strong> Використання рекурентного аналізу для моделювання і прогнозування нелінійних динамічних властивостей складних систем</p>
+<p><strong>Мета.</strong> Навчитися інструментарію нелінійної динаміки, який відноситься до рекурентних властивостей нестаціонарних динамічних рядів</p>
 <section id="теоретичні-відомості" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">2.1</span> Теоретичні відомості</h2>
 <p>Дослідження складних систем, як природних, так і штучних, показали, що в їх основі лежать нелінійні процеси, ретельне вивчення яких необхідне для розуміння і моделювання складних систем. У останні десятиліття набір традиційних (лінійних) методик дослідження був істотно розширений нелінійними методами, одержаними з теорії нелінійної динаміки і хаосу; багато досліджень були присвячені оцінці нелінійних характеристик і властивостей процесів, що протікають в природі (скейлінг, фрактальна розмірність). Проте більшість методів нелінійного аналізу вимагає або достатньо довгих, або стаціонарних рядів даних, які досить важко одержати з природи. Більш того, було показано, що дані методи дають задовільні результати для моделей реальних систем, що ідеалізуються. Ці чинники вимагали розробки нових методик нелінійного аналізу даних.</p>
@@ -353,17 +326,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="фазовий-простір-та-його-реконструкція"><span class="header-section-number">2.1.1</span> Фазовий простір та його реконструкція</h3>
 <p>Стан системи описується її змінними стану</p>
 <p><span class="math display">\[
-x^1(t),x^2(t),...,x^d(t)
+x^1(t),x^2(t),...,x^d(t),
 \]</span></p>
-<p>де верхній індекс — номер змінної. Набір із <span class="math inline">\(d\)</span> змінних стану у момент часу <span class="math inline">\(t\)</span> складає вектор стану <span class="math inline">\(\vec x(t)\)</span> в <span class="math inline">\(d\)</span>-вимірному фазовому просторі. Даний вектор переміщається в часі в напрямі,визначуваному його вектором швидкості:</p>
+<p>де верхній індекс — номер змінної. Набір із <span class="math inline">\(d\)</span> змінних стану у момент часу <span class="math inline">\(t\)</span> складає вектор стану <span class="math inline">\(\vec x(t)\)</span> в <span class="math inline">\(d\)</span>-вимірному фазовому просторі. Даний вектор переміщається в часі в напрямі, що визначається його вектором швидкості:</p>
 <p><span class="math display">\[
-\dot{\vec x}(t)=\partial_t\vec x(t)=\vec F(t)
+\dot{\vec x}(t)=\partial_t\vec x(t)=\vec F(t).
 \]</span></p>
 <p>Послідовність векторів <span class="math inline">\(\vec x(t)\)</span> утворює траєкторію у фазовому просторі, причому поле швидкості <span class="math inline">\(\vec F\)</span> дотичне до цієї траєкторії. Еволюція траєкторії описує динаміку системи і її атрактор. Знаючи <span class="math inline">\(\vec F\)</span>, можна одержати інформацію про стан системи в момент <span class="math inline">\(t\)</span> шляхом інтегрування виразу. Оскільки форма траєкторії дозволяє судити про характер процесу (періодичні або хаотичні процеси мають характерні фазові портрети), то для визначення стану системи не обов’язково проводити інтегрування, достатньо побудувати графічне відображення траєкторії.</p>
-<p>При дослідженні складних систем часто немає інформації про всі змінні стану, або не все з них можливо виміряти. Як правило, є єдине спостереження, проведене через дискретний часовий інтервал <span class="math inline">\(\Delta t\)</span>. Таким чином, вимірювання записуються у вигляді ряду <span class="math inline">\(u_i(t)\)</span> i , де <span class="math inline">\(t=i\cdot \Delta t\)</span>. Інтервал <span class="math inline">\(\Delta t\)</span> може бути постійним, проте це не завжди можливо і створює проблеми для застосування стандартних методів аналізу даних, що вимагають рівномірної шкали спостережень.</p>
+<p>При дослідженні складних систем часто немає інформації про всі змінні стану, або не все з них можливо виміряти. Як правило, є єдине спостереження, проведене через дискретний часовий інтервал <span class="math inline">\(\Delta t\)</span>. Таким чином, вимірювання записуються у вигляді ряду <span class="math inline">\(u_i(t)\)</span> i, де <span class="math inline">\(t=i\cdot \Delta t\)</span>. Інтервал <span class="math inline">\(\Delta t\)</span> може бути постійним, проте це не завжди можливо і створює проблеми для застосування стандартних методів аналізу даних, що вимагають рівномірної шкали спостережень.</p>
 <p>Взаємодії і їх кількість в складних системах такі, що навіть по одній змінній стану можна судити про динаміку всієї системи в цілому (даний факт був встановлений групою американських учених при вивченні турбулентності). Таким чином, еквівалентна фазова траєкторія, що зберігає структури оригінальної фазової траєкторії, може бути відновлена з одного спостереження або часового ряду за теоремою Такенса (Takens) методом часових затримок:</p>
 <p><span class="math display">\[
-\widehat{\vec x}(t)=(u_i,u_{i+\tau},...,u_{i+(m-1)\tau})
+\widehat{\vec x}(t)=(u_i,u_{i+\tau},...,u_{i+(m-1)\tau}),
 \]</span></p>
 <p>де <span class="math inline">\(m\)</span> — розмірність вкладення, <span class="math inline">\(\tau\)</span> — часова затримка (реальна часова затримка визначається як <span class="math inline">\(\tau \cdot \Delta t\)</span>). Топологічні структури відновленої траєкторії зберігаються, якщо <span class="math inline">\(m \geq 2 \cdot d+1\)</span>, де <span class="math inline">\(d\)</span> — розмірність атрактора. На практиці більшості випадків атрактор може бути відновлений і при <span class="math inline">\(m \leq 2d\)</span>. Затримка, як правило, вибирається апріорно.</p>
 <p>Існує кілька підходів до вибору мінімально достатньої розмірності <span class="math inline">\(m\)</span>, крім аналітичного. Високу ефективність показали методи, засновані на концепції фальшивих найближчих точок (false nearest neighbours, FNN). Суть її заключається у тому, що при зменшенні розмірності вкладення відбувається збільшення кількості фальшивих точок, що потрапляють в околицю будь-якої точки фазового простору. Звідси витікає простий метод — визначення кількості FNN як функції від розмірності. Існують і інші методи, засновані на цій концепції — наприклад, визначення відносин відстаней між одними і тими ж сусідніми точками при різних <span class="math inline">\(m\)</span>. Розмірність атрактора також може бути визначена за допомогою крос-кореляційних сум.</p>
@@ -497,15 +470,15 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p><strong><code>complexity_embedding(signal, delay=1, dimension=3, show=False, **kwargs)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень. Також може бути рядком, наприклад, <code>"lorenz"</code> (атрактор Лоренца), <code>"rossler"</code> (атрактор Росслера) або <code>"clifford"</code> (атрактор Кліффорда) для отримання попередньо визначеного атрактора.</li>
-<li><strong>delay</strong> (<em>int</em>) — часова затримка (часто позначається <span class="math inline">\(\tau\)</span> іноді називають запізненням). Ще розглянемо метод <code>complexity_delay()</code> для оцінки оптимального значення цього параметра.</li>
-<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>, іноді позначається як <span class="math inline">\(d\)</span> або порядок). Далі звернемось до методу <code>complexity_dimension()</code>, щоб оцінити оптимальне значення для цього параметра.</li>
-<li><strong>show</strong> (<em>bool</em>) — Побудувати графік реконструйованого атрактора.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень. Також може бути рядком, наприклад, <code>"lorenz"</code> (атрактор Лоренца), <code>"rossler"</code> (атрактор Росслера) або <code>"clifford"</code> (атрактор Кліффорда) для отримання попередньо визначеного атрактора;</li>
+<li><strong>delay</strong> (<em>int</em>) — часова затримка (часто позначається <span class="math inline">\(\tau\)</span> іноді називають запізненням). Ще розглянемо метод <code>complexity_delay()</code> для оцінки оптимального значення цього параметра;</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень (<span class="math inline">\(m\)</span>, іноді позначається як <span class="math inline">\(d\)</span> або порядок). Далі звернемось до методу <code>complexity_dimension()</code>, щоб оцінити оптимальне значення для цього параметра;</li>
+<li><strong>show</strong> (<em>bool</em>) — побудувати графік реконструйованого атрактора;</li>
 <li><strong>kwargs</strong> — інші аргументи, що передаються до <code>complexity_attractor()</code>.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><em>array</em> — реконструйований атрактор розміру <code>length - (dimension - 1) * delay</code></li>
+<li><em>array</em> — реконструйований атрактор розміру <code>length - (dimension - 1) * delay</code>.</li>
 </ul>
 <p>Далі імпортуємо необхідні для подальшої роботи модулі:</p>
 <div class="cell" data-execution_count="1">
@@ -857,7 +830,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p>Згідно представленого вище результату найбільш значущі частоти, отримані за допомогою перетворення Фур’є, зберігаються при <span class="math inline">\(\tau=109\)</span>.</p>
-<p>Тепер подивимось як це виглядатиме для об’єднаного підбору параметрів</p>
+<p>Тепер подивимось як це виглядатиме для об’єднаного підбору параметрів:</p>
 <div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    delay_max<span class="op">=</span>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="co"># діапазон значень затримки</span></span>
@@ -892,8 +865,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p><strong><code>complexity_dimension(signal, delay=1, dimension_max=20, method='afnn', show=False, **kwargs)</code></strong></p>
 <p>Хоча зазвичай використовують <span class="math inline">\(m=2\)</span> або <span class="math inline">\(m=3\)</span>, але різні автори пропонують наступні процедури підбору:</p>
 <ul>
-<li><strong>Кореляційна розмірність (Correlation Dimension, CD)</strong>: Одним з перших методів оцінки оптимального <span class="math inline">\(m\)</span> був розрахунок кореляційної розмірності для вкладень різного розміру і пошук насичення (тобто плато) в її значенні при збільшенні розміру векторів. Одне з обмежень полягає в тому, що насичення буде також мати місце, коли даних недостатньо для адекватного заповнення простору високої розмірності (зауважте, що в загальному випадку не рекомендується мати настільки великі вкладення, оскільки це значно скорочує довжину сигналу).</li>
-<li><strong>Найближчі хибні сусіди (False Nearest Neighbour, FNN)</strong>: Метод, запропонований Кеннелом та ін., базується на припущенні, що дві точки, які є близькими одна до одної в достатній розмірності вбудовування, повинні залишатися близькими при збільшенні розмірності. Алгоритм перевіряє сусідів при збільшенні розмірності вкладень, поки не знайде лише незначну кількість хибних сусідів при переході від розмірності <span class="math inline">\(m\)</span> до <span class="math inline">\(m+1\)</span>. Це відповідає найнижчій розмірності вкладення, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану. Цей метод може не спрацювати в зашумлених сигналах через марну спробу розгорнути шум (а в чисто випадкових сигналах кількість хибних сусідів суттєво не зменшується зі збільшенням <span class="math inline">\(m\)</span>). На рисунку нижче показано, як проекції на простори більшої розмірності можна використовувати для виявлення хибних найближчих сусідів. Наприклад, червона та жовта точки є сусідами в одновимірному просторі, але не в двовимірному.</li>
+<li><strong>кореляційна розмірність (Correlation Dimension, CD)</strong>: Одним з перших методів оцінки оптимального <span class="math inline">\(m\)</span> був розрахунок кореляційної розмірності для вкладень різного розміру і пошук насичення (тобто плато) в її значенні при збільшенні розміру векторів. Одне з обмежень полягає в тому, що насичення буде також мати місце, коли даних недостатньо для адекватного заповнення простору високої розмірності (зауважте, що в загальному випадку не рекомендується мати настільки великі вкладення, оскільки це значно скорочує довжину сигналу);</li>
+<li><strong>найближчі хибні сусіди (False Nearest Neighbour, FNN)</strong>: Метод, запропонований Кеннелом та ін., базується на припущенні, що дві точки, які є близькими одна до одної в достатній розмірності вбудовування, повинні залишатися близькими при збільшенні розмірності. Алгоритм перевіряє сусідів при збільшенні розмірності вкладень, поки не знайде лише незначну кількість хибних сусідів при переході від розмірності <span class="math inline">\(m\)</span> до <span class="math inline">\(m+1\)</span>. Це відповідає найнижчій розмірності вкладення, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану. Цей метод може не спрацювати в зашумлених сигналах через марну спробу розгорнути шум (а в чисто випадкових сигналах кількість хибних сусідів суттєво не зменшується зі збільшенням <span class="math inline">\(m\)</span>). На рисунку нижче показано, як проекції на простори більшої розмірності можна використовувати для виявлення хибних найближчих сусідів. Наприклад, червона та жовта точки є сусідами в одновимірному просторі, але не в двовимірному;</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -901,7 +874,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </figure>
 </div>
 <ul>
-<li><strong>Середні хибні сусіди (Average False Neighbors, AFN)</strong>: Ця модифікація методу FNN, розроблена Сао (1997), усуває один з його основних недоліків — необхідність евристичного вибору порогових значень <span class="math inline">\(r\)</span>. Метод використовує максимальну евклідову відстань для представлення найближчих сусідів і усереднює всі відношення відстані в <span class="math inline">\(m+1\)</span> розмірності до розмірності <span class="math inline">\(m\)</span> і визначає <em>E1</em> та <em>E2</em> як параметри. Оптимальна розмірність відповідає досягається тоді, коли <em>E1</em> перестає змінюватися (досягає плато). <em>E1</em> досягає плато при розмірності <em>d0</em>, якщо сигнал надходить від атрактора. Тоді <em>d0</em>+1* є оптимальною мінімальною розмірністю вкладення. <em>E2</em> є корисною величиною для того, щоб відрізнити детерміновані сигнали від стохастичних. Константа <em>E2</em>, що близька до 1 для будь-якої розмірності вкладень <span class="math inline">\(d\)</span>, вказує на випадковість даних, оскільки майбутні значення не залежать від минулих значень.</li>
+<li><strong>середні хибні сусіди (Average False Neighbors, AFN)</strong>: Ця модифікація методу FNN, розроблена Сао (1997), усуває один з його основних недоліків — необхідність евристичного вибору порогових значень <span class="math inline">\(r\)</span>. Метод використовує максимальну евклідову відстань для представлення найближчих сусідів і усереднює всі відношення відстані в <span class="math inline">\(m+1\)</span> розмірності до розмірності <span class="math inline">\(m\)</span> і визначає <em>E1</em> та <em>E2</em> як параметри. Оптимальна розмірність відповідає досягається тоді, коли <em>E1</em> перестає змінюватися (досягає плато). <em>E1</em> досягає плато при розмірності <em>d0</em>, якщо сигнал надходить від атрактора. Тоді <em>d0</em>+1* є оптимальною мінімальною розмірністю вкладення. <em>E2</em> є корисною величиною для того, щоб відрізнити детерміновані сигнали від стохастичних. Константа <em>E2</em>, що близька до 1 для будь-якої розмірності вкладень <span class="math inline">\(d\)</span>, вказує на випадковість даних, оскільки майбутні значення не залежать від минулих значень.</li>
 </ul>
 <p><strong>Параметри</strong></p>
 <ul>
@@ -976,15 +949,15 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p><strong><code>recurrence_matrix(signal, delay=1, dimension=3, tolerance='default', show=False)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.ndarray, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>delay</strong> (<em>int</em>) — затримка в часі.</li>
-<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень, <span class="math inline">\(m\)</span>.</li>
-<li><strong>tolerance</strong> (<em>float</em>) — радіус <span class="math inline">\(\varepsilon\)</span> багатовимірного околу в межах якого шукаються рекурентні траєкторії (часто позначається як <span class="math inline">\(r\)</span>), відстань, на якій дві точки даних вважаються схожими. Якщо <code>"sd"</code> (за замовчуванням), буде встановлено значення <span class="math inline">\(0.2 \cdot SD_{signal}\)</span>. Емпіричним правилом є встановлення <span class="math inline">\(r\)</span> таким чином, щоб відсоток точок, класифікованих як рекурентні, становив приблизно 2-5%.</li>
+<li><strong>signal</strong> (<em>Union[list, np.ndarray, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>delay</strong> (<em>int</em>) — затримка в часі;</li>
+<li><strong>dimension</strong> (<em>int</em>) — розмірність вкладень, <span class="math inline">\(m\)</span>;</li>
+<li><strong>tolerance</strong> (<em>float</em>) — радіус <span class="math inline">\(\varepsilon\)</span> багатовимірного околу в межах якого шукаються рекурентні траєкторії (часто позначається як <span class="math inline">\(r\)</span>), відстань, на якій дві точки даних вважаються схожими. Якщо <code>"sd"</code> (за замовчуванням), буде встановлено значення <span class="math inline">\(0.2 \cdot SD_{signal}\)</span>. Емпіричним правилом є встановлення <span class="math inline">\(r\)</span> таким чином, щоб відсоток точок, класифікованих як рекурентні, становив приблизно 2-5%;</li>
 <li><strong>show</strong> (<em>bool</em>) — візуалізувати рекурентну матрицю.</li>
 </ul>
 <p><strong>Повертає</strong></p>
 <ul>
-<li><em>np.ndarray</em> — рекурентну матрицю.</li>
+<li><em>np.ndarray</em> — рекурентну матрицю;</li>
 <li><em>np.ndarray</em> — матрицю відстаней.</li>
 </ul>
 <p>Побудуємо рекурентну матрицю для вихідних значень Біткоїна, його прибутковостей та стандартизованого вихідного ряду. Розмірність <span class="math inline">\(m=4\)</span>, часова затримка <span class="math inline">\(\tau=1\)</span>, радіус <span class="math inline">\(\varepsilon=0.3\)</span>.</p>
@@ -1004,7 +977,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p>Як можна бачити з представленого рисунку всі траєкторії залишаються доволі віддаленими один від одного, ніякої рекурентності тут не передбачається.</p>
-<p>Тепер спробуємо подивитися на стандартизовані прибутковості.</p>
+<p>Тепер спробуємо подивитися на стандартизовані прибутковості:</p>
 <div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(ret, </span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
@@ -1021,7 +994,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p>Тепер можемо бачити, що Біткоїн став характризуватися чорними смугами, що відображають динаміку певних детермінованих процесів. У той же час білі смуги характеризують періоди абсолютно аномальної (непередбачуваної поведінки на даному ринку). Видно, що прибутковості залишаються доволі некорельованими, про що і свідчить переважне домінування саме білих областей.</p>
-<p>Спробуємо тепер подивитись на стандартизований вихідний ряд.</p>
+<p>Спробуємо тепер подивитись на стандартизований вихідний ряд:</p>
 <div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec, </span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
@@ -1037,7 +1010,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<p>На початку свого існування Біткоїн характеризувався доволі високим ступенем передбачуваності, меншої волатильності власних коливань. Надалі почали предомінувати білі області, але видно, що тепер Біткоїну властива динаміка подібна до броунівсього руху.</p>
+<p>На початку свого існування Біткоїн характеризувався доволі високим ступенем передбачуваності, меншої волатильності власних коливань. Надалі почали предомінувати білі області, але видно, що тепер Біткоїну властива подібна до броунівсього руху динаміка.</p>
 </section>
 </section>
 <section id="завдання-для-самостійної-роботи" class="level2" data-number="2.3">
