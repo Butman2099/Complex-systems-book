@@ -340,8 +340,8 @@ div.csl-indent {
 
 </header>
 
-<p><strong>Тема.</strong> Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць.</p>
-<p><strong>Мета.</strong> Навчитись використовувати методи теорії випадкових матриць для отримання «прихованої» інформації в складних економічних системах.</p>
+<p><strong>Тема.</strong> Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць</p>
+<p><strong>Мета.</strong> Навчитись використовувати методи теорії випадкових матриць для отримання «прихованої» інформації в складних економічних системах</p>
 <section id="теоретичні-відомості" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">8.1</span> Теоретичні відомості</h2>
 <p>Вивчення статистичних властивостей матриць з незалежними випадковими елементами — випадкових матриць — має багату історію, що починається з ядерної фізики <span class="citation" data-cites="Wigner_1951_1 Wigner_1951_2 10.1063/1.1703773 10.1063/1.1704008 10.1063/1.1704009 mehta1991random RevModPhys.53.385">&nbsp;[<a href="references.html#ref-Wigner_1951_1" role="doc-biblioref">1</a>–<a href="references.html#ref-RevModPhys.53.385" role="doc-biblioref">7</a>]</span>, де проблема з’явилася 50 років тому при дослідженні енергетичних рівнів складних ядер, що існуючі на той час моделі були не в змозі пояснити. Теорія випадкової матриці (ТВМ) була розвинена в цьому контексті Вігнером (Wigner), Дайсоном (Dyson), Метою (Mehta) та іншими для пояснення статистики рівнів енергії складних квантових систем. Дослідники постулювали, що функція Гамільтона, яка описує важкі ядра, може бути задана матрицею <span class="math inline">\(H\)</span> з незалежними випадковими елементами <span class="math inline">\(H_{ij}\)</span>, отриманими з розподілу імовірності. Відштовхуючись від цього припущення було зроблено низку вражаючих передбачень, які було підтверджено експериментально. Для складних квантових систем передбачення на основі ТВМ представляють середнє за всіма можливими взаємодіями. Відхилення від універсальних передбачень ТВМ відображують системну специфіку, невипадкові властивості системи, забезпечуючи ключові підходи до розуміння базової взаємодії системи. Недавні дослідження, що використовували методи аналізу ТВМ до аналізу властивостей матриці взаємних кореляцій <span class="math inline">\(C\)</span>, показують, що близько 98% власних значень матриці <span class="math inline">\(C\)</span> співпадають зі значеннями, отримуваними з використанням ТВМ, таким чином пропонуючи задовільний рівень хаотичності у вимірюваних крос-кореляціях. Також було знайдено, що існують відхилення від передбачень за допомогою ТВМ у близько 2% найбільших власних значень. Ці результати викликають наступні питання:</p>
@@ -1819,10 +1819,10 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>fig.align_labels()</span>
 <span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="matrix_cor" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-matrix-cor" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_8_files/figure-html/matrix_cor-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Карти полів кореляцій вихідної і перемішаної матриць. На третому рисунку (нижній) представлено порівняння розподілів значень коефіцієнтів кореляції вихідної та перемішаної матриць</figcaption>
+<p><img src="lab_8_files/figure-html/fig-matrix-cor-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.1: Карти полів кореляцій вихідної і перемішаної матриць. На третому рисунку (нижній) представлено порівняння розподілів значень коефіцієнтів кореляції вихідної та перемішаної матриць</figcaption>
 </figure>
 </div>
 </div>
@@ -1877,10 +1877,10 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="matrix_lambda" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-lambda" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_8_files/figure-html/matrix_lambda-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Щільність розподілу ймовірностей для матриці прибутковостей фінансових активів <span class="math inline">\(P_{empiric}^{init}\)</span> та випадкової матриці <span class="math inline">\(P_{empiric}^{rand}\)</span>. На рисунку нижче представлено щільність розподілу, що прогнозується ТВМ (зелена крива)$</figcaption>
+<p><img src="lab_8_files/figure-html/fig-lambda-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.2: Щільність розподілу ймовірностей для матриці прибутковостей фінансових активів <span class="math inline">\(P_{empiric}^{init}\)</span> та випадкової матриці <span class="math inline">\(P_{empiric}^{rand}\)</span>. Другий рисунок представляє щільність розподілу, що прогнозується ТВМ (зелена крива)</figcaption>
 </figure>
 </div>
 </div>
@@ -1914,10 +1914,10 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="matrix_eigen" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-eigen" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_8_files/figure-html/matrix_eigen-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей та пвипадкової матриці при <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_30\)</span> та <span class="math inline">\(\lambda_70\)</span></figcaption>
+<p><img src="lab_8_files/figure-html/fig-eigen-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.3: Щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей та пвипадкової матриці при <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -1946,10 +1946,10 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="dist_ipr" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-ipr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_8_files/figure-html/dist_ipr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Обернене відношення участі для вихідного та перемішаного рядів$</figcaption>
+<p><img src="lab_8_files/figure-html/fig-ipr-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.4: Обернене відношення участі для вихідного та перемішаного рядів</figcaption>
 </figure>
 </div>
 </div>
@@ -2010,10 +2010,10 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 <span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="absorption_ration" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-ar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="lab_8_files/figure-html/absorption_ration-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових (рисунок ліворуч). Залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток (рисунок праворуч)</figcaption>
+<p><img src="lab_8_files/figure-html/fig-ar-output-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Рис.&nbsp;8.5: Залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових (рисунок ліворуч). Залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток (рисунок праворуч)</figcaption>
 </figure>
 </div>
 </div>
@@ -2211,7 +2211,7 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 <div id="fig-wind-crosscorr" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_8_files/figure-html/fig-wind-crosscorr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.1: Динаміка індексу цін акцій компанії Agilent Technologies та середнього показника крос-кореляцій прибутковостей досліджуваних акцій</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;8.6: Динаміка індексу цін акцій компанії Agilent Technologies та середнього показника крос-кореляцій прибутковостей досліджуваних акцій</figcaption>
 </figure>
 </div>
 </div>
@@ -2245,7 +2245,7 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 <div id="fig-wind-3d-pc" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_8_files/figure-html/fig-wind-3d-pc-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.2: Віконна функція щільності розподілу коефіцієнтів кореляції вихідної матриці фінансових активів</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;8.7: Віконна функція щільності розподілу коефіцієнтів кореляції вихідної матриці фінансових активів</figcaption>
 </figure>
 </div>
 </div>
@@ -2268,7 +2268,7 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 <div id="fig-wind-lambda" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_8_files/figure-html/fig-wind-lambda-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.3: Динаміка індексу цін акцій компанії Agilent Technologies та показника <span class="math inline">\(\lambda_{max}\)</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;8.8: Динаміка індексу цін акцій компанії Agilent Technologies та показника <span class="math inline">\(\lambda_{max}\)</span></figcaption>
 </figure>
 </div>
 </div>
@@ -2309,7 +2309,7 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 <div id="fig-wind-ipr3d" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_8_files/figure-html/fig-wind-ipr3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.4: Тривимірна віконна динаміка показника оберненого відношення участі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;8.9: Тривимірна віконна динаміка показника оберненого відношення участі</figcaption>
 </figure>
 </div>
 </div>
@@ -2332,7 +2332,7 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 <div id="fig-wind-ar" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_8_files/figure-html/fig-wind-ar-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.5: Динаміка індексу цін акцій компаній Agilent Technologies та коефіцієнту поглинання</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;8.10: Динаміка індексу цін акцій компаній Agilent Technologies та коефіцієнту поглинання</figcaption>
 </figure>
 </div>
 </div>

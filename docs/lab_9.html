@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -379,7 +398,7 @@ M_{1+i\tau}Q_i = Q_{i+1}R_{i+1}, \; \text{для} \; i=0,1,2,... .
 </section>
 <section id="метод-розенштейна" class="level4" data-number="9.1.1.2">
 <h4 data-number="9.1.1.2" class="anchored" data-anchor-id="метод-розенштейна"><span class="header-section-number">9.1.1.2</span> Метод Розенштейна</h4>
-<p>Алгоритм Розенштейна використовує метод реконструкції вкладень із часовою затримкою, який реконструює найважливіші особливості багатовимірного атрактора в один одновимірний часовий ряд деякого скінченного розміру <span class="math inline">\(N\)</span>. Для часового ряду кожен вектор <span class="math inline">\(\vec{X}(i)\)</span> буде представлений подібно до вектора (<a href="#eq-9-5">Рівняння&nbsp;<span>9.5</span></a>) з розмірністю вкладень <span class="math inline">\(d_E\)</span> і часовою затримкою <span class="math inline">\(\tau\)</span>. Потім на відновленій траєкторії ми ініціалізуємо пошук у просторі станів найближчого найближчого сусіда <span class="math inline">\(\vec{X}(j)\)</span> для траєкторії <span class="math inline">\(\vec{X}(i)\)</span>:</p>
+<p>Алгоритм Розенштейна <span class="citation" data-cites="ROSENSTEIN1993117">&nbsp;[<a href="references.html#ref-ROSENSTEIN1993117" role="doc-biblioref">1</a>]</span> використовує метод реконструкції вкладень із часовою затримкою, який реконструює найважливіші особливості багатовимірного атрактора в один одновимірний часовий ряд деякого скінченного розміру <span class="math inline">\(N\)</span>. Для часового ряду кожен вектор <span class="math inline">\(\vec{X}(i)\)</span> буде представлений подібно до вектора (<a href="#eq-9-5">Рівняння&nbsp;<span>9.5</span></a>) з розмірністю вкладень <span class="math inline">\(d_E\)</span> і часовою затримкою <span class="math inline">\(\tau\)</span>. Потім на відновленій траєкторії ми ініціалізуємо пошук у просторі станів найближчого найближчого сусіда <span class="math inline">\(\vec{X}(j)\)</span> для траєкторії <span class="math inline">\(\vec{X}(i)\)</span>:</p>
 <p><span class="math display">\[
 \delta_i(0) = \min_{\vec{X}(i)} \| \vec{X}(i) - \vec{X}(j) \|, \; \text{для} \; \left| i-j \right| &gt; \text{середній період},
 \]</span></p>
@@ -818,6 +837,11 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </ol>
 
 
+<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-ROSENSTEIN1993117" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">M. T. Rosenstein, J. J. Collins, and C. J. De Luca, <em><a href="https://doi.org/10.1016/0167-2789(93)90009-P">A Practical Method for Calculating Largest Lyapunov Exponents from Small Data Sets</a></em>, Physica D: Nonlinear Phenomena <strong>65</strong>, 117 (1993).</div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
