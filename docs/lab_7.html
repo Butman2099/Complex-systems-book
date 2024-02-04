@@ -376,7 +376,7 @@ Z(q,\varepsilon)=\sum_{i=1}^{N(\varepsilon)}p_{i}^{q}(\varepsilon).
 \]</span></p>
 <p>Спектр <strong>узагальнених фрактальних розмірностей</strong> <span class="math inline">\(D_{q}\)</span>, що характеризує даний розподіл точок в області <span class="math inline">\(\Omega\)</span>, визначається за допомогою співвідношення <span class="math inline">\(D_{q} = \left. \tau(q)\middle/(q-1) \right.\)</span>, де функція <span class="math inline">\(\tau(q)\)</span> має вид</p>
 <p><span class="math display">\[
-\tau(q)=\lim_{\varepsilon\to 0}\frac{\ln{Z(q,\varepsilon)}}{\ln{\varepsilon}}.
+\tau(q)=\lim_{\varepsilon\to 0}\left. \ln{Z(q,\varepsilon)} \middle/ \ln{\varepsilon} \right..
 \]</span></p>
 <p>Як ми покажемо нижче, якщо <span class="math inline">\(D_{q}=D=\text{const}\)</span>, тобто не залежить від <span class="math inline">\(q\)</span>, то дана множина точок являє собою звичайний, регулярний фрактал, який характеризується лише однією величиною — фрактальною розмірністю <span class="math inline">\(D\)</span>. Навпаки, якщо функція <span class="math inline">\(D_{q}\)</span> якось змінюється з <span class="math inline">\(q\)</span>, то розглянута множина точок представляє мультифрактал.</p>
 <p>Таким чином, мультифрактал у загальному випадку характеризується деякою <strong>нелінійною</strong> функцією <span class="math inline">\(\tau(q)\)</span>, що визначає поведінку статистичної суми <span class="math inline">\(Z(q,\varepsilon)\)</span> при <span class="math inline">\(\varepsilon\to 0\)</span></p>
@@ -396,9 +396,9 @@ N(\varepsilon) \approx \varepsilon^{-D}.
 <p><span id="eq-4"><span class="math display">\[
 \varepsilon^{\tau(q)} = \varepsilon^{-D(1-q)} \to \tau(q)=(q-1)D.
 \tag{7.4}\]</span></span></p>
-<p>Ми приходимо до висновку, що у випадку звичайного фрактала функція (<a href="#eq-4">Рівняння&nbsp;<span>7.4</span></a>) є лінійною. Тоді всі <span class="math inline">\(D_{q}\)</span> дійсно не залежать від <span class="math inline">\(q\)</span>. Фрактал у якого всі узагальнені фрактальні розмірності <span class="math inline">\(D_{q}\)</span> співпадають називається <strong>монофракталом</strong>.</p>
+<p>Ми приходимо до висновку, що у випадку звичайного фрактала функція <a href="#eq-4">Рівняння&nbsp;<span>7.4</span></a> є лінійною. Тоді всі <span class="math inline">\(D_{q}\)</span> дійсно не залежать від <span class="math inline">\(q\)</span>. Фрактал у якого всі узагальнені фрактальні розмірності <span class="math inline">\(D_{q}\)</span> співпадають називається <strong>монофракталом</strong>.</p>
 <p>Якщо розподіл точок по клітинкам неоднаковий, тоді фрактал називається неоднорідним, тобто представляє із себе мультифрактал, і для його характеристики необхідний цілий спектр узагальнених фрактальних розмірностей <span class="math inline">\(D_{q}\)</span>, кількість котрих, у загальному випадку, нескінченна.</p>
-<p>Так, наприклад, при <span class="math inline">\(q \to +\infty\)</span> основний внесок в узагальнену статистичну суму (<a href="#eq-1">Рівняння&nbsp;<span>7.1</span></a>) вносять комірки, що містять найбільшу кількість частинок <span class="math inline">\(n_{i}\)</span> у них і, відповідно, що характеризуються найбільшою ймовірністю їх заповнення <span class="math inline">\(p_{i}\)</span>. Навпаки, при <span class="math inline">\(q \to -\infty\)</span> основний внесок в узагальнену статистичну суму вносять найбільш розрідженні комірки з найменшою ймовірністю їх заповнення <span class="math inline">\(p_{i}\)</span>. Таким чином, функція <span class="math inline">\(D_{q}\)</span> показує, наскільки неоднорідним представляється досліджувана множина точок <span class="math inline">\(\Omega\)</span>.</p>
+<p>Так, наприклад, при <span class="math inline">\(q \to +\infty\)</span> основний внесок в узагальнену статистичну суму <a href="#eq-1">Рівняння&nbsp;<span>7.1</span></a> вносять комірки, що містять найбільшу кількість частинок <span class="math inline">\(n_{i}\)</span> у них і, відповідно, що характеризуються найбільшою ймовірністю їх заповнення <span class="math inline">\(p_{i}\)</span>. Навпаки, при <span class="math inline">\(q \to -\infty\)</span> основний внесок в узагальнену статистичну суму вносять найбільш розрідженні комірки з найменшою ймовірністю їх заповнення <span class="math inline">\(p_{i}\)</span>. Таким чином, функція <span class="math inline">\(D_{q}\)</span> показує, наскільки неоднорідним представляється досліджувана множина точок <span class="math inline">\(\Omega\)</span>.</p>
 <p>У подальшому для характеристики розподілу точок необхідно знати не тільки функцію <span class="math inline">\(\tau(q)\)</span>, але і її похідну:</p>
 <p><span class="math display">\[
 \frac{d\tau(q)}{dq} = \lim_{\varepsilon\to 0}\left. \sum_{i=1}^{N(\varepsilon)}p_{i}^{q}\ln{p_{i}} \middle/ \left( \sum_{i=1}^{N(\varepsilon)}p_{i}^{q} \right)\ln{\varepsilon} \right..
@@ -426,8 +426,8 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Спрямовуючи значення <span class="math inline">\(\varepsilon\)</span> до нуля, можна сказати, що фрактальність можна розглядати локально для кожної точки (елемента) досліджуваної системи, і таким чином показник <span class="math inline">\(\alpha\)</span> можна розглядати як локальну фрактальну розмірність. Його так само називають <em>показником Гьолдера</em> або <em>силою сингулярності</em>.</p>
-<p>Можемо спостерігати саме степеневу залежність, оскільки, вочевидь, розподіл маси (флуктуацій) концентрується з різною “силою” <span class="math inline">\(\alpha\)</span>, тож і імовірнісна міра змінюється пропорційно розмірам вікон, що використовуються, з розміром <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Спрямовуючи значення <span class="math inline">\(\varepsilon\)</span> до нуля, можна сказати, що фрактальність можна розглядати локально для кожної точки (елемента) досліджуваної системи, і таким чином показник <span class="math inline">\(\alpha\)</span> можна розглядати як локальну фрактальну розмірність. Його так само називають <em>показником Гьолдера</em> або <em>силою сингулярності</em></p>
+<p>Можемо спостерігати саме степеневу залежність, оскільки, вочевидь, розподіл маси (флуктуацій) концентрується з різною “силою” <span class="math inline">\(\alpha\)</span>, тож і імовірнісна міра змінюється пропорційно розмірам вікон, що використовуються, з розміром <span class="math inline">\(\varepsilon\)</span></p>
 </div>
 </div>
 <div id="fig-alpha-dependence" class="quarto-figure quarto-figure-center anchored">
@@ -447,14 +447,14 @@ p_{i}(\varepsilon) \approx \varepsilon^{\alpha_{i}},
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Можна сказати, що чим більш гладкою видається поверхня системи, чим менше елементів задіяно в її розвитку, тим менший показник сингулярності. Що більше елементів системи вступають у взаємозв’язок один з одним, що більше процесів протікає під час еволюції системи, то більший показник сингулярності.</p>
+<p>Можна сказати, що чим більш гладкою видається поверхня системи, чим менше елементів задіяно в її розвитку, тим менший показник сингулярності. Що більше елементів системи вступають у взаємозв’язок один з одним, що більше процесів протікає під час еволюції системи, то більший показник сингулярності</p>
 </div>
 </div>
 <p>Відомо, що для регулярного (однорідного) фрактала всі показники ступеня <span class="math inline">\(\alpha_{i}\)</span> однакові й рівні фрактальній розмірності <span class="math inline">\(D\)</span>:</p>
 <p><span class="math display">\[
 p_{i} = \left. 1 \middle/ N(\varepsilon) \right. \approx \varepsilon^{D}.
 \]</span></p>
-<p>У даному випадку статистична сума (<a href="#eq-1">Рівняння&nbsp;<span>7.1</span></a>) приймає наступний вигляд:</p>
+<p>У даному випадку статистична сума <a href="#eq-1">Рівняння&nbsp;<span>7.1</span></a> приймає наступний вигляд:</p>
 <p><span class="math display">\[
 Z(q,\varepsilon) = \sum_{i=1}^{N(\varepsilon)}p_{i}^{q}(\varepsilon) = N(\varepsilon)\varepsilon^{Dq}=\varepsilon^{-D}\varepsilon^{Dq} \approx \varepsilon^{D(q-1)}.
 \]</span></p>
@@ -490,15 +490,11 @@ Z(q,\varepsilon) = \sum_{i=1}^{N(\varepsilon)} p_{i}^{q}(\varepsilon) \approx \i
 <p><span class="math display">\[
 \left. \frac{d^{2}}{d\alpha^{2}}[ q\alpha-f(\alpha) ] \right \vert_{\alpha=\alpha(q)} &gt; 0.
 \]</span></p>
-<p>У результаті отримуємо, що залежність <span class="math inline">\(\alpha(q)\)</span> неявним чином визначається з рівняння</p>
-<p><span class="math display">\[
-q = \frac{df(\alpha)}{d\alpha}
-\]</span></p>
-<p>і що функція <span class="math inline">\(f(\alpha)\)</span> усюди є випуклою</p>
+<p>У результаті отримуємо, що залежність <span class="math inline">\(\alpha(q)\)</span> неявним чином визначається з <span class="math inline">\(q = \left. df(\alpha) \middle/ d\alpha \right.\)</span>, і що функція <span class="math inline">\(f(\alpha)\)</span> усюди є випуклою:</p>
 <p><span class="math display">\[
 f^{''}(\alpha)&gt;0.
 \]</span></p>
-<p>Це значить, що величина <span class="math inline">\(f(\alpha(q))\)</span> дійсно визначає фрактальну розмірність підмножини <span class="math inline">\(\Omega_{\alpha(q)}\)</span>, що має найбільший домінуючий внесок у статистичну суму (<a href="#eq-6">Рівняння&nbsp;<span>7.6</span></a>) при заданій величині показника ступеня <span class="math inline">\(q\)</span>.</p>
+<p>Це значить, що величина <span class="math inline">\(f(\alpha(q))\)</span> дійсно визначає фрактальну розмірність підмножини <span class="math inline">\(\Omega_{\alpha(q)}\)</span>, що має найбільший домінуючий внесок у статистичну суму <a href="#eq-6">Рівняння&nbsp;<span>7.6</span></a> при заданій величині показника ступеня <span class="math inline">\(q\)</span>.</p>
 <p>Оскільки <span class="math inline">\(Z(q,\varepsilon)=\tau(q)\)</span>, приходимо до висновку, що</p>
 <p><span id="eq-7"><span class="math display">\[
 \tau(q) = q\alpha(q) - f(\alpha(q)).
@@ -507,11 +503,11 @@ f^{''}(\alpha)&gt;0.
 <p><span id="eq-8"><span class="math display">\[
 D_{q} = \frac{1}{q-1}[ q\alpha(q)-f(\alpha(q)) ].
 \tag{7.8}\]</span></span></p>
-<p>Таким чином, якщо ми знаємо функцію мультифрактального спектра <span class="math inline">\(f(\alpha)\)</span>, то за домомогою співвідношень (<a href="#eq-8">Рівняння&nbsp;<span>7.8</span></a>) та (<a href="#eq-9">Рівняння&nbsp;<span>7.9</span></a>) ми можемо знайти функцію <span class="math inline">\(D_{q}\)</span>. Навпаки, знаючи <span class="math inline">\(D_{q}\)</span>, ми можемо знайти залежність <span class="math inline">\(\alpha(q)\)</span> з допомогою рівняння</p>
+<p>Таким чином, якщо ми знаємо функцію мультифрактального спектра <span class="math inline">\(f(\alpha)\)</span>, то за домомогою співвідношень <a href="#eq-8">Рівняння&nbsp;<span>7.8</span></a> та <a href="#eq-9">Рівняння&nbsp;<span>7.9</span></a> ми можемо знайти функцію <span class="math inline">\(D_{q}\)</span>. Навпаки, знаючи <span class="math inline">\(D_{q}\)</span>, ми можемо знайти залежність <span class="math inline">\(\alpha(q)\)</span> з допомогою рівняння</p>
 <p><span id="eq-9"><span class="math display">\[
 \alpha(q) = \frac{d}{dq}[(q-1)D_{q}]
 \tag{7.9}\]</span></span></p>
-<p>і після цього знайти із (<a href="#eq-9">Рівняння&nbsp;<span>7.9</span></a>) залежність <span class="math inline">\(f(\alpha(q))\)</span>. Ці два рівняння і визначають функцію <span class="math inline">\(f(\alpha)\)</span>.</p>
+<p>і після цього знайти із <a href="#eq-9">Рівняння&nbsp;<span>7.9</span></a> залежність <span class="math inline">\(f(\alpha(q))\)</span>. Ці два рівняння і визначають функцію <span class="math inline">\(f(\alpha)\)</span>.</p>
 <p><span class="math display">\[
 \frac{d\tau}{dq}\frac{dq}{d\alpha} = q + \alpha\frac{dq}{d\alpha} - \frac{df}{d\alpha}.
 \]</span></p>
@@ -519,8 +515,8 @@ D_{q} = \frac{1}{q-1}[ q\alpha(q)-f(\alpha(q)) ].
 <p><span class="math display">\[
 \alpha = \frac{d\tau(q)}{dq},
 \]</span></p>
-<p>що еквівалентне виразу (<a href="#eq-9">Рівняння&nbsp;<span>7.9</span></a>).</p>
-<p>Вирази для <span class="math inline">\(\tau(q)\)</span> та <span class="math inline">\(\alpha(q)\)</span> задають <strong>перетворення Лежандра</strong> від змінних <span class="math inline">\(\{ q, \tau(q) \}\)</span> до змінних <span class="math inline">\(\{\alpha, f(\alpha)\}\)</span>: <span class="math inline">\(\alpha = \frac{d\tau}{dq}\)</span> та <span class="math inline">\(f(\alpha) = q\left( d\tau \middle/ dq \right) - \tau(q)\)</span>. Як відомо, для однорідного фрактала <span class="math inline">\(D_{q}=D=\text{const}\)</span>. Тому <span class="math inline">\(\alpha=d\tau/dq=D\)</span> і <span class="math inline">\(f(\alpha)=q\alpha-\tau(q)=qD-D(q-1)=D\)</span>. У цьому випадку “графік” функції <span class="math inline">\(f(\alpha)\)</span> на площині <span class="math inline">\(\left( \alpha, f(\alpha) \right)\)</span> складається лише з однієї точки <span class="math inline">\(\left( D, D \right)\)</span>.</p>
+<p>що еквівалентне виразу <a href="#eq-9">Рівняння&nbsp;<span>7.9</span></a>.</p>
+<p>Вирази для <span class="math inline">\(\tau(q)\)</span> та <span class="math inline">\(\alpha(q)\)</span> задають <strong>перетворення Лежандра</strong> від змінних <span class="math inline">\(\{ q, \tau(q) \}\)</span> до змінних <span class="math inline">\(\{\alpha, f(\alpha)\}\)</span>: <span class="math inline">\(\alpha = \left. d\tau \middle/ dq \right.\)</span> та <span class="math inline">\(f(\alpha) = q\left( d\tau \middle/ dq \right) - \tau(q)\)</span>. Як відомо, для однорідного фрактала <span class="math inline">\(D_{q}=D=\text{const}\)</span>. Тому <span class="math inline">\(\alpha=d\tau/dq=D\)</span> і <span class="math inline">\(f(\alpha)=q\alpha-\tau(q)=qD-D(q-1)=D\)</span>. У цьому випадку “графік” функції <span class="math inline">\(f(\alpha)\)</span> на площині <span class="math inline">\(\left( \alpha, f(\alpha) \right)\)</span> складається лише з однієї точки <span class="math inline">\(\left( D, D \right)\)</span>.</p>
 </section>
 </section>
 <section id="мультифрактальний-аналіз-детрендованих-флуктуацій" class="level3" data-number="7.1.4">
@@ -705,14 +701,14 @@ Name: DCOILWTICO, dtype: float64</code></pre>
 </ul>
 <p>Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>signal_noise(duration=10, sampling_rate=1000, beta=1, random_state=None)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>duration</strong> (<em>float</em>) — бажана тривалість (у секундах);</li>
 <li><strong>sampling_rate</strong> (<em>int</em>) — бажана частота дискретизації (у Гц, тобто відліків на секунду);</li>
 <li><strong>beta</strong> (<em>float</em>) — експонента шуму;</li>
 <li><strong>random_state</strong> (<em>None, int, numpy.random.RandomState або numpy.random.Generator</em>) — початкове значення (зерно) для генератора випадкових чисел.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>noise</strong> (<em>array</em>) — сигнал чистого шуму.</li>
 </ul>
@@ -1598,7 +1594,7 @@ D_{1} = - \lim_{\varepsilon \to 0} \left. S(\varepsilon) \middle/ \ln{\varepsilo
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Інформаційна розмірність може бути використана для опису просторової неоднорідності системи. Що однорідніший атрактор, то вищим має бути цей показник. Тобто, чим більшу кількість конфігурацій здатні займати елементи даної системи, тим більша кількість інформації нам потрібна для обліку кожного елемента. За просторової однорідності інформаційна ентропія так само зростає, що пов’язує інформаційну розмірність із поняттям ентропії. Оскільки <span class="math inline">\(D_{1}\)</span> це тангенс кута нахилу лінії регресії, що будується для залежності між ентропією та радіусом кіл, у яких вимірюється частота влучання окремих елементів атрактора, можна сказати, що інформаційна розмірність відображає швидкість (крутизну) зміни інформаційної ентропії. Чим вища <span class="math inline">\(D_{1}\)</span>, тим стрімкіше зростає ентропія — міра нашого нинішнього незнання про систему. Чим нижча <span class="math inline">\(D_{1}\)</span>, тим менша сама ентропія. Інакше кажучи, тим більша просторова асиметрія, упорядкованіша складність, вищі наші знання про поточний стан системи, і тим менше інформації нам потрібно для опису тих конфігурацій, які система може займати.</p>
+<p>Інформаційна розмірність може бути використана для опису просторової неоднорідності системи. Що однорідніший атрактор, то вищим має бути цей показник. Тобто, чим більшу кількість конфігурацій здатні займати елементи даної системи, тим більша кількість інформації нам потрібна для обліку кожного елемента. За просторової однорідності інформаційна ентропія так само зростає, що пов’язує інформаційну розмірність із поняттям ентропії. Оскільки <span class="math inline">\(D_{1}\)</span> це тангенс кута нахилу лінії регресії, що будується для залежності між ентропією та радіусом кіл, у яких вимірюється частота влучання окремих елементів атрактора, можна сказати, що інформаційна розмірність відображає швидкість (крутизну) зміни інформаційної ентропії. Чим вища <span class="math inline">\(D_{1}\)</span>, тим стрімкіше зростає ентропія — міра нашого нинішнього незнання про систему. Чим нижча <span class="math inline">\(D_{1}\)</span>, тим менша сама ентропія. Інакше кажучи, тим більша просторова асиметрія, упорядкованіша складність, вищі наші знання про поточний стан системи, і тим менше інформації нам потрібно для опису тих конфігурацій, які система може займати</p>
 </div>
 </div>
 <p>Для узагальненої фрактальної розмірності при <span class="math inline">\(q=2\)</span> справедливий наступний вираз:</p>
@@ -1707,7 +1703,7 @@ D_{2} = \lim_{\varepsilon \to 0}\left. \ln{\sum_{i=1}^{N(\varepsilon)}p_{i}^{2}}
 </div>
 <p>Окрім цього, ми можемо прорахувати “температуру” досліджуваного сигнала. Більш конкретно, мультифрактальну “питому теплоємність” <span class="math inline">\(C(q)\)</span>, що можна визначити як</p>
 <p><span class="math display">\[
-C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alpha}{\partial q} \approx \tau(q+1) - 2\tau(q) + \tau(q-1).
+C(q) \equiv -\left(\partial^{2} \tau(q) \middle/ \partial q^{2} \right) = -\left(\partial \alpha \middle/ \partial q \right) \approx \tau(q+1) - 2\tau(q) + \tau(q-1).
 \]</span></p>
 <p>Питома теплоємність, як міра швидкості зміни енергії, слугує індикатором явищ фазового переходу. У термодинамічній системі фаза характеризується однорідними фізичними властивостями, а фазовий перехід — стрибкоподібною зміною певних властивостей за критичної зовнішньої умови. Вивчення фазових переходів у мультифрактальному спектрі обмежувалося простими системами, такими як множина Кантора та логістична карта. Однак наш аналіз показує наявність фазових переходів у в мультифрактальному спектрі фінансових систем. Зокрема, “енергія” <span class="math inline">\(\alpha\)</span> виявляє значні флуктуації в околі <span class="math inline">\(q_c\)</span>, які відображаються піком питомої теплоємності <span class="math inline">\(C(q_c)\)</span>.</p>
 <div class="cell" data-execution_count="78">
@@ -1776,7 +1772,7 @@ C(q) \equiv -\frac{\partial^{2} \tau(q)}{\partial q^{2}} = -\frac{\partial \alph
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance або FRED, а із власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать від того з яким рядом ми працюємо.</p>
+<p>Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance або FRED, а із власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать від того з яким рядом ми працюємо</p>
 </div>
 </div>
 <hr>

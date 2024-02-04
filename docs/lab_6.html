@@ -299,7 +299,7 @@ div.csl-indent {
   <ul>
   <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">6.1</span> Теоретичні відомості</a>
   <ul class="collapse">
-  <li><a href="#означення-фрактала" id="toc-означення-фрактала" class="nav-link" data-scroll-target="#означення-фрактала"><span class="header-section-number">6.1.1</span> Означення фрактала</a></li>
+  <li><a href="#визначення-фрактала" id="toc-визначення-фрактала" class="nav-link" data-scroll-target="#визначення-фрактала"><span class="header-section-number">6.1.1</span> Визначення фрактала</a></li>
   <li><a href="#довжина-берегової-лінії" id="toc-довжина-берегової-лінії" class="nav-link" data-scroll-target="#довжина-берегової-лінії"><span class="header-section-number">6.1.2</span> Довжина берегової лінії</a></li>
   <li><a href="#фрактальна-розмірність-множин" id="toc-фрактальна-розмірність-множин" class="nav-link" data-scroll-target="#фрактальна-розмірність-множин"><span class="header-section-number">6.1.3</span> Фрактальна розмірність множин</a></li>
   <li><a href="#процедури-обчислення-монофрактальних-розмірностей" id="toc-процедури-обчислення-монофрактальних-розмірностей" class="nav-link" data-scroll-target="#процедури-обчислення-монофрактальних-розмірностей"><span class="header-section-number">6.1.4</span> Процедури обчислення монофрактальних розмірностей</a></li>
@@ -311,7 +311,7 @@ div.csl-indent {
   <li><a href="#обчислення-фрактальної-розмірності-хігучі" id="toc-обчислення-фрактальної-розмірності-хігучі" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-хігучі"><span class="header-section-number">6.2.3</span> Обчислення фрактальної розмірності Хігучі</a></li>
   <li><a href="#обчислення-фрактальної-розмірності-петросяна" id="toc-обчислення-фрактальної-розмірності-петросяна" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-петросяна"><span class="header-section-number">6.2.4</span> Обчислення фрактальної розмірності Петросяна</a></li>
   <li><a href="#обчислення-фрактальної-розмірності-каца" id="toc-обчислення-фрактальної-розмірності-каца" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-каца"><span class="header-section-number">6.2.5</span> Обчислення фрактальної розмірності Каца</a></li>
-  <li><a href="#обчислення-фрактальної-розмірності-севчика" id="toc-обчислення-фрактальної-розмірності-севчика" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-севчика"><span class="header-section-number">6.2.6</span> Обчислення фрактальної розмірності Севчика</a></li>
+  <li><a href="#обчислення-фрактальної-розмірності-шевчика" id="toc-обчислення-фрактальної-розмірності-шевчика" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-шевчика"><span class="header-section-number">6.2.6</span> Обчислення фрактальної розмірності Шевчика</a></li>
   <li><a href="#обчислення-фрактальної-розмірності-через-нормалізовану-щільність-довжини" id="toc-обчислення-фрактальної-розмірності-через-нормалізовану-щільність-довжини" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-через-нормалізовану-щільність-довжини"><span class="header-section-number">6.2.7</span> Обчислення фрактальної розмірності через нормалізовану щільність довжини</a></li>
   <li><a href="#обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" id="toc-обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності"><span class="header-section-number">6.2.8</span> Обчислення фрактальної розмірності через нахил спектральної щільності потужності</a></li>
   <li><a href="#обчислення-кореляційної-розмірності" id="toc-обчислення-кореляційної-розмірності" class="nav-link" data-scroll-target="#обчислення-кореляційної-розмірності"><span class="header-section-number">6.2.9</span> Обчислення кореляційної розмірності</a></li>
@@ -344,26 +344,27 @@ div.csl-indent {
 <p><strong>Мета.</strong> Навчитися використовувати методи монофрактального аналізу для дослідження нелінійних характеристик складних систем</p>
 <section id="теоретичні-відомості" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">6.1</span> Теоретичні відомості</h2>
-<section id="означення-фрактала" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="означення-фрактала"><span class="header-section-number">6.1.1</span> Означення фрактала</h3>
-<p><strong>Фракталами</strong> називають геометричні об’єкти: лінії, поверхні, просторові тіла, що мають сильно шорстку поверхню або форму і характеризуються властивістю <em>самоподібності</em> <span class="citation" data-cites="mandelbrot1982fractal PhysRevA.42.4528 10.1007/3-7643-7412-8_8">&nbsp;[<a href="references.html#ref-mandelbrot1982fractal" role="doc-biblioref">1</a>–<a href="references.html#ref-10.1007/3-7643-7412-8_8" role="doc-biblioref">3</a>]</span>. Слово фрактал походить від латинського слова <em>fractus</em> і перекладається як дробовий, ламаний. Самоподібність як основна характеристика фрактала означає, що він більш-менш однорідно змінюється при широкому діапазоні масштабів. Так, при збільшенні маленькі фрагменти фрактала виходять дуже схожими на великі. В ідеальному випадку така самопподібність призводить до того, що фрактальний об’єкт виявляється інваріантним щодо розтягувань, тобто йому, як кажуть, притаманна дилатаційна симетрія. Вона передбачає незмінність основних геометричних особливостей фрактала при зміні масштабу.</p>
-<p>Очевидно, що фрактальні об’єкти реального світу не є нескінченно самоподібними й існує мінімальний масштаб <span class="math inline">\(l_{min}\)</span>, такий, що на масштабі <span class="math inline">\(l \approx l_{min}\)</span> властивість самоподібності зникає. Окрім цього, на достатньо великих масштабах довжин <span class="math inline">\(l &gt; l_{max}\)</span>, де <span class="math inline">\(l_{max}\)</span> — характерний геометричний розмір об’єктів, ця властивість самоподібності також порушується. Тому властивості природніх фракталів розглядаються лише на масштабах <span class="math inline">\(l\)</span>, що задовільняють відношення <span class="math inline">\(l_{min} \ll l \ll l_{max}\)</span>. Такі обмеження природні, оскільки, коли ми приводимо в якості прикладу фракталу — ламану, негладку траєкторію броунівської частинки, то ми розуміємо, що цей образ представляє очевидну ідеалізацію. Справа в тому, що на малих масштабах приховується граничність маси і розмірів броунівської частнки, а також кінцевість часу зіткнення. При врахуванні цих обставин траєкторія броунівської частинки починає представляти гладку криву.</p>
+<section id="визначення-фрактала" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="визначення-фрактала"><span class="header-section-number">6.1.1</span> Визначення фрактала</h3>
+<p><strong>Фракталами</strong> називають геометричні об’єкти: лінії, поверхні, просторові тіла, що мають сильно шорстку поверхню або форму і характеризуються властивістю <em>самоподібності</em> <span class="citation" data-cites="mandelbrot1982fractal PhysRevA.42.4528 10.1007/3-7643-7412-8_8">&nbsp;[<a href="references.html#ref-mandelbrot1982fractal" role="doc-biblioref">1</a>–<a href="references.html#ref-10.1007/3-7643-7412-8_8" role="doc-biblioref">3</a>]</span>. Слово фрактал походить від латинського слова <em>fractus</em> і перекладається як дробовий, ламаний. Самоподібність як основна характеристика фрактала означає, що він більш-менш однорідно змінюється в широкому діапазоні масштабів. Так, при збільшенні маленькі фрагменти фрактала стають дуже схожими на великі. В ідеальному випадку така самопподібність призводить до того, що фрактальний об’єкт виявляється інваріантним щодо розтягувань, тобто йому, як кажуть, притаманна дилатаційна симетрія. Вона передбачає незмінність основних геометричних особливостей фрактала при зміні масштабу.</p>
+<p>Очевидно, що фрактальні об’єкти реального світу не є нескінченно самоподібними й існує мінімальний масштаб <span class="math inline">\(l_{min}\)</span>, такий, що на масштабі <span class="math inline">\(l \approx l_{min}\)</span> властивість самоподібності зникає. Окрім цього, на достатньо великих масштабах довжин <span class="math inline">\(l &gt; l_{max}\)</span>, де <span class="math inline">\(l_{max}\)</span> — характерний геометричний розмір об’єктів, ця властивість самоподібності також порушується. Тому властивості природніх фракталів розглядаються лише на масштабах <span class="math inline">\(l\)</span>, що задовільняють відношення <span class="math inline">\(l_{min} \ll l \ll l_{max}\)</span>. Такі обмеження природні, оскільки, коли ми приводимо в якості прикладу фракталу — ламану, негладку траєкторію броунівської частинки, то ми розуміємо, що цей образ представляє очевидну ідеалізацію. Справа в тому, що на малих масштабах приховується граничність маси і розмірів броунівської частинки, а також скінченність часу зіткнення. При врахуванні цих обставин траєкторія броунівської частинки починає представляти гладку криву.</p>
 <p>Варто зазначити, що властивість точної самоподібності характерна лише для <strong>регулярних фракталів</strong>. Якщо замість детермінованого способу побудови включити в алгоритм їхнього створення деякий елемент випадковості (як це буває, наприклад, у багатьох процесах диференційованого зростання кластерів, електричному пробої тощо), то виникають так звані <strong>випадкові фрактали</strong>. Основна їхня відмінність від регулярних полягає в тому, що властивості самоподібності є справедливими тільки після відповідного усереднення за всіма статистично незалежними реалізаціями об’єкта. При цьому збільшена частина фрактала не точно ідентична вихідному фрагменту, проте їхні статистичні характеристики збігаються.</p>
 </section>
 <section id="довжина-берегової-лінії" class="level3" data-number="6.1.2">
 <h3 data-number="6.1.2" class="anchored" data-anchor-id="довжина-берегової-лінії"><span class="header-section-number">6.1.2</span> Довжина берегової лінії</h3>
+<p>Першочергово поняття фрактала у фізиці виникло у зв’язку із завданням про визначення довжини берегової лінії. Під час її вимірювання за наявною картою місцевості з’ясувалася цікава деталь — чим більш великомасштабна карта береться, тим довшою виявляється ця берегова лінія <span class="citation" data-cites="steinhaus1954length vulpiani2014lewis 0c446163-c0a0-36ed-a942-0e71e56cd938 science.156.3775.636">&nbsp;[<a href="references.html#ref-steinhaus1954length" role="doc-biblioref">4</a>–<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Нехай, наприклад, відстань по прямій між розсташованими на береговій лінії точками А та В дорівнює R (див. <a href="#fig-costline">Рис.&nbsp;<span>6.1</span></a>).</p>
 <div id="fig-costline" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="Images\lab_6\costline.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.1: Визначення довжини берегової лінії між точками А та В <span class="citation" data-cites="Bozhokin">&nbsp;[<a href="references.html#ref-Bozhokin" role="doc-biblioref">4</a>]</span></figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.1: Визначення довжини берегової лінії між точками А та В <span class="citation" data-cites="Bozhokin">&nbsp;[<a href="references.html#ref-Bozhokin" role="doc-biblioref">8</a>]</span></figcaption>
 </figure>
 </div>
-<p>Першочергово поняття фрактала у фізиці виникло у зв’язку із завданням про визначення довжини берегової лінії. Під час її вимірювання за наявною картою місцевості з’ясувалася цікава деталь — чим більш великомасштабна карта береться, тим довшою виявляється ця берегова лінія <span class="citation" data-cites="steinhaus1954length vulpiani2014lewis 0c446163-c0a0-36ed-a942-0e71e56cd938 science.156.3775.636">&nbsp;[<a href="references.html#ref-steinhaus1954length" role="doc-biblioref">5</a>–<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">8</a>]</span>. Нехай, наприклад, відстань по прямій між розсташованими на береговій лінії точками А та В дорівнює R (див. <a href="#fig-costline">Рис.&nbsp;<span>6.1</span></a>). Тоді, щоб виміряти довжину берегової лінії між цима точками, ми розташуємо по берегу жорстко пов’язані один з одним вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад, <span class="math inline">\(l=10\)</span> км. Довжину берегової лінії в кілометрах між точками А і В ми приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне вимірювання цієї довжини ми зробимо так само, але відстань між сусідніми вузлами зробимо вже рівною <span class="math inline">\(l=1\)</span> км.</p>
+<p>Тоді, щоб виміряти довжину берегової лінії між цима точками, ми розташуємо по берегу жорстко пов’язані один з одним вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад, <span class="math inline">\(l=10\)</span> км. Довжину берегової лінії в кілометрах між точками А і В ми приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне вимірювання цієї довжини ми зробимо так само, але відстань між сусідніми вузлами зробимо вже рівною <span class="math inline">\(l=1\)</span> км.</p>
 <p>Виявляється, що результат цих вимірювань буде різним. При зменшенні масштабу <span class="math inline">\(l\)</span> ми отримуватимемо все більші й більші значення довжини. На відміну від гладкої кривої, лінія морського узбережжя виявляється найчастіше настільки порізаною (аж до найменших масштабів), що зі зменшенням довжини ланки <span class="math inline">\(l\)</span> величина <span class="math inline">\(L\)</span> — довжина берегової лінії — не прагне до кінцевого межі, а збільшується за степеневим законом</p>
 <p><span id="eq-6-1"><span class="math display">\[
 L \approx l\left( R \middle/ l \right)^{D},
 \tag{6.1}\]</span></span></p>
-<p>де <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">8</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="#eq-6-1">Рівняння&nbsp;<span>6.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
+<p>а <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="#eq-6-1">Рівняння&nbsp;<span>6.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
 <p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/l)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
 </section>
 <section id="фрактальна-розмірність-множин" class="level3" data-number="6.1.3">
@@ -372,21 +373,18 @@ L \approx l\left( R \middle/ l \right)^{D},
 <p><span id="eq-6-2"><span class="math display">\[
 N(l) \sim \left. 1 \middle/ l^D \right.,
 \tag{6.2}\]</span></span></p>
-<p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії.</p>
-<ol class="example" type="1">
-<li>можна переписати у вигляді</li>
-</ol>
+<p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта <span class="citation" data-cites="10.1214/11-STS370">&nbsp;[<a href="references.html#ref-10.1214/11-STS370" role="doc-biblioref">9</a>]</span>. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії. <a href="#eq-6-3">Рівняння&nbsp;<span>6.3</span></a> можна переписати у вигляді</p>
 <p><span id="eq-6-3"><span class="math display">\[
-D = -\lim_{l \to 0} \frac{\ln{N(l)}}{\ln{l}}.
+D = -\lim_{l \to 0} \left. \ln{N(l)} \middle/ \ln{l} \right..
 \tag{6.3}\]</span></span></p>
 <p>Це відношення й слугує загальним визначенням фрактальної розмірності <span class="math inline">\(D\)</span>. У відповідності до нього величина <span class="math inline">\(D\)</span> представляє <strong>локальну</strong> характеристику досліджуваного об’єкта.</p>
 </section>
 <section id="процедури-обчислення-монофрактальних-розмірностей" class="level3" data-number="6.1.4">
 <h3 data-number="6.1.4" class="anchored" data-anchor-id="процедури-обчислення-монофрактальних-розмірностей"><span class="header-section-number">6.1.4</span> Процедури обчислення монофрактальних розмірностей</h3>
-<p>Наразі існує багато визначень та методів вимірювання фрактальної розмірності. Найпоширенішими одновимірними фрактальними розмірностями є розмірність Хаусдорфа, розмірність Хігучі, розмірність Петросяна та Коробчаста розмірність. Розмірність Хаусдорфа є найпростішою фрактальною розмірністю. Але її обчислювальна складність є високою, що ускладнює її практичне застосування. Коробкова розмірність є відносно простою, і фрактальну розмірність сигналу можна отримати, регулюючи розмір довжини сторони коробки. Тому вона є широко впізнаваємою та застосовуваною. Який показник фрактальної розмірності найточніше описує складність сигналу та здатний ідентифікувати кризові явища і представляє ключовий момент цієї лабораторної роботи.</p>
+<p>Наразі існує багато визначень та методів вимірювання фрактальної розмірності. Найпоширенішими одновимірними фрактальними розмірностями є розмірність Хаусдорфа, розмірність Хігучі, розмірність Петросяна та Мінковського <span class="citation" data-cites="falconer2004fractal">&nbsp;[<a href="references.html#ref-falconer2004fractal" role="doc-biblioref">10</a>]</span>. Розмірність Хаусдорфа є найпростішою фрактальною розмірністю. Але її обчислювальна складність є високою, що ускладнює її практичне застосування. Розмірність Мінковського є відносно простою, і фрактальну розмірність сигналу можна отримати, регулюючи розмір довжини сторони клітини в межах якої визначається “шорсткість” поверхні сигналу. Тому вона є широко впізнаваємою та застосовуваною. Який з показників фрактальної розмірності найточніше описує складність сигналу та здатний ідентифікувати кризові явища і представляє ключовий момент цієї лабораторної роботи.</p>
 <section id="rs-аналіз" class="level4" data-number="6.1.4.1">
 <h4 data-number="6.1.4.1" class="anchored" data-anchor-id="rs-аналіз"><span class="header-section-number">6.1.4.1</span> <em>R/S</em>-аналіз</h4>
-<p>Метод <em>R/S</em>-аналізу, розроблений Мандельбротом та Уоллесом <span class="citation" data-cites="10.1119/1.13295">&nbsp;[<a href="references.html#ref-10.1119/1.13295" role="doc-biblioref">9</a>]</span>, базується на попередньо створеному методі гідрологічного аналізу Херста <span class="citation" data-cites="doi:10.1061/TACEAT.0006518 hurst1957suggested">&nbsp;[<a href="references.html#ref-doi:10.1061/TACEAT.0006518" role="doc-biblioref">10</a>,<a href="references.html#ref-hurst1957suggested" role="doc-biblioref">11</a>]</span>, і дозволяє обчислювати параметр самоподібності <span class="math inline">\(H\)</span>, який вимірює інтенсивність довготривалих залежностей у часовому ряді. Коефіцієнт <span class="math inline">\(H\)</span>, який називають коефіцієнтом Херста, містить мінімальні прогнози стосовно природи системи, що вивчається, і може класифікувати часові ряди. За допомогою цього показника розрізняють випадкові (гаусові) та невипадкові ряди; окрім того, він пов’язаний із фрактальною розмірністю, що, у свою чергу, характеризує ступінь згладженості графіка, побудованого на основі часового ряду. Методом <em>R/S</em>-аналізу можливо також виявити максимальну довжину інтервалу (цикл), на якому значення зберігають інформацію про початкові дані системи (довготривала пам’ять).</p>
+<p>Метод <em>R/S</em>-аналізу, розроблений Мандельбротом та Уоллесом <span class="citation" data-cites="10.1119/1.13295">&nbsp;[<a href="references.html#ref-10.1119/1.13295" role="doc-biblioref">11</a>]</span>, базується на попередньо створеному методі гідрологічного аналізу Херста <span class="citation" data-cites="doi:10.1061/TACEAT.0006518 hurst1957suggested">&nbsp;[<a href="references.html#ref-doi:10.1061/TACEAT.0006518" role="doc-biblioref">12</a>,<a href="references.html#ref-hurst1957suggested" role="doc-biblioref">13</a>]</span>, і дозволяє обчислювати параметр самоподібності <span class="math inline">\(H\)</span>, який вимірює інтенсивність довготривалих залежностей у часовому ряді. Коефіцієнт <span class="math inline">\(H\)</span>, який називають коефіцієнтом Херста, містить мінімальні прогнози стосовно природи системи, що вивчається, і може класифікувати часові ряди. За допомогою цього показника розрізняють випадкові (гаусові) та невипадкові ряди; окрім того, він пов’язаний із фрактальною розмірністю, що, у свою чергу, характеризує ступінь згладженості графіка, побудованого на основі часового ряду. Методом <em>R/S</em>-аналізу можливо також виявити максимальну довжину інтервалу (цикл), на якому значення зберігають інформацію про початкові дані системи (довготривала пам’ять).</p>
 <p>Аналіз починається з побудови ряду логарифмічних прибутковостей, <span class="math inline">\(G(t) \equiv \ln{x(t + \Delta t)} - \ln{x(t)}\)</span>, де <span class="math inline">\(x(t)\)</span> — значення вихідного часового ряду в момент <span class="math inline">\(t\)</span>, <span class="math inline">\(\Delta t\)</span> — часовий крок. Отримана послідовність <span class="math inline">\(G(t)\)</span> розбивається на <span class="math inline">\(d\)</span> підпослідовностей довжини <span class="math inline">\(n\)</span>.</p>
 <p>Для кожної підпослідовності <span class="math inline">\(m=1,...,d\)</span>:</p>
 <ol type="1">
@@ -422,7 +420,7 @@ D_f = 2-H.
 </section>
 <section id="аналіз-детрендованих-флуктуацій" class="level4" data-number="6.1.4.2">
 <h4 data-number="6.1.4.2" class="anchored" data-anchor-id="аналіз-детрендованих-флуктуацій"><span class="header-section-number">6.1.4.2</span> Аналіз детрендованих флуктуацій</h4>
-<p>Аналіз детрендований флуктуацій (Detrended fluctuation analysis, DFA) <span class="citation" data-cites="PhysRevE.49.1685">&nbsp;[<a href="references.html#ref-PhysRevE.49.1685" role="doc-biblioref">12</a>]</span> базується на гіпотезі про те, що корельований часовий ряд може бути відображений на самоподібний процес шляхом інтегрування. Таким чином, вимірювання властивостей самоподібності може непрямо свідчити про кореляційні властивості ряду. Переваги DFA порівняно з іншими методами (спектральний аналіз, <em>R/S</em>-аналіз) полягають в тому, що він виявляє довгочасові кореляції нестаціонарних часових рядів, а також дозволяє ігнорувати очевидні випадкові кореляції, що є наслідком нестаціонарності <span class="citation" data-cites="JIANG2014235">&nbsp;[<a href="references.html#ref-JIANG2014235" role="doc-biblioref">13</a>]</span>.</p>
+<p>Аналіз детрендований флуктуацій (Detrended fluctuation analysis, DFA) <span class="citation" data-cites="PhysRevE.49.1685">&nbsp;[<a href="references.html#ref-PhysRevE.49.1685" role="doc-biblioref">14</a>]</span> базується на гіпотезі про те, що корельований часовий ряд може бути відображений на самоподібний процес шляхом інтегрування. Таким чином, вимірювання властивостей самоподібності може непрямо свідчити про кореляційні властивості ряду. Переваги DFA порівняно з іншими методами (спектральний аналіз, <em>R/S</em>-аналіз) полягають в тому, що він виявляє довгочасові кореляції нестаціонарних часових рядів, а також дозволяє ігнорувати очевидні випадкові кореляції, що є наслідком нестаціонарності <span class="citation" data-cites="JIANG2014235">&nbsp;[<a href="references.html#ref-JIANG2014235" role="doc-biblioref">15</a>]</span>.</p>
 <p>Існують DFA різних порядків, що відрізняються трендами, які вилучаються з даних.</p>
 <p>Розглянемо DFA найнижчого порядку.</p>
 <ol type="1">
@@ -449,7 +447,7 @@ F_n = \sqrt{\bar{y_t} \cdot m^{-1}},
 <li><span class="math inline">\(0 &lt; \alpha &lt; 0.5\)</span> означає антиперсистентний ряд;</li>
 <li>cпеціальний випадок, коли <span class="math inline">\(\alpha = 1\)</span>, означає наявність <span class="math inline">\(1/f\)</span> шуму.</li>
 <li>для випадків, коли <span class="math inline">\(\alpha \geq 1\)</span>, кореляції існують, проте перестають відображувати степеневу залежність;</li>
-<li>випадок <span class="math inline">\(\alpha = 1.5\)</span> свідчить про Броунівський шум, інтегрований білий шум.</li>
+<li>випадок <span class="math inline">\(\alpha = 1.5\)</span> свідчить про броунівський шум, який представляє інтегрований білий шум.</li>
 </ul>
 <p>У випадку степеневої залежності функції автокореляцій спостерігається спад автокореляції з показником <span class="math inline">\(\gamma\)</span>:</p>
 <p><span class="math display">\[
@@ -477,16 +475,16 @@ F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
 </section>
 <section id="фрактальна-розмірність-хігучі" class="level4" data-number="6.1.4.3">
 <h4 data-number="6.1.4.3" class="anchored" data-anchor-id="фрактальна-розмірність-хігучі"><span class="header-section-number">6.1.4.3</span> Фрактальна розмірність Хігучі</h4>
-<p>Фрактальна розмірність Хігучі <span class="citation" data-cites="HIGUCHI1988277 7168285">&nbsp;[<a href="references.html#ref-HIGUCHI1988277" role="doc-biblioref">14</a>,<a href="references.html#ref-7168285" role="doc-biblioref">15</a>]</span> — це один з різновидів монофрактальної розмірності, яка визначається наступним чином:</p>
+<p>Фрактальна розмірність Хігучі <span class="citation" data-cites="HIGUCHI1988277 7168285">&nbsp;[<a href="references.html#ref-HIGUCHI1988277" role="doc-biblioref">16</a>,<a href="references.html#ref-7168285" role="doc-biblioref">17</a>]</span> — це один з різновидів монофрактальної розмірності, яка визначається наступним чином:</p>
 <p>Припустимо, що у нас є часовий ряд <span class="math inline">\(x(1), x(2),...,x(N)\)</span> і реконструйований часовий ряд <span class="math inline">\(x_{m}^{k} = \{ x(m), x(m+k), x(m+2k),..., x\left( m+\left[ (N-m) \middle/ k \right] \cdot k \right) \}\)</span> для <span class="math inline">\(m=1,2,...,k\)</span>, де <span class="math inline">\(m\)</span> представляє початковий час; <span class="math inline">\(k=2,...,k_{max}\)</span> представляють ступінь часового зміщення. Позначення <span class="math inline">\([\cdot]\)</span> представляє цілу частину <span class="math inline">\(x\)</span>. Для кожного реконструйованого часового ряду <span class="math inline">\(x_{m}^{k}\)</span> розраховується середня довжина часової послідовності <span class="math inline">\(L_{m}(k)\)</span>:</p>
 <p><span class="math display">\[
 L_{m}(k) = \frac{\sum_{i=1}^{\left[ (N-m) \middle/ k \right]} | x(m+ik) - x(m+(i-1)\cdot k) | \cdot (N-1)}{\left[ (N-m) \middle/ k \right] \cdot k}.
 \]</span></p>
-<p>Далі, для всіх середніх довжин <span class="math inline">\(L_{m}(k)\)</span>, знаходиться загальне середнє <span class="math inline">\(L(k) = \frac{1}{k}\sum_{m=1}^{k}L_{m}(k)\)</span>. Згідно методу Хігучі узагальне середнє значення <span class="math inline">\(L(k)\)</span> пропорційне масштабу <span class="math inline">\(k\)</span>, тобто <span class="math inline">\(L(k) \propto k^{-D}\)</span>. Далі логарифмуємо обидві сторони й отримуємо рівність <span class="math inline">\(\ln{L(k)} \propto D \cdot \ln{\left( 1 \middle/ k \right)}\)</span>. Інтерполювавши лінію регресії через залежність <span class="math inline">\(\ln{L(k)}\)</span> від <span class="math inline">\(\ln{\left( \frac{1}{k} \right)}\)</span>, ми можемо отримати показник фрактальності <span class="math inline">\(D\)</span>, отримавши кут нахилу цієї лінії. Показник <span class="math inline">\(D\)</span> і представлятиме фрактальну розмірність Хігучі.</p>
+<p>Далі, для всіх середніх довжин <span class="math inline">\(L_{m}(k)\)</span>, знаходиться загальне середнє <span class="math inline">\(L(k) = \frac{1}{k}\sum_{m=1}^{k}L_{m}(k)\)</span>. Згідно методу Хігучі узагальне середнє значення <span class="math inline">\(L(k)\)</span> пропорційне масштабу <span class="math inline">\(k\)</span>, тобто <span class="math inline">\(L(k) \propto k^{-D}\)</span>. Далі логарифмуємо обидві сторони й отримуємо рівність <span class="math inline">\(\ln{L(k)} \propto D \cdot \ln{\left( 1 \middle/ k \right)}\)</span>. Інтерполювавши лінію регресії через залежність <span class="math inline">\(\ln{L(k)}\)</span> від <span class="math inline">\(\ln{\left( 1 \middle/ k \right)}\)</span>, ми можемо отримати показник фрактальності <span class="math inline">\(D\)</span> як кут нахилу цієї лінії. Показник <span class="math inline">\(D\)</span> і представлятиме фрактальну розмірність Хігучі.</p>
 </section>
 <section id="фрактальна-розмірність-петросяна" class="level4" data-number="6.1.4.4">
 <h4 data-number="6.1.4.4" class="anchored" data-anchor-id="фрактальна-розмірність-петросяна"><span class="header-section-number">6.1.4.4</span> Фрактальна розмірність Петросяна</h4>
-<p>Спочатку, для часового ряду <span class="math inline">\(\{ x_1, x_2,...,y_{N} \}\)</span>, створюємо його дискретизовану (бінарну) версію, <span class="math inline">\(z_i\)</span>:</p>
+<p>Спочатку для часового ряду <span class="math inline">\(\{ x_1, x_2,...,y_{N} \}\)</span> створюємо його дискретизовану (бінарну) версію, <span class="math inline">\(z_i\)</span>:</p>
 <p><span class="math display">\[
 z_i =
 \begin{cases}
@@ -494,124 +492,80 @@ z_i =
     -1, &amp; x_i \leq \langle x \rangle.
 \end{cases}
 \]</span></p>
-<p>Фрактальну розмірність Петросяна <span class="citation" data-cites="465426 904882 goh:inria-00442374">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">16</a>–<a href="references.html#ref-goh:inria-00442374" role="doc-biblioref">18</a>]</span> може бути визначена як</p>
+<p>Фрактальну розмірність Петросяна <span class="citation" data-cites="465426 904882 goh:inria-00442374">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">18</a>–<a href="references.html#ref-goh:inria-00442374" role="doc-biblioref">20</a>]</span> можна визначити як</p>
 <p><span class="math display">\[
 D = \left. \log_{10}{N} \middle/ \left( \log_{10} + \log_{10}{\left[ N \middle/ (N+0.4N_{\Delta}) \right]} \right) \right.,
 \]</span></p>
-<p>де <span class="math inline">\(N_{\Delta}\)</span> — кількість загальних змін знаку змінної <span class="math inline">\(z_i\)</span>: <span class="math inline">\(N_{\Delta} = \sum_{i=1}^{N-2} \left| (z_{i+1}-z_i) \middle/ 2 \right|\)</span>.</p>
+<p>де <span class="math inline">\(N_{\Delta}\)</span> — кількість загальних змін знаку величини <span class="math inline">\(z_i\)</span>: <span class="math inline">\(N_{\Delta} = \sum_{i=1}^{N-2} \left| (z_{i+1}-z_i) \middle/ 2 \right|\)</span>.</p>
 </section>
 <section id="фрактальна-розмірність-каца" class="level4" data-number="6.1.4.5">
 <h4 data-number="6.1.4.5" class="anchored" data-anchor-id="фрактальна-розмірність-каца"><span class="header-section-number">6.1.4.5</span> Фрактальна розмірність Каца</h4>
-<p>Представимо, що сигнал складається з пари точок <span class="math inline">\(\left( x_i, y_i \right)\)</span>. Тоді, фрактальна розмірність Каца <span class="citation" data-cites="KATZ1988145">&nbsp;[<a href="references.html#ref-KATZ1988145" role="doc-biblioref">19</a>]</span> визначається як</p>
+<p>Представимо, що сигнал складається з пари точок <span class="math inline">\(\left( x_i, y_i \right)\)</span>. Тоді, фрактальна розмірність Каца <span class="citation" data-cites="KATZ1988145">&nbsp;[<a href="references.html#ref-KATZ1988145" role="doc-biblioref">21</a>]</span> визначається як</p>
 <p><span class="math display">\[
 D = \log{N}/\left(\log{N} + \log{d/L}\right),
 \]</span></p>
-<p>де <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}-y_{i} \right)^{2} + \left( x_{i+1}-x_{i} \right)^{2}}\)</span>.</p>
-<p>Значення <span class="math inline">\(d\)</span> визначається як максимальна відстань від початкової точки <span class="math inline">\(\left( x_1, y_1 \right)\)</span> до всіх інших точок, а саме <span class="math inline">\(d\)</span> може бути розраховане як</p>
-<p><span class="math display">\[
-d = \max{\left( \sqrt{\left( x_i - x_1 \right)^{2} - \left( y_i - y_1 \right)^{2}} \right)}.
-\]</span></p>
+<p>де <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}-y_{i} \right)^{2} + \left( x_{i+1}-x_{i} \right)^{2}}\)</span>, а значення <span class="math inline">\(d = \max{\left( \sqrt{\left( x_i - x_1 \right)^{2} - \left( y_i - y_1 \right)^{2}} \right)}\)</span>.</p>
 </section>
-<section id="фрактальна-розмірність-севчика" class="level4" data-number="6.1.4.6">
-<h4 data-number="6.1.4.6" class="anchored" data-anchor-id="фрактальна-розмірність-севчика"><span class="header-section-number">6.1.4.6</span> Фрактальна розмірність Севчика</h4>
+<section id="фрактальна-розмірність-шевчика" class="level4" data-number="6.1.4.6">
+<h4 data-number="6.1.4.6" class="anchored" data-anchor-id="фрактальна-розмірність-шевчика"><span class="header-section-number">6.1.4.6</span> Фрактальна розмірність Шевчика</h4>
 <p>Спочатку, для множини значень <span class="math inline">\(\left( x_i, y_i \right)\)</span> виконується нормалізація: <span class="math inline">\(x_{i}^{*} = \left.\left( x_i-x_{min} \right) \middle/ \left( x_{max}-x_{min} \right)\right.\)</span> і <span class="math inline">\(y_{i}^{*} = \left.\left( y_i-y_{min} \right) \middle/ \left( y_{max}-y_{min} \right)\right.\)</span>.</p>
-<p>Фрактальна розмірність Севчика <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">20</a>]</span> може бути визначена як</p>
+<p>Фрактальна розмірність Шевчика <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">22</a>]</span> може бути визначена як</p>
 <p><span class="math display">\[
 D = 1 + \left. \ln{L} \middle/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
 \]</span></p>
-<p>де <span class="math inline">\(L\)</span> — це довжина сигналу, що може бути розрахована за формулою <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}^{*}-y_{i}^{*} \right)^{2} + \left( x_{i+1}^{*}-x_{i}^{*} \right)^{2}}\)</span>.</p>
+<p><span class="math inline">\(L\)</span> — це довжина сигналу, що може бути розрахована за формулою <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}^{*}-y_{i}^{*} \right)^{2} + \left( x_{i+1}^{*}-x_{i}^{*} \right)^{2}}\)</span>.</p>
 </section>
 <section id="фрактальна-розмірність-через-нормалізовану-щільність-довжини" class="level4" data-number="6.1.4.7">
 <h4 data-number="6.1.4.7" class="anchored" data-anchor-id="фрактальна-розмірність-через-нормалізовану-щільність-довжини"><span class="header-section-number">6.1.4.7</span> Фрактальна розмірність через нормалізовану щільність довжини</h4>
-<p>Даний показник розраховується в наступний спосіб <span class="citation" data-cites="kalauzi2009extracting">&nbsp;[<a href="references.html#ref-kalauzi2009extracting" role="doc-biblioref">21</a>]</span>:</p>
+<p>Даний показник розраховується в наступний спосіб <span class="citation" data-cites="kalauzi2009extracting">&nbsp;[<a href="references.html#ref-kalauzi2009extracting" role="doc-biblioref">23</a>]</span>:</p>
 <ol type="1">
 <li>Для часового ряду <span class="math inline">\(\{ x_1, x_2,...,x_n \}\)</span> виконується стандартизація: <span class="math inline">\(y_i = (x_i - \mu)/\sigma\)</span>, де <span class="math inline">\(\mu\)</span> — це середнє значення ряду, <span class="math inline">\(\sigma\)</span> — це стандартне відхилення.</li>
-<li>Розраховується нормалізована щільність довжини:</li>
-</ol>
-<p><span class="math display">\[
-NLD = \frac{1}{N}\sum_{i=2}^{N}\left| y_i - y_{i-1} \right|.
-\]</span></p>
-<p>Фактичний розрахунок фрактальної розмірності сигналу базується на побудові монотонної калібрувальної кривої, <span class="math inline">\(D = f(NLD)\)</span>, за набором функцій Вейєрштрасса, для яких значення <span class="math inline">\(D\)</span> задаються теоретично.</p>
-<ol start="3" type="1">
-<li>Для обчислювальних цілей необхідно створити математичну модель цієї залежності. Автори даного підходу тестували дві моделі:
+<li>Розраховується нормалізована щільність довжини <span class="math inline">\(NLD = \frac{1}{N}\sum_{i=2}^{N}\left| y_i - y_{i-1} \right|\)</span>. Фактичний розрахунок фрактальної розмірності сигналу базується на побудові монотонної калібрувальної кривої <span class="math inline">\(D = f(NLD)\)</span> за набором функцій Вейєрштрасса, для яких значення <span class="math inline">\(D\)</span> задаються теоретично.</li>
+<li>Для обчислювальних цілей створено дві моделі цієї залежності:
 <ul>
 <li>логарифмічну модель: <span class="math inline">\(D = a \cdot \log{\left(NLD - NLD_{0} \right)} + C\)</span>;</li>
-<li>степеневу модель: <span class="math inline">\(D = a \cdot \left(NLD - NLD_{0} \right)^{k}\)</span>. Бібліотека <code>neurokit2</code> використовує саме степеневу модель. Параметр <span class="math inline">\(a=1.9079\)</span>, <span class="math inline">\(k=0.18383\)</span> і <span class="math inline">\(NLD_{0}=0.097178\)</span>, згідно статті <em>Kalauzi et al.&nbsp;2009</em>.</li>
+<li>степеневу модель: <span class="math inline">\(D = a \cdot \left(NLD - NLD_{0} \right)^{k}\)</span>. Бібліотека <code>neurokit2</code> використовує саме степеневу модель. Параметр <span class="math inline">\(a=1.9079\)</span>, <span class="math inline">\(k=0.18383\)</span> і <span class="math inline">\(NLD_{0}=0.097178\)</span>, згідно <span class="citation" data-cites="Kalauzi_2009">&nbsp;[<a href="references.html#ref-Kalauzi_2009" role="doc-biblioref">24</a>]</span>.</li>
 </ul></li>
 </ol>
 </section>
-<section id="фрактальна-розмірність-через-нахил-спектральної-щільності-потужності" class="level4" data-number="6.1.4.8">
-<h4 data-number="6.1.4.8" class="anchored" data-anchor-id="фрактальна-розмірність-через-нахил-спектральної-щільності-потужності"><span class="header-section-number">6.1.4.8</span> Фрактальна розмірність через нахил спектральної щільності потужності</h4>
-<p>Фрактальну розмірність можна обчислити на основі аналізу нахилу спектральної щільності потужності (power spectral density slope, PSD) <span class="citation" data-cites="10.3389/fphys.2013.00075 Voss1988">&nbsp;[<a href="references.html#ref-10.3389/fphys.2013.00075" role="doc-biblioref">22</a>,<a href="references.html#ref-Voss1988" role="doc-biblioref">23</a>]</span> в сигналах, що характеризуються частотною степеневою залежністю.</p>
-<p>Спочатку виконується перетворення часового ряду до частотної області і далі сигнал розбивається на синусоїдальні та косинусоїдальні хвилі певної амплітуди, які разом “складаються”, щоб представити вихідний сигнал. Якщо існує систематичний зв’язок між частотами в сигналі і потужністю цих частот, то в логарифмічних координатах це проявляється в лінійній залежності. Кут нахилу лінії регресії приймається як оцінка фрактальної розмірності.</p>
-<p>Нахил 0 відповідає білому шуму, а нахил менше 0, але більше -1, відповідає рожевому шуму, тобто шуму <span class="math inline">\(1/f\)</span>. Спектральні нахили крутіші за -2 вказують на дробовий броунівський рух, що є втіленням процесів випадкового блукання.</p>
+<section id="фрактальна-розмірність-і-спектральна-щільність-потужності" class="level4" data-number="6.1.4.8">
+<h4 data-number="6.1.4.8" class="anchored" data-anchor-id="фрактальна-розмірність-і-спектральна-щільність-потужності"><span class="header-section-number">6.1.4.8</span> Фрактальна розмірність і спектральна щільність потужності</h4>
+<p>Фрактальну розмірність можна обчислити на основі аналізу нахилу спектральної щільності потужності (power spectral density slope, PSD) <span class="citation" data-cites="10.3389/fphys.2013.00075 Voss1988">&nbsp;[<a href="references.html#ref-10.3389/fphys.2013.00075" role="doc-biblioref">25</a>,<a href="references.html#ref-Voss1988" role="doc-biblioref">26</a>]</span> в сигналах, що характеризуються степеневою частотною залежністю.</p>
+<p>Спочатку виконується перетворення часового ряду до частотної області і далі сигнал розбивається на гармонійні коливання певної амплітуди, які разом “складаються”, щоб представити вихідний сигнал. Якщо існує систематичний зв’язок між частотами в сигналі і потужністю цих частот, то в логарифмічних координатах це проявляється через лінійну залежність. Кут нахилу лінії регресії приймається як оцінка фрактальної розмірності.</p>
+<p>Нахил 0 відповідає білому шуму, а нахил менше 0, але більше -1, відповідає рожевому шуму, тобто шуму <span class="math inline">\(1/f\)</span>. Спектральні нахили крутіші за -2 вказують на дробовий броунівський рух, що є проявом процесів випадкового блукання.</p>
 </section>
 <section id="кореляційна-розмірність" class="level4" data-number="6.1.4.9">
 <h4 data-number="6.1.4.9" class="anchored" data-anchor-id="кореляційна-розмірність"><span class="header-section-number">6.1.4.9</span> Кореляційна розмірність</h4>
-<p>Кореляційна розмірність (<span class="math inline">\(D_2\)</span>) — це похідна величина від кореляційного інтеграла (кореляційної суми) може бути поданий в такому вигляді <span class="citation" data-cites="GRASSBERGER1983189 PhysRevLett.50.346 GRASSBERGER1983227">&nbsp;[<a href="references.html#ref-GRASSBERGER1983189" role="doc-biblioref">24</a>–<a href="references.html#ref-GRASSBERGER1983227" role="doc-biblioref">26</a>]</span>:</p>
+<p>Кореляційна розмірність (<span class="math inline">\(D_2\)</span>) — це похідна величина від кореляційного інтеграла (кореляційної суми) і може бути подана у вигляді <span class="citation" data-cites="GRASSBERGER1983189 PhysRevLett.50.346 GRASSBERGER1983227">&nbsp;[<a href="references.html#ref-GRASSBERGER1983189" role="doc-biblioref">27</a>–<a href="references.html#ref-GRASSBERGER1983227" role="doc-biblioref">29</a>]</span>:</p>
 <p><span class="math display">\[
 C(\varepsilon) = \frac{1}{N^{2}}\sum_{\substack{i,j=1 \\ i\neq j}}^{N}\Theta \left( \varepsilon - \| \vec{x}(i) - \vec{x}(j) \| \right), \; \vec{x}(i) \in \Re^{m}.
 \]</span></p>
-<p>Сама кореляційна розмірність може бути виведена з наступної степеневої залежності:</p>
+<p>Кореляційна розмірність може бути виведена з наступної степеневої залежності:</p>
 <p><span class="math display">\[
 C(\varepsilon) \sim \varepsilon^{\nu},
 \]</span></p>
-<p>або слідуючим чином:</p>
+<p>або</p>
 <p><span class="math display">\[
-D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/N^2 \right)}}{\log{\varepsilon}},
+D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\left. \log{\left( g_{\varepsilon}/N^2 \right)} \middle/ \log{\varepsilon} \right.,
 \]</span></p>
 <p>де <span class="math inline">\(g_{\varepsilon}\)</span> — це сумарна кількість пар точок, відстань між якими менша за радіус <span class="math inline">\(\varepsilon\)</span>.</p>
-<p>За формулою <span class="math inline">\(C(\varepsilon)\)</span> ми відбираємо <span class="math inline">\(i\)</span>-ту траєкторію та всі інші <span class="math inline">\(j\)</span>-ті траєкторії, і дивимося, чи потрапляють <span class="math inline">\(j\)</span>-ті траєкторії в округ <span class="math inline">\(i\)</span>-ої траєкторії з радіусом <span class="math inline">\(\varepsilon\)</span>. Якщо відстань між ними не перевищує округ зі згаданим радіусом, ми ставимо 1. Але якщо відстань між траєкторіями більша за <span class="math inline">\(\varepsilon\)</span>, тоді ставимо 0. Далі все це підсумовується, ділиться на загальну кількість траєкторій. По суті кореляційний інтеграл це середня ймовірність того, що дві розглянуті траєкторії фазового простору, що розглядаються, будуть знаходитися досить близько одна до одної. Чим тісніше розташовані точки фазового простору одна до одної, тим більше значення кореляційного інтеграла. Чим більш рівновіддаленими видаються траєкторії одна від одної, тим ближче значення кореляційного інтеграла до нуля.</p>
+<p>У першому випадку ми відбираємо <span class="math inline">\(i\)</span>-ту траєкторію та всі інші <span class="math inline">\(j\)</span>-ті траєкторії, і дивимося, чи потрапляють <span class="math inline">\(j\)</span>-ті траєкторії в <span class="math inline">\(\varepsilon\)</span>-окіл <span class="math inline">\(i\)</span>-ої траєкторії. Якщо відстань між ними не перевищує окіл радіусом <span class="math inline">\(\varepsilon\)</span>, ми ставимо 1. Але якщо відстань між траєкторіями більша за <span class="math inline">\(\varepsilon\)</span>, тоді ставимо 0. Далі все це підсумовується, ділиться на загальну кількість траєкторій. По суті кореляційний інтеграл це середня ймовірність того, що дві розглянуті траєкторії фазового простору, будуть знаходитися досить близько одна від одної. Чим тісніше розташовані точки фазового простору, тим більше значення кореляційного інтеграла. Чим більш рівновіддаленими видаються траєкторії одна від одної, тим ближче значення кореляційного інтеграла до нуля.</p>
 <p>Значення кореляційної розмірності ми можемо відшукати аналогічно попередним фрактальним показникам: ми шукаємо залежність кореляційного інтеграла від значення <span class="math inline">\(\varepsilon\)</span>. Ця залежність будується в логарифмічному масштабі.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Додаткова інформація по кореляційні розмірності
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Кореляційна розмірність за аналогією з попередніми показниками — це теж тангенс кута нахилу лінії регресії, побудованої в логарифмічному масштабі, але для залежності кореляційного інтеграла від <span class="math inline">\(\varepsilon\)</span>. За аналогією з іншими показниками, кореляційна розмірність визначає швидкість зміни значення кореляційного інтеграла (крутість нахилу лінії регресії).</p>
-</div>
-</div>
-<div id="fig-d2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_6\corrdim.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.2: Зміна значення кореляційного інтеграла в залежності від ступеня розкиданості точок по фазовому простору системи</figcaption>
-</figure>
-</div>
-<p>За фазовим простором цієї хмари точок (<a href="#fig-d2">Рис.&nbsp;<span>6.2</span></a>) можна бачити, що більша згуртованість точок одна до одної має асоціюватися з меншою кореляційною розмірністю. Рисунок (а) характеризується найвищою близькістю точок одна до одної, але при цьому найменшою кореляційною розмірністю. Це можна пояснити так: якщо ми будуємо сітку з кіл радіусом <span class="math inline">\(\varepsilon\)</span> і поступово її збільшуємо, ми вже перестаємо бачити нові прилеглі траєкторії до тих <span class="math inline">\(i\)</span>-их траєкторій, які ми розглядали із самого спочатку, на початкових значеннях <span class="math inline">\(\varepsilon\)</span>. На рисунках (b) і (c) видно, що хмара траєкторій фазового простору є більш рівномірно розподіленою. За поступового збільшення радіуса кіл із центрами в кожній <span class="math inline">\(i\)</span>-ій траєкторії ми повинні спостерігати пропорційне збільшення значення кореляційного інтеграла. У даному випадку при поступовому збільшенні <span class="math inline">\(\varepsilon\)</span> ми спостерігаємо появу все більшої і більшої кількості точок.</p>
-<p>У періодичних системах кореляційна розмірність залишається постійною і дорівнює розмірності вкладення. Наприклад, для простої періодичної системи, такої як синусоїда, кореляційна розмірність дорівнюватиме 1 (оскільки вона лежить на одновимірній кривій), а якщо систему реконструюють у двовимірному фазовому просторі (за двома координатами), то кореляційна розмірність дорівнюватиме 2. У таких системах кореляційна розмірність не змінюється.</p>
-<p>Для хаотичних систем кореляційна розмірність має характерну поведінку, яка залежить від кількості змінних (розмірностей), необхідних для точного опису динаміки системи. На відміну від періодичних систем, кореляційна розмірність зростає в міру збільшення розмірності фазового простору, поки не досягне плато.</p>
+<p>Ось деякі цікаві приклади.</p>
 <p><strong>Електрокардіограма</strong> (ЕКГ): ЕКГ-сигнали відображають електричну активність серця. Складність ЕКГ-сигналу може бути оцінена за допомогою кореляційної розмірності. Очікується, що кореляційна розмірність ЕКГ здорового серця буде вищою через наявність складних патернів і варіабельності. З іншого боку, аномальні ЕКГ-сигнали, наприклад, від пацієнтів з аритміями або серцевими захворюваннями, можуть мати нижчу кореляційну розмірність через втрату складності сигналу.</p>
 <p><strong>Електроенцефалограма</strong> (ЕЕГ): Сигнали ЕЕГ реєструють електричну активність мозку. Кореляційна розмірність може використовуватися для аналізу складності мозкової активності, яка може змінюватися залежно від різних когнітивних станів, стадій сну або неврологічних розладів. У здорових людей сигнали ЕЕГ у стані бадьорості та уваги можуть мати вищу кореляційну розмірність порівняно з сигналами у стадії сну, коли активність мозку є більш регулярною і синхронізованою.</p>
 <p><strong>Дихальні сигнали</strong>: Дихальні сигнали, такі як частота дихання або повітряний потік, також можуть бути проаналізовані за допомогою кореляційної розмірності. Складність цих сигналів може змінюватися залежно від таких факторів, як стрес, фізичне навантаження або наявність респіраторних захворювань. За нормального дихання може спостерігатися вища кореляційна розмірність, тоді як порушення в дихальних сигналах, наприклад, за обструктивного апное уві сні або дихальних розладів, можуть призвести до зниження кореляційної розмірності.</p>
-<p><strong>Аналіз ходи</strong>: Кореляційна розмірність може бути використана для аналізу моделей ходи. Вона може допомогти в розумінні складності рухів людини під час ходьби або бігу. Зміни в кореляційній розмірності сигналів ходи можуть свідчити про зміну стабільності ходи або про наявність відхилень у ході, викликаних неврологічними або опорно-руховими захворюваннями.</p>
+<p><strong>Аналіз ходи</strong>: Кореляційна розмірність може бути використана для аналізу моделей ходи. Вона допомагає зрозуміти складність рухів людини під час ходьби чи бігу. Зміни в кореляційній розмірності сигналів ходи можуть свідчити про зміну стабільності ходи або про наявність відхилень у ході, викликаних неврологічними або опорно-руховими захворюваннями.</p>
 <p><strong>Варіативність динаміки серцевого ритму</strong> (ВСР): ВСР являє собою зміну часових інтервалів між послідовними ударами серця. Вона перебуває під впливом вегетативної нервової системи і відображає адаптивність і складність серцево-судинної системи. Вищий рівень ВСР, що відповідає вищій кореляційній розмірності, зазвичай асоціюється з кращим станом серцево-судинної системи та її адаптивністю до фізіологічних змін і змін навколишнього середовища. Її падіння може асоціюватися з аномальною динамікою серця.</p>
 <p><strong>Послідовності ДНК</strong>: Кореляційна розмірність може бути використана і при аналізі послідовностей ДНК. Вона допомагає виявити самоподібні або фрактальні патерни всередині послідовностей, що може мати значення для розуміння генетичної складності, еволюційних зв’язків і регуляції генів. Висока кореляційна розмірність — висока складність ланцюжка ДНК. Мала кореляційна розмірність — спрощений ланцюжок ДНК.</p>
 <p><strong>Фінансові ринки</strong>: Вища кореляційна розмірність у даних часових рядів фінансового ринку свідчить про більшу складність та існування в їхній основі самоподібних моделей або фрактальних структур. Хаотична поведінка цін на акції може бути пов’язана з періодами високої волатильності та непередбачуваності. З іншого боку, нижча величина кореляційної розмірності може свідчити про більш передбачувані та менш складні рухи цін, що відповідає періодам стабільності або менш волатильним ринковим умовам.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Примітка по кореляційні розмірності
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Кореляційна розмірність розглядає кількість інформації (кубиків, кіл), необхідну для опису <strong>тільки пари точок</strong> у фазовому просторі.</p>
-</div>
-</div>
 </section>
 </section>
 </section>
 <section id="хід-роботи" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">6.2</span> Хід роботи</h2>
 <p>Розглянемо як можна застосовувати зазначені показники в якості індикаторів кризових станів.</p>
-<p>Спочатку імпортуємо необхідні бібліотеки для подальшої роботи:</p>
+<p>Спочатку імпортуємо необхідні бібліотеки:</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -640,7 +594,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>У даній роботі скористаємось монофрактальними показниками для ідентифікації кризових явищ на ринку золота. Розглянемо значення золота за весь період, що представляє Yahoo! Finance. Для цього нам не треба буде вказувати початкову та кінцеву дати:</p>
+<p>На цьому етапі скористаємось монофрактальними показниками для ідентифікації кризових явищ на ринку золота. Розглянемо ціну золота за весь період, що надає Yahoo! Finance. Для цього вкажемо початкову та кінцеву дати:</p>
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'GC=F'</span>                       <span class="co"># Символ індексу</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -696,7 +650,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-init" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.3: Динаміка щоденних змін індексу золота</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.2: Динаміка щоденних змін ціни золота</figcaption>
 </figure>
 </div>
 </div>
@@ -733,7 +687,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 </div>
 <section id="обчислення-показника-херста-із-використанням-rs-аналізу" class="level3" data-number="6.2.1">
 <h3 data-number="6.2.1" class="anchored" data-anchor-id="обчислення-показника-херста-із-використанням-rs-аналізу"><span class="header-section-number">6.2.1</span> Обчислення показника Херста із використанням <em>R/S</em>-аналізу</h3>
-<p>Для подальших розрахунків використовуватимемо бібліотеку <code>neurokit2</code> та <code>fathon</code>. Другу можна встановити в наступний спосіб:</p>
+<p>Для подальших розрахунків використовуватимемо бібліотеку <code>neurokit2</code> та <code>fathon</code>. Другу з них можна встановити в наступний спосіб:</p>
 <div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install fathon</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -742,21 +696,21 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fathon</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fathon <span class="im">import</span> fathonUtils <span class="im">as</span> fu</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Бібліотека <code>neurokit</code> містить необхідний метод для <em>R/S</em>-аналізу — <code>fractal_hurst</code>. Його синтаксис виглядає наступним чином:</p>
+<p>Бібліотека <code>neurokit</code> містить необхідний метод для <em>R/S</em>-аналізу — <code>fractal_hurst</code>. Його синтаксис:</p>
 <p><strong><code>fractal_hurst(signal, scale='default', corrected=True, show=False)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень або датафрейму бібліотеки <code>pandas</code>;</li>
 <li><strong>scale</strong> (<em>list</em>) — список, що містить довжини вікон (кількість точок даних у кожній підмножині ряду), на які розбито сигнал;</li>
-<li><strong>corrected</strong> (<em>bool</em>) — якщо значення <code>True</code>, до вихідних даних буде застосовано поправочний коефіцієнт Аніса-Ллойда-Пітерса відповідно до очікуваного значення для окремих значень (<em>R/S</em>);</li>
+<li><strong>corrected</strong> (<em>bool</em>) — якщо значення <code>True</code>, до вихідних даних буде застосовано поправочний коефіцієнт Аніса-Ллойда-Пітерса <span class="citation" data-cites="Anis_1976">&nbsp;[<a href="references.html#ref-Anis_1976" role="doc-biblioref">30</a>]</span> відповідно до очікуваного значення для окремих значень (<em>R/S</em>);</li>
 <li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, виводить залежність <span class="math inline">\((R/S)_n\)</span> від <span class="math inline">\(n\)</span> (<strong>scale</strong>) у подвійному логарифмічному масштабі.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>h</strong> (<em>float</em>) — показник Херста;</li>
 <li><strong>kwargs</strong> — словник, що містить інформацію відносно використовуваних у процедурі параметрів.</li>
 </ul>
-<p>Розглянемо ступінь трендостійкості в динаміці фондового індексу золота, використовуючи весь часовий ряд. Далі знайдемо значення показника Херста в рамках віконної процедури.</p>
+<p>Розглянемо ступінь трендостійкості в динаміці ціни золота, використовуючи весь часовий ряд. Далі знайдемо значення показника Херста в рамках віконної процедури.</p>
 <section id="увесь-часовий-ряд" class="level4" data-number="6.2.1.1">
 <h4 data-number="6.2.1.1" class="anchored" data-anchor-id="увесь-часовий-ряд"><span class="header-section-number">6.2.1.1</span> Увесь часовий ряд</h4>
 <p>Першочергово знайдемо значення прибутковостей для нашого ряду та стандартизуємо їх. Після цього виконаємо обчислення.</p>
@@ -779,12 +733,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-rs-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-rs-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.4: Залежність значень R/S від скейлінгу побудованих в логарифмічному масштабі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.3: Залежність значень R/S від скейлінгу</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як ми можемо бачити з <a href="#fig-gold-rs-all">Рис.&nbsp;<span>6.4</span></a>, значення <span class="math inline">\(h=0.53\)</span>, що свідчить про подібність динаміки золота до випадкового блукання. Але оскільки закони, що регулюють ринок, змінюються з часом, мають змінюватись і кореляції всередині системи, а одже коефіцієнт Херста також має залежати від періоду в якому він розглядається.</p>
+<p>Як ми можемо бачити з <a href="#fig-gold-rs-all">Рис.&nbsp;<span>6.3</span></a>, значення <span class="math inline">\(h=0.53\)</span>, що свідчить про подібність цінової динаміки золота до випадкового блукання. Але оскільки закони, що регулюють ринок, змінюються з часом, мають змінюватись і кореляції всередині системи, а тому коефіцієнт Херста також може змінюватись.</p>
 </section>
 <section id="віконна-процедура" class="level4" data-number="6.2.1.2">
 <h4 data-number="6.2.1.2" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">6.2.1.2</span> Віконна процедура</h4>
@@ -886,17 +840,17 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-rs" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-rs-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.5: Динаміка індексу золота та показника Херста</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.4: Динаміка ціни золота та показника Херста</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На представленому рисунку (<a href="#fig-gold-wind-rs">Рис.&nbsp;<span>6.5</span></a>) можемо бачити, що показник Херста зростає в передкризовий період та спадає під час кризи. Перед кризою динаміка ринку характеризується зростанням трендостійкості (персистентності), що відзеркалює зростання скорельованості дій між трейдерами ринку.</p>
+<p>На <a href="#fig-gold-wind-rs">Рис.&nbsp;<span>6.4</span></a> можемо бачити, що показник Херста зростає в передкризовий період та спадає під час кризи. Перед кризою динаміка ринку характеризується зростанням трендостійкості (персистентності), що відзеркалює зростання скорельованості дій трейдерів.</p>
 </section>
 </section>
 <section id="обчислення-на-основі-dfa" class="level3" data-number="6.2.2">
 <h3 data-number="6.2.2" class="anchored" data-anchor-id="обчислення-на-основі-dfa"><span class="header-section-number">6.2.2</span> Обчислення на основі DFA</h3>
-<p>Бібліотека <code>fathon</code> представляє інструментарій як для виконання класичного аналізу детрендованих флуктуацій, так і для його мультифрактального аналогу, мова про який піде в наступній лабораторній.</p>
+<p>Бібліотека <code>fathon</code> представляє інструментарій як для виконання класичного аналізу детрендованих флуктуацій, так і для його мультифрактального аналогу, мова про який піде в наступній лабораторній роботі.</p>
 <section id="для-всього-ряду" class="level4" data-number="6.2.2.1">
 <h4 data-number="6.2.2.1" class="anchored" data-anchor-id="для-всього-ряду"><span class="header-section-number">6.2.2.1</span> Для всього ряду</h4>
 <p>Спочатку представимо значення <span class="math inline">\(\alpha\)</span> для всього ряду. Процедура розрахунків на основі бібліотеки <code>fathon</code> виглядатиме наступним чином:</p>
@@ -935,7 +889,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>H, H_intercept <span class="op">=</span> pydfa.fitFlucVec()        <span class="co"># знаходимо показник альфа</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Виводимо залежність функції флуктуацій від характеристичного масштабу:</p>
+<p>Виводимо залежність функції флуктуацій від масштабу:</p>
 <div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>polyfit <span class="op">=</span> np.polyfit(np.log(n), np.log(F), <span class="dv">1</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>fluctfit <span class="op">=</span> np.exp(<span class="dv">1</span>) <span class="op">**</span> np.polyval(polyfit, np.log(n))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -968,12 +922,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-dfa-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-dfa-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.6: Логарифмічна залежність значень функції флуктуацій від скейлінгу</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.5: Логарифмічна залежність значень функції флуктуацій від скейлінгу</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Процедура DFA показує, що значення індексу золота представляються скоріше антиперсистентними, але представлений результат доволі близький до того, що був отриманий за допомогою <em>R/S</em>-аналізу. Розглянемо значення <span class="math inline">\(\alpha\)</span> в рамках алгоритму ковзного вікна.</p>
+<p>Процедура DFA показує, що значення ціни золота представляються скоріше антиперсистентними, але представлений результат доволі близький до того, що був отриманий за допомогою <em>R/S</em>-аналізу. Розглянемо значення <span class="math inline">\(\alpha\)</span> в рамках алгоритму ковзного вікна.</p>
 </section>
 <section id="віконна-процедура-1" class="level4" data-number="6.2.2.2">
 <h4 data-number="6.2.2.2" class="anchored" data-anchor-id="віконна-процедура-1"><span class="header-section-number">6.2.2.2</span> Віконна процедура</h4>
@@ -1089,12 +1043,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-alpha" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-alpha-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.7: Динаміка індексу золота та показника альфа</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.6: Флуктуації ціни золота та показника альфа</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Якщо порівнювати з <em>R/S</em>-аналізом, <a href="#fig-gold-wind-alpha">Рис.&nbsp;<span>6.7</span></a> демонструє, що динаміка <em>узагальненого показника Херста</em> отриманого за допомогою DFA є набагато стабільнішою. Тепер ми здатні диференціювати значну частку крахових подій, що мали місце на ринку золота. Узагальнений Херст показує, що передкризові явища характеризуються зростанням трендостійкості ринку або, іншими словами, підвищенням ступеня самоорганізації системи.</p>
+<p>Якщо порівнювати з <em>R/S</em>-аналізом, <a href="#fig-gold-wind-alpha">Рис.&nbsp;<span>6.6</span></a> демонструє, що DFA динаміка <em>узагальненого показника Херста</em> є набагато стабільнішою. Тепер ми здатні диференціювати значну частку крахових подій, що мали місце на ринку золота. Узагальнений Херст показує, що передкризові явища характеризуються зростанням трендостійкості ринку, підвищенням ступеня самоорганізації системи.</p>
 <div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
@@ -1107,12 +1061,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-df" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-df-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.8: Динаміка індексу золота та фрактальної розмірності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.7: Коливання ціни золота та фрактальної розмірності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-df">Рис.&nbsp;<span>6.8</span></a> показує, що <span class="math inline">\(D_f\)</span> характеризується спадом при кризових станах. Це є індикатором того, що вищий ступень організованості ринку відзеркалюється в більш згладженій або менш шорстких флуктуаціях досліджуваного сигналу.</p>
+<p><a href="#fig-gold-wind-df">Рис.&nbsp;<span>6.7</span></a> показує, що <span class="math inline">\(D_f\)</span> характеризується спадом при кризових станах. Це є індикатором того, що вищий ступень організованості ринку відзеркалюється в більш згладженій або менш волатильних флуктуаціях досліджуваного сигналу.</p>
 <div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
@@ -1125,12 +1079,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-beta" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-beta-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.9: Динаміка індексу золота та показника спектральної щільності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.8: Динаміка ціни золота та показника спектральної щільності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На даному рисунку ми бачимо динаміку показника <span class="math inline">\(\beta\)</span>, що відноситься до спектральної густини потужності (<a href="#eq-spec-dens">Рівняння&nbsp;<span>6.5</span></a>), зростає в кризові періоди, що говорить про спад потужності сигналу, що припадає на одиничний інтервал частоти. Це також є свідченням зростання кореляційних властивостей системи.</p>
+<p>Спектральна густина потужності <span class="math inline">\(\beta\)</span> <a href="#eq-spec-dens">Рівняння&nbsp;<span>6.5</span></a> зростає в кризові періоди, що свідчить про спад потужності сигналу на одиничному інтервалі частоти. Це також є свідченням зростання кореляційних властивостей системи.</p>
 <div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
@@ -1143,27 +1097,27 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-gamma" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-gamma-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.10: Динаміка індексу золота та показника автокореляції</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.9: Динаміка індексу золота та показника автокореляції</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-gold-wind-gamma">Рис.&nbsp;<span>6.10</span></a> видно, що показник <span class="math inline">\(\gamma\)</span> спадає в кризові та передкризові періоди. Це є показником сповільнення спаду функції автокореляції, що в свою чергу також вказує на зростання корельованності динаміки системи.</p>
+<p>З <a href="#fig-gold-wind-gamma">Рис.&nbsp;<span>6.9</span></a> видно, що показник <span class="math inline">\(\gamma\)</span> спадає в кризові та передкризові періоди. Це є показником сповільнення спаду функції автокореляції, що в свою чергу також вказує на зростання корельованності динаміки системи.</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-хігучі" class="level3" data-number="6.2.3">
 <h3 data-number="6.2.3" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-хігучі"><span class="header-section-number">6.2.3</span> Обчислення фрактальної розмірності Хігучі</h3>
-<p>Як уже зазначалося, фрактальна розмірність Хігучі є одним із різновидів фрактальної розмірності для часових рядів. Вона обчислюється шляхом реконструкції <span class="math inline">\(k\)</span>-максимальної кількості нових наборів даних. Для кожного відновленого набору даних обчислюється довжина кривої і відкладається проти відповідного k-значення в логарифмічній шкалі. HFD відповідає нахилу лінійного тренду за методом найменших квадратів.</p>
-<p>Розрахуємо оптимальне значення <span class="math inline">\(k\)</span> для всього часового ряду. Бібліотека <code>neurokit2</code> представляє готову процедуру для автоматизованого підбору даного параметру. Оптимальний <span class="math inline">\(k_{max}\)</span> розраховується на основі точки, в якій значення фрактальної розмірності досягає плато для діапазону значень <span class="math inline">\(k_{max}\)</span> (див. Vega, 2015).</p>
+<p>Як уже зазначалося, фрактальна розмірність Хігучі є одним із різновидів фрактальної розмірності для часових рядів. Вона обчислюється шляхом реконструкції <span class="math inline">\(k_{max}\)</span> кількості нових наборів даних. Для кожного відновленого набору даних обчислюється довжина кривої і відкладається проти відповідного <span class="math inline">\(k_{max}\)</span>-значення в логарифмічній шкалі. HFD відповідає нахилу лінійного тренду за методом найменших квадратів.</p>
+<p>Розрахуємо оптимальне значення <span class="math inline">\(k\)</span> для всього часового ряду. Бібліотека <code>neurokit2</code> представляє готову процедуру для автоматизованого підбору даного параметру. Оптимальний <span class="math inline">\(k_{max}\)</span> розраховується на основі точки, в якій значення фрактальної розмірності досягає плато для діапазону значень <span class="math inline">\(k_{max}\)</span> <span class="citation" data-cites="7168285">&nbsp;[<a href="references.html#ref-7168285" role="doc-biblioref">17</a>]</span>.</p>
 <p>Синтаксис даної функції виглядає наступним чином:</p>
 <p><strong><code>complexity_k(signal, k_max='max', show=False)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
-<li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити. Якщо <span class="math inline">\(k_{max}\)</span>=<code>default</code>, тоді вибирається максимально можливе значення, що відповідає половині довжини сигналу;</li>
+<li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити. Якщо <span class="math inline">\(k_{max}\)</span> = <code>default</code>, тоді вибирається максимально можливе значення, що відповідає половині довжини сигналу;</li>
 <li><strong>show</strong> (<em>bool</em>) — візуалізовується нахил кривої для обраного значення <span class="math inline">\(k_{max}\)</span>.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>k</strong> (<em>float</em>) — оптимальний <span class="math inline">\(k_{max}\)</span> часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення оптимального <span class="math inline">\(k_{max}\)</span>.</li>
@@ -1190,20 +1144,20 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-kmax-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-kmax-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.11: Залежність розмірності Хігучі від діапазону значень kmax</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.10: Залежність розмірності Хігучі від діапазону значень kmax</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Тепер побудуємо залежність довжини сигналу від часового зміщення в логарифмічному масштабі. Для фрактального сигналу має зберігатися лінійна залежність. Бібліотека <code>neurokit2</code> містить метод для розрахунку даної фрактальної розмірності. Синтаксис цієї процедури виглядає наступним чином:</p>
 <p><strong><code>fractal_higuchi(signal, k_max='default', show=False, **kwargs)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
 <li><strong><span class="math inline">\(k_{max}\)</span></strong> (<em>Union[int, str, list], optional</em>) — максимальна кількість інтервалів (має бути більше або дорівнювати 3), які потрібно перевірити;</li>
 <li><strong>show</strong> (<em>bool</em>) — візуалізовується нахил кривої для обраного значення <span class="math inline">\(k_{max}\)</span>.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>HFD</strong> (<em>float</em>) — фрактальна розмірність Хігучі для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення фрактальної розмірності Хігучі.</li>
@@ -1214,7 +1168,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-higuchi-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-higuchi-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.12: Залежність довжини сигналу від часового зміщення</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.11: Залежність довжини сигналу від часового зміщення</figcaption>
 </figure>
 </div>
 </div>
@@ -1288,7 +1242,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-higuchi" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-higuchi-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.13: Динаміка індексу золота та фрактальної розмірності Хігучі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.12: Динаміка індексу золота та фрактальної розмірності Хігучі</figcaption>
 </figure>
 </div>
 </div>
@@ -1298,26 +1252,32 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 </section>
 <section id="обчислення-фрактальної-розмірності-петросяна" class="level3" data-number="6.2.4">
 <h3 data-number="6.2.4" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-петросяна"><span class="header-section-number">6.2.4</span> Обчислення фрактальної розмірності Петросяна</h3>
-<p>Петросян (1995) запропонував швидкий метод оцінки фрактальної розмірності шляхом перетворення сигналу в двійкову послідовність, з якої оцінюється фрактальна розмірність. Існує кілька варіацій алгоритму (<code>neurokit2</code>, наприклад, пропонує <code>"A"</code>, <code>"B"</code>, <code>"C"</code> або <code>"D"</code>), що відрізняються насамперед способом створення дискретної (символьної) послідовності (див. <code>complexity_symbolize()</code> для деталей). Найпоширеніший метод (<code>"C"</code>, за замовчуванням) бінаризує сигнал за знаком послідовних різниць.</p>
+<p>Петросян <span class="citation" data-cites="465426">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">18</a>]</span> запропонував швидкий метод оцінки фрактальної розмірності шляхом перетворення сигналу в двійкову послідовність, з якої оцінюється фрактальна розмірність. Існує кілька варіацій алгоритму (<code>neurokit2</code>, наприклад, пропонує варіанти <code>"A"</code>, <code>"B"</code>, <code>"C"</code> або <code>"D"</code>), що відрізняються насамперед способом створення дискретної (символьної) послідовності (див. <code>complexity_symbolize()</code> для деталей). Найпоширеніший метод (<code>"C"</code>, за замовчуванням) бінаризує сигнал за знаком послідовних різниць.</p>
 <p>Більшість з цих методів дискретизації припускають, що сигнал є періодичним (без лінійного тренду). Для усунення лінійних трендів може бути корисним лінійне детрендування.</p>
 <p>Синтаксис даної процедури має наступний вигляд:</p>
 <p><strong><code>fractal_petrosian(signal, symbolize='C', show=False)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
-<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
-<li><strong>symbolize</strong> (<em>str</em>) - метод перетворення неперервного вхідного сигналу в символьний (дискретний) сигнал. За замовчуванням присвоює 0 та 1 значенням нижче та вище середнього. Може мати значення <code>None</code>, що припускає, що вхідний сигнал вже є дискретним.</li>
+<li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
+<li><strong>symbolize</strong> (<em>str</em>) - метод перетворення неперервного вхідного сигналу в символьний (дискретний) сигнал. За замовчуванням присвоює 0 та 1 значенням нижче та вище середнього. Може мати значення <code>None</code>, що припускає дискретність вхідного сигналу;</li>
 <li><strong>show</strong> (<em>bool</em>) — виводить дискретизацію сигналу.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
-<li><strong>PFD</strong> (<em>float</em>) — фрактальна розмірність Петросяна для досліджуваного часового ряду.</li>
+<li><strong>PFD</strong> (<em>float</em>) — фрактальна розмірність Петросяна для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення фрактальної розмірності Петросяна.</li>
 </ul>
-<p>Ми не розглядатимемо детально синтаксис функції <code>complexity_symbolize()</code>. Опишемо лише ті методи дискретизації, що дотичні до фрактальної розмірності Петросяна: - <strong>Метод <code>A</code></strong> бінаризує сигнал за більшими та меншими значеннями порівняно із середнім значенням сигналу. Еквівалентом є <code>method="mean"</code> (<code>method="median"</code> також є допустимим). - <strong>Метод <code>B</code></strong> використовує значення, що знаходяться в діапазоні <span class="math inline">\(\pm 1\sigma\)</span>, проти значень, що виходять за межі цього діапазону. - <strong>Метод <code>C</code></strong> обчислює різницю між послідовними вибірками та бінаризує їх залежно від знаку. - <strong>Метод <code>D</code></strong> відокремлює послідовні відліки, що перевищують <span class="math inline">\(1\sigma\)</span> сигналу, від інших менших змін.</p>
-<p>Тепер розглянемо віконну динаміку даного показника.</p>
+<p>Ми не розглядатимемо детально синтаксис функції <code>complexity_symbolize()</code>. Опишемо лише ті методи дискретизації, що дотичні до фрактальної розмірності Петросяна:</p>
+<ul>
+<li><strong>метод <code>A</code></strong> бінаризує сигнал за більшими та меншими значеннями порівняно із середнім значенням сигналу. Еквівалентом є <code>method="mean"</code> (<code>method="median"</code> також є допустимим);</li>
+<li><strong>метод <code>B</code></strong> використовує значення, що знаходяться в діапазоні <span class="math inline">\(\pm 1\sigma\)</span>, проти значень, що виходять за межі цього діапазону;</li>
+<li><strong>метод <code>C</code></strong> обчислює різницю між послідовними вибірками та бінаризує їх залежно від знаку;</li>
+<li><strong>метод <code>D</code></strong> відокремлює послідовні відліки, що перевищують <span class="math inline">\(1\sigma\)</span> сигналу, від інших менших змін.</li>
+</ul>
+<p>Тепер розглянемо віконну динаміку показника.</p>
 <section id="віконна-процедура-3" class="level4" data-number="6.2.4.1">
 <h4 data-number="6.2.4.1" class="anchored" data-anchor-id="віконна-процедура-3"><span class="header-section-number">6.2.4.1</span> Віконна процедура</h4>
-<p>Оскільки більшість з даних методів дискретизації вимагаються детрендування ряду, тоді будемо виконувати розрахунки для прибутковостей індексу золота.Скористаємось наступними параметрами:</p>
+<p>Оскільки більшість з даних методів дискретизації вимагають детрендування ряду, будемо виконувати розрахунки для прибутковостей ціни золота. Скористаємось наступними параметрами:</p>
 <div class="cell" data-execution_count="170">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
@@ -1382,25 +1342,25 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-petro" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-petro-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.14: Динаміка індексу золота та фрактальної розмірності Петросяна</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.13: Динаміка ціни золота та фрактальної розмірності Петросяна</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-petro">Рис.&nbsp;<span>6.14</span></a> показує, що показник Петросяна також спадає під час кризових подій, що вказує на зростання періодизації ринку та синхронізації активності трейдерів у відповідні моменти часу.</p>
+<p><a href="#fig-gold-wind-petro">Рис.&nbsp;<span>6.13</span></a> показує, що показник Петросяна також спадає під час кризових подій і вказує на зростання періодизації ринку та синхронізації активності трейдерів у відповідні моменти часу.</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-каца" class="level3" data-number="6.2.5">
 <h3 data-number="6.2.5" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-каца"><span class="header-section-number">6.2.5</span> Обчислення фрактальної розмірності Каца</h3>
-<p>Тепер обчислюємо фрактальну розмірність Каца. Евклідові відстані між послідовними точками сигналу підсумовуються і усереднюються, а також визначається максимальна відстань між початковою точкою і будь-якою іншою точкою у вибірці.</p>
+<p>Обчислимо фрактальну розмірність Каца. Евклідові відстані між послідовними точками сигналу підсумовуються і усереднюються, а також визначається максимальна відстань між початковою точкою і будь-якою іншою точкою у вибірці.</p>
 <p>Фрактальна розмірність варіюється від 1.0 для прямих ліній, приблизно до 1.15 для випадкових блукань і наближається до 1.5 для найбільш “дивних” форм сигналу.</p>
 <p>Синтаксис процедури для розрахунку даної розмірності виглядає наступним чином:</p>
 <p><strong><code>fractal_katz(signal)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>KFD</strong> (<em>float</em>) — фрактальна розмірність Каца для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію (наразі порожній, але повертається для узгодженості з іншими функціями).</li>
@@ -1466,18 +1426,18 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-katz" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-katz-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.15: Динаміка індексу золота та фрактальної розмірності Каца</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.14: Динаміка ціни золота та фрактальної розмірності Каца</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На представленому рисунку видно, що фрактальна розмірність Каца також спадає у кризові та передкризові періоди. Це також є індикаторов зростання ступеня корельованості системи в дані періоди.</p>
+<p>З рисунку видно, що фрактальна розмірність Каца також спадає у кризові та передкризові періоди і також є індикатором зростання ступеня корельованості системи в дані періоди.</p>
 </section>
 </section>
-<section id="обчислення-фрактальної-розмірності-севчика" class="level3" data-number="6.2.6">
-<h3 data-number="6.2.6" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-севчика"><span class="header-section-number">6.2.6</span> Обчислення фрактальної розмірності Севчика</h3>
-<p>Алгоритм цієї фрактальної розмірності був запропонований для обчислення фрактальної розмірності сигналів Севчиком (1998). Цей метод можна використовувати для швидкого вимірювання складності та випадковості сигналу.</p>
-<p>Синтаксис методу, що ми використовуватимемо в подальшому, має наступний вигляд:</p>
+<section id="обчислення-фрактальної-розмірності-шевчика" class="level3" data-number="6.2.6">
+<h3 data-number="6.2.6" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-шевчика"><span class="header-section-number">6.2.6</span> Обчислення фрактальної розмірності Шевчика</h3>
+<p>Алгоритм цієї фрактальної розмірності був запропонований для обчислення фрактальної розмірності сигналів Шевчиком <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">22</a>]</span>. Цей метод можна використовувати для швидкого вимірювання складності сигналу.</p>
+<p>Синтаксис методу:</p>
 <p><strong><code>fractal_sevcik(signal)</code></strong></p>
 <p><strong>Параметри</strong></p>
 <ul>
@@ -1490,7 +1450,6 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 </ul>
 <section id="віконна-процедура-5" class="level4" data-number="6.2.6.1">
 <h4 data-number="6.2.6.1" class="anchored" data-anchor-id="віконна-процедура-5"><span class="header-section-number">6.2.6.1</span> Віконна процедура</h4>
-<p>Для цього показника нам також не потребується нічого зайвого:</p>
 <div class="cell" data-execution_count="216">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
@@ -1549,29 +1508,28 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-sevcik" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-sevcik-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.16: Динаміка індексу золота та фрактальної розмірності Севчика</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.15: Динаміка ціни золота та фрактальної розмірності Шевчика</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Бачимо, що і фрактальна розмірність Севчика реагує спадом на крахові події на ринку золота. Особливо характерними є спади під час кризи 2008, 2011, 2015 та 2020 років, що є ключовими та дослідженими багатьма вченими. Динаміка індексу золота під час зазначених кризових подій також характеризувалися зростанням персистентності (кореляцій).</p>
+<p>Бачимо, що фрактальна розмірність Шевчика реагує спадом на крахові події на ринку золота. Особливо характерними є спади під час криз 2008, 2011, 2015 та 2020 років. Цінові флуктуації золота під час зазначених кризових подій також характеризувалися зростанням персистентності (кореляцій).</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-через-нормалізовану-щільність-довжини" class="level3" data-number="6.2.7">
 <h3 data-number="6.2.7" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-через-нормалізовану-щільність-довжини"><span class="header-section-number">6.2.7</span> Обчислення фрактальної розмірності через нормалізовану щільність довжини</h3>
-<p>Це доволі простий показник, що відповідає середнім абсолютним послідовним різницям (стандартизованого) сигналу (<code>np.mean(np.abs(np.diff(std_signal)))</code>). Цей метод було розроблено для вимірювання складності сигналів дуже короткої тривалості (&lt; 30 відліків), і його можна використовувати, наприклад, коли цікавлять безперервні зміни фрактальної розмірності сигналу, обчислюючи його в межах ковзних вікон.</p>
-<p>Для таких методів, як для фрактальної розмірності Хігучі, стандартне відхилення віконної фрактальної розмірності різко зростає, коли довжина ряду стає коротшою. Цей метод дає менше стандартне відхилення, особливо для коротших фрагментів, хоча і за рахунок меншої точності середнього значення фрактальної розмірності вікна.</p>
-<p>Синтаксис процедури має наступний вигляд:</p>
+<p>Це доволі простий показник, що відповідає середнім абсолютним послідовним різницям (стандартизованого) сигналу (<code>np.mean(np.abs(np.diff(std_signal)))</code>). Метод було розроблено для вимірювання складності сигналів дуже короткої тривалості (&lt; 30 відліків), і його можна використовувати, наприклад, коли цікавлять неперервні зміни фрактальної розмірності сигналу при обчисленні в межах ковзних вікон.</p>
+<p>Синтаксис процедури:</p>
 <p><strong><code>fractal_nld(signal, corrected=False)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
 <li><strong>corrected</strong> (<em>bool</em>) — якщо значення <code>True</code>, змінює масштаб вихідного значення фрактальної розмірності відповідно до степеневої моделі, щоб зробити його більш порівнянним з “істинним” значенням: <code>FD = 1.9079*((NLD-0.097178)^0.18383)</code>. Зауважте, що це може призвести до <code>np.nan</code>, якщо результат різниці буде від’ємним.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
-<li><strong>NLDFD</strong> (<em>float</em>) — фрактальна розмірність через нормалізовану щільність довжини;</li>
-<li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію (наразі порожній, але повертається для узгодженості з іншими функціями).</li>
+<li><strong>NLDFD</strong> (<em>float</em>) — фрактальна розмірність;</li>
+<li><strong>info</strong> (<em>dict</em>) — словник із додатковою інформацією по розрахункам.</li>
 </ul>
 <section id="віконна-процедура-6" class="level4" data-number="6.2.7.1">
 <h4 data-number="6.2.7.1" class="anchored" data-anchor-id="віконна-процедура-6"><span class="header-section-number">6.2.7.1</span> Віконна процедура</h4>
@@ -1639,26 +1597,26 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-nld" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-nld-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.17: Динаміка індексу золота та фрактальної розмірності через нормалізовану щільність довжини</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.16: Динаміка ціни золота та фрактальної розмірності через нормалізовану щільність довжини</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-nld">Рис.&nbsp;<span>6.17</span></a> показує, що <span class="math inline">\(NLDFD\)</span> спадає під час кризових та передкризових подій, що вказує на зростання кореляцій у дані періоди.</p>
+<p><a href="#fig-gold-wind-nld">Рис.&nbsp;<span>6.16</span></a> показує, що <span class="math inline">\(NLDFD\)</span> спадає під час кризових та передкризових подій, що свідчить про зростання кореляцій у дані періоди.</p>
 </section>
 </section>
 <section id="обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" class="level3" data-number="6.2.8">
 <h3 data-number="6.2.8" class="anchored" data-anchor-id="обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності"><span class="header-section-number">6.2.8</span> Обчислення фрактальної розмірності через нахил спектральної щільності потужності</h3>
 <p>Скористаємось наступним методом бібліотеки <code>neurokit2</code>:</p>
 <p><strong><code>fractal_psdslope(signal, method='voss1988', show=False, **kwargs)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
 <li><strong>method</strong> (<em>str</em>) — метод оцінки фрактальної розмірності за нахилом, може бути <code>"voss1988"</code> (за замовчуванням) або <code>"hasselman2013"</code>;</li>
 <li><strong>show</strong> (<em>bool</em>) — якщо значення <code>True</code>, повертає графік залежності спектральної щільності потужності від частоти в логарифмічному масштабі;</li>
 <li><strong>kwargs</strong> — інші аргументи, які слід передати до <code>signal_psd()</code>.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>slope</strong> (<em>float</em>) — оцінка фрактальної розмірності, отримана в результаті аналізу нахилу спектральної щільності потужності;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для аналізу нахилу спектральної щільності потужності.</li>
@@ -1687,12 +1645,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-psd-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-psd-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.18: Залежність спектральної щільності потужності від частоти в логарифмічному масштабі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.17: Залежність спектральної щільності потужності від частоти в логарифмічному масштабі</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як можна бачити з представленого графіку, спектральний нахил спектральної щільності потужності на різних частотах має лінійну залежність, а кут нахилу прямої, побудованої по спектру, близький до -2, що вказує на те, що динаміка індексу золота близька до дробового броунівського руху.</p>
+<p>Очевидно, нахил спектральної щільності потужності на різних частотах має лінійну залежність, а кут нахилу прямої побудованої за спектром, близький до -2, що вказує на те, що динаміка індексу золота близька до дробового броунівського руху.</p>
 <p>Тепер розглянемо варіацію кута нахилу спектра в рамках алгоритму ковзного вікна.</p>
 </section>
 <section id="віконна-процедура-7" class="level4" data-number="6.2.8.2">
@@ -1761,21 +1719,21 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-psd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-psd-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.19: Динаміка індексу золота та фрактальної розмірності через нахил спектральної щільності потужності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.18: Флуктуації ціни золота та фрактальної розмірності за нахилом спектральної щільності потужності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Рисунок вище показує, що даний показник також реагує спадом у кризові та передкризові події, вказуючи на зростання автокореляції часового ряду під час даних подій. Також зрозуміло, що має місце варіації нахилу спектра щільності потужності. В одні моменти часу динаміка сигналу може бути подібна до броунівського руху, а в інші до білого шуму.</p>
+<p>Рисунок вище показує, що даний показник також реагує спадом на кризові та передкризові події, вказуючи на зростання автокореляції часового ряду. Також зрозуміло, що має місце варіації нахилу спектра щільності потужності. В одні моменти часу динаміка сигналу може бути подібна до броунівського руху, а в інші до білого шуму.</p>
 </section>
 </section>
 <section id="обчислення-кореляційної-розмірності" class="level3" data-number="6.2.9">
 <h3 data-number="6.2.9" class="anchored" data-anchor-id="обчислення-кореляційної-розмірності"><span class="header-section-number">6.2.9</span> Обчислення кореляційної розмірності</h3>
 <p>Кореляційна розмірність (також позначається як <span class="math inline">\(D_2\)</span>) є нижньою границею оцінки фрактальної розмірності досліджуваного фазового простору.</p>
-<p>Спочатку здійснюється реконструкція фазового простору сигналі згідно методу часової затримки, і далі обчислюються відстані між усіма точками траєкторії. Потім обчислюється “кореляційна сума”, яка є часткою пар точок, відстань між якими менша за заданий радіус. Остаточна кореляційна розмірність апроксимується графіком залежності кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій, що будується в логарифмічному масштабі.</p>
+<p>Спочатку здійснюється реконструкція фазового простору сигналу згідно методу часової затримки, і далі обчислюються відстані між усіма точками траєкторії. Потім обчислюється “кореляційна сума”, яка є часткою пар точок, відстань між якими менша за заданий радіус. Остаточна кореляційна розмірність апроксимується графіком залежності кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій у логарифмічному масштабі.</p>
 <p>Цю розмірність можна викликати через <code>fractal_correlation()</code>. Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>fractal_correlation(signal, delay=1, dimension=2, radius=64, show=False, **kwargs)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>signal</strong> (<em>Union[list, np.array, pd.Series]</em>) — сигнал (тобто часовий ряд) у вигляді вектора значень;</li>
 <li><strong>delay</strong> (<em>int</em>) — часова затримка (<span class="math inline">\(\tau\)</span>);</li>
@@ -1784,7 +1742,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <li><strong>show</strong> (<em>bool</em>) — графік кореляційної розмірності, якщо <code>True</code>. За замовчуванням — <code>False</code>;</li>
 <li><strong>kwargs</strong> — інші аргументи для передачі (наразі не використовуються).</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>cd</strong> (<em>float</em>) — кореляційна розмірність часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення кореляційної розмірності.</li>
@@ -1815,7 +1773,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-corr-all" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-corr-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.20: Залежність кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій. Графік побудований у логарифмічному масштабі</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.19: Залежність кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій</figcaption>
 </figure>
 </div>
 </div>
@@ -1894,12 +1852,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="fig-gold-wind-cd" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="lab_6_files/figure-html/fig-gold-wind-cd-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;6.21: Динаміка індексу золота та кореляційної фрактальної розмірності</figcaption>
+<figcaption class="figure-caption">Рис.&nbsp;6.20: Динаміка ціни золота та кореляційної фрактальної розмірності</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-gold-wind-cd">Рис.&nbsp;<span>6.21</span></a> демонструє, що кореляційна розмірність для індексу золота також спадає у кризові та передкризові періоди, вказуючи на зростання корельованості теперішніх цін на золото з попередніми. Можна сказати і по іншому: у період криз трейдери починають самоорганізовуватись та колективно скупати або продавати відповідний актив; іншими словами, їх динаміка стає більш синхронною. Оскільки кореляційна розмірність вимірюється для траєкторій фазового простору, спад цього показника свідчить про зростання щільності досліджуваних траєкторій. Тобто, фазовий простір стає більш розрідженим, а всі його траєкторії концентрованими лише в одній конкретній області, що є індикатором згуртованості прихованих змінних досліджуваної системи.</p>
+<p><a href="#fig-gold-wind-cd">Рис.&nbsp;<span>6.20</span></a> демонструє, що кореляційна розмірність для індексу золота також спадає у кризові та передкризові періоди, вказуючи на зростання корельованості теперішніх цін на золото з попередніми. Можна сказати і по іншому: у період криз трейдери починають самоорганізовуватись та колективно скупати або продавати відповідний актив; іншими словами, їх динаміка стає більш синхронною. Оскільки кореляційна розмірність вимірюється для траєкторій фазового простору, спад цього показника свідчить про зростання щільності досліджуваних траєкторій. Тобто, фазовий простір стає більш розрідженим, а всі його траєкторії концентрованими лише в одній конкретній області, що є індикатором згуртованості прихованих змінних досліджуваної системи.</p>
 </section>
 </section>
 </section>
@@ -1924,74 +1882,86 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\frac{\log{\left( g_{\varepsilon}/
 <div id="ref-10.1007/3-7643-7412-8_8" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[3] </div><div class="csl-right-inline">H. F. Jelinek, N. Elston, and B. Zietsch, <em>Fractal Analysis: Pitfalls and Revelations in Neuroscience</em>, in <em>Fractals in Biology and Medicine</em>, edited by G. A. Losa, D. Merlini, T. F. Nonnenmacher, and E. R. Weibel (Birkh<span>ä</span>user Basel, Basel, 2005), pp. 85–94.</div>
 </div>
-<div id="ref-Bozhokin" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">S. V. Bozhokin and D. A. Parshin, <em>Fractals and Multifractals: Textbook</em> (Scientific; Publishing Center "Regular; Chaotic Dynamics", 2001).</div>
-</div>
 <div id="ref-steinhaus1954length" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">H. Steinhaus, <em>Length, Shape and Area</em>, in <em>Colloquium Mathematicum</em>, Vol. 3 (Polska Akademia Nauk. Instytut Matematyczny PAN, 1954), pp. 1–13.</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">H. Steinhaus, <em>Length, Shape and Area</em>, in <em>Colloquium Mathematicum</em>, Vol. 3 (Polska Akademia Nauk. Instytut Matematyczny PAN, 1954), pp. 1–13.</div>
 </div>
 <div id="ref-vulpiani2014lewis" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">A. Vulpiani, <em><a href="https://doi.org/10.1007/s40329-014-0063-z">Lewis Fry Richardson: Scientist, Visionary and Pacifist</a></em>, Lettera Matematica <strong>2</strong>, 121 (2014).</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">A. Vulpiani, <em><a href="https://doi.org/10.1007/s40329-014-0063-z">Lewis Fry Richardson: Scientist, Visionary and Pacifist</a></em>, Lettera Matematica <strong>2</strong>, 121 (2014).</div>
 </div>
 <div id="ref-0c446163-c0a0-36ed-a942-0e71e56cd938" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">B. Hayes, <em><a href="http://www.jstor.org/stable/27857587">Computing Science: Statistics of Deadly Quarrels</a></em>, American Scientist <strong>90</strong>, 10 (2002).</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">B. Hayes, <em><a href="http://www.jstor.org/stable/27857587">Computing Science: Statistics of Deadly Quarrels</a></em>, American Scientist <strong>90</strong>, 10 (2002).</div>
 </div>
 <div id="ref-science.156.3775.636" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">B. Mandelbrot, <em><a href="https://doi.org/10.1126/science.156.3775.636">How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension</a></em>, Science <strong>156</strong>, 636 (1967).</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">B. Mandelbrot, <em><a href="https://doi.org/10.1126/science.156.3775.636">How Long Is the Coast of Britain? Statistical Self-Similarity and Fractional Dimension</a></em>, Science <strong>156</strong>, 636 (1967).</div>
+</div>
+<div id="ref-Bozhokin" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">S. V. Bozhokin and D. A. Parshin, <em>Fractals and Multifractals: Textbook</em> (Scientific; Publishing Center "Regular; Chaotic Dynamics", 2001).</div>
+</div>
+<div id="ref-10.1214/11-STS370" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">T. Gneiting, H. Ševčíková, and D. B. Percival, <em><a href="https://doi.org/10.1214/11-STS370"><span class="nocase">Estimators of Fractal Dimension: Assessing the Roughness of Time Series and Spatial Data</span></a></em>, Statistical Science <strong>27</strong>, 247 (2012).</div>
+</div>
+<div id="ref-falconer2004fractal" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">K. Falconer, <em><a href="https://doi.org/10.1002/0470013850">Fractal Geometry: Mathematical Foundations and Applications</a></em> (John Wiley &amp; Sons, 2003).</div>
 </div>
 <div id="ref-10.1119/1.13295" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">B. B. Mandelbrot and J. A. Wheeler, <em><a href="https://doi.org/10.1119/1.13295"><span class="nocase">The Fractal Geometry of Nature</span></a></em>, American Journal of Physics <strong>51</strong>, 286 (1983).</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">B. B. Mandelbrot and J. A. Wheeler, <em><a href="https://doi.org/10.1119/1.13295"><span class="nocase">The Fractal Geometry of Nature</span></a></em>, American Journal of Physics <strong>51</strong>, 286 (1983).</div>
 </div>
 <div id="ref-doi:10.1061/TACEAT.0006518" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">H. E. Hurst, <em><a href="https://doi.org/10.1061/TACEAT.0006518">Long-Term Storage Capacity of Reservoirs</a></em>, Transactions of the American Society of Civil Engineers <strong>116</strong>, 770 (1951).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">H. E. Hurst, <em><a href="https://doi.org/10.1061/TACEAT.0006518">Long-Term Storage Capacity of Reservoirs</a></em>, Transactions of the American Society of Civil Engineers <strong>116</strong>, 770 (1951).</div>
 </div>
 <div id="ref-hurst1957suggested" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">H. E. Hurst, <em><a href="https://doi.org/10.1038/180494a0">A Suggested Statistical Model of Some Time Series Which Occur in Nature</a></em>, Nature <strong>180</strong>, 494 (1957).</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">H. E. Hurst, <em><a href="https://doi.org/10.1038/180494a0">A Suggested Statistical Model of Some Time Series Which Occur in Nature</a></em>, Nature <strong>180</strong>, 494 (1957).</div>
 </div>
 <div id="ref-PhysRevE.49.1685" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">C.-K. Peng, S. V. Buldyrev, S. Havlin, M. Simons, H. E. Stanley, and A. L. Goldberger, <em><a href="https://doi.org/10.1103/PhysRevE.49.1685">Mosaic Organization of DNA Nucleotides</a></em>, Phys. Rev. E <strong>49</strong>, 1685 (1994).</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C.-K. Peng, S. V. Buldyrev, S. Havlin, M. Simons, H. E. Stanley, and A. L. Goldberger, <em><a href="https://doi.org/10.1103/PhysRevE.49.1685">Mosaic Organization of DNA Nucleotides</a></em>, Phys. Rev. E <strong>49</strong>, 1685 (1994).</div>
 </div>
 <div id="ref-JIANG2014235" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">Z.-Q. Jiang, W.-J. Xie, and W.-X. Zhou, <em><a href="https://doi.org/10.1016/j.physa.2014.02.042">Testing the Weak-Form Efficiency of the WTI Crude Oil Futures Market</a></em>, Physica A: Statistical Mechanics and Its Applications <strong>405</strong>, 235 (2014).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">Z.-Q. Jiang, W.-J. Xie, and W.-X. Zhou, <em><a href="https://doi.org/10.1016/j.physa.2014.02.042">Testing the Weak-Form Efficiency of the WTI Crude Oil Futures Market</a></em>, Physica A: Statistical Mechanics and Its Applications <strong>405</strong>, 235 (2014).</div>
 </div>
 <div id="ref-HIGUCHI1988277" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">T. Higuchi, <em><a href="https://doi.org/10.1016/0167-2789(88)90081-4">Approach to an Irregular Time Series on the Basis of the Fractal Theory</a></em>, Physica D: Nonlinear Phenomena <strong>31</strong>, 277 (1988).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T. Higuchi, <em><a href="https://doi.org/10.1016/0167-2789(88)90081-4">Approach to an Irregular Time Series on the Basis of the Fractal Theory</a></em>, Physica D: Nonlinear Phenomena <strong>31</strong>, 277 (1988).</div>
 </div>
 <div id="ref-7168285" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. F. Vega and J. Noel, <em><a href="https://doi.org/10.1109/SPS.2015.7168285">Parameters Analyzed of Higuchi’s Fractal Dimension for EEG Brain Signals</a></em>, in <em>2015 Signal Processing Symposium (SPSympo)</em> (2015), pp. 1–5.</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C. F. Vega and J. Noel, <em><a href="https://doi.org/10.1109/SPS.2015.7168285">Parameters Analyzed of Higuchi’s Fractal Dimension for EEG Brain Signals</a></em>, in <em>2015 Signal Processing Symposium (SPSympo)</em> (2015), pp. 1–5.</div>
 </div>
 <div id="ref-465426" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">A. Petrosian, <em><a href="https://doi.org/10.1109/CBMS.1995.465426">Kolmogorov Complexity of Finite Sequences and Recognition of Different Preictal EEG Patterns</a></em>, in <em>Proceedings Eighth IEEE Symposium on Computer-Based Medical Systems</em> (1995), pp. 212–217.</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">A. Petrosian, <em><a href="https://doi.org/10.1109/CBMS.1995.465426">Kolmogorov Complexity of Finite Sequences and Recognition of Different Preictal EEG Patterns</a></em>, in <em>Proceedings Eighth IEEE Symposium on Computer-Based Medical Systems</em> (1995), pp. 212–217.</div>
 </div>
 <div id="ref-904882" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">R. Esteller, G. Vachtsevanos, J. Echauz, and B. Litt, <em><a href="https://doi.org/10.1109/81.904882">A Comparison of Waveform Fractal Dimension Algorithms</a></em>, IEEE Transactions on Circuits and Systems I: Fundamental Theory and Applications <strong>48</strong>, 177 (2001).</div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">R. Esteller, G. Vachtsevanos, J. Echauz, and B. Litt, <em><a href="https://doi.org/10.1109/81.904882">A Comparison of Waveform Fractal Dimension Algorithms</a></em>, IEEE Transactions on Circuits and Systems I: Fundamental Theory and Applications <strong>48</strong>, 177 (2001).</div>
 </div>
 <div id="ref-goh:inria-00442374" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. Goh, B. Hamadicharef, G. T. Henderson, and E. C. Ifeachor, <em><a href="https://inria.hal.science/inria-00442374"><span class="nocase">Comparison of Fractal Dimension Algorithms for the Computation of EEG Biomarkers for Dementia</span></a></em>, in <em><span class="nocase">2nd International Conference on Computational Intelligence in Medicine and Healthcare (CIMED2005)</span></em> (<span>Professor Jos<span>é</span> Manuel Fonseca, UNINOVA, Portugal</span>, Lisbon, Portugal, 2005).</div>
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">C. Goh, B. Hamadicharef, G. T. Henderson, and E. C. Ifeachor, <em><a href="https://inria.hal.science/inria-00442374"><span class="nocase">Comparison of Fractal Dimension Algorithms for the Computation of EEG Biomarkers for Dementia</span></a></em>, in <em><span class="nocase">2nd International Conference on Computational Intelligence in Medicine and Healthcare (CIMED2005)</span></em> (<span>Professor Jos<span>é</span> Manuel Fonseca, UNINOVA, Portugal</span>, Lisbon, Portugal, 2005).</div>
 </div>
 <div id="ref-KATZ1988145" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">M. J. Katz, <em><a href="https://doi.org/10.1016/0010-4825(88)90041-8">Fractals and the Analysis of Waveforms</a></em>, Computers in Biology and Medicine <strong>18</strong>, 145 (1988).</div>
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">M. J. Katz, <em><a href="https://doi.org/10.1016/0010-4825(88)90041-8">Fractals and the Analysis of Waveforms</a></em>, Computers in Biology and Medicine <strong>18</strong>, 145 (1988).</div>
 </div>
 <div id="ref-sevcik2010procedure" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">C. Sevcik, <em><a href="https://arxiv.org/abs/1003.5266">A Procedure to Estimate the Fractal Dimension of Waveforms</a></em>, (2010).</div>
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">C. Sevcik, <em><a href="https://arxiv.org/abs/1003.5266">A Procedure to Estimate the Fractal Dimension of Waveforms</a></em>, (2010).</div>
 </div>
 <div id="ref-kalauzi2009extracting" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[21] </div><div class="csl-right-inline">A. Kalauzi, T. Bojić, and L. Rakić, <em><a href="https://doi.org/10.1186/1753-4631-3-8">Extracting Complexity Waveforms from One-Dimensional Signals</a></em>, Nonlinear Biomedical Physics <strong>3</strong>, 1 (2009).</div>
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">A. Kalauzi, T. Bojić, and L. Rakić, <em><a href="https://doi.org/10.1186/1753-4631-3-8">Extracting Complexity Waveforms from One-Dimensional Signals</a></em>, Nonlinear Biomedical Physics <strong>3</strong>, 1 (2009).</div>
+</div>
+<div id="ref-Kalauzi_2009" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">A. Kalauzi, T. Bojić, and L. Rakić, <em><a href="https://doi.org/10.1186/1753-4631-3-8">Extracting Complexity Waveforms from One-Dimensional Signals</a></em>, Nonlinear Biomedical Physics <strong>3</strong>, (2009).</div>
 </div>
 <div id="ref-10.3389/fphys.2013.00075" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[22] </div><div class="csl-right-inline">F. Hasselman, <em><a href="https://doi.org/10.3389/fphys.2013.00075">When the Blind Curve Is Finite: Dimension Estimation and Model Inference Based on Empirical Waveforms</a></em>, Frontiers in Physiology <strong>4</strong>, (2013).</div>
+<div class="csl-left-margin">[25] </div><div class="csl-right-inline">F. Hasselman, <em><a href="https://doi.org/10.3389/fphys.2013.00075">When the Blind Curve Is Finite: Dimension Estimation and Model Inference Based on Empirical Waveforms</a></em>, Frontiers in Physiology <strong>4</strong>, (2013).</div>
 </div>
 <div id="ref-Voss1988" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">R. F. Voss, <em><a href="https://doi.org/10.1007/978-1-4612-3784-6_1">Fractals in Nature: From Characterization to Simulation</a></em>, in <em>The Science of Fractal Images</em>, edited by H.-O. Peitgen and D. Saupe (Springer New York, New York, NY, 1988), pp. 21–70.</div>
+<div class="csl-left-margin">[26] </div><div class="csl-right-inline">R. F. Voss, <em><a href="https://doi.org/10.1007/978-1-4612-3784-6_1">Fractals in Nature: From Characterization to Simulation</a></em>, in <em>The Science of Fractal Images</em>, edited by H.-O. Peitgen and D. Saupe (Springer New York, New York, NY, 1988), pp. 21–70.</div>
 </div>
 <div id="ref-GRASSBERGER1983189" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[24] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <em><a href="https://doi.org/10.1016/0167-2789(83)90298-1">Measuring the Strangeness of Strange Attractors</a></em>, Physica D: Nonlinear Phenomena <strong>9</strong>, 189 (1983).</div>
+<div class="csl-left-margin">[27] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <em><a href="https://doi.org/10.1016/0167-2789(83)90298-1">Measuring the Strangeness of Strange Attractors</a></em>, Physica D: Nonlinear Phenomena <strong>9</strong>, 189 (1983).</div>
 </div>
 <div id="ref-PhysRevLett.50.346" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[25] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <em><a href="https://doi.org/10.1103/PhysRevLett.50.346">Characterization of Strange Attractors</a></em>, Phys. Rev. Lett. <strong>50</strong>, 346 (1983).</div>
+<div class="csl-left-margin">[28] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <em><a href="https://doi.org/10.1103/PhysRevLett.50.346">Characterization of Strange Attractors</a></em>, Phys. Rev. Lett. <strong>50</strong>, 346 (1983).</div>
 </div>
 <div id="ref-GRASSBERGER1983227" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[26] </div><div class="csl-right-inline">P. Grassberger, <em><a href="https://doi.org/10.1016/0375-9601(83)90753-3">Generalized Dimensions of Strange Attractors</a></em>, Physics Letters A <strong>97</strong>, 227 (1983).</div>
+<div class="csl-left-margin">[29] </div><div class="csl-right-inline">P. Grassberger, <em><a href="https://doi.org/10.1016/0375-9601(83)90753-3">Generalized Dimensions of Strange Attractors</a></em>, Physics Letters A <strong>97</strong>, 227 (1983).</div>
+</div>
+<div id="ref-Anis_1976" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[30] </div><div class="csl-right-inline">A. A. Anis and E. H. Lloyd, <em><a href="https://doi.org/10.2307/2335090">The Expected Value of the Adjusted Rescaled Hurst Range of Independent Normal Summands</a></em>, Biometrika <strong>63</strong>, 111 (1976).</div>
 </div>
 </div>
 </section>
