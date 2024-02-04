@@ -505,7 +505,7 @@ S = -\sum_{i=1}^{n}p_i \ln p_{i}.
 <p>Інформацію Фішера було введено Р. А. Фішером у 1922 році як міру “внутрішньої точності” в теорії статистичних оцінок <span class="citation" data-cites="doi:10.1098/rsta.1922.0009">&nbsp;[<a href="references.html#ref-doi:10.1098/rsta.1922.0009" role="doc-biblioref">18</a>]</span>. Вона є центральною для багатьох статистичних застосувань, що виходять далеко за межі теорії складності. Даний показник вимірює кількість інформації, яку спостережувана випадкова величина несе про невідомий параметр. В аналізі складності вимірюється кількість інформації системи “про себе”. Він базується на розкладанні за сингулярними значеннями реконструйованого фазового простору. Величина показника Фішера зазвичай антикорельована з іншими показниками складності (чим більше інформації система приховує про себе, тим більш передбачуваною і, відповідно, менш складною вона є).</p>
 <p>Інформацію Фішера можна визначити, використовуючи метод <code>fisher_information()</code> бібліотеки <code>neurokit2</code>. Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>fisher_information(signal, delay=1, dimension=2)</code> з визначеними вже раніше параметрами</strong></p>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>fi</strong> (<em>float</em>) — обчислена міра інформації Фішера;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри обчислення інформації Фішера.</li>
@@ -535,9 +535,9 @@ Complexity = \left. \sigma_d \middle/ \sigma_{signal} \right.,
 <p>де <span class="math inline">\(d\)</span> та <span class="math inline">\(dd\)</span> представляють перші та другі похідні сигналу, відповідно.</p>
 <p>Бібліотека <code>neurokit2</code> представляє метод для отримання відповідних показників. Її синтаксис:</p>
 <p><strong><code>complexity_hjorth(signal)</code></strong></p>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
-<li><strong>hjorth</strong> (<em>float</em>) — показник складності Хьорта.</li>
+<li><strong>hjorth</strong> (<em>float</em>) — показник складності Хьорта;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткові показники Хьорта <code>"Mobility"</code> та <code>"Activity"</code>.</li>
 </ul>
 </section>
@@ -546,7 +546,7 @@ Complexity = \left. \sigma_d \middle/ \sigma_{signal} \right.,
 <p>Час декореляції (decorrelation time, DT) визначається як час (у відліках) першого перетину нуля функції автокореляції. Коротший час декореляції відповідає менш корельованому сигналу. Наприклад, зменшення часу декореляції в сигналах електроенцифалограми спостерігається перед нападами, що пов’язано зі зменшенням потужності низьких частот <span class="citation" data-cites="MORMANN2005569">&nbsp;[<a href="references.html#ref-MORMANN2005569" role="doc-biblioref">20</a>]</span>.</p>
 <p>Бібліотека <code>neurokit2</code> представляє функціонал для визначення часу декореляції, а саме метод <code>complexity_decorrelation()</code>. Її синтаксис:</p>
 <p><strong><code>complexity_decorrelation(signal)</code></strong></p>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><em>float</em> — час декореляції;</li>
 <li><em>dict</em> — словник, що містить додаткову інформацію про додаткові показники.</li>
@@ -557,7 +557,7 @@ Complexity = \left. \sigma_d \middle/ \sigma_{signal} \right.,
 <p>Відносна шорсткість — це відношення локальної дисперсії (автоковаріації з лагом 1) до глобальної дисперсії (автоковаріації з лагом 0), яке можна використовувати для класифікації різних “шумів”. Цей показник також можна використовувати як індекс застосовності фрактального аналізу (показники фрактальності будуть описані в наступних роботах) <span class="citation" data-cites="10.3389/fphys.2012.00208">&nbsp;[<a href="references.html#ref-10.3389/fphys.2012.00208" role="doc-biblioref">21</a>]</span>.</p>
 <p>Синтаксис даного методу в бібліотеці <code>neurokit2</code> виглядає наступним чином:</p>
 <p><strong><code>complexity_relativeroughness(signal, **kwargs)</code></strong></p>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><strong>rr</strong> (<em>float</em>) — значення відносної грубості;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить інформацію відносно параметрів для обчислення показника грубості.</li>
@@ -577,14 +577,14 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <p>Бібліотека <code>neurokit2</code> представляє інструментарій для знаходження взаємної інформації між двома сигналами <span class="math inline">\(x\)</span> та <span class="math inline">\(y\)</span>. У даній роботі ми спробуємо віднайти взаємну інформацію як між двома часовими рядами, так і <strong>авто-взаємну інформацію</strong>, подібно до автокореляції.</p>
 <p>Синтаксис потрібної нам процедури:</p>
 <p><strong><code>mutual_information(x, y, method='varoquaux', bins='default', **kwargs)</code></strong></p>
-<p><strong>Параметри</strong></p>
+<p><strong>Параметри:</strong></p>
 <ul>
 <li><strong>x</strong> і <strong>y</strong> (<em>Union[list, np.array, pd.Series]</em>) — масив значень;</li>
 <li><strong>method</strong> (<em>str</em>) — метод для обчислення взаємної інформації: <code>"nolitsa"</code>, <code>"varoquaux"</code>, <code>"knn"</code>, <code>"max"</code>’;</li>
-<li><strong>bins</strong> (<em>int</em>) — кількість бінів гістограми. Використовується лише для <code>"nolitsa"</code> та <code>"varoquaux"</code>. Якщо <code>"default"</code>, кількість бінів оцінюється згідно методики Hacine-Gharbi (2018);</li>
+<li><strong>bins</strong> (<em>int</em>) — кількість бінів гістограми. Використовується лише для <code>"nolitsa"</code> та <code>"varoquaux"</code>. Якщо <code>"default"</code>, кількість бінів оцінюється згідно методики описаної в <span class="citation" data-cites="HACINEGHARBI201821">&nbsp;[<a href="references.html#ref-HACINEGHARBI201821" role="doc-biblioref">23</a>]</span>;</li>
 <li><strong>kwargs</strong> — додаткові ключові аргументи для обраного методу.</li>
 </ul>
-<p><strong>Повертає</strong></p>
+<p><strong>Повертає:</strong></p>
 <ul>
 <li><em>float</em> — розрахована взаємна інформація.</li>
 </ul>
@@ -826,7 +826,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 <p>І тепер візуалізуємо отримані ряди:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> joined.iloc[:,<span class="dv">0</span>].values, joined.iloc[:,<span class="dv">1</span>].values</span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> joined.iloc[:, <span class="dv">0</span>].values, joined.iloc[:, <span class="dv">1</span>].values</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, ylabel_2</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f'joined </span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="ss">'</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1667,6 +1667,9 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 <div id="ref-cover1999elements" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[22] </div><div class="csl-right-inline">T. M. Cover, <em>Elements of Information Theory</em> (John Wiley &amp; Sons, 1999).</div>
+</div>
+<div id="ref-HACINEGHARBI201821" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">A. Hacine-Gharbi and P. Ravier, <em><a href="https://doi.org/10.1016/j.patrec.2017.11.007">A Binning Formula of Bi-Histogram for Joint Entropy Estimation Using Mean Square Error Minimization</a></em>, Pattern Recognition Letters <strong>101</strong>, 21 (2018).</div>
 </div>
 </div>
 </section>
