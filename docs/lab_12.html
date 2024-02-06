@@ -122,7 +122,7 @@ div.csl-indent {
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -326,6 +326,7 @@ div.csl-indent {
   <li><a href="#динаміка-параметра-масштабу-sigma" id="toc-динаміка-параметра-масштабу-sigma" class="nav-link" data-scroll-target="#динаміка-параметра-масштабу-sigma"><span class="header-section-number">12.2.7</span> Динаміка параметра масштабу <span class="math inline">\(\sigma\)</span></a></li>
   </ul></li>
   <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">12.3</span> Висновок</a></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">12.4</span> Завдання для самостійної роботи</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_12.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -2029,7 +2030,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </section>
 <section id="висновок" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">12.3</span> Висновок</h2>
-<p>Стабільні розподіли — захоплюючий і плідний об’єкт досліджень в теорії ймовірностей; більше того, в даний час вони мають велику цінність при моделюванні складних процесів у фізиці, астрономії, економіці, теорії комунікацій, тощо.</p>
+<p>Стабільні розподіли — захоплюючий і плідний об’єкт досліджень в теорії ймовірностей; більше того, в даний час вони мають велику цінність при моделюванні складних процесів у фізиці, астрономії, економіці, теорії комунікацій тощо.</p>
 <p>У даній роботі було представлено теоретичні та чисельні обгрунтування в сторону альфа-стабільного розподілу Леві в якості практичної моделі для кращого розуміння та передбачення кризових явищ у складних системах.</p>
 <p>Тут ми представили розрахунки як для усього ряду, так і для його підфрагментів, використовуючи алгоритм ковзного вікна. Виходячи з усього ряду прибутковостей, видно, що хвости їх розподілу далеко виходять за межі Гаусового. Найкраще емпіричний розподіл прибутковостей збігається саме з теоретичним альфа-стабільним розподілом Леві.</p>
 <p>Використовуючи алгоритм сковзного вікна, ми побачили, що параметри альфа-стабільного розподілу змінюються з часом.</p>
@@ -2046,6 +2047,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <p>Nassim Taleb’s <a href="https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf"><em>Statistical Consequences of Fat Tails: Real World Preasymptotics, Epistemology, and Applications</em></a> (вільно доступна за посиланням).</p>
 </div>
 </div>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">12.4</span> Завдання для самостійної роботи</h2>
+<ol type="1">
+<li>Оберіть варіант ряду у викладача</li>
+<li>Для вашого ряду побудуйте еміричний розподіл його прибутковостей і порівняйте його з розподілом Гауса та альфа-стабільним розподілом Леві. Проаналізуйте отримані результати</li>
+<li>Використовуючи алгоритм ковзного вікна, дослідіть динаміку 4 ключових показників альфа-стабільного розподілу для вашого ряду і зробіть висновки</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">

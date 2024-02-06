@@ -118,7 +118,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -473,7 +473,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Одже, згідно Такенсу, ідея полягає в тому, щоб на основі одиничних вимірювань системи, отримати <span class="math inline">\(m\)</span>-розмірні реконструйовані часові вкладення</p>
 <p><span id="eq-2-1"><span class="math display">\[
 \vec{x}_i = \left( x_i, x_{i+\tau}, ... , x_{i+(m-1)\tau} \right),
-\qquad(2.1)\]</span></span></p>
+\tag{2.1}\]</span></span></p>
 <p>а <span class="math inline">\(i\)</span> проходить в діапазоні <span class="math inline">\(1,..., N-(m-1)\tau\)</span>; значення <span class="math inline">\(\tau\)</span> представляє часову затримку, а <span class="math inline">\(m\)</span> — це розмірність вкладень (кількість змінних, що включає кожна траєкторія).</p>
 <p>Код для реконструкції фазового простору може виглядати наступним чином:</p>
 <div class="cell" data-execution_count="2">

@@ -118,7 +118,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -363,7 +363,7 @@ div.csl-indent {
 <p>Виявляється, що результат цих вимірювань буде різним. При зменшенні масштабу <span class="math inline">\(l\)</span> ми отримуватимемо все більші й більші значення довжини. На відміну від гладкої кривої, лінія морського узбережжя виявляється найчастіше настільки порізаною (аж до найменших масштабів), що зі зменшенням довжини ланки <span class="math inline">\(l\)</span> величина <span class="math inline">\(L\)</span> — довжина берегової лінії — не прагне до кінцевого межі, а збільшується за степеневим законом</p>
 <p><span id="eq-6-1"><span class="math display">\[
 L \approx l\left( R \big/ l \right)^{D},
-\qquad(6.1)\]</span></span></p>
+\tag{6.1}\]</span></span></p>
 <p>а <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності <a href="#eq-6-1">Рівняння&nbsp;<span>6.1</span></a> має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
 <p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/l)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
 </section>
@@ -372,11 +372,11 @@ L \approx l\left( R \big/ l \right)^{D},
 <p>Вище було введено поняття про фрактальну розмірність берегової лінії. Дамо тепер загальне визначення цієї величини. Нехай <span class="math inline">\(d\)</span> — звичайна Евклідова розмірність простору, в якому розташований наш фрактальний об’єкт (<span class="math inline">\(d=1\)</span> — лінія, <span class="math inline">\(d=2\)</span> — площина, <span class="math inline">\(d=3\)</span> — звичайний тривимірний простір). Покриємо тепер цей об’єкт цілком <span class="math inline">\(d\)</span>-мірними “кулями” радіуса 1. Припустимо, що нам потребувалося для цього не менше, ніж <span class="math inline">\(N(l)\)</span> куль. Тоді, якщо за досить малих <span class="math inline">\(l\)</span> величина <span class="math inline">\(N(l)\)</span> змінюється з <span class="math inline">\(l\)</span> за степеневим законом</p>
 <p><span id="eq-6-2"><span class="math display">\[
 N(l) \sim 1 \big/ l^D ,
-\qquad(6.2)\]</span></span></p>
+\tag{6.2}\]</span></span></p>
 <p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта <span class="citation" data-cites="10.1214/11-STS370">&nbsp;[<a href="references.html#ref-10.1214/11-STS370" role="doc-biblioref">9</a>]</span>. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії. <a href="#eq-6-3">Рівняння&nbsp;<span>6.3</span></a> можна переписати у вигляді</p>
 <p><span id="eq-6-3"><span class="math display">\[
 D = -\lim_{l \to 0} \ln{N(l)} \big/ \ln{l}.
-\qquad(6.3)\]</span></span></p>
+\tag{6.3}\]</span></span></p>
 <p>Це відношення й слугує загальним визначенням фрактальної розмірності <span class="math inline">\(D\)</span>. У відповідності до нього величина <span class="math inline">\(D\)</span> представляє <strong>локальну</strong> характеристику досліджуваного об’єкта.</p>
 </section>
 <section id="процедури-обчислення-монофрактальних-розмірностей" class="level3" data-number="6.1.4">
@@ -397,7 +397,7 @@ D = -\lim_{l \to 0} \ln{N(l)} \big/ \ln{l}.
 <p><em>R/S</em>-статистика, обрахована таким чином, відповідає співвідношенню <span class="math inline">\((R/S)_{n} \cong cn^{H}\)</span>, де значення <span class="math inline">\(H\)</span> може бути отримане шляхом обчислення <span class="math inline">\((R/S)_n\)</span> для послідовностей інтервалів зі збільшенням часового горизонту:</p>
 <p><span id="eq-6-4"><span class="math display">\[
 \log{(R/S)}_{n} = \log{c} + H\log{n}.
-\qquad(6.4)\]</span></span></p>
+\tag{6.4}\]</span></span></p>
 <p>Знайти коефіцієнт Херста можна, побудувавши залежність <span class="math inline">\((R/S)_n\)</span> vs.&nbsp;<span class="math inline">\(n\)</span> у подвійному логарифмічному масштабі і взявши коефіцієнт нахилу прямої, яка інтерполює точки отриманого графіка. Якщо значення <span class="math inline">\(H=0.5\)</span>, говорять про послідовність, що представляє собою білий шум; <span class="math inline">\(0.5 &lt; H \leq 1\)</span> свідчить про персистентний ряд, коли існує тенденція слідування великих значень ряду за великими і навпаки; <span class="math inline">\(H&lt;0.5\)</span> вказує на антиперсистентний ряд.</p>
 <p>При збільшенні часового горизонту коефіцієнт нахилу інтерполюючої прямої повинен прямувати до значення <span class="math inline">\(H=0.5\)</span>; сам процес переходу свідчить про втрату впливу початкових умов на поточні значення, і, таким чином, можна говорити про горизонт довгої пам’яті — це точка, до якої коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після — близько 0.5.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -456,7 +456,7 @@ C(L) \sim L^{-\gamma}.
 <p>На додачу до цього, спектральна густина також спадає за степеневим законом:</p>
 <p><span id="eq-spec-dens"><span class="math display">\[
 P(f) \sim f^{-\beta}.
-\qquad(6.5)\]</span></span></p>
+\tag{6.5}\]</span></span></p>
 <p>Відповідні показники виражаються через наступні відношення:</p>
 <ul>
 <li><span class="math inline">\(\gamma=2-2\alpha\)</span>;</li>
@@ -466,11 +466,11 @@ P(f) \sim f^{-\beta}.
 <p>Потім обчислюється найближчий поліном <span class="math inline">\(y_{ν}(s)\)</span> для профілю на кожному із <span class="math inline">\(2N_s\)</span> сегментів <span class="math inline">\(v\)</span> і визначається відхилення</p>
 <p><span id="eq-6-5"><span class="math display">\[
 F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}.
-\qquad(6.6)\]</span></span></p>
+\tag{6.6}\]</span></span></p>
 <p>Далі знаходиться середнє значення флуктуацій всіх детрендованих профілів:</p>
 <p><span id="eq-6-6"><span class="math display">\[
 F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
-\qquad(6.7)\]</span></span></p>
+\tag{6.7}\]</span></span></p>
 <p>Значення <a href="#eq-6-6">Рівняння&nbsp;<span>6.7</span></a> можна трактувати як середньоквадратичний зсув (переміщення) точки випадкових блукань у ланцюжку після <span class="math inline">\(s\)</span> кроків.</p>
 </section>
 <section id="фрактальна-розмірність-хігучі" class="level4" data-number="6.1.4.3">

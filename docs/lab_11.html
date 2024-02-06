@@ -118,7 +118,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -321,6 +321,7 @@ div.csl-indent {
   <li><a href="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" id="toc-візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів" class="nav-link" data-scroll-target="#візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">11.2.14</span> Візуалізація показників на основі графів та пермутаційних шаблонів</a></li>
   </ul></li>
   <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">11.3</span> Висновок</a></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">11.4</span> Завдання для самостійної роботи</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_11.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
     </div>
@@ -1437,6 +1438,15 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <p>У даній роботі було розглянуто показники незворотності (асиметрії) системи на основі діаграм Пуанкаре, графу видимості та пермутаційних шаблонів. Було продемонстровано побудову діграми Пуанкаре та зв’язків видимості як для всього ряду, так і для деяких із його фрагментів. Видно, що значення на діаграмі Пуанкаре характеризуються розподілом точок, що виходять за межі нормального Гаусового розподілу. Для графу видимості видно, що кризові стани характеризуються значною концентрацією зв’язків, що є довгостроковими. Таким чином, поставало актуальним проводити розрахунок показників незворотності графового типу для вихідного ряду.</p>
 <p>Показники на основі діаграми Пуанкаре демонструють зріст або спад у кризові періоди, що вказує на зростання асиметрії у даний період часу. Дані показники можуть слугувати в якості індикаторів кризових явищ.</p>
 <p>Виходячи з 3 показників незворотності, що представлені вище, видно, що дані показники починають зростати в передкризовий період, вказуючи на стартовий період хаосу. Найгірше серед них себе поводить <span class="math inline">\(Dist_{deg}\)</span>. Найращим чином <span class="math inline">\(Dist_{clust}\)</span> та <span class="math inline">\(Dist_{perm}\)</span>. Їх і варто використовувати в якості індикаторів-передвісників крахів.</p>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">11.4</span> Завдання для самостійної роботи</h2>
+<ol type="1">
+<li>Виберіть часовий ряд згідно вашого варіанту</li>
+<li>Виділіть на вашому ряді стани стабільності та криз і проаналізуйте їх із використанням індексів асиметрії та незворотності<br>
+</li>
+<li>Проведіть варіацію часового вікна та кроку. Які висновки можна зробити?</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body" role="list" style="display: none">
