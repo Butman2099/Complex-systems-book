@@ -67,6 +67,9 @@ callout-appearance: default
 
 format:
   html:
+    html-math-method:
+      method: mathjax
+      url: "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML"
     grid:
       body-width: 1050px
     highlight-style: arrow

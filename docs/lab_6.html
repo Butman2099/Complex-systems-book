@@ -118,7 +118,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -362,21 +362,21 @@ div.csl-indent {
 <p>Тоді, щоб виміряти довжину берегової лінії між цима точками, ми розташуємо по берегу жорстко пов’язані один з одним вузол так, що відстань між сусідніми вузлами дорівнювала б, наприклад, <span class="math inline">\(l=10\)</span> км. Довжину берегової лінії в кілометрах між точками А і В ми приймемо тоді рівною числу вузлів мінус 1, помноженому на 10. Наступне вимірювання цієї довжини ми зробимо так само, але відстань між сусідніми вузлами зробимо вже рівною <span class="math inline">\(l=1\)</span> км.</p>
 <p>Виявляється, що результат цих вимірювань буде різним. При зменшенні масштабу <span class="math inline">\(l\)</span> ми отримуватимемо все більші й більші значення довжини. На відміну від гладкої кривої, лінія морського узбережжя виявляється найчастіше настільки порізаною (аж до найменших масштабів), що зі зменшенням довжини ланки <span class="math inline">\(l\)</span> величина <span class="math inline">\(L\)</span> — довжина берегової лінії — не прагне до кінцевого межі, а збільшується за степеневим законом</p>
 <p><span id="eq-6-1"><span class="math display">\[
-L \approx l\left( R \middle/ l \right)^{D},
-\tag{6.1}\]</span></span></p>
-<p>а <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="#eq-6-1">Рівняння&nbsp;<span>6.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
+L \approx l\left( R \big/ l \right)^{D},
+\qquad(6.1)\]</span></span></p>
+<p>а <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності <a href="#eq-6-1">Рівняння&nbsp;<span>6.1</span></a> має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
 <p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/l)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
 </section>
 <section id="фрактальна-розмірність-множин" class="level3" data-number="6.1.3">
 <h3 data-number="6.1.3" class="anchored" data-anchor-id="фрактальна-розмірність-множин"><span class="header-section-number">6.1.3</span> Фрактальна розмірність множин</h3>
 <p>Вище було введено поняття про фрактальну розмірність берегової лінії. Дамо тепер загальне визначення цієї величини. Нехай <span class="math inline">\(d\)</span> — звичайна Евклідова розмірність простору, в якому розташований наш фрактальний об’єкт (<span class="math inline">\(d=1\)</span> — лінія, <span class="math inline">\(d=2\)</span> — площина, <span class="math inline">\(d=3\)</span> — звичайний тривимірний простір). Покриємо тепер цей об’єкт цілком <span class="math inline">\(d\)</span>-мірними “кулями” радіуса 1. Припустимо, що нам потребувалося для цього не менше, ніж <span class="math inline">\(N(l)\)</span> куль. Тоді, якщо за досить малих <span class="math inline">\(l\)</span> величина <span class="math inline">\(N(l)\)</span> змінюється з <span class="math inline">\(l\)</span> за степеневим законом</p>
 <p><span id="eq-6-2"><span class="math display">\[
-N(l) \sim \left. 1 \middle/ l^D \right.,
-\tag{6.2}\]</span></span></p>
+N(l) \sim 1 \big/ l^D ,
+\qquad(6.2)\]</span></span></p>
 <p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта <span class="citation" data-cites="10.1214/11-STS370">&nbsp;[<a href="references.html#ref-10.1214/11-STS370" role="doc-biblioref">9</a>]</span>. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії. <a href="#eq-6-3">Рівняння&nbsp;<span>6.3</span></a> можна переписати у вигляді</p>
 <p><span id="eq-6-3"><span class="math display">\[
-D = -\lim_{l \to 0} \left. \ln{N(l)} \middle/ \ln{l} \right..
-\tag{6.3}\]</span></span></p>
+D = -\lim_{l \to 0} \ln{N(l)} \big/ \ln{l}.
+\qquad(6.3)\]</span></span></p>
 <p>Це відношення й слугує загальним визначенням фрактальної розмірності <span class="math inline">\(D\)</span>. У відповідності до нього величина <span class="math inline">\(D\)</span> представляє <strong>локальну</strong> характеристику досліджуваного об’єкта.</p>
 </section>
 <section id="процедури-обчислення-монофрактальних-розмірностей" class="level3" data-number="6.1.4">
@@ -397,7 +397,7 @@ D = -\lim_{l \to 0} \left. \ln{N(l)} \middle/ \ln{l} \right..
 <p><em>R/S</em>-статистика, обрахована таким чином, відповідає співвідношенню <span class="math inline">\((R/S)_{n} \cong cn^{H}\)</span>, де значення <span class="math inline">\(H\)</span> може бути отримане шляхом обчислення <span class="math inline">\((R/S)_n\)</span> для послідовностей інтервалів зі збільшенням часового горизонту:</p>
 <p><span id="eq-6-4"><span class="math display">\[
 \log{(R/S)}_{n} = \log{c} + H\log{n}.
-\tag{6.4}\]</span></span></p>
+\qquad(6.4)\]</span></span></p>
 <p>Знайти коефіцієнт Херста можна, побудувавши залежність <span class="math inline">\((R/S)_n\)</span> vs.&nbsp;<span class="math inline">\(n\)</span> у подвійному логарифмічному масштабі і взявши коефіцієнт нахилу прямої, яка інтерполює точки отриманого графіка. Якщо значення <span class="math inline">\(H=0.5\)</span>, говорять про послідовність, що представляє собою білий шум; <span class="math inline">\(0.5 &lt; H \leq 1\)</span> свідчить про персистентний ряд, коли існує тенденція слідування великих значень ряду за великими і навпаки; <span class="math inline">\(H&lt;0.5\)</span> вказує на антиперсистентний ряд.</p>
 <p>При збільшенні часового горизонту коефіцієнт нахилу інтерполюючої прямої повинен прямувати до значення <span class="math inline">\(H=0.5\)</span>; сам процес переходу свідчить про втрату впливу початкових умов на поточні значення, і, таким чином, можна говорити про горизонт довгої пам’яті — це точка, до якої коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після — близько 0.5.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -414,7 +414,7 @@ D = -\lim_{l \to 0} \left. \ln{N(l)} \middle/ \ln{l} \right..
 <p><span class="math display">\[
 D_f = 2-H.
 \]</span></p>
-<p>Якщо для берегової лінії ми визначали масштабування її довжини <span class="math inline">\(L\)</span> в залежності від зміни <span class="math inline">\(l\)</span>, то у випадку з <em>R/S</em>-аналізом ми визначаємо зміну нормованого розмаху значень ряду в межах масштабу <span class="math inline">\(n\)</span>.</p>
+<p>Якщо для берегової лінії ми визначали масштабування її довжини <span class="math inline">\(L\)</span> в залежності від зміни <span class="math inline">\(l\)</span>, то у випадку з <em>R/S</em>-аналізом ми визначаємо зміну нормованого розмаху значень ряду в межах масштабу <span class="math inline">\(n\)</span></p>
 </div>
 </div>
 </section>
@@ -456,7 +456,7 @@ C(L) \sim L^{-\gamma}.
 <p>На додачу до цього, спектральна густина також спадає за степеневим законом:</p>
 <p><span id="eq-spec-dens"><span class="math display">\[
 P(f) \sim f^{-\beta}.
-\tag{6.5}\]</span></span></p>
+\qquad(6.5)\]</span></span></p>
 <p>Відповідні показники виражаються через наступні відношення:</p>
 <ul>
 <li><span class="math inline">\(\gamma=2-2\alpha\)</span>;</li>
@@ -466,21 +466,21 @@ P(f) \sim f^{-\beta}.
 <p>Потім обчислюється найближчий поліном <span class="math inline">\(y_{ν}(s)\)</span> для профілю на кожному із <span class="math inline">\(2N_s\)</span> сегментів <span class="math inline">\(v\)</span> і визначається відхилення</p>
 <p><span id="eq-6-5"><span class="math display">\[
 F^2(v,s) \equiv \frac{1}{s}\sum_{i=1}^{s}\left( x_{(v-1)s+i} - y_{i}(i) \right)^{2}.
-\tag{6.6}\]</span></span></p>
+\qquad(6.6)\]</span></span></p>
 <p>Далі знаходиться середнє значення флуктуацій всіх детрендованих профілів:</p>
 <p><span id="eq-6-6"><span class="math display">\[
 F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
-\tag{6.7}\]</span></span></p>
-<p>Значення формули (<a href="#eq-6-6">Рівняння&nbsp;<span>6.7</span></a>) можна трактувати як середньоквадратичний зсув (переміщення) точки випадкових блукань у ланцюжку після <span class="math inline">\(s\)</span> кроків.</p>
+\qquad(6.7)\]</span></span></p>
+<p>Значення <a href="#eq-6-6">Рівняння&nbsp;<span>6.7</span></a> можна трактувати як середньоквадратичний зсув (переміщення) точки випадкових блукань у ланцюжку після <span class="math inline">\(s\)</span> кроків.</p>
 </section>
 <section id="фрактальна-розмірність-хігучі" class="level4" data-number="6.1.4.3">
 <h4 data-number="6.1.4.3" class="anchored" data-anchor-id="фрактальна-розмірність-хігучі"><span class="header-section-number">6.1.4.3</span> Фрактальна розмірність Хігучі</h4>
 <p>Фрактальна розмірність Хігучі <span class="citation" data-cites="HIGUCHI1988277 7168285">&nbsp;[<a href="references.html#ref-HIGUCHI1988277" role="doc-biblioref">16</a>,<a href="references.html#ref-7168285" role="doc-biblioref">17</a>]</span> — це один з різновидів монофрактальної розмірності, яка визначається наступним чином:</p>
-<p>Припустимо, що у нас є часовий ряд <span class="math inline">\(x(1), x(2),...,x(N)\)</span> і реконструйований часовий ряд <span class="math inline">\(x_{m}^{k} = \{ x(m), x(m+k), x(m+2k),..., x\left( m+\left[ (N-m) \middle/ k \right] \cdot k \right) \}\)</span> для <span class="math inline">\(m=1,2,...,k\)</span>, де <span class="math inline">\(m\)</span> представляє початковий час; <span class="math inline">\(k=2,...,k_{max}\)</span> представляють ступінь часового зміщення. Позначення <span class="math inline">\([\cdot]\)</span> представляє цілу частину <span class="math inline">\(x\)</span>. Для кожного реконструйованого часового ряду <span class="math inline">\(x_{m}^{k}\)</span> розраховується середня довжина часової послідовності <span class="math inline">\(L_{m}(k)\)</span>:</p>
+<p>Припустимо, що у нас є часовий ряд <span class="math inline">\(x(1), x(2),...,x(N)\)</span> і реконструйований часовий ряд <span class="math inline">\(x_{m}^{k} = \{ x(m), x(m+k), x(m+2k),..., x\left( m+\left[ (N-m) \big/ k \right] \cdot k \right) \}\)</span> для <span class="math inline">\(m=1,2,...,k\)</span>, де <span class="math inline">\(m\)</span> представляє початковий час; <span class="math inline">\(k=2,...,k_{max}\)</span> представляють ступінь часового зміщення. Позначення <span class="math inline">\([\cdot]\)</span> представляє цілу частину <span class="math inline">\(x\)</span>. Для кожного реконструйованого часового ряду <span class="math inline">\(x_{m}^{k}\)</span> розраховується середня довжина часової послідовності <span class="math inline">\(L_{m}(k)\)</span>:</p>
 <p><span class="math display">\[
-L_{m}(k) = \frac{\sum_{i=1}^{\left[ (N-m) \middle/ k \right]} | x(m+ik) - x(m+(i-1)\cdot k) | \cdot (N-1)}{\left[ (N-m) \middle/ k \right] \cdot k}.
+L_{m}(k) = \frac{\sum_{i=1}^{\left[ (N-m)/k \right]} | x(m+ik) - x(m+(i-1)\cdot k) | \cdot (N-1)}{\left[ (N-m) \big/ k \right] \cdot k}.
 \]</span></p>
-<p>Далі, для всіх середніх довжин <span class="math inline">\(L_{m}(k)\)</span>, знаходиться загальне середнє <span class="math inline">\(L(k) = \frac{1}{k}\sum_{m=1}^{k}L_{m}(k)\)</span>. Згідно методу Хігучі узагальне середнє значення <span class="math inline">\(L(k)\)</span> пропорційне масштабу <span class="math inline">\(k\)</span>, тобто <span class="math inline">\(L(k) \propto k^{-D}\)</span>. Далі логарифмуємо обидві сторони й отримуємо рівність <span class="math inline">\(\ln{L(k)} \propto D \cdot \ln{\left( 1 \middle/ k \right)}\)</span>. Інтерполювавши лінію регресії через залежність <span class="math inline">\(\ln{L(k)}\)</span> від <span class="math inline">\(\ln{\left( 1 \middle/ k \right)}\)</span>, ми можемо отримати показник фрактальності <span class="math inline">\(D\)</span> як кут нахилу цієї лінії. Показник <span class="math inline">\(D\)</span> і представлятиме фрактальну розмірність Хігучі.</p>
+<p>Далі, для всіх середніх довжин <span class="math inline">\(L_{m}(k)\)</span>, знаходиться загальне середнє <span class="math inline">\(L(k) = (k)^{-1}\sum_{m=1}^{k}L_{m}(k)\)</span>. Згідно методу Хігучі узагальне середнє значення <span class="math inline">\(L(k)\)</span> пропорційне масштабу <span class="math inline">\(k\)</span>, тобто <span class="math inline">\(L(k) \propto k^{-D}\)</span>. Далі логарифмуємо обидві сторони й отримуємо рівність <span class="math inline">\(\ln{L(k)} \propto D \cdot \ln{\left( 1 \big/ k \right)}\)</span>. Інтерполювавши лінію регресії через залежність <span class="math inline">\(\ln{L(k)}\)</span> від <span class="math inline">\(\ln{\left( 1 \big/ k \right)}\)</span>, ми можемо отримати показник фрактальності <span class="math inline">\(D\)</span> як кут нахилу цієї лінії. Показник <span class="math inline">\(D\)</span> і представлятиме фрактальну розмірність Хігучі.</p>
 </section>
 <section id="фрактальна-розмірність-петросяна" class="level4" data-number="6.1.4.4">
 <h4 data-number="6.1.4.4" class="anchored" data-anchor-id="фрактальна-розмірність-петросяна"><span class="header-section-number">6.1.4.4</span> Фрактальна розмірність Петросяна</h4>
@@ -494,9 +494,9 @@ z_i =
 \]</span></p>
 <p>Фрактальну розмірність Петросяна <span class="citation" data-cites="465426 904882 goh:inria-00442374">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">18</a>–<a href="references.html#ref-goh:inria-00442374" role="doc-biblioref">20</a>]</span> можна визначити як</p>
 <p><span class="math display">\[
-D = \left. \log_{10}{N} \middle/ \left( \log_{10} + \log_{10}{\left[ N \middle/ (N+0.4N_{\Delta}) \right]} \right) \right.,
+D = \log_{10}{N} \big/ \left( \log_{10} + \log_{10}{\left[ N \big/ (N+0.4N_{\Delta}) \right]} \right),
 \]</span></p>
-<p>де <span class="math inline">\(N_{\Delta}\)</span> — кількість загальних змін знаку величини <span class="math inline">\(z_i\)</span>: <span class="math inline">\(N_{\Delta} = \sum_{i=1}^{N-2} \left| (z_{i+1}-z_i) \middle/ 2 \right|\)</span>.</p>
+<p>де <span class="math inline">\(N_{\Delta}\)</span> — кількість загальних змін знаку величини <span class="math inline">\(z_i\)</span>: <span class="math inline">\(N_{\Delta} = \sum_{i=1}^{N-2} \left| (z_{i+1}-z_i) \big/ 2 \right|\)</span>.</p>
 </section>
 <section id="фрактальна-розмірність-каца" class="level4" data-number="6.1.4.5">
 <h4 data-number="6.1.4.5" class="anchored" data-anchor-id="фрактальна-розмірність-каца"><span class="header-section-number">6.1.4.5</span> Фрактальна розмірність Каца</h4>
@@ -508,10 +508,10 @@ D = \log{N}/\left(\log{N} + \log{d/L}\right),
 </section>
 <section id="фрактальна-розмірність-шевчика" class="level4" data-number="6.1.4.6">
 <h4 data-number="6.1.4.6" class="anchored" data-anchor-id="фрактальна-розмірність-шевчика"><span class="header-section-number">6.1.4.6</span> Фрактальна розмірність Шевчика</h4>
-<p>Спочатку, для множини значень <span class="math inline">\(\left( x_i, y_i \right)\)</span> виконується нормалізація: <span class="math inline">\(x_{i}^{*} = \left.\left( x_i-x_{min} \right) \middle/ \left( x_{max}-x_{min} \right)\right.\)</span> і <span class="math inline">\(y_{i}^{*} = \left.\left( y_i-y_{min} \right) \middle/ \left( y_{max}-y_{min} \right)\right.\)</span>.</p>
+<p>Спочатку, для множини значень <span class="math inline">\(\left( x_i, y_i \right)\)</span> виконується нормалізація: <span class="math inline">\(x_{i}^{*} = \left( x_i-x_{min} \right) \big/ \left( x_{max}-x_{min} \right)\)</span> і <span class="math inline">\(y_{i}^{*} = \left( y_i - y_{min} \right) \big/ \left( y_{max}-y_{min} \right)\)</span>.</p>
 <p>Фрактальна розмірність Шевчика <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">22</a>]</span> може бути визначена як</p>
 <p><span class="math display">\[
-D = 1 + \left. \ln{L} \middle/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
+D = 1 + \left. \ln{L} \big/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
 \]</span></p>
 <p><span class="math inline">\(L\)</span> — це довжина сигналу, що може бути розрахована за формулою <span class="math inline">\(L = \sum_{i=0}^{N-2}\sqrt{\left( y_{i+1}^{*}-y_{i}^{*} \right)^{2} + \left( x_{i+1}^{*}-x_{i}^{*} \right)^{2}}\)</span>.</p>
 </section>
@@ -546,7 +546,7 @@ C(\varepsilon) \sim \varepsilon^{\nu},
 \]</span></p>
 <p>або</p>
 <p><span class="math display">\[
-D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0}\left. \log{\left( g_{\varepsilon}/N^2 \right)} \middle/ \log{\varepsilon} \right.,
+D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/ N^2 \right)} \big/ \log{\varepsilon},
 \]</span></p>
 <p>де <span class="math inline">\(g_{\varepsilon}\)</span> — це сумарна кількість пар точок, відстань між якими менша за радіус <span class="math inline">\(\varepsilon\)</span>.</p>
 <p>У першому випадку ми відбираємо <span class="math inline">\(i\)</span>-ту траєкторію та всі інші <span class="math inline">\(j\)</span>-ті траєкторії, і дивимося, чи потрапляють <span class="math inline">\(j\)</span>-ті траєкторії в <span class="math inline">\(\varepsilon\)</span>-окіл <span class="math inline">\(i\)</span>-ої траєкторії. Якщо відстань між ними не перевищує окіл радіусом <span class="math inline">\(\varepsilon\)</span>, ми ставимо 1. Але якщо відстань між траєкторіями більша за <span class="math inline">\(\varepsilon\)</span>, тоді ставимо 0. Далі все це підсумовується, ділиться на загальну кількість траєкторій. По суті кореляційний інтеграл це середня ймовірність того, що дві розглянуті траєкторії фазового простору, будуть знаходитися досить близько одна від одної. Чим тісніше розташовані точки фазового простору, тим більше значення кореляційного інтеграла. Чим більш рівновіддаленими видаються траєкторії одна від одної, тим ближче значення кореляційного інтеграла до нуля.</p>

@@ -118,7 +118,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -559,7 +559,7 @@ S(A + B) = S(A) + S(B).
 \]</span></p>
 <p>Для розглядуваної множини <span class="math inline">\(P_{m}\)</span> всіх векторів довжини <span class="math inline">\(m\)</span> часового ряду <span class="math inline">\(S_{N}\)</span> можна розрахувати значення</p>
 <p><span class="math display">\[
-C_{im}(r) = \left. n_{im}(r) \middle/ (N-m+1)\right.,
+C_{im}(r) = n_{im}(r) \Big/ (N-m+1),
 \]</span></p>
 <p>де <span class="math inline">\(n_{im}(r)\)</span> — кількість векторів у <span class="math inline">\(P_{m}\)</span>, що подібні вектору <span class="math inline">\(p_{m}(i)\)</span> (враховуючи вибраний критерій подібності <span class="math inline">\(r\)</span>). Значення <span class="math inline">\(C_{im}(r)\)</span> є часткою векторів довжини <span class="math inline">\(m\)</span>, що мають схожість із вектором такої ж довжини, елементи якого починаються з номера <span class="math inline">\(i\)</span>. Для даного часового ряду обраховуються значення <span class="math inline">\(C_{im}(r)\)</span> для кожного вектора у <span class="math inline">\(P_{m}\)</span>, після чого знаходиться середнє значення <span class="math inline">\(C_{m}(r)\)</span>, що відображає розповсюдженість подібних векторів довжини <span class="math inline">\(m\)</span> у ряду <span class="math inline">\(S_{N}\)</span>. Безпосередньо ентропія подібності для часового ряду <span class="math inline">\(S_{N}\)</span> з використанням векторів довжини <span class="math inline">\(m\)</span> та критерію подібності <span class="math inline">\(r\)</span> визначається за формулою:</p>
 <p><span class="math display">\[
@@ -646,7 +646,7 @@ ApEn(S_{N}, m, r) = \ln{C_{m}(r)} - \ln{C_{m+1}(r)}.
 <p><span class="math display">\[
 \vec{X}(i) = \left\{ x(i), x(i+1),..., x(i+d_E - 1) - x_{0}(i) \right\}, \,\, i=1,...,N-d_{E}+1,
 \]</span></p>
-<p><span class="math inline">\(x_{0}(i)=\frac{1}{d_{E}}\sum_{j=0}^{d_{E}-1}x(i+j)\)</span>. Далі, для послідовних вбудованих векторів знаходиться відстань</p>
+<p><span class="math inline">\(x_{0}(i) = (d_{E})^{-1} \sum_{j=0}^{d_{E}-1}x(i+j)\)</span>. Далі, для послідовних вбудованих векторів знаходиться відстань</p>
 <p><span class="math display">\[
 d\left[ \vec{X}(i), \vec{X}(j) \right] = \max{\left| \vec{X}(i) - \vec{X}(j) \right|}, i\geq 1, \, j \leq N - d_E + 1.
 \]</span></p>
@@ -654,7 +654,7 @@ d\left[ \vec{X}(i), \vec{X}(j) \right] = \max{\left| \vec{X}(i) - \vec{X}(j) \ri
 <p><span class="math display">\[
 D_{i, j} = \mu\left( d\left[\vec{X}(i), \vec{X}(j) \right]\right),
 \]</span></p>
-<p><span class="math inline">\(\mu = \exp\left( -x^{r_2} \middle/ r_1 \right)\)</span>, а <span class="math inline">\(r_1\)</span> і <span class="math inline">\(r_2\)</span> ширина та градієнт експоненціальної функції.</p>
+<p><span class="math inline">\(\mu = \exp\left( -x^{r_2} \big/ r_1 \right)\)</span>, а <span class="math inline">\(r_1\)</span> і <span class="math inline">\(r_2\)</span> ширина та градієнт експоненціальної функції.</p>
 <p>Далі, обчислюється наступна функція, що подібна до кореляційного інтегралу в класичній <em>ApEn</em>:</p>
 <p><span class="math display">\[
 \phi^{d_E} = \frac{1}{(N-d_{E}+1)}\sum_{i=1}^{N-d_{E}+1}\left( \frac{1}{N-d_{E}}\sum_{j=1, j \neq i}^{N-d_{E}} D_{i, j} \right).
@@ -847,7 +847,7 @@ FuzzEn(\vec{X}, d_{E}) = -\left[ \ln{\phi^{d_{E}+1} - \ln{\phi^{d_{E}}}} \right]
 <p>Далі ми формуємо порядкові послідовності відповідно до їх числового порядку. Такі вектори як <span class="math inline">\(\vec{X}(1), \vec{X}(2), \vec{X}(3)\)</span> задовольняють умові <span class="math inline">\(x(i) &lt; x(i+1)\)</span> і один вектор <span class="math inline">\(\vec{X}(4)\)</span> задовольняє умові <span class="math inline">\(x(i) &gt; x(i+1)\)</span>. Можна розглянути <span class="math inline">\(d_E!\)</span> можливих перестановок порядку <span class="math inline">\(d_E\)</span>. У нашому прикладі є лише <span class="math inline">\(2!\)</span> шаблони: <span class="math inline">\(\pi_1 = {0, 1}, \pi_2 = {1, 0}\)</span>.</p>
 <p>Для кожного шаблону ми визначаємо його відносну частоту:</p>
 <p><span class="math display">\[
-p(\pi) = \left. \#\left\{\vec{X}(i) \,\, \text{має шаблон} \,\, \pi \right\} \middle/ (N - [d_E - 1]\tau) \right..
+p(\pi) = \#\left\{\vec{X}(i) \,\, \text{має шаблон} \,\, \pi \right\} \Big/ (N - [d_E - 1]\tau).
 \]</span></p>
 <p>Імовірність знаходження вектора по шаблону <span class="math inline">\(\pi_1\)</span> дорівнює <span class="math inline">\(3/4\)</span> і по шаблону <span class="math inline">\(\pi_2\)</span> дорівнює <span class="math inline">\(1/4\)</span>, тобто, ми формуємо розподіл імовірностей <span class="math inline">\(P = \left\{ p(\pi_{1}),...,p(\pi_{d_E}) \right\}\)</span>. Нарешті, даний вид ентропії може бути розрахований у той самий спосіб, що й ентрпія Шеннона:</p>
 <p><span class="math display">\[
@@ -855,7 +855,7 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 \]</span></p>
 <p>Для зручності <em>PEn</em> нормалізується згідно наступного рівняння:</p>
 <p><span class="math display">\[
-\overline{PEn(\vec{X}, d_E)} = \left. PEn(\vec{X}, d_E) \middle/ PEn_{max} \right.,
+\overline{PEn(\vec{X}, d_E)} = PEn(\vec{X}, d_E) \Big/ PEn_{max},
 \]</span></p>
 <p>де <span class="math inline">\(PEn_{max} = \ln{D!}\)</span>, а нормалізована ентропія перестановок знаходиться в діапазоні <span class="math inline">\(0 \leq \overline{PEn(\vec{X}, d_E)} \leq 1\)</span>.</p>
 <div class="cell" data-execution_count="39">

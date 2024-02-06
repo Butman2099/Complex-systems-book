@@ -121,7 +121,7 @@ div.csl-indent {
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -357,15 +357,15 @@ div.csl-indent {
 <p>Для визначення кількісно кореляцій спочатку обчислюється зміна цін (прибутковості) акції <span class="math inline">\(i=1,...,N\)</span> за час <span class="math inline">\(\Delta t\)</span>,</p>
 <p><span id="eq-8-1"><span class="math display">\[
 G_{i}(t) = \ln S_i(t+\Delta t) - \ln S_i(t),
-\tag{8.1}\]</span></span></p>
+\qquad(8.1)\]</span></span></p>
 <p>де <span class="math inline">\(S_i(t)\)</span> позначає ціну акції <span class="math inline">\(i\)</span>. Оскільки різні ціни мають різні рівні змінюванності (стандартні відхилення), визначатимемо стандартизовану прибутковість</p>
 <p><span id="eq-8-2"><span class="math display">\[
-g_i(t) \equiv \left. \left[ G_i(t) - \left\langle G_i \right\rangle \right] \middle/ \sigma_i \right.,
-\tag{8.2}\]</span></span></p>
+g_i(t) \equiv \left[ G_i(t) - \left\langle G_i \right\rangle \right] \big/ \sigma_i,
+\qquad(8.2)\]</span></span></p>
 <p>де <span class="math inline">\(\sigma_i \equiv \sqrt{\left\langle G_{i}^{2} \right\rangle - \left\langle G_i \right\rangle^{2}}\)</span> — стандартне відхилення <span class="math inline">\(G_i\)</span>, а <span class="math inline">\(\left\langle...\right\rangle\)</span> позначає середнє значення за досліджуваний період часу. Тобі обчислення кореляцій <span class="math inline">\(C\)</span> зводиться до обчислення формули:</p>
 <p><span id="eq-8-3"><span class="math display">\[
 C_{ij} \equiv \left\langle g_i(t)g_j(t) \right\rangle.
-\tag{8.3}\]</span></span></p>
+\qquad(8.3)\]</span></span></p>
 <p>Згідно з побудовою елементи <span class="math inline">\(C_{ij}\)</span> обмежені областю <span class="math inline">\(−1 \leq C_{ij} \leq 1\)</span>, де <span class="math inline">\(C_{ij} = 1\)</span> відповідає повним кореляціям, <span class="math inline">\(C_{ij} = -1\)</span> — повним антикореляціям, і <span class="math inline">\(C_{ij} = 0\)</span> свідчить про некорельованність пар акцій.</p>
 <p>Труднощі в аналізі важливості та значення коефіцієнтів крос-кореляції <span class="math inline">\(C_{ij}\)</span> виникають внаслідок кількох причин, що полягають в наступному:</p>
 <ol type="1">
@@ -380,29 +380,29 @@ C_{ij} \equiv \left\langle g_i(t)g_j(t) \right\rangle.
 <p>Для отримання інформації про взаємні кореляції <span class="math inline">\(C\)</span> необхідно порівняти властивості <span class="math inline">\(C\)</span> з такими ж властивостями випадкової матриці крос-кореляцій <span class="citation" data-cites="PhysRevLett.83.1467">&nbsp;[<a href="references.html#ref-PhysRevLett.83.1467" role="doc-biblioref">8</a>]</span>. У матричній нотації така матриця може бути виражена як</p>
 <p><span id="eq-8-4"><span class="math display">\[
 C = \frac{1}{L} GG^{T},
-\tag{8.4}\]</span></span></p>
+\qquad(8.4)\]</span></span></p>
 <p>де <span class="math inline">\(G\)</span> — матриця розміру <span class="math inline">\(N \times L\)</span> з елементами <span class="math inline">\(g_{im}=g_i(m\Delta t), i=1,...,N; m=0,...,L-1\)</span> і <span class="math inline">\(G^{T}\)</span> позначає транспонування <span class="math inline">\(G\)</span>. Розглянемо випадкову кореляційну матрицю</p>
 <p><span id="eq-8-5"><span class="math display">\[
 R = \frac{1}{L} AA^{T},
-\tag{8.5}\]</span></span></p>
+\qquad(8.5)\]</span></span></p>
 <p>де <span class="math inline">\(A\)</span> — матриця розміру <span class="math inline">\(N \times L\)</span>, що містить <span class="math inline">\(N\)</span> часових рядів із <span class="math inline">\(L\)</span> випадковими елементів <span class="math inline">\(a_{im}\)</span> з нульовим середнім і одиничним відхиленням, що означають взаємну некорельованість. За побудовою <span class="math inline">\(R\)</span> належить до типу матриць, які часто називають матрицями Вішарта у багатовимірній статистиці <span class="citation" data-cites="Muirhead">&nbsp;[<a href="references.html#ref-Muirhead" role="doc-biblioref">9</a>]</span>.</p>
-<p>Статистичні властивості випадкових матриць <span class="math inline">\(R\)</span> відомі <span class="citation" data-cites="dyson1971distribution PhysRevE.60.3389">&nbsp;[<a href="references.html#ref-dyson1971distribution" role="doc-biblioref">10</a>,<a href="references.html#ref-PhysRevE.60.3389" role="doc-biblioref">11</a>]</span>. Зокрема, у наближенні <span class="math inline">\(N \to \infty\)</span>, <span class="math inline">\(L \to \infty\)</span>, такому, що <span class="math inline">\(Q \equiv \frac{L}{N}(&gt;1)\)</span> фіксоване, показано аналітично <span class="citation" data-cites="PhysRevE.60.3389">&nbsp;[<a href="references.html#ref-PhysRevE.60.3389" role="doc-biblioref">11</a>]</span>, що функція розподілу щільності імовірності <span class="math inline">\(P_{rm}(\lambda)\)</span> власних значень <span class="math inline">\(\lambda\)</span> випадкової матриці кореляції <span class="math inline">\(R\)</span> визначається як</p>
+<p>Статистичні властивості випадкових матриць <span class="math inline">\(R\)</span> відомі <span class="citation" data-cites="dyson1971distribution PhysRevE.60.3389">&nbsp;[<a href="references.html#ref-dyson1971distribution" role="doc-biblioref">10</a>,<a href="references.html#ref-PhysRevE.60.3389" role="doc-biblioref">11</a>]</span>. Зокрема, у наближенні <span class="math inline">\(N \to \infty\)</span>, <span class="math inline">\(L \to \infty\)</span>, такому, що <span class="math inline">\(Q \equiv L/N(&gt;1)\)</span> фіксоване, показано аналітично <span class="citation" data-cites="PhysRevE.60.3389">&nbsp;[<a href="references.html#ref-PhysRevE.60.3389" role="doc-biblioref">11</a>]</span>, що функція розподілу щільності імовірності <span class="math inline">\(P_{rm}(\lambda)\)</span> власних значень <span class="math inline">\(\lambda\)</span> випадкової матриці кореляції <span class="math inline">\(R\)</span> визначається як</p>
 <p><span id="eq-8-6"><span class="math display">\[
 P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \lambda_{-})}}{\lambda}
-\tag{8.6}\]</span></span></p>
+\qquad(8.6)\]</span></span></p>
 <p>де <span class="math inline">\(\lambda\)</span> в межах границь <span class="math inline">\(\lambda_{-} \leq \lambda_{i} \leq \lambda_{+}\)</span>, де <span class="math inline">\(\lambda_{-}\)</span> і <span class="math inline">\(\lambda_{+}\)</span> — найменше та найбільше власні значення <span class="math inline">\(R\)</span>, які можна визначити аналітично як</p>
 <p><span id="eq-8-7"><span class="math display">\[
 \lambda_{\pm} = 1 + 1/Q \pm 2\sqrt{1/Q}.
-\tag{8.7}\]</span></span></p>
+\qquad(8.7)\]</span></span></p>
 <p>Звертаємо вашу увагу, що вираз (<a href="#eq-8-6">Рівняння&nbsp;<span>8.6</span></a>) є точним для випадку розподілених за Гаусом матричних елементів <span class="math inline">\(a_{im}\)</span>.</p>
 <p>Порівняємо розподіл власних значень <span class="math inline">\(P(\lambda)\)</span> для <span class="math inline">\(C\)</span> з <span class="math inline">\(P_{rm}(\lambda)\)</span>. Для цього обчислимо власні значення <span class="math inline">\(\lambda_i\)</span> матриці <span class="math inline">\(C\)</span>, причому <span class="math inline">\(\lambda_i\)</span> впорядкуємо за зростанням (<span class="math inline">\(\lambda_{i+1} &gt; \lambda_{i}\)</span>). При дослідженнях зверніть увагу на присутність чіткої “великої частини” власних значень, що спадають у межах границь <span class="math inline">\([\lambda_{-}, \lambda_{+}]\)</span> для <span class="math inline">\(P_{rm}(\lambda)\)</span>. Також зверніть увагу на відхилення для деяких найбільших і найменших власних значень власних значень отриманих за допомогою ТВМ.</p>
-<p>Оскільки рівняння (<a href="#eq-8-6">Рівняння&nbsp;<span>8.6</span></a>) є таким, що строго відповідає лише для <span class="math inline">\(L \to \infty\)</span> і <span class="math inline">\(N \to \infty\)</span>, необхідно перевірити також відхилення від ідеального випадку, оскільки робота проводиться завжди із <strong>скінченими</strong> рядами. При дослідженнях виявляється, що для кількох найбільших (найменших) власних значень ефект впливу скінчених величин <span class="math inline">\(L\)</span> і <span class="math inline">\(N\)</span> відсутній.</p>
+<p>Оскільки <a href="#eq-8-6">Рівняння&nbsp;<span>8.6</span></a> є такою, що строго відповідає лише для <span class="math inline">\(L \to \infty\)</span> і <span class="math inline">\(N \to \infty\)</span>, необхідно перевірити також відхилення від ідеального випадку, оскільки робота проводиться завжди із <strong>скінченими</strong> рядами. При дослідженнях виявляється, що для кількох найбільших (найменших) власних значень ефект впливу скінчених величин <span class="math inline">\(L\)</span> і <span class="math inline">\(N\)</span> відсутній.</p>
 </section>
 <section id="розподіл-власних-векторів" class="level3" data-number="8.1.3">
 <h3 data-number="8.1.3" class="anchored" data-anchor-id="розподіл-власних-векторів"><span class="header-section-number">8.1.3</span> Розподіл власних векторів</h3>
 <p>Відхилення <span class="math inline">\(P(\lambda)\)</span> від передбачення ТВМ <span class="math inline">\(P_{rm}(\lambda)\)</span> свідчить про те, що ці відхилення також повинні відображатися в статистиці відповідних компонент власного вектора <span class="citation" data-cites="PhysRevLett.83.1467">&nbsp;[<a href="references.html#ref-PhysRevLett.83.1467" role="doc-biblioref">8</a>]</span>. Відповідно, у даній лабораторній ми будемо аналізувати розподіл компонент власного вектора. Розподіл компонент <span class="math inline">\(\left\{ u_{l}^{k}; l=1,...,N \right\}\)</span> власного вектора <span class="math inline">\(u^k\)</span> випадкової кореляційної матриці <span class="math inline">\(R\)</span> має відповідати розподілу Гауса з нульовим середнім та одиничною дисперсією,</p>
 <p><span class="math display">\[
-\rho_{rm}(u) = \frac{1}{\sqrt{2\pi}}\exp\left( -u^{2} \middle/ 2 \right).
+\rho_{rm}(u) = \frac{1}{\sqrt{2\pi}}\exp\left( -u^{2} \big/ 2 \right).
 \]</span></p>
 </section>
 <section id="обернене-відношення-участі" class="level3" data-number="8.1.4">
@@ -410,10 +410,10 @@ P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \l
 <p>Вивчивши інтерпретацію найбільшого власного значення, що значно відхиляється від результатів ТВМ, зосередимось на власних значеннях, що залишаються. Відхилення розподілу компонентів власного вектора <span class="math inline">\(u_k\)</span> від ТВМ Гаусового передбачення більш явне, коли відстань від верхньої границі ТВМ <span class="math inline">\(\lambda_k - \lambda_{+}\)</span> збільшується. Оскільки близькість до <span class="math inline">\(\lambda_{+}\)</span> збільшує ефекти хаотичності визначаємо кількість компонентів, що беруть значну участь в кожному власному векторі, що, у свою чергу, відображає ступінь відхилення від ТВМ для розподілу компонентів власного вектора. Для цього використовується поняття оберненого відношення участі (ОВУ) <span class="citation" data-cites="PhysRevLett.83.1471 GUHR1998189 PhysRevLett.69.1093">&nbsp;[<a href="references.html#ref-PhysRevLett.83.1471" role="doc-biblioref">12</a>–<a href="references.html#ref-PhysRevLett.69.1093" role="doc-biblioref">14</a>]</span>, що часто застосовується в теорії локалізації. ОВУ власного вектора <span class="math inline">\(u_k\)</span> визначається як</p>
 <p><span id="eq-8-8"><span class="math display">\[
 I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
-\tag{8.8}\]</span></span></p>
+\qquad(8.8)\]</span></span></p>
 <p>де <span class="math inline">\(u_{l}^{k}\)</span>, <span class="math inline">\(l=1,...,N\)</span> — компоненти власного вектора <span class="math inline">\(u^{k}\)</span>. Значення <span class="math inline">\(I^{k}\)</span> може бути проілюстровано двома граничними випадками:</p>
 <ol type="1">
-<li>вектор з ідентичними компонентами <span class="math inline">\(u_{l}^{k} \equiv \left. 1 \middle/ \sqrt{N} \right.\)</span> має <span class="math inline">\(I^{k}= \left. 1 \middle/ N \right.\)</span>;<br>
+<li>вектор з ідентичними компонентами <span class="math inline">\(u_{l}^{k} \equiv 1 \big/ \sqrt{N}\)</span> має <span class="math inline">\(I^{k} = 1 \big/ N\)</span>;<br>
 </li>
 <li>вектор з одним компонентом <span class="math inline">\(u_{1}^{k}=1\)</span> і нульовими іншими має <span class="math inline">\(I^{k}=1\)</span>.</li>
 </ol>
@@ -1959,8 +1959,8 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <h3 data-number="8.2.4" class="anchored" data-anchor-id="коефіцієнт-поглинання"><span class="header-section-number">8.2.4</span> Коефіцієнт поглинання</h3>
 <p>Цікаво буде буде порівняти максимальне власне значення <span class="math inline">\(\lambda_{max}\)</span> з середнім значенням коефіцієнта кореляції і так званим коефіцієнтом поглинання (absorption ratio, AR), який є кумулятивною мірою ризику і визначається як</p>
 <p><span id="eq-8-9"><span class="math display">\[
-AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
-\tag{8.9}\]</span></span></p>
+AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k,
+\qquad(8.9)\]</span></span></p>
 <p>і вказує, яку частину загальної варіації описують <span class="math inline">\(n\)</span> із загальної кількості <span class="math inline">\(N\)</span> власних значень.</p>
 <p>Щоб вирішити, який власний вектор можна відкинути для розрахунків у чисельнику формули вище, не втрачаючи занадто багато інформації, нам потрібно перевірити відповідні власні значення: власні вектори з найменшими власними значеннями несуть найменшу інформацію про розподіл даних; це ті, які можна відкинути.</p>
 <p>Загальний підхід полягає в ранжируванні власних значень від найвищого до найнижчого.</p>
@@ -2018,7 +2018,7 @@ AR = \left. \sum_{k=1}^{n}\lambda_k \middle/ \sum_{k=1}^{N}\lambda_k \right.,
 </div>
 </div>
 </div>
-<p>Як ми можемо бачити на даних рисунках, коефіцієнт поглинання для вихідної матриці кореляцій залишається сталим при перших 40% варіації. На рисунку справа видно, що лише одного власного значення достатньо для опису майже половини всього ринку. Для випадкової матриці кількість власних значень необхідних для опису системи зростає прямо пропоційно відсотку варіації. Отже, для нашої задачі при розрахунку коефіцієнту поглинання достатньо буде взяти до 40% варіації при врахуванні кількості необхідних власних значень у чисельнику (<a href="#eq-8-9">Рівняння&nbsp;<span>8.9</span></a>).</p>
+<p>Як ми можемо бачити на даних рисунках, коефіцієнт поглинання для вихідної матриці кореляцій залишається сталим при перших 40% варіації. На рисунку справа видно, що лише одного власного значення достатньо для опису майже половини всього ринку. Для випадкової матриці кількість власних значень необхідних для опису системи зростає прямо пропоційно відсотку варіації. Отже, для нашої задачі при розрахунку коефіцієнту поглинання достатньо буде взяти до 40% варіації при врахуванні кількості необхідних власних значень у чисельнику <a href="#eq-8-9">Рівняння&nbsp;<span>8.9</span></a>.</p>
 </section>
 <section id="віконна-процедура" class="level3" data-number="8.2.5">
 <h3 data-number="8.2.5" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">8.2.5</span> Віконна процедура</h3>

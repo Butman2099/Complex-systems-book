@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -103,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -342,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>У цій лабораторній ми досліджуємо розподіл прибутковості фінансових активів і стабільність певних показників, які ми розраховуємо, опираючись на ці активи. Зокрема, ми побачимо, що більш високі моменти розподілу прибутковостей з важкими хвостами насправді дуже нестабільні, нескінченні або взагалі не визначені, і що, наприклад, одна єдина точка даних визначає більшу частину надлишкового ексцесу. Цей факт має досить драматичні наслідки, оскільки популярні моделі, такі як GARCH, базуються на можливості оцінки кінцевого значення ексцесу. Суть, яку ми хочемо донести, полягає в тому, що, не приділяючи особливої уваги повноті фінансових розподілів, не можна очікувати, що моделі будуть працювати за межами навчальної та тестувальної вибірки. Аналітики та трейдери завжди будуть дивуватись новим екстремальним подіям, що, як правило, рідко бувають позитивними.</p>
+<p>У цій лабораторній ми досліджуємо розподіл прибутковості фінансових активів і стабільність певних показників, які ми розраховуємо, опираючись на ці активи. Зокрема, ми побачимо, що більш високі моменти розподілу прибутковостей з важкими хвостами насправді дуже нестабільні, нескінченні або взагалі не визначені, і що, наприклад, одна єдина точка даних визначає більшу частину надлишкового ексцесу. Цей факт має досить драматичні наслідки, оскільки популярні моделі, такі як GARCH, базуються на можливості оцінки кінцевого значення ексцесу. Суть, яку ми хочемо донести, полягає в тому, що, не приділяючи особливої уваги повноті фінансових розподілів, не можна очікувати, що моделі будуть працювати за межами навчальної та тестувальної вибірки. Аналітики та трейдери завжди будуть дивуватись новим екстремальним подіям, що, як правило, рідко бувають позитивними</p>
 </div>
 </div>
 <section id="теоретичні-відомості" class="level2" data-number="12.1">
@@ -534,7 +553,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Цей історичний ряд щоденних цін містить ~ 18527 торгових днів. Замість того, щоб дивитися безпосередньо на ціни, ми розглянемо щоденні <a href="https://lucaslouca.com/Why-Use-Logarithmic-Returns-In-Time-Series-Modelling/"><em>log</em>-прибутковості</a> індексу S&amp;P 500. Пам’ятайте, що логарифмічна прибутковість <span class="math inline">\(r_t\)</span> визначається як логарифм відношення між цінами закриття <span class="math inline">\(p_t\)</span> у теперішній момент часу та попередній, <span class="math inline">\(p_{t-1}\)</span>:</p>
 <p><span class="math display">\[
-r_t = \log(\frac{p_t}{p_{t-1}})
+r_t = \log p_t - \log p_{t-1}.
 \]</span></p>
 <p>Логарифмічні прибутковості характеризуються симетрією, тобто якщо в один день індекс втрачає <span class="math inline">\(r_t = -0.1\)</span>, а на наступний день індекс набирає <span class="math inline">\(r_{t+1} = +0.1\)</span>, індекс знову досягає початкової ціни. Зі звичайними прибутковостями, спочатку втративши <span class="math inline">\(10\%\)</span>, а потім знову набравши <span class="math inline">\(10\%\)</span>, ви не повернетесь до початкової ціни. Ми зберігаємо прибутковості в новому фреймі даних <code>lr</code>:</p>
 <div class="cell" data-execution_count="8">
@@ -765,8 +784,8 @@ r_t = \log(\frac{p_t}{p_{t-1}})
 <ul>
 <li>23-сигма: приблизно 1 з <span class="math inline">\(10^{116}\)</span> днів (!!!)</li>
 </ul>
-<p>Внесемо ясність: виходячи з розподілу Гауса, щоденні втрати Чорної п’ятниці 1987 року повинні бути подією, яку ми очікуємо раз на <span class="math inline">\(10^{116}\)</span> днів. Це число в значній мірі незбагненно велике. Якби S&amp;P 500 почав торгуватися відразу після <a href="https://en.wikipedia.org/wiki/Age_of_the_universe">народження Всесвіту</a>, це становило б лише <span class="math inline">\(10^{13}\)</span> торгових днів. Через <span class="math inline">\(10^{116}\)</span> днів усі зірки у Всесвіті давно згорять, навіть усі <a href="https://en.wikipedia.org/wiki/Future_of_an_expanding_universe#Dark_Era_and_Photon_Age">чорні діри випаруються</a> і Всесвіт стане темним і порожнім місцем. Тож або ми повинні бути дуже щасливі, що єдина очікувана Чорна п’ятниця в історії та майбутньому Всесвіту позаду, або ви дійсно ніколи не повинні використовувати Розподіл Гауса для моделювання прибутковості акцій! Незалежно від ринку та деталей, якщо хтось говорить про події з 10 сигмами або 23 сигмами, він, безумовно, використовує неправильну модель, оскільки шанс спостерігати таку подію в нашому житті незначний.</p>
-<p>Отже, виникає питання: Як ми справляємось із такими екстремальними значеннями? Чи слід позначати їх як <a href="https://en.wikipedia.org/wiki/Outlier">викиди</a> або артефакти, щоб наші фінансові моделі краще описували більшість значень? Звичайно, ні, оскільки результат наших інвестицій може критично залежати не від більшості менших прибутковостей, а саме від таких екстремальних подій! Далі ми познайомимося з підходом, який може пояснити та екстраполювати за межі екстремальних подій, таких як Чорний понеділок. Але ми також побачимо, що не всі способи врахування важких хвостів розподілів працюють добре, оскільки деякі моделі, такі як <a href="https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity">GARCH</a> може заколисати нас помилковим почуттям безпеки, коли ми завжди беремо до уваги минулі екстремальні події, але завжди дивуємося новим.</p>
+<p>Внесемо ясність: виходячи з розподілу Гауса, щоденні втрати Чорної п’ятниці 1987 року повинні бути подією, яку ми очікуємо раз на <span class="math inline">\(10^{116}\)</span> днів. Це число в значній мірі незбагненно велике. Якби S&amp;P 500 почав торгуватися відразу після <a href="https://en.wikipedia.org/wiki/Age_of_the_universe">народження Всесвіту</a>, це становило б лише <span class="math inline">\(10^{13}\)</span> торгових днів. Через <span class="math inline">\(10^{116}\)</span> днів усі зірки у Всесвіті давно згорять, навіть усі <a href="https://en.wikipedia.org/wiki/Future_of_an_expanding_universe#Dark_Era_and_Photon_Age">чорні діри випаруються</a> і Всесвіт стане темним і порожнім місцем. Тож або ми повинні бути дуже щасливі, що єдина очікувана Чорна п’ятниця в історії та майбутньому Всесвіту позаду, або ви дійсно ніколи не повинні використовувати розподіл Гауса для моделювання прибутковості акцій! Незалежно від ринку та деталей, якщо хтось говорить про події з 10 сигмами або 23 сигмами, він, безумовно, використовує неправильну модель, оскільки шанс спостерігати таку подію в нашому житті незначний.</p>
+<p>Отже, виникає питання: як ми справляємось із такими екстремальними значеннями? Чи слід позначати їх як <a href="https://en.wikipedia.org/wiki/Outlier">викиди</a> або артефакти, щоб наші фінансові моделі краще описували більшість значень? Звичайно, ні, оскільки результат наших інвестицій може критично залежати не від більшості менших прибутковостей, а саме від таких екстремальних подій! Далі ми познайомимося з підходом, який може пояснити та екстраполювати за межі екстремальних подій, таких як Чорний понеділок. Але ми також побачимо, що не всі способи врахування важких хвостів розподілів працюють добре, оскільки деякі моделі, такі як <a href="https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity">GARCH</a> може заколисати нас помилковим почуттям безпеки, коли ми завжди беремо до уваги минулі екстремальні події, але завжди дивуємося новим.</p>
 </section>
 <section id="статистика-степеневого-розподілу" class="level3" data-number="12.1.6">
 <h3 data-number="12.1.6" class="anchored" data-anchor-id="статистика-степеневого-розподілу"><span class="header-section-number">12.1.6</span> Статистика степеневого розподілу</h3>
@@ -810,7 +829,7 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 \frac{p(2 \cdot |r_t|)}{p(|r_t|)} = \frac{1}{2^{\alpha}}
 \]</span></p>
 <p>Для <span class="math inline">\(\alpha = 0\)</span> всі прибутковості однаково ймовірні, для <span class="math inline">\(\alpha = 2\)</span> подвоєння прибутковостей робить їх у 4 рази менш імовірними. Оскільки це правило подвоєння вгору або вниз не залежить від значення самого <span class="math inline">\(\left| r_t \right|\)</span>, але працює для всіх значень <span class="math inline">\(\left| r_t \right|\)</span>. Степеневе співвідношення також називаються “безмасштабним” або <a href="https://en.wikipedia.org/wiki/Scale_invariance">масштабо-інваріантним</a>.</p>
-<p>Як щодо показника <span class="math inline">\(\alpha\)</span> для наших надзвичайно негативних логарифмічних прибутковостей S&amp;P 500? Ми можемо легко оцінити його за даними, але є деякі тонкощі у правильному розбитті вищезазначеної гістограми, які можуть вплинути на нашу оцінку (див., наприклад, <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/07-1288.1">White et al.&nbsp;(2008)</a>). Щоб обійти ці проблеми з розбиттям, ми можемо замість цього оцінити степенний показник <a href="https://en.wikipedia.org/wiki/Histogram#Cumulative_histogram">кумулятивної гістограми</a> логарифмічних прибутковостей, а потім відняти одиницю від отриманого нахилу:</p>
+<p>Як щодо показника <span class="math inline">\(\alpha\)</span> для наших надзвичайно негативних логарифмічних прибутковостей S&amp;P 500? Ми можемо легко оцінити його за даними, але є деякі тонкощі у правильному розбитті вищезазначеної гістограми, які можуть вплинути на нашу оцінку (див., наприклад, <span class="citation" data-cites="10.1890/07-1288.1">&nbsp;[<a href="references.html#ref-10.1890/07-1288.1" role="doc-biblioref">1</a>]</span>). Щоб обійти ці проблеми з розбиттям, ми можемо замість цього оцінити степенний показник <a href="https://en.wikipedia.org/wiki/Histogram#Cumulative_histogram">кумулятивної гістограми</a> логарифмічних прибутковостей, а потім відняти одиницю від отриманого нахилу:</p>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># підганяємо лінію регресії до кумулятивної гістограми (log10 для ймовірності) vs. лог-прибутковості (log10)</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sorted_neg_lr <span class="op">=</span> np.sort(neg_lr.values)</span>
@@ -860,7 +879,7 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 <p><img src="lab_12_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>Ми можемо використовувати цей степеневий закон, щоб екстраполювати, як часто ми очікуємо настання чорного понеділка (або “події з 23 сигмами”) у довгостроковій перспективі. Виходячи з наявних у нас даних, ми можемо оцінити, що ймовірність спостереження зниження на <span class="math inline">\(-0.03\)</span> або гірше становить близько <span class="math inline">\(1.6\%\)</span>. Слідуючи нашій степеневій кривій, зниження чорного понеділка на <span class="math inline">\(-0.229\)</span>, таким чином, відбувалося б із частотою <span class="math inline">\(\left(\frac{0.229}{0.03}\right)^{-3.7} \approx \frac{1}{1845}\)</span>. Так само часто, як зниження на <span class="math inline">\(-0.03\)</span>, яке ми спостерігаємо приблизно раз на три місяці. Це означає, що, виходячи з нашої степеневої кривої, очікується, що чорні понеділки, подібні до 1987 року, траплятимуться приблизно раз на 450 років (див. код нижче).</p>
+<p>Ми можемо використовувати цей степеневий закон, щоб екстраполювати, як часто ми очікуємо настання чорного понеділка (або “події з 23 сигмами”) у довгостроковій перспективі. Виходячи з наявних у нас даних, ми можемо оцінити, що ймовірність спостереження зниження на <span class="math inline">\(-0.03\)</span> або гірше становить близько <span class="math inline">\(1.6\%\)</span>. Слідуючи нашій степеневій кривій, зниження чорного понеділка на <span class="math inline">\(-0.229\)</span>, таким чином, відбувалося б із частотою <span class="math inline">\(\left(0.229/0.03\right)^{-3.7} \approx 1/1845\)</span>. Так само часто, як зниження на <span class="math inline">\(-0.03\)</span>, яке ми спостерігаємо приблизно раз на три місяці. Це означає, що, виходячи з нашої степеневої кривої, очікується, що чорні понеділки, подібні до 1987 року, траплятимуться приблизно раз на 450 років (див. код нижче).</p>
 <div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># як часто ринок знижується більш ніж на -0.03</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>(neg_lr <span class="op">&gt;</span> <span class="fl">0.03</span>).mean()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -907,7 +926,7 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Не існує такого поняття, як “подія з 10 сигмами”! Справжня подія з 10 сигмами настільки неймовірно рідкісна, що пережити її протягом нашого життя — мізерно мало. Екстремальні події, безумовно, трапляються, але вони не можуть бути описані за допомогою “сигм”, їх потрібно враховувати і екстраполювати з використанням степеневих законів. Завжди будьте обережні, коли аналітики виправдовують себе за те, що вони не були готові до “події з 10 сигмами”, оскільки це вказує на те, що їх моделі ризиків вкрай недосконалі.</p>
+<p>Не існує такого поняття, як “подія з 10 сигмами”! Справжня подія з 10 сигмами настільки неймовірно рідкісна, що пережити її протягом нашого життя — мізерно мало. Екстремальні події, безумовно, трапляються, але вони не можуть бути описані за допомогою “сигм”, їх потрібно враховувати і екстраполювати з використанням степеневих законів. Завжди будьте обережні, коли аналітики виправдовують себе за те, що вони не були готові до “події з 10 сигмами”, оскільки це вказує на те, що їх моделі ризиків вкрай недосконалі</p>
 </div>
 </div>
 </section>
@@ -996,7 +1015,7 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 </div>
 <p>Звичайно, можна поставити під сумнів, чи дійсно t-розподіл Стьюдента добре відповідає нашим логарифмічним прибутковостям, оскільки він переоцінює частоту абсолютних прибутковостей і все ще недооцінює ймовірність настання Чорного понеділка. На даний момент ми ігноруємо ці деталі та зосереджуємось на ексцесі t-розподілу Стьюдента та зв’язку зі степеневим показником <span class="math inline">\(\alpha\)</span>:</p>
 <ul>
-<li><span class="math inline">\(\text{Kurt} = \frac{6}{\nu-4} + 3~\)</span> для <span class="math inline">\(~\nu &gt; 4~\)</span> або <span class="math inline">\(~\alpha &gt; 5\)</span></li>
+<li><span class="math inline">\(\text{Kurt} = 6/(\nu-4) + 3~\)</span> для <span class="math inline">\(~\nu &gt; 4~\)</span> або <span class="math inline">\(~\alpha &gt; 5\)</span></li>
 <li><span class="math inline">\(\text{Kurt} = \infty~~~~~~~~~~\,\)</span> для <span class="math inline">\(~2 &lt; \nu \leq 4~\)</span> або <span class="math inline">\(~3 &lt; \alpha \leq 5\)</span></li>
 <li>інакше невизначено</li>
 </ul>
@@ -1041,7 +1060,7 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 <p><img src="lab_12_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>У випадку <span class="math inline">\(\alpha=6\)</span> (<span class="math inline">\(\nu=5\)</span>) ексцес скінченний і повинен приймати значення <span class="math inline">\(\frac{6}{\nu - 4}+3=9\)</span>. Хоча ми бачимо деякі коливання, оціночне значення ексцесу повільно наближається до справжнього значення. Для прикладу, який відповідає степеневому показнику індексу S&amp;P 500 з <span class="math inline">\(\alpha = 3.7\)</span>, моделювання показує таку ж поведінку, що і для реальних даних: збіжність не може бути виявлена, скоріше кожна екстремальна подія збільшує ексцес; при нескінченних вибірках ми би досягли нескінченного ексцесу. У третьому випадку з <span class="math inline">\(\alpha = 2\)</span> ексцес t-розподілу Стьюдента навіть не визначений належним чином, і ми можемо побачити інший тип поведінки моделювання: зараз більшість точок даних збільшують оцінку ексцесу, а не лише кілька окремих екстремальних зразків. При такому повільно спадаючому статечному законі екстремальні значення зустрічаються повсюдно, що призводить до збільшення ексцесу при моделюванні.</p>
+<p>У випадку <span class="math inline">\(\alpha=6\)</span> (<span class="math inline">\(\nu=5\)</span>) ексцес скінченний і повинен приймати значення <span class="math inline">\(6/(\nu - 4)+3=9\)</span>. Хоча ми бачимо деякі коливання, оціночне значення ексцесу повільно наближається до справжнього значення. Для прикладу, який відповідає степеневому показнику індексу S&amp;P 500 з <span class="math inline">\(\alpha = 3.7\)</span>, моделювання показує таку ж поведінку, що і для реальних даних: збіжність не може бути виявлена, скоріше кожна екстремальна подія збільшує ексцес; при нескінченних вибірках ми би досягли нескінченного ексцесу. У третьому випадку з <span class="math inline">\(\alpha = 2\)</span> ексцес t-розподілу Стьюдента навіть не визначений належним чином, і ми можемо побачити інший тип поведінки моделювання: зараз більшість точок даних збільшують оцінку ексцесу, а не лише кілька окремих екстремальних зразків. При такому повільно спадаючому статечному законі екстремальні значення зустрічаються повсюдно, що призводить до збільшення ексцесу при моделюванні.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1163,7 +1182,7 @@ p(2 \cdot |r_t|) = c \cdot (2 \cdot |r_t|)^{-\alpha} = 2^{-\alpha} \cdot c \cdot
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Чим важчі хвости розподілу прибутковостей, тим більше точок даних необхідно для досягнення необхідної достовірності оцінок певних параметрів. Пам’ятайте про це щоразу, коли ви намагаєтеся оцінити ризик інвестування у відносно новий фінансовий актив, який має дані лише за кілька років.</p>
+<p>Чим важчі хвости розподілу прибутковостей, тим більше точок даних необхідно для досягнення необхідної достовірності оцінок певних параметрів. Пам’ятайте про це щоразу, коли ви намагаєтеся оцінити ризик інвестування у відносно новий фінансовий актив, який має дані лише за кілька років</p>
 </div>
 </div>
 </section>
@@ -1510,7 +1529,7 @@ P(X \leq x) = 2 \left( 1 - \phi \left( \sqrt{\frac{\gamma}{x}} \right) \right),
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
             &amp;=
         \begin{cases}
-            \exp\left(i \mu t - \gamma^{\alpha}|t|^{\alpha} \left[1-i\beta\text{sign}(t)\tan{\frac{\pi\alpha}{2}}\right]\right) &amp; \text{if} \, \alpha \neq 1 \\ \exp\left(i \mu t - \gamma|t| \left[1+i\beta\text{sign}(t)\frac{2}{\pi}\log{|t|}\right]\right) &amp; \text{if} \, \alpha = 1.
+            \exp\left(i \mu t - \gamma^{\alpha}|t|^{\alpha} \left[1-i\beta\text{sign}(t)\tan{\frac{\pi\alpha}{2}}\right]\right) &amp; \text{якщо} \,\, \alpha \neq 1 \\ \exp\left(i \mu t - \gamma|t| \left[1+i\beta\text{sign}(t)\frac{2}{\pi}\log{|t|}\right]\right) &amp; \text{якщо} \,\, \alpha = 1.
         \end{cases}
     \end{split}
 \]</span></p>
@@ -1525,13 +1544,13 @@ f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
             &amp;=
         \begin{cases}
-            \exp\left(i \mu_{0} t - \gamma^{\alpha}|t|^{\alpha} \left[1+i\beta\text{sign}(t)\tan{\frac{\pi\alpha}{2}}\left( \gamma^{1-\alpha}|t|^{1-\alpha}-1 \right)\right]\right) &amp; \text{if} \, \alpha \neq 1 \\ \exp\left(i \mu_{0} t - \gamma|t| \left[1+i\beta\text{sign}(t)\frac{2}{\pi}\left(\log{|t|} + \log{\gamma}\right) \right]\right) &amp; \text{if} \, \alpha = 1.
+            \exp\left(i \mu_{0} t - \gamma^{\alpha}|t|^{\alpha} \left[1+i\beta\text{sign}(t)\tan{\frac{\pi\alpha}{2}}\left( \gamma^{1-\alpha}|t|^{1-\alpha}-1 \right)\right]\right) &amp; \text{якщо} \,\, \alpha \neq 1 \\ \exp\left(i \mu_{0} t - \gamma|t| \left[1+i\beta\text{sign}(t)\frac{2}{\pi}\left(\log{|t|} + \log{\gamma}\right) \right]\right) &amp; \text{якщо} \,\, \alpha = 1.
         \end{cases}
     \end{split}
 \]</span></p>
 <p>Ця альтернативна параметризація недалека від зазначеної напочатку. Єдина відмінність стосується параметра <span class="math inline">\(\mu\)</span>, який у даній параметризації коригує зсув для значень <span class="math inline">\(\alpha\)</span> близьких до 1:</p>
 <p><span class="math display">\[
-\mu_{0} = \begin{cases} \mu + \beta\gamma\tan{\frac{\pi\alpha}{2}} &amp; \text{if} \, \alpha \neq 1 \\ \mu + \beta\frac{2}{\pi}\gamma\log{\gamma} &amp; \text{if} \, \alpha = 1. \end{cases}
+\mu_{0} = \begin{cases} \mu + \beta\gamma\tan{\frac{\pi\alpha}{2}} &amp; \text{if} \, \alpha \neq 1 \\ \mu + \beta\frac{2}{\pi}\gamma\log{\gamma} &amp; \text{якщо} \,\, \alpha = 1. \end{cases}
 \]</span></p>
 </section>
 <section id="метод-розрахунку-параметрів-alpha-стабільного-розподілу" class="level4" data-number="12.1.11.4">
@@ -1585,7 +1604,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а із власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать від того з яким рядом ми працюємо.</p>
+<p>Виконайте цей блок, якщо хочете зчитати дані не з Yahoo! Finance, а із власного файлу. Зрозуміло, що й аналіз результатів, і висновки залежать від того з яким рядом ми працюємо</p>
 </div>
 </div>
 <hr>
@@ -2029,6 +2048,11 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 
 
+<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="ref-10.1890/07-1288.1" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">E. P. White, B. J. Enquist, and J. L. Green, <em><a href="https://doi.org/10.1890/07-1288.1">On Estimating the Exponent of Power-Law Frequency Distributions</a></em>, Ecology <strong>89</strong>, 905 (2008).</div>
+</div>
+</div>
 </section>
 
 </main> <!-- /main -->
