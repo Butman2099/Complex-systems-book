@@ -336,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span id="eq-1-1"><span class="math display">\[
 G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \left[ X(t+\Delta t) - X(t) \right] \big/ X(t),
 \tag{1.1}\]</span></span></p>
-<p>де <span class="math inline">\(\Delta t\)</span> є часовим інтервалом затримки. Величину <a href="#eq-1-1">Рівняння&nbsp;<span>1.1</span></a> називають прибутковістю (return). Якщо використовувати границі, то малі зміни <span class="math inline">\(X(t)\)</span> приблизно відповідають змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із набору даних, тобто, вважаємо, що ринок працює без перерв.</p>
+<p>де <span class="math inline">\(\Delta t\)</span> є часовим інтервалом затримки. Величину (<a href="#eq-1-1"><span>1.1</span></a>) називають прибутковістю (return). Якщо використовувати границі, то малі зміни <span class="math inline">\(X(t)\)</span> приблизно відповідають змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із набору даних, тобто, вважаємо, що ринок працює без перерв.</p>
 <p>Модуль <span class="math inline">\(G(t)\)</span> описує амплітуду флуктуацій. У порівнянні зі значеннями <span class="math inline">\(G(t)\)</span> їх модуль не показує глобальних трендів, але великі значення <span class="math inline">\(G(t)\)</span> відповідають крахам та великим миттєвим змінам на ринках.</p>
 <p>Визначимо волатильність як середнє від <span class="math inline">\(G(t)\)</span> для часових вікон <span class="math inline">\(T = n \cdot \Delta t\)</span>, тобто</p>
 <p><span id="eq-1-2"><span class="math display">\[
@@ -360,7 +360,7 @@ r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{
 r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2},
 \tag{1.4}\]</span></span></p>
 <p>де <span class="math inline">\(x\)</span> — це середнє для досліджуваного періоду.</p>
-<p>Рівняння (<a href="#eq-1-4">Рівняння&nbsp;<span>1.4</span></a>) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
+<p>Рівняння (<a href="#eq-1-4"><span>1.4</span></a>) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
 <p><span id="eq-5"><span class="math display">\[
 r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}.
 \tag{1.5}\]</span></span></p>
