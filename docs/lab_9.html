@@ -346,7 +346,7 @@ div.csl-indent {
 <figcaption class="figure-caption">Рис.&nbsp;9.1: Розбіжність двох початково близьких траєкторій <span class="citation" data-cites="PRIETOGUERRERO2019193">&nbsp;[<a href="references.html#ref-PRIETOGUERRERO2019193" role="doc-biblioref">2</a>]</span></figcaption>
 </figure>
 </div>
-<p>Коли динаміка двох початково близьких траєкторій порушуються певною подією відстань між ними може зростати експоненційно:</p>
+<p>Коли динаміка двох початково близьких траєкторій порушується певною подією відстань між ними може зростати експоненційно:</p>
 <p><span id="eq-9-1"><span class="math display">\[
 \| \delta(t) \| \approx \| \delta(0) \| \exp(\lambda t),
 \tag{9.1}\]</span></span></p>
@@ -413,7 +413,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <section id="хід-роботи" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</h2>
 <p>Розглянемо, як можна використовувати зазначені підходи для розрахунку відповідних хаос-динамічних індикаторів. Спочатку імпортуємо необхідні бібліотеки.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
@@ -425,7 +425,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо налаштування формату виведення рисунків.</p>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -434,15 +434,19 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: <span class="dv">22</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: <span class="dv">22</span>, </span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: <span class="dv">22</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: <span class="dv">22</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розглянемо значення фондового індексу Доу Джонса за весь період, що представляє Yahoo! Finance. Початкову та кінцеві дати зазначати не будемо.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^DJI'</span>                       <span class="co"># Символ індексу</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol)            <span class="co"># вивантажуємо дані</span></span>
@@ -482,7 +486,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -503,7 +507,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 </div>
 <p>Визначимо функцію <code>transformation()</code> для виконання перетворення ряду до прибутковостей або стандартизованих значень:</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -533,7 +537,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначимо функцію для побудови парних графіків:</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -562,18 +566,17 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">4</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(rotation<span class="op">=</span><span class="dv">45</span>, axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="обчислення-показників-ляпунова-із-використанням-віконної-процедури" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="обчислення-показників-ляпунова-із-використанням-віконної-процедури"><span class="header-section-number">9.2.1</span> Обчислення показників Ляпунова із використанням віконної процедури</h3>
@@ -608,7 +611,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <section id="обчислення-старшого-показника-ляпунова-на-основі-методу-розенштейна" class="level4" data-number="9.2.1.1">
 <h4 data-number="9.2.1.1" class="anchored" data-anchor-id="обчислення-старшого-показника-ляпунова-на-основі-методу-розенштейна"><span class="header-section-number">9.2.1.1</span> Обчислення старшого показника Ляпунова на основі методу Розенштейна</h4>
 <p>Спочатку виконаємо розрахунки для <strong>всього</strong> ряду індексу Доу Джонса:</p>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -621,7 +624,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>time_ser_ret <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі визначимо наступні параметри:</p>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>d_E <span class="op">=</span> <span class="dv">3</span>                      <span class="co"># розмірність вкладень</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">10</span>                     <span class="co"># часові затримка</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>approach_lyap <span class="op">=</span> <span class="st">"makowski"</span>   <span class="co"># метод для розрахунку старшого показника</span></span>
@@ -629,7 +632,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sep <span class="op">=</span> <span class="st">"auto"</span>                 <span class="co"># оцінка середнього періоду як величину, обернену до середньої частоти спектра потужності </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>і візуалізуємо результат:</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lle, _ <span class="op">=</span> nk.complexity_lyapunov(signal<span class="op">=</span>time_ser_ret, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                method<span class="op">=</span>approach_lyap, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                dimension<span class="op">=</span>d_E, </span>
@@ -649,7 +652,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <p>На <a href="#fig-dji-divergence">Рис.&nbsp;<span>9.3</span></a> показано типовий графік (суцільна крива) залежності середньої розбіжності траєкторій від часу <span class="math inline">\(\Delta t\)</span>; помаранчева лінія має нахил, що дорівнює теоретичному значенню <span class="math inline">\(\lambda_{max}\)</span>. Коротка синя ділянка до переходу через червону пунктирну лінію використовується для вилучення найбільшого показника Ляпунова. Як ми можемо бачити, крива змінюється при більших часових періодах, оскільки система обмежена у фазовому просторі і середня дивергенція не може перевищувати “довжину” атрактора. Отриманий показник Ляпунова вказує на те, що індекс Доу Джонса знаходиться на межі між хаосом та стабільність, тобто індекс дивергенції динаміки ряду врівноважується конвергенцією.</p>
 <p>Як ми вже мали змогу переконатись, складні системи мінливі і система з плином часу може проявляти як конвергенцію чи дивергенцію, так і повну незмінність у часі.</p>
 <p>Далі розглянемо динаміку досліджуваної системи з часом у рамках процедури <strong>ковзного вікна</strong>. Визначимо наступні параметри:</p>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>            <span class="co"># ширина вікна</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
@@ -670,7 +673,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>LLE <span class="op">=</span> []                <span class="co"># масив для збереження СПЛ</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер можна приступати до віконної процедури:</p>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -689,18 +692,18 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    LLE.append(lle)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 7585/7585 [00:30&lt;00:00, 247.37it/s]</code></pre>
+<pre><code>100%|██████████| 7599/7599 [00:31&lt;00:00, 239.01it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"LLE_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_max_len=</span><span class="sc">{</span>max_len<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, LLE)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника Ляпунова в легенді рисунку </span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>label_lyap <span class="op">=</span> <span class="vs">r'$\lambda_</span><span class="sc">{max}</span><span class="vs">$'</span>  </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -712,7 +715,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'red'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>та виводимо результат:</p>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          LLE, </span>
@@ -735,7 +738,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <section id="обчислення-показників-ляпунова-на-основі-методу-екмана" class="level4" data-number="9.2.1.2">
 <h4 data-number="9.2.1.2" class="anchored" data-anchor-id="обчислення-показників-ляпунова-на-основі-методу-екмана"><span class="header-section-number">9.2.1.2</span> Обчислення показників Ляпунова на основі методу Екмана</h4>
 <p>Визначимо наступні параметри:</p>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>            <span class="co"># ширина вікна</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
@@ -757,7 +760,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>LE <span class="op">=</span> []                         <span class="co"># масив для збереження ПЛ  </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер переходимо до розрахунків:</p>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -776,11 +779,11 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    LE.append(le)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 7585/7585 [09:28&lt;00:00, 13.33it/s]</code></pre>
+<pre><code>100%|██████████| 7599/7599 [09:33&lt;00:00, 13.25it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстових файлах:</p>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>LE <span class="op">=</span> np.array(LE)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(d_E):</span>
@@ -788,7 +791,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ss">    d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_d_M=</span><span class="sc">{</span>d_M<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_min_neighbors=</span><span class="sc">{</span>min_neighb<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.txt"</span>, LE[i])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо отримані результати:</p>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(LE.shape[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[window:length:tstep], time_ser.values[window:length:tstep], label<span class="op">=</span>symbol)</span>
@@ -818,14 +821,14 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <p>Як показано на <a href="#fig-dji-wind-spec-le">Рис.&nbsp;<span>9.5</span></a>, спектр показників Ляпунова реагує особливим чином на кризові події фондового ринку. Видно, що, по-перше, <span class="math inline">\(\lambda\)</span> спадає в передкризові періоди та зростає під час кризи. Особливо характерною є дана динаміка перед кризами 1997, 2001, 2008, 2011, 2015, 2020 років. У передкризові періоди спостерігається конвергенція траєкторій у фазовому просторі системі, що говорить про зростання її впорядкованості. Сам кризовий та посткризовий періоди характеризуються дивергенцією, тобто розбіжністю траєкторій системи. По-друге, видно, що, спускаючись від 1-го до 4-го показника Ляпунова, ми поступово втрачаємо інформацію про динаміку системи. Тобто, перші найбільші показники представляються в даному випадку найбільш інформативними. Можливо, у даному випадку, має сенс розглядати лише старший ПЛ.</p>
 <p>На <a href="#fig-dji-wind-spec-le-max">Рис.&nbsp;<span>9.6</span></a> представлено порівняльну динаміку індексу Доу-Джонса та старшого показника Ляпунова на основі методу Екмана.</p>
 <p>Зберігаємо показник у текстовому файлі:</p>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"LE Eckman name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    #d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_d_M=</span><span class="sc">{</span>d_M<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_min_neighbors=</span><span class="sc">{</span>min_neighb<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, LE[:, <span class="dv">0</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="29">
+<div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника Ляпунова в легенді рисунку </span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>label_lyap <span class="op">=</span> <span class="vs">r'$\lambda_</span><span class="sc">{max}</span><span class="vs">$'</span>  </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -837,7 +840,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'red'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо старший показник Ляпунова:</p>
-<div class="cell" data-execution_count="30">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>          LE[:, <span class="dv">0</span>], </span>
