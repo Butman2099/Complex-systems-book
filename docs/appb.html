@@ -262,8 +262,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./appd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Вступ до Google Colab</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Список рекомендованої літератури</span></span></a>
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Список рекомендованої літератури</span></span></a>
   </div>
 </li>
       </ul>
@@ -325,27 +331,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="коментарі-коду" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="коментарі-коду"><span class="header-section-number">B.1</span> Коментарі коду</h2>
-<p>Коментар — це примітка, зроблена програмістом у вихідному коді програми. Його мета — прояснити вихідний код і полегшити людям відстеження того, що відбувається. Все, що міститься в коментарі, зазвичай ігнорується при фактичному запуску коду, що робить коментарі корисними для включення пояснень і міркувань, а також для видалення певних рядків коду, в яких ви можете бути не впевнені. Коментарі в Python створюються за допомогою символу решітуи (<code># вставити текст тут</code>). Включення <code>#</code> у рядок коду коментує все, що слідує за ним.</p>
+<p>Коментар — це примітка, зроблена програмістом у вихідному коді програми. Його мета — прояснити вихідний код і полегшити відстеження того, що відбувається. Все, що міститься в коментарі, зазвичай ігнорується при фактичному запуску коду, але робить коментарі корисними для включення пояснень і міркувань, а також для видалення певних рядків коду, в яких ви можете бути не впевнені. Коментарі в Python створюються за допомогою символу решітки (<code># вставити текст тут</code>). Включення <code>#</code> у рядок коду коментує все, що слідує за ним.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print("Привіт усім")</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Це коментар</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ці рядки коду не змінять жодних значень</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># все, що слідує за першим #, не виконується як код</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Ви можете побачити текст, укладений у потрійні лапки (<code>""" вставте текст тут """</code>). Такий синтаксис представлятиме багаторядкове коментування, але це не зовсім точно. Це особливий тип <code>string</code> (тип даних, який ми розглянемо), який називається<code>docstring</code>, який використовується для пояснення призначення функції.</p>
+<p>Ви можете побачити текст, укладений у потрійні лапки (<code>""" вставте текст тут """</code>). Такий синтаксис представлятиме багаторядкове коментування, але це не зовсім точно. Це особливий тип <code>string</code>, що називається<code>docstring</code> і використовується для пояснення призначення функції.</p>
 <div class="cell" data-outputid="e1e0f125-48ef-4da7-f915-fd9c08e1d589">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">""" This is a special string """</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>' This is a special string '</code></pre>
 </div>
 </div>
-<p>Переконайтеся, що Ви прочитали коментарі в кожній комірці коду (якщо вони там є). Вони нададуть більш детальні пояснення того, що відбувається в режимі реального часу, коли ви переглядаєте кожен рядок коду.</p>
 </section>
 <section id="змінна" class="level2" data-number="B.2">
 <h2 data-number="B.2" class="anchored" data-anchor-id="змінна"><span class="header-section-number">B.2</span> Змінна</h2>
-<p>Змінні надають імена для значень. Якщо ви хочете зберегти значення для подальшого або повторного використання, ви присвоюєте значенню ім’я, зберігаючи вміст у змінній. Змінні в програмуванні працюють принципово аналогічно змінним в алгебрі, але в Python вони можуть приймати різні типи даних.</p>
+<p>Змінні надають імена для значень. Якщо ви хочете зберегти значення для подальшого або повторного використання, ви присвоюєте значенню ім’я, зберігаючи вміст у змінній. Змінні в програмуванні працюють аналогічно змінним в алгебрі, але в Python вони можуть приймати різні типи даних.</p>
 <p>Основними типами змінних, які ми розглянемо в цьому розділі, є <code>цілі числа</code>, <code>числа з плаваючою комою</code>, <code>логічні значення</code> та <code>рядки</code>.</p>
-<p><code>Ціле число</code> у програмуванні - це те саме, що і в математиці, кругле число без значень після десяткової коми. Ми використовуємо вбудовану функцію <code>print()</code> тут для відображення значень наших змінних, а також їх типів!</p>
+<p><code>Ціле число</code> у програмуванні — це те саме, що і в математиці, число без значень після десяткової коми. Ми використовуємо вбудовану функцію <code>print()</code> тут для відображення значень наших змінних, а також їх типів!</p>
 <div class="cell" data-outputid="f8f03598-bb63-4b02-a366-027ad7045b03">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>my_integer <span class="op">=</span> <span class="dv">50</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_integer, <span class="bu">type</span>(my_integer))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -353,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>50 &lt;class 'int'&gt;</code></pre>
 </div>
 </div>
-<p>Змінні, незалежно від типу, призначаються за допомогою одного знака рівності (<code>=</code>). Змінні чутливі до регістру, тому будь-які зміни в зміні заголовних літер імені змінної будуть посилатися повністю на іншу змінну.</p>
+<p>Змінні, незалежно від типу, призначаються за допомогою знака рівності (<code>=</code>). Змінні чутливі до регістру, тому будь-які зміни в заголовних літерах імені змінної будуть посилатися на іншу змінну.</p>
 <div class="cell" data-outputid="1a32d9db-320b-4998-aff5-bcaa5faa2602">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>one <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(one)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -361,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>1</code></pre>
 </div>
 </div>
-<p>Число з плаваючою комою або <code>float</code> - це вигадлива назва дійсного числа (знову ж таки, як у математиці). Щоб визначити <code>float</code>, нам потрібно або включити десяткову крапку, або вказати, що значення є float.</p>
+<p>Число з плаваючою комою або <code>float</code> — це назва дійсного числа (знову ж таки, як у математиці). Щоб визначити <code>float</code>, нам потрібно або включити десяткову крапку, або вказати, що значення є <code>float</code>.</p>
 <div class="cell" data-outputid="2d2ab5b0-96f0-4a27-9182-c6a579b486ed" data-scrolled="true">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>my_float <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_float, <span class="bu">type</span>(my_float))</span>
@@ -412,7 +417,7 @@ This is a string with double quotes</code></pre>
 <pre><code>True &lt;class 'bool'&gt;</code></pre>
 </div>
 </div>
-<p>Існує ще багато типів даних, які ви можете призначити змінними в Python, але це основні з них! Ми розглянемо ще трохи пізніше, коли будемо просуватися по цьому блокноту.</p>
+<p>Існує ще багато типів даних, які ви можете призначити змінними в Python, але це основні з них!</p>
 </section>
 <section id="базова-математика" class="level2" data-number="B.3">
 <h2 data-number="B.3" class="anchored" data-anchor-id="базова-математика"><span class="header-section-number">B.3</span> Базова математика</h2>
@@ -448,7 +453,7 @@ Exponentiation:  9</code></pre>
 <pre><code>20</code></pre>
 </div>
 </div>
-<p>Переконайтеся, що ваші змінні є плаваючими, якщо ви хочете, щоб у вашій відповіді були десяткові крапки. Якщо ви виконуєте математику виключно з цілими числами, Ви отримуєте ціле число. Включення будь-якого значення з плаваючою точкою в обчислення зробить результат плаваючим.</p>
+<p>Якщо ви виконуєте математику виключно з цілими числами, ви отримуєте ціле число. Включення будь-якого значення з плаваючою точкою в обчислення зробить уже результат із плаваючою точкою.</p>
 <div class="cell" data-outputid="3727ccc5-5061-4a22-9b6b-c489871623c2">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>first_integer <span class="op">=</span> <span class="dv">11</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>second_integer <span class="op">=</span> <span class="dv">3</span></span>
@@ -478,7 +483,7 @@ Exponentiation:  9</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Математична бібліотека додає довгий список нових математичних функцій до Python. Не соромтеся ознайомитися з <a href="https://docs.python.org/3/library/math.html">документацією</a> для отримання повного списку та деталей. У ньому полягають деякі математичні константи</p>
+<p>Математична бібліотека додає довгий список нових математичних функцій до Python. Не соромтеся ознайомитися з <a href="https://docs.python.org/3/library/math.html">документацією</a> для отримання повного списку та деталей. У ній ви знайдете деякі математичні константи.</p>
 <div class="cell" data-outputid="c45acd3b-99d1-4e19-b666-b1b6e5fb52c3">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Pi: '</span>, math.pi)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Euler's Constant: "</span>, math.e)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -544,7 +549,7 @@ Euler's Constant:  2.718281828459045</code></pre>
 [42, 2, 3]</code></pre>
 </div>
 </div>
-<p>Це принципово відрізняється від того, як обробляються рядки. <code>Список</code> є змінним, що означає, що ви можете змінювати елементи <code>списку</code> без зміни самого списку. Деякі типи даних, такі як <code>рядки</code>, є незмінними, що означає, що ви взагалі не можете їх змінити. Як тільки <code>рядок</code> або інший незмінний тип даних був створений, він не може бути безпосередньо змінений без створення абсолютно нового об’єкта.</p>
+<p>Це принципово відрізняється від того, як обробляються рядки. <code>Список</code> є змінним, ви можете змінювати елементи <code>списку</code> без зміни самого списку. Деякі типи даних, такі як <code>рядки</code>, є незмінними. Як тільки <code>рядок</code> або інший незмінний тип даних був створений, він не може бути безпосередньо змінений без створення абсолютно нового об’єкта.</p>
 <div class="cell" data-outputid="c3932a37-7f59-460b-9330-812eef11366a">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>my_string <span class="op">=</span> <span class="st">"Strings never change"</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>my_string[<span class="dv">0</span>] <span class="op">=</span> <span class="st">'Z'</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -572,7 +577,7 @@ Euler's Constant:  2.718281828459045</code></pre>
 <pre><code>[42, 2, 3, 'one', 'two', 'three', True, 'False', 42]</code></pre>
 </div>
 </div>
-<p>Окрім доступу до окремих елементів списку, ми можемо отримати доступ до груп елементів за допомогою зрізу.</p>
+<p>Окрім доступу до окремих елементів списку ми можемо отримати доступ до груп елементів за допомогою зрізу.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="st">'friends'</span>, <span class="st">'romans'</span>, <span class="st">'countrymen'</span>, <span class="st">'lend'</span>, <span class="st">'me'</span>, <span class="st">'your'</span>, <span class="st">'ears'</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -614,7 +619,7 @@ Euler's Constant:  2.718281828459045</code></pre>
 <pre><code>['friends', 'countrymen', 'me', 'ears']</code></pre>
 </div>
 </div>
-<p>Тут ми вибрали весь список (оскільки <code>0:7</code> дасть елементи від <code>0</code> до <code>6</code>), і ми вибрали розмір кроку <code>2</code>. Отже, це виведе елемент <code>0</code>, елемент <code>2</code>, елемент <code>4</code> тощо на вибраний елемент списку. Ми можемо пропустити вказаний початок і кінець нашого фрагмента, вказавши лише крок, якщо хочемо.</p>
+<p>Тут ми вибрали весь список (оскільки <code>0:7</code> дасть елементи від <code>0</code> до <code>6</code>), і ми вибрали розмір кроку <code>2</code>. Отже, це виведе елемент <code>0</code>, елемент <code>2</code>, елемент <code>4</code> тощо на вибраний елемент списку. Ми можемо пропустити вказаний початок і кінець нашого фрагмента, вказавши лише крок.</p>
 <div class="cell" data-outputid="c91744a6-5936-44ef-bff6-59cdcae8ec3a">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_list[::<span class="dv">2</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -699,7 +704,7 @@ Euler's Constant:  2.718281828459045</code></pre>
 <pre><code>('have', 30)</code></pre>
 </div>
 </div>
-<p>І об’єднайте їх так, як Ви б це зробили з рядками!</p>
+<p>І об’єднайте їх так, як ви б це зробили з рядками!</p>
 <div class="cell" data-outputid="10192ea3-2b20-42f2-9984-583631e8afa7">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>my_other_tuple <span class="op">=</span> (<span class="st">'make'</span>, <span class="st">'that'</span>, <span class="dv">50</span>)</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_tuple <span class="op">+</span> my_other_tuple)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -751,7 +756,7 @@ Euler's Constant:  2.718281828459045</code></pre>
 </div>
 </div>
 <p>Тут ми перевірили, чи міститься рядок <code>cats</code> у нашому <code>animal_set</code>, і він повернув <code>True</code>, повідомивши нам, що він насправді знаходиться в нашому наборі.</p>
-<p>Ми можемо з’єднати множини, використовуючи типові математичні оператори множин, а саме <code>|</code> для об’єднання та <code>&amp;</code> для перетину. Використання <code>|</code> або <code>&amp;</code> поверне саме те, що ви очікували б, якщо Ви знайомі з множинами в математиці.</p>
+<p>Ми можемо з’єднати множини, використовуючи типові математичні оператори множин, а саме <code>|</code> для об’єднання та <code>&amp;</code> для перетину. Використання <code>|</code> або <code>&amp;</code> поверне саме те, що ви очікували б, якщо ви знайомі з множинами в математиці.</p>
 <div class="cell" data-outputid="16dc2fbd-98b2-42fb-acd3-482cd567852d">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(animal_set <span class="op">|</span> things_i_like) <span class="co"># Ви також можете написати things_i_like / animal_set без будь-якої різниці</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -837,7 +842,7 @@ The first five characters are:  Super
 Reverse it!:  suoicodilaipxecitsiligarfilacrepuS</code></pre>
 </div>
 </div>
-<p>Вбудовані об’єкти та класи часто мають пов’язані з ними спеціальні функції, які називаються методами. Ми отримуємо доступ до цих методів, використовуючи точку (‘.’). Ми детальніше розглянемо об’єкти та пов’язані з ними методи в іншій лекції!</p>
+<p>Вбудовані об’єкти та класи часто мають пов’язані з ними спеціальні функції, які називаються методами. Ми отримуємо доступ до цих методів, використовуючи точку (‘.’).</p>
 <p>Використовуючи рядкові методи, ми можемо підраховувати екземпляри символу або групи символів.</p>
 <div class="cell" data-outputid="97133104-1ff0-4477-f6ec-0dcccd6b28ab" data-scrolled="true">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Count of the letter i in Supercalifragilisticexpialidocious: '</span>, my_string.count(<span class="st">'i'</span>))</span>
@@ -880,7 +885,7 @@ i said hello</code></pre>
 </div>
 <section id="форматування-рядків" class="level3" data-number="B.5.1">
 <h3 data-number="B.5.1" class="anchored" data-anchor-id="форматування-рядків"><span class="header-section-number">B.5.1</span> Форматування рядків</h3>
-<p>Використовуючи метод <code>format()</code>, ми можемо додавати значення змінних і зазвичай форматувати наші рядки.</p>
+<p>Використовуючи метод <code>format()</code>, ми можемо додавати значення змінних і форматувати наші рядки.</p>
 <div class="cell" data-outputid="4616102b-8e43-4297-c4fa-ab6ff5b4508e">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>my_string <span class="op">=</span> <span class="st">"</span><span class="sc">{0}</span><span class="st"> </span><span class="sc">{1}</span><span class="st">"</span>.<span class="bu">format</span>(<span class="st">'Marco'</span>, <span class="st">'Polo'</span>)</span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_string)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -897,7 +902,7 @@ i said hello</code></pre>
 </div>
 <p>Ми використовуємо фігурні дужки (<code>{}</code>) для позначення частин рядка, які будуть заповнені пізніше, і ми використовуємо аргументи функції <code>format()</code> для надання значень для заміни. Цифри у фігурних дужках вказують індекс значення в аргументах <code>format()</code>.</p>
 <p>Дивіться <code>format()</code> <a href="https://docs.python.org/3/library/string.html#format-examples">документація</a> для отримання додаткових прикладів.</p>
-<p>Якщо вам потрібне швидке та брудне форматування, ви можете замість цього використовувати символ<code>%</code>, який називається оператором форматування рядка.</p>
+<p>Якщо вам потрібне швидке та брудне форматування, ви можете замість цього використовувати символ <code>%</code>, який називається оператором форматування рядка.</p>
 <div class="cell" data-outputid="bc8d0737-9f57-441d-970e-f05ffc11f074">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'insert </span><span class="sc">%s</span><span class="st"> here'</span> <span class="op">%</span> <span class="st">'value'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1067,7 +1072,7 @@ Statement 1 and Statement 2: True</code></pre>
 Змінна i має значення 5</code></pre>
 </div>
 </div>
-<p>Ми можемо реалізувати інші гілки від того самого оператора if, використовуючи <code>elif</code>, скорочення від <code>else if</code>. Ми можемо включати стільки <code>elifсів</code>, скільки захочемо, поки не вичерпаємо всі логічні гілки умови.</p>
+<p>Ми можемо реалізувати інші гілки від того самого оператора if, використовуючи <code>elif</code>, скорочення від <code>else if</code>. Ми можемо включати стільки <code>elif</code>-сів, скільки захочемо, поки не вичерпаємо всі логічні гілки умови.</p>
 <div class="cell" data-outputid="3caf7c9e-36df-42aa-f54c-489374bfaf53">
 <div class="sourceCode cell-code" id="cb152"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> i <span class="op">==</span> <span class="dv">1</span>:</span>
@@ -1117,7 +1122,7 @@ Statement 1 and Statement 2: True</code></pre>
 </div>
 </div>
 <p>Як і у випадку з іншими типами даних, <code>==</code> перевірить, чи дві речі з обох сторін мають однакове значення.</p>
-<p>Деякі вбудовані функції повертають логічне значення, тому їх можна використовувати як умови в операторі if. Користувацькі функції також можуть бути сконструйовані таким чином, щоб вони повертали логічне значення. Це буде розглянуто пізніше в розділі визначення функції!</p>
+<p>Деякі вбудовані функції повертають логічне значення, тому їх можна використовувати як умови в операторі if. Користувацькі функції також можуть бути сконструйовані таким чином, щоб вони повертали логічне значення.</p>
 <p>Ключове слово <code>in</code> зазвичай використовується для перевірки приналежності значення до іншого значення. Ми можемо перевірити приналежність у контексті оператора if і використовувати його для виведення значення істини.</p>
 <div class="cell" data-outputid="16179990-cac4-48dd-aa7c-62e18ebe4eb4">
 <div class="sourceCode cell-code" id="cb159"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'a'</span> <span class="kw">in</span> my_string <span class="kw">or</span> <span class="st">'e'</span> <span class="kw">in</span> my_string:</span>
@@ -1126,12 +1131,12 @@ Statement 1 and Statement 2: True</code></pre>
 <pre><code>Those are my favorite vowels!</code></pre>
 </div>
 </div>
-<p>Тут ми використовуємо <code>in</code>, щоб перевірити, чи містить змінна <code>my_string</code> містить якісь конкретні літери. Пізніше ми будемо використовувати <code>in</code> для перебору списків!</p>
+<p>Тут ми використовуємо <code>in</code>, щоб перевірити, чи містить змінна <code>my_string</code> містить якісь конкретні літери.</p>
 </section>
 </section>
 <section id="циклічні-структури" class="level2" data-number="B.7">
 <h2 data-number="B.7" class="anchored" data-anchor-id="циклічні-структури"><span class="header-section-number">B.7</span> Циклічні структури</h2>
-<p>Циклічні структури є однією з найважливіших частин програмування. Цикл <code>for</code> і цикл <code>while</code> надають спосіб багаторазового запуску блоку коду повторно. Цикл <code>while</code> буде повторюватися, поки не буде виконана певна умова. Якщо в будь-який момент після ітерації ця умова більше не виконується, цикл завершується. Цикл <code>for</code> буде виконувати ітерацію по послідовності значень і завершиться, коли послідовність закінчиться. Натомість ви можете включити умови в цикл <code>for</code>, щоб вирішити, чи повинен він закінчуватися достроково, чи ви можете просто дозволити йому піти своїм шляхом.</p>
+<p>Циклічні структури є однією з найважливіших частин програмування. Цикл <code>for</code> і цикл <code>while</code> надають спосіб багаторазового запуску блоку коду повторно. Цикл <code>while</code> буде повторюватися до виконання певної умови. Якщо в будь-який момент після ітерації ця умова більше не виконується, цикл завершується. Цикл <code>for</code> буде виконувати ітерацію за послідовністю значень і завершиться, коли послідовність закінчиться. Можливо включити умови в цикл <code>for</code>, щоб вирішити, чи, можливо, просто дозволити йому піти своїм шляхом.</p>
 <div class="cell" data-outputid="ca8eff6e-a7e1-4f3b-bb0e-5be0c88c5b19">
 <div class="sourceCode cell-code" id="cb161"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1"><a href="#cb161-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb161-2"><a href="#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> i <span class="op">&gt;</span> <span class="dv">0</span>:</span>
@@ -1151,7 +1156,7 @@ Statement 1 and Statement 2: True</code></pre>
 </div>
 </div>
 <p>За допомогою циклів <code>while</code> нам потрібно переконатися, що щось насправді змінюється від ітерації до ітерації, щоб цикл фактично закінчувався. У цьому випадку ми використовуємо скорочення <code>i -= 1</code> (скорочення від <code>i = i - 1</code>), так що значення <code>i</code> стає меншим з кожною ітерацією. Врешті-решт <code>i</code> буде зменшено до <code>0</code>, що призведе до виконання умови <code>False</code> та виходу з циклу.</p>
-<p>Цикл <code>for</code> повторюється задану кількість разів, що визначається при вказівці запису в цикл. У цьому випадку ми повторюємо список, повернутий з <code>range()</code>. Цикл <code>for</code> вибирає значення зі списку по порядку і тимчасово присвоює йому значення <code>i</code>, щоб із цим значенням можна було виконувати операції.</p>
+<p>Цикл <code>for</code> повторюється задану кількість разів, що визначається, наприклад, при вказівці кільності ітерацій в ітераторі <code>range</code>. У цьому випадку ми проходимось по списку, що був повернутий з <code>range()</code>. Цикл <code>for</code> вибирає значення зі списку по порядку і тимчасово присвоює йому значення <code>i</code>, щоб із цим значенням можна було виконувати операції.</p>
 <div class="cell" data-outputid="ef276f90-9d31-40b0-838d-2bfc39dd78f1">
 <div class="sourceCode cell-code" id="cb163"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1"><a href="#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
 <span id="cb163-2"><a href="#cb163-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'Я зациклений! Я вже на </span><span class="sc">{0}</span><span class="st">-ій ітерації!'</span>.<span class="bu">format</span>(i <span class="op">+</span> <span class="dv">1</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1164,7 +1169,7 @@ Statement 1 and Statement 2: True</code></pre>
 </div>
 </div>
 <p>Зверніть увагу, що в цьому циклі <code>for</code> ми використовуємо ключове слово <code>in</code>. Використання ключового слова <code>in</code> не обмежується перевіркою приналежності, як у прикладі if-конструкцій. Ви можете оброблювати будь-яку колекцію за допомогою циклу <code>for</code>, використовуючи ключове слово <code>in</code>.</p>
-<p>У цьому наступному прикладі ми переглянемо <code>множину</code>, оскільки хочемо перевірити наявність вмісту та додати до нового набору.</p>
+<p>У наступному прикладі ми переглянемо <code>множину</code>, оскільки хочемо перевірити наявність вмісту та додати до нового набору.</p>
 <div class="cell" data-outputid="43fa2292-8b32-441d-bef3-026c42cc353b">
 <div class="sourceCode cell-code" id="cb165"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb165-1"><a href="#cb165-1" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> {<span class="st">'cats'</span>, <span class="st">'dogs'</span>, <span class="st">'lizards'</span>, <span class="st">'cows'</span>, <span class="st">'bats'</span>, <span class="st">'sponges'</span>, <span class="st">'humans'</span>}</span>
 <span id="cb165-2"><a href="#cb165-2" aria-hidden="true" tabindex="-1"></a>mammal_list <span class="op">=</span> {<span class="st">'cats'</span>, <span class="st">'dogs'</span>, <span class="st">'cows'</span>, <span class="st">'bats'</span>, <span class="st">'humans'</span>} <span class="co"># перераховані всі ссавці в у світі</span></span>
@@ -1298,7 +1303,7 @@ Hello, world!</code></pre>
 </div>
 </div>
 <p>Функції визначаються за допомогою <code>def</code>, імені функції, списку параметрів та двокрапки. Все, що вказано з відступом нижче двокрапки, буде включено у визначення функції.</p>
-<p>Ми можемо змусити наші функції робити все, що ви можете зробити зі звичайним блоком коду. Наприклад, наша функція <code>hello_world()</code> виводить рядок при кожному його виклику. Якщо ми хочемо зберегти значення, обчислене функцією, ми можемо визначити функцію так, щоб вона <code>return</code> потрібне нам значення. Це дуже важлива особливість функцій, оскільки будь-яка змінна, визначена виключно всередині функції, не буде існувати поза нею.</p>
+<p>Ми можемо змусити наші функції робити все, що ви можете зробити зі звичайним блоком коду. Наприклад, наша функція <code>hello_world()</code> виводить рядок при кожному його виклику. Якщо ми хочемо зберегти значення, обчислене функцією, ми можемо визначити функцію так, щоб вона повертала (<code>return</code>) потрібне нам значення. Це дуже важлива особливість функцій, оскільки будь-яка змінна, визначена виключно всередині функції, не буде існувати поза нею.</p>
 <div class="cell" data-outputid="c10eb603-2da3-44d0-f889-0c4fa94e854f">
 <div class="sourceCode cell-code" id="cb186"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb186-1"><a href="#cb186-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> see_the_scope():</span>
 <span id="cb186-2"><a href="#cb186-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">"Я тут застряг!"</span></span>
@@ -1315,7 +1320,7 @@ Hello, world!</code></pre>
 <pre><code>Я тут застряг!</code></pre>
 </div>
 </div>
-<p><strong>Область</strong> змінної - це частина блоку коду, де ця змінна прив’язана до певного значення. Функції в Python мають закриту область дії, що робить можливим прямий доступ до змінних лише всередині цих областей. Якщо ми передамо ці значення оператору return, ми можемо отримати їх із функції.</p>
+<p>Область змінної — це частина блоку коду, де ця змінна прив’язана до певного значення. Функції в Python мають закриту область дії, що робить можливим прямий доступ до змінних лише всередині цих областей. Якщо ми передамо ці значення оператору return, ми можемо отримати їх із функції.</p>
 <div class="cell" data-outputid="2e612199-1686-4ad0-ac56-65c2b1efc552">
 <div class="sourceCode cell-code" id="cb190"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1"><a href="#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> free_the_scope():</span>
 <span id="cb190-2"><a href="#cb190-2" aria-hidden="true" tabindex="-1"></a>    in_function_string <span class="op">=</span> <span class="st">"Anything you can do I can do better!"</span></span>
@@ -1340,7 +1345,7 @@ Hello, world!</code></pre>
 20</code></pre>
 </div>
 </div>
-<p>У цьому прикладі у нас був лише один параметр для нашої функції, <code>x</code>. Ми можемо легко додати додаткові параметри, розділивши всі комою.</p>
+<p>У цьому прикладі у нас був лише один параметр для нашої функції, <code>x</code>. Ми можемо легко ввести додаткові параметри, розділивши їх комами.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb194"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb194-1"><a href="#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_area(length, width):</span>
 <span id="cb194-2"><a href="#cb194-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Визначаємо площу прямокутника """</span></span>
@@ -1363,7 +1368,7 @@ Width:  10</code></pre>
 <span id="cb197-2"><a href="#cb197-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">""" Визначаємо об'єм прямокутної призми """</span></span>
 <span id="cb197-3"><a href="#cb197-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> length <span class="op">*</span> width <span class="op">*</span> depth</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Якщо ми хочемо, ми можемо визначити функцію так, щоб вона приймала довільну кількість параметрів. Ми повідомляємо Python, що хочемо цього, використовуючи зірочку (<code>*</code>).</p>
+<p>Ми можемо визначити функцію так, щоб вона приймала довільну кількість параметрів. Повідомляємо Python, що хочемо цього, використовуючи зірочку (<code>*</code>).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb198"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb198-1"><a href="#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_values(<span class="op">*</span>args):</span>
 <span id="cb198-2"><a href="#cb198-2" aria-hidden="true" tabindex="-1"></a>    sum_val <span class="op">=</span> <span class="dv">0</span></span>
@@ -1381,7 +1386,7 @@ Width:  10</code></pre>
 343</code></pre>
 </div>
 </div>
-<p>Ви використовуєте <code>*args</code> як параметр для вашої функції - це коли ви не знаєте, скільки значень можна передати в неї, як у випадку з нашою функцією sum. Зірочка в даному випадку - це синтаксис, який повідомляє Python, що ви збираєтеся передати довільну кількість параметрів у свою функцію. Ці параметри зберігаються у вигляді кортежу.</p>
+<p>Використовуйте <code>*args</code> як параметр для вашої функції, коли ви не знаєте, скільки значень можна передати в неї, як у випадку з нашою функцією sum. Зірочка в даному випадку — це синтаксис, який повідомляє Python, що ви збираєтеся передати довільну кількість параметрів у свою функцію. Ці параметри зберігаються у вигляді кортежу.</p>
 <div class="cell" data-outputid="eacb5b53-a93a-40bf-e694-226ebf246c63">
 <div class="sourceCode cell-code" id="cb201"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb201-1"><a href="#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_args(<span class="op">*</span>args):</span>
 <span id="cb201-2"><a href="#cb201-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="bu">type</span>(args))</span>
@@ -1391,8 +1396,8 @@ Width:  10</code></pre>
 <pre><code>&lt;class 'tuple'&gt;</code></pre>
 </div>
 </div>
-<p>Наші функції можуть повертати будь-який тип даних. Це дозволяє нам легко створювати функції, які перевіряють умови, які ми можемо захотіти відстежувати.</p>
-<p>Тут ми визначаємо функцію, яка повертає логічне значення. Ми можемо легко використовувати це в поєднанні з операторами if та іншими ситуаціями, які потребують логічного значення.</p>
+<p>Наші функції можуть повертати будь-який тип даних. Це дозволяє нам легко створювати функції, що перевіряють умови, які ми можемо захотіти відстежувати.</p>
+<p>Тут ми визначаємо функцію, яка повертає логічне значення. Ми можемо легко використовувати це в поєднанні з операторами if та іншими ситуаціями, що потребують логічного значення.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb203"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb203-1"><a href="#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> has_a_vowel(word):</span>
 <span id="cb203-2"><a href="#cb203-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
@@ -1437,7 +1442,7 @@ Width:  10</code></pre>
 </section>
 <section id="подальші-кроки" class="level2" data-number="B.9">
 <h2 data-number="B.9" class="anchored" data-anchor-id="подальші-кроки"><span class="header-section-number">B.9</span> Подальші кроки</h2>
-<p>Якщо ви хочете глибше заглибитися в матеріал, тоді зверніться до <a href="https://docs.python.org/3/index.html">документації по Python</a>.</p>
+<p>Якщо ви хочете заглибитися в матеріал, зверніться до <a href="https://docs.python.org/3/index.html">документації по Python</a>.</p>
 
 
 </section>

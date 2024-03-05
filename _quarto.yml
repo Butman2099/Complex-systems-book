@@ -57,6 +57,7 @@ book:
     - appa.ipynb
     - appb.ipynb
     - appc.ipynb
+    - appd.ipynb
     - references.qmd
 
 bibliography: references.bib
