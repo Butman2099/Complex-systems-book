@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Соловйов В.М">
 <meta name="author" content="Бєлінський А.О.">
-<meta name="dcterms.date" content="2024-03-05">
+<meta name="dcterms.date" content="2024-03-17">
 
 <title>Моделювання складних систем у Python</title>
 <style>
@@ -51,7 +51,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -60,14 +66,13 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -78,12 +83,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Передмова</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Передмова</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -93,13 +98,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -245,16 +250,19 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Зміст</h2>
    
   <ul>
-  <li><a href="#передмова" id="toc-передмова" class="nav-link active" data-scroll-target="#передмова">Передмова</a></li>
+  <li><a href="#передмова" id="toc-передмова" class="nav-link active" data-scroll-target="#передмова">Передмова</a>
+  <ul class="collapse">
+  <li><a href="#посилання" id="toc-посилання" class="nav-link" data-scroll-target="#посилання">Посилання</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/Butman2099/Complex-systems-book/edit/main/index.qmd" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/Butman2099/Complex-systems-book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -265,39 +273,39 @@ ul.task-list li input[type="checkbox"] {
 </div>
 
 
-<div class="quarto-title-meta-author">
+<div class="quarto-title-meta-author column-body">
   <div class="quarto-title-meta-heading">Автори</div>
   <div class="quarto-title-meta-heading">Приналежності</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://kdpu.edu.ua/personal/vmsoloviov.html">Соловйов В.М</a> <a href="https://orcid.org/0000-0002-4945-202X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author"><a href="https://kdpu.edu.ua/personal/vmsoloviov.html">Соловйов В.М</a> <a href="mailto:vnsoloviev2016@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-4945-202X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             <a href="https://kdpu.edu.ua">
             Криворізький державний педагогічний університет
             </a>
           </p>
       </div>
-      <div class="quarto-title-meta-contents">
-    <p class="author"><a href="https://www.duet.edu.ua/ua/persons/96">Бєлінський А.О.</a> <a href="https://orcid.org/0000-0002-2821-2895" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-  </div>
     <div class="quarto-title-meta-contents">
+    <p class="author"><a href="https://www.duet.edu.ua/ua/persons/96">Бєлінський А.О.</a> <a href="mailto:krivogame@gmail.com" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-2821-2895" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             <a href="https://www.duet.edu.ua/ua">
             Державний університет економіки і технологій
             </a>
           </p>
       </div>
-    </div>
+  </div>
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
       
     <div>
     <div class="quarto-title-meta-heading">Дата публікації</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024-03-05</p>
+      <p class="date">2024-03-17</p>
     </div>
   </div>
   
@@ -305,48 +313,53 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 
 <section id="передмова" class="level1 unnumbered">
 <h1 class="unnumbered">Передмова</h1><p><img src="title_book.jpeg" title="Моделювання складних систем у Python" class="quarto-cover-image img-fluid"></p>
-<p>Задекларований перехід економіки України на інноваційний шлях розвитку в умовах обмеженості ресурсів, у першу чергу фінансових, вимагає зосередження їх на найбільш перспективних напрямках, де імовірність досягнення конкурентного успіху є найбільшою. Як свідчить практика, такого роду оцінки доцільно виконувати із застосуванням економіко-математичних моделей. Множинність шляхів вибору моделей і методів актуалізує необхідність розуміння основних тенденцій розвитку наукового знання і ключових досягнень.</p>
-<p>Говорячи мовою синергетики, необхідно виділити такі параметри порядку — провідні змінні, які з плином часу починають визначати динаміку і розвиток складної системи, і підпорядковувати собі її інші параметри, які призведуть до ефективного спрощення складного об’єкта.</p>
-<p>Все більш очевидною є революція, що почалася в природничих та гуманітарних науках і пов’язана з вивченням феномена самоорганізації і дослідженням мережних структур. Мережна парадигма складності обумовлена великим значенням, яке придбали такі об’єкти, і тим, що на початку ХХІ століття очевидною стала разюча аналогія в топології мережних структур, що виникають завдяки активному використанню інформаційно-телекомунікаційних, гуманітарних, управлінських, військових технологій.</p>
-<p>Мережі стали одним з двигунів економіки. У своїй історії людство долало різні бар’єри, створюючи нові матеріали, технології, об’єкти. Однак “мережна економіка” зіткнулася з обмеженнями самої людини — так званим “когнітивним бар’єром”. Як показали психологи, людина в змозі активно, творчо взаємодіяти з 5-7 людьми (з рештою опосередковано або стандартно, незалежно від того, скільки у нього друзів у соціальній мережі). Вона може одночасно стежити за 5-7 змінними (незалежно від того, наскільки великий обсяг інформації їй доступний). Приймаючи рішення, вона може зважити 5-7 факторів (скільки б даних у неї не було).</p>
-<p>Зліт нової економіки в США в 1990-х роках, пов’язаний багато в чому з інтернет-компаніями, породив ілюзії, що капіталізація мережних структур пропорційна числу зв’язків між вузлами, тобто квадрату числа вузлів <span class="math inline">\(N^2\)</span>. Однак, коли на початку 2000-х років міхур “нової економіки” лопнув (криза “доткомів - .com”), то виявилося, що реальна капіталізація мала зовсім іншу залежність від числа об’єктів, пов’язаних мережею — <span class="math inline">\(N\ln{N}\)</span>. Інакше кажучи, не “всі зв’язуються з усіма”, а майже всі взаємодіють з декількома дуже великими вузлами-хабами, які вже тісно пов’язуються між собою. Подібним же чином виявляється влаштована інфраструктура більшості складних систем, незалежно від їх природи.</p>
-<p>Черговим викликом для нас стала нова індустріальна революція, актуалізована давоським форумом 2016 року. Згідно з опитуванням 800 лідерів технологічних компаній, проведеним спеціально для форуму в Давосі, ключовими драйверами змін стануть хмарні технології, розвиток способів збору і аналізу Big Data, краудсорсінг, шерінгова економіка і біотехнології.</p>
-<p>Очевидно, що революційні вимоги Індустрії 4.0 потребують нових парадигм моделювання соціально-економічних систем. На наш погляд, такою парадигмою може стати парадигма теорії складних систем.</p>
-<p>Методам моделювання складних систем присвячені наші попередні монографії та навчально-методичні посібники:</p>
+<p>Не дивлячись на очікувані прогнози стати 21-му століттю століттям біології (за аналогією з 20-м століттям фізики), з легкої руки геніального британського астрофізика Стівена Гокінга (Stephen William Hawking, 1942-2018) його безумовно можна вважати століттям складності. Дійсно, виявилось, що складні системи різної природи проявляють схожі паттерни складності і можуть бути схарактеризовані універсальними міждисциплінарними кількісними методами і алгоритмами. Свідченням тому є Нобелівська премія з фізики 2021 р. “за новаторський внесок у наше розуміння складних фізичних систем” була присуджена італійському фізику Джорджіо Паризі “за відкриття взаємозв’язку безладу та флуктуацій у фізичних системах від атомного до планетарного масштабів” і японсько-американському кліматологу&nbsp;Шюкуро Манабе&nbsp;та німецькому вченому&nbsp;Клаусу Гассельманну&nbsp;“за фізичне моделювання клімату Землі, кількісну оцінку мінливості та надійне прогнозування глобального потепління”.</p>
+<p>Незважаючи на те, що визначення складних систем історично широко обговорювалося, навряд чи зараз існує широка згода щодо єдиного конкретного визначення: складна система утворена багатьма взаємодіючими елементами, які породжують явища, що виникають [1]. Однак це визначення залишає деякі терміни невизначеними. Наприклад: скільки елементів достатньо для відображення складних емерджентних явищ? Цікаво, що ця кількість може бути великою, як кількість нейронів і синапсів у мозку людини, але також може бути відносно невеликою, оскільки ми знаємо, що мозок хробака Caenorhabditis elegans утворений лише кількома сотнями нейронів, тоді як хробак може демонструвати дуже нетривіальну поведінку. Мінімальна клітина також утворена лише кількома сотнями генів і вже жива. З цих прикладів стає зрозуміло, що справжня складність і нові явища вимагають ряду елементів, які можуть бути дуже далекими від великих чисел, які зазвичай розглядаються у фізиці (кількість молекул в молі газу визначається числом Авогадро, тобто приблизно 6×1023). Здається дуже загальноприйнятою ідея, що складність виникає внаслідок конкуренції між випадковістю та порядком і що топологія, що лежить в основі складної системи, за своєю суттю пов’язана з певною часткою випадковості в мережі взаємодій між її елементами (так званий, мережний підхід) або за знаком їх взаємодії (підхід спінового скла).</p>
+<p>Точкою відліку, яку часто цитують у контексті колективних ефектів складних систем, є стаття “More is different”, написана Філіппом Андерсоном (1923-2020) [2], лауреатом Нобелівської премії з фізики 1977 р. Наука про складні системи розглядає способи, якими складові частини породжують колективну поведінку цілої системи. Однак виявилось, що така інтерпретація має обмежену корисність, оскільки охоплює занадто широкий набір обставин.</p>
+<p>Історично деякий час тому у фізиці з’явився інший більш корисний крок у визначенні складних систем: система є складною, якщо її поведінка суттєво залежить від її деталей [3]. У цьому контексті маються на увазі такі явища, як детермінований хаос, квантова заплутаність, згортання білків, спінові стекла тощо. Колективна складна поведінка може виникати під впливом фрустрації та структурного безладу. Як наслідок, важко досягти стану рівноваги реакції на зовнішні збурення повільні і дуже часто випадкові. Такі дуже різні явища вивчаються в різних областях фізики, таких як динамічні системи, квантова механіка та статистична фізика. Їх спільною рисою є те, що нескінченно малі зміни початкових умов (хоча й дуже різної природи) призводять до кардинально різних сценаріїв часової еволюції цих систем.</p>
+<p>Є другий компонент, важливий для визначення складних систем. З одного боку, взаємодії між складовими частинами призводять до колективної поведінки та визначають макростан, але з іншого боку, взаємодії змінюються в ході еволюції системи та піддаються впливу макростану. Іншими словами, макростан і мікростани динамічно оновлюють один одного. Аналіз таких ефектів призвів до створення методів і розвитку концепцій, які були успішно застосовані для опису формально подібних явищ, що відбуваються в хімічних, біологічних, соціальних та інших системах, утворених агентами нефізичного походження.</p>
+<p>Незважаючи на вражаючий прогрес науки про складність, якого було досягнуто за останні 50 років, ми все ще далекі від повного розуміння складності, оскільки ще не визначили необхідні умови для того, щоб система відображала складні емерджентні явища. Наприклад, ми досить далекі від повного розуміння роботи мозку. У результаті цього галузь може виглядати фрагментованою в порівнянні з іншими більш традиційними науковими галузями, наприклад, фізикою. Для вирішення проблеми складності нам дійсно потрібно досліджувати різні аспекти складних систем, і ми повинні прийняти відкриту точку зору, яка здатна описувати та прогнозувати дані складних систем, уникаючи попередньо визначених догм зверху вниз. Наука про складність також є ключовою для розуміння та прогнозування еволюції великих пандемій та для інформування політиків та широкої громадськості про ризики поширення епідемії. Дійсно, мережева наукова спільнота вже задовго до Covid усвідомлювала небезпеку глобальних пандемій, які використовують переваги безмасштабних глобальних транспортних систем. На жаль, пандемія застала більшість країн зненацька, оскільки плани на випадок надзвичайних ситуацій насправді не були готові до епідемії такого масштабу, як Covid-19. Для моніторингу розвитку цієї пандемії та будь-якої майбутньої пандемії вчені, ймовірно, поєднають велику кількість даних про соціальну мобільність із моделями прогнозування, які є ключовими для моніторингу пандемії та інформування політиків, незважаючи на багато невизначеностей щодо біологічної еволюції вірусів.</p>
+<p>У наступні двадцять років прогрес на стику між складністю та біологією стане ключовим для досягнення настільки необхідних успіхів у прецизійній медицині. Ця велика складна проблема вимагатиме справді міждисциплінарного підходу, який поєднує мережну науку, машинне навчання та штучний інтелект з молекулярною біологією та неврологією. Дійсно, в той час як біологія в останні десятиліття широко застосовувала одномолекулярний підхід або значною мірою покладалася на центральну догму молекулярної біології, тепер добре визнано, що більшість захворювань є складними, і для розуміння цих захворювань важливо прийняти складність і неоднорідність взаємодіючих мереж клітини. У нейронауці дослідження мозку процвітають, але складність системи, яка за своєю суттю є багатомасштабною та збагачена на молекулярному рівні величезним багатством комбінаторики взаємодій, які все ще становлять виклик для глобального розуміння функції мозку.</p>
+<p>Нарешті, у наступні двадцять років складність стане ключовою для створення фундаменту для квантового Інтернету, який вимагатиме поєднання прогресу квантової інформації з нашим розумінням класичних складних комунікаційних систем, таких як поточний Інтернет.</p>
+<p>Іншим важливим викликом щодо надійності мережі є дослідження мозку, оскільки мозок, безсумнівно, є надійною складною системою, однак дуже важливо розуміти, як на його функцію впливають захворювання. Щоб відповісти на це питання, я вважаю, що нам потрібно прийняти стохастичну природу мозкової активності та отримати подальше розуміння взаємодії між функціями мозку та топологією мозкової мережі. Завдяки фундаментальним досягненням науки про мережі ми вже знаємо, що стійкість мереж до випадкових пошкоджень сильно залежить від статистичних властивостей мережі. Дійсно, безмасштабний розподіл ступенів мереж різко змінює фазову діаграму перколяції, демонструючи критичну поведінку, яка різко відрізняється від перколяції на регулярних решітках або на випадкових графах. Ці результати були ключовими для розуміння взаємодії між основною мережною структурою складних систем та їх динамікою.</p>
+<p>Прогнозування складних систем є складним завданням і, звичайно, обмежене повсюдною нелінійністю їх динаміки. Проте за останні двадцять років було досягнуто важливого прогресу в прогнозуванні складних систем (наприклад, безпрецедентний прогрес у прогнозуванні поширення епідемії). Покращення потужності прогнозування складних систем здебільшого пов’язано з великою кількістю даних, доступних для розробників моделей, і важливим прогресом, якого може досягти наука про складність у поєднанні з наукою про дані та штучним інтелектом (ШІ). Підтвердженням цьому є революційні зрушення у матеріалознавстві [4] чи фінансах [5].</p>
+<p>Підвищення наших можливостей прогнозування складних систем, які врешті-решт поєднають мережну науку, науку про дані та алгоритми штучного інтелекту, є справді ключовим для різноманітних застосувань, зокрема для забезпечення можливих сценаріїв зміни клімату. Однак потужність простих моделей для розуміння складних систем має надзвичайно важливе значення для інтерпретації результатів: прості моделі можуть не охопити всі деталі складних систем, але дозволяють зрозуміти та приборкати складність, що може мати вирішальне значення при розробці кращих алгоритмів ШІ. Теорія спінового скла вчить нас, що модель, яка насправді є досить простою (лише додавання випадкової суміші позитивних і негативних взаємодій до моделі Ізінга в повністю зв’язній мережі), може бути вже дуже складною.</p>
+<p>Методам моделювання складних систем присвячені наші попередні монографії та навчально-методичні посібники, орієнтовані на систему комп’ютерної математики Матлаб [6-9]. З урахуванням домінування Phyton у прикладних дослідженнях складних систем поява даного посібника на думку авторів є виправданою.</p>
+<p>Дана онлайн-книга часто буде оновлюватись і редагуватись. Її вміст є вільним для використання. Метою авторів даної книги було забезпечення:</p>
+<ul>
+<li>доступності вивчення моделювання складних систем різної природи та складності;</li>
+<li>можливість постійого оновлення даної книги, що дозволяє динамічний характер покращення мови програмування Python і web-інтерактивного середовища Jupyter Notebook.</li>
+</ul>
+<p>Читачам рекомендується посилатися як на цю книгу, так і на дотичні до неї джерела, коли вони використовують викладені тут методології та ідеї. При цитуванні слід дотримуватися точності деталей, особливо URL-адреси, щоб спрямувати читачів до правильної Інтернет сторінки.</p>
+<p>Нижче наведено один із варіантів цитування:</p>
+<blockquote class="blockquote">
+<p>Соловйов В.М., Бєлінський А.О. (2023). <em>Моделювання складних систем у Python: Навчально-методичний посібник для самостійного вивчення дисципліни</em>. Черкаси: Видавець О.Ю. Вовчок <a href="https://butman2099.github.io/Complex-systems-book/">https://butman2099.github.io/Complex-systems-book/</a></p>
+</blockquote>
+<section id="посилання" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="посилання">Посилання</h2>
+<blockquote class="blockquote">
 <ol type="1">
-<li>Соловйов В. М. Математична економіка: навч.-метод. посіб. для самостійного вивч. / В. М. Соловйов. — Черкаси: Видавництво ЧНУ ім. Б. Хмельницького, 2008. — 136 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1049" class="uri">http://elibrary.kdpu.edu.ua/handle/0564/1049</a> <a href="https://doi.org/10.31812/0564/1049" class="uri">https://doi.org/10.31812/0564/1049</a></li>
-<li>Дербенцев В. Д. Синергетичні та еконофізичні методи дослідження динамічних та структурних характеристик економічних систем: монографія / В. Д. Дербенцев, О. А. Сердюк, В. М. Соловйов, О. Д. Шарапов. — Черкаси: Брама-Україна, 2010. – 300 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1045" class="uri">http://elibrary.kdpu.edu.ua/handle/0564/1045</a> <a href="https://doi.org/10.31812/0564/1045" class="uri">https://doi.org/10.31812/0564/1045</a></li>
-<li>Ганчук А. А. Методи прогнозування: навчальний посібник / А. А. Ганчук, В. М. Соловйов, Д. М. Чабаненко. — Черкаси: Брама-Україна, 2012. — 140 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1186" class="uri">http://elibrary.kdpu.edu.ua/handle/0564/1186</a> <a href="https://doi.org/10.31812/0564/1186" class="uri">https://doi.org/10.31812/0564/1186</a></li>
-<li>Соловйов В. М. Моделювання складних систем: навчально-методичний посібник для самостійного вивчення дисципліни / В. М. Соловйов, О. А. Сердюк, Г. Б. Данильчук. — Черкаси: Видавець О. Ю. Вовчок, 2016. — 204 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1065" class="uri">http://elibrary.kdpu.edu.ua/handle/0564/1065</a> <a href="https://doi.org/10.31812/0564/1065" class="uri">https://doi.org/10.31812/0564/1065</a></li>
+<li>Bianconi G. et al Complex systems in the spotlight: next steps after the 2021 Nobel Prize in Physics (2023) J. Phys. Complex. 4 010201 <a href="https://iopscience.iop.org/article/10.1088/2632-072X/ac7f75">https://iopscience.iop.org/article/10.1088/2632-072X/ac7f75</a></li>
+<li>Anderson P.W. More is different. New Series, Vol. 177, No.&nbsp;4047. (Aug.&nbsp;4, 1972), pp.&nbsp;393-396. <a href="https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/anderson72more_is_different.pdf">https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/anderson72more_is_different.pdf</a></li>
+<li>Holovatch Y., Kenna R., Thurner S. Complex systems: physics beyond physics (2017) Eur. J. Phys. 38 023002. <a href="https://doi.org/10.1088/1361-6404/aa5a87">https://doi.org/10.1088/1361-6404/aa5a87</a></li>
+<li>Merchant A. et al.&nbsp;Scaling deep learning for materials discovery (2023) Nature. Vol 624 (7 December 2023), pp.80-90. <a href="https://doi.org/10.1038/s41586-023-06735-9">https://doi.org/10.1038/s41586-023-06735-9</a></li>
+<li>Chu, Z., Guo, H., Zhou, X., Wang, Y., Yu, F., Chen, H., Xu, W., Lu, X., Cui, Q., Li, L. and Zhou, J., 2023. Data-centric financial large language models. arXiv preprint arXiv:2310.17784. <a href="https://doi.org/10.48550/arXiv.2310.17784">https://doi.org/10.48550/arXiv.2310.17784</a></li>
+<li>Соловйов В. М. Математична економіка: навч.-метод. посіб. для самостійного вивч. / В. М. Соловйов. – Черкаси: Видавництво ЧНУ ім. Б. Хмельницького, 2008. – 136 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1049">http://elibrary.kdpu.edu.ua/handle/0564/1049</a> <a href="https://doi.org/10.31812/0564/1049">https://doi.org/10.31812/0564/1049</a></li>
+<li>Дербенцев В. Д. Синергетичні та еконофізичні методи дослідження динамічних та структурних характеристик економічних систем: монографія / В. Д. Дербенцев, О. А. Сердюк, В. М. Соловйов, О. Д. Шарапов. – Черкаси: Брама-Україна, 2010. – 300 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1045">http://elibrary.kdpu.edu.ua/handle/0564/1045</a> <a href="https://doi.org/10.31812/0564/1045">https://doi.org/10.31812/0564/1045</a></li>
+<li>Ганчук А. А. Методи прогнозування: навчальний посібник / А. А. Ганчук, В. М. Соловйов, Д. М. Чабаненко. – Черкаси: Брама-Україна, 2012. – 140 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1186">http://elibrary.kdpu.edu.ua/handle/0564/1186</a> <a href="https://doi.org/10.31812/0564/1186">https://doi.org/10.31812/0564/1186</a></li>
+<li>Соловйов В. М. Моделювання складних систем : навчально-методичний посібник для самостійного вивчення дисципліни / В. М. Соловйов, О. А. Сердюк, Г. Б. Данильчук. – Черкаси: Видавець О. Ю. Вовчок, 2016. – 204 с. <a href="http://elibrary.kdpu.edu.ua/handle/0564/1065">http://elibrary.kdpu.edu.ua/handle/0564/1065</a> <a href="https://doi.org/10.31812/0564/1065">https://doi.org/10.31812/0564/1065</a></li>
 </ol>
-<p>Сьогодні вже зрозуміло, особливо в період військового стану, що відповідних інновацій в осмисленні оточуючої нас складності вимагає все суспільство. На початку комп’ютерної ери основну цінність і проблеми становили власне комп’ютери (hardware) і акцент робився на підготовку фахівців з обчислювальної техніки. Потім величезне значення набуло програмне забезпечення (software) і була розпочата підготовка дослідників у цій галузі (computer science) та інженерів-програмістів (computer engineering). У даний час на перший план виходять фахівці з мережних технологій (NetWare). Саме таких фахівців треба починати готувати у провідних національних університетах. За оцінками експертів з Індустрії 4.0 основними трендами освітньої сфери на двадцятирічному горизонті стануть: поширення цінностей мережної культури, прагматизація освіти, автоматизація рутинних інтелектуальних операцій, розвиток індустрії поліпшення когнітивних здібностей, боротьба за таланти, зростання значущості глобальних людських цінностей, уваги до природи і дбайливого поводження з ресурсами.</p>
-<p><strong>Мета курсу</strong> моделювання складних систем — формування системи теоретичних знань та практичних навичок щодо моделювання структурних і динамічних властивостей систем різної природи як засобу дослідження та управління складними явищами на макро-, мезо- й мікрорівнях. Протягом останніх десяти-п’ятнадцяти років відбулися відчутні зміни в розумінні фундаментальних закономірностей складних систем. Виявилось, що такі складні системи мають універсальні емерджентні властивості, які не знаходять адекватного розуміння у рамках традиційних парадигм. Тому для аналізу все активніше використовуються сучасні методи та моделі фундаментальних наук, які у поєднанні з новітніми досягненнями в галузі інформаційних технологій та досить ємними базами даних (мільйони записів навіть в базах некомерційного призначення) забезпечили значний прогрес у розумінні та квантифікації природи цих систем. Сюди відносяться методи фрактального і мультифрактального аналізу, дослідження рекурентних властивостей динамічних систем, нелінійної динаміки, теорії хаосу і біфуркацій тощо. З’явились нові “кількісні” напрямки економіки: математична економіка, фізична економіка, еконофізика та ін. Деякі з таких моделей, не знайшовши поки що відображення у навчальній літературі, включені до цієї роботи.</p>
-<p><strong>Наукову основу курсу</strong> складають теоретичні моделі, математичний апарат, сучасні концепції та парадигми, які визначають підходи до вивчення характеристик складних систем. Курс базується на знаннях, одержаних при вивченні дисциплін математичного циклу, основ теорії систем та системного аналізу, моделювання, фінансового аналізу, макро- і мікроекономіки.</p>
-<p><strong>Завдання курсу</strong> — оволодіння теоретичними знаннями та інструментарієм моделювання складних систем, вивчення підходів до дослідження й аналізу, методів прогнозування їхнього розвитку, управління розвитком та функціонуванням складних систем у різних умовах функціонування.</p>
-<p><strong>Предметом курсу</strong> є математичні моделі і методи дослідження складних систем різної природи.</p>
-<p>У результаті вивчення дисципліни студент повинен:</p>
-<ul>
-<li>знати структурні та динамічні характеристики складної системи; моделі прогнозування характеристик системи; основні методи оцінки якості функціонування; методи оцінки структурних змін; методи дослідження та моделювання складних природних та штучних систем;</li>
-<li>вміти здійснювати класифікацію характеристик складної системи, проводити порівняльний аналіз методів прогнозування; оцінити якість функціонування ієрархічної системи; визначити катастрофічні зміни в системі, які описуються рівняннями динаміки, визначити джерела структурних катастроф;</li>
-<li>дослідити та проаналізувати комплекс моделей складної системи;</li>
-<li>бути ознайомленим з сучасними напрямками розвитку сучасних теорій та парадигм, які використовуються для дослідження якісних характеристик динамічних систем.</li>
-</ul>
-<p>Система контролю якості навчання студентів містить такі заходи:</p>
-<ul>
-<li>модульний контроль;</li>
-<li>проведення контрольних робіт;</li>
-<li>контроль теоретичних знань у ході практичних занять;</li>
-<li>виконання індивідуальних завдань на лабораторних заняттях.</li>
-</ul>
-<p>Організація самостійної роботи студентів передбачає підготовку до семінарських занять, проведення індивідуальних консультацій, виконання курсової роботи.</p>
-<p>Відсутність альтернативних підручників і методичних посібників з курсу моделювання складних систем спонукала авторів розробити методичні вказівки до виконання практичних робіт з даного курсу. Вони спираються на деяке авторське бачення, певні висновки мають дискусійний характер. Автори будуть вдячні за бачення, спрямоване на покращення змісту та методики викладання дисципліни.</p>
+</blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -391,6 +404,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -459,13 +499,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -500,18 +542,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -543,11 +574,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -557,8 +627,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -570,7 +649,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -614,6 +816,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -639,6 +842,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -702,7 +931,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_1.html" class="pagination-link">
+      <a href="./lab_1.html" class="pagination-link" aria-label="Лабораторна робота № 1">
         <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Лабораторна робота № 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -711,4 +940,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Butman2099/Complex-systems-book/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

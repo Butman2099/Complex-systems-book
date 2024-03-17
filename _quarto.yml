@@ -60,7 +60,7 @@ book:
     - appd.ipynb
     - references.qmd
 
-bibliography: references.bib
+bibliography: references_main.bib
 csl: physical-review-b.csl
 toc: true
 number-sections: true
@@ -77,6 +77,7 @@ format:
       light: cosmo
       dark: superhero
   docx: 
+    fontsize: 14
     toc: true
     number-sections: true
     

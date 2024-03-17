@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - Додаток D — Вступ до Google Colab</title>
+<title>Моделювання складних систем у Python – Додаток D — Вступ до Google Colab</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,7 +49,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -58,14 +64,42 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -76,12 +110,12 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appa.html">Додатки</a></li><li class="breadcrumb-item"><a href="./appd.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Вступ до Google Colab</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appa.html">Додатки</a></li><li class="breadcrumb-item"><a href="./appd.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Вступ до Google Colab</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -91,13 +125,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -243,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -253,22 +287,22 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#перші-кроки-роботи-в-google-colab" id="toc-перші-кроки-роботи-в-google-colab" class="nav-link active" data-scroll-target="#перші-кроки-роботи-в-google-colab"><span class="header-section-number">D.1</span> Перші кроки роботи в Google Colab</a></li>
   <li><a href="#синтаксис-markdown" id="toc-синтаксис-markdown" class="nav-link" data-scroll-target="#синтаксис-markdown"><span class="header-section-number">D.2</span> Синтаксис Markdown</a></li>
   <li><a href="#різниця-між-colab-markdown-та-іншими-діалектами-mardown" id="toc-різниця-між-colab-markdown-та-іншими-діалектами-mardown" class="nav-link" data-scroll-target="#різниця-між-colab-markdown-та-іншими-діалектами-mardown"><span class="header-section-number">D.3</span> Різниця між Colab Markdown та іншими діалектами Mardown</a></li>
-  <li><a href="#встановлення-бібліотек-яких-немає-у-google-colab" id="toc-встановлення-бібліотек-яких-немає-у-google-colab" class="nav-link" data-scroll-target="#встановлення-бібліотек-яких-немає-у-google-colab"><span class="header-section-number">D.4</span> Встановлення бібліотек, яких немає у Google Colab</a></li>
+  <li><a href="#встановлення-відсутніх-у-google-colab-бібліотек" id="toc-встановлення-відсутніх-у-google-colab-бібліотек" class="nav-link" data-scroll-target="#встановлення-відсутніх-у-google-colab-бібліотек"><span class="header-section-number">D.4</span> Встановлення відсутніх у Google Colab бібліотек</a></li>
   <li><a href="#імпорт-власних-файлів-до-google-colab" id="toc-імпорт-власних-файлів-до-google-colab" class="nav-link" data-scroll-target="#імпорт-власних-файлів-до-google-colab"><span class="header-section-number">D.5</span> Імпорт власних файлів до Google Colab</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/appd.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/appd.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./appa.html">Додатки</a></li><li class="breadcrumb-item"><a href="./appd.html"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Вступ до Google Colab</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Додаток D — Вступ до Google Colab</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -276,11 +310,13 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="перші-кроки-роботи-в-google-colab" class="level2" data-number="D.1">
 <h2 data-number="D.1" class="anchored" data-anchor-id="перші-кроки-роботи-в-google-colab"><span class="header-section-number">D.1</span> Перші кроки роботи в Google Colab</h2>
-<p>Google Colab (Collaboratory) — це потужна хмарна платформа, яка дозволяє писати і виконувати код на Python через веб-браузер. Вона надає середовище Jupyter Notebook, яке не потребує жодних налаштувань чи інсталяції на вашому локальному комп’ютері. Colab особливо корисний для задач машинного навчання, аналізу даних та наукових обчислень, оскільки пропонує безкоштовний доступ до графічних процесорів та попередньо встановлених бібліотек Python, таких як TensorFlow, Keras, PyTorch, NumPy, Pandas, Matplotlib та Scikit-learn.</p>
+<p>Google Colab (Collaboratory) — це потужна хмарна платформа, яка дозволяє писати і виконувати код на Python через веб-браузер. Вона надає можливість працювати у середовищі Jupyter Notebook без жодних налаштувань чи інсталяції на вашому локальному комп’ютері. Colab особливо корисний для задач машинного навчання, аналізу даних та наукових обчислень, оскільки пропонує безкоштовний доступ до графічних процесорів та попередньо встановлених бібліотек Python, таких як TensorFlow, Keras, PyTorch, NumPy, Pandas, Matplotlib та Scikit-learn.</p>
 <p>Як програміст, ви можете виконувати наступні дії за допомогою Google Colab:</p>
 <ul>
 <li>писати та виконувати код на Python;</li>
@@ -288,9 +324,9 @@ ul.task-list li input[type="checkbox"] {
 <li>cтворювати/завантажувати/поширювати Jupyter блокноти;</li>
 <li>імпортувати/зберігати блокноти з/на Google Диск;</li>
 <li>імпортувати/публікувати блокноти з GitHub;</li>
-<li>імпорт зовнішніх наборів даних, наприклад, з Kaggle;</li>
-<li>інтеграція PyTorch, TensorFlow, Keras, OpenCV;</li>
-<li>безкоштовний хмарний сервіс з безкоштовним графічним процесором.</li>
+<li>імпортувати зовнішні набори даних, наприклад, з Kaggle;</li>
+<li>інтегрувати PyTorch, TensorFlow, Keras, OpenCV;</li>
+<li>мати безкоштовний хмарний сервіс з графічним процесором.</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -302,23 +338,26 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Оскільки Colab неявно використовує Google диск для зберігання ваших блокнотів, переконайтеся, що ви увійти до свого облікового запису Google, перш ніж продовжувати роботу</p>
+<p>Оскільки Colab неявно використовує Google диск для зберігання ваших блокнотів, перш ніж продовжувати роботу, переконайтеся, що ви увійти до свого облікового запису Google</p>
 </div>
 </div>
-<p>Відкрийте у своєму браузері наступну URL-адресу: https://colab.research.google.com. У вашому браузері відобразиться наступна сторінка (за умови, що ви увійшли до свого Google акаунта):</p>
+<p>Відкрийте у своєму браузері URL-адресу: https://colab.research.google.com. У вашому браузері відобразиться наступна сторінка (за умови, що ви увійшли до свого Google акаунта):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_1.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Натисніть на кнопку <code>+ New notebook</code> у нижньому лівому куті і з’явиться робочий блокнот, як показано на риунку нижче:</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<p>У нижньому лівому куті натисніть на кнопку <code>+ New notebook</code>, з’явиться робочий блокнот:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_2.jpg" class="img-fluid"></p>
+<p><img src="Images\ap4\Screenshot_2.jpg" class="img-fluid" style="width:40.0%"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_3.jpg" class="img-fluid"></p>
+<p><img src="Images\ap4\Screenshot_3.jpg" class="img-fluid" style="width:40.0%"></p>
 </div>
 </div>
 </div>
@@ -326,35 +365,35 @@ ul.task-list li input[type="checkbox"] {
 <p>За замовчуванням Colab блокнот використовує іменування <code>UntitledXX.ipynb</code>. Щоб перейменувати блокнот, клацніть на цій назві і введіть бажану назву у вікні редагування, як показано нижче:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_4.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_4.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Цей блокнот буде названо як <code>Перший ноутбук</code>. Отже, введіть цю назву у вікні редагування і натисніть клавішу <strong>ENTER</strong>. Блокнот встановить ім’я, яке ви зараз ввели.</p>
-<p>Тепер ви введете тривіальний код на Python у вікні коду і виконаєте його. Введіть наступні дві команди у вікні коду:</p>
+<p>Цей блокнот буде названо <code>Перший ноутбук</code>. Отже, введіть цю назву у вікні редагування і натисніть клавішу <strong>ENTER</strong>. Блокнот встановить введене ім’я.</p>
+<p>Тепер введемо тривіальний код на Python у вікні коду:</p>
 <pre class="{python}"><code>import time
 print(time.ctime())</code></pre>
 <p>Щоб виконати код, натисніть на стрілку в лівій частині комірки коду:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_5.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Результатом виконання є <code>Tue Mar  5 13:52:49 2024</code>. Можна будь-коли очистити вихідні дані, натиснувши на іконку зліва від дисплея вихідних даних:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_6.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_6.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Щоб додати більше комірок для написання коду, виберіть наступні пункти меню:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_7.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_7.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>У якості альтернативи можно навести вказівник миші на нижню центральну частину клітинки коду. Коли з’являться кнопки <strong>CODE</strong> і <strong>TEXT</strong>, натисність на <strong>CODE</strong>, щоб додати нову клітинку. Це показано на знімку екрана нижче:</p>
+<p>У якості альтернативи можна навести вказівник миші на нижню центральну частину клітинки коду. Коли з’являться кнопки <strong>CODE</strong> і <strong>TEXT</strong>, натисність на <strong>CODE</strong>, щоб додати нову комірку:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_8.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_8.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Нова комірка коду буде додана під поточною коміркою. Додайте наступні два рядки коду в новостворену комірку:</p>
@@ -363,26 +402,26 @@ print (time.ctime())</code></pre>
 <p>Тепер, якщо ви запустите цю комірку, ви побачите наступний результат:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_9.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_9.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Для запуску всіх комірок коду без преривань і покрокового натискання на кожну комірку вручну, виконайте пункт <code>Runtime \ Run all</code> або <code>Runtime \ Restart session and run all</code>:</p>
+<p>Для запуску всіх комірок коду без переривань і покрокового натискання на кожну комірку вручну, виконайте пункт <code>Runtime \ Run all</code> або <code>Runtime \ Restart session and run all</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_10.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_10.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Коли ваш блокнот містить велику кількість комірок із кодами, ви можете зіткнутися із ситуаціями, коли ви хочете змінити порядок виконання цих клітинок. Ви можете зробити це, виділивши комірку, яку ви хочете перемістити, і натиснувши на стрілки <code>Move cell up</code> або <code>Move cell down</code>, як показано на наступному скріншоті:</p>
+<p>Якщо ваш блокнот містить велику кількість комірок із кодами, ви можете зіткнутися із ситуаціями, коли ви хочете змінити порядок виконання цих клітинок. Ви можете зробити це, виділивши комірку, яку ви хочете перемістити, і натиснувши на стрілки <code>Move cell up</code> або <code>Move cell down</code>, як показано на наступному скріншоті:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_11.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_11.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Ви можете натискати на стрілки кілька разів, щоб перемістити комірку більше, ніж на одну позицію.</p>
 <p>Під час роботи з вашим проєктом ви могли б створити кілька непотрібних комірок у блокноті. Ви можете легко видалити такі комірки з проєкту одним натиском миші. Натисніть на іконку із символом смітника у верхньому правому куті комірки з кодом для її видалення. Нижче показано приклад:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_12.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_12.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Для збереження вашого проєкту у вас є декілька опцій:</p>
@@ -402,37 +441,40 @@ print (time.ctime())</code></pre>
 <p>Дані опції проілюстровано на скріншоті нижче:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_13.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_13.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>У подальшому вам може знадобитись, наприклад, працювати не з власними файлами з абсолютного нуля, а, наприклад, уже готовими Jupyter блокнотами. Для імпорту вже готових файлів треба перейти до <code>File \ Open notebook</code> або <code>File \ Upload notebook</code>. Якщо ви обираєте пункт <code>File \ Open notebook</code>, тоді це означатиме, що ви бажаєте відкрити робочий блокнот із хмарного середовище або вашого Google диску. Якщо ви натискаєте <code>File \ Upload notebook</code>, тоді це означатиме, що ви хочете завантажити готовий блокнот із вашого персонального комп’ютера. Нижче представлено скріншот даних опцій:</p>
+<p>У подальшому може виникунути необхідність, наприклад, працювати не з власними файлами “з абсолютного нуля”, а, наприклад, уже готовими Jupyter блокнотами. Для цього треба перейти до <code>File \ Open notebook</code> або <code>File \ Upload notebook</code>. Якщо ви обираєте пункт <code>File \ Open notebook</code>, тоді це означатиме, що ви бажаєте відкрити робочий блокнот із хмарного середовище або вашого Google диску. Якщо ви натискаєте <code>File \ Upload notebook</code>, ви хочете завантажити готовий блокнот із вашого персонального комп’ютера. Нижче представлено скріншот даних опцій:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_14.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_14.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Завантажимо готовий блокнот однієї з лабораторних із моделювання в Python. Для цього натиснемо <code>File \ Upload notebook</code>. Далі нам треба буде натиснути на кнопку <strong>Browse</strong> та обрати потрібний нам файл, натиснувши на клавішу <strong>Open</strong>:</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_15.jpg" class="img-fluid"></p>
+<p><img src="Images\ap4\Screenshot_15.jpg" class="img-fluid" style="width:40.0%"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_16.jpg" class="img-fluid"></p>
+<p><img src="Images\ap4\Screenshot_16.jpg" class="img-fluid" style="width:40.0%"></p>
 </div>
 </div>
 </div>
 <p>В якості прикладу ми обрали першу лабораторну роботу. Після завантаження цього файлу до Google Colab має з’явитись наступне вікно:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_17.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_17.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Colab, як і Jupyter Notebook, має два типи комірок: текстові та кодові. Текстові клітинки форматуються за допомогою простої мови розмітки Markdown.</p>
-<p>Щоб побачити джерело розмітки, двічі клацніть текстову комірку, при цьому буде показано як джерело розмітки, так і відображену версію. Над джерелом розмітки знаходиться панель інструментів для полегшення редагування.</p>
+<p>Щоб побачити джерело розмітки, двічі клацніть текстову комірку. При цьому буде показано як джерело розмітки, так і відображену версію. Над джерелом розмітки знаходиться панель інструментів для полегшення редагування.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_18.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_18.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </section>
@@ -492,11 +534,10 @@ print (time.ctime())</code></pre>
 </blockquote>
 </blockquote>
 <hr>
-<p>Блоки коду</p>
+<p>Блоки коду:</p>
 <pre class="{markdown}"><code>```{python}
 print("a")
-```
-</code></pre>
+```</code></pre>
 <pre class="{python}"><code>print("a")</code></pre>
 <hr>
 <p>Упорядковані списки:</p>
@@ -526,27 +567,11 @@ $e^{i\pi} + 1 = 0$
 
 $e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i$
 
-$\frac{n!}{k!(n-k)!} = {n \choose k}$
-
-$A_{m,n} =
- \begin{pmatrix}
-  a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
-  a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
-  \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
-  a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
- \end{pmatrix}$</code></pre>
+$\frac{n!}{k!(n-k)!} = {n \choose k}$</code></pre>
 <p><span class="math inline">\(y=x^2\)</span></p>
 <p><span class="math inline">\(e^{i\pi} + 1 = 0\)</span></p>
 <p><span class="math inline">\(e^x=\sum_{i=0}^\infty \frac{1}{i!}x^i\)</span></p>
 <p><span class="math inline">\(\frac{n!}{k!(n-k)!} = {n \choose k}\)</span></p>
-$A_{m,n} =
-<span class="math display">\[\begin{pmatrix}
-  a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,n} \\
-  a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,n} \\
-  \vdots  &amp; \vdots  &amp; \ddots &amp; \vdots  \\
-  a_{m,1} &amp; a_{m,2} &amp; \cdots &amp; a_{m,n}
-\end{pmatrix}\]</span>
-<p>$</p>
 <hr>
 <p>Таблиці:</p>
 <pre class="{markdown}"><code>Назва першої колонки  | Назва другої колонки 
@@ -583,18 +608,18 @@ $A_{m,n} =
 <p>Colab підтримує (MathJax) <span class="math inline">\(\text{LaTeX}\)</span> рівняння, як і Jupyter, але не дозволяє HTML-теги в Markdown. Colab не підтримує деякі доповнення GitHub, такі як смайлики і прапорці.</p>
 <p>Якщо у блокноті Colab необхідно включити HTML, зверніться до <a href="https://colab.research.google.com/notebooks/basic_features_overview.ipynb?hl=en#scrollTo=KR921S_OQSHG">%%html magic</a>.</p>
 </section>
-<section id="встановлення-бібліотек-яких-немає-у-google-colab" class="level2" data-number="D.4">
-<h2 data-number="D.4" class="anchored" data-anchor-id="встановлення-бібліотек-яких-немає-у-google-colab"><span class="header-section-number">D.4</span> Встановлення бібліотек, яких немає у Google Colab</h2>
+<section id="встановлення-відсутніх-у-google-colab-бібліотек" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="встановлення-відсутніх-у-google-colab-бібліотек"><span class="header-section-number">D.4</span> Встановлення відсутніх у Google Colab бібліотек</h2>
 <p>Щоб імпортувати бібліотеку, якої за замовчуванням немає у Collaboratory, ви можете скористатися командами <code>!pip install</code> або <code>!apt-get install</code>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_19.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_19.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Нижче представлено приклад встановлення одразу чотирьох бібліотек: <a href="https://matplotlib.org"><code>matplotlib</code></a>, <a href="https://pandas.pydata.org"><code>pandas</code></a>, <a href="https://numpy.org"><code>numpy</code></a> і <a href="https://neuropsychology.github.io/NeuroKit/"><code>neurokit2</code></a>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_20.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_20.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -613,37 +638,43 @@ $A_{m,n} =
 </section>
 <section id="імпорт-власних-файлів-до-google-colab" class="level2" data-number="D.5">
 <h2 data-number="D.5" class="anchored" data-anchor-id="імпорт-власних-файлів-до-google-colab"><span class="header-section-number">D.5</span> Імпорт власних файлів до Google Colab</h2>
-<p>Буває так, що виникає необхідність у роботі локальними файлами у форматі <code>.txt</code> або <code>.csv</code>, які можуть містити результати ваших власних вимірювань. Тоді потребується імпортувати їх до хмарного середовища Colab. Для цього переходимо до панелі меню з лівої сторони вашого середовища й натискаємо на пункт <code>Files</code>:</p>
+<p>Буває так, що виникає необхідність у роботі з локальними файлами у форматі <code>.txt</code> або <code>.csv</code>, які можуть містити результати ваших власних вимірювань. Тоді потребується імпортувати їх до хмарного середовища Colab. Для цього переходимо до панелі меню з лівої сторони вашого середовища й натискаємо на пункт <code>Files</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_21.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_21.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Бачимо, що за замовчуванням Google Colab відображає вміст вашого хмарного середовища та перелік системних файлів. Для імпорту власного файлу треба натиснути на перший значок із чотирьох, що зв’явилися в розгорнотому вікна. Потрібне для натиску значок виділений на скріншоті нижче:</p>
+<p>Бачимо, що за замовчуванням Google Colab відображає вміст вашого хмарного середовища та перелік системних файлів. Для імпорту власного файлу треба натиснути на перший значок із чотирьох, що зв’явилися в розгорнотому вікні. Потрібний для натиску значок виділений на скріншоті нижче:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="Images\ap4\Screenshot_22.jpg" class="img-fluid figure-img" style="width:80.0%"></p>
+<p><img src="Images\ap4\Screenshot_22.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
-<p>Після натиску вибираємо потрібний для роботи файл і натискаємо <code>Open</code>. У списку файлів має з’явитися обраний нами файл:</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<p>Після вибору потрібного для роботи файлу тиснемо на <code>Open</code>. У списку файлів має з’явитися обраний нами файл:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_23.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_24.jpg" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>Якщо, наприклад, потребується зчитати даний файл із використанням методу <code>pd.read_csv()</code> бібліотеки Pandas, нам треба скопіювати шлях до зчитаного файлу. Для цього треба виділити файл курсивом миші й натиснути на трикрапку. Після там має з’явитися пункт <code>Copy path</code>. Натиснувши на нього, можна підставляти шлях до методу змінної <code>path</code>, яка далі підставляється до методу <code>pd.read_csv()</code>:</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_25.jpg" class="img-fluid"></p>
+<p><img src="Images\ap4\Screenshot_23.jpg" class="img-fluid" style="width:40.0%"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="Images\ap4\Screenshot_26.jpg" class="img-fluid"></p>
+<p><img src="Images\ap4\Screenshot_24.jpg" class="img-fluid" style="width:40.0%"></p>
+</div>
+</div>
+</div>
+<p>Якщо, наприклад, потребується зчитати даний файл із використанням методу <code>pd.read_csv()</code> бібліотеки Pandas, нам треба скопіювати шлях до зчитаного файлу. Для цього виділяємо файл курсором миші й натискаємо на вспливаючу трикрапку. Там має з’явитися пункт <code>Copy path</code>. Натиснувши на нього, можна підставляти шлях до методу змінної <code>path</code>, яка далі підставляється до методу <code>pd.read_csv()</code>:</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Images\ap4\Screenshot_25.jpg" class="img-fluid" style="width:40.0%"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="Images\ap4\Screenshot_26.jpg" class="img-fluid" style="width:40.0%"></p>
 </div>
 </div>
 </div>
@@ -693,6 +724,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -761,13 +819,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -802,18 +862,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -845,11 +894,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -859,8 +947,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -872,7 +969,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -916,6 +1136,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -941,6 +1162,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1002,12 +1249,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./appc.html" class="pagination-link">
+      <a href="./appc.html" class="pagination-link" aria-label="Основи Jupyter Notebook">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Основи Jupyter Notebook</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
+      <a href="./references.html" class="pagination-link" aria-label="Список рекомендованої літератури">
         <span class="nav-page-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">Список рекомендованої літератури</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1016,4 +1263,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/appd.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

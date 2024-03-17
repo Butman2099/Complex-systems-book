@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 8&nbsp; Лабораторна робота № 8</title>
+<title>Моделювання складних систем у Python – 8&nbsp; Лабораторна робота № 8</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -76,7 +77,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -111,17 +118,45 @@ div.csl-indent {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -132,12 +167,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -147,13 +182,13 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -299,7 +334,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -325,7 +360,7 @@ div.csl-indent {
   <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">8.4</span> Завдання для самостійної роботи</a></li>
   <li><a href="#контрольні-запитання" id="toc-контрольні-запитання" class="nav-link" data-scroll-target="#контрольні-запитання"><span class="header-section-number">8.5</span> Контрольні запитання</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_8.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_8.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -337,7 +372,7 @@ div.csl-indent {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -345,7 +380,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p><strong>Тема.</strong> Дослідження процесів самоорганізації в складних системах із використання теорії випадкових матриць</p>
 <p><strong>Мета.</strong> Навчитись використовувати методи теорії випадкових матриць для дослідження колективних процесів у складних системах</p>
@@ -400,9 +437,9 @@ P_{rm}(\lambda) = \frac{Q}{2\pi}\frac{\sqrt{(\lambda_{+} - \lambda)(\lambda - \l
 <p><span id="eq-8-7"><span class="math display">\[
 \lambda_{\pm} = 1 + 1/Q \pm 2\sqrt{1/Q}.
 \tag{8.7}\]</span></span></p>
-<p>Вираз (<a href="#eq-8-6"><span>8.6</span></a>) є точним для випадку розподілених за Гаусом матричних елементів <span class="math inline">\(a_{im}\)</span>.</p>
+<p>Вираз (<a href="#eq-8-6" class="quarto-xref"><span>8.6</span></a>) є точним для випадку розподілених за Гаусом матричних елементів <span class="math inline">\(a_{im}\)</span>.</p>
 <p>Порівняємо розподіл власних значень <span class="math inline">\(P(\lambda)\)</span> для <span class="math inline">\(C\)</span> з <span class="math inline">\(P_{rm}(\lambda)\)</span>. Для цього обчислимо власні значення <span class="math inline">\(\lambda_i\)</span> матриці <span class="math inline">\(C\)</span>, причому <span class="math inline">\(\lambda_i\)</span> впорядкуємо за зростанням (<span class="math inline">\(\lambda_{i+1} &gt; \lambda_{i}\)</span>). При дослідженнях зверніть увагу на присутність чіткої “великої частини” власних значень, що спадають у межах границь <span class="math inline">\([\lambda_{-}, \lambda_{+}]\)</span> для <span class="math inline">\(P_{rm}(\lambda)\)</span>. Також зверніть увагу на відхилення для деяких найбільших і найменших власних значень отриманих за допомогою ТВМ.</p>
-<p>Оскільки (<a href="#eq-8-6"><span>8.6</span></a>) є таким, що строго відповідає лише для <span class="math inline">\(L \to \infty\)</span> і <span class="math inline">\(N \to \infty\)</span>, необхідно перевірити також відхилення від ідеального випадку, оскільки робота проводиться завжди зі <strong>скінченими</strong> рядами. При дослідженнях виявляється, що для кількох найбільших (найменших) власних значень ефект впливу скінчених величин <span class="math inline">\(L\)</span> і <span class="math inline">\(N\)</span> відсутній.</p>
+<p>Оскільки (<a href="#eq-8-6" class="quarto-xref"><span>8.6</span></a>) є таким, що строго відповідає лише для <span class="math inline">\(L \to \infty\)</span> і <span class="math inline">\(N \to \infty\)</span>, необхідно перевірити також відхилення від ідеального випадку, оскільки робота проводиться завжди зі <strong>скінченими</strong> рядами. При дослідженнях виявляється, що для кількох найбільших (найменших) власних значень ефект впливу скінчених величин <span class="math inline">\(L\)</span> і <span class="math inline">\(N\)</span> відсутній.</p>
 </section>
 <section id="розподіл-власних-векторів" class="level3" data-number="8.1.3">
 <h3 data-number="8.1.3" class="anchored" data-anchor-id="розподіл-власних-векторів"><span class="header-section-number">8.1.3</span> Розподіл власних векторів</h3>
@@ -429,7 +466,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <section id="хід-роботи" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">8.2</span> Хід роботи</h2>
 <p>Імпортуємо необхідні бібліотеки:</p>
-<div class="cell" data-execution_count="2">
+<div id="acc545ce" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.gridspec <span class="im">as</span> gridspec</span>
@@ -443,7 +480,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо стиль рисунків:</p>
-<div class="cell" data-execution_count="3">
+<div id="6020b6f3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -464,7 +501,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виконуємо парсинг та фільтрацію заголовків акцій компаній:</p>
-<div class="cell" data-execution_count="4">
+<div id="fa94234e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'authority'</span>: <span class="st">'api.nasdaq.com'</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'accept'</span>: <span class="st">'application/json, text/plain, */*'</span>,</span>
@@ -491,6 +528,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[<span class="op">~</span>df[<span class="st">'symbol'</span>].<span class="bu">str</span>.contains(<span class="st">"\/|\.|\^"</span>)]</span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+<div>
 <div>
 
 
@@ -594,8 +632,9 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 </div>
+</div>
 <p>Фільтруємо та сортуємо заголовків акцій за їх капіталізацією:</p>
-<div class="cell" data-execution_count="5">
+<div id="b0e1a2d0" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cust_filter(mkt_cap):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">'M'</span> <span class="kw">in</span> mkt_cap:</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(mkt_cap[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])</span>
@@ -610,6 +649,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.sort_values(<span class="st">'marketCap'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 
 
@@ -713,8 +753,9 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 </div>
+</div>
 <p>Визначаємо найпередовіші акцій за їх капіталізацією:</p>
-<div class="cell" data-execution_count="6">
+<div id="373658d9" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>top <span class="op">=</span> <span class="dv">200</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tickers_list <span class="op">=</span> df.iloc[:top][<span class="st">'symbol'</span>].tolist()</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tickers_list[:<span class="dv">10</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -732,7 +773,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 <p>Зчитуємо дані з Yahoo Finance згідно створенного списку акцій:</p>
-<div class="cell" data-execution_count="7">
+<div id="36c31d28" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2001-12-31"</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2024-02-29"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>data_init <span class="op">=</span> yf.download(tickers_list, start, end)[<span class="st">"Adj Close"</span>]</span>
@@ -740,7 +781,7 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі нам потребується обрати фінансовий індекс для порівняння з розрахованими індикаторами. Далі надається список усіх доступних для нас акцій:</p>
-<div class="cell" data-execution_count="40">
+<div id="99e26cbb" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> <span class="st">'AAPL'</span>             <span class="co"># підпис по вісі Оу           </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data_init.columns.values</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -764,12 +805,13 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
        'WFC', 'WMT', 'XOM', 'YUM'], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="1fb658e6" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>perc <span class="op">=</span> <span class="fl">5.0</span> </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>min_count <span class="op">=</span>  <span class="bu">int</span>(((<span class="dv">100</span><span class="op">-</span>perc)<span class="op">/</span><span class="dv">100</span>)<span class="op">*</span>data_init.shape[<span class="dv">0</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>data_init <span class="op">=</span> data_init.dropna(axis<span class="op">=</span><span class="dv">1</span>, thresh<span class="op">=</span>min_count)</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>data_init</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
+<div>
 <div>
 
 
@@ -1096,10 +1138,12 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+</div>
+<div id="e3b2cf88" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_init <span class="op">=</span> data_init.dropna(axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data_init</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
+<div>
 <div>
 
 
@@ -1426,10 +1470,12 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+</div>
+<div id="223f3d40" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> data_init.T</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div>
 
 
@@ -1756,10 +1802,11 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 </div>
+</div>
 <section id="знаходження-коефіцієнтів-матриці-крос-кореляцій-1" class="level3" data-number="8.2.1">
 <h3 data-number="8.2.1" class="anchored" data-anchor-id="знаходження-коефіцієнтів-матриці-крос-кореляцій-1"><span class="header-section-number">8.2.1</span> Знаходження коефіцієнтів матриці крос-кореляцій</h3>
 <p>Перш за все нам потребується процедура для перетворення ряду до потрібного нам виду. Для цього визначимо функцію <code>transformation()</code>. З її допомогою для всього ряду та у віконній процедурі будемо рахувати прибутковості та всі необхідні індикатори.</p>
-<div class="cell" data-execution_count="12">
+<div id="5a0dbf61" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    for_rmt <span class="op">=</span> signal.copy()</span>
@@ -1789,16 +1836,16 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rmt</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="ffd3dd00" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span> <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>log_ret <span class="op">=</span> transformation(data, <span class="bu">type</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+<div id="40909d96" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>N, T <span class="op">=</span> log_ret.shape</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Будуємо матрицю кореляцій для матриці прибутковостей наших активів:</p>
-<div class="cell" data-execution_count="15">
+<div id="7768c4ce" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_cross_corr(data):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    C <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span>T)<span class="op">*</span>np.dot(data, data.T)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    di <span class="op">=</span> np.diag_indices(N)</span>
@@ -1808,18 +1855,18 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> C, ccoef_flat</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="dd2f2033" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>C, ccoef_flat <span class="op">=</span> calc_cross_corr(log_ret)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>і матрицю кореляцій для перемішаної матриці прибутковостей:</p>
-<div class="cell" data-execution_count="18">
+<div id="8abee2ac" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>random_stocks <span class="op">=</span> np.random.normal(size<span class="op">=</span>(N,T))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>R, ccoef_flat_rand <span class="op">=</span> calc_cross_corr(random_stocks)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="19">
+<div id="cell-fig-matrix-cor" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>gs <span class="op">=</span> gridspec.GridSpec(<span class="dv">2</span>, <span class="dv">2</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1843,23 +1890,27 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>fig.align_labels()</span>
 <span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-matrix-cor" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-matrix-cor-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.1: Карти полів кореляцій вихідної і перемішаної матриць. У нижній частині рисунку представлено порівняння розподілів значень коефіцієнтів кореляції вихідної та перемішаної матриць</figcaption>
+<div id="fig-matrix-cor" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-matrix-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-matrix-cor-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-matrix-cor-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.1: Карти полів кореляцій вихідної і перемішаної матриць. У нижній частині рисунку представлено порівняння розподілів значень коефіцієнтів кореляції вихідної та перемішаної матриць
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-matrix-cor">Рис.&nbsp;<span>8.1</span></a> видно, що розподіл коефіцієнтів кореляції для вихідної матриці значно відхиляється розподілу для випадкової матриці. Можна помітити, що <span class="math inline">\(P^{init}(C_{ij})\)</span> представляється доволі розтягненим в діапазоні <span class="math inline">\(C_{ij}\in [0.1, 0.8]\)</span>, що вказує на те, що достатньо багато досліджуваних активів досить сильно відрізняють один від одного. Можна виокремити активи, які характеризуються досить значним ступенем лінійної залежності по відношенню до більності активів на протязі значного часу існування, а є такі активи, які проявляють лінійну залежність лише в конкретних ринкових умовах. Тим не менш, увесь ринок характеризується досить значним ступенем детермінованості.</p>
+<p>На <a href="#fig-matrix-cor" class="quarto-xref">Рис.&nbsp;<span>8.1</span></a> видно, що розподіл коефіцієнтів кореляції для вихідної матриці значно відхиляється розподілу для випадкової матриці. Можна помітити, що <span class="math inline">\(P^{init}(C_{ij})\)</span> представляється доволі розтягненим в діапазоні <span class="math inline">\(C_{ij}\in [0.1, 0.8]\)</span>, що вказує на те, що достатньо багато досліджуваних активів досить сильно відрізняють один від одного. Можна виокремити активи, які характеризуються досить значним ступенем лінійної залежності по відношенню до більності активів на протязі значного часу існування, а є такі активи, які проявляють лінійну залежність лише в конкретних ринкових умовах. Тим не менш, увесь ринок характеризується досить значним ступенем детермінованості.</p>
 </section>
 <section id="розподіл-власних-значень-та-векторів" class="level3" data-number="8.2.2">
 <h3 data-number="8.2.2" class="anchored" data-anchor-id="розподіл-власних-значень-та-векторів"><span class="header-section-number">8.2.2</span> Розподіл власних значень та векторів</h3>
-<div class="cell" data-execution_count="20">
+<div id="1ee159f1" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_lambd_eig(C):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.linalg.eig(C)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="f303fa90" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lambdas, u <span class="op">=</span> calc_lambd_eig(C)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lambdas_rand, u_rand <span class="op">=</span> calc_lambd_eig(R)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1876,12 +1927,12 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 </div>
 </div>
 <p>Генеруємо 1000 випадкових значень в діапазоні від <span class="math inline">\(\lambda_{-}\)</span> до <span class="math inline">\(\lambda_{+}\)</span>, і генеруємо <span class="math inline">\(P_{rm}(\lambda)\)</span>.</p>
-<div class="cell" data-execution_count="22">
+<div id="ce846065" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lambda_random <span class="op">=</span> np.linspace(lambda_minus, lambda_plus, <span class="dv">1000</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>P_rm <span class="op">=</span> (Q<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>np.pi))<span class="op">*</span>np.sqrt((lambda_plus<span class="op">-</span>lambda_random)<span class="op">*</span>(lambda_random<span class="op">-</span>lambda_minus))<span class="op">/</span>lambda_random</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="23">
+<div id="cell-fig-lambda" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>))</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(lambdas, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{init}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(lambdas_rand, bins<span class="op">=</span><span class="st">'auto'</span>, density<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="st">'$P^</span><span class="sc">{rand}</span><span class="st">_{\it</span><span class="sc">{empiric}</span><span class="st">}$'</span>)</span>
@@ -1902,17 +1953,21 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-lambda" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-lambda-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.2: Щільність розподілу ймовірностей для матриці прибутковостей фінансових активів <span class="math inline">\(P_{empiric}^{init}\)</span> та випадкової матриці <span class="math inline">\(P_{empiric}^{rand}\)</span>. Другий рисунок представляє щільність розподілу, що прогнозується ТВМ <span class="math inline">\((P_{RMT})\)</span></figcaption>
+<div id="fig-lambda" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lambda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-lambda-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lambda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.2: Щільність розподілу ймовірностей для матриці прибутковостей фінансових активів <span class="math inline">\(P_{empiric}^{init}\)</span> та випадкової матриці <span class="math inline">\(P_{empiric}^{rand}\)</span>. Другий рисунок представляє щільність розподілу, що прогнозується ТВМ <span class="math inline">\((P_{RMT})\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-lambda">Рис.&nbsp;<span>8.2</span></a> видно, що розподіл <span class="math inline">\(\lambda_i\)</span> значно відхиляється від тієї частки, що відповідає випадковій матриці крос-корреляцій (<span class="math inline">\(P^{rand}_{empiric}\)</span>). Для вихідного розподілу видно, що <span class="math inline">\(\lambda_{max}\)</span> значно відхиляється від передбачення ТВМ. Для <span class="math inline">\(P^{init}_{empiric}\)</span> знаходяться і такі власні значення, що менші за ті, що знаходяться на нижній границі випадкової матриці. Загалом, така закономірність вказує на те, що на ринку є один або декілька індексів, що регулюють динаміку всього ринку.</p>
-<p>На <a href="#fig-eigen">Рис.&nbsp;<span>8.3</span></a> представлено щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей і випадкової матриці при <span class="math inline">\(\lambda_{1}\)</span>, <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span>.</p>
-<div class="cell" data-execution_count="24">
+<p>На <a href="#fig-lambda" class="quarto-xref">Рис.&nbsp;<span>8.2</span></a> видно, що розподіл <span class="math inline">\(\lambda_i\)</span> значно відхиляється від тієї частки, що відповідає випадковій матриці крос-корреляцій (<span class="math inline">\(P^{rand}_{empiric}\)</span>). Для вихідного розподілу видно, що <span class="math inline">\(\lambda_{max}\)</span> значно відхиляється від передбачення ТВМ. Для <span class="math inline">\(P^{init}_{empiric}\)</span> знаходяться і такі власні значення, що менші за ті, що знаходяться на нижній границі випадкової матриці. Загалом, така закономірність вказує на те, що на ринку є один або декілька індексів, що регулюють динаміку всього ринку.</p>
+<p>На <a href="#fig-eigen" class="quarto-xref">Рис.&nbsp;<span>8.3</span></a> представлено щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей і випадкової матриці при <span class="math inline">\(\lambda_{1}\)</span>, <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span>.</p>
+<div id="cell-fig-eigen" class="cell" data-scrolled="false" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(u[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{init}</span><span class="vs">$'</span>)</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(u_rand[:, <span class="dv">0</span>], bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, label<span class="op">=</span><span class="vs">r'$\rho(u)_</span><span class="sc">{empiric}</span><span class="vs">^</span><span class="sc">{rand}</span><span class="vs">$'</span>)</span>
@@ -1941,28 +1996,32 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-eigen" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-eigen-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.3: Щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей і випадкової матриці при <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span></figcaption>
+<div id="fig-eigen" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eigen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-eigen-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eigen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.3: Щільність розподілу ймовірностей компонент власних векторів вихідної матриці прибутковостей і випадкової матриці при <span class="math inline">\(\lambda_1\)</span>, <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-eigen">Рис.&nbsp;<span>8.3</span></a> видно, що компоненти власного вектора при найбільшому власному значень значно відхиляються від передбачення ТВМ, що вказує на значний ступінь впливовості індексу, який відповідає <span class="math inline">\(\lambda_{1}\)</span>. При <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span> розподіл компонент власних векторів вихідних значень починає збігатися до розподілу випадкових значень, що говорить про незначний вплив індексів, яким відповідають ці власні значення. Оскільки розподіл компонент їх векторів близький до ТВМ, можна сказати, що вони вносять найбільший шум у динаміку ринку.</p>
-<p>На <a href="#fig-ipr">Рис.&nbsp;<span>8.4</span></a> представлено ОВУ для вихідної матриці крос-корреляцій та випадкової.</p>
+<p>На <a href="#fig-eigen" class="quarto-xref">Рис.&nbsp;<span>8.3</span></a> видно, що компоненти власного вектора при найбільшому власному значень значно відхиляються від передбачення ТВМ, що вказує на значний ступінь впливовості індексу, який відповідає <span class="math inline">\(\lambda_{1}\)</span>. При <span class="math inline">\(\lambda_{30}\)</span> та <span class="math inline">\(\lambda_{70}\)</span> розподіл компонент власних векторів вихідних значень починає збігатися до розподілу випадкових значень, що говорить про незначний вплив індексів, яким відповідають ці власні значення. Оскільки розподіл компонент їх векторів близький до ТВМ, можна сказати, що вони вносять найбільший шум у динаміку ринку.</p>
+<p>На <a href="#fig-ipr" class="quarto-xref">Рис.&nbsp;<span>8.4</span></a> представлено ОВУ для вихідної матриці крос-корреляцій та випадкової.</p>
 </section>
 <section id="обернене-відношення-участі-1" class="level3" data-number="8.2.3">
 <h3 data-number="8.2.3" class="anchored" data-anchor-id="обернене-відношення-участі-1"><span class="header-section-number">8.2.3</span> Обернене відношення участі</h3>
-<div class="cell" data-execution_count="25">
+<div id="f8cb8a09" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_ipr(u):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(u<span class="op">**</span><span class="dv">4</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="b5165d74" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>IPR <span class="op">=</span> calc_ipr(u)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>IPR_rand <span class="op">=</span> calc_ipr(u_rand)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="cell-fig-ipr" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>ax.scatter(lambdas, IPR, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="vs">r'$IPR_</span><span class="sc">{init}</span><span class="vs">$'</span>, s<span class="op">=</span><span class="dv">10</span><span class="op">**</span><span class="dv">2</span>, marker<span class="op">=</span><span class="st">'x'</span>)</span>
@@ -1975,15 +2034,19 @@ I^{k} \equiv \sum_{l=1}^{N}\left[ u_{l}^{k} \right]^4,
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-ipr" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-ipr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.4: ОВУ для вихідної та випадкової матриць крос-корреляцій</figcaption>
+<div id="fig-ipr" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ipr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-ipr-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ipr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.4: ОВУ для вихідної та випадкової матриць крос-корреляцій
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-ipr">Рис.&nbsp;<span>8.4</span></a> видно, що ОВУ для, наприклад, випадкової матриці концентрується в межах <span class="math inline">\(\lambda_i \approx 10^0\)</span>. Для даних, що значно відхиляються від випадкових, ОВУ має довгі хвости, які виходять далеко за межі передбачень ТВМ. Для набільшого власного вектора ОВУ локалізується далеко в правому хвості розподілу. Також видно, що деякі власні значення мають <span class="math inline">\(IRP \approx 0.25\)</span>. Це говорить про те, що компоненти деяких векторів розподілені асиметрично, що може вказувати на деяких ступінь впливу фондових індексів, яким властиві дані вектори.</p>
+<p>На <a href="#fig-ipr" class="quarto-xref">Рис.&nbsp;<span>8.4</span></a> видно, що ОВУ для, наприклад, випадкової матриці концентрується в межах <span class="math inline">\(\lambda_i \approx 10^0\)</span>. Для даних, що значно відхиляються від випадкових, ОВУ має довгі хвости, які виходять далеко за межі передбачень ТВМ. Для набільшого власного вектора ОВУ локалізується далеко в правому хвості розподілу. Також видно, що деякі власні значення мають <span class="math inline">\(IRP \approx 0.25\)</span>. Це говорить про те, що компоненти деяких векторів розподілені асиметрично, що може вказувати на деяких ступінь впливу фондових індексів, яким властиві дані вектори.</p>
 </section>
 <section id="коефіцієнт-поглинання" class="level3" data-number="8.2.4">
 <h3 data-number="8.2.4" class="anchored" data-anchor-id="коефіцієнт-поглинання"><span class="header-section-number">8.2.4</span> Коефіцієнт поглинання</h3>
@@ -1996,7 +2059,7 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <p>Загальний підхід полягає в упорядкуванні власних значень від найвищого до найнижчого.</p>
 <p>Після сортування власних значень постає питання: “яку кількість найбільш інформативних власних компонент треба вибрати для розрахунку коефіцієнту поглинання?”. Корисною мірою є так звана “врахована (пояснена) дисперсія”, яка може бути обчислена за власними значеннями. Пояснена дисперсія говорить нам, яку частину інформації (дисперсії) можна віднести до кожної із головних компонент.</p>
 <p>Визначимо слідуючу функцію для коефіцієнту поглинання:</p>
-<div class="cell" data-execution_count="28">
+<div id="357c979d" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ar(lambdas, proc):</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># сортуємо власні значення у спадному порядку</span></span>
@@ -2014,8 +2077,8 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># повертаємо коефіцієнт поглинання та кількість значень, що пояснюють обраний відсоток варіації</span></span>
 <span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(selected_lambdas)<span class="op">/</span>np.<span class="bu">sum</span>(sorted_lambdas), <span class="bu">len</span>(selected_lambdas)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Розглянемо, як варіюється коефіцієнт поглинання при різних значеннях поясненої варіації власними значеннями матриці кореляцій. На <a href="#fig-ar">Рис.&nbsp;<span>8.5</span></a> представлено залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових. Також представлено залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток.</p>
-<div class="cell" data-execution_count="29">
+<p>Розглянемо, як варіюється коефіцієнт поглинання при різних значеннях поясненої варіації власними значеннями матриці кореляцій. На <a href="#fig-ar" class="quarto-xref">Рис.&nbsp;<span>8.5</span></a> представлено залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових. Також представлено залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток.</p>
+<div id="cell-fig-ar" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>proc_variance <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="fl">0.99</span>, <span class="dv">100</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>ar_init <span class="op">=</span> np.array([ar(lambdas, proc)[<span class="dv">0</span>] <span class="cf">for</span> proc <span class="kw">in</span> proc_variance])</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ar_rand <span class="op">=</span> np.array([ar(lambdas_rand, proc)[<span class="dv">0</span>] <span class="cf">for</span> proc <span class="kw">in</span> proc_variance])</span>
@@ -2040,20 +2103,24 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-ar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-ar-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.5: Залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових (a). Залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток (b)</figcaption>
+<div id="fig-ar" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-ar-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.5: Залежність коефіцієнта поглинання від різних значень поясненої варіації власними значеннями матриць кореляції вихідних прибутковостей та випадкових (a). Залежність кількості поясненої варіації від кількості власних значень, що пояснюють такий відсоток (b)
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як ми можемо бачити на <a href="#fig-ar">Рис.&nbsp;<span>8.5</span></a>, коефіцієнт поглинання для вихідної матриці кореляцій залишається сталим при перших 40% варіації. На рисунку справа видно, що лише одного власного значення достатньо для опису майже половини всього ринку. Для випадкової матриці кількість власних значень необхідних для опису системи зростає прямо пропоційно відсотку варіації. Отже, для нашої задачі при розрахунку коефіцієнту поглинання достатньо буде взяти до 40% варіації при врахуванні кількості необхідних власних значень у чисельнику (<a href="#eq-8-9"><span>8.9</span></a>).</p>
+<p>Як ми можемо бачити на <a href="#fig-ar" class="quarto-xref">Рис.&nbsp;<span>8.5</span></a>, коефіцієнт поглинання для вихідної матриці кореляцій залишається сталим при перших 40% варіації. На рисунку справа видно, що лише одного власного значення достатньо для опису майже половини всього ринку. Для випадкової матриці кількість власних значень необхідних для опису системи зростає прямо пропоційно відсотку варіації. Отже, для нашої задачі при розрахунку коефіцієнту поглинання достатньо буде взяти до 40% варіації при врахуванні кількості необхідних власних значень у чисельнику (<a href="#eq-8-9" class="quarto-xref"><span>8.9</span></a>).</p>
 </section>
 <section id="віконна-процедура" class="level3" data-number="8.2.5">
 <h3 data-number="8.2.5" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">8.2.5</span> Віконна процедура</h3>
 <p>Перш ніж розпочинати розрахунки визначимо функцію для побудови графіків. Вона буде виводити один із часових рядів досліджуваної бази акцій компаній та розраховані індикатори. Ми будемо виводити як двовимірні, так і тривимірні графіки.</p>
-<div class="cell" data-execution_count="30">
+<div id="e6872151" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_2d(time_ser_index, </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>            time_ser_values,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>            y1_values,  </span>
@@ -2095,7 +2162,7 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="0f31c59d" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>        <span class="co"># розмір вікна</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>           <span class="co"># крок вікна</span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>        <span class="co"># вид ряду: </span></span>
@@ -2137,7 +2204,7 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a>absorb_vals_init <span class="op">=</span> []</span>
 <span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a>absorb_vals_rand <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="70dec7aa" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -2213,7 +2280,7 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <pre><code>100%|██████████| 5089/5089 [04:04&lt;00:00, 20.79it/s]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="ebec7298" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>ind_names <span class="op">=</span> [<span class="st">'avg_corr_init'</span>, <span class="st">'lambda_max'</span>, <span class="st">'ar'</span>]</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>indicators <span class="op">=</span> [mean_corr_init, lambdas_vals_max_init, absorb_vals_init]</span>
@@ -2226,7 +2293,7 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 </div>
 <section id="середній-коефіцієнт-крос-кореляцій" class="level4" data-number="8.2.5.1">
 <h4 data-number="8.2.5.1" class="anchored" data-anchor-id="середній-коефіцієнт-крос-кореляцій"><span class="header-section-number">8.2.5.1</span> Середній коефіцієнт крос-кореляцій</h4>
-<div class="cell" data-execution_count="41">
+<div id="cell-fig-wind-crosscorr" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"avg_corr_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>plot_2d(data_init.loc[:, ylabel].index[window:length:tstep],</span>
@@ -2238,17 +2305,21 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>        file_name,</span>
 <span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        clr<span class="op">=</span><span class="st">"magenta"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-crosscorr" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-wind-crosscorr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.6: Динаміка індексу цін акцій компанії Apple та середнього показника крос-кореляцій прибутковостей досліджуваних акцій</figcaption>
+<div id="fig-wind-crosscorr" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wind-crosscorr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-wind-crosscorr-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-crosscorr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.6: Динаміка індексу цін акцій компанії Apple та середнього показника крос-кореляцій прибутковостей досліджуваних акцій
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-wind-crosscorr">Рис.&nbsp;<span>8.6</span></a> видно, що середній ринковий ступінь крос-корреляцій зростає у (перед-)кризові періоди, що вказує на зростання самоорганізованості ринку. Усі індекси синхронізовано починають “відповідати” на зовнішні чинники, які змушують трейдерів колективно все відкуповувати або розпродавати.</p>
-<p>На <a href="#fig-wind-3d-pc">Рис.&nbsp;<span>8.7</span></a> представлений той самий показник, але у тривимірному просторі.</p>
-<div class="cell" data-execution_count="42">
+<p>На <a href="#fig-wind-crosscorr" class="quarto-xref">Рис.&nbsp;<span>8.6</span></a> видно, що середній ринковий ступінь крос-корреляцій зростає у (перед-)кризові періоди, що вказує на зростання самоорганізованості ринку. Усі індекси синхронізовано починають “відповідати” на зовнішні чинники, які змушують трейдерів колективно все відкуповувати або розпродавати.</p>
+<p>На <a href="#fig-wind-3d-pc" class="quarto-xref">Рис.&nbsp;<span>8.7</span></a> представлений той самий показник, але у тривимірному просторі.</p>
+<div id="cell-fig-wind-3d-pc" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, num_bins)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.arange(window, length, tstep)</span>
@@ -2274,10 +2345,14 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-3d-pc" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-wind-3d-pc-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.7: Віконна функція щільності розподілу коефіцієнтів кореляції вихідної матриці фінансових активів</figcaption>
+<div id="fig-wind-3d-pc" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wind-3d-pc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-wind-3d-pc-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-3d-pc-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.7: Віконна функція щільності розподілу коефіцієнтів кореляції вихідної матриці фінансових активів
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2285,8 +2360,8 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 </section>
 <section id="максимальне-значення-lambda" class="level4" data-number="8.2.5.2">
 <h4 data-number="8.2.5.2" class="anchored" data-anchor-id="максимальне-значення-lambda"><span class="header-section-number">8.2.5.2</span> Максимальне значення <span class="math inline">\(\lambda\)</span></h4>
-<p>На наступному рисунку (<a href="#fig-wind-lambda">Рис.&nbsp;<span>8.8</span></a>) представлено порівняльну динаміку індексу цін акцій компанії Apple та показника <span class="math inline">\(\lambda_{max}\)</span>.</p>
-<div class="cell" data-execution_count="43">
+<p>На наступному рисунку (<a href="#fig-wind-lambda" class="quarto-xref">Рис.&nbsp;<span>8.8</span></a>) представлено порівняльну динаміку індексу цін акцій компанії Apple та показника <span class="math inline">\(\lambda_{max}\)</span>.</p>
+<div id="cell-fig-wind-lambda" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"lambda_max_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>plot_2d(data_init.loc[:, ylabel].index[window:length:tstep],</span>
@@ -2298,20 +2373,24 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>        file_name,</span>
 <span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>        clr<span class="op">=</span><span class="st">"red"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-lambda" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-wind-lambda-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.8: Динаміка індексу цін акцій компанії Apple та показника <span class="math inline">\(\lambda_{max}\)</span></figcaption>
+<div id="fig-wind-lambda" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wind-lambda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-wind-lambda-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-lambda-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.8: Динаміка індексу цін акцій компанії Apple та показника <span class="math inline">\(\lambda_{max}\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-wind-lambda">Рис.&nbsp;<span>8.8</span></a> показує, що <span class="math inline">\(\lambda_{max}\)</span> у схожий спосіб із <span class="math inline">\(\langle C \rangle_{init}\)</span>. Із динаміки даного показника можна зробити висновок, що серед усіх індексів найбільш впливовим є індекс, якому характерно <span class="math inline">\(\lambda_{max}\)</span>. Усі інші індекси, власне значення яких знаходиться в межах теоретичного передбачення ТВМ, вносять лише шумову інформацію в загальну динаміку ринку і реагують на всі інші збурення на фондовому ринку, слідуючи закономірностям найбільш капіталізованих індексів.</p>
+<p><a href="#fig-wind-lambda" class="quarto-xref">Рис.&nbsp;<span>8.8</span></a> показує, що <span class="math inline">\(\lambda_{max}\)</span> у схожий спосіб із <span class="math inline">\(\langle C \rangle_{init}\)</span>. Із динаміки даного показника можна зробити висновок, що серед усіх індексів найбільш впливовим є індекс, якому характерно <span class="math inline">\(\lambda_{max}\)</span>. Усі інші індекси, власне значення яких знаходиться в межах теоретичного передбачення ТВМ, вносять лише шумову інформацію в загальну динаміку ринку і реагують на всі інші збурення на фондовому ринку, слідуючи закономірностям найбільш капіталізованих індексів.</p>
 </section>
 <section id="обернене-відношення-участі-2" class="level4" data-number="8.2.5.3">
 <h4 data-number="8.2.5.3" class="anchored" data-anchor-id="обернене-відношення-участі-2"><span class="header-section-number">8.2.5.3</span> Обернене відношення участі</h4>
-<p>На <a href="#fig-wind-ipr3d">Рис.&nbsp;<span>8.9</span></a> представлено тривимірну віконну динаміка показника оберненого відношення участі</p>
-<div class="cell" data-execution_count="44">
+<p>На <a href="#fig-wind-ipr3d" class="quarto-xref">Рис.&nbsp;<span>8.9</span></a> представлено тривимірну віконну динаміка показника оберненого відношення участі</p>
+<div id="cell-fig-wind-ipr3d" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> log_tick_formatter(val, pos<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="ss">f"$10^</span><span class="ch">{{</span><span class="sc">{</span><span class="bu">int</span>(val)<span class="sc">}</span><span class="ch">}}</span><span class="ss">$"</span>  </span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2341,20 +2420,24 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-ipr3d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-wind-ipr3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.9: Тривимірна віконна динаміка показника оберненого відношення участі</figcaption>
+<div id="fig-wind-ipr3d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wind-ipr3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-wind-ipr3d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-ipr3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.9: Тривимірна віконна динаміка показника оберненого відношення участі
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>ОВУ на <a href="#fig-wind-ipr3d">Рис.&nbsp;<span>8.9</span></a> характеризується значним зростанням у кризові періоди, у той час як для періодів релаксації цей показник залишається на рівні нуля.</p>
+<p>ОВУ на <a href="#fig-wind-ipr3d" class="quarto-xref">Рис.&nbsp;<span>8.9</span></a> характеризується значним зростанням у кризові періоди, у той час як для періодів релаксації цей показник залишається на рівні нуля.</p>
 </section>
 <section id="коефіцієнт-поглинання-1" class="level4" data-number="8.2.5.4">
 <h4 data-number="8.2.5.4" class="anchored" data-anchor-id="коефіцієнт-поглинання-1"><span class="header-section-number">8.2.5.4</span> Коефіцієнт поглинання</h4>
-<p>На <a href="#fig-wind-ar">Рис.&nbsp;<span>8.10</span></a> представлено порівняльну динаміку індексу цін акцій компаній Apple та коефіцієнту поглинання.</p>
-<div class="cell" data-execution_count="45">
+<p>На <a href="#fig-wind-ar" class="quarto-xref">Рис.&nbsp;<span>8.10</span></a> представлено порівняльну динаміку індексу цін акцій компаній Apple та коефіцієнту поглинання.</p>
+<div id="cell-fig-wind-ar" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"ar_symbol=</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_seriestype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>plot_2d(data_init.loc[:, ylabel].index[window:length:tstep],</span>
@@ -2366,15 +2449,19 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 <span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>        file_name,</span>
 <span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>        clr<span class="op">=</span><span class="st">"black"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-ar" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_8_files/figure-html/fig-wind-ar-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;8.10: Динаміка індексу цін акцій компаній Apple та коефіцієнту поглинання</figcaption>
+<div id="fig-wind-ar" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-wind-ar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_8_files/figure-html/fig-wind-ar-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-ar-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;8.10: Динаміка індексу цін акцій компаній Apple та коефіцієнту поглинання
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-wind-ar">Рис.&nbsp;<span>8.10</span></a> видно, що <span class="math inline">\(AR\)</span> зростає під час крахів 2008, 2015-2016, 2021 і 2023 року. Це говорить про те, що в кризові періоди зростає активність одного або декілька індексів, які стають рушієм для усього фондового ринку.</p>
+<p>На <a href="#fig-wind-ar" class="quarto-xref">Рис.&nbsp;<span>8.10</span></a> видно, що <span class="math inline">\(AR\)</span> зростає під час крахів 2008, 2015-2016, 2021 і 2023 року. Це говорить про те, що в кризові періоди зростає активність одного або декілька індексів, які стають рушієм для усього фондового ринку.</p>
 </section>
 </section>
 </section>
@@ -2401,7 +2488,7 @@ AR = \sum_{k=1}^{n}\lambda_k \bigg/ \sum_{k=1}^{N}\lambda_k.
 </ol>
 
 
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-Wigner_1951_1" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">E. P. Wigner, <em><a href="https://doi.org/10.1017/S0305004100027237">On the Statistical Distribution of the Widths and Spacings of Nuclear Resonance Levels</a></em>, Mathematical Proceedings of the Cambridge Philosophical Society <strong>47</strong>, 790 (1951).</div>
 </div>
@@ -2491,6 +2578,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -2557,13 +2671,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2598,18 +2714,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2641,11 +2746,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2655,8 +2799,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2668,7 +2821,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2712,6 +2988,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2737,6 +3014,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2798,12 +3101,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./lab_7.html" class="pagination-link">
+      <a href="./lab_7.html" class="pagination-link" aria-label="Лабораторна робота № 7">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Лабораторна робота № 7</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_9.html" class="pagination-link">
+      <a href="./lab_9.html" class="pagination-link" aria-label="Лабораторна робота № 9">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 9</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2812,4 +3115,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_8.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

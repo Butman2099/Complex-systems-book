@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 9&nbsp; Лабораторна робота № 9</title>
+<title>Моделювання складних систем у Python – 9&nbsp; Лабораторна робота № 9</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -111,14 +118,42 @@ div.csl-indent {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -129,12 +164,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_9.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 9</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_9.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 9</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,13 +179,13 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -296,7 +331,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -314,7 +349,7 @@ div.csl-indent {
   <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">9.3</span> Завдання для самостійної роботи</a></li>
   <li><a href="#контрольні-запитання" id="toc-контрольні-запитання" class="nav-link" data-scroll-target="#контрольні-запитання"><span class="header-section-number">9.4</span> Контрольні запитання</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_9.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_9.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -326,7 +361,7 @@ div.csl-indent {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -334,7 +369,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p><strong>Тема.</strong> Показники Ляпунова та стійкість складних систем</p>
 <p><strong>Мета.</strong> Навчитися розпізавати та передчасно ідентифікувати катастрофічні події, використовуючи показники Ляпунова</p>
@@ -345,11 +382,15 @@ div.csl-indent {
 <section id="показники-ляпунова" class="level3" data-number="9.1.1">
 <h3 data-number="9.1.1" class="anchored" data-anchor-id="показники-ляпунова"><span class="header-section-number">9.1.1</span> Показники Ляпунова</h3>
 <p>Еволюція системи демонструє <em>чутливу залежність</em> від <em>початкових умов</em>. Це означає, що спочатку близькі траєкторії, які розвиваються, можуть швидко відхилятися одна від одної і мати абсолютно різні результати. Відповідно, при малих невизначеностях, які надзвичайно швидко посилюються, довгострокові прогнози виявляються неможливими. З іншого боку, в системі з точками тяжіння або стабільними точками відстань між ними асимптотично зменшується з часом або з кількістю точок, які мають тенденцію до зближення <span class="citation" data-cites="GAVILANMORENO2016434">&nbsp;[<a href="references.html#ref-GAVILANMORENO2016434" role="doc-biblioref">1</a>]</span>.</p>
-<p>Щоб представити ідею більш точно, розглянемо дві послідовні траєкторії — <span class="math inline">\(x(t)\)</span> та наближчого сусіда цієї траєкторії з невеликим зміщенням, <span class="math inline">\(x(t) + \delta(t)\)</span>, де <span class="math inline">\(\delta(t)\)</span> представляє собою мале відхилення в часі <span class="math inline">\(t\)</span>, як показано на <a href="#fig-sensitivity">Рис.&nbsp;<span>9.1</span></a>.</p>
-<div id="fig-sensitivity" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_9\Orbital_instability_(Lyapunov_exponent).png" style="height:12cm" class="figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.1: Розбіжність двох початково близьких траєкторій <span class="citation" data-cites="PRIETOGUERRERO2019193">&nbsp;[<a href="references.html#ref-PRIETOGUERRERO2019193" role="doc-biblioref">2</a>]</span></figcaption>
+<p>Щоб представити ідею більш точно, розглянемо дві послідовні траєкторії — <span class="math inline">\(x(t)\)</span> та наближчого сусіда цієї траєкторії з невеликим зміщенням, <span class="math inline">\(x(t) + \delta(t)\)</span>, де <span class="math inline">\(\delta(t)\)</span> представляє собою мале відхилення в часі <span class="math inline">\(t\)</span>, як показано на <a href="#fig-sensitivity" class="quarto-xref">Рис.&nbsp;<span>9.1</span></a>.</p>
+<div id="fig-sensitivity" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images\lab_9\Orbital_instability_(Lyapunov_exponent).png" style="height:12cm" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sensitivity-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;9.1: Розбіжність двох початково близьких траєкторій <span class="citation" data-cites="PRIETOGUERRERO2019193">&nbsp;[<a href="references.html#ref-PRIETOGUERRERO2019193" role="doc-biblioref">2</a>]</span>
+</figcaption>
 </figure>
 </div>
 <p>Коли динаміка двох початково близьких траєкторій порушується певною подією відстань між ними може зростати експоненційно:</p>
@@ -387,7 +428,7 @@ M_i(\vec{X}(i) - \vec{X}(j)) \approx \vec{X}(i+1) - \vec{X}(j+1).
 <p><span id="eq-9-5"><span class="math display">\[
 \vec{X}(i) = \left[ x(i), x(i+\tau), ..., x(i+(d_M - 1)\tau) \right] = \left[ x(i), x(i+\tau), ..., x(i+d_E - 1) \right],
 \tag{9.5}\]</span></span></p>
-<p>де <span class="math inline">\(\tau=(d_E-1)/(d_M-1)\)</span>. Коли <span class="math inline">\(\tau&gt;1\)</span>, умова (<a href="#eq-9-4"><span>9.4</span></a>) замінюється наступним виразом:</p>
+<p>де <span class="math inline">\(\tau=(d_E-1)/(d_M-1)\)</span>. Коли <span class="math inline">\(\tau&gt;1\)</span>, умова (<a href="#eq-9-4" class="quarto-xref"><span>9.4</span></a>) замінюється наступним виразом:</p>
 <p><span id="eq-9-6"><span class="math display">\[
 M_i(\vec{X}(i) - \vec{X}(j)) \approx \vec{X}(i+\tau) - \vec{X}(j+\tau).
 \tag{9.6}\]</span></span></p>
@@ -402,12 +443,12 @@ M_{1+i\tau}Q_i = Q_{i+1}R_{i+1}, \; \text{для} \; i=0,1,2,... .
 </section>
 <section id="метод-розенштейна" class="level4" data-number="9.1.1.2">
 <h4 data-number="9.1.1.2" class="anchored" data-anchor-id="метод-розенштейна"><span class="header-section-number">9.1.1.2</span> Метод Розенштейна</h4>
-<p>Алгоритм Розенштейна <span class="citation" data-cites="ROSENSTEIN1993117">&nbsp;[<a href="references.html#ref-ROSENSTEIN1993117" role="doc-biblioref">7</a>]</span> використовує метод реконструкції вкладень із часовою затримкою, який передає найважливіші особливості багатовимірного атрактора в один одновимірний часовий ряд деякого скінченного розміру <span class="math inline">\(N\)</span>. Для часового ряду кожен вектор <span class="math inline">\(\vec{X}(i)\)</span> буде представлений подібно до вектора (<a href="#eq-9-5"><span>9.5</span></a>) із розмірністю вкладень <span class="math inline">\(d_E\)</span> і часовою затримкою <span class="math inline">\(\tau\)</span>. Потім на відновленій траєкторії ми ініціалізуємо пошук у просторі станів найближчого сусіда <span class="math inline">\(\vec{X}(j)\)</span> для траєкторії <span class="math inline">\(\vec{X}(i)\)</span>:</p>
+<p>Алгоритм Розенштейна <span class="citation" data-cites="ROSENSTEIN1993117">&nbsp;[<a href="references.html#ref-ROSENSTEIN1993117" role="doc-biblioref">7</a>]</span> використовує метод реконструкції вкладень із часовою затримкою, який передає найважливіші особливості багатовимірного атрактора в один одновимірний часовий ряд деякого скінченного розміру <span class="math inline">\(N\)</span>. Для часового ряду кожен вектор <span class="math inline">\(\vec{X}(i)\)</span> буде представлений подібно до вектора (<a href="#eq-9-5" class="quarto-xref"><span>9.5</span></a>) із розмірністю вкладень <span class="math inline">\(d_E\)</span> і часовою затримкою <span class="math inline">\(\tau\)</span>. Потім на відновленій траєкторії ми ініціалізуємо пошук у просторі станів найближчого сусіда <span class="math inline">\(\vec{X}(j)\)</span> для траєкторії <span class="math inline">\(\vec{X}(i)\)</span>:</p>
 <p><span class="math display">\[
 \delta_i(0) = \min_{\vec{X}(i)} \| \vec{X}(i) - \vec{X}(j) \|, \; \text{для} \; \left| i-j \right| &gt; \text{середній період},
 \]</span></p>
 <p>де <span class="math inline">\(\| \cdot \|\)</span> — це Евклідова норма, <span class="math inline">\(\vec{X}(j)\)</span> — найближча сусідня траєкторія, <span class="math inline">\(\vec{X}(i)\)</span> — розглядувана траєкторія.</p>
-<p>З (<a href="#eq-9-1"><span>9.1</span></a>) ми вже знаємо, що відстань між станами <span class="math inline">\(\vec{X}(i)\)</span> та <span class="math inline">\(\vec{X}(j)\)</span> зростає з часом відповідно до степеневого закону, де <span class="math inline">\(\lambda\)</span> є хорошим наближенням СПЛ. Для подальших оцінок розглянемо логарифм відстані на траєкторії <span class="math inline">\(\ln{\delta_i(k)} \approx \lambda(k\cdot \Delta t) + \ln{c_i}\)</span>, де <span class="math inline">\(\delta_i(k)\)</span> — відстань між <span class="math inline">\(i\)</span>-ою парою найближчих сусідів, визначених рівнянням (<a href="#eq-9-6"><span>9.6</span></a>) через <span class="math inline">\(k\)</span> часових кроків, <span class="math inline">\(c_i\)</span> — початкова відстань між ними, а <span class="math inline">\(\Delta t\)</span> — часовий інтервал між вимірюваннями (період дискретизації часового ряду).</p>
+<p>З (<a href="#eq-9-1" class="quarto-xref"><span>9.1</span></a>) ми вже знаємо, що відстань між станами <span class="math inline">\(\vec{X}(i)\)</span> та <span class="math inline">\(\vec{X}(j)\)</span> зростає з часом відповідно до степеневого закону, де <span class="math inline">\(\lambda\)</span> є хорошим наближенням СПЛ. Для подальших оцінок розглянемо логарифм відстані на траєкторії <span class="math inline">\(\ln{\delta_i(k)} \approx \lambda(k\cdot \Delta t) + \ln{c_i}\)</span>, де <span class="math inline">\(\delta_i(k)\)</span> — відстань між <span class="math inline">\(i\)</span>-ою парою найближчих сусідів, визначених рівнянням (<a href="#eq-9-6" class="quarto-xref"><span>9.6</span></a>) через <span class="math inline">\(k\)</span> часових кроків, <span class="math inline">\(c_i\)</span> — початкова відстань між ними, а <span class="math inline">\(\Delta t\)</span> — часовий інтервал між вимірюваннями (період дискретизації часового ряду).</p>
 <p>Подальший результат цього алгоритму представляє функцію від часу</p>
 <p><span class="math display">\[
 y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
@@ -419,7 +460,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <section id="хід-роботи" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">9.2</span> Хід роботи</h2>
 <p>Розглянемо, як можна використовувати зазначені підходи для розрахунку відповідних хаос-динамічних індикаторів. Спочатку імпортуємо необхідні бібліотеки.</p>
-<div class="cell" data-execution_count="2">
+<div id="cell-14" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
@@ -431,7 +472,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо налаштування формату виведення рисунків.</p>
-<div class="cell" data-execution_count="3">
+<div id="cell-16" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -452,7 +493,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розглянемо значення фондового індексу Доу Джонса за весь період, що представляє Yahoo! Finance. Початкову та кінцеві дати зазначати не будемо.</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-18" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^DJI'</span>                       <span class="co"># Символ індексу</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol)            <span class="co"># вивантажуємо дані</span></span>
@@ -478,7 +519,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 </div>
 <hr>
-<div class="cell">
+<div id="cell-21" class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
@@ -492,7 +533,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-fig-dji-init" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -504,16 +545,20 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_9_files/figure-html/fig-dji-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.2: Динаміка щоденних значень фондового індексу Доу Джонса</figcaption>
+<div id="fig-dji-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_9_files/figure-html/fig-dji-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;9.2: Динаміка щоденних значень фондового індексу Доу Джонса
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Визначимо функцію <code>transformation()</code> для виконання перетворення ряду до прибутковостей або стандартизованих значень:</p>
-<div class="cell" data-execution_count="6">
+<div id="cell-26" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -543,7 +588,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначимо функцію для побудови парних графіків:</p>
-<div class="cell" data-execution_count="7">
+<div id="cell-28" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -611,13 +656,13 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію щодо параметрів, які використовуються для обчислення СПЛ.</li>
 </ul>
 <p>Перед розрахунками виконаємо оновлення бібліотеки <code>neurokit2</code>:</p>
-<div class="cell" data-execution_count="383">
+<div id="cell-32" class="cell" data-execution_count="383">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install <span class="op">--</span>upgrade neurokit2 </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="обчислення-старшого-показника-ляпунова-на-основі-методу-розенштейна" class="level4" data-number="9.2.1.1">
 <h4 data-number="9.2.1.1" class="anchored" data-anchor-id="обчислення-старшого-показника-ляпунова-на-основі-методу-розенштейна"><span class="header-section-number">9.2.1.1</span> Обчислення старшого показника Ляпунова на основі методу Розенштейна</h4>
 <p>Спочатку виконаємо розрахунки для <strong>всього</strong> ряду індексу Доу Джонса:</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-35" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -630,7 +675,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>time_ser_ret <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі визначимо наступні параметри:</p>
-<div class="cell" data-execution_count="9">
+<div id="cell-37" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>d_E <span class="op">=</span> <span class="dv">3</span>                      <span class="co"># розмірність вкладень</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">10</span>                     <span class="co"># часові затримка</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>approach_lyap <span class="op">=</span> <span class="st">"makowski"</span>   <span class="co"># метод для розрахунку старшого показника</span></span>
@@ -638,7 +683,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>sep <span class="op">=</span> <span class="st">"auto"</span>                 <span class="co"># оцінка середнього періоду як величину, обернену до середньої частоти спектра потужності </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>і візуалізуємо результат:</p>
-<div class="cell" data-execution_count="10">
+<div id="cell-fig-dji-divergence" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lle, _ <span class="op">=</span> nk.complexity_lyapunov(signal<span class="op">=</span>time_ser_ret, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                                method<span class="op">=</span>approach_lyap, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                                dimension<span class="op">=</span>d_E, </span>
@@ -647,18 +692,22 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                                separation<span class="op">=</span>sep, </span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                                show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-divergence" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_9_files/figure-html/fig-dji-divergence-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.3: Діаграма розбіжності траєкторій реконструйованого фазового простору індексу Доу Джонса, що представляє розрахований СПЛ</figcaption>
+<div id="fig-dji-divergence" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-divergence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_9_files/figure-html/fig-dji-divergence-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-divergence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;9.3: Діаграма розбіжності траєкторій реконструйованого фазового простору індексу Доу Джонса, що представляє розрахований СПЛ
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-dji-divergence">Рис.&nbsp;<span>9.3</span></a> показано типовий графік (суцільна крива) залежності середньої розбіжності траєкторій від часу <span class="math inline">\(\Delta t\)</span>; помаранчева лінія має нахил, що дорівнює теоретичному значенню <span class="math inline">\(\lambda_{max}\)</span>. Коротка синя ділянка до переходу через червону пунктирну лінію використовується для вилучення найбільшого показника Ляпунова. Як ми можемо бачити, крива змінюється при більших часових періодах, оскільки система обмежена у фазовому просторі і середня дивергенція не може перевищувати “довжину” атрактора. Отриманий показник Ляпунова вказує на те, що індекс Доу Джонса знаходиться на межі між хаосом та стабільність, тобто індекс дивергенції динаміки ряду врівноважується конвергенцією.</p>
+<p>На <a href="#fig-dji-divergence" class="quarto-xref">Рис.&nbsp;<span>9.3</span></a> показано типовий графік (суцільна крива) залежності середньої розбіжності траєкторій від часу <span class="math inline">\(\Delta t\)</span>; помаранчева лінія має нахил, що дорівнює теоретичному значенню <span class="math inline">\(\lambda_{max}\)</span>. Коротка синя ділянка до переходу через червону пунктирну лінію використовується для вилучення найбільшого показника Ляпунова. Як ми можемо бачити, крива змінюється при більших часових періодах, оскільки система обмежена у фазовому просторі і середня дивергенція не може перевищувати “довжину” атрактора. Отриманий показник Ляпунова вказує на те, що індекс Доу Джонса знаходиться на межі між хаосом та стабільність, тобто індекс дивергенції динаміки ряду врівноважується конвергенцією.</p>
 <p>Як ми вже мали змогу переконатись, складні системи мінливі і система з плином часу може проявляти як конвергенцію чи дивергенцію, так і повну незмінність у часі.</p>
 <p>Далі розглянемо динаміку досліджуваної системи з часом у рамках процедури <strong>ковзного вікна</strong>. Визначимо наступні параметри:</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-42" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>            <span class="co"># ширина вікна</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
@@ -679,7 +728,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>LLE <span class="op">=</span> []                <span class="co"># масив для збереження СПЛ</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер можна приступати до віконної процедури:</p>
-<div class="cell" data-execution_count="12">
+<div id="cell-44" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -702,14 +751,14 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div class="cell" data-execution_count="13">
+<div id="cell-46" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"LLE_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_max_len=</span><span class="sc">{</span>max_len<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, LLE)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="14">
+<div id="cell-48" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника Ляпунова в легенді рисунку </span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>label_lyap <span class="op">=</span> <span class="vs">r'$\lambda_</span><span class="sc">{max}</span><span class="vs">$'</span>  </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -721,7 +770,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'red'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>та виводимо результат:</p>
-<div class="cell" data-execution_count="15">
+<div id="cell-fig-dji-wind-lle" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          LLE, </span>
@@ -731,20 +780,24 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-lle" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_9_files/figure-html/fig-dji-wind-lle-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.4: Динаміка індексу Доу Джонса та старшого показника Ляпунова</figcaption>
+<div id="fig-dji-wind-lle" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-lle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_9_files/figure-html/fig-dji-wind-lle-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-lle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;9.4: Динаміка індексу Доу Джонса та старшого показника Ляпунова
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Бачимо (<a href="#fig-dji-wind-lle">Рис.&nbsp;<span>9.4</span></a>), що СПЛ починає спадати в кризові та передкризові стани, що вказує на зростання корельованності досліджуваної динаміки. У момент кризи СПЛ починає зростати, що вказує на зростання дивергенції в кризові періоди.</p>
+<p>Бачимо (<a href="#fig-dji-wind-lle" class="quarto-xref">Рис.&nbsp;<span>9.4</span></a>), що СПЛ починає спадати в кризові та передкризові стани, що вказує на зростання корельованності досліджуваної динаміки. У момент кризи СПЛ починає зростати, що вказує на зростання дивергенції в кризові періоди.</p>
 </section>
 <section id="обчислення-показників-ляпунова-на-основі-методу-екмана" class="level4" data-number="9.2.1.2">
 <h4 data-number="9.2.1.2" class="anchored" data-anchor-id="обчислення-показників-ляпунова-на-основі-методу-екмана"><span class="header-section-number">9.2.1.2</span> Обчислення показників Ляпунова на основі методу Екмана</h4>
 <p>Визначимо наступні параметри:</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-54" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>            <span class="co"># ширина вікна</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
@@ -766,7 +819,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>LE <span class="op">=</span> []                         <span class="co"># масив для збереження ПЛ  </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер переходимо до розрахунків:</p>
-<div class="cell" data-execution_count="17">
+<div id="cell-56" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -789,7 +842,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстових файлах:</p>
-<div class="cell" data-execution_count="18">
+<div id="cell-58" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>LE <span class="op">=</span> np.array(LE)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(d_E):</span>
@@ -797,7 +850,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ss">    d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_d_M=</span><span class="sc">{</span>d_M<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_min_neighbors=</span><span class="sc">{</span>min_neighb<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.txt"</span>, LE[i])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо отримані результати:</p>
-<div class="cell" data-execution_count="19">
+<div id="cell-fig-dji-wind-spec-le" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(LE.shape[<span class="dv">1</span>]<span class="op">+</span><span class="dv">1</span>, <span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>), sharex<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(time_ser.index[window:length:tstep], time_ser.values[window:length:tstep], label<span class="op">=</span>symbol)</span>
@@ -816,25 +869,29 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="ss">    #d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_d_M=</span><span class="sc">{</span>d_M<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_min_neighbors=</span><span class="sc">{</span>min_neighb<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-spec-le" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_9_files/figure-html/fig-dji-wind-spec-le-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.5: Динаміка індексу Доу Джонса та спектра показників Ляпунова</figcaption>
+<div id="fig-dji-wind-spec-le" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-spec-le-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_9_files/figure-html/fig-dji-wind-spec-le-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-spec-le-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;9.5: Динаміка індексу Доу Джонса та спектра показників Ляпунова
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як показано на <a href="#fig-dji-wind-spec-le">Рис.&nbsp;<span>9.5</span></a>, спектр показників Ляпунова реагує особливим чином на кризові події фондового ринку. Видно, що, по-перше, <span class="math inline">\(\lambda\)</span> спадає в передкризові періоди та зростає під час кризи. Особливо характерною є дана динаміка перед кризами 1997, 2001, 2008, 2011, 2015, 2020 років. У передкризові періоди спостерігається конвергенція траєкторій у фазовому просторі системі, що говорить про зростання її впорядкованості. Сам кризовий та посткризовий періоди характеризуються дивергенцією, тобто розбіжністю траєкторій системи. По-друге, видно, що, спускаючись від 1-го до 4-го показника Ляпунова, ми поступово втрачаємо інформацію про динаміку системи. Тобто, перші найбільші показники представляються в даному випадку найбільш інформативними. Можливо, у даному випадку, має сенс розглядати лише старший ПЛ.</p>
-<p>На <a href="#fig-dji-wind-spec-le-max">Рис.&nbsp;<span>9.6</span></a> представлено порівняльну динаміку індексу Доу-Джонса та старшого показника Ляпунова на основі методу Екмана.</p>
+<p>Як показано на <a href="#fig-dji-wind-spec-le" class="quarto-xref">Рис.&nbsp;<span>9.5</span></a>, спектр показників Ляпунова реагує особливим чином на кризові події фондового ринку. Видно, що, по-перше, <span class="math inline">\(\lambda\)</span> спадає в передкризові періоди та зростає під час кризи. Особливо характерною є дана динаміка перед кризами 1997, 2001, 2008, 2011, 2015, 2020 років. У передкризові періоди спостерігається конвергенція траєкторій у фазовому просторі системі, що говорить про зростання її впорядкованості. Сам кризовий та посткризовий періоди характеризуються дивергенцією, тобто розбіжністю траєкторій системи. По-друге, видно, що, спускаючись від 1-го до 4-го показника Ляпунова, ми поступово втрачаємо інформацію про динаміку системи. Тобто, перші найбільші показники представляються в даному випадку найбільш інформативними. Можливо, у даному випадку, має сенс розглядати лише старший ПЛ.</p>
+<p>На <a href="#fig-dji-wind-spec-le-max" class="quarto-xref">Рис.&nbsp;<span>9.6</span></a> представлено порівняльну динаміку індексу Доу-Джонса та старшого показника Ляпунова на основі методу Екмана.</p>
 <p>Зберігаємо показник у текстовому файлі:</p>
-<div class="cell" data-execution_count="20">
+<div id="cell-63" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"LE Eckman name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    #d_E=</span><span class="sc">{</span>d_E<span class="sc">}</span><span class="ss">_d_M=</span><span class="sc">{</span>d_M<span class="sc">}</span><span class="ss">_approach=</span><span class="sc">{</span>approach_lyap<span class="sc">}</span><span class="ss">_min_neighbors=</span><span class="sc">{</span>min_neighb<span class="sc">}</span><span class="ss">_separation=</span><span class="sc">{</span>sep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, LE[:, <span class="dv">0</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="21">
+<div id="cell-65" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника Ляпунова в легенді рисунку </span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>label_lyap <span class="op">=</span> <span class="vs">r'$\lambda_</span><span class="sc">{max}</span><span class="vs">$'</span>  </span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -846,7 +903,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'red'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо старший показник Ляпунова:</p>
-<div class="cell" data-execution_count="22">
+<div id="cell-fig-dji-wind-spec-le-max" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>          LE[:, <span class="dv">0</span>], </span>
@@ -856,10 +913,14 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-spec-le-max" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_9_files/figure-html/fig-dji-wind-spec-le-max-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;9.6: Динаміка індексу Доу Джонса та старшого показника Ляпунова отриманого за допомогою методу Екмана</figcaption>
+<div id="fig-dji-wind-spec-le-max" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-spec-le-max-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_9_files/figure-html/fig-dji-wind-spec-le-max-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-spec-le-max-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;9.6: Динаміка індексу Доу Джонса та старшого показника Ляпунова отриманого за допомогою методу Екмана
+</figcaption>
 </figure>
 </div>
 </div>
@@ -889,7 +950,7 @@ y(k, \Delta t) = \frac{1}{\Delta t}\frac{1}{M}\sum_{i=1}^{M}\ln{\delta_i(k)},
 </ol>
 
 
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-GAVILANMORENO2016434" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">C. J. Gavilán-Moreno and G. Espinosa-Paredes, <em><a href="https://doi.org/10.1016/j.net.2016.01.002">Using Largest Lyapunov Exponent to Confirm the Intrinsic Stability of Boiling Water Reactors</a></em>, Nuclear Engineering and Technology <strong>48</strong>, 434 (2016).</div>
 </div>
@@ -973,6 +1034,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1039,13 +1127,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1080,18 +1170,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1123,11 +1202,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1137,8 +1255,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1150,7 +1277,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1194,6 +1444,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1219,6 +1470,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1280,12 +1557,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./lab_8.html" class="pagination-link">
+      <a href="./lab_8.html" class="pagination-link" aria-label="Лабораторна робота № 8">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Лабораторна робота № 8</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_10.html" class="pagination-link">
+      <a href="./lab_10.html" class="pagination-link" aria-label="Лабораторна робота № 10">
         <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1294,4 +1571,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_9.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

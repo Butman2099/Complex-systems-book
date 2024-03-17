@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 2&nbsp; Лабораторна робота № 2</title>
+<title>Моделювання складних систем у Python – 2&nbsp; Лабораторна робота № 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -111,14 +118,42 @@ div.csl-indent {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -129,12 +164,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Лабораторна робота № 2</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Лабораторна робота № 2</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,13 +179,13 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -296,7 +331,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -320,7 +355,7 @@ div.csl-indent {
   <li><a href="#автоматизований-підбір-параметра-розмірності-вкладень-m" id="toc-автоматизований-підбір-параметра-розмірності-вкладень-m" class="nav-link" data-scroll-target="#автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">2.3.2</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_2.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_2.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -332,7 +367,7 @@ div.csl-indent {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -340,7 +375,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p><strong>Тема.</strong> Використання рекурентного аналізу для моделювання і прогнозування нелінійних динамічних властивостей складних систем</p>
 <p><strong>Мета.</strong> Навчитися інструментарію нелінійної динаміки, який відноситься до рекурентних властивостей нестаціонарних динамічних рядів</p>
@@ -368,13 +405,17 @@ x^1(t),x^2(t),...,x^d(t),
 <p>Тут <span class="math inline">\(m\)</span> — розмірність вкладення, <span class="math inline">\(\tau\)</span> — часова затримка (реальна часова затримка визначається як <span class="math inline">\(\tau \cdot \Delta t\)</span>). Топологічні структури відновленої траєкторії зберігаються, якщо <span class="math inline">\(m \geq 2 \cdot d+1\)</span>, де <span class="math inline">\(d\)</span> — розмірність атрактора <span class="citation" data-cites="10.1007/BFb0091924">&nbsp;[<a href="references.html#ref-10.1007/BFb0091924" role="doc-biblioref">2</a>]</span>. На практиці у більшості випадків атрактор може бути відновлений і при <span class="math inline">\(m \leq 2d\)</span>. Затримка, як правило, вибирається апріорно.</p>
 <p>Існує кілька підходів до вибору мінімально достатньої розмірності <span class="math inline">\(m\)</span>, крім аналітичного. Високу ефективність показали методи, засновані на концепції фальшивих найближчих точок (false nearest neighbours, FNN). Суть її заключається у тому, що при зменшенні розмірності вкладення відбувається збільшення кількості фальшивих точок, що потрапляють в околицю будь-якої точки фазового простору. Звідси витікає простий метод — визначення кількості FNN як функції розмірності. Існують і інші методи, засновані на цій концепції, наприклад, визначення відносин відстаней між одними і тими ж сусідніми точками при різних <span class="math inline">\(m\)</span>. Розмірність атрактора також може бути визначена за допомогою крос-кореляційних сум.</p>
 <div id="fig-recurrence" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: center;">
-<p><img src="Images\lab_2\2_1.jpg" class="img-fluid figure-img" style="width:45.0%"> <img src="Images\lab_2\2_2.jpg" class="img-fluid figure-img" style="width:45.0%"></p>
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-recurrence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 100.0%;justify-content: flex-start;">
+<img src="Images\lab_2\2_1.jpg" class="img-fluid figure-img" style="width:45.0%">
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Рис.&nbsp;2.1: Відрізок траєкторії у фазовому просторі системи Рьослера <span class="math inline">\(i\)</span> (a) та відповідний рекурентний графік (b). Вектор фазового простору в точці <span class="math inline">\(j\)</span>, який потрапляє в околицю (сіре коло в (a)) заданого вектора фазового простору вектора в точці <span class="math inline">\(i\)</span> вважається точкою рекурентності (чорна точка на траєкторії в (a)). Вона позначається чорною точкою на рекурентній діаграмі у позиції <span class="math inline">\((i, j)\)</span>. Вектор фазового простору за межами околу (порожнє коло в (a)) позначається білою точкою рекурентній діаграмі</figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-recurrence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.1: Відрізок траєкторії у фазовому просторі системи Рьослера <span class="math inline">\(i\)</span> (a) та відповідний рекурентний графік (b). Вектор фазового простору в точці <span class="math inline">\(j\)</span>, який потрапляє в околицю (сіре коло в (a)) заданого вектора фазового простору вектора в точці <span class="math inline">\(i\)</span> вважається точкою рекурентності (чорна точка на траєкторії в (a)). Вона позначається чорною точкою на рекурентній діаграмі у позиції <span class="math inline">\((i, j)\)</span>. Вектор фазового простору за межами околу (порожнє коло в (a)) позначається білою точкою рекурентній діаграмі
+</figcaption>
 </figure>
 </div>
 </section>
@@ -405,10 +446,14 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Непрактично і, як правило, неможливо знайти повну рекурентність у значенні <span class="math inline">\(\vec x_i \equiv \vec x_j\)</span> (стан динамічної, а особливо — хаотичної системи не повторюється повністю еквівалентно початковому стану, а підходить до нього скільки завгодно близько). Таким чином, рекурентність визначається як достатня близькість стану <span class="math inline">\(\vec x_j\)</span> до стану <span class="math inline">\(\vec x_i\)</span>. Іншими словами, рекурентними є стани <span class="math inline">\(\vec x_j\)</span>, які потрапляють в <span class="math inline">\(m\)</span>-вимірну околицю з радіусом <span class="math inline">\(\varepsilon_i\)</span> і центром в <span class="math inline">\(\vec x_i\)</span>. Ці точки <span class="math inline">\(\vec x_j\)</span> називаються <strong>рекурентними точками</strong> (recurrence points).</p>
 <p>Оскільки <span class="math inline">\(R_{i,i}=1\)</span>, <span class="math inline">\(i=1,...,N\)</span> за визначенням, то рекурентна діаграма завжди міститьчорну діагональну лінію — лінію ідентичності (line of identity, LOI) під кутом <span class="math inline">\(\pi/4\)</span> до осей координат. Довільно узята рекурентна точка не несе якої-небудь корисної інформації про стани в часи <span class="math inline">\(i\)</span> і <span class="math inline">\(j\)</span>. Тільки вся сукупність рекурентних точок дозволяє відновити властивості системи.</p>
 <p>Зовнішній вигляд рекурентної діаграми дозволяє судити про характер процесів, які протікають в системі, наявності і впливі шуму, станів повторення і завмирання (ламінарності), здійсненні в ході еволюції системи різких змін стану (екстремальних подій).</p>
-<div id="fig-recurrence-types" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_2\2_3.jpg" class="img-fluid figure-img" alt="однорідна топологія"> <img src="Images\lab_2\2_4.jpg" class="img-fluid figure-img" alt="дрейф"> <img src="Images\lab_2\2_5.jpg" class="img-fluid figure-img" alt="Осцилююча поведінка системи"> <img src="Images\lab_2\2_6.jpg" class="img-fluid figure-img" alt="Контрастна топологія"> <img src="Images\lab_2\2_7.jpg" class="img-fluid figure-img" alt="Ламінарність процесу"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.2: Типові динамічні ряди і їх рекурентні карти</figcaption>
+<div id="fig-recurrence-types" class="quarto-figure quarto-figure-center quarto-float anchored" data-layout-nrows="5">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-recurrence-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images\lab_2\2_3.jpg" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-recurrence-types-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.2: Типові динамічні ряди і їх рекурентні карти
+</figcaption>
 </figure>
 </div>
 </section>
@@ -424,22 +469,26 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </ul>
 <p>Рекурентні діаграми <strong>спрощують</strong> виявлення екстремальних і рідкісних подій.</p>
 <div id="fig-recurrence-diagrams" class="quarto-layout-panel">
-<figure class="figure">
-<div class="quarto-layout-row quarto-layout-valign-top">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-recurrence-diagrams-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="Images\lab_2\type_of_rec_a.png" id="homogeneous" class="img-fluid figure-img"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="Images\lab_2\type_of_rec_b.png" id="periodic" class="img-fluid figure-img"></p>
+<p><img src="Images\lab_2\type_of_rec_a.png" id="homogeneous" class="img-fluid figure-img" style="width:35.0%"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="Images\lab_2\type_of_rec_c.png" id="drift" class="img-fluid figure-img"></p>
+<p><img src="Images\lab_2\type_of_rec_b.png" id="periodic" class="img-fluid figure-img" style="width:35.0%"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="Images\lab_2\type_of_rec_d.png" id="disrupted" class="img-fluid figure-img"></p>
+<p><img src="Images\lab_2\type_of_rec_c.png" id="drift" class="img-fluid figure-img" style="width:35.0%"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="Images\lab_2\type_of_rec_d.png" id="disrupted" class="img-fluid figure-img" style="width:35.0%"></p>
 </div>
 </div>
-<p></p><figcaption class="figure-caption">Рис.&nbsp;2.3: Характернi топологiї рекурентних дiаграм: (а) — однорiдна (нормально розподiлений шум); (b) — перiодична (генератор Ван дер Поля); (c) — дрейф (вiдображення Iкеди з накладеною послiдовнiстю, що лiнiйно росте); (d) — контрастнi областi або смуги (узагальнений броунiвський рух) <span class="citation" data-cites="shockley2015recurrence">&nbsp;[<a href="references.html#ref-shockley2015recurrence" role="doc-biblioref">3</a>]</span></figcaption><p></p>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-recurrence-diagrams-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.3: Характернi топологiї рекурентних дiаграм: (а) — однорiдна (нормально розподiлений шум); (b) — перiодична (генератор Ван дер Поля); (c) — дрейф (вiдображення Iкеди з накладеною послiдовнiстю, що лiнiйно росте); (d) — контрастнi областi або смуги (узагальнений броунiвський рух) <span class="citation" data-cites="shockley2015recurrence">&nbsp;[<a href="references.html#ref-shockley2015recurrence" role="doc-biblioref">3</a>]</span>
+</figcaption>
 </figure>
 </div>
 <p>Детальний розгляд рекурентних діаграм дозволяє виявити дрібномасштабні структури — текстуру, яка складається з простих точок, діагональних, горизонтальних і вертикальних ліній. Комбінації вертикальних і горизонтальних ліній формують прямокутні кластери точок:</p>
@@ -448,10 +497,14 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><strong><em>діагональні лінії</em></strong> <span class="math inline">\(R_{i+k, j+k}=1\)</span> (при <span class="math inline">\(k = 1...l\)</span> де <span class="math inline">\(l\)</span> — довжина діагональної лінії) з’являються у разі, коли сегмент траєкторії у фазовому просторі пролягає паралельно іншому сегменту, тобто траєкторія повторює саму себе, повертаючись в одну і ту ж область фазового простору у різний час. Довжина таких ліній визначається часом, протягом якого сегменти траєкторії залишаються паралельними; напрям (кут нахилу) ліній характеризує внутрішній час підпроцесів, відповідних даним сегментам траєкторії. Проходження ліній паралельно лінії ідентичності (під кутом <span class="math inline">\(\pi/4\)</span> до осей координат) свідчить про однаковий напрям сегментів траєкторії, перпендикулярно — про протилежний («відображені» сегменти), що може також бути ознакою реконструкції фазового простору з невідповідною розмірністю вкладення. Нерегулярна поява діагональних ліній є ознакою хаотичного процесу;</li>
 <li><strong><em>вертикальні (горизонтальні) лінії</em></strong> <span class="math inline">\(R_{i, j+k}=1\)</span> (при <span class="math inline">\(k = 1...\upsilon\)</span>, де <span class="math inline">\(\upsilon\)</span> — довжина вертикальної або горизонтальної лінії) виділяють проміжки часу, в котрі стан системи не змінюється або змінюється не суттєво (система як би «заморожена» на цей час), що є ознакою «ламінарних» станів.</li>
 </ul>
-<div id="fig-recurrence-concept" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_2\recurrence_lines.png" style="height:10cm" class="figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.4: Основнi концепцiї рекурентного аналiзу. Вiдображена дiаграма рекурентностi базується на часовому ряді, що було реконструйовано до 11 реконструйованих векторiв, вiд <span class="math inline">\(\vec{X}(0)\)</span> до <span class="math inline">\(\vec{X}(10)\)</span>. Видiлено дiагональну лiнiю довжиною <span class="math inline">\(d = 3\)</span>, вертикальну лiнiю довжиною <span class="math inline">\(v = 3\)</span> i бiлу вертикальну лiнiю довжиною <span class="math inline">\(w = 5\)</span> <span class="citation" data-cites="Rawald2018Scalable">&nbsp;[<a href="references.html#ref-Rawald2018Scalable" role="doc-biblioref">4</a>]</span></figcaption>
+<div id="fig-recurrence-concept" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-recurrence-concept-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images\lab_2\recurrence_lines.png" style="height:10cm" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-recurrence-concept-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.4: Основнi концепцiї рекурентного аналiзу. Вiдображена дiаграма рекурентностi базується на часовому ряді, що було реконструйовано до 11 реконструйованих векторiв, вiд <span class="math inline">\(\vec{X}(0)\)</span> до <span class="math inline">\(\vec{X}(10)\)</span>. Видiлено дiагональну лiнiю довжиною <span class="math inline">\(d = 3\)</span>, вертикальну лiнiю довжиною <span class="math inline">\(v = 3\)</span> i бiлу вертикальну лiнiю довжиною <span class="math inline">\(w = 5\)</span> <span class="citation" data-cites="Rawald2018Scalable">&nbsp;[<a href="references.html#ref-Rawald2018Scalable" role="doc-biblioref">4</a>]</span>
+</figcaption>
 </figure>
 </div>
 </section>
@@ -482,7 +535,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 \tag{2.1}\]</span></span></p>
 <p>а <span class="math inline">\(i\)</span> проходить в діапазоні <span class="math inline">\(1,..., N-(m-1)\tau\)</span>; значення <span class="math inline">\(\tau\)</span> представляє часову затримку, а <span class="math inline">\(m\)</span> — це розмірність вкладень (кількість змінних, що включає кожна траєкторія).</p>
 <p>Код для реконструкції фазового простору може виглядати наступним чином:</p>
-<div class="cell" data-execution_count="2">
+<div id="cell-26" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> complexity_embedding(signal, dimension, delay):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(signal)                                        <span class="co"># вимірюємо довжину сигналу</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> np.zeros((dimension, N <span class="op">-</span> (dimension <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> delay)) <span class="co"># ініціалізуємо масив нулів,</span></span>
@@ -508,7 +561,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><em>array</em> — реконструйований атрактор розміру <code>length - (dimension - 1) * delay</code>.</li>
 </ul>
 <p>Далі імпортуємо необхідні для подальшої роботи модулі:</p>
-<div class="cell">
+<div id="cell-30" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
@@ -519,7 +572,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І виконаємо налаштування рисунків для виводу:</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-32" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -540,7 +593,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер розглянемо можливість використання методу часових затримок і отриманих у подальшому атракторів у якості індикатора складності. Як і в попередній роботі, для прикладу завантажимо часовий ряд Біткоїна за період з 1 вересня 2015 по 1 березня 2020, використовуючи <code>yfinance</code>:</p>
-<div class="cell" data-execution_count="7">
+<div id="cell-34" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'BTC-USD'</span>       <span class="co"># Символ індексу</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2015-09-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2020-03-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -568,7 +621,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <hr>
-<div class="cell">
+<div id="cell-37" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
@@ -582,7 +635,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-fig-btc-init" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -594,10 +647,14 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.5: Динаміка щоденних змін індексу Біткоїна</figcaption>
+<div id="fig-btc-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.5: Динаміка щоденних змін індексу Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
@@ -605,7 +662,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Спочатку оберемо вид ряду: 1 - вихідний ряд; 2 - детермінований (різниця між теперішнім та попереднім значенням); 3 - прибутковості звичайні; 4 - стандартизовані прибутковості; 5 - абсолютні значення (волатильності); 6 - стандартизований ряд.</p>
 <p>Для подальших розрахунків накращим варіантом буде вибір стандартизованого вихідного ряду або прибутковостей, оскільки значення вихідного часового ряду відрізняються на декілька порядків, і можуть сильно перевищувати встановлений параметр <span class="math inline">\(\varepsilon\)</span>. У цьому випадку для вихідних значень, що сильно різняться між собою, увесь часовий діапазон буде розглядатися як нерекурентний.</p>
 <p>Спочатку визначимо функції для виконання перетворення ряду:</p>
-<div class="cell" data-execution_count="10">
+<div id="cell-43" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -635,7 +692,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>і тепер виконаємо перетворення, використовуючи дану функцію:</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-45" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
@@ -648,112 +705,144 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 <p>Оскільки ми не матимемо змоги візуалізувати багатовимірний фазовий простір (<span class="math inline">\(m&gt;3\)</span>), ми послуговуватимемось значеннями <span class="math inline">\(m=2\)</span> та <span class="math inline">\(m=3\)</span>. Значення <span class="math inline">\(\tau\)</span> будемо варіювати як із власних переконань, так і з опорою на функціонал бібліотеки <code>neuralkit2</code>.</p>
 <p>Скористаємось методом <code>complexity_simulate()</code> для генерації різних тестових сигналів:</p>
-<div class="cell" data-execution_count="12">
+<div id="cell-48" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>signal_random_walk <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>, </span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                            sampling_rate<span class="op">=</span><span class="dv">100</span>, </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                            method<span class="op">=</span><span class="st">"randomwalk"</span>) <span class="co"># симуляція випадкового блукання</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="cell-fig-randow-walk-2d" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(embedded<span class="op">=</span>nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-randow-walk-2d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-randow-walk-2d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.6: Двовимірний фазовий портрет випадкового блукання</figcaption>
+<div id="fig-randow-walk-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-randow-walk-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-randow-walk-2d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-randow-walk-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.6: Двовимірний фазовий портрет випадкового блукання
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
+<div id="cell-fig-randow-walk-3d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-randow-walk-3d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-randow-walk-3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.7: Тривимірний фазовий портрет випадкового блукання</figcaption>
+<div id="fig-randow-walk-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-randow-walk-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-randow-walk-3d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-randow-walk-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.7: Тривимірний фазовий портрет випадкового блукання
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="cell-51" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>signal_ornstein <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                        sampling_rate<span class="op">=</span><span class="dv">100</span>, </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"ornstein"</span>) <span class="co"># симуляція системи Орнштайна</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div id="cell-fig-ornstein-2d" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_ornstein, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-ornstein-2d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-ornstein-2d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.8: Двовимірний фазовий портрет системи Орнштайна</figcaption>
+<div id="fig-ornstein-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ornstein-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-ornstein-2d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ornstein-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.8: Двовимірний фазовий портрет системи Орнштайна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="17">
+<div id="cell-fig-ornstein-3d" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_ornstein, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-ornstein-3d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-ornstein-3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.9: Двовимірний фазовий портрет системи Орнштайна</figcaption>
+<div id="fig-ornstein-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ornstein-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-ornstein-3d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ornstein-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.9: Двовимірний фазовий портрет системи Орнштайна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="cell-fig-lorenz-3d" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(color <span class="op">=</span> <span class="st">"last_dim"</span>, alpha<span class="op">=</span><span class="st">"time"</span>, duration<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-lorenz-3d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-lorenz-3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.10: Тривимірний фазовий портрет атрактора Лоренца</figcaption>
+<div id="fig-lorenz-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lorenz-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-lorenz-3d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lorenz-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.10: Тривимірний фазовий портрет атрактора Лоренца
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="cell-fig-rossler-3d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(<span class="st">"rossler"</span>, color <span class="op">=</span> <span class="st">"blue"</span>, alpha<span class="op">=</span><span class="dv">1</span>, sampling_rate<span class="op">=</span><span class="dv">5000</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-rossler-3d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-rossler-3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.11: Тривимірний фазовий портрет атрактора Рьосслера</figcaption>
+<div id="fig-rossler-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rossler-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-rossler-3d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rossler-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.11: Тривимірний фазовий портрет атрактора Рьосслера
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-fig-btc-2d" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"maroon"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-2d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-2d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.12: Двовимірний фазовий портрет вихідних значень досліджуваного ряду Біткоїна</figcaption>
+<div id="fig-btc-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-2d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-2d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.12: Двовимірний фазовий портрет вихідних значень досліджуваного ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="cell-fig-btc-3d" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"maroon"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-3d" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-3d-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.13: Тривимірний фазовий портрет вихідних значень досліджуваного ряду Біткоїна</figcaption>
+<div id="fig-btc-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-3d-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-3d-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.13: Тривимірний фазовий портрет вихідних значень досліджуваного ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
@@ -809,7 +898,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Як уже зазначалось на початку, рекурентна діаграма — це двовимірна квадратна двійкова матриця розміром <span class="math inline">\(N^2\)</span>. Одним із її основних недоліків є те, що вона погано масштабується на великих даних. Наприклад, якщо ви плануєте досліджувати часовий ряд довжиною 1000000 значень, тоді рекурентна матриця буде складатись із 1000000000000 білих і чорних точок, що може бути викликом для вашого процесора та оперативної пам’яті. Тому в подальшому ми пропонуємо будувати рекурентну матрицю не для всього ряду, а тільки для його підмножини. Для цього ми визначимо змінні початкового (<code>idx_beg</code>) та кінцевого (<code>inx_end</code>) відліку в межах якого буде здійснюватись побудова рекурентної матриці</p>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+<div id="cell-64" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>idx_beg <span class="op">=</span> <span class="dv">1000</span> <span class="co"># кінцевий відлік</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>idx_end <span class="op">=</span> <span class="dv">1500</span> <span class="co"># початковий відлік</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -823,24 +912,28 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span> </span>
 <span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(fragm, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="36">
+<div id="cell-fig-btc-rec-init" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(fragm, </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span><span class="dv">4</span>, </span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-rec-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-rec-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.14: Рекурентна матриця для вихідних значень Біткоїна</figcaption>
+<div id="fig-btc-rec-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-rec-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-rec-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-rec-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.14: Рекурентна матриця для вихідних значень Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як можна бачити з рисунку <a href="#fig-btc-rec-init"><span>2.14</span></a> всі траєкторії для простору вихідних значень за абсолютною шкалою залишаються доволі віддаленими один від одного. Для розпізнавання рекурентних закономірностей нам потребується поступово нарощувати <span class="math inline">\(\varepsilon\)</span>. З цього рисунку видно, що <span class="math inline">\(\varepsilon=100\)</span> буде замало.</p>
+<p>Як можна бачити з рисунку <a href="#fig-btc-rec-init" class="quarto-xref"><span>2.14</span></a> всі траєкторії для простору вихідних значень за абсолютною шкалою залишаються доволі віддаленими один від одного. Для розпізнавання рекурентних закономірностей нам потребується поступово нарощувати <span class="math inline">\(\varepsilon\)</span>. З цього рисунку видно, що <span class="math inline">\(\varepsilon=100\)</span> буде замало.</p>
 <p>Тепер спробуємо трохи нормалізувати значення вихідного фрагменту Біткоїна, аби реконструйовані траєкторії не знаходились занадто віддаленими один від одного. Для цього розрахуємо стандартизовані прибутковості:</p>
-<div class="cell" data-execution_count="37">
+<div id="cell-fig-btc-rec-returns" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо рекурентну матрицю</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(ret, </span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
@@ -848,17 +941,21 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span><span class="fl">0.8</span>,</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-rec-returns" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-rec-returns-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.15: Рекурентна матриця для стандартизованих прибутковостей Біткоїна</figcaption>
+<div id="fig-btc-rec-returns" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-rec-returns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-rec-returns-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-rec-returns-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.15: Рекурентна матриця для стандартизованих прибутковостей Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Тепер можемо бачити, що Біткоїн став характризуватися чорними смугами, що відображають динаміку певних детермінованих процесів. У той же час білі смуги характеризують періоди абсолютно аномальної (непередбачуваної) поведінки на даному ринку. Видно, що прибутковості залишаються доволі некорельованими, про що і свідчить переважне домінування саме білих областей.</p>
 <p>Спробуємо тепер подивитись на стандартизований вихідний ряд:</p>
-<div class="cell" data-execution_count="38">
+<div id="cell-fig-btc-init-stand" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо рекурентну матрицю</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec, </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
@@ -866,10 +963,14 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span><span class="fl">0.8</span>,</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-init-stand" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-init-stand-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.16: Рекурентна матриця для стандартизованого вихідного ряду Біткоїна</figcaption>
+<div id="fig-btc-init-stand" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-init-stand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-init-stand-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-init-stand-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.16: Рекурентна матриця для стандартизованого вихідного ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
@@ -918,7 +1019,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><strong>Гаутама (2003)</strong> <span class="citation" data-cites="lirias1573905">&nbsp;[<a href="references.html#ref-lirias1573905" role="doc-biblioref">12</a>]</span> зазначає, що на практиці часто використовують фіксовану часову затримку і відповідно регулюють розмірність вбудовування. Оскільки це може призвести до великих значень <span class="math inline">\(m\)</span> (а отже, до вкладених даних великого розміру) і, відповідно, до повільної обробки, використовується метод оптимізації для спільного визначення <span class="math inline">\(m\)</span> і <span class="math inline">\(\tau\)</span> на основі показника <strong>entropy ratio</strong>.</li>
 </ul>
 <p>Розглянемо оптимальні значення розмірності та затримки для часового сигналу Біткоїна:</p>
-<div class="cell">
+<div id="cell-77" class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># виконуємо приведення вихідного сигналу до прибутковостей</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type)</span>
@@ -927,35 +1028,43 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span> </span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-fig-btc-delay-fraser1986" class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"fraser1986"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-fraser1986" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-fraser1986-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.17: Оптимальне значення часової затримки на основі методу Фрейзера і Свінні для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-delay-fraser1986" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-fraser1986-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-fraser1986-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-fraser1986-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.17: Оптимальне значення часової затримки на основі методу Фрейзера і Свінні для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-btc-delay-fraser1986">Рис.&nbsp;<span>2.17</span></a> показує, що перший локальний мінімум взаємної інформації для стандартизованих вихідних значень Біткоїна знаходиться на 273 лагу. Для візуального огляду реконструйованого атрактора це значення, можливо, є найбільш адекватним. Але використовуючи настільки велику часову затримку, ми втрачаємо доволі багато проміжних значень, що також можуть містити досить важливу приховану інформацію для кількісних розрахунків.</p>
-<div class="cell">
+<p><a href="#fig-btc-delay-fraser1986" class="quarto-xref">Рис.&nbsp;<span>2.17</span></a> показує, що перший локальний мінімум взаємної інформації для стандартизованих вихідних значень Біткоїна знаходиться на 273 лагу. Для візуального огляду реконструйованого атрактора це значення, можливо, є найбільш адекватним. Але використовуючи настільки велику часову затримку, ми втрачаємо доволі багато проміжних значень, що також можуть містити досить важливу приховану інформацію для кількісних розрахунків.</p>
+<div id="cell-fig-btc-delay-theiler" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"theiler1990"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-theiler" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-theiler-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.18: Оптимальне значення часової затримки на основі методу Тейлера для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-delay-theiler" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-theiler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-theiler-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-theiler-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.18: Оптимальне значення часової затримки на основі методу Тейлера для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-btc-delay-theiler">Рис.&nbsp;<span>2.18</span></a> демонструє, що автокореляція між стандартизованих вихідним сигналом Біткоїна та його зміщенною версією при <span class="math inline">\(\tau=195\)</span> вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Бачимо, що дане значення затримки є трохи меншим за те, що було отримано до цього, але суті це не змінює. Також бачимо, що між реконструйованими атракторами для <span class="math inline">\(\tau=195\)</span> та <span class="math inline">\(\tau=273\)</span> немає кардинальної візуальної різниці.</p>
-<div class="cell">
+<p><a href="#fig-btc-delay-theiler" class="quarto-xref">Рис.&nbsp;<span>2.18</span></a> демонструє, що автокореляція між стандартизованих вихідним сигналом Біткоїна та його зміщенною версією при <span class="math inline">\(\tau=195\)</span> вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Бачимо, що дане значення затримки є трохи меншим за те, що було отримано до цього, але суті це не змінює. Також бачимо, що між реконструйованими атракторами для <span class="math inline">\(\tau=195\)</span> та <span class="math inline">\(\tau=273\)</span> немає кардинальної візуальної різниці.</p>
+<div id="cell-82" class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">500</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"casdagli1991"</span>)</span>
@@ -963,68 +1072,84 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>delay</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Як можна бачити по прикладу вище, не всі методи надають адекватну оцінку розмірності нашого сигналу. Спробуємо привести вихідні значення Біткоїна до прибутковостей та повторити процедуру Касдаглі ще раз.</p>
-<div class="cell">
+<div id="cell-84" class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="cell-fig-btc-delay-casdagli1991" class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(ret, </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"casdagli1991"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-casdagli1991" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-casdagli1991-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.19: Оптимальне значення часової затримки на основі методу Касдаглі для прибутковостей Біткоїна</figcaption>
+<div id="fig-btc-delay-casdagli1991" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-casdagli1991-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-casdagli1991-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-casdagli1991-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.19: Оптимальне значення часової затримки на основі методу Касдаглі для прибутковостей Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Цього разу нам вдалося досягти оптимального результату, але приклад вище демонструє, що кожна процедура має свої виключення. <a href="#fig-btc-delay-casdagli1991">Рис.&nbsp;<span>2.19</span></a> показує, що значення прибутковостей Біткоїна характеризуються певними кореляціями лише на перших 4-ох лагах. Подальші часові зміщення роблять значення прибутковостей незалежними один від одного.</p>
-<div class="cell">
+<p>Цього разу нам вдалося досягти оптимального результату, але приклад вище демонструє, що кожна процедура має свої виключення. <a href="#fig-btc-delay-casdagli1991" class="quarto-xref">Рис.&nbsp;<span>2.19</span></a> показує, що значення прибутковостей Біткоїна характеризуються певними кореляціями лише на перших 4-ох лагах. Подальші часові зміщення роблять значення прибутковостей незалежними один від одного.</p>
+<div id="cell-fig-btc-delay-rosenstein1993" class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"rosenstein1993"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-rosenstein1993" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-rosenstein1993-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.20: Оптимальне значення часової затримки на основі методу Розенштайна (1993) для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-delay-rosenstein1993" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-rosenstein1993-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-rosenstein1993-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-rosenstein1993-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.20: Оптимальне значення часової затримки на основі методу Розенштайна (1993) для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-btc-delay-rosenstein1993">Рис.&nbsp;<span>2.20</span></a> демонструє, що при <span class="math inline">\(\tau=101\)</span> функція автокореляцій перетинає значення <span class="math inline">\(\left( 1-1/e \right)\)</span>. При цьому видно, що навіть для такого лагу зберігається значна частка кореляцій між стандартизованими вихідними значеннями Біткоїна.</p>
-<div class="cell">
+<p><a href="#fig-btc-delay-rosenstein1993" class="quarto-xref">Рис.&nbsp;<span>2.20</span></a> демонструє, що при <span class="math inline">\(\tau=101\)</span> функція автокореляцій перетинає значення <span class="math inline">\(\left( 1-1/e \right)\)</span>. При цьому видно, що навіть для такого лагу зберігається значна частка кореляцій між стандартизованими вихідними значеннями Біткоїна.</p>
+<div id="cell-fig-btc-delay-rosenstein1994" class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"rosenstein1994"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-rosenstein1994" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-rosenstein1994-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.21: Оптимальне значення часової затримки на основі методу Розенштайна (1994) для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-delay-rosenstein1994" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-rosenstein1994-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-rosenstein1994-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-rosenstein1994-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.21: Оптимальне значення часової затримки на основі методу Розенштайна (1994) для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Рисунок вище показує, що при <span class="math inline">\(\tau=120\)</span> зміщення реконструйованих траєкторій від їх оригінального положення на лінії ідентичності зберігає найбільшу кількість інформації стосовно атрактора стандартизованих значень Біткоїна.</p>
-<div class="cell">
+<div id="cell-fig-btc-delay-lyle2021" class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"lyle2021"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-lyle2021" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-lyle2021-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.22: Оптимальне значення часової затримки на основі методу Лайла для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-delay-lyle2021" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-lyle2021-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-lyle2021-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-lyle2021-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.22: Оптимальне значення часової затримки на основі методу Лайла для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Згідно представленого вище результату найбільш значущі частоти, отримані за допомогою перетворення Фур’є, зберігаються при <span class="math inline">\(\tau=109\)</span>.</p>
 <p>Тепер подивимось як це виглядатиме для об’єднаного підбору параметрів:</p>
-<div class="cell">
+<div id="cell-fig-btc-delay-gautama2003" class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    delay_max<span class="op">=</span>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="co"># діапазон значень затримки</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    dimension_max<span class="op">=</span><span class="dv">10</span>,              <span class="co"># максимальна розмірність вкладень</span></span>
@@ -1035,15 +1160,19 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-delay-gautama2003" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-delay-gautama2003-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.23: Оптимальне значення розмірності та затримки на основі методу Гаутами для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-delay-gautama2003" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-delay-gautama2003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-delay-gautama2003-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-delay-gautama2003-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.23: Оптимальне значення розмірності та затримки на основі методу Гаутами для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell">
+<div id="cell-95" class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dimension <span class="op">=</span> parameters[<span class="st">"Dimension"</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>dimension</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1059,12 +1188,16 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Хоча зазвичай використовують <span class="math inline">\(m=2\)</span> або <span class="math inline">\(m=3\)</span>, але різні автори пропонують наступні процедури підбору:</p>
 <ul>
 <li><strong>кореляційна розмірність (Correlation Dimension, CD)</strong>: Одним з перших методів оцінки оптимального <span class="math inline">\(m\)</span> був розрахунок кореляційної розмірності для вкладень різного розміру і пошук насичення (тобто плато) в її значенні при збільшенні розміру векторів <span class="citation" data-cites="GRASSBERGER1983189 PhysRevLett.50.346 GRASSBERGER1983227">&nbsp;[<a href="references.html#ref-GRASSBERGER1983189" role="doc-biblioref">13</a>–<a href="references.html#ref-GRASSBERGER1983227" role="doc-biblioref">15</a>]</span>. Одне з обмежень полягає в тому, що насичення буде також мати місце, коли даних недостатньо для адекватного заповнення простору високої розмірності (зауважте, що в загальному випадку не рекомендується мати настільки великі вкладення, оскільки це значно скорочує довжину сигналу);</li>
-<li><strong>найближчі хибні сусіди (False Nearest Neighbour, FNN)</strong>: Метод, запропонований Кеннелом та ін. <span class="citation" data-cites="PhysRevA.45.3403 krakovska2015use RHODES1997S1149">&nbsp;[<a href="references.html#ref-PhysRevA.45.3403" role="doc-biblioref">16</a>–<a href="references.html#ref-RHODES1997S1149" role="doc-biblioref">18</a>]</span>, базується на припущенні, що дві точки, які є близькими одна до одної в достатній розмірності вбудовування, повинні залишатися близькими при збільшенні розмірності. Алгоритм перевіряє сусідів при збільшенні розмірності вкладень, поки не знайде лише незначну кількість хибних сусідів при переході від розмірності <span class="math inline">\(m\)</span> до <span class="math inline">\(m+1\)</span>. Це відповідає найнижчій розмірності вкладення, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану. Цей метод може не спрацювати в зашумлених сигналах через марну спробу розгорнути шум (а в чисто випадкових сигналах кількість хибних сусідів суттєво не зменшується зі збільшенням <span class="math inline">\(m\)</span>). На рисунку нижче (<a href="#fig-fnn">Рис.&nbsp;<span>2.24</span></a>) показано, як проекції на простори більшої розмірності можна використовувати для виявлення хибних найближчих сусідів. Наприклад, червона та жовта точки є сусідами в одновимірному просторі, але не в двовимірному;</li>
+<li><strong>найближчі хибні сусіди (False Nearest Neighbour, FNN)</strong>: Метод, запропонований Кеннелом та ін. <span class="citation" data-cites="PhysRevA.45.3403 krakovska2015use RHODES1997S1149">&nbsp;[<a href="references.html#ref-PhysRevA.45.3403" role="doc-biblioref">16</a>–<a href="references.html#ref-RHODES1997S1149" role="doc-biblioref">18</a>]</span>, базується на припущенні, що дві точки, які є близькими одна до одної в достатній розмірності вбудовування, повинні залишатися близькими при збільшенні розмірності. Алгоритм перевіряє сусідів при збільшенні розмірності вкладень, поки не знайде лише незначну кількість хибних сусідів при переході від розмірності <span class="math inline">\(m\)</span> до <span class="math inline">\(m+1\)</span>. Це відповідає найнижчій розмірності вкладення, яка, як передбачається, дає розгорнуту реконструкцію просторово-часового стану. Цей метод може не спрацювати в зашумлених сигналах через марну спробу розгорнути шум (а в чисто випадкових сигналах кількість хибних сусідів суттєво не зменшується зі збільшенням <span class="math inline">\(m\)</span>). На рисунку нижче (<a href="#fig-fnn" class="quarto-xref">Рис.&nbsp;<span>2.24</span></a>) показано, як проекції на простори більшої розмірності можна використовувати для виявлення хибних найближчих сусідів. Наприклад, червона та жовта точки є сусідами в одновимірному просторі, але не в двовимірному;</li>
 </ul>
-<div id="fig-fnn" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_2\fnn.jpg" style="height:10cm" class="figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.24: Основна ідея методу FNN. Найближчі сусіди зеленої точки з’являються у випадку 1-, 2- та 3-вимірних фазових просторів <span class="citation" data-cites="STAVRINIDES2022112224">&nbsp;[<a href="references.html#ref-STAVRINIDES2022112224" role="doc-biblioref">19</a>]</span></figcaption>
+<div id="fig-fnn" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images\lab_2\fnn.jpg" style="height:10cm" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.24: Основна ідея методу FNN. Найближчі сусіди зеленої точки з’являються у випадку 1-, 2- та 3-вимірних фазових просторів <span class="citation" data-cites="STAVRINIDES2022112224">&nbsp;[<a href="references.html#ref-STAVRINIDES2022112224" role="doc-biblioref">19</a>]</span>
+</figcaption>
 </figure>
 </div>
 <ul>
@@ -1085,49 +1218,61 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><strong>parameters</strong> (<em>dict</em>) — словник python, що містить додаткову інформацію про параметри, які використовуються для обчислення оптимальної розмірності.</li>
 </ul>
 <p>Спробуємо отримати оптимальне значення розмірності згідно зазначених процедур. В якості часової затримки можна взяти <span class="math inline">\(\tau=100\)</span>. Приблизно таке значення спостерігалося для кожної процедури.</p>
-<div class="cell">
+<div id="cell-fig-btc-dim-cd" class="cell">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                                                  dimension_max<span class="op">=</span><span class="dv">10</span>,</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                                                  method<span class="op">=</span><span class="st">'cd'</span>,</span>
 <span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>                                                  show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-dim-cd" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-dim-cd-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.25: Оптимальне значення розмірності на основі кореляційної розмірності для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-dim-cd" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-dim-cd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-dim-cd-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-dim-cd-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.25: Оптимальне значення розмірності на основі кореляційної розмірності для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-btc-dim-cd">Рис.&nbsp;<span>2.25</span></a> демонструє той факт, що оптимальна розмірність вкладень, за якої досягається найбільш інформативна репрезентація фазового простору, дорівнює 7.</p>
-<div class="cell">
+<p><a href="#fig-btc-dim-cd" class="quarto-xref">Рис.&nbsp;<span>2.25</span></a> демонструє той факт, що оптимальна розмірність вкладень, за якої досягається найбільш інформативна репрезентація фазового простору, дорівнює 7.</p>
+<div id="cell-fig-btc-dim-fnn" class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                                                  dimension_max<span class="op">=</span><span class="dv">10</span>,</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                                                  method<span class="op">=</span><span class="st">'fnn'</span>,</span>
 <span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                                                  show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-dim-fnn" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-dim-fnn-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.26: Оптимальне значення розмірності на основі найближчих хибних сусідів для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-dim-fnn" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-dim-fnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-dim-fnn-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-dim-fnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.26: Оптимальне значення розмірності на основі найближчих хибних сусідів для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>З рисунку <a href="#fig-btc-dim-fnn"><span>2.26</span></a> видно, що мінімальна розмірність вкладення дорівнює 3. Саме при переході від 3-ох вимірного фазового простору до 4-ох вимірного ми бачимо, що кількість хибних сусідів стає мінімальною і далі не зростає.</p>
-<div class="cell">
+<p>З рисунку <a href="#fig-btc-dim-fnn" class="quarto-xref"><span>2.26</span></a> видно, що мінімальна розмірність вкладення дорівнює 3. Саме при переході від 3-ох вимірного фазового простору до 4-ох вимірного ми бачимо, що кількість хибних сусідів стає мінімальною і далі не зростає.</p>
+<div id="cell-fig-btc-dim-afnn" class="cell">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">20</span>,</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                                                  dimension_max<span class="op">=</span><span class="dv">20</span>,</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>                                                  method<span class="op">=</span><span class="st">'afnn'</span>,</span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>                                                  show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-dim-afnn" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_2_files/figure-html/fig-btc-dim-afnn-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;2.27: Оптимальне значення розмірності на основі середніх найближчих хибних сусідів для часового ряду Біткоїна</figcaption>
+<div id="fig-btc-dim-afnn" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-dim-afnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_2_files/figure-html/fig-btc-dim-afnn-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-dim-afnn-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;2.27: Оптимальне значення розмірності на основі середніх найближчих хибних сусідів для часового ряду Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1136,7 +1281,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Згідно з представленими вище алгоритмами автоматичного підбору, розмірність вкладень можна обирати в діапазоні значень від 3 до 7. Тепер на основі отриманих результатів приступимо до побудови рекурентної діаграми.</p>
 
 
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-PhysRevLett.45.712" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">N. H. Packard, J. P. Crutchfield, J. D. Farmer, and R. S. Shaw, <em><a href="https://doi.org/10.1103/PhysRevLett.45.712">Geometry from a Time Series</a></em>, Phys. Rev. Lett. <strong>45</strong>, 712 (1980).</div>
 </div>
@@ -1245,6 +1390,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1311,13 +1483,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1352,18 +1526,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1395,11 +1558,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1409,8 +1611,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1422,7 +1633,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1466,6 +1800,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1491,6 +1826,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1552,12 +1913,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./lab_1.html" class="pagination-link">
+      <a href="./lab_1.html" class="pagination-link" aria-label="Лабораторна робота № 1">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Лабораторна робота № 1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_3.html" class="pagination-link">
+      <a href="./lab_3.html" class="pagination-link" aria-label="Лабораторна робота № 3">
         <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Лабораторна робота № 3</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1566,4 +1927,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_2.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

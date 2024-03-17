@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 12&nbsp; Лабораторна робота № 12</title>
+<title>Моделювання складних систем у Python – 12&nbsp; Лабораторна робота № 12</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -76,7 +77,7 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -111,18 +118,46 @@ div.csl-indent {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -133,12 +168,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Лабораторна робота № 12</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -148,13 +183,13 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -300,7 +335,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -334,7 +369,7 @@ div.csl-indent {
   <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">12.3</span> Висновок</a></li>
   <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">12.4</span> Завдання для самостійної роботи</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_12.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_12.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -346,7 +381,7 @@ div.csl-indent {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -354,7 +389,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p><strong>Тема.</strong> Аналіз кризових подій із використанням Леві альфа-стабільного розподілу</p>
 <p><strong>Мета.</strong> Навчитися використовувати розподіл Леві для диференціації флуктуацій, що виходять за межі нормального розподілу</p>
@@ -389,11 +426,11 @@ div.csl-indent {
 <p>Перш за все, для подальшої роботи, нам необхідно буде встановити бібліотеку <code>pylevy</code>. Встановити її можна з відповідного <a href="https://github.com/josemiotto/pylevy/tree/master">GitHub репозиторію</a>. Ми у свою чергу завантажимо її напряму через команду <code>pip install</code> слідуючим чином:</p>
 </div>
 </div>
-<div class="cell" data-execution_count="1">
+<div id="cell-5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install git<span class="op">+</span>https:<span class="op">//</span>github.com<span class="op">/</span>josemiotto<span class="op">/</span>pylevy.git</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Після встановлення необхідного модулю можна приступати до подальшої роботи.</p>
-<div class="cell" data-execution_count="2">
+<div id="04c45d9c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np                 <span class="co"># бібліотека для роботи з масивами чисел</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt    <span class="co"># бібліотека для побудови графіків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf              <span class="co"># бібліотека для зчитування фінансових даних з Yahoo Finance</span></span>
@@ -409,7 +446,7 @@ div.csl-indent {
 </section>
 <section id="виконуємо-налаштування-рисунків" class="level3" data-number="12.1.2">
 <h3 data-number="12.1.2" class="anchored" data-anchor-id="виконуємо-налаштування-рисунків"><span class="header-section-number">12.1.2</span> Виконуємо налаштування рисунків</h3>
-<div class="cell" data-execution_count="3">
+<div id="c9bd9aed" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -432,7 +469,7 @@ div.csl-indent {
 </section>
 <section id="зчитування-даних" class="level3" data-number="12.1.3">
 <h3 data-number="12.1.3" class="anchored" data-anchor-id="зчитування-даних"><span class="header-section-number">12.1.3</span> Зчитування даних</h3>
-<div class="cell" data-execution_count="4">
+<div id="13f097f3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'databases\^spx_d.csv'</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.set_index(<span class="st">'Date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df.index <span class="op">=</span> pd.to_datetime(df.index)</span>
@@ -442,9 +479,10 @@ div.csl-indent {
 <section id="важкі-хвости-та-чорні-понеділки" class="level3" data-number="12.1.4">
 <h3 data-number="12.1.4" class="anchored" data-anchor-id="важкі-хвости-та-чорні-понеділки"><span class="header-section-number">12.1.4</span> Важкі хвости та Чорні понеділки</h3>
 <p>Спочатку ми розглянемо розподіл щоденних прибутковостей індексу S&amp;P 500, починаючи з 1950 року. Нижче буде показано <a href="https://pandas.pydata.org/docs/user_guide/10min.html">Pandas dataframe</a> <code>df</code>, що містить дані OHLC з файлу (ці дані були попередньо завантажені).</p>
-<div class="cell" data-execution_count="5">
+<div id="2a7f4e38" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 
 
@@ -563,51 +601,57 @@ div.csl-indent {
 </div>
 </div>
 </div>
+</div>
 <p>Цей історичний ряд щоденних цін містить 18527 торгових днів. Замість того, щоб дивитися безпосередньо на ціни, ми розглянемо щоденні <a href="https://lucaslouca.com/Why-Use-Logarithmic-Returns-In-Time-Series-Modelling/"><em>log</em>-прибутковості</a> індексу S&amp;P 500. Пам’ятайте, що логарифмічна прибутковість <span class="math inline">\(r_t\)</span> визначається як логарифм відношення між цінами закриття <span class="math inline">\(p_t\)</span> у теперішній момент часу та попередній <span class="math inline">\(p_{t-1}\)</span>:</p>
 <p><span class="math display">\[
 r_t = \log p_t - \log p_{t-1}.
 \]</span></p>
 <p>Логарифмічні прибутковості характеризуються симетрією, тобто якщо в один день індекс втрачає <span class="math inline">\(r_t = -0.1\)</span>, а на наступний день індекс набирає <span class="math inline">\(r_{t+1} = +0.1\)</span>, індекс знову досягає початкової ціни. Зі звичайними прибутковостями, спочатку втративши <span class="math inline">\(10\%\)</span>, а потім знову набравши <span class="math inline">\(10\%\)</span>, ви не повернетесь до початкової ціни. Ми зберігаємо прибутковості в новому фреймі даних <code>lr</code>:</p>
-<div class="cell" data-execution_count="6">
+<div id="a14ffe3e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lr <span class="op">=</span> np.log(df[<span class="st">'Close'</span>]).diff().dropna()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="cell-fig-ret" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>lr.plot()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-ret" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-ret-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.1: Динаміка логарифмічних прибутковостей індексу S&amp;P 500</figcaption>
+<div id="fig-ret" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-ret-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.1: Динаміка логарифмічних прибутковостей індексу S&amp;P 500
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Використовуючи вбудовані функції Pandas та Numpy, тепер ми можемо подивитись на найгірше щоденнє значення прибутковостей. Ми виявляємо, що найгірше значення становило <span class="math inline">\(-0.229\)</span>, що відповідає <span class="math inline">\(-22.9\%\)</span>, і що це сталося в понеділок, 19 жовтня 1987 року — так званий <a href="https://en.wikipedia.org/wiki/Black_Monday_(1987)"><em>Чорний понеділок</em></a>.</p>
-<div class="cell" data-execution_count="8">
+<div id="135e4a28" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># найгірший щоденні прибутковості від закриття до закриття</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>lr.<span class="bu">min</span>()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>-0.2289972265656708</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="9">
+<div id="26cbae30" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># відповідні арифметичні прибутковості</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>np.exp(lr.<span class="bu">min</span>()) <span class="op">-</span> <span class="dv">1</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>-0.20466926070038938</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="3904aa2b" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># індекс найгіршого значення</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>np.argmin(lr)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>9583</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div id="742e2f01" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df.iloc[<span class="dv">9583</span>:<span class="dv">9585</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
+<div>
 <div>
 
 
@@ -653,8 +697,9 @@ r_t = \log p_t - \log p_{t-1}.
 </div>
 </div>
 </div>
+</div>
 <p>Далі ми будуємо графік вибіркового розподілу щоденних логарифмічних прибутковостей, що демонструє нам, як часто ми спостерігаємо щоденні прибутковості певного знака та величини. Зверніть увагу, що ми встановили логарифмічне масштабування для вісі Оy, щоб мати краще представлення про хвости розподілу, тобто дуже великі, але рідкісні негативні та позитивні прибутковості — крахи та підйоми:</p>
-<div class="cell" data-execution_count="17">
+<div id="cell-fig-hist-ret" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.hist(lr, <span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
@@ -667,16 +712,20 @@ r_t = \log p_t - \log p_{t-1}.
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>             ha<span class="op">=</span><span class="st">'left'</span>, va<span class="op">=</span><span class="st">'bottom'</span>, fontsize<span class="op">=</span><span class="dv">15</span>)</span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hist-ret" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-hist-ret-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.2: Розподіл імовірностей логарифмічних прибутковостей S&amp;P 500 в напів- логарифмічному масштабі</figcaption>
+<div id="fig-hist-ret" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-ret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-hist-ret-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-ret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.2: Розподіл імовірностей логарифмічних прибутковостей S&amp;P 500 в напів- логарифмічному масштабі
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Як ми можемо описати погіршення розподілу прибутковості? За допомогою <a href="https://en.wikipedia.org/wiki/Logarithmic_scale">логарифмічного масштабування</a> осі Oy, щоб експоненціальний спад виглядав лінійно, тому ми могли би запідозрити, що при малих абсолютних значеннях прибутковості розподіл зменшується експоненціально, але в міру збільшення абсолютних значень прибутковостей ми все більше і більше відхиляємося від початкового нахилу. Насправді, ми можемо показати, що ні розповсюджений <a href="https://en.wikipedia.org/wiki/Normal_distribution">розподіл Гауса</a> (так званий <em>нормальний</em> розподіл), ні <a href="https://en.wikipedia.org/wiki/Laplace_distribution">розподіл Лапласа</a> з його експоненціальним спадом з обох сторін точно не можуть змоделювати розподіл прибутковостей S&amp;P 500. Як розподіл Гауса, так і розподіл Лапласа недооцінюють ймовірність екстремальних подій — підйомів та крахів:</p>
-<div class="cell" data-execution_count="18">
+<div id="80f23d04" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># підганяємо розподіл Гауса та Лапласа під дані</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>norm_loc, norm_scale <span class="op">=</span> norm.fit(lr)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>laplace_loc, laplace_scale <span class="op">=</span> laplace.fit(lr)</span>
@@ -686,7 +735,7 @@ r_t = \log p_t - \log p_{t-1}.
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>y_fit_norm <span class="op">=</span> norm(loc<span class="op">=</span>norm_loc, scale<span class="op">=</span>norm_scale).pdf(x_fit)</span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>y_fit_laplace <span class="op">=</span> laplace(loc<span class="op">=</span>laplace_loc, scale<span class="op">=</span>laplace_scale).pdf(x_fit)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div id="cell-fig-hist-ret-laplacian-gauss" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>plt.hist(lr, <span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x_fit, y_fit_laplace, lw<span class="op">=</span><span class="dv">3</span>, c<span class="op">=</span><span class="st">'C3'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, label<span class="op">=</span><span class="st">'Лаплас'</span>)</span>
@@ -704,10 +753,14 @@ r_t = \log p_t - \log p_{t-1}.
 <span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hist-ret-laplacian-gauss" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-hist-ret-laplacian-gauss-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.3: Розподіл імовірностей логарифмічних прибутковостей S&amp;P 500 у порівнянні з розподілами Гауса й Лапласа в напів- логарифмічному масштабі</figcaption>
+<div id="fig-hist-ret-laplacian-gauss" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-ret-laplacian-gauss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-hist-ret-laplacian-gauss-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-ret-laplacian-gauss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.3: Розподіл імовірностей логарифмічних прибутковостей S&amp;P 500 у порівнянні з розподілами Гауса й Лапласа в напів- логарифмічному масштабі
+</figcaption>
 </figure>
 </div>
 </div>
@@ -716,7 +769,7 @@ r_t = \log p_t - \log p_{t-1}.
 <section id="відхилення-в-23-сигма" class="level3" data-number="12.1.5">
 <h3 data-number="12.1.5" class="anchored" data-anchor-id="відхилення-в-23-сигма"><span class="header-section-number">12.1.5</span> Відхилення в 23 сигма</h3>
 <p>Як ми можемо бачити вище, як розподіл Гауса, так і розподіл Лапласа різко недооцінюють ймовірність дуже волатильної динаміки! Часто зазначають, що трапилась “<a href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule">3-сигма</a> подія на ринку” або щось подібне, тому що багатьом людям подобається оцінювати індивідуальні прибутковості по <a href="https://en.wikipedia.org/wiki/Standard_deviation">стандартному відхиленню</a> (зване “сигмою”) підібраного гаусового розподілу. Однак, якщо Розподіл Гауса взагалі не відповідає розподілу вибірки, як у нашому випадку, оцінка краху в одиницях “сигма” може ввести в оману! Щоб показати це, ми спочатку перевіримо, на скільки сигм ринок змістився в Чорний понеділок 1987 року:</p>
-<div class="cell" data-execution_count="20">
+<div id="102d241c" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">abs</span>(np.<span class="bu">min</span>(lr))<span class="op">/</span>np.std(lr, ddof<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>22.969393251617504</code></pre>
@@ -730,49 +783,49 @@ r_t = \log p_t - \log p_{t-1}.
 </ul>
 <p>…</p>
 <p>Ми можемо розширити цю таблицю, попрацювавши з <a href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">функцією кумулятивного розподілу</a>, тісно пов’язана з <a href="https://en.wikipedia.org/wiki/Survival_function">функцією виживання</a>, і перемістивши обчислення в логарифмічний простір для чисельної стабільності, як демонструють наступні комірки коду:</p>
-<div class="cell" data-execution_count="21">
+<div id="a53517eb" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># у середньому, як багато днів між 1-сигма подіями?</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>(<span class="fl">1.</span> <span class="op">-</span> norm.cdf(<span class="fl">1.</span>)))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>3.1514871875343764</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div id="074b390b" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># у середньому, як багато днів між 2-сигма подіями?</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>(<span class="fl">1.</span> <span class="op">-</span> norm.cdf(<span class="fl">2.</span>)))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>21.97789450799283</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="23">
+<div id="2c9f5401" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># у середньому, як багато днів між 3-сигма подіями?</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>(<span class="fl">1.</span> <span class="op">-</span> norm.cdf(<span class="fl">3.</span>)))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>370.3983473449564</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="40688f35" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># те саме, що й вище, але із використанням функції виживання</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>norm.sf(<span class="fl">3.</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>370.39834734495923</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="7262a344" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># те саме, що й вище, але із використанням логарифмічної функції функції виживання для чисельної стабільності</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>np.exp(<span class="op">-</span>norm.logsf(<span class="fl">3.</span>) <span class="op">-</span> np.log(<span class="fl">2.</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>370.398347344959</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="27af2712" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># те саме, що й вище, але із використанням логарифму з основою 10 для замість натурального логарифму для кращої інтерпретації</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="op">**</span>(<span class="op">-</span>norm.logsf(<span class="fl">3.</span>)<span class="op">/</span>np.log(<span class="dv">10</span>) <span class="op">-</span> np.log10(<span class="fl">2.</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>370.3983473449588</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="2281b327" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># як багато днів (log10 значення) між 23-сигма подіями, в середньому?</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>(<span class="op">-</span>norm.logsf(<span class="fl">23.</span>)<span class="op">/</span>np.log(<span class="dv">10</span>) <span class="op">-</span> np.log10(<span class="fl">2.</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
@@ -780,7 +833,7 @@ r_t = \log p_t - \log p_{t-1}.
 </div>
 </div>
 <p>Щоб отримати додаткову інформацію про частоту екстремальних прибутковостей, ми можемо навіть створити невеликий <a href="https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Basics.html">інтерактивний віджет</a> за допомогою повзунка, який вказує кількість “сигм”, а текст поруч із ним показує середню кількість днів між двома такими екстремальними подіями:</p>
-<div class="cell" data-execution_count="28">
+<div id="5fdb7386" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> IntSlider, interact</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> years_between(X):</span>
@@ -795,7 +848,7 @@ r_t = \log p_t - \log p_{t-1}.
 </script>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
+<div id="7156d407" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>np.log10(<span class="bu">float</span>(<span class="dv">214533622638557983431869220329015643677794364342592664885632499326649056583365324378194575664549945880382591666749440</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>116.33149536636726</code></pre>
@@ -818,14 +871,14 @@ r_t = \log p_t - \log p_{t-1}.
 <h3 data-number="12.1.6" class="anchored" data-anchor-id="статистика-степеневого-розподілу"><span class="header-section-number">12.1.6</span> Статистика степеневого розподілу</h3>
 <p>Тепер, коли ми знаємо, що розподіл Гауса не є хорошим вибором, який тип розподілу насправді може описати частоту екстремальних подій, що струшують S&amp;P 500? Частота екстремально позитивних і негативних прибутковостей асиметрична для більшості фінансових активів, оскільки крахи, як правило, більш сильні, ніж підйоми. Ось чому нижче ми зосередимося на лівому (негативному) хвості розподілу прибутковостей.</p>
 <p>Оскільки нас цікавлять лише екстремальні події, ми розглянемо лише ті прибутковості, які менше <span class="math inline">\(-0.03\)</span> (приблизно три стандартних відхилення від середнього значення). Нижче ми візуалізуємо ці екстремально негативні показники прибутковостей у <a href="https://en.wikipedia.org/wiki/Log%E2%80%93log_plot">логарифмічному масштабі</a> (тут ми використовуємо абсолютні значення негативних прибутковостей). Як вісь Oy (яка показує частоту логарифмічних прибутковостей), так і вісь Ox (яка показує величину логарифмічних прибутковостей) масштабуються логарифмічно:</p>
-<div class="cell" data-execution_count="30">
+<div id="6ccc5f3b" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># хвіст починається приблизно при трьох стандартних відхиленнях від середнього</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>np.mean(lr) <span class="op">-</span> <span class="dv">3</span><span class="op">*</span>np.std(lr)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>-0.029610514264246313</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="cell-fig-hist-negret" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>neg_lr <span class="op">=</span> <span class="op">-</span>lr[lr <span class="op">&lt;</span> <span class="dv">0</span>]</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
@@ -840,10 +893,14 @@ r_t = \log p_t - \log p_{t-1}.
 <span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="fl">0.03</span>, <span class="fl">0.04</span>, <span class="fl">0.05</span>, <span class="fl">0.06</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>], [<span class="fl">0.03</span>, <span class="fl">0.04</span>, <span class="fl">0.05</span>, <span class="fl">0.06</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.3</span>], rotation<span class="op">=</span><span class="dv">35</span>)</span>
 <span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hist-negret" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-hist-negret-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.4: Розподіл імовірностей щоденних негативних абсолютних прибутковостей у подвійному логарифмічному масштабі</figcaption>
+<div id="fig-hist-negret" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-negret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-hist-negret-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-negret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.4: Розподіл імовірностей щоденних негативних абсолютних прибутковостей у подвійному логарифмічному масштабі
+</figcaption>
 </figure>
 </div>
 </div>
@@ -862,7 +919,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 \]</span></p>
 <p>Для <span class="math inline">\(\alpha = 0\)</span> всі прибутковості однаково ймовірні, для <span class="math inline">\(\alpha = 2\)</span> подвоєння прибутковостей робить їх у 4 рази менш імовірними. Це правило подвоєння вгору або вниз не залежить від значення самого <span class="math inline">\(\left| r_t \right|\)</span>, але працює для всіх значень <span class="math inline">\(\left| r_t \right|\)</span>. Степеневе співвідношення також називають “безмасштабним” або <a href="https://en.wikipedia.org/wiki/Scale_invariance">масштабно-інваріантним</a>.</p>
 <p>Як щодо показника <span class="math inline">\(\alpha\)</span> для наших надзвичайно негативних логарифмічних прибутковостей S&amp;P 500? Ми можемо легко оцінити його за даними, але є деякі тонкощі у правильному розбитті вищезазначеної гістограми, які можуть вплинути на нашу оцінку (див., наприклад, <span class="citation" data-cites="10.1890/07-1288.1">&nbsp;[<a href="references.html#ref-10.1890/07-1288.1" role="doc-biblioref">1</a>]</span>). Щоб обійти ці проблеми з розбиттям, можемо замість цього оцінити степеневий показник <a href="https://en.wikipedia.org/wiki/Histogram#Cumulative_histogram">кумулятивної гістограми</a> логарифмічних прибутковостей, а потім відняти одиницю від отриманого нахилу:</p>
-<div class="cell" data-execution_count="45">
+<div id="cell-fig-cumulativehist-negret" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># підганяємо лінію регресії до кумулятивної гістограми (log10 для ймовірності) vs. лог-прибутковості (log10)</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sorted_neg_lr <span class="op">=</span> np.sort(neg_lr.values)</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>cumulative_probability <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">0</span>, <span class="bu">len</span>(sorted_neg_lr)<span class="op">+</span><span class="dv">1</span>)[:<span class="op">-</span><span class="dv">1</span>]</span>
@@ -885,16 +942,20 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'$\log[|r_t|]$'</span>)</span>
 <span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-cumulativehist-negret" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-cumulativehist-negret-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.5: Кумулятивний розподіл імовірностей негативних абсолютних прибутковостей у подвійному логарифмічному масштабі й лінія регресії з якої отримується кут нахилу даного розподілу</figcaption>
+<div id="fig-cumulativehist-negret" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cumulativehist-negret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-cumulativehist-negret-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cumulativehist-negret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.5: Кумулятивний розподіл імовірностей негативних абсолютних прибутковостей у подвійному логарифмічному масштабі й лінія регресії з якої отримується кут нахилу даного розподілу
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Виходячи з цієї оцінки, ми отримуємо степеневої показник, рівний <span class="math inline">\(\alpha \approx 3.7\)</span>. Якщо ми побудуємо гістограму наших надзвичайно негативних логарифмічних прибутковостей, то побачимо, що вона добре відображає зниження ймовірності, оскільки масштаб збоїв збільшується. Однак цей степеневий показник все ще недооцінює ймовірність настання чергового “Чорного понеділка”, оскільки лінія відповідності не ідеально підходить до цієї крайньої точки. Якби ми захотіли створити ще більш консервативну модель екстремальних подій, нам потрібно було б вручну ще більше зменшити значення <span class="math inline">\(\alpha\)</span>, щоб врахувати більшу ймовірність настання чорних понеділків за рахунок втрати точності підгонки для менших збоїв. Це перший раз, коли ми можемо побачити, як одна точка даних впливає на наші рішення щодо моделювання. На даний момент ми будемо довіряти оцінці параметра і погодимося з оцінкою <span class="math inline">\(\alpha=3.7\)</span>.</p>
-<div class="cell" data-execution_count="46">
+<div id="cell-fig-hist-negret-reg" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>neg_lr <span class="op">=</span> <span class="op">-</span>lr[lr <span class="op">&lt;</span> <span class="dv">0</span>]</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
@@ -913,43 +974,47 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>plt.plot(x_fit, y_fit, lw<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hist-negret-reg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-hist-negret-reg-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.6: Розподіл імовірностей щоденних негативних абсолютних прибутковостей у подвійному логарифмічному масштабі й лінія регресії з якої отримується кут нахилу даного розподілу</figcaption>
+<div id="fig-hist-negret-reg" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-negret-reg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-hist-negret-reg-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-negret-reg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.6: Розподіл імовірностей щоденних негативних абсолютних прибутковостей у подвійному логарифмічному масштабі й лінія регресії з якої отримується кут нахилу даного розподілу
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Ми можемо використовувати цей степеневий закон, щоб екстраполювати, як часто ми очікуємо настання чорного понеділка (або “події з 23 сигмами”) у довгостроковій перспективі. Виходячи з наявних у нас даних, ми можемо оцінити, що ймовірність спостереження зниження на <span class="math inline">\(-0.03\)</span> або гірше становить близько <span class="math inline">\(1.6\%\)</span>. Слідуючи нашій степеневій кривій, така крахова подія як чорний понеділок, що мала спад на <span class="math inline">\(-0.229\)</span>, відбувалася б із частотою <span class="math inline">\(\left(0.229/0.03\right)^{-3.7} \approx 1/1845\)</span>. Так само часто, як зниження на <span class="math inline">\(-0.03\)</span>, яке ми спостерігаємо приблизно раз на три місяці. Це означає, що, виходячи з нашої степеневої кривої, очікується, що чорні понеділки, подібні до 1987 року, траплятимуться приблизно раз на 450 років (див. код нижче).</p>
-<div class="cell" data-execution_count="47">
+<div id="99bc44dc" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># як часто ринок знижується більш ніж на -0.03</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>(neg_lr <span class="op">&gt;</span> <span class="fl">0.03</span>).mean()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>0.016091417910447763</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="48">
+<div id="c6cb3f84" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># у середньому, як багато днів між цима трьома подіями</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span><span class="op">/</span>(neg_lr <span class="op">&gt;</span> <span class="fl">0.03</span>).mean()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>62.144927536231876</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="49">
+<div id="87719f16" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># у скільки разів менше відбувається подій "Чорного понеділка" в порівнянні зі зниженням на -0.03?</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>(np.<span class="bu">max</span>(neg_lr)<span class="op">/</span><span class="fl">0.03</span>)<span class="op">**</span><span class="fl">3.7</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>1845.1139014672306</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
+<div id="8d3a0cea" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">max</span>(neg_lr)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>0.2289972265656708</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
+<div id="d749c4ea" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># скільки років пройшло між двома подіями "Чорного понеділка",</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># виходячи з припущення, що подія -0.03 відбувається один раз у 63 дня?</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>(<span class="fl">1.</span><span class="op">/</span>((<span class="dv">1</span><span class="op">/</span><span class="dv">62</span>)<span class="op">*</span><span class="dv">1</span><span class="op">/</span><span class="dv">1845</span>))<span class="op">/</span><span class="dv">252</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -982,7 +1047,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <li><strong><a href="https://en.wikipedia.org/wiki/Kurtosis">Ексцес</a></strong>: вимірює тяжкість хвостів розподілу. Розподіли прибутковостей зазвичай мають ексцес більший ніж у розподілу Гауса, тобто екстремальні події відбуваються частіше, ніж очікувалося в гаусовій моделі.</li>
 </ol>
 <p>Ексцес Гаусового розподілу дорівнює 3 (використовуючи визначення Пірсона, з визначенням Фішера <a href="https://en.wikipedia.org/wiki/Kurtosis#Excess_kurtosis">надлишкового ексцесу</a> це 0), але наша вибірка щоденних логарифмічних прибутковостей S&amp;P 500 має ексцес <span class="math inline">\(28.6\)</span>, що знову вказує на те, що екстремальні події набагато більш вірогідні.</p>
-<div class="cell" data-execution_count="52">
+<div id="c8e031d8" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># обчислюємо ексцес лог-прибутковостей</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kurtosis</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -992,14 +1057,14 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 </div>
 </div>
 <p>Тепер ми дійшли до того моменту, коли ми могли б запитати: наскільки сильно одна точка впливає на нашу оцінку ексцесу? Якщо ми перерахуємо ексцес всіх щоденних прибутків S&amp;P 500 з 1950 року і виключимо тільки чорний понеділок 1987 року, ми отримаємо значення <span class="math inline">\(14.3\)</span>, майже половину від значення, яке ми отримуємо, коли використовуємо всі значення! Видалення подальших найгірших днів, звичайно, ще більше зменшує ексцес, але ефект значно менший.</p>
-<div class="cell" data-execution_count="53">
+<div id="5e523fe0" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># обчислюємо ексцес лог-прибутковостей після видалення Чорного понеділка 1987</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>kurtosis(lr[lr <span class="op">&gt;</span> np.<span class="bu">min</span>(lr)], fisher<span class="op">=</span><span class="va">False</span>, bias<span class="op">=</span><span class="va">False</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>14.3083633314701</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="55">
+<div id="cell-fig-excess" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>lr_sorted <span class="op">=</span> lr.sort_values()</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>kurt <span class="op">=</span> [kurtosis(lr_sorted.iloc[i:], fisher<span class="op">=</span><span class="va">False</span>, bias<span class="op">=</span><span class="va">False</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>)]</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1013,19 +1078,23 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="dv">0</span>, <span class="dv">32</span>])</span>
 <span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-excess" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-excess-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.7: Залежність ексцесу логарифмічних прибутковостей від кількості видалених найгірших днів на ринку S&amp;P 500</figcaption>
+<div id="fig-excess" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-excess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-excess-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excess-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.7: Залежність ексцесу логарифмічних прибутковостей від кількості видалених найгірших днів на ринку S&amp;P 500
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Більш радикальний погляд на цю проблему досягається, якщо ми будуємо графік ексцесу в покроковому режимі, тобто для кожного дня ми будуємо розрахунковий ексцес, використовуючи всі минулі логарифмічні дані до цього моменту часу. Як ви можете бачити нижче, до “Чорного понеділка” ексцес ніколи не перевищував <span class="math inline">\(15\)</span>, проте навіть через 35 років після “Чорного понеділка” ексцес ще не “оговтався” від цієї події і залишається на позначці 30. Чи означає це, що ми повинні просто ігнорувати Чорний понеділок як викид і продовжувати використовувати нашу “чисту” оцінку в <span class="math inline">\(14.6\)</span>? Ні, точно ні! Як ми побачимо незабаром, ми скоріше повинні запитати себе, чи є сенс у тому, щоб оцінювати ексцес!</p>
-<div class="cell" data-execution_count="57">
+<div id="503e9894" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>kurt <span class="op">=</span> [kurtosis(lr.iloc[:i], fisher<span class="op">=</span><span class="va">False</span>, bias<span class="op">=</span><span class="va">False</span>) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>, <span class="bu">len</span>(lr))]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="59">
+<div id="cell-fig-excess-date" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>plt.plot(lr.index[<span class="dv">1000</span>:], kurt, c<span class="op">=</span><span class="st">'C3'</span>, lw<span class="op">=</span><span class="dv">3</span>, zorder<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Date'</span>)</span>
@@ -1033,17 +1102,21 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">35</span>)</span>
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-excess-date" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-excess-date-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.8: Залежність ексцесу логарифмічних прибутковостей від кількості включених значень індексу S&amp;P 500</figcaption>
+<div id="fig-excess-date" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-excess-date-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-excess-date-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excess-date-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.8: Залежність ексцесу логарифмічних прибутковостей від кількості включених значень індексу S&amp;P 500
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Той факт, що одна точка даних може настільки сильно змінити нашу оцінку ексцесу, і, схоже, вона більше не сходиться, коли додаються нові точки даних, є чітким свідченням того, що ексцес базового розподілу ймовірностей насправді нескінченний! Проблема полягає в тому, що для кінцевої вибірки даних (а всі набори даних скінченні) ми завжди зможемо оцінити скінчене значення ексцесу. <code>scipy.stats.kurtosis</code> не може повернути нескінченність (<span class="math inline">\(\infty\)</span>), він завжди повідомлятиме про скінченний ексцес <em>вибірки</em>. Але ця кінцева оцінка не допоможе нам нічого сказати про майбутню поведінку ринку, оскільки ексцес продовжуватиме переходити до ще більших значень до наступного чорного понеділка, іншого чорного вівторка … у більш-менш віддаленому майбутньому.</p>
 <p>Однак опис частоти екстремальних подій згідно степеневого закону, який ми представили вище, може допомогти нам вирішити, чи є ексцес кінцевим, так що, переглянувши достатню кількість точок даних, ми зможемо вирішити, чи слід прийняти той факт, що ексцес не піддається оцінці і справді нескінченний. Щоб побачити це, нам потрібно ввести ще один розподіл ймовірностей, <a href="https://en.wikipedia.org/wiki/Student%27s_t-distribution">t-розподіл Стьюдента</a>. Це колоколообразний симетричний розподіл зі степеневими хвостами. Його додатковий параметр <span class="math inline">\(\nu\)</span> визначає показник степеневого закону <span class="math inline">\(\alpha=(\nu+1)\)</span>. Нижче ми підганяємо t-розподіл до наших логарифмічних прибутковостей S&amp;P 500, зберігаючи при цьому степеневий показник <span class="math inline">\(\alpha=3.7\)</span> (відповідний <span class="math inline">\(\nu = 2.7\)</span>), який ми підганяли раніше:</p>
-<div class="cell" data-execution_count="61">
+<div id="4f86a6f2" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> t</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>fit_params <span class="op">=</span> t.fit(lr, fix_df<span class="op">=</span><span class="fl">2.7</span>)</span>
@@ -1051,7 +1124,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>x_fit <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">0.25</span>, <span class="fl">0.125</span>, <span class="dv">1000</span>)</span>
 <span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a>y_fit_t <span class="op">=</span> t(<span class="op">*</span>fit_params).pdf(x_fit)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="64">
+<div id="cell-fig-hist-ret-student" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>plt.hist(lr, <span class="dv">100</span>, density<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>plt.plot(x_fit, y_fit_t, lw<span class="op">=</span><span class="dv">3</span>, c<span class="op">=</span><span class="st">'C3'</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, label<span class="op">=</span><span class="st">"Підігнаний t-розподіл"</span>)</span>
@@ -1065,10 +1138,14 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="ss">f'Підігнаний степеневий показник: $</span><span class="ch">\\</span><span class="ss">alpha = </span><span class="sc">{</span>(fit_params[<span class="dv">0</span>]<span class="op">+</span><span class="dv">1</span>)<span class="sc">:.2f}</span><span class="ss">$'</span>)</span>
 <span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hist-ret-student" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-hist-ret-student-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.9: Розподіл імовірностей логарифмічних прибутковостей S&amp;P 500 у порівнянні з розподілами Гауса й Лапласа в напів- логарифмічному масштабі</figcaption>
+<div id="fig-hist-ret-student" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-ret-student-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-hist-ret-student-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-ret-student-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.9: Розподіл імовірностей логарифмічних прибутковостей S&amp;P 500 у порівнянні з розподілами Гауса й Лапласа в напів- логарифмічному масштабі
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1080,19 +1157,19 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <li>інакше невизначено.</li>
 </ul>
 <p>Це підтверджує наше початкове припущення про те, що при степеневому показнику, рівному <span class="math inline">\(\alpha \approx 3.7\)</span>, ексцес дійсно нескінченний, і немає сенсу оцінювати його по скінченій вибірці, оскільки оціночне значення буде зберігатися тільки до наступної екстремальної події, яка підштовхне його ще вище. Ми можемо легко змоделювати цей ефект, витягуючи випадкові вибірки з t-розподілів Стьюдента з різними степеневими показниками, які відповідають трьом режимам, зазначеним вище. Далі ми генеруємо 100 000 випадкових значень з t-розподілів з <span class="math inline">\(\alpha = 2\)</span>, <span class="math inline">\(\alpha = 3.7\)</span>, <span class="math inline">\(\alpha = 6\)</span>, і поетапно обчислюємо ексцес, як і раніше, щоб побачити еволюцію передбачуваного ексцесу у трьох різних випадках:</p>
-<div class="cell" data-execution_count="65">
+<div id="1563eecf" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>samples_alpha_20 <span class="op">=</span> t(<span class="fl">1.0</span>, <span class="fl">0.</span>, <span class="fl">1.</span>).rvs(<span class="dv">100000</span>)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>samples_alpha_37 <span class="op">=</span> t(<span class="fl">2.7</span>, <span class="fl">0.</span>, <span class="fl">1.</span>).rvs(<span class="dv">100000</span>)</span>
 <span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a>samples_alpha_60 <span class="op">=</span> t(<span class="fl">5.0</span>, <span class="fl">0.</span>, <span class="fl">1.</span>).rvs(<span class="dv">100000</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="66">
+<div id="3dd347ae" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> np.arange(<span class="dv">1000</span>, <span class="dv">100000</span>, <span class="dv">50</span>)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>kurt_alpha_20 <span class="op">=</span> [kurtosis(samples_alpha_20[:i], fisher<span class="op">=</span><span class="va">False</span>, bias<span class="op">=</span><span class="va">False</span>) <span class="cf">for</span> i <span class="kw">in</span> m]</span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>kurt_alpha_37 <span class="op">=</span> [kurtosis(samples_alpha_37[:i], fisher<span class="op">=</span><span class="va">False</span>, bias<span class="op">=</span><span class="va">False</span>) <span class="cf">for</span> i <span class="kw">in</span> m]</span>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>kurt_alpha_60 <span class="op">=</span> [kurtosis(samples_alpha_60[:i], fisher<span class="op">=</span><span class="va">False</span>, bias<span class="op">=</span><span class="va">False</span>) <span class="cf">for</span> i <span class="kw">in</span> m]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="67">
+<div id="cell-fig-hist-ret-student-alphas" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">311</span>)</span>
@@ -1117,10 +1194,14 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-hist-ret-student-alphas" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-hist-ret-student-alphas-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.10: Випадкові значення згенеровані з <span class="math inline">\(t\)</span>-розподілів при <span class="math inline">\(\alpha=2\)</span>, <span class="math inline">\(\alpha=3.7\)</span> та <span class="math inline">\(\alpha=6\)</span></figcaption>
+<div id="fig-hist-ret-student-alphas" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-ret-student-alphas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-hist-ret-student-alphas-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-ret-student-alphas-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.10: Випадкові значення згенеровані з <span class="math inline">\(t\)</span>-розподілів при <span class="math inline">\(\alpha=2\)</span>, <span class="math inline">\(\alpha=3.7\)</span> та <span class="math inline">\(\alpha=6\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1130,7 +1211,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <section id="ексцес-при-розрахунках-волатильності" class="level3" data-number="12.1.8">
 <h3 data-number="12.1.8" class="anchored" data-anchor-id="ексцес-при-розрахунках-волатильності"><span class="header-section-number">12.1.8</span> Ексцес при розрахунках волатильності</h3>
 <p>Оскільки ексцес при появі крахових подій збільшується — або стає нескінченним — це також впливає на нижчі моменти, найголовніше, на дисперсію. Квадратний корінь дисперсії — це стандартне відхилення, або <a href="https://en.wikipedia.org/wiki/Volatility_(finance)">волатильність</a>, як це називається у фінансах. Волатильність є розповсюдженним параметром при оптимізації портфеля і практично в кожній фінансовій моделі, оскільки в кінцевому підсумку вона стала найбільш часто використовуваним показником “ризику”. Щоб побачити, як ексцес впливає на оцінку волатильності, ми проводимо простий експеримент <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Монте-Карло</a>: ми генеруємо щоденну прибутковість за 50 років з розподілу ймовірностей за нашим вибором (ми будемо використовувати Гаусовий і t-розподіл Стьюдента) і обчислюємо оцінку волатильності, використовуючи вибіркове стандартне відхилення. Ми робимо це не тільки один раз, але і 10000 разів, кожен раз, коли ми розраховуємо нову гіпотетичну щоденну прибутковість за 50 років і обчислюємо відповідну оцінку волатильності. Звичайно, не всі ці оцінки будуть однаковими, але коливатимуться навколо справжньої волатильності, оскільки ми маємо лише кінцеву кількість даних. Оскільки ми знаємо справжній розподіл ймовірностей, який ми використовуємо для моделювання, ми також знаємо справжню волатильність. Щоб побачити, наскільки точно ми можемо оцінити волатильність на основі даних за 50 років, ми обчислюємо відносну похибку між оцінками волатильності та справжньою волатильністю.</p>
-<div class="cell" data-execution_count="59">
+<div id="3996724a" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>n_sim <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>true_var <span class="op">=</span> <span class="fl">1.</span></span>
@@ -1146,7 +1227,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <pre><code>0.5039568642168273</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="60">
+<div id="d306bb15" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>n_sim <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">6.0</span></span>
@@ -1165,7 +1246,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <pre><code>0.9616583563963519</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="61">
+<div id="60cff12b" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>n_sim <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">4.0</span></span>
@@ -1184,7 +1265,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <pre><code>3.8082666425995932</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="62">
+<div id="94a7e3ec" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>n_sim <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">3.7</span></span>
@@ -1203,7 +1284,7 @@ p(2 \cdot |r_t|) \big/ p(|r_t|) = 2^{-\alpha}.
 <pre><code>6.115969986022528</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="63">
+<div id="452445c9" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>n_sim <span class="op">=</span> <span class="dv">10000</span></span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">3.1</span></span>
@@ -1272,7 +1353,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 </div>
 <p>Тут ми просто хочемо проілюструвати наслідки припущення, що фінансові системи підпорядковуються Гаусіану, змоделювавши прибутковість двох гіпотетичних акцій і спробувавши знайти ваги розподілу по максимуму Шарпа. Як ми побачимо, великі хвости в модельованих розподілах прибутковостей вносять істотну невизначеність у розрахункові ваги розподілу — прямий наслідок нестабільності дисперсії.</p>
 <p>Спочатку ми генеруємо випадкові числа з Гаусового розподілу, достатнього для моделювання щоденної прибутковості двох гіпотетичних акцій за 10 років. Ми присвоюємо їм різну позитивну очікувану прибутковість і волатильність. Для простоти ми припускаємо, що кореляція між двома активами є нульовою:</p>
-<div class="cell" data-execution_count="70">
+<div id="cell-fig-gauss-stocks" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>n_years <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1289,21 +1370,25 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
 <span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-gauss-stocks" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-gauss-stocks-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.11: Динаміка двох акцій, що згенерована за Гаусовим розподілом у напів- логарифмічному масштабі$</figcaption>
+<div id="fig-gauss-stocks" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-gauss-stocks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-gauss-stocks-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gauss-stocks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.11: Динаміка двох акцій, що згенерована за Гаусовим розподілом у напів- логарифмічному масштабі$
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Звичайно, насправді ми не знаємо <em>справжньої</em> очікуваної прибутковості або значень волатильності кореляцій між активами. Таким чином, ми повинні оцінити очікувану прибутковість за середнім значенням вибірки та матрицю коваріації за матрицею коваріації вибірки. Зверніть увагу, що існують більш складні способи оцінки цих параметрів на основі історичних даних, таких як <a href="http://www.ledoit.net/honey.pdf">оцінки усадки</a> для коваріаційної матриці або <a href="https://sci-hub.mksa.top/10.3905/jfi.1991.408013">моделі розподілу Блека-Літтермана</a>. Ці методи, безумовно, покращують вибіркові оцінки, але загальний недолік сучасної теорії портфеля через наявність “важких хвостів” залишається. Щоб вивчити та протестувати різні методи оптимізації портфеля, рекомендуємо розглянути бібліотеку <a href="https://pyportfolioopt.readthedocs.io/en/latest/index.html">PyPortfolioOpt</a>, що представляє собою добре задокументований пакет Python, який реалізує як основні, так і складні методи оптимізації портфеля та дозволяє легко тестувати ці методи на реальних даних. Поки ми дотримуємося вибіркових оцінок (і використовуємо коефіцієнт 252 — середню кількість торгових днів на рік для отримання очікуваної прибутковості в річному обчисленні і коваріації за щоденними оцінками):</p>
-<div class="cell" data-execution_count="71">
+<div id="9a1664be" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>exp_returns <span class="op">=</span> np.array([np.mean(log_ret_1), np.mean(log_ret_2)])<span class="op">*</span><span class="dv">252</span></span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="op">=</span> np.cov([log_ret_1, log_ret_2])<span class="op">*</span><span class="dv">252</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі ми визначаємо функцію, яка приймає ваги розподілу кандидатів, розрахункову очікувану прибутковість і коваріаційну матрицю і виводить коефіцієнт Шарпа портфеля:</p>
-<div class="cell" data-execution_count="72">
+<div id="e8a2fe1d" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sharpe(weights, exp_returns, cov_matrix):</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> weights.dot(exp_returns) <span class="op">/</span> np.sqrt(weights.dot(cov_matrix).dot(weights.T))</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1313,7 +1398,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 </div>
 </div>
 <p>Замість того, щоб використовувати реальний оптимізатор для пошуку ваг розподілу, які максимізують коефіцієнт Шарпа, ми просто переглядаємо всі можливі комбінації ваг з інтервалом <span class="math inline">\(1\%\)</span>. Звичайно, це розумний підхід лише для двох активів, і він швидко стає нерозв’язним, використовуючи більше двох активів.</p>
-<div class="cell" data-execution_count="73">
+<div id="5706f794" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>candidate_weights <span class="op">=</span> np.array([np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">101</span>), <span class="fl">1.</span> <span class="op">-</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">101</span>)]).T</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>candidate_weights[:<span class="dv">5</span>]</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="73">
@@ -1325,7 +1410,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 </div>
 </div>
 <p>Тепер ми можемо перебрати всі наші ваги-кандидати, обчислити коефіцієнт Шарпа портфеля для всіх з них, а потім вибрати оптимальний набір ваг.</p>
-<div class="cell" data-execution_count="74">
+<div id="491c0f11" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>candidate_sharpe <span class="op">=</span> [sharpe(weights, exp_returns, cov_matrix) <span class="cf">for</span> weights <span class="kw">in</span> candidate_weights]</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>opt_weights <span class="op">=</span> candidate_weights[np.argmax(candidate_sharpe)]</span>
 <span id="cb85-3"><a href="#cb85-3" aria-hidden="true" tabindex="-1"></a>opt_weights</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1334,7 +1419,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 </div>
 </div>
 <p>Щоб отримати уявлення про те, наскільки точно ми можемо оцінити ваги розподілу на основі гіпотетичної щоденної прибутковості за 10 років, ми зараз повторюємо цей експеримент, повторно генеруємо нові випадкові прибутковості, повторно оцінюємо очікувані прибутковості й матрицю коваріації та знаходимо оптимальні ваги. Ми робимо це 10000 разів. Ми реєструємо лише першу вагу розподілу <span class="math inline">\(w_1\)</span> для кожного запуску без втрати інформації, оскільки друга вага безпосередньо випливає з нормалізації <span class="math inline">\(w_2 = 1 - w_1\)</span>.</p>
-<div class="cell" data-execution_count="75">
+<div id="32f5d3b7" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>opt_weight_gaussian <span class="op">=</span> []</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1354,7 +1439,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 </div>
 </div>
 <p>Нарешті, ми можемо побудувати гістограму всіх 10000 значень, які ми отримуємо для <span class="math inline">\(w_1\)</span>.</p>
-<div class="cell" data-execution_count="82">
+<div id="cell-fig-coef-portfolio" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>plt.hist(opt_weight_gaussian, <span class="dv">10</span>, density<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span>
 <span id="cb89-3"><a href="#cb89-3" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="dv">0</span>, <span class="dv">1</span>])</span>
@@ -1362,26 +1447,30 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <span id="cb89-5"><a href="#cb89-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'$P(w_1)$'</span>)</span>
 <span id="cb89-6"><a href="#cb89-6" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-coef-portfolio" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-coef-portfolio-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.12: Розподіл імовірностей <span class="math inline">\(w_1\)</span> для портфеля з максимальним коефіцієнтом Шарпа. Портфель акцій розподілений за нормальним Гаусовим розподілом</figcaption>
+<div id="fig-coef-portfolio" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coef-portfolio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-coef-portfolio-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coef-portfolio-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.12: Розподіл імовірностей <span class="math inline">\(w_1\)</span> для портфеля з максимальним коефіцієнтом Шарпа. Портфель акцій розподілений за нормальним Гаусовим розподілом
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Як ми бачимо, розподіл для першої акції коливається приблизно від <span class="math inline">\(60%\)</span> до <span class="math inline">\(70%\)</span> на основі історичних даних за 10 років. Ми можемо додатково оцінити це кількісно, обчисливши 5-й і 95-й процентилі всіх значень <span class="math inline">\(w_1\)</span>. Таким чином, з упевненістю в <span class="math inline">\(90%\)</span> ми отримаємо розподіл між <span class="math inline">\(61%\)</span> і <span class="math inline">\(72%\)</span>:</p>
-<div class="cell" data-execution_count="84">
+<div id="0dfaf971" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>np.percentile(opt_weight_gaussian, <span class="dv">5</span>), np.percentile(opt_weight_gaussian, <span class="dv">95</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="84">
 <pre><code>(0.61, 0.72)</code></pre>
 </div>
 </div>
 <p>Тепер давайте повторимо цей експеримент, але цього разу ми замінимо розподіл Гауса на розподіл Стьюдента зі степеневим показником <span class="math inline">\(\alpha=3.7\)</span> (що відповідає кількості ступенів свободи <span class="math inline">\(\nu=2.7\)</span>). Ми залишаємо очікувану прибутковість і волатильність (виміряні стандартним відхиленням розподілу) точно такими ж. Зверніть увагу, що стандартне відхилення стандартного t-розподілу визначається як <span class="math inline">\(\sqrt{\nu/(\nu-2)}\)</span> в нашому випадку, тому ми повинні внести поправку на цей коефіцієнт маштабування при вилученні випадкових значень зі стандартного t-розподілу. Нижче ви можете побачити пряме порівняння розподілів Гауса, використаних у наведеному вище моделюванні, та t-розподілів із відповідним середнім значенням та стандартним відхиленням.</p>
-<div class="cell" data-execution_count="85">
+<div id="36772c46" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>scale_correction <span class="op">=</span> np.sqrt(<span class="fl">2.7</span><span class="op">/</span>(<span class="fl">2.7</span><span class="op">-</span><span class="fl">2.</span>))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="88">
+<div id="cell-fig-dist-student-gaus" class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">0.025</span>, <span class="fl">0.025</span>, <span class="dv">10000</span>)</span>
 <span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb93-3"><a href="#cb93-3" aria-hidden="true" tabindex="-1"></a>y1_norm <span class="op">=</span> norm(loc<span class="op">=</span><span class="fl">0.0005</span>, scale<span class="op">=</span><span class="fl">0.0025</span>).pdf(x)</span>
@@ -1416,16 +1505,20 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <span id="cb93-32"><a href="#cb93-32" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb93-33"><a href="#cb93-33" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dist-student-gaus" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-dist-student-gaus-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.13: Розподіл Стьюдента та Гауса для значень модельованих акцій</figcaption>
+<div id="fig-dist-student-gaus" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dist-student-gaus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-dist-student-gaus-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dist-student-gaus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.13: Розподіл Стьюдента та Гауса для значень модельованих акцій
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Як ми можемо легко бачити, узгоджені t-розподіли Стьюдента насправді дають менші значення прибутковостей. Однак вони також дають набагато більш екстремальні значення, але ми не можемо легко побачити це, оскільки значення щільності ймовірності в хвостах дуже малі! Якщо ми перейдемо до логарифмічного масштабування вісі Oy, картина стане більш чіткою:</p>
-<div class="cell" data-execution_count="91">
+<div id="cell-fig-dist-student-gaus-log" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">121</span>)</span>
@@ -1451,16 +1544,20 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <span id="cb94-23"><a href="#cb94-23" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb94-24"><a href="#cb94-24" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dist-student-gaus-log" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-dist-student-gaus-log-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.14: Розподіл Стьюдента та Гауса для значень модельованих акцій у напів- логарифмічному масштабі</figcaption>
+<div id="fig-dist-student-gaus-log" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dist-student-gaus-log-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-dist-student-gaus-log-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dist-student-gaus-log-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.14: Розподіл Стьюдента та Гауса для значень модельованих акцій у напів- логарифмічному масштабі
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Тепер ми чітко бачимо, що, наприклад, ймовірність щоденних логарифмічних прибутковостей <span class="math inline">\(-0.02\)</span> для акції 1 в <span class="math inline">\(10^{10}\)</span> разів вища за умови t-розподілу порівняно з відповідним розподілом Гауса! Завжди дивіться на розподіли з логарифмічною шкалою щільності ймовірності, щоб отримати чітке уявлення про хвости. Використовуючи наші узгоджені t-розподіли, ми діємо, як і раніше, і моделюємо гіпотетичні 10-річні історичні показники для наших двох некорельованих акцій. Нижче ви можете побачити приклад. Тільки при уважному розгляді ви можете помітити, що ці криві сукупної прибутковості насправді трохи більш нерівні в порівнянні з тими, які були побудовані вище з гаусовими прибутковостями. Але різниця невловима, якщо дивитися на таку “наближену” діаграму десятирічного періоду:</p>
-<div class="cell" data-execution_count="93">
+<div id="cell-fig-student-stocks" class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>n_years <span class="op">=</span> <span class="dv">10</span></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1477,16 +1574,20 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <span id="cb95-14"><a href="#cb95-14" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
 <span id="cb95-15"><a href="#cb95-15" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-student-stocks" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-student-stocks-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.15: Динаміка двох акцій, що згенерована за розподілом Стьюдента у напів- логарифмічному масштабі</figcaption>
+<div id="fig-student-stocks" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-student-stocks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-student-stocks-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-student-stocks-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.15: Динаміка двох акцій, що згенерована за розподілом Стьюдента у напів- логарифмічному масштабі
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Нарешті, щоб візуалізувати вплив t-розподілу на оцінку ваги розподілу, ми повторюємо наш експеримент Монте-Карло з моделювання 10000 різних 10-річних історичних значень та оцінюємо ваги розподілу в кожному з цих 10000 випадків. Потім ми будуємо графік розподілу <span class="math inline">\(w_1\)</span> і порівнюємо цей розподіл з розподілом, отриманим в результаті моделювання на основі Гауса.</p>
-<div class="cell" data-execution_count="94">
+<div id="3a7698e1" class="cell" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>opt_weight_t <span class="op">=</span> []</span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1505,7 +1606,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <pre><code>100%|██████████| 10000/10000 [00:10&lt;00:00, 998.32it/s]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="95">
+<div id="cell-fig-coef-portfolio-gaus-stud" class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>plt.hist(opt_weight_gaussian, <span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">'Гаусові прибутковості'</span>)</span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>plt.hist(opt_weight_t, <span class="dv">20</span>, alpha<span class="op">=</span><span class="fl">0.8</span>, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Прибутковості Стьюдента"</span>)</span>
@@ -1515,15 +1616,19 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'$P(w_1)$'</span>)</span>
 <span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-coef-portfolio-gaus-stud" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-coef-portfolio-gaus-stud-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.16: Порівняння розподілів імовірностей <span class="math inline">\(w_1\)</span> для портфелів акцій з максимальним коефіцієнтом Шарпа. Портфелі розподілені за розподілами Гауса та Стьюдента</figcaption>
+<div id="fig-coef-portfolio-gaus-stud" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-coef-portfolio-gaus-stud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-coef-portfolio-gaus-stud-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-coef-portfolio-gaus-stud-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.16: Порівняння розподілів імовірностей <span class="math inline">\(w_1\)</span> для портфелів акцій з максимальним коефіцієнтом Шарпа. Портфелі розподілені за розподілами Гауса та Стьюдента
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="63">
+<div id="34d448cf" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>np.percentile(opt_weight_t, <span class="dv">5</span>), np.percentile(opt_weight_t, <span class="dv">95</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>(0.54, 0.77)</code></pre>
@@ -1547,8 +1652,8 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <section id="розподіл-леві" class="level3" data-number="12.1.11">
 <h3 data-number="12.1.11" class="anchored" data-anchor-id="розподіл-леві"><span class="header-section-number">12.1.11</span> Розподіл Леві</h3>
 <p>Альфа-стабільний розподіл є узагальненням розподілу Гауса, що враховує “важкі хвости”. З цієї причини він широко використовується при обробці сигналів, наприклад, у медицині чи фінансах.</p>
-<p>Загальний клас стабільних розподілів був введений і отримав цю назву французьким математиком Полем Леві на початку 1920-х років.</p>
-<p>Раніше ця тема привертала лише помірну увагу провідних експертів, хоча були і ентузіасти, з яких можна згадати російського математика Олександра Яковича Хінчіна. Натхненням для Леві стало бажання узагальнити відому центральну граничну теорему, згідно з якою будь-який розподіл ймовірностей з кінцевою дисперсією збігається до гауссового розподілу.</p>
+<p>Загальний клас стабільних розподілів був введений і отримав цю назву французьким математиком Полем Леві на початку 1920-х років <span class="citation" data-cites="lévy1925calcul">&nbsp;[<a href="references.html#ref-lévy1925calcul" role="doc-biblioref">2</a>]</span>.</p>
+<p>Раніше ця тема привертала лише помірну увагу провідних експертів. Натхненням для Леві стало бажання узагальнити відому центральну граничну теорему, згідно з якою будь-який розподіл імовірностей з кінцевою дисперсією збігається до розподілу Гауса.</p>
 <p>Стабільні розподіли мають три виняткові властивості, які можна коротко підсумувати, заявляючи, що вони:</p>
 <ul>
 <li>інваріантні при додаванні;</li>
@@ -1561,8 +1666,8 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <p><span class="math display">\[
 X_1 + X_2 + ... + X_n \stackrel{d}{=} c_{n}X + d_{n},
 \]</span></p>
-<p><em>де <span class="math inline">\(X_1, X_2, ..., X_n\)</span> характеризуються як незалежні, ідентично розподілені випадкові величини.</em> Також <span class="math inline">\(\stackrel{d}{=}\)</span> позначає <em>рівність розподілів</em>, тобто, випадкові величини з обох сторін мають однаковий розподіл ймовірностей.</p>
-<p>Загалом, сума незалежних, ідентично розподілених випадкових величин результує у випадкову величину з іншим розподілом. Однак, для випадкових величин, що характеризуються <em>стабільним</em> розподілом, сума ідентично розподілених випадкових величин прямує до величини такого самого розподілу. У цьому випадку результуюча випадкова величина (розподіл) може відрізнятися від попередніх величин характерним масштабом (<span class="math inline">\(c_{n}\)</span>) та зміщенням (<span class="math inline">\(d_{n}\)</span>). Якщо <span class="math inline">\(d_{n} = 0\)</span>, розподіл називається <em>строго стабільним</em>.</p>
+<p><em>де <span class="math inline">\(X_1, X_2, ..., X_n\)</span> характеризуються як незалежні, ідентично розподілені випадкові величини.</em> Також <span class="math inline">\(\stackrel{d}{=}\)</span> позначає <em>рівність розподілів</em>, тобто, випадкові величини з обох сторін мають однаковий розподіл імовірностей.</p>
+<p>Загалом, сума незалежних, ідентично розподілених випадкових величин результує у випадкову величину з іншим розподілом. Однак, для випадкових величин, що характеризуються <em>стабільним</em> розподілом, сума ідентично розподілених випадкових величин прямує до величини такого самого розподілу <span class="citation" data-cites="lévy1954theorie gnedenko1968limit KOZUBOWSKI2005298">&nbsp;[<a href="references.html#ref-lévy1954theorie" role="doc-biblioref">3</a>–<a href="references.html#ref-KOZUBOWSKI2005298" role="doc-biblioref">5</a>]</span>. У цьому випадку результуюча випадкова величина (розподіл) може відрізнятися від попередніх величин характерним масштабом (<span class="math inline">\(c_{n}\)</span>) та зміщенням (<span class="math inline">\(d_{n}\)</span>). Якщо <span class="math inline">\(d_{n} = 0\)</span>, розподіл називається <em>строго стабільним</em>.</p>
 <p>Відомо, що нормована константа <span class="math inline">\(c_{n}\)</span> має вид</p>
 <p><span class="math display">\[
 c_{n} = n^{1/\alpha} \, \text{при} \,\, 0 &lt; \alpha \leq 2.
@@ -1575,7 +1680,7 @@ A X_1 + B X_2 \stackrel{d}{=} C X + D,
 <p><em>де <span class="math inline">\(X_1\)</span> та <span class="math inline">\(X_2\)</span> незалежні копії <span class="math inline">\(X\)</span></em>. Тоді існує значення <span class="math inline">\(\alpha \in (0, 2]\)</span> при яких значення <span class="math inline">\(C\)</span> задовільняє рівність <span class="math inline">\(C^{\alpha} = A^{\alpha} + B^{\alpha}\)</span>.</p>
 <p>Для строго стабільних розподілів <span class="math inline">\(D = 0\)</span>. Це означає, що всі лінійні комбінації випадкових незалежних, ідентично розподілених величин, що підкоряються строго стабільному розподілу, результують у випадкову величину з одним і тим же типом розподілу.</p>
 <p>Стабільний розподіл вважається <em>симетричним</em>, якщо величина <span class="math inline">\(-X\)</span> має такий самий тип розподілу. <em>Симетричний</em> стабільний розподіл обов’язково <em>строго стабільний</em>.</p>
-<p>Оскільки аналітичний вираз функції щільності ймовірностей для стабільного розподілу невідомий, за винятком кількох членів стабільного сімейства, більшість традиційних методів математичної статистики не можуть бути використані. Відбовідними вийнятками є</p>
+<p>Оскільки аналітичний вираз функції щільності ймовірностей для стабільного розподілу невідомий, за винятком кількох членів стабільного сімейства, більшість традиційних методів математичної статистики не можуть бути використані. Відповідними вийнятками є</p>
 <ol type="1">
 <li><strong>Гаусовий розподіл</strong> <span class="math inline">\(S_2(0,\mu, \sigma) = \mathcal{N}(\mu, 2\sigma^2)\)</span>. Гаусовий розподіл є спеціальним випадком стабільного розподілу при <span class="math inline">\(\alpha = 2\)</span> так що <span class="math inline">\(\mathcal{N}(\mu, \sigma) = S(2,0,\mu, \frac{\sigma}{\sqrt{2}})\)</span>, де <span class="math inline">\(\mu\)</span> позначає середнє значення нормального розподілу, а <span class="math inline">\(\sigma\)</span> — це стандартне відхилення. Функція щільності ймовірностей має вид</li>
 </ol>
@@ -1586,7 +1691,7 @@ A X_1 + B X_2 \stackrel{d}{=} C X + D,
 <li><strong>Розподіл Коші</strong>. Розподіл Коші — це ще одне представлення стабільного розподілу при <span class="math inline">\(\alpha = 1\)</span> та <span class="math inline">\(\beta = 0\)</span> такими, що <span class="math inline">\(Cauchy(\delta, \gamma) = S_1(1,0,\gamma,\delta)\)</span>, де <span class="math inline">\(\gamma\)</span> — це параметр масштабування, а <span class="math inline">\(\delta\)</span> — це параметр зсуву розподілу Коші. Функція щільності ймовірностей представлена як:</li>
 </ol>
 <p><span class="math display">\[
-\gamma \Big/ \pi[(x-\delta)^2 + \gamma^2], \, -\infty &lt; x &lt; \infty.
+\gamma \big/ \pi[(x-\delta)^2 + \gamma^2], \, -\infty &lt; x &lt; \infty.
 \]</span></p>
 <ol start="3" type="1">
 <li><strong>Розподіл Леві</strong> також є вийнятком із класу стабільних розподілів, де <span class="math inline">\(\alpha = 0.5\)</span> і <span class="math inline">\(\beta = 1\)</span>. Іншими словами, <span class="math inline">\(Levy(\delta, \gamma) = S_{1/2}(0.5, 1, \gamma, \delta)\)</span>. Функція щільності ймовірностей має вид</li>
@@ -1604,13 +1709,13 @@ P(X \leq x) = 2 \left[ 1 - \phi \left( \sqrt{\gamma/x} \right) \right],
 <h4 data-number="12.1.11.2" class="anchored" data-anchor-id="область-збіжності"><span class="header-section-number">12.1.11.2</span> Область збіжності</h4>
 <p>Інше (еквівалентне) визначення стверджує, що стабільні розподіли — це єдині розподіли, які можна отримати при границі нормалізованих сум незалежних, ідентично розподілених випадкових величин. Кажуть, що випадкова величина <span class="math inline">\(X\)</span> має область збіжності, тобто якщо існує послідовність незалежних, ідентично розподілених випадкових величин <span class="math inline">\(Y_1, Y_2, ...\)</span> і послідовності позитивних чисел <span class="math inline">\({\gamma_n}\)</span> і дійсних чисел <span class="math inline">\({\delta_n}\)</span> таких, що</p>
 <p><span class="math display">\[  
-\frac{Y_1 + Y_2 + ... + Y_n}{\gamma_n} + \delta_n \stackrel{d}{\Rightarrow} X.  
+\left( Y_1 + Y_2 + ... + Y_n \right)/\gamma_n + \delta_n \stackrel{d}{\Rightarrow} X.  
 \]</span></p>
 <p>Коли <span class="math inline">\(X\)</span> це гаусова випадкова величина, а <span class="math inline">\(Y_i\)</span> є незалежними, ідентично розподіленими випадковими величинами з визначенною дисперсією, тоді рівняння вище є твердженням звичайної <strong>центральної граничної теореми</strong>. Область збіжності <span class="math inline">\(X\)</span> вважається <em>нормальною</em> коли <span class="math inline">\(\gamma_n = n^{1/\alpha}\)</span>.</p>
 </section>
 <section id="канонічні-представлення-характеристичної-функції" class="level4" data-number="12.1.11.3">
 <h4 data-number="12.1.11.3" class="anchored" data-anchor-id="канонічні-представлення-характеристичної-функції"><span class="header-section-number">12.1.11.3</span> Канонічні представлення характеристичної функції</h4>
-<p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією:</p>
+<p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією <span class="citation" data-cites="JSFS_2005__146_4_23_0 NOLAN1999229">&nbsp;[<a href="references.html#ref-JSFS_2005__146_4_23_0" role="doc-biblioref">6</a>,<a href="references.html#ref-NOLAN1999229" role="doc-biblioref">7</a>]</span>:</p>
 <p><span class="math display">\[
     \begin{split}
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
@@ -1620,12 +1725,12 @@ P(X \leq x) = 2 \left[ 1 - \phi \left( \sqrt{\gamma/x} \right) \right],
         \end{cases}
     \end{split}
 \]</span></p>
-<p>Ми могли б використовувати перетворення Фур’є, щоб отримати функцію щільності розподілу ймовірностей з характеристичної функції:</p>
+<p>Ми могли б використовувати перетворення Фур’є, щоб отримати функцію щільності розподілу ймовірностей з характеристичної функції <span class="citation" data-cites="SALASGONZALEZ2013559">&nbsp;[<a href="references.html#ref-SALASGONZALEZ2013559" role="doc-biblioref">8</a>]</span>:</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 \]</span></p>
 <p>Але наведена вище параметризація не є повністю задовільною, оскільки функція щільності розподілу ймовірностей не є неперервною, зокрема, при <span class="math inline">\(\alpha = 1\)</span>. Дійсно, коли <span class="math inline">\(\beta &gt; 0\)</span>, щільність розподілу зміщується вправо, коли <span class="math inline">\(\alpha &lt; 1\)</span> і вліво, коли <span class="math inline">\(\alpha &gt; 1\)</span>, зі зсувом в сторону <span class="math inline">\(+\infty\)</span> (відповідно <span class="math inline">\(-\infty\)</span>), коли <span class="math inline">\(\alpha\)</span> прагне до 1. Таким чином, для прикладного аналізу даних та інтерпретації коефіцієнтів слід уникати такої параметризації.</p>
-<p>Існує багато параметризацій для стабільних законів, і ці різні параметризації викликали велику плутанину. Різноманітність параметризацій обумовлена поєднанням історичної еволюції плюс численними проблемами, які були проаналізовані за допомогою спеціалізованих форм стабільного розподілу. Є вагомі причини використовувати різні параметризації в різних ситуаціях. Якщо в пріорітеті є чисельні розрахунки, робота із даними, то краще використовувати одну параметризацію. Якщо бажані прості алгебраїчні властивості розподілу або аналітичні властивості строго стійких законів, то краще розглянути дещо інші. Нолан запропонував використовувати параметризацію Золотарьова, яку також часто позначають як <span class="math inline">\(S^{0}\)</span>. Характеристична функція, що відповідає <span class="math inline">\(X \sim S^{0}(\alpha, \beta, \mu_{0}, \gamma)\)</span>, дорівнює:</p>
+<p>Існує багато параметризацій для стабільних законів, і ці різні параметризації викликали велику плутанину. Різноманітність параметризацій обумовлена поєднанням історичної еволюції плюс численними проблемами, які були проаналізовані за допомогою спеціалізованих форм стабільного розподілу. Є вагомі причини використовувати різні параметризації в різних ситуаціях. Якщо в пріорітеті є чисельні розрахунки, робота із даними, то краще використовувати одну параметризацію. Якщо бажані прості алгебраїчні властивості розподілу або аналітичні властивості строго стійких законів, то краще розглянути дещо інші. Нолан запропонував використовувати параметризацію Золотарьова <span class="citation" data-cites="zolotarev1986one">&nbsp;[<a href="references.html#ref-zolotarev1986one" role="doc-biblioref">9</a>]</span>, яку також часто позначають як <span class="math inline">\(S^{0}\)</span>. Характеристична функція, що відповідає <span class="math inline">\(X \sim S^{0}(\alpha, \beta, \mu_{0}, \gamma)\)</span>, дорівнює:</p>
 <p><span class="math display">\[
     \begin{split}
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
@@ -1642,13 +1747,13 @@ f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 </section>
 <section id="метод-розрахунку-параметрів-alpha-стабільного-розподілу" class="level4" data-number="12.1.11.4">
 <h4 data-number="12.1.11.4" class="anchored" data-anchor-id="метод-розрахунку-параметрів-alpha-стабільного-розподілу"><span class="header-section-number">12.1.11.4</span> Метод розрахунку параметрів <span class="math inline">\(\alpha\)</span>-стабільного розподілу</h4>
-<p>Числені методи, такі як метод Маккаллоха, заснований на квантилях, і метод оцінки максимальної правдоподібності були розроблені на виклик відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо використали алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності</p>
+<p>Числові методи, такі як метод заснований на квантилях <span class="citation" data-cites="doi:10.1080/01621459.1971.10482264 doi:10.1080/03610918608812563 MCCULLOCH1996393">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1971.10482264" role="doc-biblioref">10</a>–<a href="references.html#ref-MCCULLOCH1996393" role="doc-biblioref">12</a>]</span>, і метод оцінки максимальної правдоподібності <span class="citation" data-cites="Nolan2001">&nbsp;[<a href="references.html#ref-Nolan2001" role="doc-biblioref">13</a>]</span> були розроблені на виклик відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо використали алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності <span class="citation" data-cites="MITTNIK1999275">&nbsp;[<a href="references.html#ref-MITTNIK1999275" role="doc-biblioref">14</a>]</span>:</p>
 <p><span class="math display">\[
 l(\theta, x) = \sum_{i=1}^{T}\log{f(x_{i}, \theta)}.
 \]</span></p>
-<p>Дюмушель визначив функцію правдоподібності наступним чином:</p>
+<p>Дюмушель визначив функцію правдоподібності наступним чином <span class="citation" data-cites="doi:10.1080/01621459.1973.10482458">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1973.10482458" role="doc-biblioref">15</a>]</span>:</p>
 <p><span class="math display">\[
-L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma} \right) \Big/ \gamma,
+L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \right] \big/ \gamma,
 \]</span></p>
 <p>де <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span> опираючись на <span class="math inline">\(x = (x_1, ... , x_n)\)</span> для розміру вибірки <span class="math inline">\(n\)</span>.</p>
 </section>
@@ -1657,7 +1762,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="хід-роботи" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">12.2</span> Хід роботи</h2>
 <p>Зчитуємо, наприклад, дані одного із фондових індексв Індії з Yahoo Finance:</p>
-<div class="cell" data-execution_count="84">
+<div id="2bf49367" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="co"># встановлення назви індексу</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">"^BSESN"</span> </span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1695,7 +1800,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 </div>
 <hr>
-<div class="cell" data-execution_count="3">
+<div id="168eee89" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
@@ -1709,7 +1814,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 <hr>
 <p>Виводимо графік досліджуваного ряду</p>
-<div class="cell" data-execution_count="85">
+<div id="cell-fig-bsesn-init" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -1721,10 +1826,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb104-9"><a href="#cb104-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb104-10"><a href="#cb104-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-bsesn-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-bsesn-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.17: Динаміка щоденних значень фондового індексу BSESN</figcaption>
+<div id="fig-bsesn-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bsesn-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-bsesn-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bsesn-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.17: Динаміка щоденних значень фондового індексу BSESN
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1732,7 +1841,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду"><span class="header-section-number">12.2.1</span> Побудова розподілу Леві та розрахунок параметрів для всього ряду</h3>
 <p>Для приведення ряду до стандартизованого вигляду або прибутковостей визначимо функцію <code>transformations()</code>:</p>
-<div class="cell" data-execution_count="86">
+<div id="9a1a485f" class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -1762,7 +1871,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb105-27"><a href="#cb105-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Для побудови в парі певного індикатора та досліджуваного ряду визначимо функцію <code>plot_pair</code>:</p>
-<div class="cell" data-execution_count="87">
+<div id="42649abc" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -1805,7 +1914,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb106-40"><a href="#cb106-40" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо приведення ряду до прибутковостей:</p>
-<div class="cell" data-execution_count="89">
+<div id="7f9ac3f8" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
@@ -1817,16 +1926,16 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb107-9"><a href="#cb107-9" aria-hidden="true" tabindex="-1"></a>for_levy <span class="op">=</span> transformation(time_ser, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Підганяємо розподіл Леві та Гауса для порівняння:</p>
-<div class="cell" data-execution_count="90">
+<div id="b2b8a3da" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> levy.fit_levy(for_levy)</span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>mean, std <span class="op">=</span> norm.fit(for_levy)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Отримуємо параметри розподілу Леві у відповідності до однієї із параметризацій, що пропонує пакет <code>levy</code>:</p>
-<div class="cell" data-execution_count="91">
+<div id="b6b52a68" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>alpha, beta, mu, sigma <span class="op">=</span> params[<span class="dv">0</span>].get(<span class="st">'1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Будуємо теоретичні та емпіричні розподіли:</p>
-<div class="cell" data-execution_count="92">
+<div id="cell-fig-pdfs-ther-emp" class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>xmin <span class="op">=</span> for_levy.<span class="bu">min</span>()</span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>xmax <span class="op">=</span> for_levy.<span class="bu">max</span>()</span>
 <span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1857,16 +1966,20 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb110-28"><a href="#cb110-28" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb110-29"><a href="#cb110-29" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-pdfs-ther-emp" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-pdfs-ther-emp-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.18: Теоретичні та емпіричні альфа-стабільні функції щільності ймовірностей</figcaption>
+<div id="fig-pdfs-ther-emp" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pdfs-ther-emp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-pdfs-ther-emp-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdfs-ther-emp-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.18: Теоретичні та емпіричні альфа-стабільні функції щільності ймовірностей
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Виводимо параметри розподілу Леві для заданого індексу</p>
-<div class="cell" data-execution_count="93">
+<div id="6b5a63ff" class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="vs">fr"Параматери alpha = </span><span class="sc">{</span>alpha<span class="sc">:.2f}</span><span class="vs">, beta = </span><span class="sc">{</span>beta<span class="sc">:.2f}</span><span class="vs">, mu = </span><span class="sc">{</span>mu<span class="sc">:.2f}</span><span class="vs">, sigma = </span><span class="sc">{</span>sigma<span class="sc">:.2f}</span><span class="vs">"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Параматери alpha = 1.63, beta = -0.11, mu = -0.01, sigma = 0.53</code></pre>
@@ -1876,7 +1989,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </section>
 <section id="дослідження-поведінки-альфа-стабільного-розподілу-леві" class="level3" data-number="12.2.2">
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="дослідження-поведінки-альфа-стабільного-розподілу-леві"><span class="header-section-number">12.2.2</span> Дослідження поведінки альфа-стабільного розподілу Леві</h3>
-<div class="cell" data-execution_count="94">
+<div id="cell-fig-pdfs-dependence" class="cell" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb113"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">.01</span>)</span>
 <span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>beta_1 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span> </span>
@@ -1928,10 +2041,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb113-49"><a href="#cb113-49" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
 <span id="cb113-50"><a href="#cb113-50" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-pdfs-dependence" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-pdfs-dependence-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.19: Залежність функції щільності ймовірностей альфа-стабільного розподілу Леві та кумулятивної функції щільності від різних значень параметрів розподілу</figcaption>
+<div id="fig-pdfs-dependence" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pdfs-dependence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-pdfs-dependence-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pdfs-dependence-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.19: Залежність функції щільності ймовірностей альфа-стабільного розподілу Леві та кумулятивної функції щільності від різних значень параметрів розподілу
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1940,7 +2057,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="віконна-процедура" class="level3" data-number="12.2.3">
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">12.2.3</span> Віконна процедура</h3>
 <p>Виконуватимемо подальші обчислення для стандартизованих прибутковостей, Покажемо, що та застосуємо альфа-стабільний розподіл Леві дозволяє змоделювати типові флуктуації складних систем та передчасної ідентифікації в них критичних і кризових явищ.</p>
-<div class="cell" data-execution_count="95">
+<div id="a6cf2479" class="cell" data-execution_count="95">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># ширина ковзного вікна</span></span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>       <span class="co"># крок</span></span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1959,7 +2076,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb114-16"><a href="#cb114-16" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> []</span>
 <span id="cb114-17"><a href="#cb114-17" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="96">
+<div id="46696d76" class="cell" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
@@ -1982,7 +2099,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </div>
 </div>
 <p>Зберігаємо абсолютні значення у текстовому документі:</p>
-<div class="cell" data-execution_count="97">
+<div id="138ce9cb" class="cell" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb117"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"alpha_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, alpha)</span>
 <span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"beta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, beta)</span>
 <span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mu_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, mu)</span>
@@ -1992,12 +2109,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="динаміка-показника-стабільності-alpha" class="level3" data-number="12.2.4">
 <h3 data-number="12.2.4" class="anchored" data-anchor-id="динаміка-показника-стабільності-alpha"><span class="header-section-number">12.2.4</span> Динаміка показника стабільності <span class="math inline">\(\alpha\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div class="cell" data-execution_count="98">
+<div id="a6b276e9" class="cell" data-execution_count="98">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\alpha$'</span></span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"alpha_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="99">
+<div id="cell-fig-alpha" class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>          alpha, </span>
@@ -2006,10 +2123,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
 <span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a>          file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-alpha" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-alpha-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.20: Динаміка фондового індексу BSESN та показника стабільності <span class="math inline">\(\alpha\)</span></figcaption>
+<div id="fig-alpha" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-alpha-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-alpha-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.20: Динаміка фондового індексу BSESN та показника стабільності <span class="math inline">\(\alpha\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2019,12 +2140,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="динаміка-показника-асиметрії-beta" class="level3" data-number="12.2.5">
 <h3 data-number="12.2.5" class="anchored" data-anchor-id="динаміка-показника-асиметрії-beta"><span class="header-section-number">12.2.5</span> Динаміка показника асиметрії <span class="math inline">\(\beta\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div class="cell" data-execution_count="100">
+<div id="90fc08d2" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\beta$'</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"beta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="101">
+<div id="cell-fig-beta" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb121-3"><a href="#cb121-3" aria-hidden="true" tabindex="-1"></a>          beta, </span>
@@ -2033,10 +2154,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb121-6"><a href="#cb121-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
 <span id="cb121-7"><a href="#cb121-7" aria-hidden="true" tabindex="-1"></a>          file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-beta" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-beta-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.21: Динаміка фондового індексу BSESN та показника асиметрії <span class="math inline">\(\beta\)</span></figcaption>
+<div id="fig-beta" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-beta-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-beta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.21: Динаміка фондового індексу BSESN та показника асиметрії <span class="math inline">\(\beta\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2046,12 +2171,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="динаміка-параметра-зміщення-mu" class="level3" data-number="12.2.6">
 <h3 data-number="12.2.6" class="anchored" data-anchor-id="динаміка-параметра-зміщення-mu"><span class="header-section-number">12.2.6</span> Динаміка параметра зміщення <span class="math inline">\(\mu\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div class="cell" data-execution_count="102">
+<div id="3905329d" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\mu$'</span></span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mu_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="103">
+<div id="cell-fig-mu" class="cell" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>          mu, </span>
@@ -2060,10 +2185,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
 <span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a>          file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-mu" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-mu-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.22: Динаміка фондового індексу BSESN та показника зміщення <span class="math inline">\(\mu\)</span></figcaption>
+<div id="fig-mu" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-mu-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mu-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.22: Динаміка фондового індексу BSESN та показника зміщення <span class="math inline">\(\mu\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2073,12 +2202,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <section id="динаміка-параметра-масштабу-sigma" class="level3" data-number="12.2.7">
 <h3 data-number="12.2.7" class="anchored" data-anchor-id="динаміка-параметра-масштабу-sigma"><span class="header-section-number">12.2.7</span> Динаміка параметра масштабу <span class="math inline">\(\sigma\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div class="cell" data-execution_count="104">
+<div id="8e14efab" class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\sigma$'</span></span>
 <span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"sigma_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="105">
+<div id="cell-fig-sigma" class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb125-3"><a href="#cb125-3" aria-hidden="true" tabindex="-1"></a>          sigma, </span>
@@ -2087,10 +2216,14 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 <span id="cb125-6"><a href="#cb125-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
 <span id="cb125-7"><a href="#cb125-7" aria-hidden="true" tabindex="-1"></a>          file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-sigma" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_12_files/figure-html/fig-sigma-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;12.23: Динаміка фондового індексу BSESN та показника масштабу <span class="math inline">\(\sigma\)</span></figcaption>
+<div id="fig-sigma" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_12_files/figure-html/fig-sigma-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sigma-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;12.23: Динаміка фондового індексу BSESN та показника масштабу <span class="math inline">\(\sigma\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2128,9 +2261,51 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left( \frac{X_{k} - \delta}{\gamma}
 </ol>
 
 
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-10.1890/07-1288.1" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">E. P. White, B. J. Enquist, and J. L. Green, <em><a href="https://doi.org/10.1890/07-1288.1">On Estimating the Exponent of Power-Law Frequency Distributions</a></em>, Ecology <strong>89</strong>, 905 (2008).</div>
+</div>
+<div id="ref-lévy1925calcul" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P. Lévy, <em>Calcul Des Probabilit<span>é</span>s, Par Paul l<span>é</span>vy, ...</em> (Gauthier-Villars, 1925).</div>
+</div>
+<div id="ref-lévy1954theorie" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">P. Lévy, <em>Theorie de l’addition Des Variables Aleatoires</em> (Gauthier-Villars, 1954).</div>
+</div>
+<div id="ref-gnedenko1968limit" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">B. V. Gnedenko and A. N. Kolmogorov, <em>Limit Distributions for Sums of Independent Random Variables</em> (Addison-Wesley, 1968).</div>
+</div>
+<div id="ref-KOZUBOWSKI2005298" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">T. J. Kozubowski, M. M. Meerschaert, A. K. Panorska, and H.-P. Scheffler, <em><a href="https://doi.org/10.1016/j.jmva.2003.09.004">Operator Geometric Stable Laws</a></em>, Journal of Multivariate Analysis <strong>92</strong>, 298 (2005).</div>
+</div>
+<div id="ref-JSFS_2005__146_4_23_0" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">A. Alvarez and P. Olivares, <em><a href="http://www.numdam.org/item/JSFS_2005__146_4_23_0/">Méthodes d’estimation Pour Des Lois Stables Avec Des Applications En Finance</a></em>, Journal de La Société Française de Statistique <strong>146</strong>, 23 (2005).</div>
+</div>
+<div id="ref-NOLAN1999229" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1016/S0895-7177(99)00105-3">An Algorithm for Evaluating Stable Densities in Zolotarev’s (m) Parameterization</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 229 (1999).</div>
+</div>
+<div id="ref-SALASGONZALEZ2013559" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">D. Salas-Gonzalez, J. M. Górriz, J. Ramírez, M. Schloegl, E. W. Lang, and A. Ortiz, <em><a href="https://doi.org/10.1016/j.compbiomed.2013.01.003">Parameterization of the Distribution of White and Grey Matter in MRI Using the α-Stable Distribution</a></em>, Computers in Biology and Medicine <strong>43</strong>, 559 (2013).</div>
+</div>
+<div id="ref-zolotarev1986one" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">V. M. Zolotarev, <em>One-Dimensional Stable Distributions</em> (American Mathematical Society, 1986).</div>
+</div>
+<div id="ref-doi:10.1080/01621459.1971.10482264" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">E. F. Fama and R. Roll, <em><a href="https://doi.org/10.1080/01621459.1971.10482264">Parameter Estimates for Symmetric Stable Distributions</a></em>, Journal of the American Statistical Association <strong>66</strong>, 331 (1971).</div>
+</div>
+<div id="ref-doi:10.1080/03610918608812563" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1080/03610918608812563">Simple Consistent Estimators of Stable Distribution Parameters</a></em>, Communications in Statistics - Simulation and Computation <strong>15</strong>, 1109 (1986).</div>
+</div>
+<div id="ref-MCCULLOCH1996393" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1016/S0169-7161(96)14015-3">13 Financial Applications of Stable Distributions</a></em>, in <em>Statistical Methods in Finance</em>, Vol. 14 (Elsevier, 1996), pp. 393–425.</div>
+</div>
+<div id="ref-Nolan2001" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1007/978-1-4612-0197-7_17">Maximum Likelihood Estimation and Diagnostics for Stable Distributions</a></em>, in <em>L<span>é</span>vy Processes: Theory and Applications</em>, edited by O. E. Barndorff-Nielsen, S. I. Resnick, and T. Mikosch (Birkh<span>ä</span>user Boston, Boston, MA, 2001), pp. 379–400.</div>
+</div>
+<div id="ref-MITTNIK1999275" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">S. Mittnik, S. T. rachev, T. Doganoglu, and D. Chenyao, <em><a href="https://doi.org/10.1016/S0895-7177(99)00110-7">Maximum Likelihood Estimation of Stable Paretian Models</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 275 (1999).</div>
+</div>
+<div id="ref-doi:10.1080/01621459.1973.10482458" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">W. H. Dumouchel, <em><a href="https://doi.org/10.1080/01621459.1973.10482458">Stable Distributions in Statistical Inference: 1. Symmetric Stable Distributions Compared to Other Symmetric Long-Tailed Distributions</a></em>, Journal of the American Statistical Association <strong>68</strong>, 469 (1973).</div>
 </div>
 </div>
 </section>
@@ -2177,6 +2352,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       } else {
         el.classList.add('notransition');
       }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
     }
   }
   const toggleColorMode = (alternate) => {
@@ -2245,13 +2447,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -2286,18 +2490,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2329,11 +2522,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2343,8 +2575,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2356,7 +2597,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2400,6 +2764,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2425,6 +2790,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2486,12 +2877,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./lab_11.html" class="pagination-link">
+      <a href="./lab_11.html" class="pagination-link" aria-label="Лабораторна робота № 11">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_13.html" class="pagination-link">
+      <a href="./lab_13.html" class="pagination-link" aria-label="Лабораторна робота № 13">
         <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Лабораторна робота № 13</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -2500,4 +2891,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_12.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 10&nbsp; Лабораторна робота № 10</title>
+<title>Моделювання складних систем у Python – 10&nbsp; Лабораторна робота № 10</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -58,6 +58,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -102,7 +103,13 @@ div.csl-indent {
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -111,14 +118,42 @@ div.csl-indent {
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -129,12 +164,12 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -144,13 +179,13 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -296,7 +331,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -318,7 +353,7 @@ div.csl-indent {
   <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">10.3</span> Висновок</a></li>
   <li><a href="#завдання-для-самостійного-виконання" id="toc-завдання-для-самостійного-виконання" class="nav-link" data-scroll-target="#завдання-для-самостійного-виконання"><span class="header-section-number">10.4</span> Завдання для самостійного виконання</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_10.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_10.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -330,7 +365,7 @@ div.csl-indent {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -338,7 +373,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p><strong>Тема.</strong> Дослідження складних систем із використанням інструментарію неекстенсивної статистики</p>
 <p><strong>Мета.</strong> Оволодіти методологією та інструментарієм неекстенсивної статистики стосовно критичних і кризових явищ</p>
@@ -362,7 +399,7 @@ div.csl-indent {
 <p><span id="eq-10-1"><span class="math display">\[
 S = k\ln{W},
 \tag{10.1}\]</span></span></p>
-<p>де <span class="math inline">\(k\)</span> — позитивна константа, а <span class="math inline">\(W\)</span> — кількість мікростанів, сумісних з макроскопічним станом ізольованої системи. Це рівняння, відоме як принцип Больцмана, є одним із наріжних каменів стандартної статистичної механіки. Коли система не ізольована, а замість цього контактує з деяким великим резервуаром, можна модифікувати рівняння (<a href="#eq-10-1"><span>10.1</span></a>) і отримати ентропію Больцмана-Гіббса (БГ-BG):</p>
+<p>де <span class="math inline">\(k\)</span> — позитивна константа, а <span class="math inline">\(W\)</span> — кількість мікростанів, сумісних з макроскопічним станом ізольованої системи. Це рівняння, відоме як принцип Больцмана, є одним із наріжних каменів стандартної статистичної механіки. Коли система не ізольована, а замість цього контактує з деяким великим резервуаром, можна модифікувати рівняння (<a href="#eq-10-1" class="quarto-xref"><span>10.1</span></a>) і отримати ентропію Больцмана-Гіббса (БГ-BG):</p>
 <p><span id="eq-10-2"><span class="math display">\[
 S_{BG} = -k\sum_{i=1}^{W}p_i\ln{p_i},
 \tag{10.2}\]</span></span></p>
@@ -370,8 +407,8 @@ S_{BG} = -k\sum_{i=1}^{W}p_i\ln{p_i},
 <p><span id="eq-10-3"><span class="math display">\[
 S_q = -k \left( 1-\sum_{i=1}^{W}p_{i}^{q} \right) \Bigg/ (1-q),
 \tag{10.3}\]</span></span></p>
-<p><span class="math inline">\(p_i\)</span> — ймовірності, пов’язані з мікроскопічними конфігураціями, <span class="math inline">\(W\)</span> — їх загальне число, <span class="math inline">\(q\)</span> — дійсне число, і <span class="math inline">\(k\)</span> — постійна Больцмана. Значення <span class="math inline">\(q\)</span> є мірою неекстенсивності системи. При цьому, <span class="math inline">\(q=1\)</span> відповідає стандартній статистиці BG. Вираз (<a href="#eq-10-3"><span>10.3</span></a>) модифікує <span class="math inline">\(S_{BG}\)</span> (<span class="math inline">\(\lim q\to 1, S_q = S_{BG}\)</span>), як основу можливого узагальнення статистичної механіки BG <span class="citation" data-cites="e21070648 de2021connecting">&nbsp;[<a href="references.html#ref-e21070648" role="doc-biblioref">8</a>,<a href="references.html#ref-de2021connecting" role="doc-biblioref">9</a>]</span>. Значення ентропійного індексу <span class="math inline">\(q\)</span> для конкретної системи повинно визначатися апріорі з мікроскопічної динаміки.</p>
-<p>З часу своєї появи ентропія Тсалліса (<a href="#eq-10-3"><span>10.3</span></a>) стала джерелом кількох важливих результатів як у фундаментальній, так і в прикладній фізиці, а також в інших наукових областях, таких як біологія, хімія, економіка, геофізика та медицина <span class="citation" data-cites="pavlos2015complexity">&nbsp;[<a href="references.html#ref-pavlos2015complexity" role="doc-biblioref">10</a>]</span>.</p>
+<p><span class="math inline">\(p_i\)</span> — ймовірності, пов’язані з мікроскопічними конфігураціями, <span class="math inline">\(W\)</span> — їх загальне число, <span class="math inline">\(q\)</span> — дійсне число, і <span class="math inline">\(k\)</span> — постійна Больцмана. Значення <span class="math inline">\(q\)</span> є мірою неекстенсивності системи. При цьому, <span class="math inline">\(q=1\)</span> відповідає стандартній статистиці BG. Вираз (<a href="#eq-10-3" class="quarto-xref"><span>10.3</span></a>) модифікує <span class="math inline">\(S_{BG}\)</span> (<span class="math inline">\(\lim q\to 1, S_q = S_{BG}\)</span>), як основу можливого узагальнення статистичної механіки BG <span class="citation" data-cites="e21070648 de2021connecting">&nbsp;[<a href="references.html#ref-e21070648" role="doc-biblioref">8</a>,<a href="references.html#ref-de2021connecting" role="doc-biblioref">9</a>]</span>. Значення ентропійного індексу <span class="math inline">\(q\)</span> для конкретної системи повинно визначатися апріорі з мікроскопічної динаміки.</p>
+<p>З часу своєї появи ентропія Тсалліса (<a href="#eq-10-3" class="quarto-xref"><span>10.3</span></a>) стала джерелом кількох важливих результатів як у фундаментальній, так і в прикладній фізиці, а також в інших наукових областях, таких як біологія, хімія, економіка, геофізика та медицина <span class="citation" data-cites="pavlos2015complexity">&nbsp;[<a href="references.html#ref-pavlos2015complexity" role="doc-biblioref">10</a>]</span>.</p>
 </section>
 <section id="неекстенсивна-ентропія-і-триплет-тсалліса" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="неекстенсивна-ентропія-і-триплет-тсалліса"><span class="header-section-number">10.1.2</span> Неекстенсивна ентропія і триплет Тсалліса</h3>
@@ -388,12 +425,16 @@ S_q = -k \left( 1-\sum_{i=1}^{W}p_{i}^{q} \right) \Bigg/ (1-q),
 \end{cases}
 \tag{10.5}\]</span></span></p>
 <p>Для <span class="math inline">\(q\to1\)</span> <span class="math inline">\(q\)</span>-Гаусіан відповідає звичайному розподілу Гауса.</p>
-<p>Розв’язок рівняння (<a href="#eq-10-4"><span>10.4</span></a>) можна реалізувати трьома різними способами, включеними до <span class="math inline">\(q\)</span>-триплету Тсалліса: (<span class="math inline">\(q_{sens}, q_{stat}, q_{rel}\)</span>). Ці величини характеризують три фізичні процеси, які узагальнені тут, тоді як значення <span class="math inline">\(q\)</span>-триплету характеризують атракторний набір динаміки у фазовому просторі динаміки, і вони можуть змінюватися, коли динаміка системи притягується до іншого набору атракторів.</p>
-<p>Для неекстенсивної системи величина <span class="math inline">\(q\)</span>-індексу залежить від оцінюваних властивостей динаміки і фазового простору системи. Для динамічних систем оцінюється <span class="math inline">\(q\)</span>–триплет, що відображає три властивості системи (<a href="#fig-triplet">Рис.&nbsp;<span>10.1</span></a>). Індекс <span class="math inline">\(q_{stat}\)</span> оцінюється на основі рівноважної моделі рангового розподілу з використанням методів нелінійного оцінювання <span class="citation" data-cites="umarov2008aq">&nbsp;[<a href="references.html#ref-umarov2008aq" role="doc-biblioref">12</a>]</span>. Цей індекс є параметром області атракції системи. Індекс <span class="math inline">\(q_{sens}\)</span> відображає чутливість системи до початкових умов та виробництво ентропії і визначається за мультифрактальним спектром <span class="citation" data-cites="PhysRevLett.80.5313">&nbsp;[<a href="references.html#ref-PhysRevLett.80.5313" role="doc-biblioref">13</a>]</span>. Релаксаційний індекс <span class="math inline">\(q_{rel}\)</span> знаходять на основі автокореляції і характеристик дифузійних процесів <span class="citation" data-cites="doi:10.1142/S0218127412300303">&nbsp;[<a href="references.html#ref-doi:10.1142/S0218127412300303" role="doc-biblioref">14</a>]</span>.</p>
-<div id="fig-triplet" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="Images\lab_10\triplet.png" style="height:10cm" class="figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.1: Часова періодизація періодів виробництва <span class="math inline">\(q\)</span>-ентропії. Перший період відповідає виробництву ентропії через параметр <span class="math inline">\(q_{sens}\)</span> <span class="math inline">\(q\)</span>-триплету Тсалліса. Другий період відповідає певному процесу релаксації через параметр <span class="math inline">\(q_{rel}\)</span>. Система виявляє коливання через параметр <span class="math inline">\(q_{stat}\)</span> <span class="math inline">\(q\)</span>-триплету Тсалліса</figcaption>
+<p>Розв’язок рівняння (<a href="#eq-10-4" class="quarto-xref"><span>10.4</span></a>) можна реалізувати трьома різними способами, включеними до <span class="math inline">\(q\)</span>-триплету Тсалліса: (<span class="math inline">\(q_{sens}, q_{stat}, q_{rel}\)</span>). Ці величини характеризують три фізичні процеси, які узагальнені тут, тоді як значення <span class="math inline">\(q\)</span>-триплету характеризують атракторний набір динаміки у фазовому просторі динаміки, і вони можуть змінюватися, коли динаміка системи притягується до іншого набору атракторів.</p>
+<p>Для неекстенсивної системи величина <span class="math inline">\(q\)</span>-індексу залежить від оцінюваних властивостей динаміки і фазового простору системи. Для динамічних систем оцінюється <span class="math inline">\(q\)</span>–триплет, що відображає три властивості системи (<a href="#fig-triplet" class="quarto-xref">Рис.&nbsp;<span>10.1</span></a>). Індекс <span class="math inline">\(q_{stat}\)</span> оцінюється на основі рівноважної моделі рангового розподілу з використанням методів нелінійного оцінювання <span class="citation" data-cites="umarov2008aq">&nbsp;[<a href="references.html#ref-umarov2008aq" role="doc-biblioref">12</a>]</span>. Цей індекс є параметром області атракції системи. Індекс <span class="math inline">\(q_{sens}\)</span> відображає чутливість системи до початкових умов та виробництво ентропії і визначається за мультифрактальним спектром <span class="citation" data-cites="PhysRevLett.80.5313">&nbsp;[<a href="references.html#ref-PhysRevLett.80.5313" role="doc-biblioref">13</a>]</span>. Релаксаційний індекс <span class="math inline">\(q_{rel}\)</span> знаходять на основі автокореляції і характеристик дифузійних процесів <span class="citation" data-cites="doi:10.1142/S0218127412300303">&nbsp;[<a href="references.html#ref-doi:10.1142/S0218127412300303" role="doc-biblioref">14</a>]</span>.</p>
+<div id="fig-triplet" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-triplet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Images\lab_10\triplet.png" style="height:10cm" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-triplet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.1: Часова періодизація періодів виробництва <span class="math inline">\(q\)</span>-ентропії. Перший період відповідає виробництву ентропії через параметр <span class="math inline">\(q_{sens}\)</span> <span class="math inline">\(q\)</span>-триплету Тсалліса. Другий період відповідає певному процесу релаксації через параметр <span class="math inline">\(q_{rel}\)</span>. Система виявляє коливання через параметр <span class="math inline">\(q_{stat}\)</span> <span class="math inline">\(q\)</span>-триплету Тсалліса
+</figcaption>
 </figure>
 </div>
 <section id="стаціонарність-qq_stat" class="level4" data-number="10.1.2.1">
@@ -426,7 +467,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <p><span id="eq-10-9"><span class="math display">\[
 \frac{d\xi}{dt} = \lambda_1\xi + (\lambda_q - \lambda_1)\xi^q,
 \tag{10.9}\]</span></span></p>
-<p>де <span class="math inline">\(\xi\)</span> — відхилення траєкторії у фазовому просторі: <span class="math inline">\(\xi \equiv \lim_{\delta \to 0} \left[ \delta(t)/\delta(0) \right]\)</span>, і <span class="math inline">\(\delta(t)\)</span> — це відстань між сусідніми траєкторіями через час <span class="math inline">\(t\)</span>. Розв’язок рівняння (<a href="#eq-10-9"><span>10.9</span></a>) може бути представлений у вигляді:</p>
+<p>де <span class="math inline">\(\xi\)</span> — відхилення траєкторії у фазовому просторі: <span class="math inline">\(\xi \equiv \lim_{\delta \to 0} \left[ \delta(t)/\delta(0) \right]\)</span>, і <span class="math inline">\(\delta(t)\)</span> — це відстань між сусідніми траєкторіями через час <span class="math inline">\(t\)</span>. Розв’язок рівняння (<a href="#eq-10-9" class="quarto-xref"><span>10.9</span></a>) може бути представлений у вигляді:</p>
 <p><span id="eq-10-10"><span class="math display">\[
 \xi = \left[ 1 - (\lambda_{q_{sens}} \big/ \lambda_{1}) + (\lambda_{q_{sens}} \big/ \lambda_{1}) \exp{\left( \left( 1-q_{sens} \right)\lambda_{1}t \right)} \right]^{1 / (1-q_{sens})}.
 \tag{10.10}\]</span></span></p>
@@ -443,7 +484,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <h2 data-number="10.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">10.2</span> Хід роботи</h2>
 <p>Розглянемо як можна застосовувати зазначені показники в якості індикаторів кризових станів.</p>
 <p>Спочатку імпортуємо необхідні бібліотеки:</p>
-<div class="cell" data-execution_count="1">
+<div id="cell-16" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
@@ -462,7 +503,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>та визначимо необхідні функції для подальшої роботи:</p>
-<div class="cell" data-execution_count="2">
+<div id="cell-18" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># q-експоненціальна функція</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> np_exp_q(x, q<span class="op">=</span><span class="dv">1</span>):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> q<span class="op">==</span><span class="dv">1</span>:</span>
@@ -490,7 +531,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> G_q(r, beta, q):</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.sqrt(beta)<span class="op">/</span>C_q(q) <span class="op">*</span> np_exp_q(<span class="op">-</span>beta<span class="op">*</span>r, q)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="3">
+<div id="cell-19" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># функція автокореляцій для обчислення q_rel</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> acf(x, maxlag):</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -508,7 +549,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rel_func(x, q, tau):</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np_exp_q(<span class="op">-</span>x<span class="op">/</span>tau, q)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="4">
+<div id="cell-20" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># функція для обчислення прибутковостей ряду чи його стандартизації</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -538,7 +579,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="cell-21" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># функція для побудови парних графіків</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
@@ -582,7 +623,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо налаштування формату виведення рисунків:</p>
-<div class="cell" data-execution_count="10">
+<div id="cell-23" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -603,7 +644,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>У цій роботі розглянемо динаміку неекстенсивних показників на прикладі фондового індексу S&amp;P 500, але дивитимемось на ряд, починаючи з 2016 року. Для отримання значень індексу скористаємось бібліотекою <code>yfinance</code>.</p>
-<div class="cell" data-execution_count="7">
+<div id="cell-25" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^DJI'</span>          <span class="co"># Символ індексу</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2016-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-12-31"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -631,7 +672,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </div>
 </div>
 <hr>
-<div class="cell">
+<div id="cell-28" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
@@ -645,7 +686,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-fig-dji-init" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -657,10 +698,14 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_10_files/figure-html/fig-dji-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.2: Динаміка щоденних змін фондового індексу Доу Джонса</figcaption>
+<div id="fig-dji-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_10_files/figure-html/fig-dji-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.2: Динаміка щоденних змін фондового індексу Доу Джонса
+</figcaption>
 </figure>
 </div>
 </div>
@@ -669,7 +714,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="розрахунок-показника-q_stat"><span class="header-section-number">10.2.1</span> Розрахунок показника <span class="math inline">\(q_{stat}\)</span></h3>
 <section id="побудова-q-гаусіана-для-всього-ряду" class="level4" data-number="10.2.1.1">
 <h4 data-number="10.2.1.1" class="anchored" data-anchor-id="побудова-q-гаусіана-для-всього-ряду"><span class="header-section-number">10.2.1.1</span> Побудова <span class="math inline">\(q\)</span>-гаусіана для всього ряду</h4>
-<div class="cell" data-execution_count="12">
+<div id="cell-34" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>q_stat_time_ser <span class="op">=</span> time_ser.copy()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> <span class="co"># визначення типу ряду для його перетворення</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>q_stat_time_ser <span class="op">=</span> transformation(q_stat_time_ser, ret_type)</span>
@@ -685,7 +730,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>popt, pcov <span class="op">=</span> curve_fit(G_q, xdata<span class="op">=</span>xval, ydata<span class="op">=</span>yval, bounds<span class="op">=</span>([<span class="fl">0.0</span>, <span class="fl">0.0</span>], [np.inf, <span class="fl">3.0</span>]))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div id="cell-fig-dji-qgaus" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax.plot(bin_edg[<span class="dv">1</span>:], hist, <span class="st">'o'</span>, label<span class="op">=</span><span class="vs">r"$P_{емпіричний}$"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x, p, <span class="st">'o'</span>, label<span class="op">=</span><span class="st">"Гаус"</span>)</span>
@@ -697,10 +742,14 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-qgaus" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_10_files/figure-html/fig-dji-qgaus-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.3: Функція розподілу нормалізованих прибутковостей для Доу Джонса в порівнянні з Гаусіан та <span class="math inline">\(q\)</span>-гаусіаном</figcaption>
+<div id="fig-dji-qgaus" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-qgaus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_10_files/figure-html/fig-dji-qgaus-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-qgaus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.3: Функція розподілу нормалізованих прибутковостей для Доу Джонса в порівнянні з Гаусіан та <span class="math inline">\(q\)</span>-гаусіаном
+</figcaption>
 </figure>
 </div>
 </div>
@@ -708,7 +757,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </section>
 <section id="розрахунок-q_stat-у-віконній-процедурі" class="level4" data-number="10.2.1.2">
 <h4 data-number="10.2.1.2" class="anchored" data-anchor-id="розрахунок-q_stat-у-віконній-процедурі"><span class="header-section-number">10.2.1.2</span> Розрахунок <span class="math inline">\(q_{stat}\)</span> у віконній процедурі</h4>
-<div class="cell" data-execution_count="14">
+<div id="cell-37" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -723,7 +772,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>q_stats <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
+<div id="cell-38" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -746,13 +795,13 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-40" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"q_stat_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, q_stats)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="17">
+<div id="cell-42" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника q_stat в легенді рисунку </span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>label_q_stat <span class="op">=</span> <span class="vs">r'$q_</span><span class="sc">{stat}</span><span class="vs">$'</span>  </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -762,7 +811,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># колір показника</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'brown'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="18">
+<div id="cell-fig-dji-wind-q_stat" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          q_stats, </span>
@@ -772,20 +821,24 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-q_stat" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_10_files/figure-html/fig-dji-wind-q_stat-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.4: Порівняльна динаміка коливань ціни індексу Доу Джонса та показника <span class="math inline">\(q_{stat}\)</span></figcaption>
+<div id="fig-dji-wind-q_stat" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-q_stat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_10_files/figure-html/fig-dji-wind-q_stat-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-q_stat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.4: Порівняльна динаміка коливань ціни індексу Доу Джонса та показника <span class="math inline">\(q_{stat}\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як ми можемо бачити на <a href="#fig-dji-wind-q_stat">Рис.&nbsp;<span>10.4</span></a>, показник <span class="math inline">\(q_{stat}\)</span> зростає під час крахових явищ на фондовому ринку. Це вказує на значне зростання ступеня впливу важких хвостів у розподілі прибутковостей досліджуваного індексу.</p>
+<p>Як ми можемо бачити на <a href="#fig-dji-wind-q_stat" class="quarto-xref">Рис.&nbsp;<span>10.4</span></a>, показник <span class="math inline">\(q_{stat}\)</span> зростає під час крахових явищ на фондовому ринку. Це вказує на значне зростання ступеня впливу важких хвостів у розподілі прибутковостей досліджуваного індексу.</p>
 </section>
 </section>
 <section id="розрахунок-показника-q_rel" class="level3" data-number="10.2.2">
 <h3 data-number="10.2.2" class="anchored" data-anchor-id="розрахунок-показника-q_rel"><span class="header-section-number">10.2.2</span> Розрахунок показника <span class="math inline">\(q_{rel}\)</span></h3>
-<div class="cell" data-execution_count="19">
+<div id="cell-46" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -802,7 +855,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>q_rels <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-47" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -823,13 +876,13 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div class="cell" data-execution_count="21">
+<div id="cell-49" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"q_rel_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_maxlag=</span><span class="sc">{</span>max_lag<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, q_rels)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="22">
+<div id="cell-51" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника q_rel в легенді рисунку </span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>label_q_rel <span class="op">=</span> <span class="vs">r'$q_</span><span class="sc">{rel}</span><span class="vs">$'</span>  </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -840,7 +893,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'red'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="23">
+<div id="cell-fig-dji-wind-q_rel" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>          q_rels, </span>
@@ -850,19 +903,23 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-q_rel" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_10_files/figure-html/fig-dji-wind-q_rel-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.5: Порівняльна динаміка коливань ціни індексу Доу Джонса та показника <span class="math inline">\(q_{rel}\)</span></figcaption>
+<div id="fig-dji-wind-q_rel" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-q_rel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_10_files/figure-html/fig-dji-wind-q_rel-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-q_rel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.5: Порівняльна динаміка коливань ціни індексу Доу Джонса та показника <span class="math inline">\(q_{rel}\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Для досліджуваного показника на <a href="#fig-dji-wind-q_rel">Рис.&nbsp;<span>10.5</span></a> видно, що ступінь релаксації зростає саме в передкризовий стан системи, що є індикатором зростання самоорганізації трейдерів через певні зовнішні показники. Дана динаміка узгоджується зі зростанням ступеня автокореляції під час кризових подій, що ми мали змогу спостерігати в першій лабораторній.</p>
+<p>Для досліджуваного показника на <a href="#fig-dji-wind-q_rel" class="quarto-xref">Рис.&nbsp;<span>10.5</span></a> видно, що ступінь релаксації зростає саме в передкризовий стан системи, що є індикатором зростання самоорганізації трейдерів через певні зовнішні показники. Дана динаміка узгоджується зі зростанням ступеня автокореляції під час кризових подій, що ми мали змогу спостерігати в першій лабораторній.</p>
 </section>
 <section id="розрахунок-показника-q_sens" class="level3" data-number="10.2.3">
 <h3 data-number="10.2.3" class="anchored" data-anchor-id="розрахунок-показника-q_sens"><span class="header-section-number">10.2.3</span> Розрахунок показника <span class="math inline">\(q_{sens}\)</span></h3>
-<div class="cell" data-execution_count="24">
+<div id="cell-56" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -892,7 +949,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>q_sens_values <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="cell-57" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -936,13 +993,13 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div class="cell" data-execution_count="26">
+<div id="cell-59" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"q_sens_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_inc<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, q_sens_values)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="27">
+<div id="cell-61" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника q_rel в легенді рисунку </span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>label_q_sens <span class="op">=</span> <span class="vs">r'$q_</span><span class="sc">{sens}</span><span class="vs">$'</span>  </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -953,7 +1010,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'green'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="28">
+<div id="cell-fig-dji-wind-q_sens" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>          q_sens_values, </span>
@@ -963,10 +1020,14 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-q_sens" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_10_files/figure-html/fig-dji-wind-q_sens-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.6: Порівняльна динаміка коливань ціни індексу Доу Джонса та показника <span class="math inline">\(q_{sens}\)</span></figcaption>
+<div id="fig-dji-wind-q_sens" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-q_sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_10_files/figure-html/fig-dji-wind-q_sens-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-q_sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.6: Порівняльна динаміка коливань ціни індексу Доу Джонса та показника <span class="math inline">\(q_{sens}\)</span>
+</figcaption>
 </figure>
 </div>
 </div>
@@ -975,7 +1036,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </section>
 <section id="розрахунок-ентропії-тсалліса" class="level3" data-number="10.2.4">
 <h3 data-number="10.2.4" class="anchored" data-anchor-id="розрахунок-ентропії-тсалліса"><span class="header-section-number">10.2.4</span> Розрахунок ентропії Тсалліса</h3>
-<div class="cell" data-execution_count="29">
+<div id="cell-66" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -990,7 +1051,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>tsallis_en <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="30">
+<div id="cell-67" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -1016,13 +1077,13 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div class="cell" data-execution_count="31">
+<div id="cell-69" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"tsen_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, tsallis_en)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div class="cell" data-execution_count="32">
+<div id="cell-71" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення ентропії Тсалліса в легенді рисунку </span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>label_ts_en <span class="op">=</span> <span class="vs">r'$TsEn$'</span>  </span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1033,7 +1094,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'purple'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div class="cell" data-execution_count="33">
+<div id="cell-fig-dji-wind-tsen" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>          tsallis_en, </span>
@@ -1043,15 +1104,19 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-tsen" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_10_files/figure-html/fig-dji-wind-tsen-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;10.7: Порівняльна динаміка коливань ціни індексу Доу Джонса та ентропії Тсалліса$</figcaption>
+<div id="fig-dji-wind-tsen" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dji-wind-tsen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_10_files/figure-html/fig-dji-wind-tsen-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dji-wind-tsen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;10.7: Порівняльна динаміка коливань ціни індексу Доу Джонса та ентропії Тсалліса$
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>З <a href="#fig-dji-wind-tsen">Рис.&nbsp;<span>10.7</span></a> видно, що неекстенсивна ентропія Тсалліса спадає в передкризові періоди, що вказує на зростання ступеня неадитивності (самоорганізованої динаміки) ринку.</p>
+<p>З <a href="#fig-dji-wind-tsen" class="quarto-xref">Рис.&nbsp;<span>10.7</span></a> видно, що неекстенсивна ентропія Тсалліса спадає в передкризові періоди, що вказує на зростання ступеня неадитивності (самоорганізованої динаміки) ринку.</p>
 </section>
 </section>
 <section id="висновок" class="level2" data-number="10.3">
@@ -1069,7 +1134,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </ol>
 
 
-<div id="refs" class="references csl-bib-body" role="list" style="display: none">
+<div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-DBLP:conf/m3e2/BielinskyiSSSSP20" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Bielinskyi, S. Semerikov, O. Serdyuk, V. Solovieva, V. N. Soloviev, and L. Pichl, <em><a href="https://ceur-ws.org/Vol-2713/paper41.pdf">Econophysics of Sustainability Indices</a></em>, in <em>Proceedings of the Selected Papers of the Special Edition of International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2020), Odessa, Ukraine, July 13-18, 2020</em>, edited by A. Kiv, Vol. 2713 (CEUR-WS.org, 2020), pp. 372–392.</div>
 </div>
@@ -1165,6 +1230,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1231,13 +1323,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1272,18 +1366,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1315,11 +1398,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1329,8 +1451,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1342,7 +1473,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1386,6 +1640,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1411,6 +1666,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1472,12 +1753,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./lab_9.html" class="pagination-link">
+      <a href="./lab_9.html" class="pagination-link" aria-label="Лабораторна робота № 9">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Лабораторна робота № 9</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_11.html" class="pagination-link">
+      <a href="./lab_11.html" class="pagination-link" aria-label="Лабораторна робота № 11">
         <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1486,4 +1767,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_10.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>

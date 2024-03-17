@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.5.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 1&nbsp; Лабораторна робота № 1</title>
+<title>Моделювання складних систем у Python – 1&nbsp; Лабораторна робота № 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "Пошук не дав результату",
     "search-matching-documents-text": "Результати пошуку",
@@ -92,17 +98,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "Додатковий результат у цьому документі",
     "search-more-matches-text": "Додаткові результати у цьому документі",
     "search-clear-button-title": "Очистити",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Скасувати",
     "search-submit-button-title": "Надіслати",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -113,12 +147,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Лабораторна робота № 1</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Лабораторна робота № 1</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -128,13 +162,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Моделювання складних систем у Python</a> 
         <div class="sidebar-tools-main tools-wide">
-    <a href="https://github.com/Butman2099/Complex-systems-book" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Моделювання-складних-систем-у-Python.docx" rel="" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
+    <a href="https://github.com/Butman2099/Complex-systems-book" title="Вихідний код" class="quarto-navigation-tool px-1" aria-label="Вихідний код"><i class="bi bi-github"></i></a>
+    <a href="./Моделювання-складних-систем-у-Python.docx" title="Download Docx" class="quarto-navigation-tool px-1" aria-label="Download Docx"><i class="bi bi-file-word"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
@@ -280,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -303,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#контрольні-питання" id="toc-контрольні-питання" class="nav-link" data-scroll-target="#контрольні-питання"><span class="header-section-number">1.5</span> Контрольні питання</a></li>
   <li><a href="#додаток" id="toc-додаток" class="nav-link" data-scroll-target="#додаток"><span class="header-section-number">1.6</span> Додаток</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_1.ipynb" class="toc-action">Редагувати сторінку</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_1.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
@@ -315,7 +349,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-body">
 
     
   
@@ -323,7 +357,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
+
 </header>
+
 
 <p><strong>Тема.</strong> Аналіз флуктуацій часового ряду</p>
 <p><strong>Мета.</strong> Навчитися використовувати аналіз флуктуацій та його похідні для отримання нелінійних характеристик часового ряду</p>
@@ -342,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span id="eq-1-1"><span class="math display">\[
 G(t) = \ln{X(t+\Delta t) - \ln{X(t)}} \cong \left[ X(t+\Delta t) - X(t) \right] \big/ X(t),
 \tag{1.1}\]</span></span></p>
-<p>де <span class="math inline">\(\Delta t\)</span> є часовим інтервалом затримки. Величину (<a href="#eq-1-1"><span>1.1</span></a>) називають прибутковістю (return). Якщо використовувати границі, то малі зміни <span class="math inline">\(X(t)\)</span> приблизно відповідають змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із набору даних, тобто, вважаємо, що ринок працює без перерв.</p>
+<p>де <span class="math inline">\(\Delta t\)</span> є часовим інтервалом затримки. Величину (<a href="#eq-1-1" class="quarto-xref"><span>1.1</span></a>) називають прибутковістю (return). Якщо використовувати границі, то малі зміни <span class="math inline">\(X(t)\)</span> приблизно відповідають змінам, визначеним другою рівністю. Ми лише підраховуємо час роботи ринку, викидаємо ночі, вихідні та свята із набору даних, тобто, вважаємо, що ринок працює без перерв.</p>
 <p>Модуль <span class="math inline">\(G(t)\)</span> описує амплітуду флуктуацій. У порівнянні зі значеннями <span class="math inline">\(G(t)\)</span> їх модуль не показує глобальних трендів, але великі значення <span class="math inline">\(G(t)\)</span> відповідають крахам та великим миттєвим змінам на ринках.</p>
 <p>Визначимо волатильність як середнє від <span class="math inline">\(G(t)\)</span> для часових вікон <span class="math inline">\(T = n \cdot \Delta t\)</span>, тобто</p>
 <p><span id="eq-1-2"><span class="math display">\[
@@ -366,7 +402,7 @@ r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{
 r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2},
 \tag{1.4}\]</span></span></p>
 <p>де <span class="math inline">\(x\)</span> — це середнє для досліджуваного періоду.</p>
-<p>Рівняння (<a href="#eq-1-4"><span>1.4</span></a>) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
+<p>Рівняння (<a href="#eq-1-4" class="quarto-xref"><span>1.4</span></a>) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
 <p><span id="eq-5"><span class="math display">\[
 r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}.
 \tag{1.5}\]</span></span></p>
@@ -392,18 +428,18 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 <p>Для встановлення бібліотеки <code>yfinance</code> можете скористатися наступною командою:</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-24" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install yfinance <span class="op">--</span>upgrade <span class="op">--</span>no<span class="op">-</span>cache<span class="op">-</span><span class="bu">dir</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://github.com/ranaroussi/yfinance">Гітхаб репозиторій</a> містить більше інформації по самій бібліотеці та помилкам, що можуть виникнути та їх потенційним рішенням.</p>
 <section id="вступ-до-модуля-ticker" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="вступ-до-модуля-ticker"><span class="header-section-number">1.2.1</span> Вступ до модуля <code>Ticker()</code></h3>
 <p>Перш за все імпортуємо бібліотеку <code>yfinance</code> за допомогою наступної команди:</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-28" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Модуль <code>Ticker()</code> дозволяє отримувати ринкові та метадані для цінного паперу, використовуючи Python:</p>
-<div class="cell" data-execution_count="2">
+<div id="cell-30" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msft <span class="op">=</span> yf.Ticker(<span class="st">"MSFT"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(msft)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -411,7 +447,7 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 <p>Можна вилучити всю інформацію по досліджуваному індексу:</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-32" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати інформацію по індексу</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>msft.info</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
@@ -626,10 +662,11 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 <p>Можна вилучити ринкові значення за максимальний період часу:</p>
-<div class="cell" data-execution_count="4">
+<div id="cell-34" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати ринкові історичні значення індексу</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>msft.history(period<span class="op">=</span><span class="st">"max"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+<div>
 <div>
 
 
@@ -774,11 +811,13 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 </div>
+</div>
 <p>Окрім цього, <code>yfinance</code> дозволяє отримати інформацію по дивідентам та сплітам фінансового індексу:</p>
-<div class="cell" data-execution_count="5">
+<div id="cell-36" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># показувати дії (дивіденди, спліти)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>msft.actions</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
+<div>
 <div>
 
 
@@ -858,7 +897,8 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+</div>
+<div id="cell-37" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати дивіденти</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>msft.dividends</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -877,7 +917,7 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 Name: Dividends, Length: 79, dtype: float64</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="cell-38" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати спліти</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>msft.splits</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -908,7 +948,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <section id="одночасне-вивантаження-декількох-ринкових-активів" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="одночасне-вивантаження-декількох-ринкових-активів"><span class="header-section-number">1.2.2</span> Одночасне вивантаження декількох ринкових активів</h3>
 <p>Як і до цього, ви також можете завантажувати дані для кількох тикерів одночасно:</p>
-<div class="cell" data-execution_count="8">
+<div id="cell-42" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>) <span class="co"># вивантажуємо дані, </span></span>
@@ -919,6 +959,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="8">
+<div>
 <div>
 
 
@@ -1046,8 +1087,9 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+</div>
 <p>Для отримання конкретно цін закриття індексу <strong>SPY</strong> вам варто використовувати наступну команду: <code>data['Close']['SPY']</code> Але, якщо вам необхідно згрупувати дані за їх символом, можна скористатися наступним записом:</p>
-<div class="cell" data-execution_count="9">
+<div id="cell-44" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>,</span>
@@ -1066,16 +1108,16 @@ Name: Stock Splits, dtype: float64</code></pre>
 <li><strong><code>neurokit2</code></strong>: зручна бібліотека, що забезпечує легкий доступ до розширених процедур обробки біосигналів. Дослідники та клініцисти без глибоких знань програмування або біомедичної обробки сигналів можуть аналізувати фізіологічні дані за допомогою лише двох рядків коду. Перевага даної бібліотеки полягає в тому, що вона надає функціонал, який можна використовувати не лише для біомедичних сигналів, але й для фінансових, фізичних тощо.</li>
 </ul>
 <p>Встановити кожну з даних бібліотек можна в наступний спосіб: <code>!pip install *назва бібліотеки*</code>:</p>
-<div class="cell" data-execution_count="11">
+<div id="cell-49" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install matplotlib pandas numpy neurokit2</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі нам треба буде визначити стиль рисунків для виведення та збереження. Встановимо наступну бібліотеку:</p>
-<div class="cell" data-execution_count="12">
+<div id="cell-51" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># для встановлення останньої версії (із PyPI)</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install SciencePlots</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Імпортуємо кожну із зазначених бібліотек:</p>
-<div class="cell" data-execution_count="2">
+<div id="cell-53" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1086,7 +1128,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виконаємо налаштування стилю наших подальших рисунків:</p>
-<div class="cell" data-execution_count="3">
+<div id="cell-55" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1108,7 +1150,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 <p>Представлені налаштування є орієнтовними і можуть змінюватись у ході наступних лабораторних роботах. Ви можете встановлювати власні налаштування. На сайті бібліотеки <a href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html">matplotlib</a> можна ознайомитись з усіма можливими командами.</p>
 <p>Розглянемо можливість використання всіх згаданих показників у якості індикаторів або індикаторів-передвісників кризових явищ. Для прикладу завантажимо часовий ряд Біткоїна за період з 1 вересня 2015 по 1 березня 2020, використовуючи <code>yfinance</code>:</p>
-<div class="cell" data-execution_count="16">
+<div id="cell-58" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'BTC-USD'</span>       <span class="co"># Символ індексу</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2015-09-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2020-03-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -1136,7 +1178,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <hr>
-<div class="cell" data-execution_count="14">
+<div id="cell-61" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                 <span class="co"># Символ індексу</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>     <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
@@ -1149,7 +1191,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol              <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер виведемо значення, що були зчитані з текстового документа:</p>
-<div class="cell" data-execution_count="15">
+<div id="cell-fig-sMpa-init" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -1161,10 +1203,14 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-smpa-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_1_files/figure-html/fig-smpa-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;1.1: Діаграма деформації</figcaption>
+<div id="fig-smpa-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-smpa-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_1_files/figure-html/fig-smpa-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-smpa-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;1.1: Діаграма деформації
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1185,7 +1231,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Виведемо значення Біткоїна:</p>
-<div class="cell" data-execution_count="17">
+<div id="cell-fig-btc-init" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -1197,18 +1243,22 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-init" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_1_files/figure-html/fig-btc-init-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;1.2: Динаміка щоденних змін індексу Біткоїна</figcaption>
+<div id="fig-btc-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_1_files/figure-html/fig-btc-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;1.2: Динаміка щоденних змін індексу Біткоїна
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Видно, що ряд нестаціонарний, що викликає певні ускладнення для подальшого аналізу. Тому перейдемо до прибутковостей, які вже є стаціонарними, а нормалізація стандартним відхиленням дозволяє легко порівнювати їх розподіл з розподілом Гауса.</p>
-<p>Прибутковості розраховуватимуться згідно <a href="#eq-1-1">Рівняння&nbsp;<span>1.1</span></a>. У Python для цього ми використовуватимемо метод <code>pct_change()</code>, що доступний нам завдяки бібліотеці <code>pandas</code>.</p>
+<p>Прибутковості розраховуватимуться згідно <a href="#eq-1-1" class="quarto-xref">Рівняння&nbsp;<span>1.1</span></a>. У Python для цього ми використовуватимемо метод <code>pct_change()</code>, що доступний нам завдяки бібліотеці <code>pandas</code>.</p>
 <p>Стандартизовані прибутковості можна визначити як <span class="math inline">\(g(t) = \left[G(t) - \mu \right] / \sigma\)</span>, де <span class="math inline">\(\mu\)</span> відповідає середньому значенню прибутковостей за досліджуваний часовий інтервал, а <span class="math inline">\(\sigma\)</span> представляє стандартне відхилення.</p>
-<div class="cell" data-execution_count="18">
+<div id="cell-70" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> time_ser.copy()      <span class="co"># копіюємо значення вихідного ряду для збереження </span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># його від змін</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1219,7 +1269,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> ret.dropna().values  <span class="co"># видаляємо всі можливі нульові значення </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо отриманий результат:</p>
-<div class="cell" data-execution_count="19">
+<div id="cell-fig-btc-ret" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index[<span class="dv">1</span>:], ret)           <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -1235,32 +1285,36 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Прибутковості</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)  <span class="co"># Зберігаємо графік </span></span>
 <span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-ret" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_1_files/figure-html/fig-btc-ret-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;1.3: Нормалізовані прибутковості досліджуваного часового ряду</figcaption>
+<div id="fig-btc-ret" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-ret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_1_files/figure-html/fig-btc-ret-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-ret-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;1.3: Нормалізовані прибутковості досліджуваного часового ряду
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Зверніть увагу, що флуктуації нормалізованих прибутковостей досить часто перевищують величину <span class="math inline">\(\pm 3\sigma\)</span>, що, як відомо, надзвичайно рідко спостерігається для незалежних подій. Цей факт можна відобразити шляхом порівняння функції розподілу нормалізованих флуктуацій з розподілом Гауса (<a href="#fig-btc-dist">Рис.&nbsp;<span>1.4</span></a>). Очевидно, що хвости розподілу вихідного ряду містять значні флуктуації, вони досить помітні (часто кажуть “важкі” у порівнянні з самою “головою” розподілу).</p>
+<p>Зверніть увагу, що флуктуації нормалізованих прибутковостей досить часто перевищують величину <span class="math inline">\(\pm 3\sigma\)</span>, що, як відомо, надзвичайно рідко спостерігається для незалежних подій. Цей факт можна відобразити шляхом порівняння функції розподілу нормалізованих флуктуацій з розподілом Гауса (<a href="#fig-btc-dist" class="quarto-xref">Рис.&nbsp;<span>1.4</span></a>). Очевидно, що хвости розподілу вихідного ряду містять значні флуктуації, вони досить помітні (часто кажуть “важкі” у порівнянні з самою “головою” розподілу).</p>
 <p>Для побудови нормального розподілу скористаємось бібліотекою <code>scipy</code>. Встановити її можна за аналогією з попередніми бібліотеками.</p>
-<div class="cell" data-execution_count="19">
+<div id="cell-75" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Для встановлення останньої версії scipy</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install scipy</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-76" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm <span class="co"># імпорт модуля norm для побудови Гаусового розподілу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Функція щільності ймовірності <code>norm</code> для дійсних значень <span class="math inline">\(x\)</span> має наступний вигляд: <span class="math inline">\(f(x) = \exp{(-x^2/2)} \big/ \sqrt{2\pi}\)</span>.</p>
-<div class="cell" data-execution_count="21">
+<div id="cell-78" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mu, sigma <span class="op">=</span> norm.fit(ret)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(ret.<span class="bu">min</span>(), ret.<span class="bu">max</span>(), <span class="dv">10000</span>) <span class="co"># Генеруємо 10000 значень для побудови </span></span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># Гаусового розподілу</span></span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.pdf(x, mu, sigma)                   <span class="co"># Отримання значень функції щільності</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="cell-fig-btc-dist" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, p, label<span class="op">=</span><span class="st">'Гаусіан'</span>)             <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ax.hist(ret, bins<span class="op">=</span><span class="dv">50</span>,                      <span class="co"># Побудова гістограми для прибутковостей</span></span>
@@ -1278,10 +1332,14 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Гаус + прибутковості </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)       <span class="co"># Зберігаємо графік </span></span>
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                             <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-dist" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_1_files/figure-html/fig-btc-dist-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;1.4: Порівняння функцій розподілу нормалізованих прибутковостей з нормальним розподілом</figcaption>
+<div id="fig-btc-dist" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_1_files/figure-html/fig-btc-dist-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-dist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;1.4: Порівняння функцій розподілу нормалізованих прибутковостей з нормальним розподілом
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1302,7 +1360,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <li><strong>r</strong> (<em>float</em>) — крос-кореляція сигналу із самим собою на різних часових лагах. Мінімальний часовий лаг дорівнює 0, максимальний часовий лаг дорівнює довжині сигналу. Або значення кореляції на певному часовому лазі, якщо лаг не дорівнює <code>None</code>;</li>
 <li><strong>info</strong> (<em>dict</em>) — cловник, що містить додаткову інформацію, наприклад, довірчий інтервал.</li>
 </ul>
-<div class="cell" data-execution_count="25">
+<div id="cell-83" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># розрахунок автокореляції</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>r_init, _ <span class="op">=</span> nk.signal_autocor(time_ser.values, </span>
@@ -1314,7 +1372,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>r_range <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(r_ret) <span class="op">+</span> <span class="dv">1</span>)               <span class="co"># генерація лагів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="26">
+<div id="cell-fig-btc-autocorr" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_init[<span class="dv">1</span>:], label<span class="op">=</span>symbol)  <span class="co"># Додаємо дані до графіку</span></span>
@@ -1329,10 +1387,14 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Автокореляції </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)  <span class="co"># Зберігаємо графік </span></span>
 <span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                 <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-autocorr" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_1_files/figure-html/fig-btc-autocorr-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;1.5: Зміна з часом парних автокореляційних функцій для вихідного ряду x, нормалізованих прибутковостей g та їх модулів mod(g)</figcaption>
+<div id="fig-btc-autocorr" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-autocorr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_1_files/figure-html/fig-btc-autocorr-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-autocorr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;1.5: Зміна з часом парних автокореляційних функцій для вихідного ряду x, нормалізованих прибутковостей g та їх модулів mod(g)
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1341,7 +1403,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <p>Сформулюємо алгоритм ковзного (рухомого) вікна. Виділимо фрагмент часового ряду (вікно), розрахуємо необхідні міри складності, змістимо вікно вздовж часового ряду на заздалегідь визначену величину (крок) і повторимо процедуру до вичерпання часового ряду. Далі, порівнюючи динаміку фактичного часового ряду і відповідних мір складності, ми матимемо змогу судити про характерні зміни в динаміці міри складності зі зміною досліджуваної системи. Якщо та чи інша міра складності поводиться характерним чином для всіх особливих періодів (наприклад, крахів), зменшується або збільшується у передкризовий період, то вона може служити їх індикатором або передвісником.</p>
 <p>Розглянемо як поводитиме себе функція автокореляцій та волатильність в рамках алгоритму ковзного вікна.</p>
 <p>Спочатку визначимо параметри:</p>
-<div class="cell" data-execution_count="27">
+<div id="cell-87" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>           <span class="co"># вид ряду: </span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 1 - вихідний, </span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
@@ -1358,15 +1420,15 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>autocorr <span class="op">=</span> []          <span class="co"># масив значень автокореляції при змінній lag</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі розпочнемо розрахунки. Для відслідковування прогресу зміщення ковзного вікна скористаємось бібліотекою <code>tqdm</code>. Її можна встановити аналогічно попереднім бібліотекам:</p>
-<div class="cell" data-execution_count="26">
+<div id="cell-89" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Імпортуємо модуль для візуалізації прогресу:</p>
-<div class="cell" data-execution_count="28">
+<div id="cell-91" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І тепер приступимо до виконання віконної процедури:</p>
-<div class="cell" data-execution_count="29">
+<div id="cell-93" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># Фрагменти довжиною window  </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                                              </span>
@@ -1408,7 +1470,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Збережемо результати в окремих текстових файлах:</p>
-<div class="cell" data-execution_count="30">
+<div id="cell-95" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># збереження результатів ковзної автокореляції</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"autocorr_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1419,8 +1481,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, volatility)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Нарешті, порівняємо динаміку вихідного ряду і розрахованих похідних. Для цього врахуємо, що автокореляцію і волатильність ми знаходили для рухомого вікна. Результати представлено на <a href="#fig-btc-all">Рис.&nbsp;<span>1.6</span></a>.</p>
-<div class="cell" data-execution_count="34">
+<p>Нарешті, порівняємо динаміку вихідного ряду і розрахованих похідних. Для цього врахуємо, що автокореляцію і волатильність ми знаходили для рухомого вікна. Результати представлено на <a href="#fig-btc-all" class="quarto-xref">Рис.&nbsp;<span>1.6</span></a>.</p>
+<div id="cell-fig-btc-all" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
@@ -1460,10 +1522,14 @@ Name: Stock Splits, dtype: float64</code></pre>
 <span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-btc-all" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="lab_1_files/figure-html/fig-btc-all-output-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Рис.&nbsp;1.6: Динаміка індексу Біткоїна, віконних автокореляції та волатильності</figcaption>
+<div id="fig-btc-all" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-btc-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_1_files/figure-html/fig-btc-all-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-all-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;1.6: Динаміка індексу Біткоїна, віконних автокореляції та волатильності
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1543,6 +1609,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
   }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
   const toggleColorMode = (alternate) => {
     // Switch the stylesheets
     const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
@@ -1609,13 +1702,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  let localAlternateSentinel = 'default';
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
     // Read the current dark / light value 
     let toAlternate = !hasAlternateSentinel();
     toggleColorMode(toAlternate);
     setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
   };
   // Ensure there is a toggle, if there isn't float one in the top right
   if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1650,18 +1745,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1693,11 +1777,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1707,8 +1830,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1720,7 +1852,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1764,6 +2019,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1789,6 +2045,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1850,12 +2132,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
+      <a href="./index.html" class="pagination-link" aria-label="Передмова">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Передмова</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lab_2.html" class="pagination-link">
+      <a href="./lab_2.html" class="pagination-link" aria-label="Лабораторна робота № 2">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Лабораторна робота № 2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1864,4 +2146,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-</body></html>
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_1.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></div></div></footer></body></html>
