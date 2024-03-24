@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python – 1&nbsp; Лабораторна робота № 1</title>
+<title>Моделювання складних систем у Python - 1&nbsp; Лабораторна робота № 1</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -368,7 +368,7 @@ window.Quarto = {
 <section id="аналіз-динаміки-прибутків-модулів-прибутків-та-волатильностей" class="level3" data-number="1.1.1">
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="аналіз-динаміки-прибутків-модулів-прибутків-та-волатильностей"><span class="header-section-number">1.1.1</span> Аналіз динаміки прибутків, модулів прибутків та волатильностей</h3>
 <p>Останнім часом вчені все більше цікавляться економічними часовими рядами, і відбувається це за кількох причин, зокрема: (1) економічні часові ряди, такі як індекси акцій, курсів валют, залежать від розвитку великої кількості взаємодіючих систем, і є прикладами складних систем, що широко вивчаються у науці; (2) з’явилась велика кількість доступних баз з даними про економічні системи, що містять інформацію з різними часовими шкалами (починаючи з 1 хвилини і закінчуючи 1 роком). Внаслідок цього вже на даний час існує також велика кількість розроблених методів (зокрема, у статистичній фізиці), спрямованих на отримання характеристик цін акцій чи курсів валют, що еволюціонують у часі.</p>
-<p>Дослідження, проведені над часовими рядами, показують, що стохастичний процес, який лежить у основі зміни ціни, характеризується кількома ознаками. Розподіл зміни ціни має виділений хвіст порівняно із Гаусовим розподілом. Функція автокореляції зміни ціни спадає експоненційно з певним характерним часом. Однак, виявляється, що амплітуда зміни ціни, виміряна за абсолютними значеннями чи квадратами цін, показує степеневі кореляції з довго часовою персистентністю аж до кількох місяців, або навіть років. Такі довгочасові залежності краще моделюються з використанням «додаткового процесу», що в економічній літературі часто називається волатильністю. Волатильність змін ціни акції є мірою того, як сильно ринок схильний до флуктуацій, тобто відхилень ціни від попередніх значень.</p>
+<p>Дослідження, проведені над часовими рядами, показують, що стохастичний процес, який лежить у основі зміни ціни, характеризується кількома ознаками. Розподіл зміни ціни має виділений хвіст порівняно із Гаусовим розподілом. Функція автокореляції зміни ціни спадає експоненційно з певним характерним часом. Однак, виявляється, що амплітуда зміни ціни, виміряна за абсолютними значеннями чи квадратами цін, показує степеневі кореляції з довго часовою персистентністю аж до кількох місяців, або навіть років. Такі довгочасові залежності краще моделюються з використанням “додаткового процесу”, що в економічній літературі часто називається <strong>волатильністю</strong>. Волатильність змін ціни акції є мірою того, як сильно ринок схильний до флуктуацій, тобто відхилень ціни від попередніх значень.</p>
 <p>Першим кроком при проведенні аналізу є побудова оцінювача волатильності. Ми будемо отримувати волатильність як локальне середнє модуля зміни ціни.</p>
 <p>Розуміння статистичних властивостей волатильності має також важливе практичне застосування. Волатильність є інтересом торговців, оскільки визначає ризик і є ключовим входом практично до всіх моделей цін опціонів (вторинного цінного паперу), включаючи і класичну модель Блека-Шоулза. Без задовільних методів оцінювання волатильності трейдерам було б надзвичайно важко визначати ситуації, в яких опціони попадають в недооцінку чи переоцінку.</p>
 </section>
@@ -389,22 +389,22 @@ V_{T} = \frac{1}{n}\sum_{t^{'}=t}^{t+n-1}\left| G(t^{'}) \right|,
 </section>
 <section id="визначення-кореляцій" class="level3" data-number="1.1.3">
 <h3 data-number="1.1.3" class="anchored" data-anchor-id="визначення-кореляцій"><span class="header-section-number">1.1.3</span> Визначення кореляцій</h3>
-<p>Для визначення кореляцій часового ряду використовується функція автокореляції. Саме поняття <em>автокореляції</em> означає кореляцію часового ряду самого з собою (між попередніми та наступними значеннями). Автокореляцію іноді називають <em>послідовною кореляцією</em>, що означає кореляцію між членами ряду чисел, розташованих у певному порядку. Також синонімами цього терміну є <em>лагова кореляція</em> та <em>персистентність</em>. Наприклад, часто зустрічається автокореляція геофізичних процесів, що означає перенесення залишкового процесу на наступні часові проміжки.</p>
+<p>Для визначення кореляцій часового ряду використовується функція <strong>автокореляції</strong>. Саме поняття <em>автокореляції</em> означає кореляцію часового ряду самого з собою (між попередніми та наступними значеннями). Автокореляцію іноді називають <em>послідовною кореляцією</em>, що означає кореляцію між членами ряду чисел, розташованих у певному порядку. Також синонімами цього терміну є <em>лагова кореляція</em> та <em>персистентність</em>. Наприклад, часто зустрічається автокореляція геофізичних процесів, що означає перенесення залишкового процесу на наступні часові проміжки.</p>
 <p>Позитивно автокорельований часовий ряд часто називають персистентним, що значить існування тенденції слідування великих значень за великими та малих за малими, інакше позитивно корельований часовий ряд можна назвати інертним.</p>
 <p>Візьмемо <span class="math inline">\(N\)</span> пар спостережень двох змінних <span class="math inline">\(x\)</span> та <span class="math inline">\(y\)</span>. Коефіцієнт кореляції між парами <span class="math inline">\(x\)</span> та <span class="math inline">\(y\)</span> визначається як</p>
 <p><span id="eq-1-3"><span class="math display">\[
-r = \frac{\sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right)}{\sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}}},
+r = \left[ \sum \left( x_i - \bar{x} \right) \left( y_i - \bar{y} \right) \right] \Bigg/ \left[ \sqrt{\sum \left( x_i - \bar{x} \right)^{2}} \sqrt{\sum \left( y_i - \bar{y} \right)^{2}} \right],
 \tag{1.3}\]</span></span></p>
 <p>де сума знаходиться за всіма <span class="math inline">\(N\)</span> спостереженням.</p>
 <p>Таким же чином можна визначати й автокореляцію, або ж кореляцію всередині досліджуваного часового ряду. Для автокореляції першого порядку береться лаг (часова затримка), рівний 1 часовій одиниці. Отже, автокореляція першого порядку використовує перші <span class="math inline">\(N−1\)</span> спостережень <span class="math inline">\(x_t, t = 1,..., N−1\)</span> та наступні <span class="math inline">\(N−1\)</span> спостережень <span class="math inline">\(x_t , t = 2,..., N\)</span>.</p>
 <p>Кореляція між <span class="math inline">\(x_t\)</span> та <span class="math inline">\(x_t + 1\)</span> визначається як</p>
 <p><span id="eq-1-4"><span class="math display">\[
-r_1 = \frac{\sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2},
+r_1 = \left[ \sum_{t=1}^{N-1} \left( x_t - \bar{x} \right) \left( x_{t+1} - \bar{x} \right) \right] \Bigg/ \left[ \sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2 \right],
 \tag{1.4}\]</span></span></p>
 <p>де <span class="math inline">\(x\)</span> — це середнє для досліджуваного періоду.</p>
 <p>Рівняння (<a href="#eq-1-4" class="quarto-xref"><span>1.4</span></a>) може бути узагальнене для отримання кореляції між спостереженнями, розділеними <span class="math inline">\(k\)</span> часовими інтервалами:</p>
 <p><span id="eq-5"><span class="math display">\[
-r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right)}{\sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2}.
+r_k = \left[ \sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{x} \right) \right] \Bigg/ \left[ \sum_{t=1}^{N}\left( x_t - \bar{x} \right)^2 \right].
 \tag{1.5}\]</span></span></p>
 <p>Значення <span class="math inline">\(r_k\)</span> називається коефіцієнтом автокореляції з лагом <span class="math inline">\(k\)</span>. Графік функції автокореляції як залежності <span class="math inline">\(r_k\)</span> від <span class="math inline">\(k\)</span> також називають корелограмою.</p>
 </section>
@@ -428,18 +428,18 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 <p>Для встановлення бібліотеки <code>yfinance</code> можете скористатися наступною командою:</p>
-<div id="cell-24" class="cell" data-execution_count="4">
+<div id="cell-24" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install yfinance <span class="op">--</span>upgrade <span class="op">--</span>no<span class="op">-</span>cache<span class="op">-</span><span class="bu">dir</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><a href="https://github.com/ranaroussi/yfinance">Гітхаб репозиторій</a> містить більше інформації по самій бібліотеці та помилкам, що можуть виникнути та їх потенційним рішенням.</p>
 <section id="вступ-до-модуля-ticker" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="вступ-до-модуля-ticker"><span class="header-section-number">1.2.1</span> Вступ до модуля <code>Ticker()</code></h3>
 <p>Перш за все імпортуємо бібліотеку <code>yfinance</code> за допомогою наступної команди:</p>
-<div id="cell-28" class="cell" data-execution_count="5">
+<div id="cell-28" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Модуль <code>Ticker()</code> дозволяє отримувати ринкові та метадані для цінного паперу, використовуючи Python:</p>
-<div id="cell-30" class="cell" data-execution_count="2">
+<div id="cell-30" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>msft <span class="op">=</span> yf.Ticker(<span class="st">"MSFT"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(msft)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -447,225 +447,15 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 </div>
 </div>
 <p>Можна вилучити всю інформацію по досліджуваному індексу:</p>
-<div id="cell-32" class="cell" data-execution_count="4">
+<div id="cell-32" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати інформацію по індексу</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>msft.info</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>{'address1': 'One Microsoft Way',
- 'city': 'Redmond',
- 'state': 'WA',
- 'zip': '98052-6399',
- 'country': 'United States',
- 'phone': '425 882 8080',
- 'website': 'https://www.microsoft.com',
- 'industry': 'Software - Infrastructure',
- 'industryKey': 'software-infrastructure',
- 'industryDisp': 'Software - Infrastructure',
- 'sector': 'Technology',
- 'sectorKey': 'technology',
- 'sectorDisp': 'Technology',
- 'longBusinessSummary': 'Microsoft Corporation develops and supports software, services, devices and solutions worldwide. The Productivity and Business Processes segment offers office, exchange, SharePoint, Microsoft Teams, office 365 Security and Compliance, Microsoft viva, and Microsoft 365 copilot; and office consumer services, such as Microsoft 365 consumer subscriptions, Office licensed on-premises, and other office services. This segment also provides LinkedIn; and dynamics business solutions, including Dynamics 365, a set of intelligent, cloud-based applications across ERP, CRM, power apps, and power automate; and on-premises ERP and CRM applications. The Intelligent Cloud segment offers server products and cloud services, such as azure and other cloud services; SQL and windows server, visual studio, system center, and related client access licenses, as well as nuance and GitHub; and enterprise services including enterprise support services, industry solutions, and nuance professional services. The More Personal Computing segment offers Windows, including windows OEM licensing and other non-volume licensing of the Windows operating system; Windows commercial comprising volume licensing of the Windows operating system, windows cloud services, and other Windows commercial offerings; patent licensing; and windows Internet of Things; and devices, such as surface, HoloLens, and PC accessories. Additionally, this segment provides gaming, which includes Xbox hardware and content, and first- and third-party content; Xbox game pass and other subscriptions, cloud gaming, advertising, third-party disc royalties, and other cloud services; and search and news advertising, which includes Bing, Microsoft News and Edge, and third-party affiliates. The company sells its products through OEMs, distributors, and resellers; and directly through digital marketplaces, online, and retail stores. The company was founded in 1975 and is headquartered in Redmond, Washington.',
- 'fullTimeEmployees': 221000,
- 'companyOfficers': [{'maxAge': 1,
-   'name': 'Mr. Satya  Nadella',
-   'age': 56,
-   'title': 'Chairman &amp; CEO',
-   'yearBorn': 1967,
-   'fiscalYear': 2023,
-   'totalPay': 9276400,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Mr. Bradford L. Smith LCA',
-   'age': 64,
-   'title': 'President &amp; Vice Chairman',
-   'yearBorn': 1959,
-   'fiscalYear': 2023,
-   'totalPay': 3591277,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Ms. Amy E. Hood',
-   'age': 51,
-   'title': 'Executive VP &amp; CFO',
-   'yearBorn': 1972,
-   'fiscalYear': 2023,
-   'totalPay': 3452196,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Mr. Judson B. Althoff',
-   'age': 50,
-   'title': 'Executive VP &amp; Chief Commercial Officer',
-   'yearBorn': 1973,
-   'fiscalYear': 2023,
-   'totalPay': 3355797,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Mr. Christopher David Young',
-   'age': 51,
-   'title': 'Executive Vice President of Business Development, Strategy &amp; Ventures',
-   'yearBorn': 1972,
-   'fiscalYear': 2023,
-   'totalPay': 2460507,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Ms. Alice L. Jolla',
-   'age': 57,
-   'title': 'Corporate VP &amp; Chief Accounting Officer',
-   'yearBorn': 1966,
-   'fiscalYear': 2023,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Mr. James Kevin Scott',
-   'age': 51,
-   'title': 'Executive VP of AI &amp; CTO',
-   'yearBorn': 1972,
-   'fiscalYear': 2023,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Brett  Iversen',
-   'title': 'Vice President of Investor Relations',
-   'fiscalYear': 2023,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Mr. Hossein  Nowbar',
-   'title': 'Chief Legal Officer',
-   'fiscalYear': 2023,
-   'exercisedValue': 0,
-   'unexercisedValue': 0},
-  {'maxAge': 1,
-   'name': 'Mr. Frank X. Shaw',
-   'title': 'Chief Communications Officer',
-   'fiscalYear': 2023,
-   'exercisedValue': 0,
-   'unexercisedValue': 0}],
- 'auditRisk': 6,
- 'boardRisk': 3,
- 'compensationRisk': 3,
- 'shareHolderRightsRisk': 2,
- 'overallRisk': 2,
- 'governanceEpochDate': 1706400000,
- 'compensationAsOfEpochDate': 1703980800,
- 'maxAge': 86400,
- 'priceHint': 2,
- 'previousClose': 408.59,
- 'open': 406.96,
- 'dayLow': 397.22,
- 'dayHigh': 415.31,
- 'regularMarketPreviousClose': 408.59,
- 'regularMarketOpen': 406.96,
- 'regularMarketDayLow': 397.22,
- 'regularMarketDayHigh': 415.31,
- 'dividendRate': 3.0,
- 'dividendYield': 0.0073,
- 'exDividendDate': 1707868800,
- 'payoutRatio': 0.2523,
- 'fiveYearAvgDividendYield': 1.0,
- 'trailingPE': 36.915504,
- 'forwardPE': 30.6302,
- 'volume': 46720594,
- 'regularMarketVolume': 46720594,
- 'averageVolume': 25668924,
- 'averageVolume10days': 24351280,
- 'averageDailyVolume10Day': 24351280,
- 'bid': 396.9,
- 'ask': 398.22,
- 'bidSize': 1200,
- 'askSize': 900,
- 'marketCap': 3037360029696,
- 'fiftyTwoWeekLow': 245.47,
- 'fiftyTwoWeekHigh': 415.31,
- 'priceToSalesTrailing12Months': 13.346164,
- 'fiftyDayAverage': 380.0662,
- 'twoHundredDayAverage': 340.78885,
- 'trailingAnnualDividendRate': 2.72,
- 'trailingAnnualDividendYield': 0.00665704,
- 'currency': 'USD',
- 'enterpriseValue': 3043997777920,
- 'profitMargins': 0.36269,
- 'floatShares': 7424270720,
- 'sharesOutstanding': 7432260096,
- 'sharesShort': 51901029,
- 'sharesShortPriorMonth': 53704127,
- 'sharesShortPreviousMonthDate': 1702598400,
- 'dateShortInterest': 1705017600,
- 'sharesPercentSharesOut': 0.0069999998,
- 'heldPercentInsiders': 0.00055,
- 'heldPercentInstitutions': 0.73039,
- 'shortRatio': 2.07,
- 'shortPercentOfFloat': 0.0069999998,
- 'impliedSharesOutstanding': 7639620096,
- 'bookValue': 32.06,
- 'priceToBook': 12.401122,
- 'lastFiscalYearEnd': 1688083200,
- 'nextFiscalYearEnd': 1719705600,
- 'mostRecentQuarter': 1703980800,
- 'earningsQuarterlyGrowth': 0.332,
- 'netIncomeToCommon': 82541002752,
- 'trailingEps': 10.77,
- 'forwardEps': 12.98,
- 'pegRatio': 2.43,
- 'lastSplitFactor': '2:1',
- 'lastSplitDate': 1045526400,
- 'enterpriseToRevenue': 13.375,
- 'enterpriseToEbitda': 25.704,
- '52WeekChange': 0.6165776,
- 'SandP52WeekChange': 0.19561028,
- 'lastDividendValue': 0.75,
- 'lastDividendDate': 1700006400,
- 'exchange': 'NMS',
- 'quoteType': 'EQUITY',
- 'symbol': 'MSFT',
- 'underlyingSymbol': 'MSFT',
- 'shortName': 'Microsoft Corporation',
- 'longName': 'Microsoft Corporation',
- 'firstTradeDateEpochUtc': 511108200,
- 'timeZoneFullName': 'America/New_York',
- 'timeZoneShortName': 'EST',
- 'uuid': 'b004b3ec-de24-385e-b2c1-923f10d3fb62',
- 'messageBoardId': 'finmb_21835',
- 'gmtOffSetMilliseconds': -18000000,
- 'currentPrice': 397.58,
- 'targetHighPrice': 480.0,
- 'targetLowPrice': 298.1,
- 'targetMeanPrice': 424.23,
- 'targetMedianPrice': 425.0,
- 'recommendationMean': 1.7,
- 'recommendationKey': 'buy',
- 'numberOfAnalystOpinions': 44,
- 'totalCash': 81017004032,
- 'totalCashPerShare': 10.901,
- 'ebitda': 118427000832,
- 'totalDebt': 88374001664,
- 'quickRatio': 1.023,
- 'currentRatio': 1.218,
- 'totalRevenue': 227583000576,
- 'debtToEquity': 37.09,
- 'revenuePerShare': 30.612,
- 'returnOnAssets': 0.1519,
- 'returnOnEquity': 0.39174,
- 'freeCashflow': 62880251904,
- 'operatingCashflow': 102646996992,
- 'earningsGrowth': 0.332,
- 'revenueGrowth': 0.176,
- 'grossMargins': 0.69815004,
- 'ebitdaMargins': 0.52037,
- 'operatingMargins': 0.43585998,
- 'financialCurrency': 'USD',
- 'trailingPegRatio': 2.469}</code></pre>
-</div>
 </div>
 <p>Можна вилучити ринкові значення за максимальний період часу:</p>
-<div id="cell-34" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати ринкові історичні значення індексу</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>msft.history(period<span class="op">=</span><span class="st">"max"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="cell-34" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># отримати ринкові історичні значення індексу</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>msft.history(period<span class="op">=</span><span class="st">"max"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 <div>
 
@@ -696,50 +486,50 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">1986-03-13 00:00:00-05:00</td>
-<td>0.055004</td>
-<td>0.063093</td>
-<td>0.055004</td>
-<td>0.060396</td>
+<td>0.054792</td>
+<td>0.062849</td>
+<td>0.054792</td>
+<td>0.060163</td>
 <td>1031788800</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1986-03-14 00:00:00-05:00</td>
-<td>0.060396</td>
-<td>0.063632</td>
-<td>0.060396</td>
-<td>0.062553</td>
+<td>0.060163</td>
+<td>0.063386</td>
+<td>0.060163</td>
+<td>0.062311</td>
 <td>308160000</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">1986-03-17 00:00:00-05:00</td>
-<td>0.062553</td>
-<td>0.064172</td>
-<td>0.062553</td>
-<td>0.063632</td>
+<td>0.062311</td>
+<td>0.063923</td>
+<td>0.062311</td>
+<td>0.063386</td>
 <td>133171200</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1986-03-18 00:00:00-05:00</td>
-<td>0.063632</td>
-<td>0.064172</td>
-<td>0.061475</td>
-<td>0.062014</td>
+<td>0.063386</td>
+<td>0.063923</td>
+<td>0.061237</td>
+<td>0.061774</td>
 <td>67766400</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">1986-03-19 00:00:00-05:00</td>
-<td>0.062014</td>
-<td>0.062553</td>
-<td>0.060396</td>
-<td>0.060936</td>
+<td>0.061774</td>
+<td>0.062311</td>
+<td>0.060163</td>
+<td>0.060700</td>
 <td>47894400</td>
 <td>0.0</td>
 <td>0.0</td>
@@ -755,68 +545,68 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-09-14 00:00:00-04:00</td>
-<td>339.149994</td>
-<td>340.859985</td>
-<td>336.570007</td>
-<td>338.700012</td>
-<td>20267000</td>
+<td data-quarto-table-cell-role="th">2024-03-18 00:00:00-04:00</td>
+<td>414.250000</td>
+<td>420.730011</td>
+<td>413.779999</td>
+<td>417.320007</td>
+<td>20106000</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-09-15 00:00:00-04:00</td>
-<td>336.920013</td>
-<td>337.399994</td>
-<td>329.649994</td>
-<td>330.220001</td>
-<td>37666900</td>
+<td data-quarto-table-cell-role="th">2024-03-19 00:00:00-04:00</td>
+<td>417.829987</td>
+<td>421.670013</td>
+<td>415.549988</td>
+<td>421.410004</td>
+<td>19837900</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-09-18 00:00:00-04:00</td>
-<td>327.799988</td>
-<td>330.399994</td>
-<td>326.359985</td>
-<td>329.059998</td>
-<td>16834200</td>
+<td data-quarto-table-cell-role="th">2024-03-20 00:00:00-04:00</td>
+<td>422.000000</td>
+<td>425.959991</td>
+<td>420.660004</td>
+<td>425.230011</td>
+<td>17860100</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2023-09-19 00:00:00-04:00</td>
-<td>326.170013</td>
-<td>329.390015</td>
-<td>324.510010</td>
-<td>328.649994</td>
-<td>16505900</td>
+<td data-quarto-table-cell-role="th">2024-03-21 00:00:00-04:00</td>
+<td>429.829987</td>
+<td>430.820007</td>
+<td>427.160004</td>
+<td>429.369995</td>
+<td>21296200</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2023-09-20 00:00:00-04:00</td>
-<td>329.510010</td>
-<td>329.589996</td>
-<td>325.029999</td>
-<td>325.720001</td>
-<td>8307027</td>
+<td data-quarto-table-cell-role="th">2024-03-22 00:00:00-04:00</td>
+<td>429.700012</td>
+<td>429.859985</td>
+<td>426.070007</td>
+<td>428.739990</td>
+<td>17636500</td>
 <td>0.0</td>
 <td>0.0</td>
 </tr>
 </tbody>
 </table>
 
-<p>9457 rows × 7 columns</p>
+<p>9584 rows × 7 columns</p>
 </div>
 </div>
 </div>
 </div>
 <p>Окрім цього, <code>yfinance</code> дозволяє отримати інформацію по дивідентам та сплітам фінансового індексу:</p>
-<div id="cell-36" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># показувати дії (дивіденди, спліти)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>msft.actions</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="cell-36" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># показувати дії (дивіденди, спліти)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>msft.actions</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <div>
 
@@ -866,16 +656,6 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2022-08-17 00:00:00-04:00</td>
-<td>0.62</td>
-<td>0.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2022-11-16 00:00:00-05:00</td>
-<td>0.68</td>
-<td>0.0</td>
-</tr>
-<tr class="odd">
 <td data-quarto-table-cell-role="th">2023-02-15 00:00:00-05:00</td>
 <td>0.68</td>
 <td>0.0</td>
@@ -890,18 +670,28 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 <td>0.68</td>
 <td>0.0</td>
 </tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-11-15 00:00:00-05:00</td>
+<td>0.75</td>
+<td>0.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2024-02-14 00:00:00-05:00</td>
+<td>0.75</td>
+<td>0.0</td>
+</tr>
 </tbody>
 </table>
 
-<p>88 rows × 2 columns</p>
+<p>90 rows × 2 columns</p>
 </div>
 </div>
 </div>
 </div>
-<div id="cell-37" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати дивіденти</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>msft.dividends</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="cell-37" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати дивіденти</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>msft.dividends</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Date
 2003-02-19 00:00:00-05:00    0.08
 2003-10-15 00:00:00-04:00    0.16
@@ -909,18 +699,18 @@ r_k = \frac{\sum_{t=1}^{N-k} \left( x_t - \bar{x} \right) \left( x_{t+k} - \bar{
 2004-11-15 00:00:00-05:00    3.08
 2005-02-15 00:00:00-05:00    0.08
                              ... 
-2022-08-17 00:00:00-04:00    0.62
-2022-11-16 00:00:00-05:00    0.68
 2023-02-15 00:00:00-05:00    0.68
 2023-05-17 00:00:00-04:00    0.68
 2023-08-16 00:00:00-04:00    0.68
-Name: Dividends, Length: 79, dtype: float64</code></pre>
+2023-11-15 00:00:00-05:00    0.75
+2024-02-14 00:00:00-05:00    0.75
+Name: Dividends, Length: 81, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-38" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати спліти</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>msft.splits</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="cell-38" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># продемонструвати спліти</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>msft.splits</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>Date
 1987-09-21 00:00:00-04:00    2.0
 1990-04-16 00:00:00-04:00    2.0
@@ -948,17 +738,17 @@ Name: Stock Splits, dtype: float64</code></pre>
 <section id="одночасне-вивантаження-декількох-ринкових-активів" class="level3" data-number="1.2.2">
 <h3 data-number="1.2.2" class="anchored" data-anchor-id="одночасне-вивантаження-декількох-ринкових-активів"><span class="header-section-number">1.2.2</span> Одночасне вивантаження декількох ринкових активів</h3>
 <p>Як і до цього, ви також можете завантажувати дані для кількох тикерів одночасно:</p>
-<div id="cell-42" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>) <span class="co"># вивантажуємо дані, </span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="co"># зберігаємо до змінної data</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>data.head() <span class="co"># виводимо перші 5 рядків нашого масиву даних </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div id="cell-42" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>) <span class="co"># вивантажуємо дані, </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="co"># зберігаємо до змінної data</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>data.head() <span class="co"># виводимо перші 5 рядків нашого масиву даних </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <div>
 
@@ -966,7 +756,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Price</th>
 <th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Adj Close</th>
 <th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Close</th>
 <th colspan="2" data-quarto-table-cell-role="th" data-halign="left">High</th>
@@ -975,7 +765,7 @@ Name: Stock Splits, dtype: float64</code></pre>
 <th colspan="2" data-quarto-table-cell-role="th" data-halign="left">Volume</th>
 </tr>
 <tr class="odd">
-<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Ticker</th>
 <th data-quarto-table-cell-role="th">AAPL</th>
 <th data-quarto-table-cell-role="th">SPY</th>
 <th data-quarto-table-cell-role="th">AAPL</th>
@@ -1008,8 +798,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2017-01-03</td>
-<td>27.059307</td>
-<td>200.629669</td>
+<td>26.989265</td>
+<td>199.200607</td>
 <td>29.037500</td>
 <td>225.240005</td>
 <td>29.082500</td>
@@ -1023,8 +813,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2017-01-04</td>
-<td>27.029026</td>
-<td>201.823288</td>
+<td>26.959055</td>
+<td>200.385712</td>
 <td>29.004999</td>
 <td>226.580002</td>
 <td>29.127501</td>
@@ -1038,8 +828,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2017-01-05</td>
-<td>27.166475</td>
-<td>201.662903</td>
+<td>27.096151</td>
+<td>200.226501</td>
 <td>29.152500</td>
 <td>226.399994</td>
 <td>29.215000</td>
@@ -1053,8 +843,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2017-01-06</td>
-<td>27.469332</td>
-<td>202.384430</td>
+<td>27.398235</td>
+<td>200.942886</td>
 <td>29.477501</td>
 <td>227.210007</td>
 <td>29.540001</td>
@@ -1068,8 +858,8 @@ Name: Stock Splits, dtype: float64</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2017-01-09</td>
-<td>27.720936</td>
-<td>201.716385</td>
+<td>27.649183</td>
+<td>200.279572</td>
 <td>29.747499</td>
 <td>226.460007</td>
 <td>29.857500</td>
@@ -1089,12 +879,12 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Для отримання конкретно цін закриття індексу <strong>SPY</strong> вам варто використовувати наступну команду: <code>data['Close']['SPY']</code> Але, якщо вам необхідно згрупувати дані за їх символом, можна скористатися наступним записом:</p>
-<div id="cell-44" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                   group_by<span class="op">=</span><span class="st">"ticker"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div id="cell-44" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(<span class="st">"SPY AAPL"</span>, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                   start<span class="op">=</span><span class="st">"2017-01-01"</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                   end<span class="op">=</span><span class="st">"2017-04-30"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                   group_by<span class="op">=</span><span class="st">"ticker"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  2 of 2 completed</code></pre>
 </div>
 </div>
@@ -1108,58 +898,60 @@ Name: Stock Splits, dtype: float64</code></pre>
 <li><strong><code>neurokit2</code></strong>: зручна бібліотека, що забезпечує легкий доступ до розширених процедур обробки біосигналів. Дослідники та клініцисти без глибоких знань програмування або біомедичної обробки сигналів можуть аналізувати фізіологічні дані за допомогою лише двох рядків коду. Перевага даної бібліотеки полягає в тому, що вона надає функціонал, який можна використовувати не лише для біомедичних сигналів, але й для фінансових, фізичних тощо.</li>
 </ul>
 <p>Встановити кожну з даних бібліотек можна в наступний спосіб: <code>!pip install *назва бібліотеки*</code>:</p>
-<div id="cell-49" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install matplotlib pandas numpy neurokit2</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-49" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install matplotlib pandas numpy neurokit2</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі нам треба буде визначити стиль рисунків для виведення та збереження. Встановимо наступну бібліотеку:</p>
-<div id="cell-51" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># для встановлення останньої версії (із PyPI)</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install SciencePlots</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-51" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># для встановлення останньої версії (із PyPI)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install SciencePlots</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Імпортуємо кожну із зазначених бібліотек:</p>
-<div id="cell-53" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># магічна команда для вбудування рисунків у середовище jupyter блокнотів</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-53" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># магічна команда для вбудування рисунків у середовище jupyter блокнотів</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виконаємо налаштування стилю наших подальших рисунків:</p>
-<div id="cell-55" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),         <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: <span class="dv">22</span>,             <span class="co"># розмір підписів по осям</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: <span class="dv">22</span>,            <span class="co"># розмір легенди</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: <span class="dv">22</span>,            <span class="co"># розмір розмітки по осі Ох</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: <span class="dv">22</span>,            <span class="co"># розмір розмітки по осі Ох</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-55" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),            <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: size,                   <span class="co"># розмір фонтів рисунку</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,                <span class="co"># товщина ліній</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,           <span class="co"># розмір титулки над рисунком</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: size,              <span class="co"># розмір підписів по осям</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: size,             <span class="co"># розмір легенди</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"Serif"</span>,              <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times New Roman"</span>],   <span class="co"># стиль підпису</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>,                  <span class="co"># якість збережених зображень</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.grid'</span>: <span class="va">False</span>                   <span class="co"># побудова сітки на самому рисунку</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Представлені налаштування є орієнтовними і можуть змінюватись у ході наступних лабораторних роботах. Ви можете встановлювати власні налаштування. На сайті бібліотеки <a href="https://matplotlib.org/stable/api/matplotlib_configuration_api.html">matplotlib</a> можна ознайомитись з усіма можливими командами.</p>
 <p>Розглянемо можливість використання всіх згаданих показників у якості індикаторів або індикаторів-передвісників кризових явищ. Для прикладу завантажимо часовий ряд Біткоїна за період з 1 вересня 2015 по 1 березня 2020, використовуючи <code>yfinance</code>:</p>
-<div id="cell-58" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'BTC-USD'</span>       <span class="co"># Символ індексу</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2015-09-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2020-03-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, start, end)  <span class="co"># вивантажуємо дані</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol          <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-58" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'BTC-USD'</span>                      <span class="co"># Символ індексу</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2015-09-01"</span>                    <span class="co"># Дата початку зчитування даних</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2020-03-01"</span>                      <span class="co"># Дата закінчення зчитування даних</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, start, end)  <span class="co"># вивантажуємо дані</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                   <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                         <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
 </div>
@@ -1178,30 +970,30 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <hr>
-<div id="cell-61" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                 <span class="co"># Символ індексу</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>     <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,          <span class="co"># зчитування даних </span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()    <span class="co"># копіюємо значення кривої </span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># "напруга-видовження" до окремої змінної</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>    <span class="co"># підпис по вісі Ох </span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol              <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-61" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                 <span class="co"># Символ індексу</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>     <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,          <span class="co"># зчитування даних </span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()    <span class="co"># копіюємо значення кривої </span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>                                  <span class="co"># "напруга-видовження" до окремої змінної</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>    <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol              <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер виведемо значення, що були зчитані з текстового документа:</p>
-<div id="cell-fig-sMpa-init" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                   <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-sMpa-init" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-smpa-init" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1231,17 +1023,17 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Виведемо значення Біткоїна:</p>
-<div id="cell-fig-btc-init" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-init" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-init" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1256,34 +1048,38 @@ Name: Stock Splits, dtype: float64</code></pre>
 </div>
 </div>
 <p>Видно, що ряд нестаціонарний, що викликає певні ускладнення для подальшого аналізу. Тому перейдемо до прибутковостей, які вже є стаціонарними, а нормалізація стандартним відхиленням дозволяє легко порівнювати їх розподіл з розподілом Гауса.</p>
-<p>Прибутковості розраховуватимуться згідно <a href="#eq-1-1" class="quarto-xref">Рівняння&nbsp;<span>1.1</span></a>. У Python для цього ми використовуватимемо метод <code>pct_change()</code>, що доступний нам завдяки бібліотеці <code>pandas</code>.</p>
+<p>Прибутковості розраховуватимуться згідно рівняння (<a href="#eq-1-1" class="quarto-xref"><span>1.1</span></a>). У Python для цього ми використовуватимемо метод <code>pct_change()</code>, що доступний нам завдяки бібліотеці <code>pandas</code>.</p>
 <p>Стандартизовані прибутковості можна визначити як <span class="math inline">\(g(t) = \left[G(t) - \mu \right] / \sigma\)</span>, де <span class="math inline">\(\mu\)</span> відповідає середньому значенню прибутковостей за досліджуваний часовий інтервал, а <span class="math inline">\(\sigma\)</span> представляє стандартне відхилення.</p>
-<div id="cell-70" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> time_ser.copy()      <span class="co"># копіюємо значення вихідного ряду для збереження </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># його від змін</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> ret.pct_change()     <span class="co"># знаходимо прибутковості</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>ret <span class="op">-=</span> ret.mean()          <span class="co"># вилучаємо середнє </span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>ret <span class="op">/=</span> ret.std()           <span class="co"># ділимо на стандартнє відхилення</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> ret.dropna().values  <span class="co"># видаляємо всі можливі нульові значення </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-70" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> time_ser.copy()      <span class="co"># копіюємо значення вихідного ряду для збереження </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                           <span class="co"># його від змін</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> ret.pct_change()     <span class="co"># знаходимо прибутковості</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>ret <span class="op">-=</span> ret.mean()          <span class="co"># вилучаємо середнє </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>ret <span class="op">/=</span> ret.std()           <span class="co"># ділимо на стандартнє відхилення</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> ret.dropna().values  <span class="co"># видаляємо всі можливі нульові значення </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо отриманий результат:</p>
-<div id="cell-fig-btc-ret" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index[<span class="dv">1</span>:], ret)           <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Додаємо підпис для вісі Ох</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel <span class="op">+</span> <span class="st">' прибутковості'</span>)   <span class="co"># Додаємо підпис для вісі Оу</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>ax.axhline(y <span class="op">=</span> <span class="fl">3.0</span>, color <span class="op">=</span> <span class="st">'r'</span>, linestyle <span class="op">=</span> <span class="st">'--'</span>)  <span class="co"># Додаємо горизонтальну лінію, що роз-</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># межує 3 сигма події</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>ax.axhline(y <span class="op">=</span> <span class="op">-</span><span class="fl">3.0</span>, color <span class="op">=</span> <span class="st">'r'</span>, linestyle <span class="op">=</span> <span class="st">'--'</span>) <span class="co"># Додаємо горизонтальну лінію, що роз-</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                                                    <span class="co"># межує -3 сигма події</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Прибутковості</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)  <span class="co"># Зберігаємо графік </span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-ret" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index[<span class="dv">1</span>:], ret)           <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Додаємо підпис для вісі Ох</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel <span class="op">+</span> <span class="st">' прибутковості'</span>)   <span class="co"># Додаємо підпис для вісі Оу</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>ax.axhline(y <span class="op">=</span> <span class="fl">3.0</span>, </span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>           color <span class="op">=</span> <span class="st">'r'</span>, </span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>           linestyle <span class="op">=</span> <span class="st">'--'</span>)    <span class="co"># Додаємо горизонтальну лінію, </span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># що роз межує 3 сигма події</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>ax.axhline(y <span class="op">=</span> <span class="op">-</span><span class="fl">3.0</span>, </span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>           color <span class="op">=</span> <span class="st">'r'</span>, </span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>           linestyle <span class="op">=</span> <span class="st">'--'</span>)    <span class="co"># Додаємо горизонтальну лінію, </span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># що розмежує -3 сигма події</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Прибутковості</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)  <span class="co"># Зберігаємо графік </span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-ret" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1300,37 +1096,37 @@ Name: Stock Splits, dtype: float64</code></pre>
 <p>Зверніть увагу, що флуктуації нормалізованих прибутковостей досить часто перевищують величину <span class="math inline">\(\pm 3\sigma\)</span>, що, як відомо, надзвичайно рідко спостерігається для незалежних подій. Цей факт можна відобразити шляхом порівняння функції розподілу нормалізованих флуктуацій з розподілом Гауса (<a href="#fig-btc-dist" class="quarto-xref">Рис.&nbsp;<span>1.4</span></a>). Очевидно, що хвости розподілу вихідного ряду містять значні флуктуації, вони досить помітні (часто кажуть “важкі” у порівнянні з самою “головою” розподілу).</p>
 <p>Для побудови нормального розподілу скористаємось бібліотекою <code>scipy</code>. Встановити її можна за аналогією з попередніми бібліотеками.</p>
 <div id="cell-75" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Для встановлення останньої версії scipy</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install scipy</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Для встановлення останньої версії scipy</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install scipy</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-76" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm <span class="co"># імпорт модуля norm для побудови Гаусового розподілу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-76" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm <span class="co"># імпорт модуля norm для побудови Гаусового розподілу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Функція щільності ймовірності <code>norm</code> для дійсних значень <span class="math inline">\(x\)</span> має наступний вигляд: <span class="math inline">\(f(x) = \exp{(-x^2/2)} \big/ \sqrt{2\pi}\)</span>.</p>
-<div id="cell-78" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mu, sigma <span class="op">=</span> norm.fit(ret)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(ret.<span class="bu">min</span>(), ret.<span class="bu">max</span>(), <span class="dv">10000</span>) <span class="co"># Генеруємо 10000 значень для побудови </span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># Гаусового розподілу</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.pdf(x, mu, sigma)                   <span class="co"># Отримання значень функції щільності</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-78" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mu, sigma <span class="op">=</span> norm.fit(ret)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(ret.<span class="bu">min</span>(), ret.<span class="bu">max</span>(), <span class="dv">10000</span>) <span class="co"># Генеруємо 10000 значень для побудови </span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># Гаусового розподілу</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> norm.pdf(x, mu, sigma)                   <span class="co"># Отримання значень функції щільності</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-btc-dist" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, p, label<span class="op">=</span><span class="st">'Гаусіан'</span>)             <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ax.hist(ret, bins<span class="op">=</span><span class="dv">50</span>,                      <span class="co"># Побудова гістограми для прибутковостей</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        density<span class="op">=</span><span class="va">True</span>, </span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.6</span>, </span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'g'</span>,</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'прибутковості '</span><span class="op">+</span>symbol)</span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>ax.legend()                                <span class="co"># Додаємо легенду</span></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"g"</span>)                         <span class="co"># Додаємо підпис для вісі Ох</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$f(g)$"</span>)                   <span class="co"># Додаємо підпис для вісі Оу</span></span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>ax.set_yscale(<span class="st">'log'</span>)</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Гаус + прибутковості </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)       <span class="co"># Зберігаємо графік </span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                             <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-dist" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>ax.plot(x, p, label<span class="op">=</span><span class="st">'Гаусіан'</span>)             <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>ax.hist(ret, bins<span class="op">=</span><span class="dv">50</span>,                      <span class="co"># Побудова гістограми для прибутковостей</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        density<span class="op">=</span><span class="va">True</span>, </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        alpha<span class="op">=</span><span class="fl">0.6</span>, </span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span><span class="st">'g'</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        label<span class="op">=</span><span class="st">'Прибутковості '</span><span class="op">+</span> symbol)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>ax.legend()                                <span class="co"># Додаємо легенду</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"g"</span>)                         <span class="co"># Додаємо підпис для вісі Ох</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$f(g)$"</span>)                   <span class="co"># Додаємо підпис для вісі Оу</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>ax.set_yscale(<span class="st">'log'</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Гаус + прибутковості </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)   <span class="co"># Зберігаємо графік </span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                         <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-dist" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1360,32 +1156,32 @@ Name: Stock Splits, dtype: float64</code></pre>
 <li><strong>r</strong> (<em>float</em>) — крос-кореляція сигналу із самим собою на різних часових лагах. Мінімальний часовий лаг дорівнює 0, максимальний часовий лаг дорівнює довжині сигналу. Або значення кореляції на певному часовому лазі, якщо лаг не дорівнює <code>None</code>;</li>
 <li><strong>info</strong> (<em>dict</em>) — cловник, що містить додаткову інформацію, наприклад, довірчий інтервал.</li>
 </ul>
-<div id="cell-83" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># розрахунок автокореляції</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>r_init, _ <span class="op">=</span> nk.signal_autocor(time_ser.values, </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                              method<span class="op">=</span><span class="st">'correlation'</span>)  <span class="co"># для вихідних значень ряду                                                                    </span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>r_ret, _ <span class="op">=</span> nk.signal_autocor(ret, </span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>                             method<span class="op">=</span><span class="st">'correlation'</span>)   <span class="co"># для прибутковостей</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>r_vol, _ <span class="op">=</span> nk.signal_autocor(np.<span class="bu">abs</span>(ret), </span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>                             method<span class="op">=</span><span class="st">'correlation'</span>)   <span class="co"># для модулів прибутковостей</span></span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>r_range <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(r_ret) <span class="op">+</span> <span class="dv">1</span>)               <span class="co"># генерація лагів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-83" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># розрахунок автокореляції</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>r_init, _ <span class="op">=</span> nk.signal_autocor(time_ser.values, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                              method<span class="op">=</span><span class="st">'correlation'</span>)  <span class="co"># для вихідних значень ряду                                                                    </span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>r_ret, _ <span class="op">=</span> nk.signal_autocor(ret, </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                             method<span class="op">=</span><span class="st">'correlation'</span>)   <span class="co"># для прибутковостей</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>r_vol, _ <span class="op">=</span> nk.signal_autocor(np.<span class="bu">abs</span>(ret), </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                             method<span class="op">=</span><span class="st">'correlation'</span>)   <span class="co"># для модулів прибутковостей</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>r_range <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="bu">len</span>(r_ret) <span class="op">+</span> <span class="dv">1</span>)               <span class="co"># генерація лагів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-btc-autocorr" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_init[<span class="dv">1</span>:], label<span class="op">=</span>symbol)  <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_ret, label<span class="op">=</span><span class="vs">r'$g(t)$'</span>)                          </span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_vol, label<span class="op">=</span><span class="vs">r'$V_</span><span class="sc">{T}</span><span class="vs">$'</span>) </span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>ax.legend()                                 <span class="co"># Додаємо легенду</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Lag"</span>)                        <span class="co"># Додаємо підпис для вісі Ох</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Autocorrelation r"</span>)          <span class="co"># Додаємо підпис для вісі Оу</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.1</span>)                      <span class="co"># Встановлюємо обмеження по вісі Oy</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Автокореляції </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)  <span class="co"># Зберігаємо графік </span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                 <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-autocorr" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_init[<span class="dv">1</span>:], label<span class="op">=</span>symbol)  <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_ret, label<span class="op">=</span><span class="vs">r'$g(t)$'</span>)                          </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>ax.plot(r_range, r_vol, label<span class="op">=</span><span class="vs">r'$V_</span><span class="sc">{T}</span><span class="vs">$'</span>) </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>ax.legend()                                 <span class="co"># Додаємо легенду</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"Часовий лаг $k$"</span>)           <span class="co"># Додаємо підпис для вісі Ох</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"Автокореляція $r$"</span>)         <span class="co"># Додаємо підпис для вісі Оу</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="op">-</span><span class="fl">1.1</span>, <span class="fl">1.1</span>)                      <span class="co"># Встановлюємо обмеження по вісі Oy</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'Автокореляції </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)  <span class="co"># Зберігаємо графік </span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                 <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-autocorr" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1393,134 +1189,134 @@ Name: Stock Splits, dtype: float64</code></pre>
 <img src="lab_1_files/figure-html/fig-btc-autocorr-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-btc-autocorr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;1.5: Зміна з часом парних автокореляційних функцій для вихідного ряду x, нормалізованих прибутковостей g та їх модулів mod(g)
+Рис.&nbsp;1.5: Зміна з часом парних автокореляційних функцій для вихідного ряду <span class="math inline">\(x\)</span>, нормалізованих прибутковостей <span class="math inline">\(g\)</span> та їх модулів <span class="math inline">\(|g|\)</span>
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Але, досліджуючи складні системи, варто пам’ятати, що їх складність є варіативною. Тому і внутрішні кореляції системи на різних часових лагах також варіюються з плином часу. Із цього випливає, що подальщі розрахунки варто виконувати не для всього ряду, а для його фрагментів.</p>
-<p>Сформулюємо алгоритм ковзного (рухомого) вікна. Виділимо фрагмент часового ряду (вікно), розрахуємо необхідні міри складності, змістимо вікно вздовж часового ряду на заздалегідь визначену величину (крок) і повторимо процедуру до вичерпання часового ряду. Далі, порівнюючи динаміку фактичного часового ряду і відповідних мір складності, ми матимемо змогу судити про характерні зміни в динаміці міри складності зі зміною досліджуваної системи. Якщо та чи інша міра складності поводиться характерним чином для всіх особливих періодів (наприклад, крахів), зменшується або збільшується у передкризовий період, то вона може служити їх індикатором або передвісником.</p>
+<p>Сформулюємо алгоритм <strong>ковзного (рухомого) вікна</strong>. Виділимо фрагмент часового ряду (вікно), розрахуємо необхідні міри складності, змістимо вікно вздовж часового ряду на заздалегідь визначену величину (крок) і повторимо процедуру до вичерпання часового ряду. Далі, порівнюючи динаміку фактичного часового ряду і відповідних мір складності, ми матимемо змогу судити про характерні зміни в динаміці міри складності зі зміною досліджуваної системи. Якщо та чи інша міра складності поводиться характерним чином для всіх особливих періодів (наприклад, крахів), зменшується або збільшується у передкризовий період, то вона може служити їх індикатором або передвісником.</p>
 <p>Розглянемо як поводитиме себе функція автокореляцій та волатильність в рамках алгоритму ковзного вікна.</p>
 <p>Спочатку визначимо параметри:</p>
-<div id="cell-87" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>           <span class="co"># вид ряду: </span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 1 - вихідний, </span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 3 - прибутковості звичайні, </span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 4 - стандартизовані прибутковості, </span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 5 - абсолютні значення (волатильності),</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 6 - стандартизований вихідний ряд </span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser) <span class="co"># довжина всього ряду</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>           <span class="co"># довжина вікна - період у межах якого розраховуватимуться наші індикатори</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>              <span class="co"># крок зміщення вікна</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>volatility <span class="op">=</span> []        <span class="co"># масив значень волатильностей </span></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>autocorr <span class="op">=</span> []          <span class="co"># масив значень автокореляції при змінній lag</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-87" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>           <span class="co"># вид ряду: </span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 1 - вихідний, </span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 3 - прибутковості звичайні, </span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 5 - абсолютні значення (волатильності),</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>                       <span class="co"># 6 - стандартизований вихідний ряд </span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser) <span class="co"># довжина всього ряду</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>           <span class="co"># довжина вікна - період у межах якого розраховуватимуться наші індикатори</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>              <span class="co"># крок зміщення вікна</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>volatility <span class="op">=</span> []        <span class="co"># масив значень волатильностей </span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>autocorr <span class="op">=</span> []          <span class="co"># масив значень автокореляції при змінній lag</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі розпочнемо розрахунки. Для відслідковування прогресу зміщення ковзного вікна скористаємось бібліотекою <code>tqdm</code>. Її можна встановити аналогічно попереднім бібліотекам:</p>
-<div id="cell-89" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-89" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Імпортуємо модуль для візуалізації прогресу:</p>
-<div id="cell-91" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-91" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І тепер приступимо до виконання віконної процедури:</p>
-<div id="cell-93" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># Фрагменти довжиною window  </span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                                              </span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy() <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>                                          <span class="co"># подальшому відбираємо потрібний тип ряду                                         </span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:                     <span class="co"># вихідні значення </span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:                   <span class="co"># різниці</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm[<span class="dv">1</span>:] <span class="op">-</span> fragm[:<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:                   <span class="co"># прибутковості</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.pct_change()</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:                   <span class="co"># стандартизовані прибутковості</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.pct_change()</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">-=</span> fragm.mean()</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">/=</span> fragm.std()</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>:                   <span class="co"># абсолютні значення прибутковостей</span></span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.pct_change()</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">-=</span> fragm.mean()</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">/=</span> fragm.std()</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.<span class="bu">abs</span>()</span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:                   <span class="co"># стандартизований вихідний ряд</span></span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">-=</span> fragm.mean()</span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">/=</span> fragm.std()</span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> fragm.dropna().values         <span class="co"># видаляємо зайві нульові значення, якщо є</span></span>
-<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок віконної автокореляції</span></span>
-<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>    r_window, _ <span class="op">=</span> nk.signal_autocor(fragm, method<span class="op">=</span><span class="st">'correlation'</span>) </span>
-<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок волатильності по модулям прибутковостей                                     </span></span>
-<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>    vol_window <span class="op">=</span> np.mean(np.<span class="bu">abs</span>(fragm))</span>
-<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># збереження результатів до масивів</span></span>
-<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>    volatility.append(vol_window)</span>
-<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>    autocorr.append(r_window[<span class="dv">1</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-93" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># Фрагменти довжиною window  </span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                                              </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy() <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>                                          <span class="co"># подальшому відбираємо потрібний тип ряду                                         </span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:                     <span class="co"># вихідні значення </span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:                   <span class="co"># різниці</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm[<span class="dv">1</span>:] <span class="op">-</span> fragm[:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:                   <span class="co"># прибутковості</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.pct_change()</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:                   <span class="co"># стандартизовані прибутковості</span></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.pct_change()</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">-=</span> fragm.mean()</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">/=</span> fragm.std()</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>:                   <span class="co"># абсолютні значення прибутковостей</span></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.pct_change()</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">-=</span> fragm.mean()</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">/=</span> fragm.std()</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">=</span> fragm.<span class="bu">abs</span>()</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:                   <span class="co"># стандартизований вихідний ряд</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">-=</span> fragm.mean()</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>        fragm <span class="op">/=</span> fragm.std()</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> fragm.dropna().values         <span class="co"># видаляємо зайві нульові значення, якщо є</span></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок віконної автокореляції</span></span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a>    r_window, _ <span class="op">=</span> nk.signal_autocor(fragm, method<span class="op">=</span><span class="st">'correlation'</span>) </span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розрахунок волатильності по модулям прибутковостей                                     </span></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>    vol_window <span class="op">=</span> np.mean(np.<span class="bu">abs</span>(fragm))</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># збереження результатів до масивів</span></span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>    volatility.append(vol_window)</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>    autocorr.append(r_window[<span class="dv">1</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 1393/1393 [00:01&lt;00:00, 951.94it/s]</code></pre>
+<pre><code>100%|██████████| 1393/1393 [00:01&lt;00:00, 1140.61it/s]</code></pre>
 </div>
 </div>
 <p>Збережемо результати в окремих текстових файлах:</p>
-<div id="cell-95" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># збереження результатів ковзної автокореляції</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"autocorr_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, autocorr)</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># збереження результатів ковзної волатильності</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"volatility_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, volatility)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-95" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># збереження результатів ковзної автокореляції</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"autocorr_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, autocorr)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># збереження результатів ковзної волатильності</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"volatility_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="ss">            window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="ss">            rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, volatility)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Нарешті, порівняємо динаміку вихідного ряду і розрахованих похідних. Для цього врахуємо, що автокореляцію і волатильність ми знаходили для рухомого вікна. Результати представлено на <a href="#fig-btc-all" class="quarto-xref">Рис.&nbsp;<span>1.6</span></a>.</p>
-<div id="cell-fig-btc-all" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax.twinx()</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.10</span>))</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser.index[window:length:tstep], </span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>              time_ser.values[window:length:tstep], </span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(time_ser.index[window:length:tstep], </span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>               autocorr, <span class="st">"g-"</span>, label<span class="op">=</span><span class="vs">r"$A$"</span>)</span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(time_ser.index[window:length:tstep],</span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>               volatility, <span class="st">"m-"</span>, label<span class="op">=</span><span class="vs">r"$V$"</span>)</span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
-<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">4</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(rotation<span class="op">=</span><span class="dv">90</span>, axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(rotation<span class="op">=</span><span class="dv">30</span>, axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>ax.tick_params(rotation<span class="op">=</span><span class="dv">45</span>, axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3], fontsize<span class="op">=</span><span class="dv">18</span>)</span>
-<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"all_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="ss">            wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-all" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax.twinx()</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.10</span>))</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser.index[window:length:tstep], </span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>              time_ser.values[window:length:tstep], </span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(time_ser.index[window:length:tstep], </span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>               autocorr, <span class="st">"g-"</span>, label<span class="op">=</span><span class="vs">r"$A$"</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(time_ser.index[window:length:tstep],</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>               volatility, <span class="st">"m-"</span>, label<span class="op">=</span><span class="vs">r"$V$"</span>)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">4</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(rotation<span class="op">=</span><span class="dv">90</span>, axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(rotation<span class="op">=</span><span class="dv">30</span>, axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>ax.tick_params(rotation<span class="op">=</span><span class="dv">45</span>, axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3], fontsize<span class="op">=</span><span class="dv">18</span>)</span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"all_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a><span class="ss">            wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-all" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1745,7 +1541,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1777,29 +1584,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
@@ -1807,7 +1592,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python – 11&nbsp; Лабораторна робота № 11</title>
+<title>Моделювання складних систем у Python - 11&nbsp; Лабораторна робота № 11</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,7 +125,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -364,7 +364,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></h1>
+<h1 class="title"><span id="sec-title11" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></h1>
 </div>
 
 
@@ -395,7 +395,7 @@ window.Quarto = {
 <p>Нещодавно було запропоновано принципово новий підхід до вимірювання незворотності часових рядів, який використовує методи теорії складних мереж <span class="citation" data-cites="F.Donges_2013 Lacasa_2012">&nbsp;[<a href="references.html#ref-F.Donges_2013" role="doc-biblioref">4</a>,<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span> та поєднує два інструменти: алгоритм графа видимості, що перетворює часові ряди у складну мережу та алгоритм дивергенції Куллбака-Лейблера <span class="citation" data-cites="Lacasa_2012">&nbsp;[<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span>. Перший формує спрямовану мережу за геометричним критерієм. Потім ступінь незворотності ряду оцінюється за розбіжністю Кульбака-Лейблера. Цей метод є обчислювально ефективним, не вимагає спеціального процесу символізації і, на думку авторів, природно враховує мультимасштабність.</p>
 <section id="незворотність-на-основі-діаграм-пуанкаре" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored" data-anchor-id="незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">11.1.1</span> Незворотність на основі діаграм Пуанкаре</h3>
-<p>Діаграма Пуанкаре для часового ряду являє собою графік, на осі <span class="math inline">\(x\)</span> якого розташовані значення для поточного часу <span class="math inline">\(t\)</span>, а на осі <span class="math inline">\(y\)</span> — його наступні значення в часі <span class="math inline">\(t+\tau\)</span>. Усі наступні значення, які рівні один одному <span class="math inline">\((x(t) = x(t+\tau))\)</span>, розташовані на лінії ідентичності (line of identity, LI). Інтервали, що представляють зростаючу тендецію, відмічені вище LI <span class="math inline">\(( x(t)&lt;x(t+\tau) )\)</span>, тоді як спадна тенденція характеризуватиметься скупченням точок нижче LI <span class="math inline">\((x(t)&gt;x(t+\tau))\)</span>. Оцінюючи асиметрію точок на діаграмі, ми можемо вивести різні кількісні показники незворотності (асиметрії) досліджуваних систем.</p>
+<p>Діаграма Пуанкаре для часового ряду являє собою графік, на осі <span class="math inline">\(x\)</span> якого розташовані значення для поточного часу <span class="math inline">\(t\)</span>, а на осі <span class="math inline">\(y\)</span> — його наступні значення в часі <span class="math inline">\(t+\tau\)</span>. Усі наступні значення, які рівні один одному <span class="math inline">\((x(t) = x(t+\tau))\)</span>, розташовані на лінії ідентичності (line of identity, LI). Інтервали, що представляють зростаючу тендецію, відмічені вище LI <span class="math inline">\(( x(t)&lt;x(t+\tau) )\)</span>, тоді як спадна тенденція характеризуватиметься скупченням точок нижче LI <span class="math inline">\((x(t)&gt;x(t+\tau))\)</span>. Оцінюючи асиметрію точок на діаграмі, ми можемо вивести різні кількісні показники незворотності (асиметрії) досліджуваних систем <span class="citation" data-cites="DBLP:conf/m3e2/BielinskyiHMSSS21 10.1007/978-3-031-35467-0_26">&nbsp;[<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiHMSSS21" role="doc-biblioref">13</a>,<a href="references.html#ref-10.1007/978-3-031-35467-0_26" role="doc-biblioref">14</a>]</span>.</p>
 <section id="індекс-гузіка-gix" class="level4" data-number="11.1.1.1">
 <h4 data-number="11.1.1.1" class="anchored" data-anchor-id="індекс-гузіка-gix"><span class="header-section-number">11.1.1.1</span> Індекс Гузіка (GIx)</h4>
 <p>GIx <span class="citation" data-cites="GuzikPiskorskiKrauzeWykretowiczWysocki">&nbsp;[<a href="references.html#ref-GuzikPiskorskiKrauzeWykretowiczWysocki" role="doc-biblioref">10</a>]</span> можна визначити як відношення відстаней точок вище LI до відстаней усіх точок на діаграмі:</p>
@@ -409,7 +409,7 @@ D_{i} = \left( |x(i+\tau) - x(i)| \right) / \sqrt{2}.
 </section>
 <section id="індекс-порти-pix" class="level4" data-number="11.1.1.2">
 <h4 data-number="11.1.1.2" class="anchored" data-anchor-id="індекс-порти-pix"><span class="header-section-number">11.1.1.2</span> Індекс Порти (PIx)</h4>
-<p>Індекс Порти (PIx) <span class="citation" data-cites="4511792">&nbsp;[<a href="references.html#ref-4511792" role="doc-biblioref">11</a>]</span> визначається як кількість точок нижче LI, поділена на загальну кількість точок на графіку Пуанкаре, за винятком тих, що знаходяться на LI:</p>
+<p>Індекс Порти (Porta index, PIx) <span class="citation" data-cites="4511792">&nbsp;[<a href="references.html#ref-4511792" role="doc-biblioref">11</a>]</span> визначається як кількість точок нижче LI, поділена на загальну кількість точок на графіку Пуанкаре, за винятком тих, що знаходяться на LI:</p>
 <p><span class="math display">\[
 PIx = b / m,
 \]</span></p>
@@ -417,7 +417,7 @@ PIx = b / m,
 </section>
 <section id="індекс-кошти-cix" class="level4" data-number="11.1.1.3">
 <h4 data-number="11.1.1.3" class="anchored" data-anchor-id="індекс-кошти-cix"><span class="header-section-number">11.1.1.3</span> Індекс Кошти (CIx)</h4>
-<p>Індекс Кошти [@<span class="citation" data-cites="PhysRevLett.95.198102">&nbsp;[<a href="references.html#ref-PhysRevLett.95.198102" role="doc-biblioref">13</a>]</span>;costa2008multiscale] враховує кількість приростів <span class="math inline">\((x(i+1)-x(i) &gt; 0)\)</span> та спадів <span class="math inline">\((x(i+1)-x(i) &lt; 0)\)</span>. Вони представляються симетричними, якщо рівні один одному. Даний індекс розраховується для двовимірної мультимасштабної площини <span class="math inline">\((x(i), x(i+L))\)</span>, де новий крос-гранульований ряд <span class="math inline">\(y_{\tau}(i) = x(i+L)-x(i)\)</span> для <span class="math inline">\(1 \leq i \leq N-\tau\)</span> відображає асиметрію приростів та спадів ряду, й індекс незворотності для діапазону масштабів <span class="math inline">\(\tau\)</span> визначається виразом:</p>
+<p>Індекс Кошти (Costa index, CIx) [@<span class="citation" data-cites="PhysRevLett.95.198102">&nbsp;[<a href="references.html#ref-PhysRevLett.95.198102" role="doc-biblioref">15</a>]</span>;costa2008multiscale] враховує кількість приростів <span class="math inline">\((x(i+1)-x(i) &gt; 0)\)</span> та спадів <span class="math inline">\((x(i+1)-x(i) &lt; 0)\)</span>. Вони представляються симетричними, якщо рівні один одному. Даний індекс розраховується для двовимірної мультимасштабної площини <span class="math inline">\((x(i), x(i+L))\)</span>, де новий крос-гранульований ряд <span class="math inline">\(y_{\tau}(i) = x(i+L)-x(i)\)</span> для <span class="math inline">\(1 \leq i \leq N-\tau\)</span> відображає асиметрію приростів та спадів ряду, й індекс незворотності для діапазону масштабів <span class="math inline">\(\tau\)</span> визначається виразом:</p>
 <p><span class="math display">\[
 CIx_{\tau} = \left( \sum_{y_{\tau}&lt;0} H[y_{\tau}] - \sum_{y_{\tau}&gt;0} H[y_{\tau}] \right) \Bigg/ \left( N-\tau \right).
 \]</span></p>
@@ -429,7 +429,7 @@ CIx = \frac{1}{L} \sum_{\tau=1}^{L} |CIx_{\tau}|,
 </section>
 <section id="індекс-ейлера-eix" class="level4" data-number="11.1.1.4">
 <h4 data-number="11.1.1.4" class="anchored" data-anchor-id="індекс-ейлера-eix"><span class="header-section-number">11.1.1.4</span> Індекс Ейлера (EIx)</h4>
-<p>Опираючись на асиметрію розподілу точок нижче та вище LI, Ейлер запропонував наступний індекс асиметрії <span class="citation" data-cites="Ehlers_1998">&nbsp;[<a href="references.html#ref-Ehlers_1998" role="doc-biblioref">14</a>]</span>:</p>
+<p>Опираючись на асиметрію розподілу точок нижче та вище LI, Ейлер запропонував наступний індекс асиметрії <span class="citation" data-cites="Ehlers_1998">&nbsp;[<a href="references.html#ref-Ehlers_1998" role="doc-biblioref">16</a>]</span>:</p>
 <p><span class="math display">\[
 EIx = \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{3} \Bigg/ \left( \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{2} \right)^{3/2}.
 \]</span></p>
@@ -437,7 +437,7 @@ EIx = \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{3} \Bigg/ \left( \sum_{i=1
 </section>
 <section id="індекс-площі-aix" class="level4" data-number="11.1.1.5">
 <h4 data-number="11.1.1.5" class="anchored" data-anchor-id="індекс-площі-aix"><span class="header-section-number">11.1.1.5</span> Індекс площі (AIx)</h4>
-<p>Індекс площі <span class="citation" data-cites="Yan_2017">&nbsp;[<a href="references.html#ref-Yan_2017" role="doc-biblioref">15</a>]</span> визначається як сукупна площа секторів, що сформовані точками над LI поділена на сукупну площу секторів, що відповідають усім точкам на діаграмі Пуанкаре (крім тих, що розташовані точно на LI). Площа сектора, що відповідає певній точці <span class="math inline">\(P_{i}\)</span>, обчислюється як</p>
+<p>Індекс площі <span class="citation" data-cites="Yan_2017">&nbsp;[<a href="references.html#ref-Yan_2017" role="doc-biblioref">17</a>]</span> визначається як сукупна площа секторів, що сформовані точками над LI поділена на сукупну площу секторів, що відповідають усім точкам на діаграмі Пуанкаре (крім тих, що розташовані точно на LI). Площа сектора, що відповідає певній точці <span class="math inline">\(P_{i}\)</span>, обчислюється як</p>
 <p><span class="math display">\[
 S_{i} = 1/2 \times R\theta_{i} \times r^{2},
 \]</span></p>
@@ -448,7 +448,7 @@ AIx = \sum_{i=1}^{a}|S_{i}| \Bigg/ \sum_{i=1}^{m}|S_{i}|.
 </section>
 <section id="індекс-кута-нахилу-six" class="level4" data-number="11.1.1.6">
 <h4 data-number="11.1.1.6" class="anchored" data-anchor-id="індекс-кута-нахилу-six"><span class="header-section-number">11.1.1.6</span> Індекс кута нахилу (SIx)</h4>
-<p>На додачу до представлених вище мір, було запропоновано розраховувати незворотність сигналу з відношення кутів нахилу точок над LI до нахилу всіх точок на діаграмі <span class="citation" data-cites="Karmakar_2015">&nbsp;[<a href="references.html#ref-Karmakar_2015" role="doc-biblioref">16</a>]</span>:</p>
+<p>На додачу до представлених вище мір, було запропоновано розраховувати незворотність сигналу з відношення кутів нахилу точок над LI до нахилу всіх точок на діаграмі <span class="citation" data-cites="Karmakar_2015">&nbsp;[<a href="references.html#ref-Karmakar_2015" role="doc-biblioref">18</a>]</span>:</p>
 <p><span class="math display">\[
 SIx = \sum_{i=1}^{a}|R\theta_{i}| \Bigg/ \sum_{i=1}^{m}|R\theta_{i}|.
 \]</span></p>
@@ -458,22 +458,22 @@ SIx = \sum_{i=1}^{a}|R\theta_{i}| \Bigg/ \sum_{i=1}^{m}|R\theta_{i}|.
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="методи-складних-мереж"><span class="header-section-number">11.1.2</span> Методи складних мереж</h3>
 <p>Графи видимості (VG) базуються на простому відображенні часових рядів у мережну область, де кожне спостереження є вершиною в складній мережі. Дві вершини <span class="math inline">\(i\)</span> та <span class="math inline">\(j\)</span> пов’язані ребром, якщо для них застосовується наступна умова <span class="citation" data-cites="Lacasa_2012">&nbsp;[<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span>:</p>
 <p><span class="math display">\[
-x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right) \frac{t_{j}-t_{k}}{t_{j}-t_{i}}.
+x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right)\left( t_{j}-t_{k} \right)/\left( t_{j}-t_{i} \right).
 \]</span></p>
 <p>де <span class="math inline">\(x_{k}\)</span> представляє певну перешкоду, якої не має бути, щоб дві вершини можна було зв’язати шляхом.</p>
 <p>Матрицю суміжності (<span class="math inline">\(A_{ij}\)</span>) представленого ненаправленого та незваженого VG можна представити як:</p>
 <p><span class="math display">\[
-A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left[ x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right) \frac{t_{j}-t_{k}}{t_{j}-t_{i}} \right],
+A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left[ x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right)\left( t_{j}-t_{k} \right)/\left( t_{j}-t_{i} \right) \right],
 \]</span></p>
 <p>де <span class="math inline">\(H( \cdot )\)</span> — функція Хевісайда.</p>
-<p>Граф горизонтальної видимості (HVG) є спрощеною версією цього алгоритму <span class="citation" data-cites="PhysRevE.80.046103">&nbsp;[<a href="references.html#ref-PhysRevE.80.046103" role="doc-biblioref">17</a>]</span>. Для досліджуваного часового ряду набори вершин VG і HVG однакові, тоді як набір ребер HVG відображає взаємну горизонтальну видимість двох спостережень <span class="math inline">\(x_{i}\)</span> та <span class="math inline">\(x_{j}\)</span>. Тобто, можна побудувати ребро <span class="math inline">\((i,j)\)</span>, якщо <span class="math inline">\(x_{k} &lt; \min(x_{i}, x_{j})\)</span> для всіх <span class="math inline">\(k\)</span> при <span class="math inline">\(t_{i} &lt; t_{k} &lt; t_{j}\)</span> так що</p>
+<p>Граф горизонтальної видимості (HVG) є спрощеною версією цього алгоритму <span class="citation" data-cites="PhysRevE.80.046103">&nbsp;[<a href="references.html#ref-PhysRevE.80.046103" role="doc-biblioref">19</a>]</span>. Для досліджуваного часового ряду набори вершин VG і HVG однакові, тоді як набір ребер HVG відображає взаємну горизонтальну видимість двох спостережень <span class="math inline">\(x_{i}\)</span> та <span class="math inline">\(x_{j}\)</span>. Тобто, можна побудувати ребро <span class="math inline">\((i,j)\)</span>, якщо <span class="math inline">\(x_{k} &lt; \min(x_{i}, x_{j})\)</span> для всіх <span class="math inline">\(k\)</span> при <span class="math inline">\(t_{i} &lt; t_{k} &lt; t_{j}\)</span> так що</p>
 <p><span class="math display">\[
 A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left( x_{i} - x_{k} \right) H \left( x_{j} - x_{k} \right).
 \]</span></p>
 <p>VG і HVG фіксують по суті одні й ті ж властивості досліджуваної системи, оскільки HVG є підграфом VG з тим же набором вершин, але володіє тільки підмножиною ребер VG. Зверніть увагу, що VG інваріантний щодо суперпозиції лінійних трендів, тоді як HVG — ні.</p>
 <p>Оскільки визначення VGs та HVGs чітко враховує часовий порядок спостережень, напрямок часу нерозривно пов’язаний з отриманою структурою мережі. Щоб врахувати цей факт, ми визначаємо набір нових статистичних мережних показників на основі двох простих характеристик вершин:</p>
 <ol type="1">
-<li><p>Оскільки кількість ребер інцидентних вершині <span class="math inline">\(i\)</span> можна визначити як <span class="math inline">\(k_{i}^{r} = \sum_{j} A_{ij}\)</span>, для (H)VG ми можемо переписати дану кількісну характеристику для вершини в час <span class="math inline">\(t_{i}\)</span> відносно її минулих та майбутніх вершин <span class="citation" data-cites="FLANAGAN20161689 PhysRevE.92.022817">&nbsp;[<a href="references.html#ref-FLANAGAN20161689" role="doc-biblioref">6</a>,<a href="references.html#ref-PhysRevE.92.022817" role="doc-biblioref">18</a>]</span>:</p>
+<li><p>Оскільки кількість ребер інцидентних вершині <span class="math inline">\(i\)</span> можна визначити як <span class="math inline">\(k_{i}^{r} = \sum_{j} A_{ij}\)</span>, для (H)VG ми можемо переписати дану кількісну характеристику для вершини в час <span class="math inline">\(t_{i}\)</span> відносно її минулих та майбутніх вершин <span class="citation" data-cites="FLANAGAN20161689 PhysRevE.92.022817">&nbsp;[<a href="references.html#ref-FLANAGAN20161689" role="doc-biblioref">6</a>,<a href="references.html#ref-PhysRevE.92.022817" role="doc-biblioref">20</a>]</span>:</p>
 <p><span class="math display">\[
 k_{i}^{r} = \sum_{j&lt;i} A_{ij} \quad \mathrm{і} \quad k_{i}^{a} \sum_{j&gt;i} A_{ij},
 \]</span></p>
@@ -487,7 +487,7 @@ C_{i}^{r} =  \left[2/k_{i}^{r}(k_{i}^{r}-1)\right]\sum_{j&lt;i,k&lt;i} A_{ij}A_{
 <p><span class="math display">\[
 D_{KL}(p||q) = \sum_{i=1}^{N} p(x_{i}) \cdot \log{\left[ p(x_{i})/q(x_{i}) \right]},
 \]</span></p>
-<p>де <span class="math inline">\(p(\cdot)\)</span> відповідатиме розподілу вхідних характеристикам, а <span class="math inline">\(q(\cdot)\)</span> — зворотніх. Крім того, подібність обох величин можна оцінити за допомогою відстані Дженсена-Шеннона <span class="citation" data-cites="Grosse_2002">&nbsp;[<a href="references.html#ref-Grosse_2002" role="doc-biblioref">19</a>]</span>:</p>
+<p>де <span class="math inline">\(p(\cdot)\)</span> відповідатиме розподілу вхідних характеристикам, а <span class="math inline">\(q(\cdot)\)</span> — зворотніх. Крім того, подібність обох величин можна оцінити за допомогою відстані Дженсена-Шеннона <span class="citation" data-cites="Grosse_2002">&nbsp;[<a href="references.html#ref-Grosse_2002" role="doc-biblioref">21</a>]</span>:</p>
 <p><span class="math display">\[
 JS(p||q) = \sqrt{\left[ D_{KL}(p||m) + D_{KL}(q||m)/2 \right]},
 \]</span></p>
@@ -495,7 +495,7 @@ JS(p||q) = \sqrt{\left[ D_{KL}(p||m) + D_{KL}(q||m)/2 \right]},
 </section>
 <section id="незворотність-на-основі-пермутаційних-шаблонів" class="level3" data-number="11.1.3">
 <h3 data-number="11.1.3" class="anchored" data-anchor-id="незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.1.3</span> Незворотність на основі пермутаційних шаблонів</h3>
-<p>Ідея аналізу пермутаційних шаблонів (permutation patterns, PP) спочатку була запропонована Бандтом і Помпе <span class="citation" data-cites="perm_en">&nbsp;[<a href="references.html#ref-perm_en" role="doc-biblioref">20</a>]</span> як простий та ефективний інструмент для характеристики складності динаміки реальних систем. Він уникає порогу амплітуди і замість цього має справу з порядковими шаблонами перестановок. Їх частоти дозволяють відрізнити детерміновані процеси від абсолютно випадкових. Розрахунки PP припускають, що часовий ряд розбивається на пересічні підвектори довжини <span class="math inline">\(d_{E}\)</span>:</p>
+<p>Ідея аналізу пермутаційних шаблонів (permutation patterns, PP) спочатку була запропонована Бандтом і Помпе <span class="citation" data-cites="perm_en">&nbsp;[<a href="references.html#ref-perm_en" role="doc-biblioref">22</a>]</span> як простий та ефективний інструмент для характеристики складності динаміки реальних систем. Він уникає порогу амплітуди і замість цього має справу з порядковими шаблонами перестановок. Їх частоти дозволяють відрізнити детерміновані процеси від абсолютно випадкових. Розрахунки PP припускають, що часовий ряд розбивається на пересічні підвектори довжини <span class="math inline">\(d_{E}\)</span>:</p>
 <p><span class="math display">\[
 \vec{X}(i) = \left\{ x(i), x(i+\tau), ... , x(i+[d_{E}-1]\tau) \right\},
 \]</span></p>
@@ -504,8 +504,8 @@ JS(p||q) = \sqrt{\left[ D_{KL}(p||m) + D_{KL}(q||m)/2 \right]},
 <p><span class="math display">\[
 x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 \]</span></p>
-<p>Цікава для нас міра незворотності часу на основі PP може бути отримана шляхом врахування їх відносної частоти як для початкового, так і для оберненого часового ряду. Відповідно, якщо обидва типи мають приблизно однакові розподіли ймовірностей своїх патернів, часові ряди представляються зворотними, а для іншого випадку робиться протилежний висновок.</p>
-<p>Різницю між розподілами прямих часових рядів (<span class="math inline">\(P^{d}\)</span>) та зворотних (<span class="math inline">\(P^{r}\)</span>) можна оцінити за допомогою дивергенції Кульбака-Лейблера.</p>
+<p>Цікава для нас міра незворотності часу на основі PP може бути отримана шляхом врахування їх відносної частоти як для початкового, так і для оберненого часового ряду. Відповідно, якщо обидва типи мають приблизно однакові розподіли ймовірностей своїх патернів, часові ряди представляються зворотними, а для іншого випадку робиться протилежний висновок <span class="citation" data-cites="DBLP:conf/cte/BielinskyiKPSS21">&nbsp;[<a href="references.html#ref-DBLP:conf/cte/BielinskyiKPSS21" role="doc-biblioref">23</a>]</span>.</p>
+<p>Різницю між розподілами прямих часових рядів (<span class="math inline">\(P^{d}\)</span>) та зворотних (<span class="math inline">\(P^{r}\)</span>) можна оцінити за допомогою дивергенції Кульбака-Лейблера або Дженсена-Шеннона.</p>
 </section>
 </section>
 <section id="хід-роботи" class="level2" data-number="11.2">
@@ -1577,29 +1577,38 @@ x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 <div id="ref-Lacasa_2012" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[12] </div><div class="csl-right-inline">L. Lacasa, A. Nuñez, É. Roldán, J. M. R. Parrondo, and B. Luque, <em><a href="https://doi.org/10.1140/epjb/e2012-20809-8">Time Series Irreversibility: A Visibility Graph Approach</a></em>, The European Physical Journal B <strong>85</strong>, (2012).</div>
 </div>
+<div id="ref-DBLP:conf/m3e2/BielinskyiHMSSS21" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">A. O. Bielinskyi, S. V. Hushko, A. V. Matviychuk, O. A. Serdyuk, S. O. Semerikov, and V. N. Soloviev, <em><a href="https://ceur-ws.org/Vol-3048/paper04.pdf">Irreversibility of Financial Time Series: A Case of Crisis</a></em>, in <em>Proceedings of the Selected and Revised Papers of 9th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2021), Odessa, Ukraine, May 26-28, 2021</em>, edited by A. E. Kiv, V. N. Soloviev, and S. O. Semerikov, Vol. 3048 (CEUR-WS.org, 2021), pp. 134–150.</div>
+</div>
+<div id="ref-10.1007/978-3-031-35467-0_26" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">A. Kiv, A. Bryukhanov, A. Bielinskyi, V. Soloviev, T. Kavetskyy, D. Dyachok, I. Donchev, and V. Lukashin, <em><a href="https://doi.org/10.1007/978-3-031-35467-0_26">Irreversibility of Plastic Deformation Processes in Metals</a></em>, in <em>Information Technology for Education, Science, and Technics</em>, edited by E. Faure, O. Danchenko, M. Bondarenko, Y. Tryus, C. Bazilo, and G. Zaspa (Springer Nature Switzerland, Cham, 2023), pp. 425–445.</div>
+</div>
 <div id="ref-PhysRevLett.95.198102" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <em><a href="https://doi.org/10.1103/PhysRevLett.95.198102">Broken Asymmetry of the Human Heartbeat: Loss of Time Irreversibility in Aging and Disease</a></em>, Phys. Rev. Lett. <strong>95</strong>, 198102 (2005).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <em><a href="https://doi.org/10.1103/PhysRevLett.95.198102">Broken Asymmetry of the Human Heartbeat: Loss of Time Irreversibility in Aging and Disease</a></em>, Phys. Rev. Lett. <strong>95</strong>, 198102 (2005).</div>
 </div>
 <div id="ref-Ehlers_1998" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C. L. Ehlers, J. Havstad, D. Prichard, and J. Theiler, <em><a href="https://doi.org/10.1523/jneurosci.18-18-07474.1998">Low Doses of Ethanol Reduce Evidence for Nonlinear Structure in Brain Activity</a></em>, The Journal of Neuroscience <strong>18</strong>, 7474 (1998).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. L. Ehlers, J. Havstad, D. Prichard, and J. Theiler, <em><a href="https://doi.org/10.1523/jneurosci.18-18-07474.1998">Low Doses of Ethanol Reduce Evidence for Nonlinear Structure in Brain Activity</a></em>, The Journal of Neuroscience <strong>18</strong>, 7474 (1998).</div>
 </div>
 <div id="ref-Yan_2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">C. Yan, P. Li, L. Ji, L. Yao, C. Karmakar, and C. Liu, <em><a href="https://doi.org/10.1186/s12938-017-0402-3">Area Asymmetry of Heart Rate Variability Signal</a></em>, BioMedical Engineering OnLine <strong>16</strong>, (2017).</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C. Yan, P. Li, L. Ji, L. Yao, C. Karmakar, and C. Liu, <em><a href="https://doi.org/10.1186/s12938-017-0402-3">Area Asymmetry of Heart Rate Variability Signal</a></em>, BioMedical Engineering OnLine <strong>16</strong>, (2017).</div>
 </div>
 <div id="ref-Karmakar_2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. K. Karmakar, A. Khandoker, and M. Palaniswami, <em><a href="https://doi.org/10.1088/0967-3334/36/2/303">Phase Asymmetry of Heart Rate Variability Signal</a></em>, Physiological Measurement <strong>36</strong>, 303 (2015).</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. K. Karmakar, A. Khandoker, and M. Palaniswami, <em><a href="https://doi.org/10.1088/0967-3334/36/2/303">Phase Asymmetry of Heart Rate Variability Signal</a></em>, Physiological Measurement <strong>36</strong>, 303 (2015).</div>
 </div>
 <div id="ref-PhysRevE.80.046103" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">B. Luque, L. Lacasa, F. Ballesteros, and J. Luque, <em><a href="https://doi.org/10.1103/PhysRevE.80.046103">Horizontal Visibility Graphs: Exact Results for Random Time Series</a></em>, Phys. Rev. E <strong>80</strong>, 046103 (2009).</div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B. Luque, L. Lacasa, F. Ballesteros, and J. Luque, <em><a href="https://doi.org/10.1103/PhysRevE.80.046103">Horizontal Visibility Graphs: Exact Results for Random Time Series</a></em>, Phys. Rev. E <strong>80</strong>, 046103 (2009).</div>
 </div>
 <div id="ref-PhysRevE.92.022817" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">L. Lacasa and R. Flanagan, <em><a href="https://doi.org/10.1103/PhysRevE.92.022817">Time Reversibility from Visibility Graphs of Nonstationary Processes</a></em>, Phys. Rev. E <strong>92</strong>, 022817 (2015).</div>
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">L. Lacasa and R. Flanagan, <em><a href="https://doi.org/10.1103/PhysRevE.92.022817">Time Reversibility from Visibility Graphs of Nonstationary Processes</a></em>, Phys. Rev. E <strong>92</strong>, 022817 (2015).</div>
 </div>
 <div id="ref-Grosse_2002" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">I. Grosse, P. Bernaola-Galván, P. Carpena, R. Román-Roldán, J. Oliver, and H. E. Stanley, <em><a href="https://doi.org/10.1103/physreve.65.041905">Analysis of Symbolic Sequences Using the Jensen-Shannon Divergence</a></em>, Physical Review E <strong>65</strong>, (2002).</div>
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">I. Grosse, P. Bernaola-Galván, P. Carpena, R. Román-Roldán, J. Oliver, and H. E. Stanley, <em><a href="https://doi.org/10.1103/physreve.65.041905">Analysis of Symbolic Sequences Using the Jensen-Shannon Divergence</a></em>, Physical Review E <strong>65</strong>, (2002).</div>
 </div>
 <div id="ref-perm_en" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <em><a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation Entropy: A Natural Complexity Measure for Time Series</a></em>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <em><a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation Entropy: A Natural Complexity Measure for Time Series</a></em>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
+</div>
+<div id="ref-DBLP:conf/cte/BielinskyiKPSS21" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">A. O. Bielinskyi, A. E. Kiv, Y. O. Prikhozha, M. A. Slusarenko, and V. N. Soloviev, <em><a href="https://doi.org/10.55056/cte.103">Complex Systems and Physics Education</a></em>, in <em>Proceedings of the 9th Workshop on Cloud Technologies in Education, <span>CTE</span> 2021, Kryvyi Rih, Ukraine, December 17, 2021</em>, edited by A. E. Kiv, S. O. Semerikov, and M. P. Shyshkina, Vol. 3085 (CEUR-WS.org, 2021), pp. 56–80.</div>
 </div>
 </div>
 </section>
@@ -1784,7 +1793,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1816,29 +1836,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
@@ -1846,7 +1844,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python – 12&nbsp; Лабораторна робота № 12</title>
+<title>Моделювання складних систем у Python - 12&nbsp; Лабораторна робота № 12</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ div.csl-indent {
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -1715,7 +1715,7 @@ P(X \leq x) = 2 \left[ 1 - \phi \left( \sqrt{\gamma/x} \right) \right],
 </section>
 <section id="канонічні-представлення-характеристичної-функції" class="level4" data-number="12.1.11.3">
 <h4 data-number="12.1.11.3" class="anchored" data-anchor-id="канонічні-представлення-характеристичної-функції"><span class="header-section-number">12.1.11.3</span> Канонічні представлення характеристичної функції</h4>
-<p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією <span class="citation" data-cites="JSFS_2005__146_4_23_0 NOLAN1999229">&nbsp;[<a href="references.html#ref-JSFS_2005__146_4_23_0" role="doc-biblioref">6</a>,<a href="references.html#ref-NOLAN1999229" role="doc-biblioref">7</a>]</span>:</p>
+<p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією <span class="citation" data-cites="JSFS_2005__146_4_23_0 NOLAN1999229 DBLP:conf/m3e2/BielinskyiSSS19">&nbsp;[<a href="references.html#ref-JSFS_2005__146_4_23_0" role="doc-biblioref">6</a>–<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiSSS19" role="doc-biblioref">8</a>]</span>:</p>
 <p><span class="math display">\[
     \begin{split}
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
@@ -1725,12 +1725,12 @@ P(X \leq x) = 2 \left[ 1 - \phi \left( \sqrt{\gamma/x} \right) \right],
         \end{cases}
     \end{split}
 \]</span></p>
-<p>Ми могли б використовувати перетворення Фур’є, щоб отримати функцію щільності розподілу ймовірностей з характеристичної функції <span class="citation" data-cites="SALASGONZALEZ2013559">&nbsp;[<a href="references.html#ref-SALASGONZALEZ2013559" role="doc-biblioref">8</a>]</span>:</p>
+<p>Ми могли б використовувати перетворення Фур’є, щоб отримати функцію щільності розподілу ймовірностей з характеристичної функції <span class="citation" data-cites="SALASGONZALEZ2013559">&nbsp;[<a href="references.html#ref-SALASGONZALEZ2013559" role="doc-biblioref">9</a>]</span>:</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 \]</span></p>
 <p>Але наведена вище параметризація не є повністю задовільною, оскільки функція щільності розподілу ймовірностей не є неперервною, зокрема, при <span class="math inline">\(\alpha = 1\)</span>. Дійсно, коли <span class="math inline">\(\beta &gt; 0\)</span>, щільність розподілу зміщується вправо, коли <span class="math inline">\(\alpha &lt; 1\)</span> і вліво, коли <span class="math inline">\(\alpha &gt; 1\)</span>, зі зсувом в сторону <span class="math inline">\(+\infty\)</span> (відповідно <span class="math inline">\(-\infty\)</span>), коли <span class="math inline">\(\alpha\)</span> прагне до 1. Таким чином, для прикладного аналізу даних та інтерпретації коефіцієнтів слід уникати такої параметризації.</p>
-<p>Існує багато параметризацій для стабільних законів, і ці різні параметризації викликали велику плутанину. Різноманітність параметризацій обумовлена поєднанням історичної еволюції плюс численними проблемами, які були проаналізовані за допомогою спеціалізованих форм стабільного розподілу. Є вагомі причини використовувати різні параметризації в різних ситуаціях. Якщо в пріорітеті є чисельні розрахунки, робота із даними, то краще використовувати одну параметризацію. Якщо бажані прості алгебраїчні властивості розподілу або аналітичні властивості строго стійких законів, то краще розглянути дещо інші. Нолан запропонував використовувати параметризацію Золотарьова <span class="citation" data-cites="zolotarev1986one">&nbsp;[<a href="references.html#ref-zolotarev1986one" role="doc-biblioref">9</a>]</span>, яку також часто позначають як <span class="math inline">\(S^{0}\)</span>. Характеристична функція, що відповідає <span class="math inline">\(X \sim S^{0}(\alpha, \beta, \mu_{0}, \gamma)\)</span>, дорівнює:</p>
+<p>Існує багато параметризацій для стабільних законів, і ці різні параметризації викликали велику плутанину. Різноманітність параметризацій обумовлена поєднанням історичної еволюції плюс численними проблемами, які були проаналізовані за допомогою спеціалізованих форм стабільного розподілу. Є вагомі причини використовувати різні параметризації в різних ситуаціях. Якщо в пріорітеті є чисельні розрахунки, робота із даними, то краще використовувати одну параметризацію. Якщо бажані прості алгебраїчні властивості розподілу або аналітичні властивості строго стійких законів, то краще розглянути дещо інші. Нолан запропонував використовувати параметризацію Золотарьова <span class="citation" data-cites="zolotarev1986one">&nbsp;[<a href="references.html#ref-zolotarev1986one" role="doc-biblioref">10</a>]</span>, яку також часто позначають як <span class="math inline">\(S^{0}\)</span>. Характеристична функція, що відповідає <span class="math inline">\(X \sim S^{0}(\alpha, \beta, \mu_{0}, \gamma)\)</span>, дорівнює:</p>
 <p><span class="math display">\[
     \begin{split}
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
@@ -1747,11 +1747,11 @@ f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 </section>
 <section id="метод-розрахунку-параметрів-alpha-стабільного-розподілу" class="level4" data-number="12.1.11.4">
 <h4 data-number="12.1.11.4" class="anchored" data-anchor-id="метод-розрахунку-параметрів-alpha-стабільного-розподілу"><span class="header-section-number">12.1.11.4</span> Метод розрахунку параметрів <span class="math inline">\(\alpha\)</span>-стабільного розподілу</h4>
-<p>Числові методи, такі як метод заснований на квантилях <span class="citation" data-cites="doi:10.1080/01621459.1971.10482264 doi:10.1080/03610918608812563 MCCULLOCH1996393">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1971.10482264" role="doc-biblioref">10</a>–<a href="references.html#ref-MCCULLOCH1996393" role="doc-biblioref">12</a>]</span>, і метод оцінки максимальної правдоподібності <span class="citation" data-cites="Nolan2001">&nbsp;[<a href="references.html#ref-Nolan2001" role="doc-biblioref">13</a>]</span> були розроблені на виклик відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо використали алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності <span class="citation" data-cites="MITTNIK1999275">&nbsp;[<a href="references.html#ref-MITTNIK1999275" role="doc-biblioref">14</a>]</span>:</p>
+<p>Числові методи, такі як метод заснований на квантилях <span class="citation" data-cites="doi:10.1080/01621459.1971.10482264 doi:10.1080/03610918608812563 MCCULLOCH1996393">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1971.10482264" role="doc-biblioref">11</a>–<a href="references.html#ref-MCCULLOCH1996393" role="doc-biblioref">13</a>]</span>, і метод оцінки максимальної правдоподібності <span class="citation" data-cites="Nolan2001">&nbsp;[<a href="references.html#ref-Nolan2001" role="doc-biblioref">14</a>]</span> були розроблені на виклик відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо використали алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності <span class="citation" data-cites="MITTNIK1999275">&nbsp;[<a href="references.html#ref-MITTNIK1999275" role="doc-biblioref">15</a>]</span>:</p>
 <p><span class="math display">\[
 l(\theta, x) = \sum_{i=1}^{T}\log{f(x_{i}, \theta)}.
 \]</span></p>
-<p>Дюмушель визначив функцію правдоподібності наступним чином <span class="citation" data-cites="doi:10.1080/01621459.1973.10482458">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1973.10482458" role="doc-biblioref">15</a>]</span>:</p>
+<p>Дюмушель визначив функцію правдоподібності наступним чином <span class="citation" data-cites="doi:10.1080/01621459.1973.10482458">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1973.10482458" role="doc-biblioref">16</a>]</span>:</p>
 <p><span class="math display">\[
 L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \right] \big/ \gamma,
 \]</span></p>
@@ -2283,29 +2283,32 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <div id="ref-NOLAN1999229" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1016/S0895-7177(99)00105-3">An Algorithm for Evaluating Stable Densities in Zolotarev’s (m) Parameterization</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 229 (1999).</div>
 </div>
+<div id="ref-DBLP:conf/m3e2/BielinskyiSSS19" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">A. Bielinskyi, V. N. Soloviev, S. Semerikov, and V. Solovieva, <em><a href="https://ceur-ws.org/Vol-2422/paper34.pdf">Detecting Stock Crashes Using Levy Distribution</a></em>, in <em>Proceedings of the Selected Papers of the 8th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy, <span>M3E2-EEMLPEED</span> 2019, Odessa, Ukraine, May 22-24, 2019</em>, edited by A. Kiv, S. Semerikov, V. N. Soloviev, L. Kibalnyk, H. Danylchuk, and A. Matviychuk, Vol. 2422 (CEUR-WS.org, 2019), pp. 420–433.</div>
+</div>
 <div id="ref-SALASGONZALEZ2013559" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">D. Salas-Gonzalez, J. M. Górriz, J. Ramírez, M. Schloegl, E. W. Lang, and A. Ortiz, <em><a href="https://doi.org/10.1016/j.compbiomed.2013.01.003">Parameterization of the Distribution of White and Grey Matter in MRI Using the α-Stable Distribution</a></em>, Computers in Biology and Medicine <strong>43</strong>, 559 (2013).</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">D. Salas-Gonzalez, J. M. Górriz, J. Ramírez, M. Schloegl, E. W. Lang, and A. Ortiz, <em><a href="https://doi.org/10.1016/j.compbiomed.2013.01.003">Parameterization of the Distribution of White and Grey Matter in MRI Using the α-Stable Distribution</a></em>, Computers in Biology and Medicine <strong>43</strong>, 559 (2013).</div>
 </div>
 <div id="ref-zolotarev1986one" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">V. M. Zolotarev, <em>One-Dimensional Stable Distributions</em> (American Mathematical Society, 1986).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">V. M. Zolotarev, <em>One-Dimensional Stable Distributions</em> (American Mathematical Society, 1986).</div>
 </div>
 <div id="ref-doi:10.1080/01621459.1971.10482264" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">E. F. Fama and R. Roll, <em><a href="https://doi.org/10.1080/01621459.1971.10482264">Parameter Estimates for Symmetric Stable Distributions</a></em>, Journal of the American Statistical Association <strong>66</strong>, 331 (1971).</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">E. F. Fama and R. Roll, <em><a href="https://doi.org/10.1080/01621459.1971.10482264">Parameter Estimates for Symmetric Stable Distributions</a></em>, Journal of the American Statistical Association <strong>66</strong>, 331 (1971).</div>
 </div>
 <div id="ref-doi:10.1080/03610918608812563" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1080/03610918608812563">Simple Consistent Estimators of Stable Distribution Parameters</a></em>, Communications in Statistics - Simulation and Computation <strong>15</strong>, 1109 (1986).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1080/03610918608812563">Simple Consistent Estimators of Stable Distribution Parameters</a></em>, Communications in Statistics - Simulation and Computation <strong>15</strong>, 1109 (1986).</div>
 </div>
 <div id="ref-MCCULLOCH1996393" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1016/S0169-7161(96)14015-3">13 Financial Applications of Stable Distributions</a></em>, in <em>Statistical Methods in Finance</em>, Vol. 14 (Elsevier, 1996), pp. 393–425.</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1016/S0169-7161(96)14015-3">13 Financial Applications of Stable Distributions</a></em>, in <em>Statistical Methods in Finance</em>, Vol. 14 (Elsevier, 1996), pp. 393–425.</div>
 </div>
 <div id="ref-Nolan2001" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1007/978-1-4612-0197-7_17">Maximum Likelihood Estimation and Diagnostics for Stable Distributions</a></em>, in <em>L<span>é</span>vy Processes: Theory and Applications</em>, edited by O. E. Barndorff-Nielsen, S. I. Resnick, and T. Mikosch (Birkh<span>ä</span>user Boston, Boston, MA, 2001), pp. 379–400.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1007/978-1-4612-0197-7_17">Maximum Likelihood Estimation and Diagnostics for Stable Distributions</a></em>, in <em>L<span>é</span>vy Processes: Theory and Applications</em>, edited by O. E. Barndorff-Nielsen, S. I. Resnick, and T. Mikosch (Birkh<span>ä</span>user Boston, Boston, MA, 2001), pp. 379–400.</div>
 </div>
 <div id="ref-MITTNIK1999275" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">S. Mittnik, S. T. rachev, T. Doganoglu, and D. Chenyao, <em><a href="https://doi.org/10.1016/S0895-7177(99)00110-7">Maximum Likelihood Estimation of Stable Paretian Models</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 275 (1999).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">S. Mittnik, S. T. rachev, T. Doganoglu, and D. Chenyao, <em><a href="https://doi.org/10.1016/S0895-7177(99)00110-7">Maximum Likelihood Estimation of Stable Paretian Models</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 275 (1999).</div>
 </div>
 <div id="ref-doi:10.1080/01621459.1973.10482458" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">W. H. Dumouchel, <em><a href="https://doi.org/10.1080/01621459.1973.10482458">Stable Distributions in Statistical Inference: 1. Symmetric Stable Distributions Compared to Other Symmetric Long-Tailed Distributions</a></em>, Journal of the American Statistical Association <strong>68</strong>, 469 (1973).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">W. H. Dumouchel, <em><a href="https://doi.org/10.1080/01621459.1973.10482458">Stable Distributions in Statistical Inference: 1. Symmetric Stable Distributions Compared to Other Symmetric Long-Tailed Distributions</a></em>, Journal of the American Statistical Association <strong>68</strong>, 469 (1973).</div>
 </div>
 </div>
 </section>
@@ -2490,7 +2493,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2522,29 +2536,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
@@ -2552,7 +2544,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

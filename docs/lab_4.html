@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python – 4&nbsp; Лабораторна робота № 4</title>
+<title>Моделювання складних систем у Python - 4&nbsp; Лабораторна робота № 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ div.csl-indent {
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -437,7 +437,7 @@ c_{LZ}(S) = \min_{H}\{ m_{H}(S) \}.
 <p><span id="eq-4-2"><span class="math display">\[
 l_{j(k)} = i_k - i_{k-1} - 1 = \max_{j \leq i_{k-1}}\{ l_{j} : S[i_{k-1}+1:i_{k-1}+l_j]=S[j:j+l_{j}-1] \},
 \tag{4.2}\]</span></span></p>
-<p>а сам <span class="math inline">\(k\)</span>-й компонент складнісного розкладання (<a href="#eq-4-1" class="quarto-xref">Рівняння&nbsp;<span>4.1</span></a>) можна записати у вигляді</p>
+<p>а сам <span class="math inline">\(k\)</span>-й компонент складнісного розкладання (<a href="#eq-4-1" class="quarto-xref"><span>4.1</span></a>) можна записати у вигляді</p>
 <p><span id="eq-4-3"><span class="math display">\[
 S[i_{k-1}+1:i_{k}] =
 \begin{cases}
@@ -453,7 +453,7 @@ ret = \begin{cases}
     1, &amp; ret_t &gt; \langle ret \rangle.
     \end{cases}
 \tag{4.4}\]</span></span></p>
-<p>Також можна визначити так звану пермутаційну складність Лемпеля-Зіва (PLZС) <span class="citation" data-cites="BAI2015102 e23070832">&nbsp;[<a href="references.html#ref-BAI2015102" role="doc-biblioref">14</a>,<a href="references.html#ref-e23070832" role="doc-biblioref">15</a>]</span>. У даному випадку би будемо опиратись на процедуру реконструкції фазового простору, що згадувалась в лабораторних 2 і 3. Згідно пермутаційній процедурі ми будемо брати фрагмент ряду довжини <span class="math inline">\(m\)</span>, що слугує розмірностю реконструйованого атрактора, та замінювати кожне значення ряду його порядковим індексом. На <a href="#fig-permutation" class="quarto-xref">Рис.&nbsp;<span>4.1</span></a> представлено часовий ряд та його можливі порядкові шаблони:</p>
+<p>Також можна визначити так звану пермутаційну складність Лемпеля-Зіва (PLZС) <span class="citation" data-cites="BAI2015102 e23070832">&nbsp;[<a href="references.html#ref-BAI2015102" role="doc-biblioref">14</a>,<a href="references.html#ref-e23070832" role="doc-biblioref">15</a>]</span>. У даному випадку би будемо опиратись на процедуру реконструкції фазового простору, що згадувалась у лабораторних <a href="lab_2.html" class="quarto-xref"><span>2</span></a> і <a href="lab_3.html" class="quarto-xref"><span>3</span></a>. Згідно пермутаційній процедурі ми будемо брати фрагмент ряду довжини <span class="math inline">\(m\)</span>, що слугує розмірностю реконструйованого атрактора, та замінювати кожне значення ряду його порядковим індексом. На <a href="#fig-permutation" class="quarto-xref">Рис.&nbsp;<span>4.1</span></a> представлено часовий ряд та його можливі порядкові шаблони:</p>
 <div id="fig-permutation" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-permutation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -621,7 +621,7 @@ Complexity = \sigma_d \big/ \sigma_{signal},
 <p>Вона тісно пов’язана з поняттям ентропії. Тобто, зменшення невизначеності випадкової величини корелює з отриманням інформації з іншої випадкової величини. І високе значення взаємної інформації вказує на помітне зменшення невизначеності. Якщо взаємна інформація дорівнює нулю, дві випадкові величини є незалежними.</p>
 <p>Взаємну інформацію можна розрахувати наступним чином:</p>
 <p><span class="math display">\[
-I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(x)p(y)} \right)},
+I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left[ p(x,y)/p(x) \cdot p(y) \right]},
 \]</span></p>
 <p>де <span class="math inline">\(p(x)\)</span> та <span class="math inline">\(p(y)\)</span> ймовірності спостереження окремо <span class="math inline">\(x\)</span> або <span class="math inline">\(y\)</span>, а <span class="math inline">\(p(x,y)\)</span> ймовірність спостереження одночасно <span class="math inline">\(x\)</span> та <span class="math inline">\(y\)</span>.</p>
 <p>Основна відмінність між кореляцією та взаємною інформацією полягає в тому, що <strong>кореляція є мірою лінійної залежності</strong>, тоді як взаємна інформація вимірює загальну залежність (включаючи <strong>нелінійні</strong> зв’язки). Взаємна інформація дорівнює нулю, коли дві випадкові величини є строго незалежними.</p>
@@ -652,7 +652,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="хід-роботи" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">4.2</span> Хід роботи</h2>
 <p>Спочатку імпортуємо необхідні модулі для подальшої роботи:</p>
-<div id="cell-35" class="cell" data-execution_count="12">
+<div id="cell-35" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
@@ -664,25 +664,31 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І виконаємо налаштування рисунків для виведення:</p>
-<div id="cell-37" class="cell" data-execution_count="8">
+<div id="cell-37" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),         <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),            <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: size,                   <span class="co"># розмір фонтів рисунку</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,                <span class="co"># товщина ліній</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,           <span class="co"># розмір титулки над рисунком</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: size,              <span class="co"># розмір підписів по осям</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: size,             <span class="co"># розмір легенди</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"Serif"</span>,              <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times New Roman"</span>],   <span class="co"># стиль підпису</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>,                  <span class="co"># якість збережених зображень</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.grid'</span>: <span class="va">False</span>                   <span class="co"># побудова сітки на самому рисунку</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Цього разу розглянему можливість побудови індикаторів-передвісників на прикладі фондового індексу S&amp;P 500, але, окрім цього, додамо ще Біткоїн для розрахунку взаємної інформації між фондовим та криптовалютним ринками. Очевидно, що фондовий індекс S&amp;P 500 має довшу ніж Біткоїн історію. До того ж, криптовалютний ринок працює безперервно на відміну від фондового. Тому треба буде об’єднати значення двох активів за тими датами, що співпадають.</p>
 <p><strong>Виконуємо зчитування фондового індексу</strong>:</p>
-<div id="cell-40" class="cell" data-execution_count="32">
+<div id="cell-40" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol_1 <span class="op">=</span> <span class="st">'^GSPC'</span>         <span class="co"># Символ першого індексу</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>start_1 <span class="op">=</span> <span class="st">"2014-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>end_1 <span class="op">=</span> <span class="st">"2023-08-24"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -692,12 +698,12 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>      <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ylabel_1 <span class="op">=</span> symbol_1        <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
 </div>
 </div>
 <p><strong>Виконуємо зчитування криптовалютного індексу</strong>:</p>
-<div id="cell-42" class="cell" data-execution_count="33">
+<div id="cell-42" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>symbol_2 <span class="op">=</span> <span class="st">'BTC-USD'</span>       <span class="co"># Символ другого індексу</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>start_2 <span class="op">=</span> <span class="st">"2014-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>end_2 <span class="op">=</span> <span class="st">"2023-08-24"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -707,7 +713,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>      <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ylabel_2 <span class="op">=</span> symbol_2        <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
 </div>
 </div>
@@ -739,7 +745,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 <hr>
 <p>Тепер створимо новий масив даних, що об’єднуватиме в собі значення S&amp;P 500 та BTC за їх спільними датами:</p>
-<div id="cell-48" class="cell" data-execution_count="35">
+<div id="cell-48" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># приводимо значення індексів до типу DataFrame, щоб мати змогу їх об'єднати </span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># за допомогою бібліотеки pandas</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df_time_ser_1 <span class="op">=</span> pd.DataFrame(time_ser_1) </span>
@@ -756,9 +762,9 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>joined <span class="op">=</span> joined.dropna()  <span class="co"># видаляємо рядки, що містять нульові значення</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо отриману базу:</p>
-<div id="cell-50" class="cell" data-execution_count="36">
+<div id="cell-50" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>joined</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <div>
 
@@ -841,49 +847,46 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 </div>
 <p>І візуалізуємо сам графік. Спочатку оголосимо функцію для попарної візуалізації рядів зі збереженням їх абсолютних значень:</p>
-<div id="cell-52" class="cell" data-execution_count="208">
+<div id="cell-52" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, y_values, x_label, y_label, file_name, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                  y_values[<span class="dv">0</span>], </span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y_label[<span class="dv">0</span>]<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                   y_values[<span class="dv">1</span>], </span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span><span class="vs">fr'$</span><span class="sc">{</span>y_label[<span class="dv">1</span>]<span class="sc">}</span><span class="vs">$'</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y_label[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                  y_values[<span class="dv">0</span>], </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y_label[<span class="dv">0</span>]<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                   y_values[<span class="dv">1</span>], </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span><span class="vs">fr'$</span><span class="sc">{</span>y_label[<span class="dv">1</span>]<span class="sc">}</span><span class="vs">$'</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y_label[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І тепер візуалізуємо отримані ряди:</p>
-<div id="cell-54" class="cell">
+<div id="cell-54" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> joined.iloc[:, <span class="dv">0</span>].values, joined.iloc[:, <span class="dv">1</span>].values</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, ylabel_2</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f'joined </span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="ss">'</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-btc-pair" class="cell" data-execution_count="39">
+<div id="cell-fig-sp-btc-pair" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot_pair(joined.index, values_plot, xlabel, ylabels, file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-sp-btc-pair" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -914,7 +917,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="розрахунок-взаємної-інформації" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="розрахунок-взаємної-інформації"><span class="header-section-number">4.2.1</span> Розрахунок взаємної інформації</h3>
 <p>Розглянемо взаємну інформацію як індикатор нелінійної кореляції між двома фінансовими активами, і спробуємо визначити, чи є між ними “істинний” взаємозв’язок. Виконаємо розрахунки із використанням алгоритму руховому вікна. Також визначимо функцію <code>transform()</code> для нормалізації ряду.</p>
-<div id="cell-59" class="cell" data-execution_count="40">
+<div id="cell-59" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -943,7 +946,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-60" class="cell" data-execution_count="79">
+<div id="cell-60" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>                           <span class="co"># вид ряду</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">100</span>                           <span class="co"># ширина вікна</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                              <span class="co"># часовий крок вікна </span></span>
@@ -952,7 +955,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>MI <span class="op">=</span> []                                <span class="co"># масив для віконної взаємної інформації</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер приступимо до розрахунків:</p>
-<div id="cell-62" class="cell" data-execution_count="80">
+<div id="cell-62" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):       <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># з кроком tstep</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -970,58 +973,54 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результат до масиву значень</span></span>
 <span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    MI.append(mut_inf)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2149/2149 [00:03&lt;00:00, 706.05it/s]</code></pre>
+<pre><code>100%|██████████| 2149/2149 [00:02&lt;00:00, 930.50it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отриманий результат у текстовому файлі:</p>
-<div id="cell-64" class="cell" data-execution_count="81">
+<div id="cell-64" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mutual_inf_name1=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_name2=</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span> , MI)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо результат між відповідними показниками:</p>
-<div id="cell-fig-sp-btc-mi" class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>,<span class="dv">8</span>))</span>
+<div id="cell-fig-sp-btc-mi" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax.twinx()</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.12</span>))</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(joined.index[window:length:tstep], </span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                joined[symbol_1][window:length:tstep].values, </span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(joined.index[window:length:tstep],</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                joined[symbol_2][window:length:tstep].values,</span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">'red'</span>, </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(joined.index[window:length:tstep],</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>                MI,</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">'magenta'</span>, </span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">r"$MI$"</span>)               </span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3])</span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"mutual_inf_name1=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_name2=</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.15</span>))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(joined.index[window:length:tstep], </span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>                joined[symbol_1][window:length:tstep].values, </span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(joined.index[window:length:tstep],</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>                joined[symbol_2][window:length:tstep].values,</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">'red'</span>, </span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(joined.index[window:length:tstep],</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>                MI,</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">'magenta'</span>, </span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">r"$MI$"</span>)               </span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3])</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"mutual_inf_name1=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_name2=</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-sp-btc-mi" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1038,7 +1037,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <p>Як ми можемо бачити з представленого рисунку, як на фондовому так і криптовалютному ринках дійсно спостерігалися фази зростання взаємної інформації. Найкраще це видно напередодні кризи 2018-го року, під час 2019 року, після коронавірусної пандемії та напередодні 2023 року. Для даного індикатора залишається простір для експериментів, що можуть вивести його на рівень достатньо потужного передвісника криз на фінансових ринках.</p>
 <p>Як вже зазначалося, окрім обчислення взаємної інформації для двох пар часових сигналів, ми можемо обчислити автовзаємну інформацію.</p>
 <p>Для цього визначимо наступну функцію:</p>
-<div id="cell-69" class="cell" data-execution_count="113">
+<div id="cell-69" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> automut(x, maxlag):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="bu">len</span>(x)                               <span class="co"># визначаємо довжину сигналу</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    lags <span class="op">=</span> np.arange(<span class="dv">0</span>, maxlag, dtype<span class="op">=</span><span class="st">"int"</span>) <span class="co"># оголошуємо масив лагів від 0 до maxlag</span></span>
@@ -1057,7 +1056,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 <p>Виведемо залежність автовзаємної інформації від лагу для всього ряду S&amp;P 500 та Біткоїна. Спочатку розрахуємо вихідні значення ряду, далі прибутковості і потім волатильності. Для кожного з відповідних сигналів виведемо взаємну інформацію.</p>
 <p>Виконуємо перетворення S&amp;P 500 та Біткоїна:</p>
-<div id="cell-72" class="cell" data-execution_count="114">
+<div id="cell-72" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sp_init <span class="op">=</span> transformation(time_ser_1, ret_type<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sp_ret <span class="op">=</span> transformation(time_ser_1, ret_type<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sp_vol <span class="op">=</span> np.<span class="bu">abs</span>(sp_ret.copy())</span>
@@ -1067,7 +1066,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>btc_vol <span class="op">=</span> np.<span class="bu">abs</span>(btc_ret.copy())</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розраховуємо автовзаємну інформацію S&amp;P 500 та Біткоїна:</p>
-<div id="cell-74" class="cell" data-execution_count="124">
+<div id="cell-74" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>max_lag <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>mu_sp_init <span class="op">=</span> automut(sp_init, max_lag)</span>
@@ -1080,7 +1079,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>lags <span class="op">=</span> np.arange(<span class="dv">0</span>, max_lag, dtype<span class="op">=</span><span class="st">"int"</span>) <span class="co"># оголошуємо масив лагів від 0 до maxlag</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-mi-all" class="cell" data-execution_count="125">
+<div id="cell-fig-sp-mi-all" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)                <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ax.plot(lags, mu_sp_init, label<span class="op">=</span><span class="vs">r'$MI $ '</span> <span class="op">+</span> <span class="ss">f'</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">'</span>)  <span class="co"># Додаємо дані до графіку</span></span>
@@ -1106,7 +1105,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 </div>
 </div>
-<div id="cell-fig-btc-mi-all" class="cell" data-execution_count="128">
+<div id="cell-fig-btc-mi-all" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                     <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ax.plot(lags, mu_btc_init, label<span class="op">=</span><span class="vs">r'$MI $ '</span> <span class="op">+</span> <span class="ss">f'</span><span class="sc">{</span>symbol_2<span class="sc">}</span><span class="ss">'</span>)  <span class="co"># Додаємо дані до графіку</span></span>
@@ -1137,7 +1136,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="розрахунок-мономасштабної-складності-лемпеля-зіва" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="розрахунок-мономасштабної-складності-лемпеля-зіва"><span class="header-section-number">4.2.2</span> Розрахунок мономасштабної складності Лемпеля-Зіва</h3>
 <p>Продовжимо розраховувати й інші показники складності. Розглянемо можливість використання показника складності Лемпеля-Зіва в якості індикатора катастрофічних подій.</p>
-<div id="cell-80" class="cell" data-execution_count="191">
+<div id="cell-80" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                           <span class="co"># вид ряду</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                           <span class="co"># ширина вікна</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                              <span class="co"># часовий крок вікна </span></span>
@@ -1148,7 +1147,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>LZC <span class="op">=</span> []                               <span class="co"># класична складність Лемпеля-Зіва</span></span>
 <span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>PLZC <span class="op">=</span> []                              <span class="co"># пермутаційна складність Лемпеля-Зіва</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-81" class="cell" data-execution_count="192">
+<div id="cell-81" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):    <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="co"># з кроком tstep</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1167,65 +1166,61 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>                                      dimension<span class="op">=</span>m, </span>
 <span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>                                      permutation<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результати до масиву значень</span></span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    LZC.append(lzc)</span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>    PLZC.append(plzc)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результати до масиву значень</span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    LZC.append(lzc)</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>    PLZC.append(plzc)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:18&lt;00:00, 116.70it/s]</code></pre>
+<pre><code>100%|██████████| 2177/2177 [00:12&lt;00:00, 179.21it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо результати в текстових файлах:</p>
-<div id="cell-83" class="cell" data-execution_count="193">
+<div id="cell-83" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"lzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span> , LZC)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"plzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.txt"</span> , PLZC)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Та візуалізуємо їх:</p>
-<div id="cell-fig-sp-lzc-plzc" class="cell" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>,<span class="dv">8</span>))</span>
+<div id="cell-fig-sp-lzc-plzc" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax.twinx()</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.12</span>))</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser_1.index[window:length:tstep], </span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                time_ser_1.values[window:length:tstep], </span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(time_ser_1.index[window:length:tstep],</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>                LZC,</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">'gold'</span>, </span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$LZC$"</span>)</span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(time_ser_1.index[window:length:tstep],</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                PLZC,</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">'red'</span>, </span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$PLZC$"</span>)               </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.12</span>))</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser_1.index[window:length:tstep], </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                time_ser_1.values[window:length:tstep], </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(time_ser_1.index[window:length:tstep],</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>                LZC,</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">'gold'</span>, </span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$LZC$"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(time_ser_1.index[window:length:tstep],</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>                PLZC,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">'red'</span>, </span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$PLZC$"</span>)               </span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
 <span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3])</span>
-<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"plzc_lzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3])</span>
+<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"plzc_lzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-sp-lzc-plzc" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1244,7 +1239,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="обчислення-мультимасштабної-складності-лемпеля-зіва" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="обчислення-мультимасштабної-складності-лемпеля-зіва"><span class="header-section-number">4.2.3</span> Обчислення мультимасштабної складності Лемпеля-Зіва</h3>
 <p>Розрахуємо віконну динаміку мультимасштабних показників Лемпеля-Зіва. Ми повертаємо сумарну складність Лемпеля-Зіва за всіма масштабами.</p>
-<div id="cell-89" class="cell" data-execution_count="187">
+<div id="cell-89" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часовий крок вікна </span></span>
@@ -1255,7 +1250,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>MSLZC <span class="op">=</span> []                        <span class="co"># мультимасштабна складність Лемпеля-Зіва</span></span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>MSPLZC <span class="op">=</span> []                       <span class="co"># мультимасштабна пермутаційна складність Лемпеля-Зіва</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-90" class="cell" data-execution_count="188">
+<div id="cell-90" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):    <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="co"># з кроком tstep</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1279,59 +1274,55 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    MSLZC.append(mslzc)</span>
 <span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    MSPLZC.append(msplzc)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:49&lt;00:00, 43.90it/s]</code></pre>
+<pre><code>100%|██████████| 2177/2177 [00:49&lt;00:00, 43.75it/s]</code></pre>
 </div>
 </div>
-<div id="cell-91" class="cell" data-execution_count="189">
+<div id="cell-91" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mslzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span> , MSLZC)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"msplzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.txt"</span> , MSPLZC)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-mslzc-msplzc" class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">13</span>,<span class="dv">8</span>))</span>
+<div id="cell-fig-sp-mslzc-msplzc" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax.twinx()</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.12</span>))</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser_1.index[window:length:tstep], </span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                time_ser_1.values[window:length:tstep], </span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(time_ser_1.index[window:length:tstep],</span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>                MSLZC,</span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">'gold'</span>, </span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$MSLZC$"</span>)</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(time_ser_1.index[window:length:tstep],</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>                MSPLZC,</span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">'red'</span>, </span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$MSPLZC$"</span>)               </span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3])</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.12</span>))</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser_1.index[window:length:tstep], </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                time_ser_1.values[window:length:tstep], </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                <span class="st">"b-"</span>, </span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>p2, <span class="op">=</span> ax2.plot(time_ser_1.index[window:length:tstep],</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>                MSLZC,</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">'gold'</span>, </span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$MSLZC$"</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>p3, <span class="op">=</span> ax3.plot(time_ser_1.index[window:length:tstep],</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>                MSPLZC,</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">'red'</span>, </span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>                label<span class="op">=</span><span class="vs">fr"$MSPLZC$"</span>)               </span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">3</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a>ax3.legend(handles<span class="op">=</span>[p1, p2, p3])</span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"msplzc_mslzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
 <span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"msplzc_mslzc_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a><span class="ss">    window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a><span class="ss">    rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-sp-mslzc-msplzc" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1351,7 +1342,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="обчислення-шеннонівської-ентропії"><span class="header-section-number">4.2.4</span> Обчислення Шеннонівської ентропії</h3>
 <p>Як уже зазначалося, Шеннонівська ентропія — це міра непередбачуваності стану, або, еквівалентно, його середнього інформаційного вмісту. Ентропія Шеннона є однією з перших і найбільш базових мір ентропії та фундаментальним поняттям теорії інформації.</p>
 <p>Розраховуватимемо її в ковзному вікні:</p>
-<div id="cell-96" class="cell" data-execution_count="256">
+<div id="cell-96" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часовий крок вікна </span></span>
@@ -1360,7 +1351,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>shannon <span class="op">=</span> []                      <span class="co"># ентропія Шеннона</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-97" class="cell" data-execution_count="257">
+<div id="cell-97" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):       <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># з кроком tstep</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1384,20 +1375,20 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результат до масиву значень</span></span>
 <span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>    shannon.append(sh_ent)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:01&lt;00:00, 2135.92it/s]</code></pre>
+<pre><code>100%|██████████| 2177/2177 [00:00&lt;00:00, 2513.29it/s]</code></pre>
 </div>
 </div>
-<div id="cell-98" class="cell" data-execution_count="258">
+<div id="cell-98" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"shannon_ent_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span> , shannon)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-99" class="cell" data-execution_count="259">
+<div id="cell-99" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> time_ser_1.values[window:length:tstep], shannon</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, <span class="st">"ShEn"</span></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"shannon_ent_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-shannon" class="cell" data-execution_count="260">
+<div id="cell-fig-sp-shannon" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser_1.index[window:length:tstep], </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>            values_plot, xlabel, ylabels, file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1418,7 +1409,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="розрахунок-інформаційного-показника-фішера" class="level3" data-number="4.2.5">
 <h3 data-number="4.2.5" class="anchored" data-anchor-id="розрахунок-інформаційного-показника-фішера"><span class="header-section-number">4.2.5</span> Розрахунок інформаційного показника Фішера</h3>
 <p>Перш за все задаємо параметри для розрахунків:</p>
-<div id="cell-104" class="cell" data-execution_count="272">
+<div id="cell-104" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часовий крок вікна </span></span>
@@ -1428,7 +1419,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>fisher <span class="op">=</span> []                       <span class="co"># інформація Фішера</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-105" class="cell" data-execution_count="273">
+<div id="cell-105" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):       <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># з кроком tstep</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1445,20 +1436,20 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результат до масиву значень</span></span>
 <span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    fisher.append(fish_inf)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:00&lt;00:00, 2937.25it/s]</code></pre>
+<pre><code>100%|██████████| 2177/2177 [00:00&lt;00:00, 5321.53it/s]</code></pre>
 </div>
 </div>
-<div id="cell-106" class="cell" data-execution_count="274">
+<div id="cell-106" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fisher_inf_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_dimension=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_delay=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">.txt"</span>, fisher)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-107" class="cell" data-execution_count="275">
+<div id="cell-107" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> time_ser_1.values[window:length:tstep], fisher</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, <span class="st">"FI"</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"fisher_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_dimension=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_delay=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-fisher" class="cell" data-execution_count="276">
+<div id="cell-fig-sp-fisher" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser_1.index[window:length:tstep], values_plot, xlabel, ylabels, file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-sp-fisher" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1477,7 +1468,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </section>
 <section id="обчислення-часу-декореляції" class="level3" data-number="4.2.6">
 <h3 data-number="4.2.6" class="anchored" data-anchor-id="обчислення-часу-декореляції"><span class="header-section-number">4.2.6</span> Обчислення часу декореляції</h3>
-<div id="cell-111" class="cell" data-execution_count="295">
+<div id="cell-111" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часовий крок вікна </span></span>
@@ -1485,7 +1476,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>decorrelation_time <span class="op">=</span> []           <span class="co"># час декореляції</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-112" class="cell" data-execution_count="296">
+<div id="cell-112" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):       <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>                                                   <span class="co"># з кроком tstep</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1500,20 +1491,20 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результат до масиву значень</span></span>
 <span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>    decorrelation_time.append(dec_time)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:01&lt;00:00, 1857.09it/s]</code></pre>
+<pre><code>100%|██████████| 2177/2177 [00:00&lt;00:00, 2622.31it/s]</code></pre>
 </div>
 </div>
-<div id="cell-113" class="cell" data-execution_count="297">
+<div id="cell-113" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"dec_time_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, decorrelation_time)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-114" class="cell" data-execution_count="298">
+<div id="cell-114" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> time_ser_1.values[window:length:tstep], decorrelation_time</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, <span class="st">"DT"</span></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"dec_time_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-dt" class="cell" data-execution_count="300">
+<div id="cell-fig-sp-dt" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser_1.index[window:length:tstep], values_plot, </span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>            xlabel, ylabels, file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1529,11 +1520,11 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 </div>
 </div>
 </div>
-<p>Час декореляції зростає у період краху, що вказує на посилення кореляції системи в цей період.</p>
+<p>Час декореляції зростає у передкраховий період, що вказує на посилення кореляції системи в цей період.</p>
 </section>
 <section id="обчислення-відносної-шорсткості" class="level3" data-number="4.2.7">
 <h3 data-number="4.2.7" class="anchored" data-anchor-id="обчислення-відносної-шорсткості"><span class="header-section-number">4.2.7</span> Обчислення відносної шорсткості</h3>
-<div id="cell-118" class="cell" data-execution_count="312">
+<div id="cell-118" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часовий крок вікна </span></span>
@@ -1541,7 +1532,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>relative_roughness <span class="op">=</span> []           <span class="co"># відносна шорсткість</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-119" class="cell" data-execution_count="313">
+<div id="cell-119" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)): <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># з кроком tstep</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1556,20 +1547,20 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результат до масиву значень</span></span>
 <span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>    relative_roughness.append(rr)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:01&lt;00:00, 2094.81it/s]</code></pre>
+<pre><code>100%|██████████| 2177/2177 [00:00&lt;00:00, 2783.23it/s]</code></pre>
 </div>
 </div>
-<div id="cell-120" class="cell" data-execution_count="314">
+<div id="cell-120" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"rel_rough_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, relative_roughness)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-121" class="cell" data-execution_count="315">
+<div id="cell-121" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>values_plot <span class="op">=</span> time_ser_1.values[window:length:tstep], relative_roughness</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>ylabels <span class="op">=</span> ylabel_1, <span class="st">"RR"</span></span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"rel_rough=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-rr" class="cell" data-execution_count="316">
+<div id="cell-fig-sp-rr" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser_1.index[window:length:tstep], values_plot, </span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>            xlabel, ylabels, file_name)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1590,7 +1581,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <section id="розрахунок-показників-складності-хьорта" class="level3" data-number="4.2.8">
 <h3 data-number="4.2.8" class="anchored" data-anchor-id="розрахунок-показників-складності-хьорта"><span class="header-section-number">4.2.8</span> Розрахунок показників складності Хьорта</h3>
 <p>Завершуємо хід роботи показниками складності Хьорта:</p>
-<div id="cell-126" class="cell" data-execution_count="327">
+<div id="cell-126" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>                      <span class="co"># вид ряду</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                      <span class="co"># ширина вікна</span></span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часовий крок вікна </span></span>
@@ -1600,7 +1591,7 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>mobility <span class="op">=</span> []                     <span class="co"># параметр рухливості</span></span>
 <span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>complexity <span class="op">=</span> []                   <span class="co"># параметр складності</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-127" class="cell" data-execution_count="328">
+<div id="cell-127" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)): <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># з кроком tstep</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1618,10 +1609,10 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>    mobility.append(info[<span class="st">'Mobility'</span>])</span>
 <span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>    complexity.append(cmpl)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2177/2177 [00:00&lt;00:00, 3338.20it/s]</code></pre>
+<pre><code> 61%|██████    | 1332/2177 [00:00&lt;00:00, 4349.96it/s]100%|██████████| 2177/2177 [00:00&lt;00:00, 4353.02it/s]</code></pre>
 </div>
 </div>
-<div id="cell-128" class="cell" data-execution_count="329">
+<div id="cell-128" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"activity_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, activity)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mobility_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1629,16 +1620,16 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"complexity_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, complexity)    </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-sp-hjorth" class="cell" data-execution_count="334">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">8</span>))</span>
+<div id="cell-fig-sp-hjorth" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twinx()</span>
 <span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>ax3 <span class="op">=</span> ax.twinx()</span>
 <span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>ax4 <span class="op">=</span> ax.twinx()</span>
 <span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.12</span>))</span>
-<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>ax4.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.19</span>))</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>ax3.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.16</span>))</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>ax4.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.24</span>))</span>
 <span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>p1, <span class="op">=</span> ax.plot(time_ser_1.index[window:length:tstep], </span>
 <span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>              time_ser_1.values[window:length:tstep], </span>
@@ -1652,23 +1643,22 @@ I(X; Y) = \sum_{y \in Y}\sum_{x \in X}p(x, y) \cdot \log{\left( \frac{p(x,y)}{p(
 <span id="cb62-20"><a href="#cb62-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-21"><a href="#cb62-21" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)</span>
 <span id="cb62-22"><a href="#cb62-22" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>ylabel_1<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb62-23"><a href="#cb62-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-24"><a href="#cb62-24" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb62-25"><a href="#cb62-25" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb62-26"><a href="#cb62-26" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
-<span id="cb62-27"><a href="#cb62-27" aria-hidden="true" tabindex="-1"></a>ax4.yaxis.label.set_color(p4.get_color())</span>
-<span id="cb62-28"><a href="#cb62-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-29"><a href="#cb62-29" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">4</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb62-23"><a href="#cb62-23" aria-hidden="true" tabindex="-1"></a>ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb62-24"><a href="#cb62-24" aria-hidden="true" tabindex="-1"></a>ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb62-25"><a href="#cb62-25" aria-hidden="true" tabindex="-1"></a>ax3.yaxis.label.set_color(p3.get_color())</span>
+<span id="cb62-26"><a href="#cb62-26" aria-hidden="true" tabindex="-1"></a>ax4.yaxis.label.set_color(p4.get_color())</span>
+<span id="cb62-27"><a href="#cb62-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-28"><a href="#cb62-28" aria-hidden="true" tabindex="-1"></a>tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">4</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb62-29"><a href="#cb62-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb62-30"><a href="#cb62-30" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb62-31"><a href="#cb62-31" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb62-32"><a href="#cb62-32" aria-hidden="true" tabindex="-1"></a>ax3.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p3.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb62-33"><a href="#cb62-33" aria-hidden="true" tabindex="-1"></a>ax4.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p4.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb62-34"><a href="#cb62-34" aria-hidden="true" tabindex="-1"></a>ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
-<span id="cb62-35"><a href="#cb62-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-36"><a href="#cb62-36" aria-hidden="true" tabindex="-1"></a>ax4.legend(handles<span class="op">=</span>[p1, p2, p3, p4])</span>
-<span id="cb62-37"><a href="#cb62-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-38"><a href="#cb62-38" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"hjorth_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb62-39"><a href="#cb62-39" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb62-35"><a href="#cb62-35" aria-hidden="true" tabindex="-1"></a>ax4.legend(handles<span class="op">=</span>[p1, p2, p3, p4])</span>
+<span id="cb62-36"><a href="#cb62-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-37"><a href="#cb62-37" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"hjorth_name=</span><span class="sc">{</span>symbol_1<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb62-38"><a href="#cb62-38" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-sp-hjorth" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1951,7 +1941,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1983,29 +1984,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
@@ -2013,7 +1992,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

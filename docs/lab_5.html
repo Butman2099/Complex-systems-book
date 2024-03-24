@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.25">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python – 5&nbsp; Лабораторна робота № 5</title>
+<title>Моделювання складних систем у Python - 5&nbsp; Лабораторна робота № 5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -125,7 +125,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -341,13 +341,13 @@ window.Quarto = {
   <li><a href="#теоретичні-відомості" id="toc-теоретичні-відомості" class="nav-link active" data-scroll-target="#теоретичні-відомості"><span class="header-section-number">5.1</span> Теоретичні відомості</a></li>
   <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">5.2</span> Хід роботи</a>
   <ul class="collapse">
-  <li><a href="#апроксимаційна-ентропія-apen" id="toc-апроксимаційна-ентропія-apen" class="nav-link" data-scroll-target="#апроксимаційна-ентропія-apen"><span class="header-section-number">5.2.1</span> Апроксимаційна ентропія (ApEn)</a></li>
-  <li><a href="#нечітка-ентропія-fuzzen" id="toc-нечітка-ентропія-fuzzen" class="nav-link" data-scroll-target="#нечітка-ентропія-fuzzen"><span class="header-section-number">5.2.2</span> Нечітка ентропія (FuzzEn)</a></li>
-  <li><a href="#ентропія-шаблонів-sampen" id="toc-ентропія-шаблонів-sampen" class="nav-link" data-scroll-target="#ентропія-шаблонів-sampen"><span class="header-section-number">5.2.3</span> Ентропія шаблонів (SampEn)</a></li>
-  <li><a href="#ентропія-перестановок-pen" id="toc-ентропія-перестановок-pen" class="nav-link" data-scroll-target="#ентропія-перестановок-pen"><span class="header-section-number">5.2.4</span> Ентропія перестановок (PEn)</a></li>
-  <li><a href="#eнтропія-сингулярного-розкладу-svden" id="toc-eнтропія-сингулярного-розкладу-svden" class="nav-link" data-scroll-target="#eнтропія-сингулярного-розкладу-svden"><span class="header-section-number">5.2.5</span> Eнтропія сингулярного розкладу (SVDEn)</a></li>
-  <li><a href="#дисперсійна-ентропія-dispen" id="toc-дисперсійна-ентропія-dispen" class="nav-link" data-scroll-target="#дисперсійна-ентропія-dispen"><span class="header-section-number">5.2.6</span> Дисперсійна ентропія (DispEn)</a></li>
-  <li><a href="#спектральна-ентропія-spen" id="toc-спектральна-ентропія-spen" class="nav-link" data-scroll-target="#спектральна-ентропія-spen"><span class="header-section-number">5.2.7</span> Спектральна ентропія (SpEn)</a></li>
+  <li><a href="#апроксимаційна-ентропія" id="toc-апроксимаційна-ентропія" class="nav-link" data-scroll-target="#апроксимаційна-ентропія"><span class="header-section-number">5.2.1</span> Апроксимаційна ентропія</a></li>
+  <li><a href="#нечітка-ентропія" id="toc-нечітка-ентропія" class="nav-link" data-scroll-target="#нечітка-ентропія"><span class="header-section-number">5.2.2</span> Нечітка ентропія</a></li>
+  <li><a href="#ентропія-шаблонів" id="toc-ентропія-шаблонів" class="nav-link" data-scroll-target="#ентропія-шаблонів"><span class="header-section-number">5.2.3</span> Ентропія шаблонів</a></li>
+  <li><a href="#ентропія-перестановок" id="toc-ентропія-перестановок" class="nav-link" data-scroll-target="#ентропія-перестановок"><span class="header-section-number">5.2.4</span> Ентропія перестановок</a></li>
+  <li><a href="#eнтропія-сингулярного-розкладу" id="toc-eнтропія-сингулярного-розкладу" class="nav-link" data-scroll-target="#eнтропія-сингулярного-розкладу"><span class="header-section-number">5.2.5</span> Eнтропія сингулярного розкладу</a></li>
+  <li><a href="#дисперсійна-ентропія" id="toc-дисперсійна-ентропія" class="nav-link" data-scroll-target="#дисперсійна-ентропія"><span class="header-section-number">5.2.6</span> Дисперсійна ентропія</a></li>
+  <li><a href="#спектральна-ентропія" id="toc-спектральна-ентропія" class="nav-link" data-scroll-target="#спектральна-ентропія"><span class="header-section-number">5.2.7</span> Спектральна ентропія</a></li>
   </ul></li>
   <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">5.3</span> Висновок</a></li>
   <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">5.4</span> Завдання для самостійної роботи</a></li>
@@ -426,52 +426,58 @@ S(A + B) = S(A) + S(B).
 </section>
 <section id="хід-роботи" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">5.2</span> Хід роботи</h2>
-<p>Розглянемо, яким чином ми використовувати ентропійні показники в якості індикаторів або індикаторів-передвісників кризових подій. Перш за все імпортуємо необхідні модулі для подальшої роботи:</p>
-<div id="6d63da48" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> EntropyHub <span class="im">as</span> eh</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Розглянемо, яким чином ми використовувати ентропійні показники в якості індикаторів або індикаторів-передвісників кризових подій. Перш за все імпортуємо та встановимо необхідні модулі для подальшої роботи:</p>
+<div id="b7f42207" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install EntropyHub</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="6d63da48" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> EntropyHub <span class="im">as</span> eh</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scienceplots</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо налаштування формату виведення рисунків:</p>
-<div id="6ab887f2" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),         <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: <span class="dv">22</span>,                  <span class="co"># розмір фонтів рисунку</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,             <span class="co"># товщина ліній</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,        <span class="co"># розмір титулки над рисунком</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: <span class="dv">22</span>,             <span class="co"># розмір підписів по осям</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: <span class="dv">22</span>,            <span class="co"># розмір легенди</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: <span class="dv">22</span>,            <span class="co"># розмір розмітки по осі Ох</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: <span class="dv">22</span>,            <span class="co"># розмір розмітки по осі Ох</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"sans-serif"</span>,      <span class="co"># сімейство стилів підписів </span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times"</span>],          <span class="co"># стиль підпису</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>                <span class="co"># якість збережених зображень</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)           <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="6ab887f2" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> <span class="dv">16</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> {</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'figure.figsize'</span>: (<span class="dv">8</span>, <span class="dv">6</span>),            <span class="co"># встановлюємо ширину та висоту рисунків за замовчуванням</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'font.size'</span>: size,                   <span class="co"># розмір фонтів рисунку</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'lines.linewidth'</span>: <span class="dv">2</span>,                <span class="co"># товщина ліній</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.titlesize'</span>: <span class="st">'small'</span>,           <span class="co"># розмір титулки над рисунком</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.labelsize'</span>: size,              <span class="co"># розмір підписів по осям</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: size,             <span class="co"># розмір легенди</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"Serif"</span>,              <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times New Roman"</span>],   <span class="co"># стиль підпису</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>,                  <span class="co"># якість збережених зображень</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.grid'</span>: <span class="va">False</span>                   <span class="co"># побудова сітки на самому рисунку</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>У даній роботі виконаємо розрахунки на прикладі одного з найважливіших фондових індексів Японії — Nikkei 225. Індекс обчислюється шляхом визначення простого середнього арифметичного значення цін акцій 225 провідних компаній, які входять до першої секції Токійської фондової біржі. Для отримання значень індексу скористаємось бібліотекою <code>yfinance</code>. Значення розглядатимемо за весь період, тому початкову та кінцеву дати вказувати не будемо.</p>
-<div id="18f114c2" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^N225'</span>                      <span class="co"># Символ індексу</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol)            <span class="co"># вивантажуємо дані</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()   <span class="co"># зберігаємо саме ціни закриття</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                 <span class="co"># підпис по вісі Ох </span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                       <span class="co"># підпис по вісі Оу</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_initial_time_series.txt'</span>, time_ser.values)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>У даній роботі виконаємо розрахунки на прикладі одного з найважливіших фондових індексів Японії — Nikkei 225. Індекс обчислюється шляхом визначення простого середнього арифметичного значення цін акцій 225 провідних компаній, які входять до першої секції Токійської фондової біржі. Для отримання значень індексу скористаємось бібліотекою <code>yfinance</code>. Будемо розглядати значення до 1-го грудня 2023 року.</p>
+<div id="18f114c2" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^N225'</span>                      <span class="co"># Символ індексу</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-12-01"</span>                    <span class="co"># Дата закінчення зчитування даних</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, end<span class="op">=</span>end)   <span class="co"># вивантажуємо дані</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()   <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                 <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                       <span class="co"># підпис по вісі Оу</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_initial_time_series.txt'</span>, time_ser.values)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
 </div>
@@ -491,30 +497,30 @@ S(A + B) = S(A) + S(B).
 </div>
 <hr>
 <div id="8b1ae284" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div id="cell-fig-nikkei-init" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-nikkei-init" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-nikkei-init" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -529,80 +535,77 @@ S(A + B) = S(A) + S(B).
 </div>
 </div>
 <p>Для приведення ряду до стандартизованого вигляду або прибутковостей визначимо функцію <code>transformations()</code>:</p>
-<div id="10eeb5c0" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="10eeb5c0" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Для побудови пари часових рядів визначимо функцію <code>plot_pair()</code>:</p>
-<div id="5e8dc81a" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>              y1_label, </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>              y2_label,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>              x_label, </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>              file_name, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                  y1_values, </span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                   y2_values, </span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span>y2_label)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">35</span>, <span class="op">**</span>tkw)</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="5e8dc81a" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>              y1_label, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>              y2_label,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>              x_label, </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>              file_name, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(x_values, </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                  y1_values, </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(x_values,</span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>                   y2_values, </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span>y2_label)</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(x_label)</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>y1_label<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">35</span>, <span class="op">**</span>tkw)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    plt.savefig(file_name <span class="op">+</span> <span class="st">".jpg"</span>)</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="апроксимаційна-ентропія-apen" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="апроксимаційна-ентропія-apen"><span class="header-section-number">5.2.1</span> Апроксимаційна ентропія (ApEn)</h3>
-<p>Ентропія подібності (Approximate Entropy, <em>ApEn</em>) є “статистикою регулярності” <span class="citation" data-cites="pincus1991regularity app_en">&nbsp;[<a href="references.html#ref-pincus1991regularity" role="doc-biblioref">4</a>,<a href="references.html#ref-app_en" role="doc-biblioref">5</a>]</span>, що визначає можливість передбачувати флуктуації в часових рядах. Інтуїтивно вона означає, що наявність повторюваних шаблонів (послідовностей певної довжини, побудованих із чисел ряду, що слідують одне за іншим) флуктуацій у часовому ряді призводить до більшої передбачуваності часового ряду порівняно із рядами, де повторюваності шаблонів немає. Порівняно велике значення <em>ApEn</em> показує ймовірність того, що подібні між собою шаблони спостережень не будуть слідувати один за одним. Іншими словами, часовий ряд, що містить велику кількість повторюваних шаблонів, має порівняно мале значення <em>ApEn</em>, а значення <em>ApEn</em> для менш передбачуваного (більш складного) процесу є більшим.</p>
+<section id="апроксимаційна-ентропія" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="апроксимаційна-ентропія"><span class="header-section-number">5.2.1</span> Апроксимаційна ентропія</h3>
+<p><strong>Ентропія подібності</strong> (Approximate Entropy, <em>ApEn</em>) є “статистикою регулярності” <span class="citation" data-cites="pincus1991regularity app_en">&nbsp;[<a href="references.html#ref-pincus1991regularity" role="doc-biblioref">4</a>,<a href="references.html#ref-app_en" role="doc-biblioref">5</a>]</span>, що визначає можливість передбачувати флуктуації в часових рядах <span class="citation" data-cites="pandemic_entropy">&nbsp;[<a href="references.html#ref-pandemic_entropy" role="doc-biblioref">6</a>]</span>. Інтуїтивно вона означає, що наявність повторюваних шаблонів (послідовностей певної довжини, побудованих із чисел ряду, що слідують одне за іншим) флуктуацій у часовому ряді призводить до більшої передбачуваності часового ряду порівняно із рядами, де повторюваності шаблонів немає. Порівняно велике значення <em>ApEn</em> показує ймовірність того, що подібні між собою шаблони спостережень не будуть слідувати один за одним. Іншими словами, часовий ряд, що містить велику кількість повторюваних шаблонів, має порівняно мале значення <em>ApEn</em>, а значення <em>ApEn</em> для менш передбачуваного (більш складного) процесу є більшим.</p>
 <p>При розрахунку <em>ApEn</em> для даного часового ряду <span class="math inline">\(S_{N}\)</span>, що складається із <span class="math inline">\(N\)</span> значень <span class="math inline">\(t(1),t(2),t(3),...,t(N)\,\)</span> вибираються два параметри, <span class="math inline">\(m\)</span> та <span class="math inline">\(r\)</span>. Перший з цих параметрів, <span class="math inline">\(m\)</span>, вказує на довжину шаблона, а другий — <span class="math inline">\(r\)</span> — визначає критерій подібності. Досліджуються підпослідовності елементів часового ряду <span class="math inline">\(S_{N}\)</span>, що складаються з <span class="math inline">\(m\)</span> чисел, взятих, починаючи з номера <span class="math inline">\(i\)</span>, і називаються векторами <span class="math inline">\(p_{m} (i)\)</span>. Два вектори (шаблони), <span class="math inline">\(p_{m}(i)\)</span> та <span class="math inline">\(p_{m}(j)\)</span>, будуть подібними, якщо всі різниці пар їх відповідних координат є меншими за значення <span class="math inline">\(r\)</span>, тобто якщо</p>
 <p><span class="math display">\[
 | t(i+k) - t(j+k) | &lt; r \quad \textrm{для} \quad 0 \leq k &lt; m.
@@ -618,68 +621,68 @@ ApEn(S_{N}, m, r) = \ln{C_{m}(r)} - \ln{C_{m+1}(r)}.
 <p>Тобто, як натуральний логарифм відношення повторюваності векторів довжиною <span class="math inline">\(m\)</span> до повторюваності векторів довжиною <span class="math inline">\(m+1\)</span>.</p>
 <p>Таким чином, якщо знайдуться подібні вектори у часовому ряді, <em>ApEn</em> оцінить логарифмічну ймовірність того, що наступні інтервали після кожного із векторів будуть відрізнятись. Менші значення <em>ApEn</em> відповідають більшій ймовірності того, що за векторами слідують подібні їм. Якщо часовий ряд дуже нерегулярний — наявність подібних векторів не може бути передбачуваною і значення <em>ApEn</em> є порівняно великим.</p>
 <p>Зауважимо, що <em>ApEn</em> є нестійкою до вхідних даних характеристикою, оскільки досить сильно залежить від параметрів <span class="math inline">\(m\)</span> та <span class="math inline">\(r\)</span>.</p>
-<div id="067ae697" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>                   <span class="co"># ширина вікна</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>                      <span class="co"># часовий крок</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                          <span class="co"># розмірність вкладень</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                        <span class="co"># часова затримка</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.45</span>                       <span class="co"># параметр подібності</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                   <span class="co"># вид ряду: </span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 1 - вихідний, </span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 3 - прибутковості звичайні, </span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 4 - стандартизовані прибутковості, </span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 6 - стандартизований ряд </span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>ApEn <span class="op">=</span> []                      <span class="co"># масив для зберігання значень ентропії</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="067ae697" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>                   <span class="co"># ширина вікна</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>                      <span class="co"># часовий крок</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                          <span class="co"># розмірність вкладень</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                        <span class="co"># часова затримка</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.45</span>                       <span class="co"># параметр подібності</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                   <span class="co"># вид ряду: </span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 1 - вихідний, </span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 3 - прибутковості звичайні, </span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                               <span class="co"># 6 - стандартизований ряд </span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>ApEn <span class="op">=</span> []                      <span class="co"># масив для зберігання значень ентропії</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="175c39e2" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)): <span class="co"># фрагменти довжиною window  </span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># з кроком tstep</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо апроксимаційну ентропію</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    Ap, _ <span class="op">=</span> nk.entropy_approximate(signal<span class="op">=</span>fragm, </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                                    dimension<span class="op">=</span>m,</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>                                    delay<span class="op">=</span>tau, </span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>                                    tolerance<span class="op">=</span>r,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                                    corrected<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    ApEn.append(Ap)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="175c39e2" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)): <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># з кроком tstep</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># розраховуємо апроксимаційну ентропію</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    Ap, _ <span class="op">=</span> nk.entropy_approximate(signal<span class="op">=</span>fragm, </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>                                    dimension<span class="op">=</span>m,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>                                    delay<span class="op">=</span>tau, </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>                                    tolerance<span class="op">=</span>r,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>                                    corrected<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    ApEn.append(Ap)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [00:15&lt;00:00, 175.74it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [00:15&lt;00:00, 182.49it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення апроксимаційної ентропії до текстового файлу:</p>
-<div id="748dd316" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"ApEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, ApEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="748dd316" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"ApEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, ApEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="9d3c6fdd" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>label_apen <span class="op">=</span> <span class="vs">fr'$ApEn$'</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>file_name_apen <span class="op">=</span> <span class="ss">f"ApEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ss">           dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9d3c6fdd" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>label_apen <span class="op">=</span> <span class="vs">fr'$ApEn$'</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>file_name_apen <span class="op">=</span> <span class="ss">f"ApEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="ss">           dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-n225-wind-apen" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>          ApEn, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>          label_apen,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>          file_name_apen)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-n225-wind-apen" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>          ApEn, </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>          label_apen,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>          file_name_apen)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-n225-wind-apen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -695,9 +698,9 @@ ApEn(S_{N}, m, r) = \ln{C_{m}(r)} - \ln{C_{m+1}(r)}.
 </div>
 <p>Як можна бачити з представленого рисунку (<a href="#fig-n225-wind-apen" class="quarto-xref">Рис.&nbsp;<span>5.2</span></a>), апроксимаційна ентропія падає у кризові та передкризові моменти часу. Це говорить те, що середнє значення кореляційного інтегралу отриманого для фазового простору розмірністю <span class="math inline">\(d_{E+1}\)</span> не сильно відрізняється від того, що було отримано для фазового простору розмірністю <span class="math inline">\(d_{E}\)</span>. Тобто, при реконструкції простору в різних вимірах, усі точки просто знаходяться достатньо близько один до одного, не дивлячись на геометричні перетворення атрактора фондового ринку. Це вказує на досить високий ступінь кореляцій цінових флуктуацій індексу N225 і спрямованість трейдерів ринку по одному тренду.</p>
 </section>
-<section id="нечітка-ентропія-fuzzen" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="нечітка-ентропія-fuzzen"><span class="header-section-number">5.2.2</span> Нечітка ентропія (FuzzEn)</h3>
-<p>Однією з модифікацій ентропії Шеннона є нечітка ентропія (<em>FuzzEn</em>) <span class="citation" data-cites="fuzz_en_approx_1 XIE20087140">&nbsp;[<a href="references.html#ref-fuzz_en_approx_1" role="doc-biblioref">6</a>,<a href="references.html#ref-XIE20087140" role="doc-biblioref">7</a>]</span>. Цей підхід виключає самоподібність між досліджуваними векторами, і замість функції Гевісайда, яка видає або 0, або 1 для схожих векторів, використовується нечітка функція належності, яка у випадку <em>FuzzEn</em> буде асоціювати схожість між двома векторами з реальним значенням у діапазоні <span class="math inline">\([0, 1]\)</span>. Різницю можна побачити на етапі побудови вектора вкладень, де для реконструйованих векторів ми виконуємо детрендування:</p>
+<section id="нечітка-ентропія" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="нечітка-ентропія"><span class="header-section-number">5.2.2</span> Нечітка ентропія</h3>
+<p>Однією з модифікацій ентропії Шеннона є <strong>нечітка ентропія</strong> (Fuzzy entropy, <em>FuzzEn</em>) <span class="citation" data-cites="fuzz_en_approx_1 XIE20087140 fuzzy_entropies">&nbsp;[<a href="references.html#ref-fuzz_en_approx_1" role="doc-biblioref">7</a>–<a href="references.html#ref-fuzzy_entropies" role="doc-biblioref">9</a>]</span>. Цей підхід виключає самоподібність між досліджуваними векторами, і замість функції Гевісайда, яка видає або 0, або 1 для схожих векторів, використовується нечітка функція належності, яка у випадку <em>FuzzEn</em> буде асоціювати схожість між двома векторами з реальним значенням у діапазоні <span class="math inline">\([0, 1]\)</span>. Різницю можна побачити на етапі побудови вектора вкладень, де для реконструйованих векторів ми виконуємо детрендування:</p>
 <p><span class="math display">\[
 \vec{X}(i) = \left\{ x(i), x(i+1),..., x(i+d_E - 1) - x_{0}(i) \right\}, \,\, i=1,...,N-d_{E}+1,
 \]</span></p>
@@ -718,76 +721,76 @@ D_{i, j} = \mu\left( d\left[\vec{X}(i), \vec{X}(j) \right]\right),
 <p><span class="math display">\[
 FuzzEn(\vec{X}, d_{E}) = -\left[ \ln{\phi^{d_{E}+1} - \ln{\phi^{d_{E}}}} \right].
 \]</span></p>
-<div id="f479c820" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>                    <span class="co"># ширина вікна</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>                       <span class="co"># часовий крок</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                           <span class="co"># розмірність вкладень</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часова затримка</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>characteristic_func <span class="op">=</span> <span class="st">"default"</span> <span class="co"># вид функції приналежності: </span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># default, </span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># sigmoid, </span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># gudermannian, </span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># linear</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> (<span class="fl">0.4</span>, <span class="fl">2.0</span>)                  <span class="co"># параметри, що подаються до функції приналежності: </span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># для 'default' та 'sigmoid' - два значення r, </span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># для gudermannian та linear - 1 значення r, </span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                    <span class="co"># вид ряду: </span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 1 - вихідний </span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 3 - прибутковості звичайні </span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 4 - стандартизовані прибутковості </span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 6 - стандартизований ряд </span></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>FuzzEn <span class="op">=</span> [] <span class="co">#масив для зберігання значень ентропії</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="dfd1b053" class="cell" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<div id="f479c820" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>                    <span class="co"># ширина вікна</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>                       <span class="co"># часовий крок</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                           <span class="co"># розмірність вкладень</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                         <span class="co"># часова затримка</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислення нечіткої ентропії </span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    Fuzz, _, _ <span class="op">=</span> eh.FuzzEn(Sig<span class="op">=</span>fragm, m<span class="op">=</span>m, tau<span class="op">=</span>tau, Fx<span class="op">=</span>characteristic_func, r<span class="op">=</span>r)  </span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    FuzzEn.append(Fuzz[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># дожаємо розрахованє значення до масиву значень </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>characteristic_func <span class="op">=</span> <span class="st">"default"</span> <span class="co"># вид функції приналежності: </span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># default, </span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># sigmoid, </span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># gudermannian, </span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># linear</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> (<span class="fl">0.4</span>, <span class="fl">2.0</span>)                  <span class="co"># параметри, що подаються до функції приналежності: </span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># для 'default' та 'sigmoid' - два значення r, </span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># для gudermannian та linear - 1 значення r, </span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                    <span class="co"># вид ряду: </span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 1 - вихідний </span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 3 - прибутковості звичайні </span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 4 - стандартизовані прибутковості </span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># 6 - стандартизований ряд </span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>FuzzEn <span class="op">=</span> [] <span class="co">#масив для зберігання значень ентропії</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="dfd1b053" class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислення нечіткої ентропії </span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    Fuzz, _, _ <span class="op">=</span> eh.FuzzEn(Sig<span class="op">=</span>fragm, m<span class="op">=</span>m, tau<span class="op">=</span>tau, Fx<span class="op">=</span>characteristic_func, r<span class="op">=</span>r)  </span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    FuzzEn.append(Fuzz[<span class="op">-</span><span class="dv">1</span>]) <span class="co"># дожаємо розрахованє значення до масиву значень </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [02:20&lt;00:00, 20.06it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [02:05&lt;00:00, 22.30it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення нечіткої ентропії до текстового файлу:</p>
-<div id="f50aa686" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"FuzzEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ss">        memberfunc=</span><span class="sc">{</span>characteristic_func<span class="sc">}</span><span class="ss">.txt"</span>, FuzzEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f50aa686" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"FuzzEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ss">        memberfunc=</span><span class="sc">{</span>characteristic_func<span class="sc">}</span><span class="ss">.txt"</span>, FuzzEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="42b688dd" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>label_fuzzen <span class="op">=</span> <span class="vs">fr'$FuzzEn$'</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>file_name_fuzzen <span class="op">=</span> <span class="ss">f"FuzzEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ss">        memberfunc=</span><span class="sc">{</span>characteristic_func<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="42b688dd" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>label_fuzzen <span class="op">=</span> <span class="vs">fr'$FuzzEn$'</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>file_name_fuzzen <span class="op">=</span> <span class="ss">f"FuzzEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="ss">        memberfunc=</span><span class="sc">{</span>characteristic_func<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-n225-wind-fuzzen" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>          FuzzEn, </span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>          label_fuzzen,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>          file_name_fuzzen,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'red'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-n225-wind-fuzzen" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>          FuzzEn, </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>          label_fuzzen,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>          file_name_fuzzen,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'red'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-n225-wind-fuzzen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -803,15 +806,15 @@ FuzzEn(\vec{X}, d_{E}) = -\left[ \ln{\phi^{d_{E}+1} - \ln{\phi^{d_{E}}}} \right]
 </div>
 <p><a href="#fig-n225-wind-fuzzen" class="quarto-xref">Рис.&nbsp;<span>5.3</span></a> демонструє спадку динаміку нечіткої ентропії в кризові та передкризові періоди, яка працює по аналогії до апроксимаційної ентропії. Із цього випливає, що нечітка ентропія також вказує на зростання корельованості системи та зростання її трендостійкості через однонаправленність думок трейдерів щодо подальшої динаміки фондового ринку.</p>
 </section>
-<section id="ентропія-шаблонів-sampen" class="level3" data-number="5.2.3">
-<h3 data-number="5.2.3" class="anchored" data-anchor-id="ентропія-шаблонів-sampen"><span class="header-section-number">5.2.3</span> Ентропія шаблонів (SampEn)</h3>
+<section id="ентропія-шаблонів" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="ентропія-шаблонів"><span class="header-section-number">5.2.3</span> Ентропія шаблонів</h3>
 <p>При розрахунку <em>ApEn</em> беруться до уваги подібності певного вектора <span class="math inline">\(p_n(i)\)</span> до самого себе, що використовується для уникнення можливого значення <span class="math inline">\(\ln{0}\)</span> при відсутності подібних до даного векторів. Однак, вказана особливість призводить до нівелювання двох важливих характеристик у ентропії подібності:</p>
 <ul>
 <li><em>ApEn</em> сильно залежить від довжини розглядуваного шаблона (вектора) і є нижчою, ніж очікується, для векторів малої розмірності;</li>
 <li><em>ApEn</em> не враховує відносну щільність даних.</li>
 </ul>
 <p>Це означає, що коли значення <em>ApEn</em> для одного ряду є більшим, ніж для іншого, то воно повинно залишатись таким (проте не є) для будь-яких можливих початкових умов. Такий висновок тим більш важливий, оскільки <em>ApEn</em> рекомендується в якості міри порівняння двох наборів даних різними авторами.</p>
-<p>Враховуючи вказані обмеження, розроблена для розрахунку інша характеристика, — <strong>ентропія шаблонів</strong> (Sample Entropy, <em>SampEn</em>) <span class="citation" data-cites="samp_en">&nbsp;[<a href="references.html#ref-samp_en" role="doc-biblioref">8</a>]</span>.</p>
+<p>Враховуючи вказані обмеження, розроблена для розрахунку інша характеристика, — <strong>ентропія шаблонів</strong> (Sample Entropy, <em>SampEn</em>) <span class="citation" data-cites="samp_en">&nbsp;[<a href="references.html#ref-samp_en" role="doc-biblioref">10</a>]</span>.</p>
 <p>При розрахунку <em>SampEn</em>, на відміну від алгоритму <em>ApEn</em>, додаються дві умови:</p>
 <ul>
 <li>не враховується подібність вектора самому собі;</li>
@@ -823,68 +826,68 @@ FuzzEn(\vec{X}, d_{E}) = -\left[ \ln{\phi^{d_{E}+1} - \ln{\phi^{d_{E}}}} \right]
 <li>зберігає відносну щільність, в той час як <em>ApEn</em> втрачає дану характеристику;</li>
 <li>додає значно меншу помилку до розрахованого значення у випадку використання векторів малої розмірності.</li>
 </ul>
-<div id="66d0f0b0" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>    <span class="co"># ширина вікна</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>       <span class="co"># часовий крок</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>           <span class="co"># розмірність вкладень</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>         <span class="co"># часова затримка</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.4</span>         <span class="co"># параметр подібності</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні </span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості </span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд  </span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>SampEn <span class="op">=</span> []     <span class="co"># масив для зберігання значень ентропії шаблонів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="9ae86185" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<div id="66d0f0b0" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>    <span class="co"># ширина вікна</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>       <span class="co"># часовий крок</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислення ентропії шаблонів</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    Samp, _ <span class="op">=</span> nk.entropy_sample(signal<span class="op">=</span>fragm, </span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                                dimension<span class="op">=</span>m, </span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                                delay<span class="op">=</span>tau, </span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                                tolerance<span class="op">=</span>r)</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>    SampEn.append(Samp)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>           <span class="co"># розмірність вкладень</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>         <span class="co"># часова затримка</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fl">0.4</span>         <span class="co"># параметр подібності</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні </span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості </span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд  </span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>SampEn <span class="op">=</span> []     <span class="co"># масив для зберігання значень ентропії шаблонів</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9ae86185" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислення ентропії шаблонів</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>    Samp, _ <span class="op">=</span> nk.entropy_sample(signal<span class="op">=</span>fragm, </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>                                dimension<span class="op">=</span>m, </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>                                delay<span class="op">=</span>tau, </span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>                                tolerance<span class="op">=</span>r)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    SampEn.append(Samp)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [00:15&lt;00:00, 184.51it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [00:14&lt;00:00, 188.79it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення ентропії шаблонів до текстового файлу:</p>
-<div id="feb9e439" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"SampEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, SampEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="feb9e439" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"SampEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, SampEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="c0181739" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>label_sampen <span class="op">=</span> <span class="vs">fr'$SampEn$'</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>file_name_sampen <span class="op">=</span> <span class="ss">f"SampEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="c0181739" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>label_sampen <span class="op">=</span> <span class="vs">fr'$SampEn$'</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>file_name_sampen <span class="op">=</span> <span class="ss">f"SampEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_radius=</span><span class="sc">{</span>r<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-n225-wind-sampen" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>          SampEn, </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>          label_sampen,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>          file_name_sampen,</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'darkgreen'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-n225-wind-sampen" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>          SampEn, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>          label_sampen,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>          file_name_sampen,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'darkgreen'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-n225-wind-sampen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -900,9 +903,9 @@ FuzzEn(\vec{X}, d_{E}) = -\left[ \ln{\phi^{d_{E}+1} - \ln{\phi^{d_{E}}}} \right]
 </div>
 <p><a href="#fig-n225-wind-sampen" class="quarto-xref">Рис.&nbsp;<span>5.4</span></a> демонструє, що ентропія шаблонів спадає в передкризові періоди фондового ринку, що вказує на зростання корельованості траєкторій реконструйованого фазового простору індексу N225. Це говорить про те, що ринок у передкрахові періоди стає більш упорядкованим і трендостійким.</p>
 </section>
-<section id="ентропія-перестановок-pen" class="level3" data-number="5.2.4">
-<h3 data-number="5.2.4" class="anchored" data-anchor-id="ентропія-перестановок-pen"><span class="header-section-number">5.2.4</span> Ентропія перестановок (PEn)</h3>
-<p>Ентропія перестановок (<em>PEn</em>) — це міра з теорії хаосу, запропонована Бандтом і Помпе <span class="citation" data-cites="perm_en">&nbsp;[<a href="references.html#ref-perm_en" role="doc-biblioref">9</a>]</span>, і характеризується концептуальною простотою і швидкістю обчислень. Ідея <em>PEn</em> базується на звичайній ентропії Шеннона, але використовує патерни перестановок — порядкові відношення між значеннями системи. Порівняно з іншими мірами складності має певні переваги, такі як стійкість до шуму та інваріантність до нелінійних монотонних перетворень <span class="citation" data-cites="kantz2004nonlinear">&nbsp;[<a href="references.html#ref-kantz2004nonlinear" role="doc-biblioref">10</a>]</span>.</p>
+<section id="ентропія-перестановок" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="ентропія-перестановок"><span class="header-section-number">5.2.4</span> Ентропія перестановок</h3>
+<p><strong>Ентропія перестановок</strong> (Permutation entropy, <em>PEn</em>) — це міра з теорії хаосу, запропонована Бандтом і Помпе <span class="citation" data-cites="perm_en">&nbsp;[<a href="references.html#ref-perm_en" role="doc-biblioref">11</a>]</span>, і характеризується концептуальною простотою і швидкістю обчислень. Ідея <em>PEn</em> базується на звичайній ентропії Шеннона, але використовує патерни перестановок — порядкові відношення між значеннями системи. Порівняно з іншими мірами складності має певні переваги, такі як стійкість до шуму та інваріантність до нелінійних монотонних перетворень <span class="citation" data-cites="kantz2004nonlinear">&nbsp;[<a href="references.html#ref-kantz2004nonlinear" role="doc-biblioref">12</a>]</span>.</p>
 <p>Як і в попередніх типах ентропії, ми реконструюємо часовий ряд із <span class="math inline">\(N\)</span> значень з фіксованою розмірністю вбудовування <span class="math inline">\(d_E\)</span> та часовою затримкою <span class="math inline">\(\tau\)</span>, за вкладеною матрицею формуємо часові векторні послідовності</p>
 <p><span class="math display">\[
 \vec{X}(i) = \left\{ x(i), x(i+1),..., x(i+[d_E - 1]\tau) \right\},
@@ -918,92 +921,92 @@ p(\pi) = \#\left\{\vec{X}(i) \,\, \text{має шаблон} \,\, \pi \right\} \
 <p><span class="math display">\[
 PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 \]</span></p>
-<p>Для зручності <em>PEn</em> нормалізується згідно наступного рівняння:</p>
+<p>Для зручності <em>PEn</em> нормалізується згідно наступного рівняння <span class="citation" data-cites="DBLP:conf/icteri/SolovievBS19">&nbsp;[<a href="references.html#ref-DBLP:conf/icteri/SolovievBS19" role="doc-biblioref">13</a>]</span>:</p>
 <p><span class="math display">\[
 \overline{PEn(\vec{X}, d_E)} = PEn(\vec{X}, d_E) \Big/ PEn_{max},
 \]</span></p>
 <p>де <span class="math inline">\(PEn_{max} = \ln{D!}\)</span>, а нормалізована ентропія перестановок знаходиться в діапазоні <span class="math inline">\(0 \leq \overline{PEn(\vec{X}, d_E)} \leq 1\)</span>.</p>
-<div id="fe2d874c" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>         <span class="co"># часовий крок</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">4</span>             <span class="co"># розмірність вкладень</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">3</span>           <span class="co"># часова затримка</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>Type <span class="op">=</span> <span class="st">'none'</span>     <span class="co"># none - класична </span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># finegrain - Дрібнозерниста ентропія перестановок </span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># modified - Модифікована ентропія перестановок </span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># weighted - Зважена ентропія перестановок </span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># ampaware - Амплітудно-орієнтована ентропія перестановок </span></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># edge - Ентропія перестановки граней</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># uniquant - Рівномірна ентропія перестановок на основі квантування </span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>            </span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>tpx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>          <span class="co"># finegrain tpx - параметр α, додатний скаляр (за замовчуванням: 1)</span></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># ampaware tpx - параметр A, значення в діапазоні [0, 1] (за замовчуванням: 0.5)</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># edge tpx - параметр чутливості r, скаляр &gt; 0 (за замовчуванням: 1)</span></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># uniquant tpx - параметр L, ціле число &gt; 1 (за замовчуванням: 4)</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> np.exp(<span class="dv">1</span>)   <span class="co"># основа логарифма</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>norm <span class="op">=</span> <span class="va">True</span>       <span class="co"># нормування ентропії </span></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>      <span class="co"># вид ряду: </span></span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 1 - вихідний</span></span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 3 - прибутковості звичайні </span></span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 4 - стандартизовані прибутковості </span></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 6 - стандартизований ряд   </span></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>PEn <span class="op">=</span> []        <span class="co"># масив для зберігання значень нормалізованої перм. ентропії</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="333a7882" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<div id="fe2d874c" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>         <span class="co"># часовий крок</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">4</span>             <span class="co"># розмірність вкладень</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">3</span>           <span class="co"># часова затримка</span></span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислюємо ентропію перестановок </span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    _, Pnorm, cPE <span class="op">=</span> eh.PermEn(fragm, </span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>                              m<span class="op">=</span>m, </span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>                              tau<span class="op">=</span>tau, </span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>                              Typex<span class="op">=</span>Type, </span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>                              tpx<span class="op">=</span>tpx, </span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>                              Logx<span class="op">=</span>log, </span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>                              Norm<span class="op">=</span>norm)</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    PEn.append(Pnorm[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>Type <span class="op">=</span> <span class="st">'none'</span>     <span class="co"># none - класична </span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># finegrain - Дрібнозерниста ентропія перестановок </span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># modified - Модифікована ентропія перестановок </span></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># weighted - Зважена ентропія перестановок </span></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># ampaware - Амплітудно-орієнтована ентропія перестановок </span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># edge - Ентропія перестановки граней</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># uniquant - Рівномірна ентропія перестановок на основі квантування </span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>tpx <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>          <span class="co"># finegrain tpx - параметр α, додатний скаляр (за замовчуванням: 1)</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># ampaware tpx - параметр A, значення в діапазоні [0, 1] (за замовчуванням: 0.5)</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># edge tpx - параметр чутливості r, скаляр &gt; 0 (за замовчуванням: 1)</span></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># uniquant tpx - параметр L, ціле число &gt; 1 (за замовчуванням: 4)</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>log <span class="op">=</span> np.exp(<span class="dv">1</span>)   <span class="co"># основа логарифма</span></span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>norm <span class="op">=</span> <span class="va">True</span>       <span class="co"># нормування ентропії </span></span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>      <span class="co"># вид ряду: </span></span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 1 - вихідний</span></span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 3 - прибутковості звичайні </span></span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 4 - стандартизовані прибутковості </span></span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 6 - стандартизований ряд   </span></span>
+<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a>PEn <span class="op">=</span> []        <span class="co"># масив для зберігання значень нормалізованої перм. ентропії</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="333a7882" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислюємо ентропію перестановок </span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>    _, Pnorm, cPE <span class="op">=</span> eh.PermEn(fragm, </span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>                              m<span class="op">=</span>m, </span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>                              tau<span class="op">=</span>tau, </span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>                              Typex<span class="op">=</span>Type, </span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>                              tpx<span class="op">=</span>tpx, </span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>                              Logx<span class="op">=</span>log, </span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>                              Norm<span class="op">=</span>norm)</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>    PEn.append(Pnorm[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [00:08&lt;00:00, 348.95it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [00:07&lt;00:00, 366.68it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення пермутаційної ентропії до текстового файлу:</p>
-<div id="ee7549fe" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"PEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_type=</span><span class="sc">{</span>Type<span class="sc">}</span><span class="ss">_param=</span><span class="sc">{</span>tpx<span class="sc">}</span><span class="ss">.txt"</span>, PEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ee7549fe" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"PEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_type=</span><span class="sc">{</span>Type<span class="sc">}</span><span class="ss">_param=</span><span class="sc">{</span>tpx<span class="sc">}</span><span class="ss">.txt"</span>, PEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="3f39290e" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>label_permen <span class="op">=</span> <span class="vs">fr'$PEn$'</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>file_name_perm <span class="op">=</span> <span class="ss">f"PEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_type=</span><span class="sc">{</span>Type<span class="sc">}</span><span class="ss">_param=</span><span class="sc">{</span>tpx<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3f39290e" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>label_permen <span class="op">=</span> <span class="vs">fr'$PEn$'</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>file_name_perm <span class="op">=</span> <span class="ss">f"PEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_type=</span><span class="sc">{</span>Type<span class="sc">}</span><span class="ss">_param=</span><span class="sc">{</span>tpx<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо результат для ентропії перестановок:</p>
-<div id="cell-fig-n225-wind-permen" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>          PEn, </span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>          label_permen,</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>          file_name_perm,</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'indigo'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-n225-wind-permen" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>          PEn, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>          ylabel, </span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>          label_permen,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>          xlabel,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>          file_name_perm,</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">'indigo'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-n225-wind-permen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1019,65 +1022,62 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 </div>
 <p>На представленому рисунку (<a href="#fig-n225-wind-permen" class="quarto-xref">Рис.&nbsp;<span>5.5</span></a>) видно, що <span class="math inline">\(PEn\)</span> спадає в кризові та передкризові періоди на фондовому ринку. Це вказує на зростання ймовірності появи одного конкретного патерна для подальшої динаміки ринку, а отже й кількості очікуваної інформації при аналізі флуктуацій індексу N225.</p>
 </section>
-<section id="eнтропія-сингулярного-розкладу-svden" class="level3" data-number="5.2.5">
-<h3 data-number="5.2.5" class="anchored" data-anchor-id="eнтропія-сингулярного-розкладу-svden"><span class="header-section-number">5.2.5</span> Eнтропія сингулярного розкладу (SVDEn)</h3>
-<p>Ентропію сингулярного розкладу (<em>SVDEn</em>) <span class="citation" data-cites="roberts1999temporal">&nbsp;[<a href="references.html#ref-roberts1999temporal" role="doc-biblioref">11</a>]</span> можна інтуїтивно розглядати як показник того, скільки власних векторів потрібно для адекватного пояснення набору даних. Іншими словами, вона вимірює багатство ознак: чим вища <em>SVDEn</em>, тим більше ортогональних векторів потрібно для адекватного пояснення стану простору. Подібно до інформаційого показника Фішера, <em>SVDEn</em> базується на розкладанні сингулярного значення реконструйованого методом часових затримок сигналу.</p>
-<div id="a46c526f" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>         <span class="co"># часовий крок</span></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>             <span class="co"># розмірність вкладень</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>           <span class="co"># часова затримка</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>      <span class="co"># вид ряду: </span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 1 - вихідний</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 3 - прибутковості звичайні </span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 4 - стандартизовані прибутковості </span></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 6 - стандартизований ряд   </span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>SVDEn <span class="op">=</span> [] <span class="co"># масив для зберігання значень розподільної ентропії </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="100a3be9" class="cell" data-tags="[]" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<section id="eнтропія-сингулярного-розкладу" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="eнтропія-сингулярного-розкладу"><span class="header-section-number">5.2.5</span> Eнтропія сингулярного розкладу</h3>
+<p><strong>Ентропію сингулярного розкладу</strong> (Singlular value decomposition entropy, <em>SVDEn</em>) <span class="citation" data-cites="roberts1999temporal">&nbsp;[<a href="references.html#ref-roberts1999temporal" role="doc-biblioref">14</a>]</span> можна інтуїтивно розглядати як показник того, скільки власних векторів потрібно для адекватного пояснення набору даних. Іншими словами, вона вимірює багатство ознак: чим вища <em>SVDEn</em>, тим більше ортогональних векторів потрібно для адекватного пояснення стану простору. Подібно до інформаційого показника Фішера, <em>SVDEn</em> базується на розкладанні сингулярного значення реконструйованого методом часових затримок сигналу.</p>
+<div id="a46c526f" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>         <span class="co"># часовий крок</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>             <span class="co"># розмірність вкладень</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>           <span class="co"># часова затримка</span></span>
 <span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислення розподільної ентропії</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>    svden, _ <span class="op">=</span> nk.entropy_svd(signal<span class="op">=</span>fragm, </span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span>m, </span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span>tau)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>      <span class="co"># вид ряду: </span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 1 - вихідний</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 3 - прибутковості звичайні </span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 4 - стандартизовані прибутковості </span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>                  <span class="co"># 6 - стандартизований ряд   </span></span>
 <span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    SVDEn.append(svden)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code> 57%|█████▋    | 1603/2810 [00:00&lt;00:00, 1815.67it/s]</code></pre>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser.values)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>SVDEn <span class="op">=</span> [] <span class="co"># масив для зберігання значень розподільної ентропії </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="100a3be9" class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># виконуємо процедуру трансформації ряду </span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># обчислення розподільної ентропії</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    svden, _ <span class="op">=</span> nk.entropy_svd(signal<span class="op">=</span>fragm, </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span>m, </span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span>tau)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>    SVDEn.append(svden)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [00:01&lt;00:00, 1779.20it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [00:01&lt;00:00, 2679.47it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення розподільної ентропії до текстового файлу:</p>
-<div id="c56d2512" class="cell" data-execution_count="30">
+<div id="c56d2512" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"SVDEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, SVDEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="b50957a0" class="cell" data-execution_count="31">
+<div id="b50957a0" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>label_svden <span class="op">=</span> <span class="vs">fr'$SVDEn$'</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>file_name_svden <span class="op">=</span> <span class="ss">f"SVDEn_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="ss">        dim=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-n225-wind-svden" class="cell" data-execution_count="32">
+<div id="cell-fig-n225-wind-svden" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>          SVDEn, </span>
@@ -1101,9 +1101,9 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 </div>
 <p><a href="#fig-n225-wind-svden" class="quarto-xref">Рис.&nbsp;<span>5.6</span></a> показує, що ентропія сингулярного розкладу спадає у (перед)кризові періоди, що говорить про зростання кореляцій на фондовому ринку. Оскільки <span class="math inline">\(SVDEn\)</span> базується на розподілі власних векторів, можна зробити припущення, що в передкризові моменти часу динамікою ринку керують один або декілька власних векторів, які і є рушійною складновою досліджуваного індексу.</p>
 </section>
-<section id="дисперсійна-ентропія-dispen" class="level3" data-number="5.2.6">
-<h3 data-number="5.2.6" class="anchored" data-anchor-id="дисперсійна-ентропія-dispen"><span class="header-section-number">5.2.6</span> Дисперсійна ентропія (DispEn)</h3>
-<p>Для заданого одновимірного сигналу довжини <span class="math inline">\(N\)</span>: <span class="math inline">\(x=\{x_1, x_2,...,x_N\}\)</span>, алгоритм дисперсійної ентропії (<em>DispEn</em>) включає 4 основних кроки <span class="citation" data-cites="disp">&nbsp;[<a href="references.html#ref-disp" role="doc-biblioref">12</a>]</span>:</p>
+<section id="дисперсійна-ентропія" class="level3" data-number="5.2.6">
+<h3 data-number="5.2.6" class="anchored" data-anchor-id="дисперсійна-ентропія"><span class="header-section-number">5.2.6</span> Дисперсійна ентропія</h3>
+<p>Для заданого одновимірного сигналу довжини <span class="math inline">\(N\)</span>: <span class="math inline">\(x=\{x_1, x_2,...,x_N\}\)</span>, алгоритм <strong>дисперсійної ентропії</strong> (Dispersion entropy, <em>DispEn</em>) включає 4 основних кроки <span class="citation" data-cites="disp">&nbsp;[<a href="references.html#ref-disp" role="doc-biblioref">15</a>]</span>:</p>
 <ol type="1">
 <li><p>Спочатку <span class="math inline">\(x_j \, (j=1,2,...N)\)</span> відображаються на <span class="math inline">\(c\)</span> класів, позначених від <span class="math inline">\(1\)</span> до <span class="math inline">\(c\)</span>. Для цього існує ряд лінійних та нелінійних підходів. Хоча лінійний алгоритм відображення є найшвидшим, коли максимальні та/або мінімальні значення часового ряду набагато більші або менші за середнє/медіанне значення сигналу, більшість значень <span class="math inline">\(x_i\)</span> віднесено лише до кількох класів. Таким чином, ми спочатку використовуємо нормальну кумулятивну функцію розподілу (NCDF) для відображення <span class="math inline">\(x\)</span> в <span class="math inline">\(y=\{y_1,y_2,...,y_N\}\)</span> від <span class="math inline">\(0\)</span> до <span class="math inline">\(1\)</span>. Далі виконується лінійний алгоритм присвоєння кожному <span class="math inline">\(y_j\)</span> цілого числа від <span class="math inline">\(1\)</span> до <span class="math inline">\(c\)</span>. Для цього для кожного члена відображеного сигналу ми використовуємо <span class="math inline">\(z_{j}^{c} = \text{round}(y_{j} + 0.5)\)</span>, де <span class="math inline">\(z_{j}^{c}\)</span> показує <span class="math inline">\(j\)</span>-й член класифікованого часового ряду, а округлення передбачає або збільшення, або зменшення числа до наступної цифри. Варто зазначити, що цей крок можна виконати за допомогою інших лінійних та нелінійних методів відображення.</p></li>
 <li><p>Кожен вектор <span class="math inline">\(\mathbf{z}_{i}^{d_E, c}\)</span> з розмірністю <span class="math inline">\(d_E\)</span> та часовою затримкою <span class="math inline">\(\tau\)</span> має вид <span class="math inline">\(\mathbf{z}_{i}^{d_E, c} = \{ z_{i}^{c}, z_{i+\tau}^{c},...,z_{i+(d_E-1)\tau}^{c} \}\)</span>, <span class="math inline">\(i=1,...,N-(d_E-1)\tau\)</span> і проектується на дисперсійний шаблон <span class="math inline">\(\pi_{v_0, v_1,...,v_{d_E-1}}\)</span>, де <span class="math inline">\(z_{i}^{c}=v_{0}, z_{i+\tau}^{c}=v_{1},...,z_{i+(d_{E}-1)\tau}^{c}=v_{d_{E}-1}\)</span>. Кількість можливих дисперсійних шаблонів, що може бути присвоєна кожному вектору <span class="math inline">\(\mathbf{z}_{i}^{d_E, c}\)</span>, дорівнює <span class="math inline">\(c^{m}\)</span>, оскільки сигнал має <span class="math inline">\(d_E\)</span> елементів і кожному елементу може бути присвоєно ціле значення від <span class="math inline">\(1\)</span> до <span class="math inline">\(c\)</span>.</p></li>
@@ -1117,7 +1117,7 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 \]</span></p></li>
 </ol>
 <p>Коли всі можливі дисперсійні шаблони мають однакову ймовірність, отримуємо найбільше значення <em>DispEn</em>, яке має величину <span class="math inline">\(\ln{c^{d_E}}\)</span>. І навпаки, якщо тільки одне <span class="math inline">\(p(\pi_{v_0, v_1,...,v_{d_{E}-1}})\)</span> відрізняється від нуля (абсолютно регулярний/передбачуваний сигнал), отримуємо найменше значення <em>DispEn</em>.</p>
-<div id="aa92c46d" class="cell" data-execution_count="33">
+<div id="aa92c46d" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>         <span class="co"># часовий крок</span></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1145,7 +1145,7 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 <span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a>DispEn <span class="op">=</span> [] <span class="co"># масив значень для зберігання дисперсійної ентропії </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="e0c7cfe0" class="cell" data-execution_count="34">
+<div id="e0c7cfe0" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1165,17 +1165,17 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>                                    rho<span class="op">=</span>rho)</span>
 <span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    DispEn.append(Disp)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [00:04&lt;00:00, 670.81it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [00:03&lt;00:00, 757.89it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення дисперсійної ентропії до текстового файлу:</p>
-<div id="ec880eaa" class="cell" data-execution_count="35">
+<div id="ec880eaa" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"DispEn_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_d_e=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           series_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_fluct=</span><span class="sc">{</span>fluct<span class="sc">}</span><span class="ss">_rho=</span><span class="sc">{</span>rho<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           classes=</span><span class="sc">{</span>classes<span class="sc">}</span><span class="ss">_type=</span><span class="sc">{</span>Type<span class="sc">}</span><span class="ss">.txt"</span>, DispEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="34099893" class="cell" data-execution_count="36">
+<div id="34099893" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>label_dispen <span class="op">=</span> <span class="vs">fr'$DispEn$'</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>file_name_dispen <span class="op">=</span> <span class="ss">f"DispEn_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_d_e=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
@@ -1183,7 +1183,7 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="ss">           classes=</span><span class="sc">{</span>classes<span class="sc">}</span><span class="ss">_type=</span><span class="sc">{</span>Type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-n225-wind-dispen" class="cell" data-execution_count="37">
+<div id="cell-fig-n225-wind-dispen" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>          DispEn, </span>
@@ -1207,14 +1207,14 @@ PEn(\vec{X}, d_E) = -\sum_{i=1}^{d_E}p(\pi_i)\ln{p(\pi_i)}.
 </div>
 <p><a href="#fig-n225-wind-dispen" class="quarto-xref">Рис.&nbsp;<span>5.7</span></a> демонструє, що дисперсійна ентропія падає напередодні крахових періодів. Особливо помітним це предстає для крахів 1970, 1990, 2010 та 2020. Це говорить про те, що розподіл дисперсійних шаблонів стає зміщенним, що й відзеркалюється у спаді ентропії. Це також вказує на періодизацію ринку. Для періодів, коли дисперсійна ентропія максимальна, очікування трейдерів також залишаються різносторонніми, що робить ринок більш непередбачуваним.</p>
 </section>
-<section id="спектральна-ентропія-spen" class="level3" data-number="5.2.7">
-<h3 data-number="5.2.7" class="anchored" data-anchor-id="спектральна-ентропія-spen"><span class="header-section-number">5.2.7</span> Спектральна ентропія (SpEn)</h3>
-<p>Спектральна ентропія (<em>SE</em> або <em>SpEn</em>) <span class="citation" data-cites="CrepeauIsaacson+1991+137+152">&nbsp;[<a href="references.html#ref-CrepeauIsaacson+1991+137+152" role="doc-biblioref">13</a>]</span> розглядає нормовану щільність спектра потужності (PSD) сигналу в частотній області як розподіл імовірностей і обчислює його ентропію Шеннона:</p>
+<section id="спектральна-ентропія" class="level3" data-number="5.2.7">
+<h3 data-number="5.2.7" class="anchored" data-anchor-id="спектральна-ентропія"><span class="header-section-number">5.2.7</span> Спектральна ентропія</h3>
+<p><strong>Спектральна ентропія</strong> (Spectral entropy, <em>SE</em> або <em>SpEn</em>) <span class="citation" data-cites="CrepeauIsaacson+1991+137+152">&nbsp;[<a href="references.html#ref-CrepeauIsaacson+1991+137+152" role="doc-biblioref">16</a>]</span> розглядає нормовану щільність спектра потужності (power spectral density, PSD) сигналу в частотній області як розподіл імовірностей і обчислює його ентропію Шеннона:</p>
 <p><span class="math display">\[
 SpEn = -\sum P(f)\log_{2}[P(f)].
 \]</span></p>
 <p>Сигнал з однією частотною складовою (наприклад, чиста синусоїда) має найменшу ентропію. З іншого боку, сигнал з усіма частотними компонентами однакової потужності (білий шум) дає найбільшу ентропію.</p>
-<div id="b1afb231" class="cell" data-execution_count="38">
+<div id="b1afb231" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>         <span class="co"># часовий крок</span></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1240,7 +1240,7 @@ SpEn = -\sum P(f)\log_{2}[P(f)].
 <span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a>SpEn <span class="op">=</span> [] <span class="co"># масив значень для зберігання спектральної ентропії </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="349e38cf" class="cell" data-execution_count="39">
+<div id="349e38cf" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1257,23 +1257,23 @@ SpEn = -\sum P(f)\log_{2}[P(f)].
 <span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    SpEn.append(spec)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 2810/2810 [00:17&lt;00:00, 162.87it/s]</code></pre>
+<pre><code>100%|██████████| 2798/2798 [00:13&lt;00:00, 209.38it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення спектральної ентропії до текстового файлу:</p>
-<div id="47309de1" class="cell" data-execution_count="40">
+<div id="47309de1" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"SpEn_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           series_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_bins=</span><span class="sc">{</span>num_bins<span class="sc">}</span><span class="ss">_psd=</span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">.txt"</span>, SpEn)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="788730fe" class="cell" data-execution_count="41">
+<div id="788730fe" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>label_spen <span class="op">=</span> <span class="vs">fr'$SpEn$'</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>file_name_spen <span class="op">=</span> <span class="ss">f"SpEn_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="ss">                   series_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_bins=</span><span class="sc">{</span>num_bins<span class="sc">}</span><span class="ss">_psd=</span><span class="sc">{</span>method<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-n225-wind-spen" class="cell" data-execution_count="42">
+<div id="cell-fig-n225-wind-spen" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>          SpEn, </span>
@@ -1328,29 +1328,38 @@ SpEn = -\sum P(f)\log_{2}[P(f)].
 <div id="ref-app_en" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[5] </div><div class="csl-right-inline">S. M. Pincus, <em><a href="https://doi.org/10.1073/pnas.88.6.2297">Approximate Entropy as a Measure of System Complexity</a></em>, Proceedings of the National Academy of Sciences <strong>88</strong>, 2297 (1991).</div>
 </div>
+<div id="ref-pandemic_entropy" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">V. N. Soloviev, A. O. Bielinskyi, and N. A. Kharadzjan, <em><a href="https://ceur-ws.org/Vol-2832/paper02.pdf">Coverage of the Coronavirus Pandemic Through Entropy Measures</a></em>, in <em>3rd Workshop for Young Scientists in Computer Science and Software Engineering <span class="nocase">(CS and SE and SW 2020), Kryvyi Rih, Ukraine, November 27, 2020</span></em>, edited by K. A. E., S. S. O., S. V. N., and S. A. M., Vol. 2832 (CEUR-WS.org, 2021), pp. 24–42.</div>
+</div>
 <div id="ref-fuzz_en_approx_1" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">W. Chen, Z. Wang, H. Xie, and W. Yu, <em><a href="https://doi.org/10.1109/TNSRE.2007.897025">Characterization of Surface EMG Signal Based on Fuzzy Entropy</a></em>, IEEE Transactions on Neural Systems and Rehabilitation Engineering <strong>15</strong>, 266 (2007).</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">W. Chen, Z. Wang, H. Xie, and W. Yu, <em><a href="https://doi.org/10.1109/TNSRE.2007.897025">Characterization of Surface EMG Signal Based on Fuzzy Entropy</a></em>, IEEE Transactions on Neural Systems and Rehabilitation Engineering <strong>15</strong>, 266 (2007).</div>
 </div>
 <div id="ref-XIE20087140" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">H.-B. Xie, W.-X. He, and H. Liu, <em><a href="https://doi.org/10.1016/j.physleta.2008.10.049">Measuring Time Series Regularity Using Nonlinear Similarity-Based Sample Entropy</a></em>, Physics Letters A <strong>372</strong>, 7140 (2008).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">H.-B. Xie, W.-X. He, and H. Liu, <em><a href="https://doi.org/10.1016/j.physleta.2008.10.049">Measuring Time Series Regularity Using Nonlinear Similarity-Based Sample Entropy</a></em>, Physics Letters A <strong>372</strong>, 7140 (2008).</div>
+</div>
+<div id="ref-fuzzy_entropies" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">A. O. Bielinskyi, V. N. Soloviev, S. O. Semerikov, and V. V. Solovieva, <em><a href="http://doi.org/10.33111/nfmte.2021.003">IDENTIFYING STOCK MARKET CRASHES BY FUZZY MEASURES OF COMPLEXITY</a></em>, Neuro-Fuzzy Modeling Techniques in Economics <strong>10</strong>, 3 (2021).</div>
 </div>
 <div id="ref-samp_en" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J. S. Richman and J. R. Moorman, <em><a href="https://doi.org/10.1152/ajpheart.2000.278.6.H2039">Physiological Time-Series Analysis Using Approximate Entropy and Sample Entropy</a></em>, American Journal of Physiology-Heart and Circulatory Physiology <strong>278</strong>, H2039 (2000).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">J. S. Richman and J. R. Moorman, <em><a href="https://doi.org/10.1152/ajpheart.2000.278.6.H2039">Physiological Time-Series Analysis Using Approximate Entropy and Sample Entropy</a></em>, American Journal of Physiology-Heart and Circulatory Physiology <strong>278</strong>, H2039 (2000).</div>
 </div>
 <div id="ref-perm_en" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <em><a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation Entropy: A Natural Complexity Measure for Time Series</a></em>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <em><a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation Entropy: A Natural Complexity Measure for Time Series</a></em>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
 </div>
 <div id="ref-kantz2004nonlinear" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">H. Kantz and T. Schreiber, <em>Nonlinear Time Series Analysis</em> (Cambridge University Press, 2004).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">H. Kantz and T. Schreiber, <em>Nonlinear Time Series Analysis</em> (Cambridge University Press, 2004).</div>
+</div>
+<div id="ref-DBLP:conf/icteri/SolovievBS19" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">V. N. Soloviev, A. Bielinskyi, and V. Solovieva, <em><a href="https://ceur-ws.org/Vol-2393/paper_375.pdf">Entropy Analysis of Crisis Phenomena for <span>DJIA</span> Index</a></em>, in <em>Proceedings of the 15th International Conference on <span>ICT</span> in Education, Research and Industrial Applications. Integration, Harmonization and Knowledge Transfer. Volume <span>II:</span> Workshops, Kherson, Ukraine, June 12-15, 2019</em>, edited by V. Ermolayev, F. Mallet, V. Yakovyna, V. S. Kharchenko, V. Kobets, A. Kornilowicz, H. Kravtsov, M. S. Nikitchenko, S. Semerikov, and A. Spivakovsky, Vol. 2393 (CEUR-WS.org, 2019), pp. 434–449.</div>
 </div>
 <div id="ref-roberts1999temporal" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">S. J. Roberts, W. Penny, and I. Rezek, <em><a href="https://doi.org/10.1007/BF02513272">Temporal and Spatial Complexity Measures for Electroencephalogram Based Brain-Computer Interfacing</a></em>, Medical &amp; Biological Engineering &amp; Computing <strong>37</strong>, 93 (1999).</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">S. J. Roberts, W. Penny, and I. Rezek, <em><a href="https://doi.org/10.1007/BF02513272">Temporal and Spatial Complexity Measures for Electroencephalogram Based Brain-Computer Interfacing</a></em>, Medical &amp; Biological Engineering &amp; Computing <strong>37</strong>, 93 (1999).</div>
 </div>
 <div id="ref-disp" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">M. Rostaghi and H. Azami, <em><a href="https://doi.org/10.1109/LSP.2016.2542881">Dispersion Entropy: A Measure for Time-Series Analysis</a></em>, IEEE Signal Processing Letters <strong>23</strong>, 610 (2016).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Rostaghi and H. Azami, <em><a href="https://doi.org/10.1109/LSP.2016.2542881">Dispersion Entropy: A Measure for Time-Series Analysis</a></em>, IEEE Signal Processing Letters <strong>23</strong>, 610 (2016).</div>
 </div>
 <div id="ref-CrepeauIsaacson+1991+137+152" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline"><a href="https://doi.org/10.1515/jnet.1991.16.2.137">J. C. Crepeau and L. K. Isaacson, Journal of Non-Equilibrium Thermodynamics <strong>16</strong>, 137 (1991)</a>.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline"><a href="https://doi.org/10.1515/jnet.1991.16.2.137">J. C. Crepeau and L. K. Isaacson, Journal of Non-Equilibrium Thermodynamics <strong>16</strong>, 137 (1991)</a>.</div>
 </div>
 </div>
 </section>
@@ -1535,7 +1544,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1567,29 +1587,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
@@ -1597,7 +1595,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
