@@ -349,10 +349,11 @@ window.Quarto = {
   <li><a href="#процедура-реконструкції-фазового-простору" id="toc-процедура-реконструкції-фазового-простору" class="nav-link" data-scroll-target="#процедура-реконструкції-фазового-простору"><span class="header-section-number">2.2.1</span> Процедура реконструкції фазового простору</a></li>
   <li><a href="#побудова-рекурентної-матриці" id="toc-побудова-рекурентної-матриці" class="nav-link" data-scroll-target="#побудова-рекурентної-матриці"><span class="header-section-number">2.2.2</span> Побудова рекурентної матриці</a></li>
   </ul></li>
-  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">2.3</span> Завдання для самостійної роботи</a>
+  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">2.3</span> Висновок</a></li>
+  <li><a href="#завдання-для-самостійної-роботи" id="toc-завдання-для-самостійної-роботи" class="nav-link" data-scroll-target="#завдання-для-самостійної-роботи"><span class="header-section-number">2.4</span> Завдання для самостійної роботи</a>
   <ul class="collapse">
-  <li><a href="#автоматизований-підбір-параметра-часової-затримки-tau" id="toc-автоматизований-підбір-параметра-часової-затримки-tau" class="nav-link" data-scroll-target="#автоматизований-підбір-параметра-часової-затримки-tau"><span class="header-section-number">2.3.1</span> Автоматизований підбір параметра часової затримки, <span class="math inline">\(\tau\)</span></a></li>
-  <li><a href="#автоматизований-підбір-параметра-розмірності-вкладень-m" id="toc-автоматизований-підбір-параметра-розмірності-вкладень-m" class="nav-link" data-scroll-target="#автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">2.3.2</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></a></li>
+  <li><a href="#автоматизований-підбір-параметра-часової-затримки-tau" id="toc-автоматизований-підбір-параметра-часової-затримки-tau" class="nav-link" data-scroll-target="#автоматизований-підбір-параметра-часової-затримки-tau"><span class="header-section-number">2.4.1</span> Автоматизований підбір параметра часової затримки, <span class="math inline">\(\tau\)</span></a></li>
+  <li><a href="#автоматизований-підбір-параметра-розмірності-вкладень-m" id="toc-автоматизований-підбір-параметра-розмірності-вкладень-m" class="nav-link" data-scroll-target="#автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">2.4.2</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_2.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
@@ -392,7 +393,7 @@ window.Quarto = {
 <p><span class="math display">\[
 x^1(t),x^2(t),...,x^d(t),
 \]</span></p>
-<p>де верхній індекс — номер змінної. Набір із <span class="math inline">\(d\)</span> змінних стану у момент часу <span class="math inline">\(t\)</span> складає вектор стану <span class="math inline">\(\vec x(t)\)</span> в <span class="math inline">\(d\)</span>-вимірному фазовому просторі. Даний вектор переміщується в часі та в напрямі, що визначається його вектором швидкості:</p>
+<p>де верхній індекс — номер змінної. Набір із <span class="math inline">\(d\)</span> змінних стану в момент часу <span class="math inline">\(t\)</span> складає вектор стану <span class="math inline">\(\vec x(t)\)</span> в <span class="math inline">\(d\)</span>-вимірному фазовому просторі. Даний вектор переміщується в часі та в напрямі, що визначається його вектором швидкості:</p>
 <p><span class="math display">\[
 \dot{\vec x}(t)=\partial_t\vec x(t)=\vec F(t).
 \]</span></p>
@@ -1062,8 +1063,12 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>На початку свого існування Біткоїн характеризувався доволі високим ступенем передбачуваності, низькою волатильністю коливань. Надалі почали домінувати білі області, а зараз Біткоїну властива динаміка схожа з броунівським рухом.</p>
 </section>
 </section>
-<section id="завдання-для-самостійної-роботи" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">2.3</span> Завдання для самостійної роботи</h2>
+<section id="висновок" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">2.3</span> Висновок</h2>
+<p>У даній лабораторній роботі було продемонстровано можливість дослідження складних нелінійних систем із використанням рекурентних діаграм. На прикладі Біткоїна було показано, що складним фінансовим систем властива топологія узагальненого броунівського руху, де рекурентність може варіюватись із плином часу. Тобто, той самий криптовалютний ринок характеризується мінливістю ступеня передбачуваності. Змога знаходження станів передбачуваності з точки зору рекурентних діаграм надає перспективи для їх використання разом із методами прогнозування та побудови індикаторів-передвісників.</p>
+</section>
+<section id="завдання-для-самостійної-роботи" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="завдання-для-самостійної-роботи"><span class="header-section-number">2.4</span> Завдання для самостійної роботи</h2>
 <ol type="1">
 <li>Отримати індекс часового ряду у викладача</li>
 <li>Провести дослідження його рекурентних властивостей згідно інструкції</li>
@@ -1083,8 +1088,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Далі надається опис алгоритмів для автоматизованого підбору розмірності реконструйованого фазового простору та часової затримки</p>
 </div>
 </div>
-<section id="автоматизований-підбір-параметра-часової-затримки-tau" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="автоматизований-підбір-параметра-часової-затримки-tau"><span class="header-section-number">2.3.1</span> Автоматизований підбір параметра часової затримки, <span class="math inline">\(\tau\)</span></h3>
+<section id="автоматизований-підбір-параметра-часової-затримки-tau" class="level3" data-number="2.4.1">
+<h3 data-number="2.4.1" class="anchored" data-anchor-id="автоматизований-підбір-параметра-часової-затримки-tau"><span class="header-section-number">2.4.1</span> Автоматизований підбір параметра часової затримки, <span class="math inline">\(\tau\)</span></h3>
 <p>Часова затримка <span class="math inline">\(\tau\)</span> (також відома як <em>L</em>) є одним з двох критичних параметрів, що беруть участь у процедурі реконструкції фазового простору. Значення <span class="math inline">\(L\)</span> відповідає затримці у відліках між вихідним сигналом і його затриманою версією (версіями). Іншими словами, скільки відліків ми розглядаємо між певним станом сигналу та його найближчим минулим станом.</p>
 <p>Якщо <span class="math inline">\(\tau\)</span> менше оптимального теоретичного значення, послідовні координати стану системи корельовані і атрактор недостатньо розгорнутий. І навпаки, коли <span class="math inline">\(\tau\)</span> більше, ніж повинно бути, послідовні координати майже незалежні, що призводить до некорельованої та неструктурованої хмари точок.</p>
 <p>Вибір параметрів <em>затримки</em> та <em>розмірності</em> представляє нетривіальну задачу. Один з підходів полягає у їх (напів)незалежному виборі (оскільки вибір розмірності часто вимагає затримки) за допомогою функцій <code>complexity_delay()</code> та <code>complexity_dimension()</code>. Однак, існують методи спільного оцінювання, які намагаються знайти оптимальну затримку та розмірність одночасно.</p>
@@ -1103,7 +1108,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><strong>Гаутама (2003)</strong> <span class="citation" data-cites="lirias1573905">&nbsp;[<a href="references.html#ref-lirias1573905" role="doc-biblioref">15</a>]</span> зазначає, що на практиці часто використовують фіксовану часову затримку і відповідно регулюють розмірність вбудовування. Оскільки це може призвести до великих значень <span class="math inline">\(m\)</span> (а отже, до вкладених даних великого розміру) і, відповідно, до повільної обробки, використовується метод оптимізації для спільного визначення <span class="math inline">\(m\)</span> і <span class="math inline">\(\tau\)</span> на основі показника <strong>entropy ratio</strong>.</li>
 </ul>
 <p>Розглянемо оптимальні значення розмірності та затримки для часового сигналу Біткоїна:</p>
-<div id="cell-77" class="cell" data-execution_count="27">
+<div id="cell-79" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># виконуємо приведення вихідного сигналу до прибутковостей</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type)</span>
@@ -1148,7 +1153,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p><a href="#fig-btc-delay-theiler" class="quarto-xref">Рис.&nbsp;<span>2.18</span></a> демонструє, що автокореляція між стандартизованих вихідним сигналом Біткоїна та його зміщенною версією при <span class="math inline">\(\tau=195\)</span> вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Бачимо, що дане значення затримки є трохи меншим за те, що було отримано до цього, але суті це не змінює. Також бачимо, що між реконструйованими атракторами для <span class="math inline">\(\tau=195\)</span> та <span class="math inline">\(\tau=273\)</span> немає кардинальної візуальної різниці.</p>
-<div id="cell-82" class="cell" data-execution_count="30">
+<div id="cell-84" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">500</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"casdagli1991"</span>)</span>
@@ -1156,7 +1161,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>delay</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Як можна бачити по прикладу вище, не всі методи надають адекватну оцінку розмірності нашого сигналу. Спробуємо привести вихідні значення Біткоїна до прибутковостей та повторити процедуру Касдаглі ще раз.</p>
-<div id="cell-84" class="cell" data-execution_count="31">
+<div id="cell-86" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1256,7 +1261,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-95" class="cell" data-execution_count="37">
+<div id="cell-97" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dimension <span class="op">=</span> parameters[<span class="st">"Dimension"</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>dimension</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
@@ -1265,8 +1270,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 <p>Оскільки представлена вище процедура є доволі громіздкою в плані обчислювальних потужностей, ми обрали діапазон <span class="math inline">\(\tau\)</span> в межах від 1 до 10. Видно, що при <span class="math inline">\(\tau\)</span> близької до 3 оптимальне значення розмірності атрактора дорівнює 10. Можливо, при значеннях <span class="math inline">\(\tau\)</span> близьких до 100 або 200, ми могли б отримати зовсім інше значення розмірності, але це потребує додаткових експериментів.</p>
 </section>
-<section id="автоматизований-підбір-параметра-розмірності-вкладень-m" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">2.3.2</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></h3>
+<section id="автоматизований-підбір-параметра-розмірності-вкладень-m" class="level3" data-number="2.4.2">
+<h3 data-number="2.4.2" class="anchored" data-anchor-id="автоматизований-підбір-параметра-розмірності-вкладень-m"><span class="header-section-number">2.4.2</span> Автоматизований підбір параметра розмірності вкладень, <span class="math inline">\(m\)</span></h3>
 <p>За дану процедуру відповідає метод <code>complexity dimension()</code>. Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>complexity_dimension(signal, delay=1, dimension_max=20, method='afnn', show=False, **kwargs)</code></strong></p>
 <p>Хоча зазвичай використовують <span class="math inline">\(m=2\)</span> або <span class="math inline">\(m=3\)</span>, але різні автори пропонують наступні процедури підбору:</p>

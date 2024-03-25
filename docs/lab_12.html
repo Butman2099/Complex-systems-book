@@ -430,7 +430,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install git<span class="op">+</span>https:<span class="op">//</span>github.com<span class="op">/</span>josemiotto<span class="op">/</span>pylevy.git</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Після встановлення необхідного модулю можна приступати до подальшої роботи.</p>
-<div id="04c45d9c" class="cell" data-execution_count="2">
+<div id="04c45d9c" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np                 <span class="co"># бібліотека для роботи з масивами чисел</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt    <span class="co"># бібліотека для побудови графіків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf              <span class="co"># бібліотека для зчитування фінансових даних з Yahoo Finance</span></span>
@@ -446,7 +446,7 @@ window.Quarto = {
 </section>
 <section id="виконуємо-налаштування-рисунків" class="level3" data-number="12.1.2">
 <h3 data-number="12.1.2" class="anchored" data-anchor-id="виконуємо-налаштування-рисунків"><span class="header-section-number">12.1.2</span> Виконуємо налаштування рисунків</h3>
-<div id="c9bd9aed" class="cell" data-execution_count="3">
+<div id="c9bd9aed" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1336,18 +1336,18 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 <p><span class="math display">\[
 \vec{w}^* = \text{argmax}_{\vec{w}} ~ S(\vec{w}).
 \]</span></p>
-<p>Основне припущення, що лежить в основі сучасної теорії портфеля, полягає в тому, що об’єднаний розподіл логарифмічних прибутковостей всіх активів у портфелі може бути повністю охарактеризований мультиваріативним розподілом Гауса. Але тепер ми добре розуміємо цю помилку, і сучасна теорія портфеля по праву зазнала жорсткої критики за відсутність врахування “важких хвостів”, наприклад, з боку Нассіма Талеба:</p>
+<p>Основне припущення, що лежить в основі сучасної теорії портфеля, полягає в тому, що об’єднаний розподіл логарифмічних прибутковостей всіх активів у портфелі може бути повністю охарактеризований мультиваріативним розподілом Гауса. Але тепер ми добре розуміємо цю помилку, і сучасна теорія портфеля по праву зазнала жорсткої критики за відсутність врахування “важких хвостів”, наприклад, з боку Насіма Талеба:</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Нассім Талеб у <em>Чорний лебідь: Про (не)ймовірне в реальному житті</em> (ст. 277)
+Насім Талеб у <em>Чорний лебідь: Про (не)ймовірне в реальному житті</em> (ст. 277) <span class="citation" data-cites="taleb2010black">&nbsp;[<a href="references.html#ref-taleb2010black" role="doc-biblioref">2</a>]</span>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Після краху фондового ринку (у 1987 році) вони нагородили двох теоретиків, Гаррі Марковіца та Вільяма Шарпа, які побудували прекрасні платонівські моделі на гаусовій основі, сприяючи тому, що називається сучасною теорією портфеля. Простіше кажучи, якщо ви видалите їх гаусові припущення і розглядаєте ціни як масштабно-інваріантні, у вас залишиться гаряче повітря. Нобелівський комітет міг би протестувати моделі Шарпа і Марковіца — вони працюють як шарлатанські ліки, що продаються в Інтернеті, — але ніхто в Стокгольмі, схоже, про це не подумав.</p>
+<p>Після краху фондового ринку (у 1987 році) вони нагородили двох теоретиків, Гаррі Марковіца та Вільяма Шарпа, які побудували прекрасні платонівські моделі на гаусовій основі, сприяючи тому, що називається сучасною теорією портфеля. Простіше кажучи, якщо ви видалите їх гаусові припущення і розглядаєте ціни як масштабно-інваріантні, у вас залишиться гаряче повітря. Нобелівський комітет міг би протестувати моделі Шарпа і Марковіца — вони працюють як шарлатанські ліки, що продаються в Інтернеті, — але ніхто в Стокгольмі, схоже, про це не подумав</p>
 </div>
 </div>
 <p>Тут ми просто хочемо проілюструвати наслідки припущення, що фінансові системи підпорядковуються Гаусіану, змоделювавши прибутковість двох гіпотетичних акцій і спробувавши знайти ваги розподілу по максимуму Шарпа. Як ми побачимо, великі хвости в модельованих розподілах прибутковостей вносять істотну невизначеність у розрахункові ваги розподілу — прямий наслідок нестабільності дисперсії.</p>
@@ -1646,8 +1646,8 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 </section>
 <section id="розподіл-леві" class="level3" data-number="12.1.11">
 <h3 data-number="12.1.11" class="anchored" data-anchor-id="розподіл-леві"><span class="header-section-number">12.1.11</span> Розподіл Леві</h3>
-<p><strong>Альфа-стабільний розподіл</strong> є узагальненням розподілу Гауса, що враховує “важкі хвости”. З цієї причини він широко використовується при обробці сигналів, наприклад, у медицині чи фінансах.</p>
-<p>Загальний клас стабільних розподілів був введений і отримав цю назву французьким математиком Полем Леві на початку 1920-х років <span class="citation" data-cites="lévy1925calcul">&nbsp;[<a href="references.html#ref-lévy1925calcul" role="doc-biblioref">2</a>]</span>.</p>
+<p><strong>Альфа-стабільний розподіл</strong> (<span class="math inline">\(\alpha\)</span>-stable distribution) є узагальненням розподілу Гауса, що враховує “важкі хвости”. З цієї причини він широко використовується при обробці сигналів, наприклад, у медицині чи фінансах.</p>
+<p>Загальний клас стабільних розподілів був введений і отримав цю назву французьким математиком Полем Леві на початку 1920-х років <span class="citation" data-cites="lévy1925calcul">&nbsp;[<a href="references.html#ref-lévy1925calcul" role="doc-biblioref">3</a>]</span>.</p>
 <p>Раніше ця тема привертала лише помірну увагу провідних експертів. Натхненням для Леві стало бажання узагальнити відому центральну граничну теорему, згідно з якою будь-який розподіл імовірностей з кінцевою дисперсією збігається до розподілу Гауса.</p>
 <p>Стабільні розподіли мають три виняткові властивості, які можна коротко підсумувати, заявляючи, що вони:</p>
 <ul>
@@ -1662,7 +1662,7 @@ S(\vec{w}) = \vec{w}\cdot\vec{\mu} \Big/ \sqrt{\vec{w}\Sigma\vec{w}^T}.
 X_1 + X_2 + ... + X_n \stackrel{d}{=} c_{n}X + d_{n},
 \]</span></p>
 <p><em>де <span class="math inline">\(X_1, X_2, ..., X_n\)</span> характеризуються як незалежні, ідентично розподілені випадкові величини.</em> Також <span class="math inline">\(\stackrel{d}{=}\)</span> позначає <em>рівність розподілів</em>, тобто, випадкові величини з обох сторін мають однаковий розподіл імовірностей.</p>
-<p>Загалом, сума незалежних, ідентично розподілених випадкових величин результує у випадкову величину з іншим розподілом. Однак, для випадкових величин, що характеризуються <em>стабільним</em> розподілом, сума ідентично розподілених випадкових величин прямує до величини такого самого розподілу <span class="citation" data-cites="lévy1954theorie gnedenko1968limit KOZUBOWSKI2005298">&nbsp;[<a href="references.html#ref-lévy1954theorie" role="doc-biblioref">3</a>–<a href="references.html#ref-KOZUBOWSKI2005298" role="doc-biblioref">5</a>]</span>. У цьому випадку результуюча випадкова величина (розподіл) може відрізнятися від попередніх величин характерним масштабом (<span class="math inline">\(c_{n}\)</span>) та зміщенням (<span class="math inline">\(d_{n}\)</span>). Якщо <span class="math inline">\(d_{n} = 0\)</span>, розподіл називається <em>строго стабільним</em>.</p>
+<p>Загалом, сума незалежних, ідентично розподілених випадкових величин результує у випадкову величину з іншим розподілом. Однак, для випадкових величин, що характеризуються <em>стабільним</em> розподілом, сума ідентично розподілених випадкових величин прямує до величини такого самого розподілу <span class="citation" data-cites="lévy1954theorie gnedenko1968limit KOZUBOWSKI2005298">&nbsp;[<a href="references.html#ref-lévy1954theorie" role="doc-biblioref">4</a>–<a href="references.html#ref-KOZUBOWSKI2005298" role="doc-biblioref">6</a>]</span>. У цьому випадку результуюча випадкова величина (розподіл) може відрізнятися від попередніх величин характерним масштабом (<span class="math inline">\(c_{n}\)</span>) та зміщенням (<span class="math inline">\(d_{n}\)</span>). Якщо <span class="math inline">\(d_{n} = 0\)</span>, розподіл називається <em>строго стабільним</em>.</p>
 <p>Відомо, що нормована константа <span class="math inline">\(c_{n}\)</span> має вид</p>
 <p><span class="math display">\[
 c_{n} = n^{1/\alpha} \, \text{при} \,\, 0 &lt; \alpha \leq 2.
@@ -1677,7 +1677,7 @@ A X_1 + B X_2 \stackrel{d}{=} C X + D,
 <p>Стабільний розподіл вважається <em>симетричним</em>, якщо величина <span class="math inline">\(-X\)</span> має такий самий тип розподілу. <em>Симетричний</em> стабільний розподіл обов’язково <em>строго стабільний</em>.</p>
 <p>Оскільки аналітичний вираз функції щільності ймовірностей для стабільного розподілу невідомий, за винятком кількох членів стабільного сімейства, більшість традиційних методів математичної статистики не можуть бути використані. Відповідними вийнятками є</p>
 <ol type="1">
-<li><strong>Гаусовий розподіл</strong> <span class="math inline">\(S_2(0,\mu, \sigma) = \mathcal{N}(\mu, 2\sigma^2)\)</span>. Гаусовий розподіл є спеціальним випадком стабільного розподілу при <span class="math inline">\(\alpha = 2\)</span> так що <span class="math inline">\(\mathcal{N}(\mu, \sigma) = S(2,0,\mu, \frac{\sigma}{\sqrt{2}})\)</span>, де <span class="math inline">\(\mu\)</span> позначає середнє значення нормального розподілу, а <span class="math inline">\(\sigma\)</span> — це стандартне відхилення. Функція щільності ймовірностей має вид</li>
+<li><strong>Гаусовий розподіл</strong> <span class="math inline">\(S_2(0,\mu, \sigma) = \mathcal{N}(\mu, 2\sigma^2)\)</span>. Гаусовий розподіл є спеціальним випадком стабільного розподілу при <span class="math inline">\(\alpha = 2\)</span> так що <span class="math inline">\(\mathcal{N}(\mu, \sigma) = S(2,0,\mu, \sigma/\sqrt{2})\)</span>, де <span class="math inline">\(\mu\)</span> позначає середнє значення нормального розподілу, а <span class="math inline">\(\sigma\)</span> — це стандартне відхилення. Функція щільності ймовірностей має вид</li>
 </ol>
 <p><span class="math display">\[
 (\sigma\sqrt{2\pi})^{-1}\text{exp}\left[-(x-\mu)^{2}/2\sigma^{2}\right].
@@ -1710,7 +1710,7 @@ P(X \leq x) = 2 \left[ 1 - \phi \left( \sqrt{\gamma/x} \right) \right],
 </section>
 <section id="канонічні-представлення-характеристичної-функції" class="level4" data-number="12.1.11.3">
 <h4 data-number="12.1.11.3" class="anchored" data-anchor-id="канонічні-представлення-характеристичної-функції"><span class="header-section-number">12.1.11.3</span> Канонічні представлення характеристичної функції</h4>
-<p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією <span class="citation" data-cites="JSFS_2005__146_4_23_0 NOLAN1999229 DBLP:conf/m3e2/BielinskyiSSS19">&nbsp;[<a href="references.html#ref-JSFS_2005__146_4_23_0" role="doc-biblioref">6</a>–<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiSSS19" role="doc-biblioref">8</a>]</span>:</p>
+<p>Чотири параметри використовуються для опису випадкової величини, що слідує за стабільним розподілом: <span class="math inline">\(X \sim S(\alpha, \beta, \mu, \gamma)\)</span>. Параметр <span class="math inline">\(\alpha \in (0, 2]\)</span> — це той, який нас найбільше зацікавить. Цей параметр визначає товщину хвостів. Параметр <span class="math inline">\(\beta \in [-1, 1]\)</span> є параметром асиметрії. Останні два параметри позначають розташування <span class="math inline">\((\mu \in \Re)\)</span> і масштаб <span class="math inline">\((\gamma &gt; 0)\)</span> розподілу. Альфа-стабільний розподіл немає жодного аналітичного виразу для щільності ймовірності <span class="math inline">\(X\)</span>, але ми можемо охарактеризувати його характеристичною функцією <span class="citation" data-cites="JSFS_2005__146_4_23_0 NOLAN1999229 DBLP:conf/m3e2/BielinskyiSSS19">&nbsp;[<a href="references.html#ref-JSFS_2005__146_4_23_0" role="doc-biblioref">7</a>–<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiSSS19" role="doc-biblioref">9</a>]</span>:</p>
 <p><span class="math display">\[
     \begin{split}
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
@@ -1720,12 +1720,12 @@ P(X \leq x) = 2 \left[ 1 - \phi \left( \sqrt{\gamma/x} \right) \right],
         \end{cases}
     \end{split}
 \]</span></p>
-<p>Ми могли б використовувати перетворення Фур’є, щоб отримати функцію щільності розподілу ймовірностей з характеристичної функції <span class="citation" data-cites="SALASGONZALEZ2013559">&nbsp;[<a href="references.html#ref-SALASGONZALEZ2013559" role="doc-biblioref">9</a>]</span>:</p>
+<p>Ми могли б використовувати перетворення Фур’є, щоб отримати функцію щільності розподілу ймовірностей з характеристичної функції <span class="citation" data-cites="SALASGONZALEZ2013559">&nbsp;[<a href="references.html#ref-SALASGONZALEZ2013559" role="doc-biblioref">10</a>]</span>:</p>
 <p><span class="math display">\[
 f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 \]</span></p>
 <p>Але наведена вище параметризація не є повністю задовільною, оскільки функція щільності розподілу ймовірностей не є неперервною, зокрема, при <span class="math inline">\(\alpha = 1\)</span>. Дійсно, коли <span class="math inline">\(\beta &gt; 0\)</span>, щільність розподілу зміщується вправо, коли <span class="math inline">\(\alpha &lt; 1\)</span> і вліво, коли <span class="math inline">\(\alpha &gt; 1\)</span>, зі зсувом в сторону <span class="math inline">\(+\infty\)</span> (відповідно <span class="math inline">\(-\infty\)</span>), коли <span class="math inline">\(\alpha\)</span> прагне до 1. Таким чином, для прикладного аналізу даних та інтерпретації коефіцієнтів слід уникати такої параметризації.</p>
-<p>Існує багато параметризацій для стабільних законів, і ці різні параметризації викликали велику плутанину. Різноманітність параметризацій обумовлена поєднанням історичної еволюції плюс численними проблемами, які були проаналізовані за допомогою спеціалізованих форм стабільного розподілу. Є вагомі причини використовувати різні параметризації в різних ситуаціях. Якщо в пріорітеті є чисельні розрахунки, робота із даними, то краще використовувати одну параметризацію. Якщо бажані прості алгебраїчні властивості розподілу або аналітичні властивості строго стійких законів, то краще розглянути дещо інші. Нолан запропонував використовувати параметризацію Золотарьова <span class="citation" data-cites="zolotarev1986one">&nbsp;[<a href="references.html#ref-zolotarev1986one" role="doc-biblioref">10</a>]</span>, яку також часто позначають як <span class="math inline">\(S^{0}\)</span>. Характеристична функція, що відповідає <span class="math inline">\(X \sim S^{0}(\alpha, \beta, \mu_{0}, \gamma)\)</span>, дорівнює:</p>
+<p>Існує багато параметризацій для стабільних законів, і ці різні параметризації викликали велику плутанину. Різноманітність параметризацій обумовлена поєднанням історичної еволюції плюс численними проблемами, які були проаналізовані за допомогою спеціалізованих форм стабільного розподілу. Є вагомі причини використовувати різні параметризації в різних ситуаціях. Якщо в пріорітеті є чисельні розрахунки, робота із даними, то краще використовувати одну параметризацію. Якщо бажані прості алгебраїчні властивості розподілу або аналітичні властивості строго стійких законів, то краще розглянути дещо інші. Нолан запропонував використовувати параметризацію Золотарьова <span class="citation" data-cites="zolotarev1986one">&nbsp;[<a href="references.html#ref-zolotarev1986one" role="doc-biblioref">11</a>]</span>, яку також часто позначають як <span class="math inline">\(S^{0}\)</span>. Характеристична функція, що відповідає <span class="math inline">\(X \sim S^{0}(\alpha, \beta, \mu_{0}, \gamma)\)</span>, дорівнює:</p>
 <p><span class="math display">\[
     \begin{split}
     \phi(t) &amp;= E\left[\exp(itX)\right] \\
@@ -1742,11 +1742,11 @@ f(x) = \frac{1}{2\pi}\int_{-\infty}^{+\infty} \phi(t) \cdot \exp(-itX) dt.
 </section>
 <section id="метод-розрахунку-параметрів-alpha-стабільного-розподілу" class="level4" data-number="12.1.11.4">
 <h4 data-number="12.1.11.4" class="anchored" data-anchor-id="метод-розрахунку-параметрів-alpha-стабільного-розподілу"><span class="header-section-number">12.1.11.4</span> Метод розрахунку параметрів <span class="math inline">\(\alpha\)</span>-стабільного розподілу</h4>
-<p>Числові методи, такі як метод заснований на квантилях <span class="citation" data-cites="doi:10.1080/01621459.1971.10482264 doi:10.1080/03610918608812563 MCCULLOCH1996393">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1971.10482264" role="doc-biblioref">11</a>–<a href="references.html#ref-MCCULLOCH1996393" role="doc-biblioref">13</a>]</span>, і метод оцінки максимальної правдоподібності <span class="citation" data-cites="Nolan2001">&nbsp;[<a href="references.html#ref-Nolan2001" role="doc-biblioref">14</a>]</span> були розроблені на виклик відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо використали алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності <span class="citation" data-cites="MITTNIK1999275">&nbsp;[<a href="references.html#ref-MITTNIK1999275" role="doc-biblioref">15</a>]</span>:</p>
+<p>Числові методи, такі як метод заснований на квантилях <span class="citation" data-cites="doi:10.1080/01621459.1971.10482264 doi:10.1080/03610918608812563 MCCULLOCH1996393">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1971.10482264" role="doc-biblioref">12</a>–<a href="references.html#ref-MCCULLOCH1996393" role="doc-biblioref">14</a>]</span>, і метод оцінки максимальної правдоподібності <span class="citation" data-cites="Nolan2001">&nbsp;[<a href="references.html#ref-Nolan2001" role="doc-biblioref">15</a>]</span> були розроблені на виклик відсутності аналітичних рішень. Припустимо, що <span class="math inline">\(\text{X} = (X_1, ... , X_T)\)</span> вектор, що складається з <span class="math inline">\(T\)</span> незалежних ідентично розподілених випадкових величин із розподілу Парето, і також <span class="math inline">\(x \sim S_{\alpha}(\alpha, \beta, \delta, \gamma)\)</span>. Визначивши <span class="math inline">\(\theta = (\alpha, \beta, \delta, \gamma)\)</span>, Митник, Доганоглу та Ченайо використали алогритм максимальної правдоподібності і показали, що <span class="math inline">\(\theta\)</span> можна розрахувати, максимізуючи функцію логарифмічної правдоподібності <span class="citation" data-cites="MITTNIK1999275">&nbsp;[<a href="references.html#ref-MITTNIK1999275" role="doc-biblioref">16</a>]</span>:</p>
 <p><span class="math display">\[
 l(\theta, x) = \sum_{i=1}^{T}\log{f(x_{i}, \theta)}.
 \]</span></p>
-<p>Дюмушель визначив функцію правдоподібності наступним чином <span class="citation" data-cites="doi:10.1080/01621459.1973.10482458">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1973.10482458" role="doc-biblioref">16</a>]</span>:</p>
+<p>Дюмушель визначив функцію правдоподібності наступним чином <span class="citation" data-cites="doi:10.1080/01621459.1973.10482458">&nbsp;[<a href="references.html#ref-doi:10.1080/01621459.1973.10482458" role="doc-biblioref">17</a>]</span>:</p>
 <p><span class="math display">\[
 L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \right] \big/ \gamma,
 \]</span></p>
@@ -1757,7 +1757,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="хід-роботи" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">12.2</span> Хід роботи</h2>
 <p>Для демонстрації дієвості параметрів розподілу Леві в якості індикаторів (індикаторів-передвісників) крахових подій зчитаємо, наприклад, дані одного із фондових індексів Індії з Yahoo Finance:</p>
-<div id="2bf49367" class="cell" data-execution_count="72">
+<div id="2bf49367" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># встановлення назви індексу</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">"^BSESN"</span> </span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1809,7 +1809,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 </div>
 <hr>
 <p>Виводимо графік досліджуваного ряду</p>
-<div id="cell-fig-bsesn-init" class="cell" data-execution_count="73">
+<div id="cell-fig-bsesn-init" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -1836,7 +1836,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="побудова-розподілу-леві-та-розрахунок-параметрів-для-всього-ряду"><span class="header-section-number">12.2.1</span> Побудова розподілу Леві та розрахунок параметрів для всього ряду</h3>
 <p>Для приведення ряду до стандартизованого вигляду або прибутковостей визначимо функцію <code>transformations()</code>:</p>
-<div id="9a1a485f" class="cell" data-execution_count="74">
+<div id="9a1a485f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -1866,7 +1866,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <span id="cb106-27"><a href="#cb106-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Для побудови в парі певного індикатора та досліджуваного ряду визначимо функцію <code>plot_pair</code>:</p>
-<div id="42649abc" class="cell" data-execution_count="75">
+<div id="42649abc" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -1895,7 +1895,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <span id="cb107-26"><a href="#cb107-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb107-27"><a href="#cb107-27" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
 <span id="cb107-28"><a href="#cb107-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb107-29"><a href="#cb107-29" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb107-29"><a href="#cb107-29" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">45</span>, <span class="op">**</span>tkw)</span>
 <span id="cb107-30"><a href="#cb107-30" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb107-31"><a href="#cb107-31" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb107-32"><a href="#cb107-32" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
@@ -1905,7 +1905,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <span id="cb107-36"><a href="#cb107-36" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо приведення ряду до прибутковостей:</p>
-<div id="7f9ac3f8" class="cell" data-execution_count="76">
+<div id="7f9ac3f8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
@@ -1917,16 +1917,16 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <span id="cb108-9"><a href="#cb108-9" aria-hidden="true" tabindex="-1"></a>for_levy <span class="op">=</span> transformation(time_ser, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Підганяємо розподіл Леві та Гауса для порівняння:</p>
-<div id="b2b8a3da" class="cell" data-execution_count="77">
+<div id="b2b8a3da" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>params <span class="op">=</span> levy.fit_levy(for_levy)</span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>mean, std <span class="op">=</span> norm.fit(for_levy)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Отримуємо параметри розподілу Леві у відповідності до однієї із параметризацій, що пропонує пакет <code>levy</code>:</p>
-<div id="b6b52a68" class="cell" data-execution_count="78">
+<div id="b6b52a68" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>alpha, beta, mu, sigma <span class="op">=</span> params[<span class="dv">0</span>].get(<span class="st">'1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Будуємо теоретичні та емпіричні розподіли:</p>
-<div id="cell-fig-pdfs-ther-emp" class="cell" data-execution_count="80">
+<div id="cell-fig-pdfs-ther-emp" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb111"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>xmin <span class="op">=</span> for_levy.<span class="bu">min</span>()</span>
 <span id="cb111-2"><a href="#cb111-2" aria-hidden="true" tabindex="-1"></a>xmax <span class="op">=</span> for_levy.<span class="bu">max</span>()</span>
 <span id="cb111-3"><a href="#cb111-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1938,23 +1938,24 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <span id="cb111-9"><a href="#cb111-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb111-10"><a href="#cb111-10" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="vs">fr'Теоретичні та емпіричні $\alpha$-стабільні розподіли для </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="vs">'</span>)</span>
 <span id="cb111-11"><a href="#cb111-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(for_levy, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'b'</span>)</span>
-<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(x, pdf, <span class="st">'k'</span>)</span>
-<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(x, pdf_norm, <span class="st">'r'</span>)</span>
+<span id="cb111-12"><a href="#cb111-12" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].hist(for_levy, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'b'</span>, label<span class="op">=</span><span class="st">'Емпіричний'</span>)</span>
+<span id="cb111-13"><a href="#cb111-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(x, pdf, <span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Леві'</span>)</span>
+<span id="cb111-14"><a href="#cb111-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(x, pdf_norm, <span class="st">'r'</span>, label<span class="op">=</span><span class="st">'Гаус'</span>)</span>
 <span id="cb111-15"><a href="#cb111-15" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_yscale(<span class="st">'log'</span>)</span>
 <span id="cb111-16"><a href="#cb111-16" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="vs">r'$x$'</span>)</span>
 <span id="cb111-17"><a href="#cb111-17" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="vs">r'$f_{\alpha}(x), \, \mathrm</span><span class="sc">{ePDF}</span><span class="vs">$'</span>)</span>
-<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(for_levy, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>)</span>
-<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(x, pdf, <span class="st">'k'</span>)</span>
-<span id="cb111-21"><a href="#cb111-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(x, pdf_norm, <span class="st">'r'</span>)</span>
-<span id="cb111-22"><a href="#cb111-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="vs">r'$x$'</span>)</span>
-<span id="cb111-23"><a href="#cb111-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="vs">r'$f_{\alpha}(x), \, \mathrm</span><span class="sc">{ePDF}</span><span class="vs">$'</span>)</span>
-<span id="cb111-24"><a href="#cb111-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-25"><a href="#cb111-25" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Теоретичні та емпіричні альфа стабільні розподіли для </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb111-26"><a href="#cb111-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb111-27"><a href="#cb111-27" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb111-28"><a href="#cb111-28" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb111-18"><a href="#cb111-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].legend()</span>
+<span id="cb111-19"><a href="#cb111-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-20"><a href="#cb111-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].hist(for_levy, bins<span class="op">=</span><span class="dv">50</span>, density<span class="op">=</span><span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, color<span class="op">=</span><span class="st">'g'</span>)</span>
+<span id="cb111-21"><a href="#cb111-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(x, pdf, <span class="st">'k'</span>)</span>
+<span id="cb111-22"><a href="#cb111-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(x, pdf_norm, <span class="st">'r'</span>)</span>
+<span id="cb111-23"><a href="#cb111-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="vs">r'$x$'</span>)</span>
+<span id="cb111-24"><a href="#cb111-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="vs">r'$f_{\alpha}(x), \, \mathrm</span><span class="sc">{ePDF}</span><span class="vs">$'</span>)</span>
+<span id="cb111-25"><a href="#cb111-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-26"><a href="#cb111-26" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Теоретичні та емпіричні альфа стабільні розподіли для </span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb111-27"><a href="#cb111-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb111-28"><a href="#cb111-28" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb111-29"><a href="#cb111-29" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-pdfs-ther-emp" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1969,7 +1970,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 </div>
 </div>
 <p>Виводимо параметри розподілу Леві для заданого індексу</p>
-<div id="6b5a63ff" class="cell" data-execution_count="81">
+<div id="6b5a63ff" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="vs">fr"Параматери alpha = </span><span class="sc">{</span>alpha<span class="sc">:.2f}</span><span class="vs">, beta = </span><span class="sc">{</span>beta<span class="sc">:.2f}</span><span class="vs">, mu = </span><span class="sc">{</span>mu<span class="sc">:.2f}</span><span class="vs">, sigma = </span><span class="sc">{</span>sigma<span class="sc">:.2f}</span><span class="vs">"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Параматери alpha = 1.62, beta = -0.11, mu = -0.01, sigma = 0.52</code></pre>
@@ -1979,7 +1980,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 </section>
 <section id="дослідження-поведінки-альфа-стабільного-розподілу-леві" class="level3" data-number="12.2.2">
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="дослідження-поведінки-альфа-стабільного-розподілу-леві"><span class="header-section-number">12.2.2</span> Дослідження поведінки альфа-стабільного розподілу Леві</h3>
-<div id="cell-fig-pdfs-dependence" class="cell" data-execution_count="85">
+<div id="cell-fig-pdfs-dependence" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">5</span>, <span class="dv">5</span>, <span class="fl">.01</span>)</span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a>beta_1 <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="dv">0</span> </span>
@@ -2047,7 +2048,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="віконна-процедура" class="level3" data-number="12.2.3">
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">12.2.3</span> Віконна процедура</h3>
 <p>Виконуватимемо подальші обчислення для стандартизованих прибутковостей, Покажемо, що та застосуємо альфа-стабільний розподіл Леві дозволяє змоделювати типові флуктуації складних систем та передчасної ідентифікації в них критичних і кризових явищ.</p>
-<div id="a6cf2479" class="cell" data-execution_count="88">
+<div id="a6cf2479" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb115"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># ширина ковзного вікна</span></span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">5</span>       <span class="co"># крок</span></span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2066,7 +2067,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> []</span>
 <span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a>sigma <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="46696d76" class="cell" data-execution_count="89">
+<div id="46696d76" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагмент</span></span>
 <span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  </span>
@@ -2089,7 +2090,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 </div>
 </div>
 <p>Зберігаємо абсолютні значення у текстовому документі:</p>
-<div id="138ce9cb" class="cell" data-execution_count="90">
+<div id="138ce9cb" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"alpha_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, alpha)</span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"beta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, beta)</span>
 <span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"mu_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span>, mu)</span>
@@ -2099,12 +2100,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="динаміка-показника-стабільності-alpha" class="level3" data-number="12.2.4">
 <h3 data-number="12.2.4" class="anchored" data-anchor-id="динаміка-показника-стабільності-alpha"><span class="header-section-number">12.2.4</span> Динаміка показника стабільності <span class="math inline">\(\alpha\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="a6b276e9" class="cell" data-execution_count="91">
+<div id="a6b276e9" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\alpha$'</span></span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"alpha_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-alpha" class="cell" data-execution_count="92">
+<div id="cell-fig-alpha" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>          alpha, </span>
@@ -2130,12 +2131,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="динаміка-показника-асиметрії-beta" class="level3" data-number="12.2.5">
 <h3 data-number="12.2.5" class="anchored" data-anchor-id="динаміка-показника-асиметрії-beta"><span class="header-section-number">12.2.5</span> Динаміка показника асиметрії <span class="math inline">\(\beta\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="90fc08d2" class="cell" data-execution_count="93">
+<div id="90fc08d2" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb121"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\beta$'</span></span>
 <span id="cb121-2"><a href="#cb121-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"beta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-beta" class="cell" data-execution_count="94">
+<div id="cell-fig-beta" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb122"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb122-2"><a href="#cb122-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb122-3"><a href="#cb122-3" aria-hidden="true" tabindex="-1"></a>          beta, </span>
@@ -2161,12 +2162,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="динаміка-параметра-зміщення-mu" class="level3" data-number="12.2.6">
 <h3 data-number="12.2.6" class="anchored" data-anchor-id="динаміка-параметра-зміщення-mu"><span class="header-section-number">12.2.6</span> Динаміка параметра зміщення <span class="math inline">\(\mu\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="3905329d" class="cell" data-execution_count="95">
+<div id="3905329d" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\mu$'</span></span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"mu_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-mu" class="cell" data-execution_count="96">
+<div id="cell-fig-mu" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb124"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><a href="#cb124-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb124-2"><a href="#cb124-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb124-3"><a href="#cb124-3" aria-hidden="true" tabindex="-1"></a>          mu, </span>
@@ -2192,12 +2193,12 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <section id="динаміка-параметра-масштабу-sigma" class="level3" data-number="12.2.7">
 <h3 data-number="12.2.7" class="anchored" data-anchor-id="динаміка-параметра-масштабу-sigma"><span class="header-section-number">12.2.7</span> Динаміка параметра масштабу <span class="math inline">\(\sigma\)</span></h3>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="8e14efab" class="cell" data-execution_count="97">
+<div id="8e14efab" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb125"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1"><a href="#cb125-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$\sigma$'</span></span>
 <span id="cb125-2"><a href="#cb125-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"sigma_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-sigma" class="cell" data-execution_count="98">
+<div id="cell-fig-sigma" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb126-2"><a href="#cb126-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb126-3"><a href="#cb126-3" aria-hidden="true" tabindex="-1"></a>          sigma, </span>
@@ -2218,8 +2219,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 </div>
 </div>
 </div>
-<p>Із представлених результатів видно, що даний показник спадає у (перед)кризовий період, вказуючи на зменшення масштабу (форми) альфа-стабільного розподілу Леві.</p>
-<p>Отже, з усіх 4-ох показників, показник стабільності <span class="math inline">\(\alpha\)</span> є найкращим для ідентифікації кризових явищ та побудови надійних стратегій ризик-менеджменту.</p>
+<p>Із представлених результатів видно, що даний показник спадає у (перед)кризовий період, вказуючи на зменшення масштабу (форми) альфа-стабільного розподілу Леві. Отже, з усіх 4-ох показників, показник стабільності <span class="math inline">\(\alpha\)</span> є найкращим для ідентифікації кризових явищ та побудови надійних стратегій ризик-менеджменту.</p>
 </section>
 </section>
 <section id="висновок" class="level2" data-number="12.3">
@@ -2227,7 +2227,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <p>Стабільні розподіли — захоплюючий і плідний об’єкт досліджень в теорії ймовірностей; більше того, в даний час вони мають велику цінність при моделюванні складних процесів у фізиці, астрономії, економіці, теорії комунікацій тощо.</p>
 <p>У даній роботі було представлено теоретичні та чисельні обгрунтування в сторону альфа-стабільного розподілу Леві в якості практичної моделі для кращого розуміння та передбачення кризових явищ у складних системах.</p>
 <p>Тут ми представили розрахунки як для усього ряду, так і для його підфрагментів, використовуючи алгоритм ковзного вікна. Виходячи з усього ряду прибутковостей, видно, що хвости їх розподілу далеко виходять за межі Гаусового. Найкраще емпіричний розподіл прибутковостей збігається саме з теоретичним альфа-стабільним розподілом Леві.</p>
-<p>Використовуючи алгоритм сковзного вікна, ми побачили, що параметри альфа-стабільного розподілу змінюються з часом.</p>
+<p>Використовуючи алгоритм сковзного вікна, ми побачили, що параметри альфа-стабільного розподілу змінюються з часом і їх можна використовувати в якості індикаторів-передвісників крахових подій.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2238,7 +2238,7 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Nassim Taleb’s <a href="https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf"><em>Statistical Consequences of Fat Tails: Real World Preasymptotics, Epistemology, and Applications</em></a> (вільно доступна за посиланням)</p>
+<p>Nassim Taleb’s <a href="https://arxiv.org/ftp/arxiv/papers/2001/2001.10488.pdf"><em>Statistical Consequences of Fat Tails: Real World Preasymptotics, Epistemology, and Applications</em></a> (вільно доступна за посиланням) <span class="citation" data-cites="taleb2022statistical">&nbsp;[<a href="references.html#ref-taleb2022statistical" role="doc-biblioref">18</a>]</span></p>
 </div>
 </div>
 </section>
@@ -2255,50 +2255,56 @@ L(\theta) = \prod_{k=1}^{n}S_{\alpha,\beta} \left[ (X_{k} - \delta)/\gamma \righ
 <div id="ref-10.1890/07-1288.1" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[1] </div><div class="csl-right-inline">E. P. White, B. J. Enquist, and J. L. Green, <em><a href="https://doi.org/10.1890/07-1288.1">On Estimating the Exponent of Power-Law Frequency Distributions</a></em>, Ecology <strong>89</strong>, 905 (2008).</div>
 </div>
+<div id="ref-taleb2010black" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">N. N. Taleb, <em>The Black Swan: Second Edition: The Impact of the Highly Improbable Fragility</em> (Random House Publishing Group, 2010).</div>
+</div>
 <div id="ref-lévy1925calcul" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">P. Lévy, <em>Calcul Des Probabilit<span>é</span>s, Par Paul l<span>é</span>vy, ...</em> (Gauthier-Villars, 1925).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">P. Lévy, <em>Calcul Des Probabilit<span>é</span>s, Par Paul l<span>é</span>vy, ...</em> (Gauthier-Villars, 1925).</div>
 </div>
 <div id="ref-lévy1954theorie" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">P. Lévy, <em>Theorie de l’addition Des Variables Aleatoires</em> (Gauthier-Villars, 1954).</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">P. Lévy, <em>Theorie de l’addition Des Variables Aleatoires</em> (Gauthier-Villars, 1954).</div>
 </div>
 <div id="ref-gnedenko1968limit" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">B. V. Gnedenko and A. N. Kolmogorov, <em>Limit Distributions for Sums of Independent Random Variables</em> (Addison-Wesley, 1968).</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">B. V. Gnedenko and A. N. Kolmogorov, <em>Limit Distributions for Sums of Independent Random Variables</em> (Addison-Wesley, 1968).</div>
 </div>
 <div id="ref-KOZUBOWSKI2005298" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">T. J. Kozubowski, M. M. Meerschaert, A. K. Panorska, and H.-P. Scheffler, <em><a href="https://doi.org/10.1016/j.jmva.2003.09.004">Operator Geometric Stable Laws</a></em>, Journal of Multivariate Analysis <strong>92</strong>, 298 (2005).</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">T. J. Kozubowski, M. M. Meerschaert, A. K. Panorska, and H.-P. Scheffler, <em><a href="https://doi.org/10.1016/j.jmva.2003.09.004">Operator Geometric Stable Laws</a></em>, Journal of Multivariate Analysis <strong>92</strong>, 298 (2005).</div>
 </div>
 <div id="ref-JSFS_2005__146_4_23_0" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">A. Alvarez and P. Olivares, <em><a href="http://www.numdam.org/item/JSFS_2005__146_4_23_0/">Méthodes d’estimation Pour Des Lois Stables Avec Des Applications En Finance</a></em>, Journal de La Société Française de Statistique <strong>146</strong>, 23 (2005).</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Alvarez and P. Olivares, <em><a href="http://www.numdam.org/item/JSFS_2005__146_4_23_0/">Méthodes d’estimation Pour Des Lois Stables Avec Des Applications En Finance</a></em>, Journal de La Société Française de Statistique <strong>146</strong>, 23 (2005).</div>
 </div>
 <div id="ref-NOLAN1999229" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1016/S0895-7177(99)00105-3">An Algorithm for Evaluating Stable Densities in Zolotarev’s (m) Parameterization</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 229 (1999).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1016/S0895-7177(99)00105-3">An Algorithm for Evaluating Stable Densities in Zolotarev’s (m) Parameterization</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 229 (1999).</div>
 </div>
 <div id="ref-DBLP:conf/m3e2/BielinskyiSSS19" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">A. Bielinskyi, V. N. Soloviev, S. Semerikov, and V. Solovieva, <em><a href="https://ceur-ws.org/Vol-2422/paper34.pdf">Detecting Stock Crashes Using Levy Distribution</a></em>, in <em>Proceedings of the Selected Papers of the 8th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy, <span>M3E2-EEMLPEED</span> 2019, Odessa, Ukraine, May 22-24, 2019</em>, edited by A. Kiv, S. Semerikov, V. N. Soloviev, L. Kibalnyk, H. Danylchuk, and A. Matviychuk, Vol. 2422 (CEUR-WS.org, 2019), pp. 420–433.</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">A. Bielinskyi, V. N. Soloviev, S. Semerikov, and V. Solovieva, <em><a href="https://ceur-ws.org/Vol-2422/paper34.pdf">Detecting Stock Crashes Using Levy Distribution</a></em>, in <em>Proceedings of the Selected Papers of the 8th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy, <span>M3E2-EEMLPEED</span> 2019, Odessa, Ukraine, May 22-24, 2019</em>, edited by A. Kiv, S. Semerikov, V. N. Soloviev, L. Kibalnyk, H. Danylchuk, and A. Matviychuk, Vol. 2422 (CEUR-WS.org, 2019), pp. 420–433.</div>
 </div>
 <div id="ref-SALASGONZALEZ2013559" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">D. Salas-Gonzalez, J. M. Górriz, J. Ramírez, M. Schloegl, E. W. Lang, and A. Ortiz, <em><a href="https://doi.org/10.1016/j.compbiomed.2013.01.003">Parameterization of the Distribution of White and Grey Matter in MRI Using the α-Stable Distribution</a></em>, Computers in Biology and Medicine <strong>43</strong>, 559 (2013).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">D. Salas-Gonzalez, J. M. Górriz, J. Ramírez, M. Schloegl, E. W. Lang, and A. Ortiz, <em><a href="https://doi.org/10.1016/j.compbiomed.2013.01.003">Parameterization of the Distribution of White and Grey Matter in MRI Using the α-Stable Distribution</a></em>, Computers in Biology and Medicine <strong>43</strong>, 559 (2013).</div>
 </div>
 <div id="ref-zolotarev1986one" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">V. M. Zolotarev, <em>One-Dimensional Stable Distributions</em> (American Mathematical Society, 1986).</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">V. M. Zolotarev, <em>One-Dimensional Stable Distributions</em> (American Mathematical Society, 1986).</div>
 </div>
 <div id="ref-doi:10.1080/01621459.1971.10482264" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">E. F. Fama and R. Roll, <em><a href="https://doi.org/10.1080/01621459.1971.10482264">Parameter Estimates for Symmetric Stable Distributions</a></em>, Journal of the American Statistical Association <strong>66</strong>, 331 (1971).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">E. F. Fama and R. Roll, <em><a href="https://doi.org/10.1080/01621459.1971.10482264">Parameter Estimates for Symmetric Stable Distributions</a></em>, Journal of the American Statistical Association <strong>66</strong>, 331 (1971).</div>
 </div>
 <div id="ref-doi:10.1080/03610918608812563" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1080/03610918608812563">Simple Consistent Estimators of Stable Distribution Parameters</a></em>, Communications in Statistics - Simulation and Computation <strong>15</strong>, 1109 (1986).</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1080/03610918608812563">Simple Consistent Estimators of Stable Distribution Parameters</a></em>, Communications in Statistics - Simulation and Computation <strong>15</strong>, 1109 (1986).</div>
 </div>
 <div id="ref-MCCULLOCH1996393" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1016/S0169-7161(96)14015-3">13 Financial Applications of Stable Distributions</a></em>, in <em>Statistical Methods in Finance</em>, Vol. 14 (Elsevier, 1996), pp. 393–425.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. H. McCulloch, <em><a href="https://doi.org/10.1016/S0169-7161(96)14015-3">13 Financial Applications of Stable Distributions</a></em>, in <em>Statistical Methods in Finance</em>, Vol. 14 (Elsevier, 1996), pp. 393–425.</div>
 </div>
 <div id="ref-Nolan2001" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1007/978-1-4612-0197-7_17">Maximum Likelihood Estimation and Diagnostics for Stable Distributions</a></em>, in <em>L<span>é</span>vy Processes: Theory and Applications</em>, edited by O. E. Barndorff-Nielsen, S. I. Resnick, and T. Mikosch (Birkh<span>ä</span>user Boston, Boston, MA, 2001), pp. 379–400.</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">J. P. Nolan, <em><a href="https://doi.org/10.1007/978-1-4612-0197-7_17">Maximum Likelihood Estimation and Diagnostics for Stable Distributions</a></em>, in <em>L<span>é</span>vy Processes: Theory and Applications</em>, edited by O. E. Barndorff-Nielsen, S. I. Resnick, and T. Mikosch (Birkh<span>ä</span>user Boston, Boston, MA, 2001), pp. 379–400.</div>
 </div>
 <div id="ref-MITTNIK1999275" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">S. Mittnik, S. T. rachev, T. Doganoglu, and D. Chenyao, <em><a href="https://doi.org/10.1016/S0895-7177(99)00110-7">Maximum Likelihood Estimation of Stable Paretian Models</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 275 (1999).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">S. Mittnik, S. T. rachev, T. Doganoglu, and D. Chenyao, <em><a href="https://doi.org/10.1016/S0895-7177(99)00110-7">Maximum Likelihood Estimation of Stable Paretian Models</a></em>, Mathematical and Computer Modelling <strong>29</strong>, 275 (1999).</div>
 </div>
 <div id="ref-doi:10.1080/01621459.1973.10482458" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">W. H. Dumouchel, <em><a href="https://doi.org/10.1080/01621459.1973.10482458">Stable Distributions in Statistical Inference: 1. Symmetric Stable Distributions Compared to Other Symmetric Long-Tailed Distributions</a></em>, Journal of the American Statistical Association <strong>68</strong>, 469 (1973).</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">W. H. Dumouchel, <em><a href="https://doi.org/10.1080/01621459.1973.10482458">Stable Distributions in Statistical Inference: 1. Symmetric Stable Distributions Compared to Other Symmetric Long-Tailed Distributions</a></em>, Journal of the American Statistical Association <strong>68</strong>, 469 (1973).</div>
+</div>
+<div id="ref-taleb2022statistical" class="csl-entry" role="listitem">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">N. N. Taleb, <em><a href="https://arxiv.org/abs/2001.10488">Statistical Consequences of Fat Tails: Real World Preasymptotics, Epistemology, and Applications</a></em>, (2022).</div>
 </div>
 </div>
 </section>

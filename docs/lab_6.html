@@ -347,7 +347,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#хід-роботи" id="toc-хід-роботи" class="nav-link" data-scroll-target="#хід-роботи"><span class="header-section-number">6.2</span> Хід роботи</a>
   <ul class="collapse">
-  <li><a href="#обчислення-показника-херста-із-використанням-rs-аналізу" id="toc-обчислення-показника-херста-із-використанням-rs-аналізу" class="nav-link" data-scroll-target="#обчислення-показника-херста-із-використанням-rs-аналізу"><span class="header-section-number">6.2.1</span> Обчислення показника Херста із використанням <em>R/S</em>-аналізу</a></li>
+  <li><a href="#обчислення-показника-херста-з-використанням-rs-аналізу" id="toc-обчислення-показника-херста-з-використанням-rs-аналізу" class="nav-link" data-scroll-target="#обчислення-показника-херста-з-використанням-rs-аналізу"><span class="header-section-number">6.2.1</span> Обчислення показника Херста з використанням <em>R/S</em>-аналізу</a></li>
   <li><a href="#обчислення-на-основі-dfa" id="toc-обчислення-на-основі-dfa" class="nav-link" data-scroll-target="#обчислення-на-основі-dfa"><span class="header-section-number">6.2.2</span> Обчислення на основі DFA</a></li>
   <li><a href="#обчислення-фрактальної-розмірності-хігучі" id="toc-обчислення-фрактальної-розмірності-хігучі" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-хігучі"><span class="header-section-number">6.2.3</span> Обчислення фрактальної розмірності Хігучі</a></li>
   <li><a href="#обчислення-фрактальної-розмірності-петросяна" id="toc-обчислення-фрактальної-розмірності-петросяна" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-петросяна"><span class="header-section-number">6.2.4</span> Обчислення фрактальної розмірності Петросяна</a></li>
@@ -357,7 +357,8 @@ window.Quarto = {
   <li><a href="#обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" id="toc-обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності" class="nav-link" data-scroll-target="#обчислення-фрактальної-розмірності-через-нахил-спектральної-щільності-потужності"><span class="header-section-number">6.2.8</span> Обчислення фрактальної розмірності через нахил спектральної щільності потужності</a></li>
   <li><a href="#обчислення-кореляційної-розмірності" id="toc-обчислення-кореляційної-розмірності" class="nav-link" data-scroll-target="#обчислення-кореляційної-розмірності"><span class="header-section-number">6.2.9</span> Обчислення кореляційної розмірності</a></li>
   </ul></li>
-  <li><a href="#завдання-для-виконання" id="toc-завдання-для-виконання" class="nav-link" data-scroll-target="#завдання-для-виконання"><span class="header-section-number">6.3</span> Завдання для виконання</a></li>
+  <li><a href="#висновок" id="toc-висновок" class="nav-link" data-scroll-target="#висновок"><span class="header-section-number">6.3</span> Висновок</a></li>
+  <li><a href="#завдання-для-виконання" id="toc-завдання-для-виконання" class="nav-link" data-scroll-target="#завдання-для-виконання"><span class="header-section-number">6.4</span> Завдання для виконання</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.dev/Butman2099/Complex-systems-book/blob/main/lab_6.ipynb" class="toc-action"><i class="bi bi-github"></i>Редагувати сторінку</a></li></ul></div></nav>
     </div>
@@ -366,7 +367,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Лабораторна робота № 6</span></h1>
+<h1 class="title"><span id="sec-monofrac-title" class="quarto-section-identifier"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Лабораторна робота № 6</span></span></h1>
 </div>
 
 
@@ -389,7 +390,7 @@ window.Quarto = {
 <h2 data-number="6.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">6.1</span> Теоретичні відомості</h2>
 <section id="визначення-фрактала" class="level3" data-number="6.1.1">
 <h3 data-number="6.1.1" class="anchored" data-anchor-id="визначення-фрактала"><span class="header-section-number">6.1.1</span> Визначення фрактала</h3>
-<p><strong>Фракталами</strong> називають геометричні об’єкти: лінії, поверхні, просторові тіла, що мають сильно шорстку поверхню або форму і характеризуються властивістю <em>самоподібності</em> <span class="citation" data-cites="mandelbrot1982fractal PhysRevA.42.4528 10.1007/3-7643-7412-8_8">&nbsp;[<a href="references.html#ref-mandelbrot1982fractal" role="doc-biblioref">1</a>–<a href="references.html#ref-10.1007/3-7643-7412-8_8" role="doc-biblioref">3</a>]</span>. Слово фрактал походить від латинського слова <em>fractus</em> і перекладається як дробовий, ламаний. Самоподібність як основна характеристика фрактала означає, що він більш-менш однорідно змінюється в широкому діапазоні масштабів. Так, при збільшенні маленькі фрагменти фрактала стають дуже схожими на великі. В ідеальному випадку така самопподібність призводить до того, що фрактальний об’єкт виявляється інваріантним щодо розтягувань, тобто йому, як кажуть, притаманна дилатаційна симетрія. Вона передбачає незмінність основних геометричних особливостей фрактала при зміні масштабу.</p>
+<p><strong>Фракталами</strong> (fractals) називають геометричні об’єкти: лінії, поверхні, просторові тіла, що мають сильно шорстку поверхню або форму і характеризуються властивістю <em>самоподібності</em> <span class="citation" data-cites="mandelbrot1982fractal PhysRevA.42.4528 10.1007/3-7643-7412-8_8">&nbsp;[<a href="references.html#ref-mandelbrot1982fractal" role="doc-biblioref">1</a>–<a href="references.html#ref-10.1007/3-7643-7412-8_8" role="doc-biblioref">3</a>]</span>. Слово фрактал походить від латинського слова <em>fractus</em> і перекладається як дробовий, ламаний. Самоподібність як основна характеристика фрактала означає, що він більш-менш однорідно змінюється в широкому діапазоні масштабів. Так, при збільшенні маленькі фрагменти фрактала стають дуже схожими на великі. В ідеальному випадку така самопподібність призводить до того, що фрактальний об’єкт виявляється інваріантним щодо розтягувань, тобто йому, як кажуть, притаманна дилатаційна симетрія. Вона передбачає незмінність основних геометричних особливостей фрактала при зміні масштабу.</p>
 <p>Очевидно, що фрактальні об’єкти реального світу не є нескінченно самоподібними й існує мінімальний масштаб <span class="math inline">\(l_{min}\)</span>, такий, що на масштабі <span class="math inline">\(l \approx l_{min}\)</span> властивість самоподібності зникає. Окрім цього, на достатньо великих масштабах довжин <span class="math inline">\(l &gt; l_{max}\)</span>, де <span class="math inline">\(l_{max}\)</span> — характерний геометричний розмір об’єктів, ця властивість самоподібності також порушується. Тому властивості природніх фракталів розглядаються лише на масштабах <span class="math inline">\(l\)</span>, що задовільняють відношення <span class="math inline">\(l_{min} \ll l \ll l_{max}\)</span>. Такі обмеження природні, оскільки, коли ми приводимо в якості прикладу фракталу — ламану, негладку траєкторію броунівської частинки, то ми розуміємо, що цей образ представляє очевидну ідеалізацію. Справа в тому, що на малих масштабах приховується граничність маси і розмірів броунівської частинки, а також скінченність часу зіткнення. При врахуванні цих обставин траєкторія броунівської частинки починає представляти гладку криву.</p>
 <p>Варто зазначити, що властивість точної самоподібності характерна лише для <strong>регулярних фракталів</strong>. Якщо замість детермінованого способу побудови включити в алгоритм їхнього створення деякий елемент випадковості (як це буває, наприклад, у багатьох процесах диференційованого зростання кластерів, електричному пробої тощо), то виникають так звані <strong>випадкові фрактали</strong>. Основна їхня відмінність від регулярних полягає в тому, що властивості самоподібності є справедливими тільки після відповідного усереднення за всіма статистично незалежними реалізаціями об’єкта. При цьому збільшена частина фрактала не точно ідентична вихідному фрагменту, проте їхні статистичні характеристики збігаються.</p>
 </section>
@@ -411,7 +412,7 @@ window.Quarto = {
 <p><span id="eq-6-1"><span class="math display">\[
 L \approx l\left( R \big/ l \right)^{D},
 \tag{6.1}\]</span></span></p>
-<p>а <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="#eq-6-1" class="quarto-xref"><span>6.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
+<p>а <span class="math inline">\(D &gt; 1\)</span> — деякий степеневий показник, котрий іменується <strong>фрактальною розмірністю</strong> (fractal dimension) берегової лінії <span class="citation" data-cites="science.156.3775.636">&nbsp;[<a href="references.html#ref-science.156.3775.636" role="doc-biblioref">7</a>]</span>. Чим більше значення <span class="math inline">\(D\)</span>, тим більш ломаною або деталізованою представляється ця берегова лінія. Походження залежності (<a href="#eq-6-1" class="quarto-xref"><span>6.1</span></a>) має бути інтуїтивно зрозумілим: чим менший масштаб ми використовуємо, тим меньші деталі узбережжя будуть враховані і тим менший вклад вони внесуть у вимірювану довжину. Навпаки, збільшуючи масштаб, ми “розгортаємо” узбережжя, зменшуючи довжину <span class="math inline">\(L\)</span>.</p>
 <p>Таким чином, ми бачимо, що для визначення довжини берегової лінії <span class="math inline">\(L\)</span> за допомогою жорсткого масштабу <span class="math inline">\(l\)</span>, необхідно зробити <span class="math inline">\(N=L/l\)</span> кроків, причому величина <span class="math inline">\(L\)</span> змінюється з <span class="math inline">\(l\)</span> так, що <span class="math inline">\(N\)</span> залежить від <span class="math inline">\(l\)</span> за законом <span class="math inline">\(N \approx (R/l)^{D}\)</span>. У результаті зі зменшенням масштабу довжина берегової лінії необмежено зростає. Ця обставина різко відрізняє фрактальну криву від звичайної гладкої кривої (типу кола, еліпса), для якої межа довжини апроксимованої ламаної <span class="math inline">\(L\)</span>, яка апроксимує, за наближення до нуля довжини її ланки <span class="math inline">\(l\)</span> є скінченною. У результаті для гладкої кривої її фрактальна розмірність <span class="math inline">\(D = 1\)</span>, тобто збігається з топологічною.</p>
 </section>
 <section id="фрактальна-розмірність-множин" class="level3" data-number="6.1.3">
@@ -420,7 +421,7 @@ L \approx l\left( R \big/ l \right)^{D},
 <p><span id="eq-6-2"><span class="math display">\[
 N(l) \sim 1 \big/ l^D ,
 \tag{6.2}\]</span></span></p>
-<p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> або <strong>фрактальною розмірністю</strong> цього об’єкта <span class="citation" data-cites="10.1214/11-STS370">&nbsp;[<a href="references.html#ref-10.1214/11-STS370" role="doc-biblioref">9</a>]</span>. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії. <a href="#eq-6-3" class="quarto-xref">Рівняння&nbsp;<span>6.3</span></a> можна переписати у вигляді</p>
+<p>тоді <span class="math inline">\(D\)</span> — називається <strong>хаусдорфовою</strong> (Hausdorff) або <strong>фрактальною розмірністю</strong> цього об’єкта <span class="citation" data-cites="10.1214/11-STS370">&nbsp;[<a href="references.html#ref-10.1214/11-STS370" role="doc-biblioref">9</a>]</span>. Очевидно, що ця формула еквівалентна відношеню <span class="math inline">\(N \approx \left( R/l \right)^{D}\)</span>, що використовувалось вище для визначення довжини берегової лінії. <a href="#eq-6-3" class="quarto-xref">Рівняння&nbsp;<span>6.3</span></a> можна переписати у вигляді</p>
 <p><span id="eq-6-3"><span class="math display">\[
 D = -\lim_{l \to 0} \ln{N(l)} \big/ \ln{l}.
 \tag{6.3}\]</span></span></p>
@@ -431,7 +432,7 @@ D = -\lim_{l \to 0} \ln{N(l)} \big/ \ln{l}.
 <p>Наразі існує багато визначень та методів вимірювання фрактальної розмірності. Найпоширенішими одновимірними фрактальними розмірностями є розмірність Хаусдорфа, розмірність Хігучі, розмірність Петросяна та Мінковського <span class="citation" data-cites="falconer2004fractal">&nbsp;[<a href="references.html#ref-falconer2004fractal" role="doc-biblioref">10</a>]</span>. Розмірність Хаусдорфа є найпростішою фрактальною розмірністю. Але її обчислювальна складність є високою, що ускладнює її практичне застосування. Розмірність Мінковського є відносно простою, і фрактальну розмірність сигналу можна отримати, регулюючи розмір довжини сторони клітини в межах якої визначається “шорсткість” поверхні сигналу. Тому вона є широко впізнаваємою та застосовуваною. Який з показників фрактальної розмірності найточніше описує складність сигналу та здатний ідентифікувати кризові явища і представляє ключовий момент цієї лабораторної роботи.</p>
 <section id="rs-аналіз" class="level4" data-number="6.1.4.1">
 <h4 data-number="6.1.4.1" class="anchored" data-anchor-id="rs-аналіз"><span class="header-section-number">6.1.4.1</span> <em>R/S</em>-аналіз</h4>
-<p>Метод <em>R/S</em>-аналізу, розроблений Мандельбротом та Уоллесом <span class="citation" data-cites="10.1119/1.13295">&nbsp;[<a href="references.html#ref-10.1119/1.13295" role="doc-biblioref">11</a>]</span>, базується на попередньо створеному методі гідрологічного аналізу Херста <span class="citation" data-cites="doi:10.1061/TACEAT.0006518 hurst1957suggested">&nbsp;[<a href="references.html#ref-doi:10.1061/TACEAT.0006518" role="doc-biblioref">12</a>,<a href="references.html#ref-hurst1957suggested" role="doc-biblioref">13</a>]</span>, і дозволяє обчислювати параметр самоподібності <span class="math inline">\(H\)</span>, який вимірює інтенсивність довготривалих залежностей у часовому ряді. Коефіцієнт <span class="math inline">\(H\)</span>, який називають коефіцієнтом Херста, містить мінімальні прогнози стосовно природи системи, що вивчається, і може класифікувати часові ряди. За допомогою цього показника розрізняють випадкові (гаусові) та невипадкові ряди; окрім того, він пов’язаний із фрактальною розмірністю, що, у свою чергу, характеризує ступінь згладженості графіка, побудованого на основі часового ряду. Методом <em>R/S</em>-аналізу можливо також виявити максимальну довжину інтервалу (цикл), на якому значення зберігають інформацію про початкові дані системи (довготривала пам’ять).</p>
+<p><strong>Метод <em>R/S</em>-аналізу</strong> (Rescaled range, <em>R/S</em> analysis), розроблений Мандельбротом та Уоллесом <span class="citation" data-cites="10.1119/1.13295">&nbsp;[<a href="references.html#ref-10.1119/1.13295" role="doc-biblioref">11</a>]</span>, базується на попередньо створеному методі гідрологічного аналізу Херста <span class="citation" data-cites="doi:10.1061/TACEAT.0006518 hurst1957suggested">&nbsp;[<a href="references.html#ref-doi:10.1061/TACEAT.0006518" role="doc-biblioref">12</a>,<a href="references.html#ref-hurst1957suggested" role="doc-biblioref">13</a>]</span>, і дозволяє обчислювати параметр самоподібності <span class="math inline">\(H\)</span>, який вимірює інтенсивність довготривалих залежностей у часовому ряді. Коефіцієнт <span class="math inline">\(H\)</span>, який називають коефіцієнтом Херста, містить мінімальні прогнози стосовно природи системи, що вивчається, і може класифікувати часові ряди. За допомогою цього показника розрізняють випадкові (гаусові) та невипадкові ряди; окрім того, він пов’язаний із фрактальною розмірністю, що, у свою чергу, характеризує ступінь згладженості графіка, побудованого на основі часового ряду. Методом <em>R/S</em>-аналізу можливо також виявити максимальну довжину інтервалу (цикл), на якому значення зберігають інформацію про початкові дані системи (довготривала пам’ять).</p>
 <p>Аналіз починається з побудови ряду логарифмічних прибутковостей, <span class="math inline">\(G(t) \equiv \ln{x(t + \Delta t)} - \ln{x(t)}\)</span>, де <span class="math inline">\(x(t)\)</span> — значення вихідного часового ряду в момент <span class="math inline">\(t\)</span>, <span class="math inline">\(\Delta t\)</span> — часовий крок. Отримана послідовність <span class="math inline">\(G(t)\)</span> розбивається на <span class="math inline">\(d\)</span> підпослідовностей довжини <span class="math inline">\(n\)</span>.</p>
 <p>Для кожної підпослідовності <span class="math inline">\(m=1,...,d\)</span>:</p>
 <ol type="1">
@@ -445,7 +446,7 @@ D = -\lim_{l \to 0} \ln{N(l)} \big/ \ln{l}.
 <p><span id="eq-6-4"><span class="math display">\[
 \log{(R/S)}_{n} = \log{c} + H\log{n}.
 \tag{6.4}\]</span></span></p>
-<p>Знайти коефіцієнт Херста можна, побудувавши залежність <span class="math inline">\((R/S)_n\)</span> vs.&nbsp;<span class="math inline">\(n\)</span> у подвійному логарифмічному масштабі і взявши коефіцієнт нахилу прямої, яка інтерполює точки отриманого графіка. Якщо значення <span class="math inline">\(H=0.5\)</span>, говорять про послідовність, що представляє собою білий шум; <span class="math inline">\(0.5 &lt; H \leq 1\)</span> свідчить про персистентний ряд, коли існує тенденція слідування великих значень ряду за великими і навпаки; <span class="math inline">\(H&lt;0.5\)</span> вказує на антиперсистентний ряд.</p>
+<p>Знайти коефіцієнт Херста можна, побудувавши залежність <span class="math inline">\((R/S)_n\)</span> vs.&nbsp;<span class="math inline">\(n\)</span> у подвійному логарифмічному масштабі і взявши коефіцієнт нахилу прямої, яка інтерполює точки отриманого графіка. Якщо значення <span class="math inline">\(H=0.5\)</span>, говорять про послідовність, що представляє собою <strong>білий шум</strong>; <span class="math inline">\(0.5 &lt; H \leq 1\)</span> свідчить про <strong>персистентний</strong> (трендостійкий) ряд, коли існує тенденція слідування великих значень ряду за великими і навпаки; <span class="math inline">\(H&lt;0.5\)</span> вказує на <strong>антиперсистентний</strong> (mean-reversion) ряд.</p>
 <p>При збільшенні часового горизонту коефіцієнт нахилу інтерполюючої прямої повинен прямувати до значення <span class="math inline">\(H=0.5\)</span>; сам процес переходу свідчить про втрату впливу початкових умов на поточні значення, і, таким чином, можна говорити про горизонт довгої пам’яті — це точка, до якої коефіцієнт нахилу інтерполюючої прямої відмінний від 0.5, а після — близько 0.5.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -467,12 +468,12 @@ D_f = 2-H.
 </section>
 <section id="аналіз-детрендованих-флуктуацій" class="level4" data-number="6.1.4.2">
 <h4 data-number="6.1.4.2" class="anchored" data-anchor-id="аналіз-детрендованих-флуктуацій"><span class="header-section-number">6.1.4.2</span> Аналіз детрендованих флуктуацій</h4>
-<p>Аналіз детрендований флуктуацій (Detrended fluctuation analysis, DFA) <span class="citation" data-cites="PhysRevE.49.1685">&nbsp;[<a href="references.html#ref-PhysRevE.49.1685" role="doc-biblioref">14</a>]</span> базується на гіпотезі про те, що корельований часовий ряд може бути відображений на самоподібний процес шляхом інтегрування. Таким чином, вимірювання властивостей самоподібності може непрямо свідчити про кореляційні властивості ряду. Переваги DFA порівняно з іншими методами (спектральний аналіз, <em>R/S</em>-аналіз) полягають в тому, що він виявляє довгочасові кореляції нестаціонарних часових рядів, а також дозволяє ігнорувати очевидні випадкові кореляції, що є наслідком нестаціонарності <span class="citation" data-cites="JIANG2014235">&nbsp;[<a href="references.html#ref-JIANG2014235" role="doc-biblioref">15</a>]</span>.</p>
+<p><strong>Аналіз детрендований флуктуацій</strong> (Detrended fluctuation analysis, DFA) <span class="citation" data-cites="PhysRevE.49.1685">&nbsp;[<a href="references.html#ref-PhysRevE.49.1685" role="doc-biblioref">14</a>]</span> базується на гіпотезі про те, що корельований часовий ряд може бути відображений на самоподібний процес шляхом інтегрування. Таким чином, вимірювання властивостей самоподібності може непрямо свідчити про кореляційні властивості ряду. Переваги DFA порівняно з іншими методами (спектральний аналіз, <em>R/S</em>-аналіз) полягають в тому, що він виявляє довгочасові кореляції нестаціонарних часових рядів, а також дозволяє ігнорувати очевидні випадкові кореляції, що є наслідком нестаціонарності <span class="citation" data-cites="JIANG2014235">&nbsp;[<a href="references.html#ref-JIANG2014235" role="doc-biblioref">15</a>]</span>.</p>
 <p>Існують DFA різних порядків, що відрізняються трендами, які вилучаються з даних.</p>
 <p>Розглянемо DFA найнижчого порядку.</p>
 <ol type="1">
-<li>Для часового ряду довжини <span class="math inline">\(N\)</span> знаходиться кумулятивна сума, <span class="math inline">\(y(k)=\sum_{i=1}^{k}\left( x_i - \bar{x} \right)\)</span>, де <span class="math inline">\(x_i\)</span> — це <span class="math inline">\(i\)</span>-те значення часового ряду, <span class="math inline">\(\bar{x}\)</span> — його середнє значення, <span class="math inline">\(k=1,...,N\)</span>.</li>
-<li>Отриманий ряд <span class="math inline">\(y(k)\)</span> розбивається на <span class="math inline">\(m\)</span> підпослідовностей (вікон) однакової ширини <span class="math inline">\(n\)</span> і для кожної підпослідовності (у кожному вікні) виконується наступне:
+<li><p>Для часового ряду довжини <span class="math inline">\(N\)</span> знаходиться кумулятивна сума, <span class="math inline">\(y(k)=\sum_{i=1}^{k}\left( x_i - \bar{x} \right)\)</span>, де <span class="math inline">\(x_i\)</span> — це <span class="math inline">\(i\)</span>-те значення часового ряду, <span class="math inline">\(\bar{x}\)</span> — його середнє значення, <span class="math inline">\(k=1,...,N\)</span>.</p></li>
+<li><p>Отриманий ряд <span class="math inline">\(y(k)\)</span> розбивається на <span class="math inline">\(m\)</span> підпослідовностей (вікон) однакової ширини <span class="math inline">\(n\)</span> і для кожної підпослідовності (у кожному вікні) виконується наступне:</p>
 <ul>
 <li>за допомогою методу найменших квадратів знаходиться локальний лінійний тренд <span class="math inline">\(y_{t}(k)\)</span>;<br>
 </li>
@@ -522,7 +523,7 @@ F_2(s) \equiv \sqrt{\left( \frac{1}{2N_s} \sum_{v=1}^{2N_s}F^{2}(v,s) \right)}.
 </section>
 <section id="фрактальна-розмірність-хігучі" class="level4" data-number="6.1.4.3">
 <h4 data-number="6.1.4.3" class="anchored" data-anchor-id="фрактальна-розмірність-хігучі"><span class="header-section-number">6.1.4.3</span> Фрактальна розмірність Хігучі</h4>
-<p>Фрактальна розмірність Хігучі <span class="citation" data-cites="HIGUCHI1988277 7168285">&nbsp;[<a href="references.html#ref-HIGUCHI1988277" role="doc-biblioref">16</a>,<a href="references.html#ref-7168285" role="doc-biblioref">17</a>]</span> — це один з різновидів монофрактальної розмірності, яка визначається наступним чином:</p>
+<p><strong>Фрактальна розмірність Хігучі</strong> (Higuchi fractal dimension) <span class="citation" data-cites="HIGUCHI1988277 7168285">&nbsp;[<a href="references.html#ref-HIGUCHI1988277" role="doc-biblioref">16</a>,<a href="references.html#ref-7168285" role="doc-biblioref">17</a>]</span> — це один з різновидів монофрактальної розмірності, яка визначається наступним чином:</p>
 <p>Припустимо, що у нас є часовий ряд <span class="math inline">\(x(1), x(2),...,x(N)\)</span> і реконструйований часовий ряд <span class="math inline">\(x_{m}^{k} = \{ x(m), x(m+k), x(m+2k),..., x\left( m+\left[ (N-m) \big/ k \right] \cdot k \right) \}\)</span> для <span class="math inline">\(m=1,2,...,k\)</span>, де <span class="math inline">\(m\)</span> представляє початковий час; <span class="math inline">\(k=2,...,k_{max}\)</span> представляють ступінь часового зміщення. Позначення <span class="math inline">\([\cdot]\)</span> представляє цілу частину <span class="math inline">\(x\)</span>. Для кожного реконструйованого часового ряду <span class="math inline">\(x_{m}^{k}\)</span> розраховується середня довжина часової послідовності <span class="math inline">\(L_{m}(k)\)</span>:</p>
 <p><span class="math display">\[
 L_{m}(k) = \frac{\sum_{i=1}^{\left[ (N-m)/k \right]} | x(m+ik) - x(m+(i-1)\cdot k) | \cdot (N-1)}{\left[ (N-m) \big/ k \right] \cdot k}.
@@ -539,7 +540,7 @@ z_i =
     -1, &amp; x_i \leq \langle x \rangle.
 \end{cases}
 \]</span></p>
-<p>Фрактальну розмірність Петросяна <span class="citation" data-cites="465426 904882 goh:inria-00442374">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">18</a>–<a href="references.html#ref-goh:inria-00442374" role="doc-biblioref">20</a>]</span> можна визначити як</p>
+<p><strong>Фрактальну розмірність Петросяна</strong> (Petrosian fractal dimension) <span class="citation" data-cites="465426 904882 goh:inria-00442374">&nbsp;[<a href="references.html#ref-465426" role="doc-biblioref">18</a>–<a href="references.html#ref-goh:inria-00442374" role="doc-biblioref">20</a>]</span> можна визначити як</p>
 <p><span class="math display">\[
 D = \log_{10}{N} \big/ \left( \log_{10} + \log_{10}{\left[ N \big/ (N+0.4N_{\Delta}) \right]} \right),
 \]</span></p>
@@ -547,7 +548,7 @@ D = \log_{10}{N} \big/ \left( \log_{10} + \log_{10}{\left[ N \big/ (N+0.4N_{\Del
 </section>
 <section id="фрактальна-розмірність-каца" class="level4" data-number="6.1.4.5">
 <h4 data-number="6.1.4.5" class="anchored" data-anchor-id="фрактальна-розмірність-каца"><span class="header-section-number">6.1.4.5</span> Фрактальна розмірність Каца</h4>
-<p>Представимо, що сигнал складається з пари точок <span class="math inline">\(\left( x_i, y_i \right)\)</span>. Тоді, фрактальна розмірність Каца <span class="citation" data-cites="KATZ1988145">&nbsp;[<a href="references.html#ref-KATZ1988145" role="doc-biblioref">21</a>]</span> визначається як</p>
+<p>Представимо, що сигнал складається з пари точок <span class="math inline">\(\left( x_i, y_i \right)\)</span>. Тоді, <strong>фрактальна розмірність Каца</strong> (Katz fractal dimension) <span class="citation" data-cites="KATZ1988145">&nbsp;[<a href="references.html#ref-KATZ1988145" role="doc-biblioref">21</a>]</span> визначається як</p>
 <p><span class="math display">\[
 D = \log{N}/\left(\log{N} + \log{d/L}\right),
 \]</span></p>
@@ -556,7 +557,7 @@ D = \log{N}/\left(\log{N} + \log{d/L}\right),
 <section id="фрактальна-розмірність-шевчика" class="level4" data-number="6.1.4.6">
 <h4 data-number="6.1.4.6" class="anchored" data-anchor-id="фрактальна-розмірність-шевчика"><span class="header-section-number">6.1.4.6</span> Фрактальна розмірність Шевчика</h4>
 <p>Спочатку, для множини значень <span class="math inline">\(\left( x_i, y_i \right)\)</span> виконується нормалізація: <span class="math inline">\(x_{i}^{*} = \left( x_i-x_{min} \right) \big/ \left( x_{max}-x_{min} \right)\)</span> і <span class="math inline">\(y_{i}^{*} = \left( y_i - y_{min} \right) \big/ \left( y_{max}-y_{min} \right)\)</span>.</p>
-<p>Фрактальна розмірність Шевчика <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">22</a>]</span> може бути визначена як</p>
+<p><strong>Фрактальна розмірність Шевчика</strong> (Sevcik fractal dimension) <span class="citation" data-cites="sevcik2010procedure">&nbsp;[<a href="references.html#ref-sevcik2010procedure" role="doc-biblioref">22</a>]</span> може бути визначена як</p>
 <p><span class="math display">\[
 D = 1 + \left. \ln{L} \big/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
 \]</span></p>
@@ -567,7 +568,7 @@ D = 1 + \left. \ln{L} \big/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
 <p>Даний показник розраховується в наступний спосіб <span class="citation" data-cites="kalauzi2009extracting">&nbsp;[<a href="references.html#ref-kalauzi2009extracting" role="doc-biblioref">23</a>]</span>:</p>
 <ol type="1">
 <li>Для часового ряду <span class="math inline">\(\{ x_1, x_2,...,x_n \}\)</span> виконується стандартизація: <span class="math inline">\(y_i = (x_i - \mu)/\sigma\)</span>, де <span class="math inline">\(\mu\)</span> — це середнє значення ряду, <span class="math inline">\(\sigma\)</span> — це стандартне відхилення.</li>
-<li>Розраховується нормалізована щільність довжини <span class="math inline">\(NLD = \frac{1}{N}\sum_{i=2}^{N}\left| y_i - y_{i-1} \right|\)</span>. Фактичний розрахунок фрактальної розмірності сигналу базується на побудові монотонної калібрувальної кривої <span class="math inline">\(D = f(NLD)\)</span> за набором функцій Вейєрштрасса, для яких значення <span class="math inline">\(D\)</span> задаються теоретично.</li>
+<li>Розраховується нормалізована щільність довжини <span class="math inline">\(NLD = \frac{1}{N}\sum_{i=2}^{N}\left| y_i - y_{i-1} \right|\)</span>. Фактичний розрахунок <strong>фрактальної розмірності через нормалізовану щільність довжини</strong> (fractal dimension via Normalized Length Density, FNLD) базується на побудові монотонної калібрувальної кривої <span class="math inline">\(D = f(NLD)\)</span> за набором функцій Вейєрштрасса, для яких значення <span class="math inline">\(D\)</span> задаються теоретично.</li>
 <li>Для обчислювальних цілей створено дві моделі цієї залежності:
 <ul>
 <li>логарифмічну модель: <span class="math inline">\(D = a \cdot \log{\left(NLD - NLD_{0} \right)} + C\)</span>;</li>
@@ -577,13 +578,13 @@ D = 1 + \left. \ln{L} \big/ \ln{\left( 2 \cdot  [N-1] \right)} \right.,
 </section>
 <section id="фрактальна-розмірність-і-спектральна-щільність-потужності" class="level4" data-number="6.1.4.8">
 <h4 data-number="6.1.4.8" class="anchored" data-anchor-id="фрактальна-розмірність-і-спектральна-щільність-потужності"><span class="header-section-number">6.1.4.8</span> Фрактальна розмірність і спектральна щільність потужності</h4>
-<p>Фрактальну розмірність можна обчислити на основі аналізу нахилу спектральної щільності потужності (power spectral density slope, PSD) <span class="citation" data-cites="10.3389/fphys.2013.00075 Voss1988">&nbsp;[<a href="references.html#ref-10.3389/fphys.2013.00075" role="doc-biblioref">25</a>,<a href="references.html#ref-Voss1988" role="doc-biblioref">26</a>]</span> в сигналах, що характеризуються степеневою частотною залежністю.</p>
+<p>Фрактальну розмірність можна обчислити на основі аналізу нахилу <strong>спектральної щільності потужності</strong> (power spectral density slope, PSD) <span class="citation" data-cites="10.3389/fphys.2013.00075 Voss1988">&nbsp;[<a href="references.html#ref-10.3389/fphys.2013.00075" role="doc-biblioref">25</a>,<a href="references.html#ref-Voss1988" role="doc-biblioref">26</a>]</span> в сигналах, що характеризуються степеневою частотною залежністю.</p>
 <p>Спочатку виконується перетворення часового ряду до частотної області і далі сигнал розбивається на гармонійні коливання певної амплітуди, які разом “складаються”, щоб представити вихідний сигнал. Якщо існує систематичний зв’язок між частотами в сигналі і потужністю цих частот, то в логарифмічних координатах це проявляється через лінійну залежність. Кут нахилу лінії регресії приймається як оцінка фрактальної розмірності.</p>
 <p>Нахил 0 відповідає білому шуму, а нахил менше 0, але більше -1, відповідає рожевому шуму, тобто шуму <span class="math inline">\(1/f\)</span>. Спектральні нахили крутіші за -2 вказують на дробовий броунівський рух, що є проявом процесів випадкового блукання.</p>
 </section>
 <section id="кореляційна-розмірність" class="level4" data-number="6.1.4.9">
 <h4 data-number="6.1.4.9" class="anchored" data-anchor-id="кореляційна-розмірність"><span class="header-section-number">6.1.4.9</span> Кореляційна розмірність</h4>
-<p>Кореляційна розмірність (<span class="math inline">\(D_2\)</span>) — це похідна величина від кореляційного інтеграла (кореляційної суми) і може бути подана у вигляді <span class="citation" data-cites="GRASSBERGER1983189 PhysRevLett.50.346 GRASSBERGER1983227">&nbsp;[<a href="references.html#ref-GRASSBERGER1983189" role="doc-biblioref">27</a>–<a href="references.html#ref-GRASSBERGER1983227" role="doc-biblioref">29</a>]</span>:</p>
+<p><strong>Кореляційна розмірність</strong> (correlation dimension, <span class="math inline">\(D_2\)</span>) — це похідна величина від кореляційного інтеграла (кореляційної суми) і може бути подана у вигляді <span class="citation" data-cites="GRASSBERGER1983189 PhysRevLett.50.346 GRASSBERGER1983227">&nbsp;[<a href="references.html#ref-GRASSBERGER1983189" role="doc-biblioref">27</a>–<a href="references.html#ref-GRASSBERGER1983227" role="doc-biblioref">29</a>]</span>:</p>
 <p><span class="math display">\[
 C(\varepsilon) = \frac{1}{N^{2}}\sum_{\substack{i,j=1 \\ i\neq j}}^{N}\Theta \left( \varepsilon - \| \vec{x}(i) - \vec{x}(j) \| \right), \; \vec{x}(i) \in \Re^{m}.
 \]</span></p>
@@ -648,7 +649,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>На цьому етапі скористаємось монофрактальними показниками для ідентифікації кризових явищ на ринку золота. Розглянемо ціну золота, наприклад, за період з 1 грудня 2001 року по 1 листопада 2023 року:</p>
-<div id="cell-41" class="cell" data-execution_count="4">
+<div id="cell-41" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'GC=F'</span>          <span class="co"># Символ індексу</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2001-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-11-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
@@ -690,7 +691,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div id="cell-fig-gold-init" class="cell" data-execution_count="5">
+<div id="cell-fig-gold-init" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -715,7 +716,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </div>
 </div>
 <p>Визначимо функцію <code>transformation()</code> для стандартизації ряду:</p>
-<div id="cell-49" class="cell" data-execution_count="6">
+<div id="cell-49" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -744,14 +745,14 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="обчислення-показника-херста-із-використанням-rs-аналізу" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="обчислення-показника-херста-із-використанням-rs-аналізу"><span class="header-section-number">6.2.1</span> Обчислення показника Херста із використанням <em>R/S</em>-аналізу</h3>
+<section id="обчислення-показника-херста-з-використанням-rs-аналізу" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="обчислення-показника-херста-з-використанням-rs-аналізу"><span class="header-section-number">6.2.1</span> Обчислення показника Херста з використанням <em>R/S</em>-аналізу</h3>
 <p>Для подальших розрахунків використовуватимемо бібліотеку <code>neurokit2</code> та <code>fathon</code>. Другу з них можна встановити в наступний спосіб:</p>
 <div id="cell-52" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install fathon</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі імпортуємо саму бібліотеку та дотичні до неї модулі:</p>
-<div id="cell-54" class="cell" data-execution_count="8">
+<div id="cell-54" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fathon</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fathon <span class="im">import</span> fathonUtils <span class="im">as</span> fu</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -772,8 +773,8 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <p>Розглянемо ступінь трендостійкості в динаміці ціни золота, використовуючи весь часовий ряд. Далі знайдемо значення показника Херста в рамках віконної процедури.</p>
 <section id="увесь-часовий-ряд" class="level4" data-number="6.2.1.1">
 <h4 data-number="6.2.1.1" class="anchored" data-anchor-id="увесь-часовий-ряд"><span class="header-section-number">6.2.1.1</span> Увесь часовий ряд</h4>
-<p>Першочергово знайдемо значення прибутковостей для нашого ряду та стандартизуємо їх. Після цього виконаємо обчислення.</p>
-<div id="cell-60" class="cell" data-execution_count="9">
+<p>Першочергово знайдемо значення прибутковостей для нашого ряду та стандартизуємо їх. Після цього виконаємо обчислення:</p>
+<div id="cell-60" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -786,7 +787,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>for_rs <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виконуємо <em>R/S</em>-аналіз:</p>
-<div id="cell-fig-gold-rs-all" class="cell" data-execution_count="10">
+<div id="cell-fig-gold-rs-all" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>h, info <span class="op">=</span> nk.fractal_hurst(for_rs, corrected<span class="op">=</span><span class="va">False</span>, show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-gold-rs-all" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -806,7 +807,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура" class="level4" data-number="6.2.1.2">
 <h4 data-number="6.2.1.2" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">6.2.1.2</span> Віконна процедура</h4>
 <p>Визначимо функцію для побудови парних графіків:</p>
-<div id="cell-66" class="cell" data-execution_count="12">
+<div id="cell-66" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -835,7 +836,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
 <span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, <span class="op">**</span>tkw)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">45</span>, <span class="op">**</span>tkw)</span>
 <span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
 <span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
@@ -845,7 +846,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Приступимо до віконної процедури:</p>
-<div id="cell-68" class="cell" data-execution_count="13">
+<div id="cell-68" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># встановлюємо параметри</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>                   <span class="co"># вид ряду</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>                   <span class="co"># ширина вікна</span></span>
@@ -855,7 +856,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> []                         <span class="co"># масив для віконного Херсту</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-69" class="cell" data-execution_count="14">
+<div id="cell-69" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)): <span class="co"># фрагменти довжиною window  </span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="co"># з кроком tstep</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -871,20 +872,20 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># та додаємо результат до масиву значень</span></span>
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    H.append(h)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  7%|▋         | 416/5663 [00:00&lt;00:10, 524.31it/s]100%|██████████| 5663/5663 [00:10&lt;00:00, 515.78it/s]</code></pre>
+<pre><code>  5%|▌         | 289/5664 [00:00&lt;00:11, 481.96it/s]100%|██████████| 5664/5664 [00:11&lt;00:00, 486.74it/s]</code></pre>
 </div>
 </div>
-<div id="cell-70" class="cell" data-execution_count="15">
+<div id="cell-70" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"rs_hurst_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_corrected=</span><span class="sc">{</span>corr<span class="sc">}</span><span class="ss">.txt"</span> , H)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Візуалізуємо результат:</p>
-<div id="cell-72" class="cell" data-execution_count="16">
+<div id="cell-72" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r'$H$'</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"rs_hurst_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ss">           rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_corrected=</span><span class="sc">{</span>corr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-gold-wind-rs" class="cell" data-execution_count="17">
+<div id="cell-fig-gold-wind-rs" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          H, </span>
@@ -915,7 +916,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <h4 data-number="6.2.2.1" class="anchored" data-anchor-id="для-всього-ряду"><span class="header-section-number">6.2.2.1</span> Для всього ряду</h4>
 <p>Спочатку представимо значення <span class="math inline">\(\alpha\)</span> для всього ряду. Процедура розрахунків на основі бібліотеки <code>fathon</code> виглядатиме наступним чином:</p>
 <p>Знаходимо стандартизовані прибутковості ряду:</p>
-<div id="cell-80" class="cell" data-execution_count="18">
+<div id="cell-80" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -927,7 +928,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>for_dfa <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-81" class="cell" data-execution_count="19">
+<div id="cell-81" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>cumulat <span class="op">=</span> fu.toAggregated(for_dfa) <span class="co"># знаходимо кумулятивні накопичення</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>rev <span class="op">=</span> <span class="va">True</span> <span class="co"># чи повторювати розрахунок ф-ції флуктуацій з кінця</span></span>
@@ -950,12 +951,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>H, H_intercept <span class="op">=</span> pydfa.fitFlucVec()        <span class="co"># знаходимо показник альфа</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо залежність функції флуктуацій від масштабу:</p>
-<div id="cell-83" class="cell" data-execution_count="20">
+<div id="cell-83" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>polyfit <span class="op">=</span> np.polyfit(np.log(n), np.log(F), <span class="dv">1</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>fluctfit <span class="op">=</span> np.exp(<span class="dv">1</span>) <span class="op">**</span> np.polyval(polyfit, np.log(n))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Будуємо залежність функції флуктуацій від масштабу в подвійному логарифмічному масштабі:</p>
-<div id="cell-fig-gold-dfa-all" class="cell" data-execution_count="21">
+<div id="cell-fig-gold-dfa-all" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">"Показник Херста на основі DFA"</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -996,7 +997,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-1" class="level4" data-number="6.2.2.2">
 <h4 data-number="6.2.2.2" class="anchored" data-anchor-id="віконна-процедура-1"><span class="header-section-number">6.2.2.2</span> Віконна процедура</h4>
 <p>Визначимо наступні параметри:</p>
-<div id="cell-89" class="cell" data-execution_count="22">
+<div id="cell-89" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -1026,7 +1027,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> []               <span class="co"># показник автокореляції</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Знайдемо показник Херста (<span class="math inline">\(\alpha\)</span>), фрактальну розмірність (<span class="math inline">\(D_f\)</span>), показник спектральної щільності (<span class="math inline">\(\beta\)</span>) та показник автокореляції (<span class="math inline">\(\gamma\)</span>):</p>
-<div id="cell-91" class="cell" data-execution_count="23">
+<div id="cell-91" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1064,11 +1065,11 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    beta.append(bi)</span>
 <span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>    gamma.append(gi)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 5663/5663 [00:55&lt;00:00, 102.04it/s]</code></pre>
+<pre><code>100%|██████████| 5664/5664 [00:50&lt;00:00, 112.62it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо абсолютні значення показників до текстових файлів:</p>
-<div id="cell-93" class="cell" data-execution_count="24">
+<div id="cell-93" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"alpha_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="ss">            </span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, alpha)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"D_f_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
@@ -1079,7 +1080,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="ss">            </span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">.txt"</span>, gamma)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-95" class="cell" data-execution_count="25">
+<div id="cell-95" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>label_alpha <span class="op">=</span> <span class="vs">fr'$\alpha$'</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>label_d <span class="op">=</span> <span class="vs">fr'$D_f$'</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>label_beta <span class="op">=</span> <span class="vs">fr'$\beta$'</span></span>
@@ -1095,7 +1096,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="ss">            </span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>order<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>win_beg<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>win_end<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результати:</p>
-<div id="cell-fig-gold-wind-alpha" class="cell" data-execution_count="26">
+<div id="cell-fig-gold-wind-alpha" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>          alpha, </span>
@@ -1117,7 +1118,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </div>
 </div>
 <p>Якщо порівнювати з <em>R/S</em>-аналізом, <a href="#fig-gold-wind-alpha" class="quarto-xref">Рис.&nbsp;<span>6.6</span></a> демонструє, що DFA динаміка <em>узагальненого показника Херста</em> є набагато стабільнішою. Тепер ми здатні диференціювати значну частку крахових подій, що мали місце на ринку золота. Узагальнений Херст показує, що передкризові явища характеризуються зростанням трендостійкості ринку, підвищенням ступеня самоорганізації системи.</p>
-<div id="cell-fig-gold-wind-df" class="cell" data-execution_count="27">
+<div id="cell-fig-gold-wind-df" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>          D_f, </span>
@@ -1139,7 +1140,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </div>
 </div>
 <p><a href="#fig-gold-wind-df" class="quarto-xref">Рис.&nbsp;<span>6.7</span></a> показує, що <span class="math inline">\(D_f\)</span> характеризується спадом при кризових станах. Це є індикатором того, що вищий ступень організованості ринку відзеркалюється в більш згладженій або менш волатильних флуктуаціях досліджуваного сигналу.</p>
-<div id="cell-fig-gold-wind-beta" class="cell" data-execution_count="28">
+<div id="cell-fig-gold-wind-beta" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>          beta, </span>
@@ -1161,7 +1162,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </div>
 </div>
 <p>Спектральна густина потужності <span class="math inline">\(\beta\)</span> <a href="#eq-spec-dens" class="quarto-xref">Рівняння&nbsp;<span>6.5</span></a> зростає в кризові періоди, що свідчить про спад потужності сигналу на одиничному інтервалі частоти. Це також є свідченням зростання кореляційних властивостей системи.</p>
-<div id="cell-fig-gold-wind-gamma" class="cell" data-execution_count="29">
+<div id="cell-fig-gold-wind-gamma" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>          gamma, </span>
@@ -1205,7 +1206,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="для-всього-ряду-1" class="level4" data-number="6.2.3.1">
 <h4 data-number="6.2.3.1" class="anchored" data-anchor-id="для-всього-ряду-1"><span class="header-section-number">6.2.3.1</span> Для всього ряду</h4>
 <p>Для подальших розрахунків спочатку виконаємо перетворення ряду. Будемо використовувати вихідний часовий ряд для подальших розрахунків:</p>
-<div id="cell-110" class="cell" data-execution_count="30">
+<div id="cell-110" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -1218,7 +1219,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>for_higuchi <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І тепер отримаємо оптимальне значення <span class="math inline">\(k_{max}\)</span> згідно зазначеної процедури:</p>
-<div id="cell-fig-gold-kmax-all" class="cell" data-execution_count="31">
+<div id="cell-fig-gold-kmax-all" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>k_max, info <span class="op">=</span> nk.complexity_k(for_higuchi, k_max<span class="op">=</span><span class="dv">100</span>, show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-gold-kmax-all" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1246,7 +1247,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <li><strong>HFD</strong> (<em>float</em>) — фрактальна розмірність Хігучі для досліджуваного часового ряду;</li>
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить додаткову інформацію про параметри, які використовуються для обчислення фрактальної розмірності Хігучі.</li>
 </ul>
-<div id="cell-fig-gold-higuchi-all" class="cell" data-execution_count="32">
+<div id="cell-fig-gold-higuchi-all" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>hfd, info <span class="op">=</span> nk.fractal_higuchi(for_higuchi, k_max<span class="op">=</span>k_max, show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-gold-higuchi-all" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -1266,7 +1267,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-2" class="level4" data-number="6.2.3.2">
 <h4 data-number="6.2.3.2" class="anchored" data-anchor-id="віконна-процедура-2"><span class="header-section-number">6.2.3.2</span> Віконна процедура</h4>
 <p>Скористаємось наступними параметрами:</p>
-<div id="cell-119" class="cell" data-execution_count="33">
+<div id="cell-119" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -1285,7 +1286,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>hfd_wind <span class="op">=</span> []                      <span class="co"># масив показників Хігучі</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-121" class="cell" data-execution_count="34">
+<div id="cell-121" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1302,23 +1303,23 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>    hfd_wind.append(higuchi)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 5663/5663 [00:13&lt;00:00, 414.26it/s]</code></pre>
+<pre><code>100%|██████████| 5664/5664 [00:14&lt;00:00, 401.59it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-123" class="cell" data-execution_count="35">
+<div id="cell-123" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_higuchi_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_kmax=</span><span class="sc">{</span>k_max_wind<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span>, hfd_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-125" class="cell" data-execution_count="36">
+<div id="cell-125" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>label_higuchi <span class="op">=</span> <span class="vs">fr'$HFD$'</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>file_name_higuchi <span class="op">=</span> <span class="ss">f"fd_higuchi_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_kmax=</span><span class="sc">{</span>k_max_wind<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-higuchi" class="cell" data-execution_count="37">
+<div id="cell-fig-gold-wind-higuchi" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>          hfd_wind, </span>
@@ -1370,7 +1371,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-3" class="level4" data-number="6.2.4.1">
 <h4 data-number="6.2.4.1" class="anchored" data-anchor-id="віконна-процедура-3"><span class="header-section-number">6.2.4.1</span> Віконна процедура</h4>
 <p>Оскільки більшість з даних методів дискретизації вимагають детрендування ряду, будемо виконувати розрахунки для прибутковостей ціни золота. Скористаємось наступними параметрами:</p>
-<div id="cell-136" class="cell" data-execution_count="38">
+<div id="cell-136" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -1389,7 +1390,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>petr_wind <span class="op">=</span> []                 <span class="co"># масив показників Петросяна</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-138" class="cell" data-execution_count="39">
+<div id="cell-138" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1406,23 +1407,23 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    petr_wind.append(petrocian)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 5663/5663 [00:04&lt;00:00, 1240.52it/s]</code></pre>
+<pre><code> 89%|████████▉ | 5036/5664 [00:04&lt;00:00, 1195.36it/s]100%|██████████| 5664/5664 [00:04&lt;00:00, 1210.50it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-140" class="cell" data-execution_count="40">
+<div id="cell-140" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_petrosian_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_method=</span><span class="sc">{</span>symb<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span>, petr_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-142" class="cell" data-execution_count="41">
+<div id="cell-142" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>label_petrocian <span class="op">=</span> <span class="vs">fr'$PFD$'</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>file_name_petrocian <span class="op">=</span> <span class="ss">f"fd_petrosian_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_method=</span><span class="sc">{</span>symb<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-petro" class="cell" data-execution_count="42">
+<div id="cell-fig-gold-wind-petro" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>          petr_wind, </span>
@@ -1464,7 +1465,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-4" class="level4" data-number="6.2.5.1">
 <h4 data-number="6.2.5.1" class="anchored" data-anchor-id="віконна-процедура-4"><span class="header-section-number">6.2.5.1</span> Віконна процедура</h4>
 <p>Оскільки даний показник є параметронезалежним, нам достатньо буде лише розміру часового вікна, кроку та типу ряду:</p>
-<div id="cell-151" class="cell" data-execution_count="43">
+<div id="cell-151" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -1481,7 +1482,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>kz_wind <span class="op">=</span> []                      <span class="co"># масив показників Каца</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-153" class="cell" data-execution_count="44">
+<div id="cell-153" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1496,21 +1497,21 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>    kz_wind.append(katz)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code> 78%|███████▊  | 4423/5663 [00:00&lt;00:00, 5510.57it/s]100%|██████████| 5663/5663 [00:01&lt;00:00, 5507.52it/s]</code></pre>
+<pre><code>100%|██████████| 5664/5664 [00:01&lt;00:00, 5211.83it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-155" class="cell" data-execution_count="45">
+<div id="cell-155" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_katz_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span>, kz_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-157" class="cell" data-execution_count="46">
+<div id="cell-157" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>label_katz <span class="op">=</span> <span class="vs">fr'$KFD$'</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>file_name_katz <span class="op">=</span> <span class="ss">f"fd_katz_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-katz" class="cell" data-execution_count="47">
+<div id="cell-fig-gold-wind-katz" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>          kz_wind, </span>
@@ -1550,7 +1551,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </ul>
 <section id="віконна-процедура-5" class="level4" data-number="6.2.6.1">
 <h4 data-number="6.2.6.1" class="anchored" data-anchor-id="віконна-процедура-5"><span class="header-section-number">6.2.6.1</span> Віконна процедура</h4>
-<div id="cell-165" class="cell" data-execution_count="48">
+<div id="cell-165" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -1567,7 +1568,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>sfd_wind <span class="op">=</span> []                      <span class="co"># масив показників Севчика</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-167" class="cell" data-execution_count="49">
+<div id="cell-167" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1582,21 +1583,21 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    sfd_wind.append(sevcik)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code> 56%|█████▌    | 3182/5663 [00:00&lt;00:00, 4571.63it/s]100%|██████████| 5663/5663 [00:01&lt;00:00, 4536.64it/s]</code></pre>
+<pre><code>100%|██████████| 5664/5664 [00:01&lt;00:00, 4451.83it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-169" class="cell" data-execution_count="50">
+<div id="cell-169" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_cevcik_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span>, sfd_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-171" class="cell" data-execution_count="51">
+<div id="cell-171" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>label_sevcik <span class="op">=</span> <span class="vs">fr'$SFD$'</span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>file_name_sevcik <span class="op">=</span> <span class="ss">f"fd_cevcik_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-sevcik" class="cell" data-execution_count="52">
+<div id="cell-fig-gold-wind-sevcik" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>          sfd_wind, </span>
@@ -1638,7 +1639,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-6" class="level4" data-number="6.2.7.1">
 <h4 data-number="6.2.7.1" class="anchored" data-anchor-id="віконна-процедура-6"><span class="header-section-number">6.2.7.1</span> Віконна процедура</h4>
 <p>Для цього показника нам також не потребується нічого зайвого:</p>
-<div id="cell-180" class="cell" data-execution_count="53">
+<div id="cell-180" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -1657,7 +1658,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a>nldfd_wind <span class="op">=</span> []                    <span class="co"># масив показників </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-182" class="cell" data-execution_count="54">
+<div id="cell-182" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1673,23 +1674,23 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a>    nldfd_wind.append(nld)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 5663/5663 [00:04&lt;00:00, 1286.46it/s]</code></pre>
+<pre><code> 65%|██████▌   | 3683/5664 [00:02&lt;00:01, 1270.52it/s]100%|██████████| 5664/5664 [00:04&lt;00:00, 1240.46it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-184" class="cell" data-execution_count="55">
+<div id="cell-184" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_nld_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_corrected=</span><span class="sc">{</span>nld_corrected<span class="sc">}</span><span class="ss">.txt"</span>, nldfd_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-186" class="cell" data-execution_count="56">
+<div id="cell-186" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>label_nld <span class="op">=</span> <span class="vs">fr'$NLDFD$'</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>file_name_nld <span class="op">=</span> <span class="ss">f"fd_nld_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a><span class="ss">                step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_corrected=</span><span class="sc">{</span>nld_corrected<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-nld" class="cell" data-execution_count="57">
+<div id="cell-fig-gold-wind-nld" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>          nldfd_wind, </span>
@@ -1732,7 +1733,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="для-всього-ряду-2" class="level4" data-number="6.2.8.1">
 <h4 data-number="6.2.8.1" class="anchored" data-anchor-id="для-всього-ряду-2"><span class="header-section-number">6.2.8.1</span> Для всього ряду</h4>
 <p>Для подальших розрахунків спочатку виконаємо перетворення ряду. Будемо використовувати вихідний часовий ряд для подальших розрахунків:</p>
-<div id="cell-195" class="cell" data-execution_count="58">
+<div id="cell-195" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -1745,7 +1746,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb65-10"><a href="#cb65-10" aria-hidden="true" tabindex="-1"></a>for_psd <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І тепер виведемо графік залежності спектральної щільності потужності від частоти в логарифмічному масштабі:</p>
-<div id="cell-fig-gold-psd-all" class="cell" data-execution_count="59">
+<div id="cell-fig-gold-psd-all" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>psdslope, info <span class="op">=</span> nk.fractal_psdslope(for_psd,</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>                                     method<span class="op">=</span><span class="st">"voss1988"</span>,</span>
 <span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>                                     show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1768,7 +1769,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-7" class="level4" data-number="6.2.8.2">
 <h4 data-number="6.2.8.2" class="anchored" data-anchor-id="віконна-процедура-7"><span class="header-section-number">6.2.8.2</span> Віконна процедура</h4>
 <p>Встановимо наступні параметри:</p>
-<div id="cell-201" class="cell" data-execution_count="60">
+<div id="cell-201" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -1788,7 +1789,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a>psd_wind <span class="op">=</span> []                  <span class="co"># масив показників </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-203" class="cell" data-execution_count="61">
+<div id="cell-203" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1803,23 +1804,23 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a>    psd_wind.append(psd)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  6%|▌         | 334/5663 [00:00&lt;00:13, 405.54it/s]100%|██████████| 5663/5663 [00:13&lt;00:00, 416.58it/s]</code></pre>
+<pre><code>100%|██████████| 5664/5664 [00:13&lt;00:00, 408.69it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-205" class="cell" data-execution_count="62">
+<div id="cell-205" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_psd_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_method</span><span class="sc">{</span>method_psd<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="ss">           wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span>, psd_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-207" class="cell" data-execution_count="63">
+<div id="cell-207" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>label_psd <span class="op">=</span> <span class="vs">fr'$PSDFD$'</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>file_name_psd <span class="op">=</span> <span class="ss">f"fd_psd_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_method</span><span class="sc">{</span>method_psd<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="ss">                wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-psd" class="cell" data-execution_count="64">
+<div id="cell-fig-gold-wind-psd" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>          psd_wind, </span>
@@ -1845,7 +1846,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </section>
 <section id="обчислення-кореляційної-розмірності" class="level3" data-number="6.2.9">
 <h3 data-number="6.2.9" class="anchored" data-anchor-id="обчислення-кореляційної-розмірності"><span class="header-section-number">6.2.9</span> Обчислення кореляційної розмірності</h3>
-<p>Кореляційна розмірність (також позначається як <span class="math inline">\(D_2\)</span>) є нижньою границею оцінки фрактальної розмірності досліджуваного фазового простору.</p>
+<p>Кореляційна розмірність є нижньою границею оцінки фрактальної розмірності досліджуваного фазового простору.</p>
 <p>Спочатку здійснюється реконструкція фазового простору сигналу згідно методу часової затримки, і далі обчислюються відстані між усіма точками траєкторії. Потім обчислюється “кореляційна сума”, яка є часткою пар точок, відстань між якими менша за заданий радіус. Остаточна кореляційна розмірність апроксимується графіком залежності кореляційної суми від радіусу багатовимірного околу досліджуваних траєкторій у логарифмічному масштабі.</p>
 <p>Цю розмірність можна викликати через <code>fractal_correlation()</code>. Її синтаксис виглядає наступним чином:</p>
 <p><strong><code>fractal_correlation(signal, delay=1, dimension=2, radius=64, show=False, **kwargs)</code></strong></p>
@@ -1866,7 +1867,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="для-всього-часового-ряду" class="level4" data-number="6.2.9.1">
 <h4 data-number="6.2.9.1" class="anchored" data-anchor-id="для-всього-часового-ряду"><span class="header-section-number">6.2.9.1</span> Для всього часового ряду</h4>
 <p>Розглянемо залежність кореляційної суми від радіусу для всього часового ряду. Перш за все виконаємо перетворення ряду:</p>
-<div id="cell-216" class="cell" data-execution_count="65">
+<div id="cell-216" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 1 - вихідний, </span></span>
@@ -1879,7 +1880,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>for_corr <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер розрахуємо кореляційну розмірність, побудувавши залежність кореляційної суми від радіусу в логарифмічному масштабі:</p>
-<div id="cell-fig-gold-corr-all" class="cell" data-execution_count="66">
+<div id="cell-fig-gold-corr-all" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>cd, info <span class="op">=</span> nk.fractal_correlation(for_corr,</span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>                                  delay<span class="op">=</span><span class="dv">1</span>, </span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>                                  dimension<span class="op">=</span><span class="dv">1</span>,</span>
@@ -1903,7 +1904,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <section id="віконна-процедура-8" class="level4" data-number="6.2.9.2">
 <h4 data-number="6.2.9.2" class="anchored" data-anchor-id="віконна-процедура-8"><span class="header-section-number">6.2.9.2</span> Віконна процедура</h4>
 <p>Для цього показника визначимо наступні параметри:</p>
-<div id="cell-222" class="cell" data-execution_count="67">
+<div id="cell-222" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -1924,7 +1925,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>corr_wind <span class="op">=</span> []                     <span class="co"># масив показників </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо віконну процедуру:</p>
-<div id="cell-224" class="cell" data-execution_count="68">
+<div id="cell-224" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># відбираємо фрагменти</span></span>
@@ -1942,17 +1943,17 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># зберігаємо результат до масиву значень</span></span>
 <span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a>    corr_wind.append(cd_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 5663/5663 [00:18&lt;00:00, 308.32it/s]</code></pre>
+<pre><code>100%|██████████| 5664/5664 [00:18&lt;00:00, 298.46it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо вихідні значення до текстового документа:</p>
-<div id="cell-226" class="cell" data-execution_count="69">
+<div id="cell-226" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"fd_correlation_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="ss">                step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_dim=</span><span class="sc">{</span>d_wind<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_wind<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="ss">                radius=</span><span class="sc">{</span>rad_wind<span class="sc">}</span><span class="ss">.txt"</span>, corr_wind)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оголошуємо мітки для рисунків та назви збережених рисунків:</p>
-<div id="cell-228" class="cell" data-execution_count="70">
+<div id="cell-228" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>label_cd <span class="op">=</span> <span class="vs">fr'$CD$'</span></span>
 <span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>file_name_cd <span class="op">=</span> <span class="ss">f"fd_correlation_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
@@ -1960,7 +1961,7 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 <span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="ss">                radius=</span><span class="sc">{</span>rad_wind<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-gold-wind-cd" class="cell" data-execution_count="71">
+<div id="cell-fig-gold-wind-cd" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>          corr_wind, </span>
@@ -1985,8 +1986,12 @@ D_2 = \lim_{M\to\infty}\lim_{\varepsilon\to 0} \log{\left( g_{\varepsilon} \big/
 </section>
 </section>
 </section>
-<section id="завдання-для-виконання" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="завдання-для-виконання"><span class="header-section-number">6.3</span> Завдання для виконання</h2>
+<section id="висновок" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="висновок"><span class="header-section-number">6.3</span> Висновок</h2>
+<p>У даній лабораторній роботі було проаналізовано цінові коливання індексу золота з використанням спектра монофрактальних показників. Було показано, що дані методи є досить стійкими до нестаціонарності досілджуваного сигналу. Ринок золота характеризується зростаннями та спадами фрактальної розмірності, що вказує на варіацію ефективності його розвитку в різні моменти часу. Як уже зазначалось, спад фрактальної розмірності в кризовий або передкризовий стан ринку може вказувати на зростання ступеня періодизації (впорядкованості) системи. Зростання фрактальної розмірності може бути індикатором зростання невпорядкованості. У подальшій лабораторній роботі буде продемонстровано підхід, що дозволяє розраховувати спектр фрактальних показників, які можна отримати на різних просторово-часових масштабах системи.</p>
+</section>
+<section id="завдання-для-виконання" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="завдання-для-виконання"><span class="header-section-number">6.4</span> Завдання для виконання</h2>
 <ol type="1">
 <li>Вибрати із запропонованої бази даних варіант завдання</li>
 <li>Виконати дослідження фрактальних характеристик заданих часових рядів. Зберегти результати в окремому файлі</li>
