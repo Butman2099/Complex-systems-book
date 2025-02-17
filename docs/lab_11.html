@@ -914,7 +914,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>for_puank <span class="op">=</span> transformation(fragm, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bc7acf29" class="cell" data-execution_count="22">
+<div id="cell-fig-poincare-init" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ax1.scatter(for_puank[:<span class="op">-</span>tau_assym], for_puank[tau_assym:], marker<span class="op">=</span><span class="st">"X"</span>, s<span class="op">=</span><span class="dv">180</span>, c<span class="op">=</span><span class="st">"g"</span>)</span>
@@ -933,9 +933,14 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Poincare_plot_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>idx_beg<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>idx_end<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lab_11_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+<div id="fig-poincare-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-poincare-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_11_files/figure-html/fig-poincare-init-output-1.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-poincare-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Рис.&nbsp;11.2: Діаграма Пуанкаре для фрагмента індексу Russell 2000
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1084,13 +1089,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-pi-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-pi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.2: Динаміка індексу Russell 2000 та індексу Порти
+Рис.&nbsp;11.3: Динаміка індексу Russell 2000 та індексу Порти
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Як можна бачити з <a href="#fig-wind-pi" class="quarto-xref">Рис.&nbsp;<span>11.2</span></a>, індекс Порти спадає у передкризові періоди, що вказує на переважне зростання частки позитивних прибутковостей у межах вікна в 500 днів. У кризові періоди індекс Порти зростає, що вказує на домінацію негативного тренду (точок нижче головної діагоналі) в цінових флуктуаціях Russell 2000. Видно, що <span class="math inline">\(PIx\)</span> закономірно спадає перед кризами 1997, 2008, 2011, 2015, 2020 років. Тобто, даний показник можна використовувати в якості індикатора-передвісника крахових подій на фондовому ринку.</p>
+<p>Як можна бачити з <a href="#fig-wind-pi" class="quarto-xref">Рис.&nbsp;<span>11.3</span></a>, індекс Порти спадає у передкризові періоди, що вказує на переважне зростання частки позитивних прибутковостей у межах вікна в 500 днів. У кризові періоди індекс Порти зростає, що вказує на домінацію негативного тренду (точок нижче головної діагоналі) в цінових флуктуаціях Russell 2000. Видно, що <span class="math inline">\(PIx\)</span> закономірно спадає перед кризами 1997, 2008, 2011, 2015, 2020 років. Тобто, даний показник можна використовувати в якості індикатора-передвісника крахових подій на фондовому ринку.</p>
 </section>
 <section id="індекс-гузіка-1" class="level4" data-number="11.2.4.2">
 <h4 data-number="11.2.4.2" class="anchored" data-anchor-id="індекс-гузіка-1"><span class="header-section-number">11.2.4.2</span> Індекс Гузіка</h4>
@@ -1114,13 +1119,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-gi-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-gi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.3: Динаміка індексу Russell 2000 та індексу Гузіка
+Рис.&nbsp;11.4: Динаміка індексу Russell 2000 та індексу Гузіка
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На рисунку <a href="#fig-wind-gi" class="quarto-xref">Рис.&nbsp;<span>11.3</span></a> спостерігається спад індексу Гузіка в кризові та передкризові періоди. Це говорить про те, що сумарна частка точок, яка знаходились вище LI стала меншою. Також варто зазначити, що ці точки в передкризові періоди стають усе ближче до головної діагоналі, тому й сума квадратів відстаней точок вище LI поступово стає меншою. Подібного роду поведінку можна використовувати для передчасної ідентифікації крахових подій на фондовому ринку.</p>
+<p>На рисунку <a href="#fig-wind-gi" class="quarto-xref">Рис.&nbsp;<span>11.4</span></a> спостерігається спад індексу Гузіка в кризові та передкризові періоди. Це говорить про те, що сумарна частка точок, яка знаходились вище LI стала меншою. Також варто зазначити, що ці точки в передкризові періоди стають усе ближче до головної діагоналі, тому й сума квадратів відстаней точок вище LI поступово стає меншою. Подібного роду поведінку можна використовувати для передчасної ідентифікації крахових подій на фондовому ринку.</p>
 </section>
 <section id="індекс-кута-нахилу-1" class="level4" data-number="11.2.4.3">
 <h4 data-number="11.2.4.3" class="anchored" data-anchor-id="індекс-кута-нахилу-1"><span class="header-section-number">11.2.4.3</span> Індекс кута нахилу</h4>
@@ -1144,13 +1149,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-si-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-si-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.4: Динаміка індексу Russell 2000 та індексу кута нахилу
+Рис.&nbsp;11.5: Динаміка індексу Russell 2000 та індексу кута нахилу
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-wind-si" class="quarto-xref">Рис.&nbsp;<span>11.4</span></a> у закономірний спосіб спостерігається спад індексу кута нахилу в передкрахові періоди Russell 2000. Це говорить про спад сумарної частки точок над LI, які формували певних кут нахилу. У перекризові та кризові періоди вони починають “лягати” на LI, що робить кут нахилу деяких із цих точок близьким до нуля. Подібну закономірність також можна використовувати для передбачення кризових подій.</p>
+<p>На <a href="#fig-wind-si" class="quarto-xref">Рис.&nbsp;<span>11.5</span></a> у закономірний спосіб спостерігається спад індексу кута нахилу в передкрахові періоди Russell 2000. Це говорить про спад сумарної частки точок над LI, які формували певних кут нахилу. У перекризові та кризові періоди вони починають “лягати” на LI, що робить кут нахилу деяких із цих точок близьким до нуля. Подібну закономірність також можна використовувати для передбачення кризових подій.</p>
 </section>
 <section id="індекс-площі-секторів" class="level4" data-number="11.2.4.4">
 <h4 data-number="11.2.4.4" class="anchored" data-anchor-id="індекс-площі-секторів"><span class="header-section-number">11.2.4.4</span> Індекс площі секторів</h4>
@@ -1174,13 +1179,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-ai-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.5: Динаміка індексу Russell 2000 та індексу площі секторів
+Рис.&nbsp;11.6: Динаміка індексу Russell 2000 та індексу площі секторів
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-wind-ai" class="quarto-xref">Рис.&nbsp;<span>11.5</span></a> демонструє характерний спад індексу площі в передкрахові періоди Russell 2000. Це говорить про спад сумарної частки точок над LI, які формували площі. У перекризові та кризові періоди вони починають “лягати” на LI, що робить їх результуючу площу близькою до нуля. Як можна бачити, площі секторів точок над LI закономірно спадають у передкрахові періоди найбільш ключових криз на фондовому ринку.</p>
+<p><a href="#fig-wind-ai" class="quarto-xref">Рис.&nbsp;<span>11.6</span></a> демонструє характерний спад індексу площі в передкрахові періоди Russell 2000. Це говорить про спад сумарної частки точок над LI, які формували площі. У перекризові та кризові періоди вони починають “лягати” на LI, що робить їх результуючу площу близькою до нуля. Як можна бачити, площі секторів точок над LI закономірно спадають у передкрахові періоди найбільш ключових криз на фондовому ринку.</p>
 </section>
 <section id="індекс-ейлера-1" class="level4" data-number="11.2.4.5">
 <h4 data-number="11.2.4.5" class="anchored" data-anchor-id="індекс-ейлера-1"><span class="header-section-number">11.2.4.5</span> Індекс Ейлера</h4>
@@ -1204,13 +1209,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-ei-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-ei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.6: Динаміка індексу Russell 2000 та індексу Ейлера
+Рис.&nbsp;11.7: Динаміка індексу Russell 2000 та індексу Ейлера
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-wind-ei" class="quarto-xref">Рис.&nbsp;<span>11.6</span></a> показує, що індекс Ейлера зростає під час кризових моментів. Це говорить про зростання різниці між наступними значеннями та попередніми. Даний показник можна пробувати використовувати в якості індикатора, але не передвісника крахових подій.</p>
+<p><a href="#fig-wind-ei" class="quarto-xref">Рис.&nbsp;<span>11.7</span></a> показує, що індекс Ейлера зростає під час кризових моментів. Це говорить про зростання різниці між наступними значеннями та попередніми. Даний показник можна пробувати використовувати в якості індикатора, але не передвісника крахових подій.</p>
 </section>
 <section id="індекс-кошти-1" class="level4" data-number="11.2.4.6">
 <h4 data-number="11.2.4.6" class="anchored" data-anchor-id="індекс-кошти-1"><span class="header-section-number">11.2.4.6</span> Індекс Кошти</h4>
@@ -1234,13 +1239,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-i-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-сi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.7: Динаміка індексу Russell 2000 та індексу Кошти
+Рис.&nbsp;11.8: Динаміка індексу Russell 2000 та індексу Кошти
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-wind-сi" class="quarto-xref">Рис.&nbsp;<span>11.7</span></a> можна спостерігати зростання <span class="math inline">\(CIx\)</span> у передкризові періоди, що вказує на зростання асиметрії між декрементами та інкриментами в динаміці досліджуваного індексу. Подібну поведінку можна розглядати в якості індикатора незворотності системи до входження у стан краху.</p>
+<p>На <a href="#fig-wind-сi" class="quarto-xref">Рис.&nbsp;<span>11.8</span></a> можна спостерігати зростання <span class="math inline">\(CIx\)</span> у передкризові періоди, що вказує на зростання асиметрії між декрементами та інкриментами в динаміці досліджуваного індексу. Подібну поведінку можна розглядати в якості індикатора незворотності системи до входження у стан краху.</p>
 </section>
 </section>
 <section id="побудова-графу-досліджуваного-ряду" class="level3" data-number="11.2.5">
@@ -1351,7 +1356,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-visibility-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-visibility-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.8: Графік зв’язків видимості на основі природного VG напередодні крахів 2001-го року на індексі Russell 2000 та графове представлення цього фрагмента
+Рис.&nbsp;11.9: Графік зв’язків видимості на основі природного VG напередодні крахів 2001-го року на індексі Russell 2000 та графове представлення цього фрагмента
 </figcaption>
 </figure>
 </div>
@@ -1463,7 +1468,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-degree-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-degree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.9: Динаміка індексу Russell 2000 та показника незворотності на основі ступеня вершини
+Рис.&nbsp;11.10: Динаміка індексу Russell 2000 та показника незворотності на основі ступеня вершини
 </figcaption>
 </figure>
 </div>
@@ -1495,13 +1500,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-clust-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-clust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.10: Динаміка індексу Russell 2000 та показника незворотності на основі локальної кластеризації
+Рис.&nbsp;11.11: Динаміка індексу Russell 2000 та показника незворотності на основі локальної кластеризації
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>На <a href="#fig-wind-clust" class="quarto-xref">Рис.&nbsp;<span>11.10</span></a> видно, що в передкризові та кризові періоди незворотність системи зростає, що відображається асиметрією розподілом локальних коефіцієнтів кластеризації вхідних і вихідних вершин.</p>
+<p>На <a href="#fig-wind-clust" class="quarto-xref">Рис.&nbsp;<span>11.11</span></a> видно, що в передкризові та кризові періоди незворотність системи зростає, що відображається асиметрією розподілом локальних коефіцієнтів кластеризації вхідних і вихідних вершин.</p>
 </section>
 <section id="ступінь-незворотності-на-основі-пермутаційних-шаблонів" class="level4" data-number="11.2.7.3">
 <h4 data-number="11.2.7.3" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.2.7.3</span> Ступінь незворотності на основі пермутаційних шаблонів</h4>
@@ -1528,13 +1533,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <img src="lab_11_files/figure-html/fig-wind-perm-output-1.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-wind-perm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Рис.&nbsp;11.11: Динаміка індексу Russell 2000 та показника незворотності на основі пермутаційних шаблонів
+Рис.&nbsp;11.12: Динаміка індексу Russell 2000 та показника незворотності на основі пермутаційних шаблонів
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p><a href="#fig-wind-perm" class="quarto-xref">Рис.&nbsp;<span>11.11</span></a> демонструє зростання <span class="math inline">\(Dist_{perm}\)</span> у передкризові періоди, що слугує індикатором біфуркації ринку та початку незворотніх трансформацій. Найвищий ступінь незворотності спостерігався саме напередодні кризи 1997 року. Пермутаційна незворотність закономірно зростає напередодні майже всіх фондових криз, але подальша динаміка <span class="math inline">\(Dist_{perm}\)</span> не перевищує зростання напередодні початку нового століття.</p>
+<p><a href="#fig-wind-perm" class="quarto-xref">Рис.&nbsp;<span>11.12</span></a> демонструє зростання <span class="math inline">\(Dist_{perm}\)</span> у передкризові періоди, що слугує індикатором біфуркації ринку та початку незворотніх трансформацій. Найвищий ступінь незворотності спостерігався саме напередодні кризи 1997 року. Пермутаційна незворотність закономірно зростає напередодні майже всіх фондових криз, але подальша динаміка <span class="math inline">\(Dist_{perm}\)</span> не перевищує зростання напередодні початку нового століття.</p>
 </section>
 </section>
 </section>
@@ -1556,40 +1561,40 @@ Successfully installed ts2vg-1.2.3</code></pre>
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-10.1063/1.2890013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Prigogine and E. N. Hiebert, <em><a href="https://doi.org/10.1063/1.2890013"><span class="nocase">From Being to Becoming: Time and Complexity in the Physical Sciences</span></a></em>, Physics Today <strong>35</strong>, 69 (1982).</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Prigogine and E. N. Hiebert, <a href="https://doi.org/10.1063/1.2890013"><span class="nocase">From Being to Becoming: Time and Complexity in the Physical Sciences</span></a>, Physics Today <strong>35</strong>, 69 (1982).</div>
 </div>
 <div id="ref-PhysRevE.71.021906" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <em><a href="https://doi.org/10.1103/PhysRevE.71.021906">Multiscale Entropy Analysis of Biological Signals</a></em>, Phys. Rev. E <strong>71</strong>, 021906 (2005).</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <a href="https://doi.org/10.1103/PhysRevE.71.021906">Multiscale entropy analysis of biological signals</a>, Phys. Rev. E <strong>71</strong>, 021906 (2005).</div>
 </div>
 <div id="ref-costa2008multiscale" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M. D. Costa, C.-K. Peng, and A. L. Goldberger, <em>Multiscale Analysis of Heart Rate Dynamics: Entropy and Time Irreversibility Measures</em>, Cardiovascular Engineering <strong>8</strong>, 88 (2008).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M. D. Costa, C.-K. Peng, and A. L. Goldberger, Multiscale analysis of heart rate dynamics: Entropy and time irreversibility measures, Cardiovascular Engineering <strong>8</strong>, 88 (2008).</div>
 </div>
 <div id="ref-F.Donges_2013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J. F.Donges, R. V. Donner, and J. Kurths, <em><a href="https://doi.org/10.1209/0295-5075/102/10004">Testing Time Series Irreversibility Using Complex Network Methods</a></em>, Europhysics Letters <strong>102</strong>, 10004 (2013).</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J. F.Donges, R. V. Donner, and J. Kurths, <a href="https://doi.org/10.1209/0295-5075/102/10004">Testing time series irreversibility using complex network methods</a>, Europhysics Letters <strong>102</strong>, 10004 (2013).</div>
 </div>
 <div id="ref-e20090665" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Zanin, A. Rodríguez-González, E. Menasalvas Ruiz, and D. Papo, <em><a href="https://doi.org/10.3390/e20090665">Assessing Time Series Reversibility Through Permutation Patterns</a></em>, Entropy <strong>20</strong>, (2018).</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Zanin, A. Rodríguez-González, E. Menasalvas Ruiz, and D. Papo, <a href="https://doi.org/10.3390/e20090665">Assessing time series reversibility through permutation patterns</a>, Entropy <strong>20</strong>, (2018).</div>
 </div>
 <div id="ref-FLANAGAN20161689" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">R. Flanagan and L. Lacasa, <em><a href="https://doi.org/10.1016/j.physleta.2016.03.011">Irreversibility of Financial Time Series: A Graph-Theoretical Approach</a></em>, Physics Letters A <strong>380</strong>, 1689 (2016).</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">R. Flanagan and L. Lacasa, <a href="https://doi.org/10.1016/j.physleta.2016.03.011">Irreversibility of financial time series: A graph-theoretical approach</a>, Physics Letters A <strong>380</strong>, 1689 (2016).</div>
 </div>
 <div id="ref-Puglisi_2009" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Puglisi and D. Villamaina, <em><a href="https://doi.org/10.1209/0295-5075/88/30004">Irreversible Effects of Memory</a></em>, Europhysics Letters <strong>88</strong>, 30004 (2009).</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Puglisi and D. Villamaina, <a href="https://doi.org/10.1209/0295-5075/88/30004">Irreversible effects of memory</a>, Europhysics Letters <strong>88</strong>, 30004 (2009).</div>
 </div>
 <div id="ref-DIKS1995221" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">C. Diks, J. C. van Houwelingen, F. Takens, and J. DeGoede, <em><a href="https://doi.org/10.1016/0375-9601(95)00239-Y">Reversibility as a Criterion for Discriminating Time Series</a></em>, Physics Letters A <strong>201</strong>, 221 (1995).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">C. Diks, J. C. van Houwelingen, F. Takens, and J. DeGoede, <a href="https://doi.org/10.1016/0375-9601(95)00239-Y">Reversibility as a criterion for discriminating time series</a>, Physics Letters A <strong>201</strong>, 221 (1995).</div>
 </div>
 <div id="ref-PhysRevE.62.1912" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">C. S. Daw, C. E. A. Finney, and M. B. Kennel, <em><a href="https://doi.org/10.1103/PhysRevE.62.1912">Symbolic Approach for Measuring Temporal <span>“Irreversibility”</span></a></em>, Phys. Rev. E <strong>62</strong>, 1912 (2000).</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">C. S. Daw, C. E. A. Finney, and M. B. Kennel, <a href="https://doi.org/10.1103/PhysRevE.62.1912">Symbolic approach for measuring temporal <span>“irreversibility”</span></a>, Phys. Rev. E <strong>62</strong>, 1912 (2000).</div>
 </div>
 <div id="ref-GuzikPiskorskiKrauzeWykretowiczWysocki" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">P. Guzik, J. Piskorski, T. Krauze, A. Wykretowicz, and H. Wysocki, <em><a href="https://doi.org/doi:10.1515/BMT.2006.054">Heart Rate Asymmetry by Poincaré Plots of RR Intervals</a></em>, Biomedical Engineering / Biomedizinische Technik <strong>51</strong>, 272 (2006).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">P. Guzik, J. Piskorski, T. Krauze, A. Wykretowicz, and H. Wysocki, <a href="https://doi.org/doi:10.1515/BMT.2006.054">Heart rate asymmetry by poincaré plots of RR intervals</a>, Biomedical Engineering / Biomedizinische Technik <strong>51</strong>, 272 (2006).</div>
 </div>
 <div id="ref-4511792" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Porta, S. Guzzetti, N. Montano, T. Gnecchi-Ruscone, R. Furlan, and A. Malliani, <em><a href="">Time Reversibility in Short-Term Heart Period Variability</a></em>, in <em>2006 Computers in Cardiology</em> (2006), pp. 77–80.</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Porta, S. Guzzetti, N. Montano, T. Gnecchi-Ruscone, R. Furlan, and A. Malliani, <em><a href="">Time Reversibility in Short-Term Heart Period Variability</a></em>, in <em>2006 Computers in Cardiology, Valencia, Spain, September 17-20, 2006</em> (IEEE, 2006), pp. 77–80.</div>
 </div>
 <div id="ref-Lacasa_2012" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">L. Lacasa, A. Nuñez, É. Roldán, J. M. R. Parrondo, and B. Luque, <em><a href="https://doi.org/10.1140/epjb/e2012-20809-8">Time Series Irreversibility: A Visibility Graph Approach</a></em>, The European Physical Journal B <strong>85</strong>, (2012).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">L. Lacasa, A. Nuñez, É. Roldán, J. M. R. Parrondo, and B. Luque, <a href="https://doi.org/10.1140/epjb/e2012-20809-8">Time series irreversibility: A visibility graph approach</a>, The European Physical Journal B <strong>85</strong>, (2012).</div>
 </div>
 <div id="ref-DBLP:conf/m3e2/BielinskyiHMSSS21" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[13] </div><div class="csl-right-inline">A. O. Bielinskyi, S. V. Hushko, A. V. Matviychuk, O. A. Serdyuk, S. O. Semerikov, and V. N. Soloviev, <em><a href="https://ceur-ws.org/Vol-3048/paper04.pdf">Irreversibility of Financial Time Series: A Case of Crisis</a></em>, in <em>Proceedings of the Selected and Revised Papers of 9th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2021), Odessa, Ukraine, May 26-28, 2021</em>, edited by A. E. Kiv, V. N. Soloviev, and S. O. Semerikov, Vol. 3048 (CEUR-WS.org, 2021), pp. 134–150.</div>
@@ -1598,34 +1603,34 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <div class="csl-left-margin">[14] </div><div class="csl-right-inline">A. Kiv, A. Bryukhanov, A. Bielinskyi, V. Soloviev, T. Kavetskyy, D. Dyachok, I. Donchev, and V. Lukashin, <em><a href="https://doi.org/10.1007/978-3-031-35467-0_26">Irreversibility of Plastic Deformation Processes in Metals</a></em>, in <em>Information Technology for Education, Science, and Technics</em>, edited by E. Faure, O. Danchenko, M. Bondarenko, Y. Tryus, C. Bazilo, and G. Zaspa (Springer Nature Switzerland, Cham, 2023), pp. 425–445.</div>
 </div>
 <div id="ref-PhysRevLett.95.198102" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <em><a href="https://doi.org/10.1103/PhysRevLett.95.198102">Broken Asymmetry of the Human Heartbeat: Loss of Time Irreversibility in Aging and Disease</a></em>, Phys. Rev. Lett. <strong>95</strong>, 198102 (2005).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <a href="https://doi.org/10.1103/PhysRevLett.95.198102">Broken asymmetry of the human heartbeat: Loss of time irreversibility in aging and disease</a>, Phys. Rev. Lett. <strong>95</strong>, 198102 (2005).</div>
 </div>
 <div id="ref-Ehlers_1998" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. L. Ehlers, J. Havstad, D. Prichard, and J. Theiler, <em><a href="https://doi.org/10.1523/jneurosci.18-18-07474.1998">Low Doses of Ethanol Reduce Evidence for Nonlinear Structure in Brain Activity</a></em>, The Journal of Neuroscience <strong>18</strong>, 7474 (1998).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. L. Ehlers, J. Havstad, D. Prichard, and J. Theiler, <a href="https://doi.org/10.1523/jneurosci.18-18-07474.1998">Low doses of ethanol reduce evidence for nonlinear structure in brain activity</a>, The Journal of Neuroscience <strong>18</strong>, 7474 (1998).</div>
 </div>
 <div id="ref-Yan_2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C. Yan, P. Li, L. Ji, L. Yao, C. Karmakar, and C. Liu, <em><a href="https://doi.org/10.1186/s12938-017-0402-3">Area Asymmetry of Heart Rate Variability Signal</a></em>, BioMedical Engineering OnLine <strong>16</strong>, (2017).</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C. Yan, P. Li, L. Ji, L. Yao, C. Karmakar, and C. Liu, <a href="https://doi.org/10.1186/s12938-017-0402-3">Area asymmetry of heart rate variability signal</a>, BioMedical Engineering OnLine <strong>16</strong>, (2017).</div>
 </div>
 <div id="ref-Karmakar_2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. K. Karmakar, A. Khandoker, and M. Palaniswami, <em><a href="https://doi.org/10.1088/0967-3334/36/2/303">Phase Asymmetry of Heart Rate Variability Signal</a></em>, Physiological Measurement <strong>36</strong>, 303 (2015).</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. K. Karmakar, A. Khandoker, and M. Palaniswami, <a href="https://doi.org/10.1088/0967-3334/36/2/303">Phase asymmetry of heart rate variability signal</a>, Physiological Measurement <strong>36</strong>, 303 (2015).</div>
 </div>
 <div id="ref-PhysRevE.80.046103" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B. Luque, L. Lacasa, F. Ballesteros, and J. Luque, <em><a href="https://doi.org/10.1103/PhysRevE.80.046103">Horizontal Visibility Graphs: Exact Results for Random Time Series</a></em>, Phys. Rev. E <strong>80</strong>, 046103 (2009).</div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B. Luque, L. Lacasa, F. Ballesteros, and J. Luque, <a href="https://doi.org/10.1103/PhysRevE.80.046103">Horizontal visibility graphs: Exact results for random time series</a>, Phys. Rev. E <strong>80</strong>, 046103 (2009).</div>
 </div>
 <div id="ref-PhysRevE.92.022817" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">L. Lacasa and R. Flanagan, <em><a href="https://doi.org/10.1103/PhysRevE.92.022817">Time Reversibility from Visibility Graphs of Nonstationary Processes</a></em>, Phys. Rev. E <strong>92</strong>, 022817 (2015).</div>
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">L. Lacasa and R. Flanagan, <a href="https://doi.org/10.1103/PhysRevE.92.022817">Time reversibility from visibility graphs of nonstationary processes</a>, Phys. Rev. E <strong>92</strong>, 022817 (2015).</div>
 </div>
 <div id="ref-Grosse_2002" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[21] </div><div class="csl-right-inline">I. Grosse, P. Bernaola-Galván, P. Carpena, R. Román-Roldán, J. Oliver, and H. E. Stanley, <em><a href="https://doi.org/10.1103/physreve.65.041905">Analysis of Symbolic Sequences Using the Jensen-Shannon Divergence</a></em>, Physical Review E <strong>65</strong>, (2002).</div>
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">I. Grosse, P. Bernaola-Galván, P. Carpena, R. Román-Roldán, J. Oliver, and H. E. Stanley, <a href="https://doi.org/10.1103/physreve.65.041905">Analysis of symbolic sequences using the jensen-shannon divergence</a>, Physical Review E <strong>65</strong>, (2002).</div>
 </div>
 <div id="ref-perm_en" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[22] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <em><a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation Entropy: A Natural Complexity Measure for Time Series</a></em>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation entropy: A natural complexity measure for time series</a>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
 </div>
 <div id="ref-DBLP:conf/cte/BielinskyiKPSS21" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[23] </div><div class="csl-right-inline">A. O. Bielinskyi, A. E. Kiv, Y. O. Prikhozha, M. A. Slusarenko, and V. N. Soloviev, <em><a href="https://doi.org/10.55056/cte.103">Complex Systems and Physics Education</a></em>, in <em>Proceedings of the 9th Workshop on Cloud Technologies in Education, <span>CTE</span> 2021, Kryvyi Rih, Ukraine, December 17, 2021</em>, edited by A. E. Kiv, S. O. Semerikov, and M. P. Shyshkina, Vol. 3085 (CEUR-WS.org, 2021), pp. 56–80.</div>
 </div>
 <div id="ref-10.1063/5.0049901" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[24] </div><div class="csl-right-inline">A. A. B. Pessa and H. V. Ribeiro, <em><a href="https://doi.org/10.1063/5.0049901"><span class="nocase">ordpy: A Python package for data analysis with permutation entropy and ordinal network methods</span></a></em>, Chaos: An Interdisciplinary Journal of Nonlinear Science <strong>31</strong>, 063110 (2021).</div>
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">A. A. B. Pessa and H. V. Ribeiro, <a href="https://doi.org/10.1063/5.0049901"><span class="nocase">ordpy: A Python package for data analysis with permutation entropy and ordinal network methods</span></a>, Chaos: An Interdisciplinary Journal of Nonlinear Science <strong>31</strong>, 063110 (2021).</div>
 </div>
 </div>
 </section>

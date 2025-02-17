@@ -424,12 +424,15 @@ window.Quarto = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2022-01-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, start, end)  <span class="co"># вивантажуємо дані</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol          <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>YF.download() has changed argument auto_adjust default to True</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
+<pre><code>[*********************100%***********************]  1 of 1 completed</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -447,30 +450,30 @@ window.Quarto = {
 </div>
 <hr>
 <div id="cell-13" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p>Виведемо досліджуваний ряд:</p>
 <div id="cell-fig-dji-init" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(xlabel)                      <span class="co"># Встановимо підпис по вісі Ох</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(ylabel)                      <span class="co"># Встановимо підпис по вісі Oy</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-init" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -486,33 +489,33 @@ window.Quarto = {
 </div>
 <p>Користуючись тими методами, що ми розглянули в попередній лабораторній роботі, побудуємо атрактор даного ряду та його рекурентну діаграму. Але, перш за все, стандартизуємо наш ряд. Для цього оголосимо функцію <code>transformation()</code>, що прийматиме на вхід часовий сигнал, тип ряду, і повертатиме його перетворення:</p>
 <div id="cell-18" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ret_type <span class="op">==</span> <span class="dv">1</span>:       <span class="co"># Зважаючи на вид ряду, виконуємо</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># необхідні перетворення</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.diff()</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.<span class="bu">abs</span>()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі приводимо ряд до стандартизованого вигляду:</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -528,38 +531,38 @@ window.Quarto = {
 <p>Як уже зазначалось на початку, рекурентна діаграма — це двовимірна квадратна двійкова матриця розміром <span class="math inline">\(N^2\)</span>. Тому в подальшому ми пропонуємо будувати рекурентну матрицю не для всього ряду, а тільки для його підмножини. Для цього ми визначимо змінні початкового (<code>idx_beg</code>) та кінцевого (<code>inx_end</code>) відліку в межах якого буде здійснюватись побудова рекурентної матриці</p>
 </div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні, </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості, </span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>idx_beg <span class="op">=</span> <span class="dv">3000</span>    <span class="co"># кінцевий відлік</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>idx_end <span class="op">=</span> <span class="dv">7300</span> <span class="co"># початковий відлік</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>fragm <span class="op">=</span> signal[idx_beg:idx_end] <span class="co"># виокремлюємо фрагмент ряду</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>all_series <span class="op">=</span> transformation(signal, ret_type) <span class="co"># виконуємо перетворення всього ряду</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(fragm, ret_type) <span class="co"># виконуємо перетворення фрагменту</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні, </span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>idx_beg <span class="op">=</span> <span class="dv">3000</span>    <span class="co"># кінцевий відлік</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>idx_end <span class="op">=</span> <span class="dv">7300</span> <span class="co"># початковий відлік</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>fragm <span class="op">=</span> signal[idx_beg:idx_end] <span class="co"># виокремлюємо фрагмент ряду</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>all_series <span class="op">=</span> transformation(signal, ret_type) <span class="co"># виконуємо перетворення всього ряду</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(fragm, ret_type).flatten() <span class="co"># виконуємо перетворення фрагменту</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>На <a href="#fig-dji-fragm" class="quarto-xref">Рис.&nbsp;<span>3.2</span></a> представлено весь трансформований ряд та його фрагмент:</p>
-<div id="cell-fig-dji-fragm" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(all_series)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Весь ряд"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(xlabel)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(ylabel)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(for_rec)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Фрагмент"</span>)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(xlabel)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-fragm" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(all_series)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Весь ряд"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(xlabel)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(ylabel)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(for_rec)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Фрагмент"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(xlabel)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-fragm" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -580,16 +583,16 @@ window.Quarto = {
 <li>радіус багатовимірного околу <span class="math inline">\(\varepsilon = 0.3\)</span>.</li>
 </ul>
 <p>Задамо необхідні параметри для обчислення та виводу:</p>
-<div id="cell-26" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                         <span class="co"># розмірність вкладень</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                       <span class="co"># часові затримка</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span>                     <span class="co"># радіус</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-26" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">3</span>                         <span class="co"># розмірність вкладень</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                       <span class="co"># часові затримка</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span>                     <span class="co"># радіус</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І тепер подивимось на фазові траєкторії досліджуваної системи у дво- та тривимірному просторах:</p>
-<div id="cell-fig-dji-2d" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span>tau), </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-2d" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span>tau), </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -603,10 +606,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-fig-dji-3d" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span>tau), </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-3d" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span>tau), </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -621,12 +624,12 @@ window.Quarto = {
 </div>
 </div>
 <p>Як можна бачити по візуальному огляду траєкторій у фазовому просторі важко робити висновки стосовно передбачуванності або хаотичності системи. Спробуємо ще раз, але тепер послуговуючись рекурентною діаграмою:</p>
-<div id="cell-fig-dji-init-stand" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span>m,</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span>eps,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-init-stand" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span>m,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span>eps,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-init-stand" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -645,34 +648,34 @@ window.Quarto = {
 <section id="віконна-процедура" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">3.2.1</span> Віконна процедура</h3>
 <p>Для подальшої роботи створюємо віконну процедуру, в якій знов визначаємо вид ряду та ще декілька параметрів. Потім ми ініціалізуємо масиви для кожної рекурентної міри:</p>
-<div id="cell-35" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>            <span class="co"># вид ряду</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>            <span class="co"># ширина вікна</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">1</span>                   <span class="co"># розмірність вкладень</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                 <span class="co"># часові затримка</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span>               <span class="co"># радіус</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ініціалізуємо масиви для збереження віконних значень </span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># рекурентних мір</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>RR <span class="op">=</span> []                 <span class="co"># Частота повторення</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>DET <span class="op">=</span> []                <span class="co"># Детермінізм</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>DIV <span class="op">=</span> []                <span class="co"># Розбіжність</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>AVG_DIAG_LINE <span class="op">=</span> []      <span class="co"># Усереднена довжина діагональних ліній</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>ENT_DIAG <span class="op">=</span> []           <span class="co"># Ентропія діагональних ліній</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>LAM <span class="op">=</span> []                <span class="co"># Ламінарність</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>TT <span class="op">=</span> []                 <span class="co"># Час затримки</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>ENT_VERT <span class="op">=</span> []           <span class="co"># Ентропія вертикальних ліній</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>ENT_WHITE_VERT <span class="op">=</span> []     <span class="co"># Ентропія білих вертикальних ліній</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>AVG_WVERT_LINE <span class="op">=</span> []     <span class="co"># Усереднена довжина білих вертикальних ліній</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>VERT_DIV <span class="op">=</span> []           <span class="co"># Розбіжність вертикальних ліній</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>RATIO_DET_REC <span class="op">=</span> []      <span class="co"># Відношення детермінізму до частоти повторень</span></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>RATIO_LAM_DET <span class="op">=</span> []      <span class="co"># Відношення ламінарності до детермінізму</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>WHITE_VERT_DIV <span class="op">=</span> []     <span class="co"># Розбіжність білих вертикальних ліній</span></span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>DIAG_RR <span class="op">=</span> []            <span class="co"># Діагональна частота рекурентних значень</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>            <span class="co"># вид ряду</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>            <span class="co"># ширина вікна</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>               <span class="co"># часовий крок вікна </span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> <span class="bu">len</span>(time_ser)  <span class="co"># довжина самого ряду</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">1</span>                   <span class="co"># розмірність вкладень</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>tau <span class="op">=</span> <span class="dv">1</span>                 <span class="co"># часові затримка</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>eps <span class="op">=</span> <span class="fl">0.3</span>               <span class="co"># радіус</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ініціалізуємо масиви для збереження віконних значень </span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co"># рекурентних мір</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>RR <span class="op">=</span> []                 <span class="co"># Частота повторення</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>DET <span class="op">=</span> []                <span class="co"># Детермінізм</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>DIV <span class="op">=</span> []                <span class="co"># Розбіжність</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>AVG_DIAG_LINE <span class="op">=</span> []      <span class="co"># Усереднена довжина діагональних ліній</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ENT_DIAG <span class="op">=</span> []           <span class="co"># Ентропія діагональних ліній</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>LAM <span class="op">=</span> []                <span class="co"># Ламінарність</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>TT <span class="op">=</span> []                 <span class="co"># Час затримки</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>ENT_VERT <span class="op">=</span> []           <span class="co"># Ентропія вертикальних ліній</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>ENT_WHITE_VERT <span class="op">=</span> []     <span class="co"># Ентропія білих вертикальних ліній</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>AVG_WVERT_LINE <span class="op">=</span> []     <span class="co"># Усереднена довжина білих вертикальних ліній</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>VERT_DIV <span class="op">=</span> []           <span class="co"># Розбіжність вертикальних ліній</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>RATIO_DET_REC <span class="op">=</span> []      <span class="co"># Відношення детермінізму до частоти повторень</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>RATIO_LAM_DET <span class="op">=</span> []      <span class="co"># Відношення ламінарності до детермінізму</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>WHITE_VERT_DIV <span class="op">=</span> []     <span class="co"># Розбіжність білих вертикальних ліній</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>DIAG_RR <span class="op">=</span> []            <span class="co"># Діагональна частота рекурентних значень</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Для подальших розрахунків ми використаємо метод <code>complexity_rqa()</code> бібліотеки <code>neuralkit2</code>. його синтаксис:</p>
 <p><strong><code>complexity_rqa(signal, dimension=3, delay=1, tolerance='sd', min_linelength=2, method='python', show=False)</code></strong></p>
@@ -692,109 +695,109 @@ window.Quarto = {
 <li><strong>info</strong> (<em>dict</em>) — словник, що містить інформацію відносно параметрів RQA.</li>
 </ul>
 <p>Тепер можемо приступити до віконної процедури:</p>
-<div id="cell-39" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type)   <span class="co"># виконуємо процедуру </span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># трансформації ряду</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    resultRQA, _ <span class="op">=</span> nk.complexity_rqa(fragm,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                                     delay<span class="op">=</span>tau,</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                                     dimension<span class="op">=</span>m,</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>                                     tolerance<span class="op">=</span>eps)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення відношення ламінарності до детермінізму</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'LamiDet'</span>] <span class="op">=</span> resultRQA[<span class="st">'Laminarity'</span>]<span class="op">/</span>resultRQA[<span class="st">'Determinism'</span>]</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення дивергенції чорних вертикальних ліній</span></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'VDiv'</span>] <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span>resultRQA[<span class="st">'VMax'</span>]</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення дивергенції білих вертикальних ліній</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'WVDiv'</span>] <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span>resultRQA[<span class="st">'WMax'</span>]</span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>    RR.append(resultRQA[<span class="st">'RecurrenceRate'</span>])</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    DET.append(resultRQA[<span class="st">'Determinism'</span>])</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>    DIV.append(resultRQA[<span class="st">'Divergence'</span>]) </span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>    AVG_DIAG_LINE.append(resultRQA[<span class="st">'L'</span>])</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    ENT_DIAG.append(resultRQA[<span class="st">'LEn'</span>])</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    LAM.append(resultRQA[<span class="st">'Laminarity'</span>]) </span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>    TT.append(resultRQA[<span class="st">'TrappingTime'</span>]) </span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>    ENT_VERT.append(resultRQA[<span class="st">'VEn'</span>])</span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    ENT_WHITE_VERT.append(resultRQA[<span class="st">'WEn'</span>])</span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>    AVG_WVERT_LINE.append(resultRQA[<span class="st">'W'</span>]) </span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    VERT_DIV.append(resultRQA[<span class="st">'VDiv'</span>])</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    WHITE_VERT_DIV.append(resultRQA[<span class="st">'WVDiv'</span>])</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    RATIO_DET_REC.append(resultRQA[<span class="st">'DeteRec'</span>]) </span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    RATIO_LAM_DET.append(resultRQA[<span class="st">'LamiDet'</span>])</span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>    DIAG_RR.append(resultRQA[<span class="st">'DiagRec'</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):  <span class="co"># фрагменти довжиною window  </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># з кроком tstep</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> transformation(fragm, ret_type).flatten()   <span class="co"># виконуємо процедуру </span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                                              <span class="co"># трансформації ряду</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    resultRQA, _ <span class="op">=</span> nk.complexity_rqa(fragm,</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                     delay<span class="op">=</span>tau,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                                     dimension<span class="op">=</span>m,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>                                     tolerance<span class="op">=</span>eps)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення відношення ламінарності до детермінізму</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'LamiDet'</span>] <span class="op">=</span> resultRQA[<span class="st">'Laminarity'</span>]<span class="op">/</span>resultRQA[<span class="st">'Determinism'</span>]</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення дивергенції чорних вертикальних ліній</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'VDiv'</span>] <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span>resultRQA[<span class="st">'VMax'</span>]</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Обчислення дивергенції білих вертикальних ліній</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    resultRQA[<span class="st">'WVDiv'</span>] <span class="op">=</span> <span class="fl">1.</span><span class="op">/</span>resultRQA[<span class="st">'WMax'</span>]</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    RR.append(resultRQA[<span class="st">'RecurrenceRate'</span>])</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    DET.append(resultRQA[<span class="st">'Determinism'</span>])</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    DIV.append(resultRQA[<span class="st">'Divergence'</span>]) </span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    AVG_DIAG_LINE.append(resultRQA[<span class="st">'L'</span>])</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    ENT_DIAG.append(resultRQA[<span class="st">'LEn'</span>])</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>    LAM.append(resultRQA[<span class="st">'Laminarity'</span>]) </span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>    TT.append(resultRQA[<span class="st">'TrappingTime'</span>]) </span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>    ENT_VERT.append(resultRQA[<span class="st">'VEn'</span>])</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>    ENT_WHITE_VERT.append(resultRQA[<span class="st">'WEn'</span>])</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    AVG_WVERT_LINE.append(resultRQA[<span class="st">'W'</span>]) </span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    VERT_DIV.append(resultRQA[<span class="st">'VDiv'</span>])</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    WHITE_VERT_DIV.append(resultRQA[<span class="st">'WVDiv'</span>])</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    RATIO_DET_REC.append(resultRQA[<span class="st">'DeteRec'</span>]) </span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>    RATIO_LAM_DET.append(resultRQA[<span class="st">'LamiDet'</span>])</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>    DIAG_RR.append(resultRQA[<span class="st">'DiagRec'</span>])</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 7054/7054 [01:58&lt;00:00, 59.43it/s]</code></pre>
+<pre><code>100%|██████████| 7054/7054 [02:02&lt;00:00, 57.51it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстових файлах:</p>
-<div id="cell-41" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"RQA_classic_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ss">    tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_eps=</span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">.txt"</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RR"</span> <span class="op">+</span> name, RR)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DIAG_RR"</span> <span class="op">+</span> name, DIAG_RR)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DET"</span> <span class="op">+</span> name, DET)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DIV"</span> <span class="op">+</span> name, DIV)</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"VERT_DIV"</span> <span class="op">+</span> name, VERT_DIV)</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"WHITE_VERT_DIV"</span> <span class="op">+</span> name, WHITE_VERT_DIV)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"LAM"</span> <span class="op">+</span> name, LAM)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"TT"</span> <span class="op">+</span> name, TT)</span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"AVG_DIAG_LINE"</span> <span class="op">+</span> name, AVG_DIAG_LINE)</span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"AVG_WRITE_VERT_LINE"</span> <span class="op">+</span> name, AVG_WVERT_LINE)</span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_DIAG"</span> <span class="op">+</span> name, ENT_DIAG)</span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_VERT"</span> <span class="op">+</span> name, ENT_VERT)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_WHITE_VERT"</span> <span class="op">+</span> name, ENT_WHITE_VERT)</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RATIO_DET_REC"</span> <span class="op">+</span> name, RATIO_DET_REC)</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RATIO_LAM_DET"</span> <span class="op">+</span> name, RATIO_LAM_DET)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-41" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"RQA_classic_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ss">    step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ss">    tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_eps=</span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">.txt"</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RR"</span> <span class="op">+</span> name, RR)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DIAG_RR"</span> <span class="op">+</span> name, DIAG_RR)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DET"</span> <span class="op">+</span> name, DET)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"DIV"</span> <span class="op">+</span> name, DIV)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"VERT_DIV"</span> <span class="op">+</span> name, VERT_DIV)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"WHITE_VERT_DIV"</span> <span class="op">+</span> name, WHITE_VERT_DIV)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"LAM"</span> <span class="op">+</span> name, LAM)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"TT"</span> <span class="op">+</span> name, TT)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"AVG_DIAG_LINE"</span> <span class="op">+</span> name, AVG_DIAG_LINE)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"AVG_WRITE_VERT_LINE"</span> <span class="op">+</span> name, AVG_WVERT_LINE)</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_DIAG"</span> <span class="op">+</span> name, ENT_DIAG)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_VERT"</span> <span class="op">+</span> name, ENT_VERT)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"ENT_WHITE_VERT"</span> <span class="op">+</span> name, ENT_WHITE_VERT)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RATIO_DET_REC"</span> <span class="op">+</span> name, RATIO_DET_REC)</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="st">"RATIO_LAM_DET"</span> <span class="op">+</span> name, RATIO_LAM_DET)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="рекурентні-міри" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="рекурентні-міри"><span class="header-section-number">3.2.2</span> Рекурентні міри</h3>
 <p>Займемося побудовою та інтерпретацією отриманих результатів. Для візуалізації графіків визначимо наступну функцію:</p>
-<div id="cell-44" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_recurrence_measure(measure, label, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(time_ser.index[window:length:tstep], </span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>                  time_ser.values[window:length:tstep], </span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="vs">"</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(time_ser.index[window:length:tstep],</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>                   measure, </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span><span class="vs">fr'$</span><span class="sc">{</span>label<span class="sc">}</span><span class="vs">$'</span>)</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">45</span>, <span class="op">**</span>tkw)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>    plt.savefig(label <span class="op">+</span></span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f" RQA_classic_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="ss">        rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_eps=</span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-44" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_recurrence_measure(measure, label, clr<span class="op">=</span><span class="st">"magenta"</span>):</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    ax2 <span class="op">=</span> ax.twinx()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    ax2.spines.right.set_position((<span class="st">"axes"</span>, <span class="fl">1.03</span>))</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    p1, <span class="op">=</span> ax.plot(time_ser.index[window:length:tstep], </span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                  time_ser.values[window:length:tstep], </span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"b-"</span>, label<span class="op">=</span><span class="vs">fr"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="vs">"</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    p2, <span class="op">=</span> ax2.plot(time_ser.index[window:length:tstep],</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>                   measure, </span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>                   color<span class="op">=</span>clr, </span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>                   label<span class="op">=</span><span class="vs">fr'$</span><span class="sc">{</span>label<span class="sc">}</span><span class="vs">$'</span>)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(xlabel)</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="ss">f"</span><span class="sc">{</span>ylabel<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    ax.yaxis.label.set_color(p1.get_color())</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    ax2.yaxis.label.set_color(p2.get_color())</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>    tkw <span class="op">=</span> <span class="bu">dict</span>(size<span class="op">=</span><span class="dv">2</span>, width<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">45</span>, <span class="op">**</span>tkw)</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>    ax.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p1.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>    ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, colors<span class="op">=</span>p2.get_color(), <span class="op">**</span>tkw)</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    ax2.legend(handles<span class="op">=</span>[p1, p2])</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a>    plt.savefig(label <span class="op">+</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f" RQA_classic_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="ss">        rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_m=</span><span class="sc">{</span>m<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau<span class="sc">}</span><span class="ss">_eps=</span><span class="sc">{</span>eps<span class="sc">}</span><span class="ss">.jpg"</span>)</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="частота-рекурентності" class="level4" data-number="3.2.2.1">
 <h4 data-number="3.2.2.1" class="anchored" data-anchor-id="частота-рекурентності"><span class="header-section-number">3.2.2.1</span> Частота рекурентності</h4>
@@ -804,8 +807,8 @@ RR = \frac{1}{N^2}\displaystyle\sum_{i,j=1}^{N}R(i,j).
 \]</span></p>
 <p><span class="math inline">\(N\)</span> — кількість точок на траєкторії фазового простору.</p>
 <p>Частота рекурентності відповідає ймовірності того, що певний стан повториться.</p>
-<div id="cell-fig-dji-rr" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RR, label<span class="op">=</span><span class="st">'RR'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-rr" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RR, label<span class="op">=</span><span class="st">'RR'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-rr" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -825,8 +828,8 @@ RR = \frac{1}{N^2}\displaystyle\sum_{i,j=1}^{N}R(i,j).
 <h4 data-number="3.2.2.2" class="anchored" data-anchor-id="діагональна-частота-рекурентності"><span class="header-section-number">3.2.2.2</span> Діагональна частота рекурентності</h4>
 <p>Даний підхід базується на діагональних рекурентних профілях часового ряду <span class="citation" data-cites="e24091314">&nbsp;[<a href="references.html#ref-e24091314" role="doc-biblioref">5</a>]</span>. Діагональний рекурентний профіль визначає кількість рекурентних точок на різних лагах подібно до функції автокореляцій. Для отримання діагонального профілю рекурентностей просто підраховується частка рекурентних точок на діагоналях, розташованих у нижньому правому або нижньому лівому куті діаграми, і будується графік як функція відстані від головної діагоналі, тобто лагу.</p>
 <p>Іншими словами, <strong>діагональна частота рекурентності</strong> (diagonal recurrence rate) фіксує величину автокореляції на різних лагах.</p>
-<div id="cell-fig-dji-diag-rr" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DIAG_RR, label<span class="op">=</span><span class="st">'DRR'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-diag-rr" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DIAG_RR, label<span class="op">=</span><span class="st">'DRR'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-diag-rr" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -863,8 +866,8 @@ DET= \sum_{\ell=\ell_{\min }}^{N}\ell \cdot P(\ell) \Bigg/ \sum_{\ell=1}^{N}\ell
 <p>Білий шум, наприклад, мав би рекурентну діаграму з майже ізольованими рекурентними точками та дуже малим відсотком діагональних ліній, тоді як детермінований процес демонстрував би дуже малу кількість поодиноких рекурентностей, але велику щільність довгих діагональних ліній.</p>
 </div>
 </div>
-<div id="cell-fig-dji-det" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DET, label<span class="op">=</span><span class="st">'DET'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-det" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DET, label<span class="op">=</span><span class="st">'DET'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-det" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -900,8 +903,8 @@ LAM = \sum_{v=v_{\min}}^{N}v \cdot P(v) \Bigg/ \sum_{v=1}^{N}v \cdot P(v),
 <p>Ламінарність характеризує ймовірність системи перебувати незмінному стані. Зі збільшенням ізольованих рекурентних точок у системі міра ламінарності спадатиме</p>
 </div>
 </div>
-<div id="cell-fig-dji-lam" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>LAM, label<span class="op">=</span><span class="st">'LAM'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-lam" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>LAM, label<span class="op">=</span><span class="st">'LAM'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-lam" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -937,8 +940,8 @@ L = \sum_{{\ell=\ell_{\min}}}^{N}\ell \cdot P(\ell) \Bigg/ \sum_{{\ell=\ell_{\mi
 <p>Середня довжина діагональних ліній визначає середній час при якому система залишається передбачуваною</p>
 </div>
 </div>
-<div id="cell-fig-dji-avgl" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>AVG_DIAG_LINE, label<span class="op">=</span><span class="st">'AVG L'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-avgl" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>AVG_DIAG_LINE, label<span class="op">=</span><span class="st">'AVG L'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-avgl" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -973,8 +976,8 @@ TT = \sum_{{v=v_{\min}}}^{{N}}v \cdot P(v) \Bigg/ \sum_{{v=v_{\min}}}^{{N}}P(v).
 <p>Середня довжина вертикальних ліній визначає середній час перебування системи в ламінарному стані. Тобто, вона відповідає середньому періоду часу при якому система “завмирає” у певному стані. Очевидно, що зростання цiєї величини характеризує дедалi бiльший час затримки дослiджуваної системи в певному станi</p>
 </div>
 </div>
-<div id="cell-fig-dji-tt" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>TT, label<span class="op">=</span><span class="st">'TT'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-tt" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>TT, label<span class="op">=</span><span class="st">'TT'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-tt" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1010,8 +1013,8 @@ WVL_{mean} = \sum_{w=w_{min}}^{N} w \cdot P(w) \Bigg/ \sum_{w=w_{min}}^{N} P(w).
 <p>Представлену міру можна охарактеризувати як середній горизонт <em>непередбачуваності</em> системи</p>
 </div>
 </div>
-<div id="cell-fig-dji-avgv" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>AVG_WVERT_LINE, label<span class="op">=</span><span class="st">'WVL_</span><span class="sc">{mean}</span><span class="st">'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-avgv" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>AVG_WVERT_LINE, label<span class="op">=</span><span class="st">'WVL_</span><span class="sc">{mean}</span><span class="st">'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-avgv" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1047,8 +1050,8 @@ DLEn = -\sum_{{\ell =\ell _{\min }}}^{N}p(\ell )\ln p(\ell ).
 <p>Для некорельованого шуму чи осциляцiй ми тримали б мале значення ентропiї, що вказувало б на асиметричний розподіл діагональних ліній: існувала б невеличка частка діагональних ліній конкретної довжини, що характеризувала б рекурентність досліджуваної системи. Зростання даної ентропії свідчило б про зростання симетричності розподілу довжин діагональних ліній</p>
 </div>
 </div>
-<div id="cell-fig-dji-dlen" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_DIAG, label<span class="op">=</span><span class="st">'DLEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-dlen" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_DIAG, label<span class="op">=</span><span class="st">'DLEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-dlen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1084,8 +1087,8 @@ VLEn =-\sum_{{ v = v_{\min }}}^{N}p( v )\ln p( v ).
 <p>Для синусоїдального процесу ми би очікували мале значення даної ентропії, оскільки це простий періодичний процес. Для складного процесу з пам’ятю очiкуємо високе значення цього типу рекурентної ентропiї. Це означатиме, що ламiнарнiсть процесу характеризуються рiзноманiтними перiодами довгостроковості пам’яті системи</p>
 </div>
 </div>
-<div id="cell-fig-dji-vlen" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_VERT, label<span class="op">=</span><span class="st">'VLEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-vlen" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_VERT, label<span class="op">=</span><span class="st">'VLEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-vlen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1121,8 +1124,8 @@ DIV = 1 \big/ L_{\max}.
 <p>Чим вище значення дивергенції, тим швидше розбігаються траєкторії фазового простору. І навпаки, чим нижче значення дивергенції, тим ближче досліджувані траєкторії прилягають одна до одної</p>
 </div>
 </div>
-<div id="cell-fig-dji-div" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DIV, label<span class="op">=</span><span class="st">'DIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-div" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>DIV, label<span class="op">=</span><span class="st">'DIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-div" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1157,8 +1160,8 @@ VDIV = 1 \big/ V_{\max}.
 <p>Максимальна довижна вертикальних ліній надавала нам інформацію про максимальний ступінь незмінюваності системи. Вертикальна дивергенція дозволяє нам охарактеризувати швидкість настання або спаду ламінарності у системі. Чим вище значення <span class="math inline">\(VDIV\)</span>, тим швидше система виходить із ламінарного стану і навпаки</p>
 </div>
 </div>
-<div id="cell-fig-dji-vdiv" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>VERT_DIV, label<span class="op">=</span><span class="st">'VDIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-vdiv" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>VERT_DIV, label<span class="op">=</span><span class="st">'VDIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-vdiv" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1181,8 +1184,8 @@ VDIV = 1 \big/ V_{\max}.
 WVDIV = 1 \big/ WVL_{max}.
 \]</span></p>
 <p>Зростання даного показника має вказувати на зростання ступеня рекурентності системи, а його спад має демонструвати зростання непередбачуваності.</p>
-<div id="cell-fig-dji-wvdiv" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>WHITE_VERT_DIV, label<span class="op">=</span><span class="st">'WVDIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-wvdiv" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>WHITE_VERT_DIV, label<span class="op">=</span><span class="st">'WVDIV'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-wvdiv" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1205,8 +1208,8 @@ WVDIV = 1 \big/ WVL_{max}.
 WVertEn=-\sum_{{\omega =\omega _{\min }}}^{N}p(\omega )\ln p(\omega ),
 \]</span></p>
 <p>де <span class="math inline">\(\omega_{min}\)</span> — мінімальна довжина білої вертикальної лінії.</p>
-<div id="cell-fig-dji-wvlen" class="cell" data-scrolled="false" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_WHITE_VERT, label<span class="op">=</span><span class="st">'WVertEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-wvlen" class="cell" data-scrolled="false" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>ENT_WHITE_VERT, label<span class="op">=</span><span class="st">'WVertEn'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-wvlen" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1228,8 +1231,8 @@ WVertEn=-\sum_{{\omega =\omega _{\min }}}^{N}p(\omega )\ln p(\omega ),
 <p><span class="math display">\[
 RATIO_1 = DET \Big/ RR = N^2 \cdot \left( \sum_{l=l_{min}}^{N}l \cdot P(l) \right) \Bigg/ \left(\sum_{l=1}^{N}lP(l)\right)^2.
 \]</span></p>
-<div id="cell-fig-dji-det_rr" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_DET_REC, label<span class="op">=</span><span class="st">'RATIO_1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-det_rr" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_DET_REC, label<span class="op">=</span><span class="st">'RATIO_1'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-det_rr" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1251,8 +1254,8 @@ RATIO_1 = DET \Big/ RR = N^2 \cdot \left( \sum_{l=l_{min}}^{N}l \cdot P(l) \righ
 <p><span class="math display">\[
 RATIO_2 = LAM \big/ DET.
 \]</span></p>
-<div id="cell-fig-dji-lam_det" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_LAM_DET, label<span class="op">=</span><span class="st">'RATIO_2'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-dji-lam_det" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plot_recurrence_measure(measure<span class="op">=</span>RATIO_LAM_DET, label<span class="op">=</span><span class="st">'RATIO_2'</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-dji-lam_det" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1285,22 +1288,22 @@ RATIO_2 = LAM \big/ DET.
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-doi:10.1152/jappl.1994.76.2.965" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">C. L. Webber and J. P. Zbilut, <em><a href="https://doi.org/10.1152/jappl.1994.76.2.965">Dynamical Assessment of Physiological Systems and States Using Recurrence Plot Strategies</a></em>, Journal of Applied Physiology <strong>76</strong>, 965 (1994).</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">C. L. Webber and J. P. Zbilut, <a href="https://doi.org/10.1152/jappl.1994.76.2.965">Dynamical assessment of physiological systems and states using recurrence plot strategies</a>, Journal of Applied Physiology <strong>76</strong>, 965 (1994).</div>
 </div>
 <div id="ref-ZBILUT1992199" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">J. P. Zbilut and C. L. Webber, <em><a href="https://doi.org/10.1016/0375-9601(92)90426-M">Embeddings and Delays as Derived from Quantification of Recurrence Plots</a></em>, Physics Letters A <strong>171</strong>, 199 (1992).</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">J. P. Zbilut and C. L. Webber, <a href="https://doi.org/10.1016/0375-9601(92)90426-M">Embeddings and delays as derived from quantification of recurrence plots</a>, Physics Letters A <strong>171</strong>, 199 (1992).</div>
 </div>
 <div id="ref-PhysRevE.66.026702" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">N. Marwan, N. Wessel, U. Meyerfeldt, A. Schirdewan, and J. Kurths, <em><a href="https://doi.org/10.1103/PhysRevE.66.026702">Recurrence-Plot-Based Measures of Complexity and Their Application to Heart-Rate-Variability Data</a></em>, Phys. Rev. E <strong>66</strong>, 026702 (2002).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">N. Marwan, N. Wessel, U. Meyerfeldt, A. Schirdewan, and J. Kurths, <a href="https://doi.org/10.1103/PhysRevE.66.026702">Recurrence-plot-based measures of complexity and their application to heart-rate-variability data</a>, Phys. Rev. E <strong>66</strong>, 026702 (2002).</div>
 </div>
 <div id="ref-DBLP:conf/m3e2/BielinskyiSSSR22" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[4] </div><div class="csl-right-inline">A. O. Bielinskyi, V. N. Soloviev, V. Solovieva, S. O. Semerikov, and M. A. Radin, <em><a href="https://ceur-ws.org/Vol-3465/paper14.pdf">Recurrence Quantification Analysis of Energy Market Crises: A Nonlinear Approach to Risk Management</a></em>, in <em>Proceedings of the Selected and Revised Papers of 10th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2022), Virtual Event, Kryvyi Rih, Ukraine, November 17-18, 2022</em>, edited by H. B. Danylchuk and S. O. Semerikov, Vol. 3465 (CEUR-WS.org, 2022), pp. 110–131.</div>
 </div>
 <div id="ref-e24091314" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">A. Tomashin, G. Leonardi, and S. Wallot, <em><a href="https://doi.org/10.3390/e24091314">Four Methods to Distinguish Between Fractal Dimensions in Time Series Through Recurrence Quantification Analysis</a></em>, Entropy <strong>24</strong>, (2022).</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">A. Tomashin, G. Leonardi, and S. Wallot, <a href="https://doi.org/10.3390/e24091314">Four methods to distinguish between fractal dimensions in time series through recurrence quantification analysis</a>, Entropy <strong>24</strong>, (2022).</div>
 </div>
 <div id="ref-Eckmann_1987" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J.-P. Eckmann, S. O. Kamphorst, and D. Ruelle, <em><a href="https://doi.org/10.1209/0295-5075/4/9/004">Recurrence Plots of Dynamical Systems</a></em>, Europhysics Letters <strong>4</strong>, 973 (1987).</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">J.-P. Eckmann, S. O. Kamphorst, and D. Ruelle, <a href="https://doi.org/10.1209/0295-5075/4/9/004">Recurrence plots of dynamical systems</a>, Europhysics Letters <strong>4</strong>, 973 (1987).</div>
 </div>
 </div>
 </section>

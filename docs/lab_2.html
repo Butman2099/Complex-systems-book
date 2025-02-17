@@ -618,16 +618,16 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 \tag{2.1}\]</span></span></p>
 <p>а <span class="math inline">\(i\)</span> проходить в діапазоні <span class="math inline">\(1,..., N-(m-1)\tau\)</span>; значення <span class="math inline">\(\tau\)</span> представляє часову затримку, а <span class="math inline">\(m\)</span> — це розмірність вкладень (кількість змінних, що включає кожна траєкторія).</p>
 <p>Код для реконструкції фазового простору може виглядати наступним чином:</p>
-<div id="cell-26" class="cell" data-execution_count="1">
+<div id="cell-26" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> complexity_embedding(signal, dimension, delay):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">len</span>(signal)                                        <span class="co"># вимірюємо довжину сигналу</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> np.zeros((dimension, N <span class="op">-</span> (dimension <span class="op">-</span> <span class="dv">1</span>) <span class="op">*</span> delay)) <span class="co"># ініціалізуємо масив нулів,</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>                                                           <span class="co"># що будуть представляти траєкторії</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(dimension):</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        Y[i] <span class="op">=</span> signal[i <span class="op">*</span> delay : i <span class="op">*</span> delay <span class="op">+</span> Y.shape[<span class="dv">1</span>]]  <span class="co"># заповнюємо кожну траєкторію </span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        Y[i] <span class="op">=</span> signal[i <span class="op">*</span> delay : i <span class="op">*</span> delay <span class="op">+</span> Y.shape[<span class="dv">1</span>]]  <span class="co"># заповнюємо кожну траєкторію</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    embedded <span class="op">=</span> Y.T                                          </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> embedded                                        <span class="co"># повертаємо результат </span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    embedded <span class="op">=</span> Y.T</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> embedded                                        <span class="co"># повертаємо результат</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Для реконструкції фазового простору використовуватимемо метод <code>complexity_embedding()</code>. Його синтаксис:</p>
 <p><strong><code>complexity_embedding(signal, delay=1, dimension=3, show=False, **kwargs)</code></strong></p>
@@ -644,8 +644,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><em>array</em> — реконструйований атрактор розміру <code>length - (dimension - 1) * delay</code>.</li>
 </ul>
 <p>Далі імпортуємо необхідні для подальшої роботи модулі:</p>
-<div id="cell-30" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<div id="cell-30" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> neurokit2 <span class="im">as</span> nk</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yfinance <span class="im">as</span> yf</span>
@@ -655,7 +655,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І виконаємо налаштування рисунків для виводу:</p>
-<div id="cell-32" class="cell" data-execution_count="9">
+<div id="cell-32" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -669,7 +669,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'legend.fontsize'</span>: size,             <span class="co"># розмір легенди</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'xtick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ytick.labelsize'</span>: size,             <span class="co"># розмір розмітки по осі Ох</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"Serif"</span>,              <span class="co"># сімейство стилів підписів </span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.family"</span>: <span class="st">"Serif"</span>,              <span class="co"># сімейство стилів підписів</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"font.serif"</span>: [<span class="st">"Times New Roman"</span>],   <span class="co"># стиль підпису</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'savefig.dpi'</span>: <span class="dv">300</span>,                  <span class="co"># якість збережених зображень</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'axes.grid'</span>: <span class="va">False</span>                   <span class="co"># побудова сітки на самому рисунку</span></span>
@@ -678,18 +678,18 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Тепер розглянемо можливість використання методу часових затримок і отриманих у подальшому атракторів у якості індикатора складності. Як і в попередній роботі, для прикладу завантажимо часовий ряд Біткоїна за період з 1 вересня 2015 по 1 березня 2020, використовуючи <code>yfinance</code>:</p>
-<div id="cell-34" class="cell" data-execution_count="4">
+<div id="cell-34" class="cell" data-outputid="60aa76c8-af11-4036-8b9c-69b391e0d00b" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'BTC-USD'</span>       <span class="co"># Символ індексу</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2015-09-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2020-03-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, start, end)  <span class="co"># вивантажуємо дані</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                 <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                 <span class="co"># підпис по вісі Ох</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                       <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
+<pre><code>[*********************100%***********************]  1 of 1 completed</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -710,17 +710,17 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div id="cell-fig-btc-init" class="cell" data-execution_count="10">
+<div id="cell-fig-btc-init" class="cell" data-outputid="678066a5-0277-4dd5-a157-f2197332861d" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -729,7 +729,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>)                    <span class="co"># оберт позначок по осі Ох на 45 градусів</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік</span></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-init" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -747,7 +747,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Спочатку оберемо вид ряду: 1 - вихідний ряд; 2 - детермінований (різниця між теперішнім та попереднім значенням); 3 - прибутковості звичайні; 4 - стандартизовані прибутковості; 5 - абсолютні значення (волатильності); 6 - стандартизований ряд.</p>
 <p>Для подальших розрахунків накращим варіантом буде вибір стандартизованого вихідного ряду або прибутковостей, оскільки значення вихідного часового ряду відрізняються на декілька порядків, і можуть сильно перевищувати встановлений параметр <span class="math inline">\(\varepsilon\)</span>. У цьому випадку для вихідних значень, що сильно різняться між собою, увесь часовий діапазон буде розглядатися як нерекурентний.</p>
 <p>Спочатку визначимо функції для виконання перетворення ряду:</p>
-<div id="cell-43" class="cell" data-execution_count="11">
+<div id="cell-43" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -763,7 +763,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>: </span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> ret_type <span class="op">==</span> <span class="dv">5</span>:</span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">=</span> for_rec.pct_change()</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
@@ -777,28 +777,28 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>і тепер виконаємо перетворення, використовуючи дану функцію:</p>
-<div id="cell-45" class="cell" data-execution_count="12">
+<div id="cell-45" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>signal <span class="op">=</span> time_ser.copy()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># вид ряду: 1 - вихідний, </span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span>    <span class="co"># вид ряду: 1 - вихідний,</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 2 - детрендований (різниця між теп. значенням та попереднім)</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні, </span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості, </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 3 - прибутковості звичайні,</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 4 - стандартизовані прибутковості,</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 5 - абсолютні значення (волатильності)</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                <span class="co"># 6 - стандартизований ряд</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type) </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type).flatten()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Оскільки ми не матимемо змоги візуалізувати багатовимірний фазовий простір (<span class="math inline">\(m&gt;3\)</span>), ми послуговуватимемось значеннями <span class="math inline">\(m=2\)</span> та <span class="math inline">\(m=3\)</span>. Значення <span class="math inline">\(\tau\)</span> будемо варіювати як із власних переконань, так і з опорою на функціонал бібліотеки <code>neuralkit2</code>.</p>
 <p>Скористаємось методом <code>complexity_simulate()</code> для генерації різних тестових сигналів:</p>
-<div id="cell-48" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>signal_random_walk <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>, </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                            sampling_rate<span class="op">=</span><span class="dv">100</span>, </span>
+<div id="cell-48" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>signal_random_walk <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                                            sampling_rate<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                            method<span class="op">=</span><span class="st">"randomwalk"</span>) <span class="co"># симуляція випадкового блукання</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-randow-walk-2d" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(embedded<span class="op">=</span>nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-randow-walk-2d" class="cell" data-outputid="a07042fe-496f-4a11-cee5-388b3bd96869" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(embedded<span class="op">=</span>nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-randow-walk-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -812,9 +812,9 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-fig-randow-walk-3d" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
+<div id="cell-fig-randow-walk-3d" class="cell" data-outputid="84d996b0-7f0f-4885-877d-8d38023faf94" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_random_walk, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>,</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"orange"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-randow-walk-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -829,15 +829,15 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-51" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>signal_ornstein <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>, </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                        sampling_rate<span class="op">=</span><span class="dv">100</span>, </span>
+<div id="cell-51" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>signal_ornstein <span class="op">=</span> nk.complexity_simulate(duration<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                                        sampling_rate<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"ornstein"</span>) <span class="co"># симуляція системи Орнштайна</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-ornstein-2d" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_ornstein, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-ornstein-2d" class="cell" data-outputid="a5f4d925-910f-4d6b-8a98-1dc7e3e04d00" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_ornstein, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-ornstein-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -851,10 +851,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-fig-ornstein-3d" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_ornstein, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-ornstein-3d" class="cell" data-outputid="03c7cb3f-6065-4d43-da13-5457de806f07" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(signal_ornstein, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-ornstein-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -868,7 +868,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-fig-lorenz-3d" class="cell" data-execution_count="19">
+<div id="cell-fig-lorenz-3d" class="cell" data-outputid="404c7fdb-0bda-4319-fe8e-a2e279d65354" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(color <span class="op">=</span> <span class="st">"last_dim"</span>, alpha<span class="op">=</span><span class="st">"time"</span>, duration<span class="op">=</span><span class="dv">1</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-lorenz-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -883,7 +883,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-fig-rossler-3d" class="cell" data-execution_count="20">
+<div id="cell-fig-rossler-3d" class="cell" data-outputid="ff7acca8-63d1-47b7-ca96-09f386d28098" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(<span class="st">"rossler"</span>, color <span class="op">=</span> <span class="st">"blue"</span>, alpha<span class="op">=</span><span class="dv">1</span>, sampling_rate<span class="op">=</span><span class="dv">5000</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-rossler-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -898,10 +898,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-fig-btc-2d" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"maroon"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-2d" class="cell" data-outputid="b5d0ef67-728d-4e29-f408-8e4377798bd5" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">2</span>, delay<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"maroon"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-2d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -915,10 +915,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-fig-btc-3d" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>), </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"maroon"</span>)<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-fig-btc-3d" class="cell" data-outputid="7a55dbc8-ed32-43aa-ebff-578b17afc8c2" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nk.complexity_attractor(nk.complexity_embedding(for_rec, dimension<span class="op">=</span><span class="dv">3</span>, delay<span class="op">=</span><span class="dv">100</span>),</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                        alpha<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                        color<span class="op">=</span><span class="st">"maroon"</span>)<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-3d" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -983,24 +983,24 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <p>Як уже зазначалось на початку, рекурентна діаграма — це двовимірна квадратна двійкова матриця розміром <span class="math inline">\(N^2\)</span>. Одним із її основних недоліків є те, що вона погано масштабується на великих даних. Наприклад, якщо ви плануєте досліджувати часовий ряд довжиною 1000000 значень, тоді рекурентна матриця буде складатись із 1000000000000 білих і чорних точок, що може бути викликом для вашого процесора та оперативної пам’яті. Тому в подальшому ми пропонуємо будувати рекурентну матрицю не для всього ряду, а тільки для його підмножини. Для цього ми визначимо змінні початкового (<code>idx_beg</code>) та кінцевого (<code>inx_end</code>) відліку в межах якого буде здійснюватись побудова рекурентної матриці</p>
 </div>
 </div>
-<div id="cell-64" class="cell" data-execution_count="23">
+<div id="cell-64" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>idx_beg <span class="op">=</span> <span class="dv">1000</span> <span class="co"># кінцевий відлік</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>idx_end <span class="op">=</span> <span class="dv">1500</span> <span class="co"># початковий відлік</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>fragm <span class="op">=</span> signal[idx_beg:idx_end]</span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># виконуємо приведення вихідного сигналу до прибутковостей</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(fragm, ret_type)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(fragm, ret_type).flatten()</span>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="co"># приводимо вихідний ряд до стандартизованого виду</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span> </span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(fragm, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(fragm, ret_type).flatten()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-btc-rec-init" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(fragm, </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span><span class="dv">4</span>, </span>
+<div id="cell-fig-btc-rec-init" class="cell" data-outputid="0af67de9-3d8a-4bf1-fdc5-98286af65347" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(fragm.values.flatten(),</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span><span class="dv">4</span>,</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1018,10 +1018,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 <p>Як можна бачити з рисунку <a href="#fig-btc-rec-init" class="quarto-xref"><span>2.14</span></a> всі траєкторії для простору вихідних значень за абсолютною шкалою залишаються доволі віддаленими один від одного. Для розпізнавання рекурентних закономірностей нам потребується поступово нарощувати <span class="math inline">\(\varepsilon\)</span>. З цього рисунку видно, що <span class="math inline">\(\varepsilon=100\)</span> буде замало.</p>
 <p>Тепер спробуємо трохи нормалізувати значення вихідного фрагменту Біткоїна, аби реконструйовані траєкторії не знаходились занадто віддаленими один від одного. Для цього розрахуємо стандартизовані прибутковості:</p>
-<div id="cell-fig-btc-rec-returns" class="cell" data-execution_count="25">
+<div id="cell-fig-btc-rec-returns" class="cell" data-outputid="156428c5-427d-4b69-d28b-1aa73b84647b" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо рекурентну матрицю</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(ret, </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(ret,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>,</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span><span class="dv">4</span>,</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span><span class="fl">0.8</span>,</span>
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1040,10 +1040,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 <p>Тепер можемо бачити, що Біткоїн став характризуватися чорними смугами, що відображають динаміку певних детермінованих процесів. У той же час білі смуги характеризують періоди абсолютно аномальної (непередбачуваної) поведінки на даному ринку. Видно, що прибутковості залишаються доволі некорельованими, про що і свідчить переважне домінування саме білих областей.</p>
 <p>Спробуємо тепер подивитись на стандартизований вихідний ряд:</p>
-<div id="cell-fig-btc-init-stand" class="cell" data-execution_count="26">
+<div id="cell-fig-btc-init-stand" class="cell" data-outputid="b60f6b19-cb92-4af3-fb2e-eb63d3765d7d" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># будуємо рекурентну матрицю</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec, </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>, </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>rc, _ <span class="op">=</span> nk.recurrence_matrix(for_rec,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                            delay<span class="op">=</span><span class="dv">1</span>,</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                            dimension<span class="op">=</span><span class="dv">4</span>,</span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                            tolerance<span class="op">=</span><span class="fl">0.8</span>,</span>
 <span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>                            show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1108,17 +1108,17 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><strong>Гаутама (2003)</strong> <span class="citation" data-cites="lirias1573905">&nbsp;[<a href="references.html#ref-lirias1573905" role="doc-biblioref">15</a>]</span> зазначає, що на практиці часто використовують фіксовану часову затримку і відповідно регулюють розмірність вбудовування. Оскільки це може призвести до великих значень <span class="math inline">\(m\)</span> (а отже, до вкладених даних великого розміру) і, відповідно, до повільної обробки, використовується метод оптимізації для спільного визначення <span class="math inline">\(m\)</span> і <span class="math inline">\(\tau\)</span> на основі показника <strong>entropy ratio</strong>.</li>
 </ul>
 <p>Розглянемо оптимальні значення розмірності та затримки для часового сигналу Біткоїна:</p>
-<div id="cell-79" class="cell" data-execution_count="27">
+<div id="cell-79" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># виконуємо приведення вихідного сигналу до прибутковостей</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type).flatten()</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># приводимо вихідний ряд до стандартизованого виду</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span> </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>for_rec <span class="op">=</span> transformation(signal, ret_type).flatten()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-btc-delay-fraser1986" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
+<div id="cell-fig-btc-delay-fraser1986" class="cell" data-outputid="19d9c4cb-3db3-4e7a-c7d1-ddb500d50937" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"fraser1986"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1135,8 +1135,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p><a href="#fig-btc-delay-fraser1986" class="quarto-xref">Рис.&nbsp;<span>2.17</span></a> показує, що перший локальний мінімум взаємної інформації для стандартизованих вихідних значень Біткоїна знаходиться на 273 лагу. Для візуального огляду реконструйованого атрактора це значення, можливо, є найбільш адекватним. Але використовуючи настільки велику часову затримку, ми втрачаємо доволі багато проміжних значень, що також можуть містити досить важливу приховану інформацію для кількісних розрахунків.</p>
-<div id="cell-fig-btc-delay-theiler" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
+<div id="cell-fig-btc-delay-theiler" class="cell" data-outputid="49d233dd-3d0d-47ff-b7a2-a587d76386eb" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"theiler1990"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1153,20 +1153,20 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p><a href="#fig-btc-delay-theiler" class="quarto-xref">Рис.&nbsp;<span>2.18</span></a> демонструє, що автокореляція між стандартизованих вихідним сигналом Біткоїна та його зміщенною версією при <span class="math inline">\(\tau=195\)</span> вперше перетинає значення <span class="math inline">\(1/\exp\)</span>. Бачимо, що дане значення затримки є трохи меншим за те, що було отримано до цього, але суті це не змінює. Також бачимо, що між реконструйованими атракторами для <span class="math inline">\(\tau=195\)</span> та <span class="math inline">\(\tau=273\)</span> немає кардинальної візуальної різниці.</p>
-<div id="cell-84" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
+<div id="cell-84" class="cell" data-outputid="54f339e5-37e0-4a73-e85f-9b659ea841c7" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">500</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"casdagli1991"</span>)</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>delay</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Як можна бачити по прикладу вище, не всі методи надають адекватну оцінку розмірності нашого сигналу. Спробуємо привести вихідні значення Біткоїна до прибутковостей та повторити процедуру Касдаглі ще раз.</p>
-<div id="cell-86" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-86" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> transformation(signal, ret_type).flatten()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-btc-delay-casdagli1991" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(ret, </span>
+<div id="cell-fig-btc-delay-casdagli1991" class="cell" data-outputid="5e7b35c9-df91-4ca7-f6ac-051e758c6839" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(ret,</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"casdagli1991"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1183,8 +1183,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p>Цього разу нам вдалося досягти оптимального результату, але приклад вище демонструє, що кожна процедура має свої виключення. <a href="#fig-btc-delay-casdagli1991" class="quarto-xref">Рис.&nbsp;<span>2.19</span></a> показує, що значення прибутковостей Біткоїна характеризуються певними кореляціями лише на перших 4-ох лагах. Подальші часові зміщення роблять значення прибутковостей незалежними один від одного.</p>
-<div id="cell-fig-btc-delay-rosenstein1993" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
+<div id="cell-fig-btc-delay-rosenstein1993" class="cell" data-outputid="5afa3631-9a4e-4477-9a3b-17e2736406a5" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"rosenstein1993"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1201,8 +1201,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p><a href="#fig-btc-delay-rosenstein1993" class="quarto-xref">Рис.&nbsp;<span>2.20</span></a> демонструє, що при <span class="math inline">\(\tau=101\)</span> функція автокореляцій перетинає значення <span class="math inline">\(\left( 1-1/e \right)\)</span>. При цьому видно, що навіть для такого лагу зберігається значна частка кореляцій між стандартизованими вихідними значеннями Біткоїна.</p>
-<div id="cell-fig-btc-delay-rosenstein1994" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
+<div id="cell-fig-btc-delay-rosenstein1994" class="cell" data-outputid="b0126212-92b8-47b6-88bc-92f5a45d42e8" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"rosenstein1994"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1219,8 +1219,8 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p>Рисунок вище показує, що при <span class="math inline">\(\tau=120\)</span> зміщення реконструйованих траєкторій від їх оригінального положення на лінії ідентичності зберігає найбільшу кількість інформації стосовно атрактора стандартизованих значень Біткоїна.</p>
-<div id="cell-fig-btc-delay-lyle2021" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec, </span>
+<div id="cell-fig-btc-delay-lyle2021" class="cell" data-outputid="37413977-5cd3-4c7c-ae51-3ea7945a96ff" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>                                        delay_max<span class="op">=</span><span class="dv">300</span>, show<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                                        method<span class="op">=</span><span class="st">"lyle2021"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1238,16 +1238,15 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 <p>Згідно представленого вище результату найбільш значущі частоти, отримані за допомогою перетворення Фур’є, зберігаються при <span class="math inline">\(\tau=109\)</span>.</p>
 <p>Тепер подивимось як це виглядатиме для об’єднаного підбору параметрів:</p>
-<div id="cell-fig-btc-delay-gautama2003" class="cell" data-execution_count="36">
+<div id="cell-fig-btc-delay-gautama2003" class="cell" data-outputid="fcc8996c-870a-4812-b436-fe408888a3d0" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>delay, parameters <span class="op">=</span> nk.complexity_delay(for_rec,</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    delay_max<span class="op">=</span>np.arange(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="co"># діапазон значень затримки</span></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    dimension_max<span class="op">=</span><span class="dv">10</span>,              <span class="co"># максимальна розмірність вкладень</span></span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    method<span class="op">=</span><span class="st">"gautama2003"</span>,</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    surrogate_n<span class="op">=</span><span class="dv">5</span>,                 <span class="co"># Кількість сурогатних сигналів </span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    surrogate_n<span class="op">=</span><span class="dv">5</span>,                 <span class="co"># Кількість сурогатних сигналів</span></span>
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># для генерації</span></span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    surrogate_method<span class="op">=</span><span class="st">"random"</span>,     <span class="co"># Спосіб генерації сигналів</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    show<span class="op">=</span><span class="va">True</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-btc-delay-gautama2003" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1261,10 +1260,10 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 </div>
-<div id="cell-97" class="cell" data-execution_count="37">
+<div id="cell-97" class="cell" data-outputid="56d9e455-75f6-4e5b-ec67-7d4080e1db9b" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dimension <span class="op">=</span> parameters[<span class="st">"Dimension"</span>]</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>dimension</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="37">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <pre><code>10</code></pre>
 </div>
 </div>
@@ -1307,7 +1306,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <li><strong>parameters</strong> (<em>dict</em>) — словник python, що містить додаткову інформацію про параметри, які використовуються для обчислення оптимальної розмірності.</li>
 </ul>
 <p>Спробуємо отримати оптимальне значення розмірності згідно зазначених процедур. В якості часової затримки можна взяти <span class="math inline">\(\tau=100\)</span>. Приблизно таке значення спостерігалося для кожної процедури.</p>
-<div id="cell-fig-btc-dim-cd" class="cell" data-execution_count="38">
+<div id="cell-fig-btc-dim-cd" class="cell" data-outputid="c55affb8-2730-499e-fd62-a90672c4cebe" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                                                  dimension_max<span class="op">=</span><span class="dv">10</span>,</span>
@@ -1327,7 +1326,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p><a href="#fig-btc-dim-cd" class="quarto-xref">Рис.&nbsp;<span>2.25</span></a> демонструє той факт, що оптимальна розмірність вкладень, за якої досягається найбільш інформативна репрезентація фазового простору, дорівнює 7.</p>
-<div id="cell-fig-btc-dim-fnn" class="cell" data-execution_count="39">
+<div id="cell-fig-btc-dim-fnn" class="cell" data-outputid="609660d0-a48b-4993-8da2-85e7ba98f017" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">100</span>,</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                                                  dimension_max<span class="op">=</span><span class="dv">10</span>,</span>
@@ -1347,7 +1346,7 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 </div>
 </div>
 <p>З рисунку <a href="#fig-btc-dim-fnn" class="quarto-xref"><span>2.26</span></a> видно, що мінімальна розмірність вкладення дорівнює 3. Саме при переході від 3-ох вимірного фазового простору до 4-ох вимірного ми бачимо, що кількість хибних сусідів стає мінімальною і далі не зростає.</p>
-<div id="cell-fig-btc-dim-afnn" class="cell" data-execution_count="40">
+<div id="cell-fig-btc-dim-afnn" class="cell" data-outputid="006077c0-34b0-48ae-c1eb-4629cbbfa8ec" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>optimal_dimension, info <span class="op">=</span> nk.complexity_dimension(for_rec,</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>                                                  delay<span class="op">=</span><span class="dv">20</span>,</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>                                                  dimension_max<span class="op">=</span><span class="dv">20</span>,</span>
@@ -1372,13 +1371,13 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-PhysRevLett.45.712" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">N. H. Packard, J. P. Crutchfield, J. D. Farmer, and R. S. Shaw, <em><a href="https://doi.org/10.1103/PhysRevLett.45.712">Geometry from a Time Series</a></em>, Phys. Rev. Lett. <strong>45</strong>, 712 (1980).</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">N. H. Packard, J. P. Crutchfield, J. D. Farmer, and R. S. Shaw, <a href="https://doi.org/10.1103/PhysRevLett.45.712">Geometry from a time series</a>, Phys. Rev. Lett. <strong>45</strong>, 712 (1980).</div>
 </div>
 <div id="ref-10.1007/BFb0091924" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[2] </div><div class="csl-right-inline">F. Takens, <em>Detecting Strange Attractors in Turbulence</em>, in <em>Dynamical Systems and Turbulence, Warwick 1980</em>, edited by D. Rand and L.-S. Young (Springer Berlin Heidelberg, Berlin, Heidelberg, 1981), pp. 366–381.</div>
 </div>
 <div id="ref-Eckmann_1987" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J.-P. Eckmann, S. O. Kamphorst, and D. Ruelle, <em><a href="https://doi.org/10.1209/0295-5075/4/9/004">Recurrence Plots of Dynamical Systems</a></em>, Europhysics Letters <strong>4</strong>, 973 (1987).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">J.-P. Eckmann, S. O. Kamphorst, and D. Ruelle, <a href="https://doi.org/10.1209/0295-5075/4/9/004">Recurrence plots of dynamical systems</a>, Europhysics Letters <strong>4</strong>, 973 (1987).</div>
 </div>
 <div id="ref-DBLP:conf/icteri/SolovievB18" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[4] </div><div class="csl-right-inline">V. N. Soloviev and A. Belinskyi, <em><a href="http://ceur-ws.org/Vol-2104/paper_175.pdf">Methods of Nonlinear Dynamics and the Construction of Cryptocurrency Crisis Phenomena Precursors</a></em>, in <em>Proceedings of the 14th International Conference on <span>ICT</span> in Education, Research and Industrial Applications. Integration, Harmonization and Knowledge Transfer. Volume <span>II:</span> Workshops, Kyiv, Ukraine, May 14-17, 2018</em>, edited by V. Ermolayev, M. C. Suárez-Figueroa, V. Yakovyna, V. S. Kharchenko, V. Kobets, H. Kravtsov, V. S. Peschanenko, Y. Prytula, M. S. Nikitchenko, and A. Spivakovsky, Vol. 2104 (CEUR-WS.org, 2018), pp. 116–127.</div>
@@ -1393,52 +1392,52 @@ R_{i,j}^{m,\varepsilon_i}=\Theta(\varepsilon_i-\| \vec x_i - \vec x_j \|), \quad
 <div class="csl-left-margin">[7] </div><div class="csl-right-inline">T. Rawald, <a href="http://dx.doi.org/10.18452/18797">Scalable and Efficient Analysis of Large High-Dimensional Data Sets in the Context of Recurrence Analysis</a>, PhD thesis, Humboldt-Universität zu Berlin, Mathematisch-Naturwissenschaftliche Fakultät, 2018.</div>
 </div>
 <div id="ref-PhysRevA.33.1134" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">A. M. Fraser and H. L. Swinney, <em><a href="https://doi.org/10.1103/PhysRevA.33.1134">Independent Coordinates for Strange Attractors from Mutual Information</a></em>, Phys. Rev. A <strong>33</strong>, 1134 (1986).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">A. M. Fraser and H. L. Swinney, <a href="https://doi.org/10.1103/PhysRevA.33.1134">Independent coordinates for strange attractors from mutual information</a>, Phys. Rev. A <strong>33</strong>, 1134 (1986).</div>
 </div>
 <div id="ref-PhysRevA.41.3038" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">J. Theiler, <em><a href="https://doi.org/10.1103/PhysRevA.41.3038">Statistical Precision of Dimension Estimators</a></em>, Phys. Rev. A <strong>41</strong>, 3038 (1990).</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">J. Theiler, <a href="https://doi.org/10.1103/PhysRevA.41.3038">Statistical precision of dimension estimators</a>, Phys. Rev. A <strong>41</strong>, 3038 (1990).</div>
 </div>
 <div id="ref-CASDAGLI199152" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">M. Casdagli, S. Eubank, J. D. Farmer, and J. Gibson, <em><a href="https://doi.org/10.1016/0167-2789(91)90222-U">State Space Reconstruction in the Presence of Noise</a></em>, Physica D: Nonlinear Phenomena <strong>51</strong>, 52 (1991).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">M. Casdagli, S. Eubank, J. D. Farmer, and J. Gibson, <a href="https://doi.org/10.1016/0167-2789(91)90222-U">State space reconstruction in the presence of noise</a>, Physica D: Nonlinear Phenomena <strong>51</strong>, 52 (1991).</div>
 </div>
 <div id="ref-ROSENSTEIN1993117" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">M. T. Rosenstein, J. J. Collins, and C. J. De Luca, <em><a href="https://doi.org/10.1016/0167-2789(93)90009-P">A Practical Method for Calculating Largest Lyapunov Exponents from Small Data Sets</a></em>, Physica D: Nonlinear Phenomena <strong>65</strong>, 117 (1993).</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">M. T. Rosenstein, J. J. Collins, and C. J. De Luca, <a href="https://doi.org/10.1016/0167-2789(93)90009-P">A practical method for calculating largest lyapunov exponents from small data sets</a>, Physica D: Nonlinear Phenomena <strong>65</strong>, 117 (1993).</div>
 </div>
 <div id="ref-ROSENSTEIN199482" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">M. T. Rosenstein, J. J. Collins, and C. J. De Luca, <em><a href="https://doi.org/10.1016/0167-2789(94)90226-7">Reconstruction Expansion as a Geometry-Based Framework for Choosing Proper Delay Times</a></em>, Physica D: Nonlinear Phenomena <strong>73</strong>, 82 (1994).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">M. T. Rosenstein, J. J. Collins, and C. J. De Luca, <a href="https://doi.org/10.1016/0167-2789(94)90226-7">Reconstruction expansion as a geometry-based framework for choosing proper delay times</a>, Physica D: Nonlinear Phenomena <strong>73</strong>, 82 (1994).</div>
 </div>
 <div id="ref-KIM199948" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">H. S. Kim, R. Eykholt, and J. D. Salas, <em><a href="https://doi.org/10.1016/S0167-2789(98)00240-1">Nonlinear Dynamics, Delay Times, and Embedding Windows</a></em>, Physica D: Nonlinear Phenomena <strong>127</strong>, 48 (1999).</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">H. S. Kim, R. Eykholt, and J. D. Salas, <a href="https://doi.org/10.1016/S0167-2789(98)00240-1">Nonlinear dynamics, delay times, and embedding windows</a>, Physica D: Nonlinear Phenomena <strong>127</strong>, 48 (1999).</div>
 </div>
 <div id="ref-10.3389/fcvm.2021.709457" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. V. Lyle, M. Nandi, and P. J. Aston, <em><a href="https://doi.org/10.3389/fcvm.2021.709457">Symmetric Projection Attractor Reconstruction: Sex Differences in the ECG</a></em>, Frontiers in Cardiovascular Medicine <strong>8</strong>, (2021).</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">J. V. Lyle, M. Nandi, and P. J. Aston, <a href="https://doi.org/10.3389/fcvm.2021.709457">Symmetric projection attractor reconstruction: Sex differences in the ECG</a>, Frontiers in Cardiovascular Medicine <strong>8</strong>, (2021).</div>
 </div>
 <div id="ref-lirias1573905" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">T. Gautama, D. Mandic, and M. Van Hulle, <em>A Differential Entropy Based Method for Determining the Optimal Embedding Parameters of a Signal</em>, Proceedings <strong>6</strong>, 29 (2003).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">T. Gautama, D. Mandic, and M. Van Hulle, A differential entropy based method for determining the optimal embedding parameters of a signal, Proceedings <strong>6</strong>, 29 (2003).</div>
 </div>
 <div id="ref-GRASSBERGER1983189" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <em><a href="https://doi.org/10.1016/0167-2789(83)90298-1">Measuring the Strangeness of Strange Attractors</a></em>, Physica D: Nonlinear Phenomena <strong>9</strong>, 189 (1983).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <a href="https://doi.org/10.1016/0167-2789(83)90298-1">Measuring the strangeness of strange attractors</a>, Physica D: Nonlinear Phenomena <strong>9</strong>, 189 (1983).</div>
 </div>
 <div id="ref-PhysRevLett.50.346" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <em><a href="https://doi.org/10.1103/PhysRevLett.50.346">Characterization of Strange Attractors</a></em>, Phys. Rev. Lett. <strong>50</strong>, 346 (1983).</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">P. Grassberger and I. Procaccia, <a href="https://doi.org/10.1103/PhysRevLett.50.346">Characterization of strange attractors</a>, Phys. Rev. Lett. <strong>50</strong>, 346 (1983).</div>
 </div>
 <div id="ref-GRASSBERGER1983227" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">P. Grassberger, <em><a href="https://doi.org/10.1016/0375-9601(83)90753-3">Generalized Dimensions of Strange Attractors</a></em>, Physics Letters A <strong>97</strong>, 227 (1983).</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">P. Grassberger, <a href="https://doi.org/10.1016/0375-9601(83)90753-3">Generalized dimensions of strange attractors</a>, Physics Letters A <strong>97</strong>, 227 (1983).</div>
 </div>
 <div id="ref-PhysRevA.45.3403" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">M. B. Kennel, R. Brown, and H. D. I. Abarbanel, <em><a href="https://doi.org/10.1103/PhysRevA.45.3403">Determining Embedding Dimension for Phase-Space Reconstruction Using a Geometrical Construction</a></em>, Phys. Rev. A <strong>45</strong>, 3403 (1992).</div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">M. B. Kennel, R. Brown, and H. D. I. Abarbanel, <a href="https://doi.org/10.1103/PhysRevA.45.3403">Determining embedding dimension for phase-space reconstruction using a geometrical construction</a>, Phys. Rev. A <strong>45</strong>, 3403 (1992).</div>
 </div>
 <div id="ref-krakovska2015use" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">A. Krakovská, K. Mezeiová, and H. Budáčová, <em>Use of False Nearest Neighbours for Selecting Variables and Embedding Parameters for State Space Reconstruction</em>, Journal of Complex Systems <strong>2015</strong>, (2015).</div>
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">A. Krakovská, K. Mezeiová, and H. Budáčová, Use of false nearest neighbours for selecting variables and embedding parameters for state space reconstruction, Journal of Complex Systems <strong>2015</strong>, (2015).</div>
 </div>
 <div id="ref-RHODES1997S1149" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[21] </div><div class="csl-right-inline">C. Rhodes and M. Morari, <em><a href="https://doi.org/10.1016/S0098-1354(97)87657-0">The False Nearest Neighbors Algorithm: An Overview</a></em>, Computers &amp; Chemical Engineering <strong>21</strong>, S1149 (1997).</div>
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">C. Rhodes and M. Morari, <a href="https://doi.org/10.1016/S0098-1354(97)87657-0">The false nearest neighbors algorithm: An overview</a>, Computers &amp; Chemical Engineering <strong>21</strong>, S1149 (1997).</div>
 </div>
 <div id="ref-STAVRINIDES2022112224" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[22] </div><div class="csl-right-inline">S. G. Stavrinides et al., <em><a href="https://doi.org/10.1016/j.chaos.2022.112224">On the Chaotic Nature of Random Telegraph Noise in Unipolar RRAM Memristor Devices</a></em>, Chaos, Solitons &amp; Fractals <strong>160</strong>, 112224 (2022).</div>
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">S. G. Stavrinides et al., <a href="https://doi.org/10.1016/j.chaos.2022.112224">On the chaotic nature of random telegraph noise in unipolar RRAM memristor devices</a>, Chaos, Solitons &amp; Fractals <strong>160</strong>, 112224 (2022).</div>
 </div>
 <div id="ref-CAO199743" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">L. Cao, <em><a href="https://doi.org/10.1016/S0167-2789(97)00118-8">Practical Method for Determining the Minimum Embedding Dimension of a Scalar Time Series</a></em>, Physica D: Nonlinear Phenomena <strong>110</strong>, 43 (1997).</div>
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">L. Cao, <a href="https://doi.org/10.1016/S0167-2789(97)00118-8">Practical method for determining the minimum embedding dimension of a scalar time series</a>, Physica D: Nonlinear Phenomena <strong>110</strong>, 43 (1997).</div>
 </div>
 </div>
 </section>

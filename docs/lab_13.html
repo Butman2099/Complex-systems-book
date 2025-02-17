@@ -445,7 +445,7 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install networkx</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі можемо імпортувати відповідні бібліотеки:</p>
-<div id="cd74790f" class="cell" data-execution_count="2">
+<div id="cd74790f" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># для візуалізації графіків</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np              <span class="co"># для роботи з матрицями</span></span>
@@ -454,14 +454,14 @@ window.Quarto = {
 </div>
 <p>Пам’ятайте, що оператори <code>import</code> знаходяться у верхній частині вашого коду, вказуючи Python завантажити зовнішній модуль. У цьому випадку ми хочемо завантажити NetworkX, але дамо йому короткий псевдонім <code>nx</code>, оскільки нам доведеться вводити його неодноразово, звідси й інструкція <code>as</code>.</p>
 <p>Давайте перевіримо встановлену версію NetworkX. Ми хочемо переконатися, що не використовуємо застарілий пакет.</p>
-<div id="68596883" class="cell" data-execution_count="3">
+<div id="68596883" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nx.__version__</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>'3.1'</code></pre>
 </div>
 </div>
 <p>Далі виконаємо налаштування формату виведення рисунків:</p>
-<div id="1e4c8cf1" class="cell" data-execution_count="4">
+<div id="1e4c8cf1" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2920,7 +2920,7 @@ m_k(A)=\frac{1}{n}\sum_{i=1}^{n}\lambda_{i}^{k},
 <section id="мережа-воттса-строгаца" class="level4" data-number="13.1.5.13">
 <h4 data-number="13.1.5.13" class="anchored" data-anchor-id="мережа-воттса-строгаца"><span class="header-section-number">13.1.5.13</span> Мережа Воттса-Строгаца</h4>
 <p>Проблема малого світу полягає в тому, як люди, що живуть на великій відстані один від одного, можуть бути пов’язані короткими шляхами, навіть якщо їхні зв’язки є локальними. Дункан Воттс і Стівен Строгац розробили клас мереж для пояснення такої поведінки. Мережі починаються як <span class="math inline">\(k\)</span>-кільця: вузли, розміщені по колу, кожен з яких з’єднаний з найближчими <span class="math inline">\(k\)</span> сусідами. Потім, з ймовірністю <span class="math inline">\(p\)</span>, ребра кожного вузла перев’язуються з іншим випадково обраним вузлом. Ці перестановки створюють короткі шляхи по всій мережі. Навіть невелика кількість коротких шляхів значно скорочує відстані між вузлами мережі, вирішуючи проблему малого світу. Фактично, це саме те, що робить функція <code>watts_strogatz_graph()</code>, яку ми використовували, а третій параметр задає частку ребер, які потрібно перезв’язати. Наступний код обчислює середній найкоротший шлях і середню кластеризацію для діапазону ймовірностей перезв’язування:</p>
-<div id="a2c5475f" class="cell" data-execution_count="156">
+<div id="a2c5475f" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb262"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb262-1"><a href="#cb262-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> []</span>
 <span id="cb262-2"><a href="#cb262-2" aria-hidden="true" tabindex="-1"></a>clustering <span class="op">=</span> []</span>
 <span id="cb262-3"><a href="#cb262-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Пробуємо список імовірностей перезв'язування</span></span>
@@ -2938,13 +2938,13 @@ m_k(A)=\frac{1}{n}\sum_{i=1}^{n}\lambda_{i}^{k},
 <span id="cb262-15"><a href="#cb262-15" aria-hidden="true" tabindex="-1"></a>    clustering.append(<span class="bu">sum</span>(clustering_i) <span class="op">/</span> <span class="bu">len</span>(clustering_i))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Результати наступного коду зберігаються у списках <code>path</code> та <code>clustering</code>. Використовуючи функцію <code>semilogx()</code> з <code>matplotlib.pyplot</code>, наступний код візуалізує, як ці значення змінюються при зміні ймовірності перев’язування від 0 до 1:</p>
-<div id="cell-fig-36" class="cell" data-execution_count="157">
+<div id="cell-fig-36" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb263"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb263-1"><a href="#cb263-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">4</span>))</span>
 <span id="cb263-2"><a href="#cb263-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb263-3"><a href="#cb263-3" aria-hidden="true" tabindex="-1"></a>plt.semilogx(p, [x <span class="op">/</span> path[<span class="dv">0</span>] <span class="cf">for</span> x <span class="kw">in</span> path], label<span class="op">=</span><span class="vs">r'$L_</span><span class="sc">{mean}</span><span class="vs"> / L_0$'</span>)</span>
 <span id="cb263-4"><a href="#cb263-4" aria-hidden="true" tabindex="-1"></a>plt.semilogx(p, [x <span class="op">/</span> clustering[<span class="dv">0</span>] <span class="cf">for</span> x <span class="kw">in</span> clustering], label<span class="op">=</span><span class="vs">r'$C_</span><span class="sc">{mean}</span><span class="vs"> / C_0$'</span>)</span>
-<span id="cb263-5"><a href="#cb263-5" aria-hidden="true" tabindex="-1"></a>plt.tick_params(axis<span class="op">=</span><span class="st">'both'</span>, which<span class="op">=</span><span class="st">'major'</span>, labelsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb263-6"><a href="#cb263-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r'Імовірність перезв\'язування $p$'</span>, fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb263-5"><a href="#cb263-5" aria-hidden="true" tabindex="-1"></a>plt.tick_params(axis<span class="op">=</span><span class="st">'both'</span>, which<span class="op">=</span><span class="st">'major'</span>)</span>
+<span id="cb263-6"><a href="#cb263-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"Імовірність перев'язування $p$"</span>)</span>
 <span id="cb263-7"><a href="#cb263-7" aria-hidden="true" tabindex="-1"></a>plt.legend()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-36" class="quarto-figure quarto-figure-center quarto-float anchored">
@@ -3365,13 +3365,13 @@ P(k) \propto k^{-\gamma},
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-watts1998collective" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">D. J. Watts and S. H. Strogatz, <em><a href="https://doi.org/10.1038/30918">Collective Dynamics of ’Small-World’ Networks</a></em>, Nature <strong>393</strong>, 440 (1998).</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">D. J. Watts and S. H. Strogatz, <a href="https://doi.org/10.1038/30918">Collective dynamics of ’small-world’ networks</a>, Nature <strong>393</strong>, 440 (1998).</div>
 </div>
 <div id="ref-doi:10.1126/science.286.5439.509" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A.-L. Barabási and R. Albert, <em><a href="https://doi.org/10.1126/science.286.5439.509">Emergence of Scaling in Random Networks</a></em>, Science <strong>286</strong>, 509 (1999).</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">A.-L. Barabási and R. Albert, <a href="https://doi.org/10.1126/science.286.5439.509">Emergence of scaling in random networks</a>, Science <strong>286</strong>, 509 (1999).</div>
 </div>
 <div id="ref-RevModPhys.74.47" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">R. Albert and A.-L. Barabási, <em><a href="https://doi.org/10.1103/RevModPhys.74.47">Statistical Mechanics of Complex Networks</a></em>, Rev. Mod. Phys. <strong>74</strong>, 47 (2002).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">R. Albert and A.-L. Barabási, <a href="https://doi.org/10.1103/RevModPhys.74.47">Statistical mechanics of complex networks</a>, Rev. Mod. Phys. <strong>74</strong>, 47 (2002).</div>
 </div>
 <div id="ref-platt2019network" class="csl-entry" role="listitem">
 <div class="csl-left-margin">[4] </div><div class="csl-right-inline">E. L. Platt, <em><a href="https://www.packtpub.com/product/network-science-with-python-and-networkx-quick-start-guide/9781789955316">Network Science with Python and NetworkX Quick Start Guide: Explore and Visualize Network Data Effectively</a></em> (Packt Publishing, 2019).</div>
