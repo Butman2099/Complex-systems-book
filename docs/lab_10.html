@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 10&nbsp; Лабораторна робота № 10</title>
+<title>10&nbsp; Лабораторна робота № 10 – Моделювання складних систем у Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -86,17 +87,20 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./lab_11.html" rel="next">
 <link href="./lab_9.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8b10bbddb8093a15b0d29705600995f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-0c638a1db3776987c1198e8561be3b0c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8b10bbddb8093a15b0d29705600995f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,7 +129,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -158,19 +162,181 @@ window.Quarto = {
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_10.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -289,9 +455,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Додатки</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -358,6 +524,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Лабораторна робота № 10</span></h1>
@@ -384,18 +551,18 @@ window.Quarto = {
 <section id="неекстенсивна-термодинаміка-і-кризи-фінансово-економічних-систем" class="level3" data-number="10.1.1">
 <h3 data-number="10.1.1" class="anchored" data-anchor-id="неекстенсивна-термодинаміка-і-кризи-фінансово-економічних-систем"><span class="header-section-number">10.1.1</span> Неекстенсивна термодинаміка і кризи фінансово-економічних систем</h3>
 <p>Великий виклик теорії складності, що лежить в основі сучасної наукової парадигми, бере початок ще із старих та таких важливих проблем, як: стріла часу, існування простого та фундаментального фізичного рівня для єдиного опису макроскопічного та мікроскопічного рівнів, взаємозв’язок між спостерігачем та досліджуваним об’єктом, і т. д. Загалом, що стосується теорії складності та кожного нового рівня реальності, потрібні нові концепції та нові класифікації.</p>
-<p>Зокрема, теорія складності включає: хаотичну динаміку в просторі станів, далеку від рівноважних фазових переходів, довготривалі кореляції, самоорганізацію та мультимасштабність, фрактальні процеси в просторі і часі та інші значущі явища <span class="citation" data-cites="DBLP:conf/m3e2/BielinskyiSSSSP20">&nbsp;[<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiSSSSP20" role="doc-biblioref">1</a>]</span>. Теорія складності розглядається як третя наукова революція минулого століття (після теорії відносності та квантової теорії). Однак теорія складності ще далека від своєї академічної зрілості. У цьому напрямку вагомий внесок щодо питання “що таке складність” можна знайти в книзі Г. Ніколісa та І. Пригожина <span class="citation" data-cites="g1989exploring">&nbsp;[<a href="references.html#ref-g1989exploring" role="doc-biblioref">2</a>]</span>. Як правило, ми можемо узагальнити основну концепцію теорії складності наступним чином:</p>
+<p>Зокрема, теорія складності включає: хаотичну динаміку в просторі станів, далеку від рівноважних фазових переходів, довготривалі кореляції, самоорганізацію та мультимасштабність, фрактальні процеси в просторі і часі та інші значущі явища <span class="citation" data-cites="DBLP:conf/m3e2/BielinskyiSSSSP20">[<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiSSSSP20" role="doc-biblioref">1</a>]</span>. Теорія складності розглядається як третя наукова революція минулого століття (після теорії відносності та квантової теорії). Однак теорія складності ще далека від своєї академічної зрілості. У цьому напрямку вагомий внесок щодо питання “що таке складність” можна знайти в книзі Г. Ніколісa та І. Пригожина <span class="citation" data-cites="g1989exploring">[<a href="references.html#ref-g1989exploring" role="doc-biblioref">2</a>]</span>. Як правило, ми можемо узагальнити основну концепцію теорії складності наступним чином:</p>
 <ol type="1">
 <li>Теорія складності — це узагальнення статистичної фізики для критичних станів термодинамічної рівноваги та для далеких від рівноваги процесів.</li>
 <li>Складність — це поширення динаміки на нелінійність і дивну динаміку.</li>
 <li>Також, згідно Іллі Пригожину, теорія складності пов’язана з динамікою кореляцій замість динаміки траєкторій або хвильових функцій.</li>
 </ol>
 <p>Згідно з теорією складності, різні фізичні явища, що відбуваються в розподілених фізичних системах, таких як космічна плазма, рідини або тверді тіла, хімія, біологія, екосистеми, динаміка ДНК, соціально-економічні чи інформаційні системи, мережі можна описати і зрозуміти подібним чином. Цей опис базується на принципі максимізації ентропії. Також згідно з теорією складності, вказані системи є цілісно стійкими дисипативними структурами, що утворюються загальним природним процесом, спрямованим на максимізацію ентропії. З точки зору складності, немає суттєвої диференціації між групою галактик, зірками, тваринами, квітами або елементарними частинками, оскільки скрізь ми маємо відкриті, динамічні та самоорганізовані системи і всюди природа працює з метою максимізації ентропії.</p>
-<p>Під час дослідження складних фізичних систем та явищ, зокрема, самоорганізаційних і фрактальних структур, субдифузії, турбулентності, хімічних реакцій, а також різних економічних, соціальних і біологічних систем розподіл Гіббса не забезпечує узгодження із спостережуваними явищами. Як виявляється у багатьох дослідженнях, для таких систем характерні степеневі розподіли <span class="citation" data-cites="tsallis1988possible">&nbsp;[<a href="references.html#ref-tsallis1988possible" role="doc-biblioref">3</a>]</span>. Вони не отримуються з принципу максимуму ентропії Гіббса-Шеннона, на якому ґрунтується як <strong>рівноважна</strong>, так і <strong>нерівноважна статистична термодинаміка</strong> <span class="citation" data-cites="TSALLIS20041 doi:10.1073/pnas.0503807102 e19090457">&nbsp;[<a href="references.html#ref-TSALLIS20041" role="doc-biblioref">4</a>–<a href="references.html#ref-e19090457" role="doc-biblioref">6</a>]</span>. Це спричинило численні спроби побудови узагальненої статистики, яка б забезпечила степеневу асимптотику функції розподілу. Таку узагальнену статистику можна будувати на основі кількох ентропій. Серед них важливе місце посідає <strong>ентропія Тсалліса</strong> (Tsallis entropy).</p>
+<p>Під час дослідження складних фізичних систем та явищ, зокрема, самоорганізаційних і фрактальних структур, субдифузії, турбулентності, хімічних реакцій, а також різних економічних, соціальних і біологічних систем розподіл Гіббса не забезпечує узгодження із спостережуваними явищами. Як виявляється у багатьох дослідженнях, для таких систем характерні степеневі розподіли <span class="citation" data-cites="tsallis1988possible">[<a href="references.html#ref-tsallis1988possible" role="doc-biblioref">3</a>]</span>. Вони не отримуються з принципу максимуму ентропії Гіббса-Шеннона, на якому ґрунтується як <strong>рівноважна</strong>, так і <strong>нерівноважна статистична термодинаміка</strong> <span class="citation" data-cites="TSALLIS20041 doi:10.1073/pnas.0503807102 e19090457">[<a href="references.html#ref-TSALLIS20041" role="doc-biblioref">4</a>–<a href="references.html#ref-e19090457" role="doc-biblioref">6</a>]</span>. Це спричинило численні спроби побудови узагальненої статистики, яка б забезпечила степеневу асимптотику функції розподілу. Таку узагальнену статистику можна будувати на основі кількох ентропій. Серед них важливе місце посідає <strong>ентропія Тсалліса</strong> (Tsallis entropy).</p>
 <p>Дослідження в області механіки <strong>неекстенсивних (неадитивних)</strong> систем стали останнім часом предметом значного інтересу в зв’язку з проявами неаддитивних властивостей в аномальних фізичних явищах. Це пояснюється як новизною виникаючих тут загальнотеоретичних проблем, так і важливістю практичних застосувань (див. бібліографію, представлену на <a href="https://tsallis.cbpf.br/biblio.htm">сайті</a>, яка постійно оновлюється). Початок систематичного вивчення в цьому напрямку пов’язаний з роботою К. Тсалліса, в якій автором була введена параметрична формула статистичної <span class="math inline">\(q\)</span>-ентропії, залежної від деякого дійсного числа <span class="math inline">\(q\)</span> (так званого параметра деформації) і неадитивної для сукупності незалежних складних систем. Теорія неекстенсивних систем, заснована на ентропії Тсалліса, в даний час інтенсивно розвивається. Ці роботи стали значним кроком у розвитку теоретико-інформаційного підходу і при розробці принципів <strong>неекстенсивної статистичної механіки</strong> та рівноважної термодинаміки відкритих систем. При цьому важливо відзначити, що діапазон застосування цих та багатьох інших неекстенсивних параметричних ентропій в даний час постійно розширюється, охоплюючи різні напрямки в науці, такі як космологія і космогонія, теорія плазми, квантова механіка і статистика, нелінійна динаміка і фрактали, геофізика, біомедицина і багато інших.</p>
 <p>Економічну динаміку з фізичної точки зору можна розглядати як просторово розподілену динаміку та пов’язану із загальною категорією нелінійних розподілених систем. Аналіз економічних часових рядів демонструє складну та хаотичну динаміку у фазовому просторі. Теорема Такенса (за допомогою методу затримок) дозволяє реконструювати топологічний еквівалент до вихідного фазового простору, який зберігає основні геометричні та динамічні властивості, такі як ступені свободи, фрактальна розмірність, мультифрактальність, показники Ляпунова, матриця прогнозування тощо. Реконструйований фазовий простір може бути використаний для оцінки всіх вищезазначених величин, а також фазових переходів, статистичної поведінки, генерування ентропії тощо. Крім того, фазовий простір може мати мультифрактальні властивості та характеристики переривчастої турбулентності, які вказують на існування дальніх взаємодій у просторі та часі, а також мультимасштабну взаємодію.</p>
 <p>Ці характеристики також вказують на існування дробової динаміки у фазовому просторі, яку можна описати за допомогою дробово-диференціальних рівнянь Фоккера-Планка та аномальних дифузійних рівнянь. Рішеннями цих рівнянь є дробові просторово-часові функції та негаусові функції розподілу, які належать до категорії розподілів Леві та розподілів Тсалліса. Нерівноважні стаціонарні стани економічної динаміки походять від процесів сильної самоорганізації, що відповідає локальним максимумам ентропії Тсалліса, тоді як зміни параметрів управління економічної системи можуть спричинити фазовий перехід та зміщення економічної динаміки до нової стійкої рівноваги, стійкого стану з максимальною ентропією Тсалліса. Цей фазовий перехід призводить до мультифрактальної зміни у формуванні фазового простору та до зміни феноменології економічної системи. Нарешті, статистику динаміки в мультифрактальному фазовому просторі можна описати за допомогою степеневих функцій розподілу Тсалліса з “важкими” хвостами, які можуть бути використані для вдосконалення методів прогнозування.</p>
-<p>В останні роки статистична механіка розширила своє початкове призначення: застосування статистики до великих систем, стани яких регулюються якимись гамільтоновими функціоналами <span class="citation" data-cites="tsallis1988possible">&nbsp;[<a href="references.html#ref-tsallis1988possible" role="doc-biblioref">3</a>]</span>. Їх здатність пов’язувати мікроскопічні стани окремих складових системи з макроскопічними властивостями сьогодні використовується повсюдно <span class="citation" data-cites="TSALLIS20041">&nbsp;[<a href="references.html#ref-TSALLIS20041" role="doc-biblioref">4</a>]</span>. Безумовно, найважливішим із цих зв’язків все-таки є визначення термодинамічних властивостей через відповідність між поняттям ентропії, спочатку введеним Рудольфом Клаузіусом в 1865 р., та кількістю дозволених мікроскопічних станів, введеним Людвігом Больцманом близько 1877 р. коли він вивчав підхід до рівноваги ідеального газу <span class="citation" data-cites="e19090457">&nbsp;[<a href="references.html#ref-e19090457" role="doc-biblioref">6</a>]</span>. Цей зв’язок можна виразити як</p>
+<p>В останні роки статистична механіка розширила своє початкове призначення: застосування статистики до великих систем, стани яких регулюються якимись гамільтоновими функціоналами <span class="citation" data-cites="tsallis1988possible">[<a href="references.html#ref-tsallis1988possible" role="doc-biblioref">3</a>]</span>. Їх здатність пов’язувати мікроскопічні стани окремих складових системи з макроскопічними властивостями сьогодні використовується повсюдно <span class="citation" data-cites="TSALLIS20041">[<a href="references.html#ref-TSALLIS20041" role="doc-biblioref">4</a>]</span>. Безумовно, найважливішим із цих зв’язків все-таки є визначення термодинамічних властивостей через відповідність між поняттям ентропії, спочатку введеним Рудольфом Клаузіусом в 1865 р., та кількістю дозволених мікроскопічних станів, введеним Людвігом Больцманом близько 1877 р. коли він вивчав підхід до рівноваги ідеального газу <span class="citation" data-cites="e19090457">[<a href="references.html#ref-e19090457" role="doc-biblioref">6</a>]</span>. Цей зв’язок можна виразити як</p>
 <p><span id="eq-10-1"><span class="math display">\[
 S = k\ln{W},
 \tag{10.1}\]</span></span></p>
@@ -403,16 +570,16 @@ S = k\ln{W},
 <p><span id="eq-10-2"><span class="math display">\[
 S_{BG} = -k\sum_{i=1}^{W}p_i\ln{p_i},
 \tag{10.2}\]</span></span></p>
-<p>де <span class="math inline">\(p_i\)</span> — ймовірність мікроскопічної конфігурації <span class="math inline">\(i\)</span> <span class="citation" data-cites="tsallis1988possible">&nbsp;[<a href="references.html#ref-tsallis1988possible" role="doc-biblioref">3</a>]</span>. Статистична механіка BG все ще ґрунтується на таких гіпотезах, як молекулярний хаос <span class="citation" data-cites="g1989exploring">&nbsp;[<a href="references.html#ref-g1989exploring" role="doc-biblioref">2</a>]</span> та ергодичність <span class="citation" data-cites="e21070696">&nbsp;[<a href="references.html#ref-e21070696" role="doc-biblioref">7</a>]</span>. Незважаючи на відсутність фактичного фундаментального виведення, статистика BG, безсумнівно, мала успіх у вивченні систем, в яких домінують короткі просторово-часові взаємодії. Отже, цілком можливо, що інші фізичні ентропії, крім BG, можуть бути визначені для належного опису аномальних систем, для яких спрощена гіпотеза про ергодичність та/або незалежність не виконується. Натхненний такими концепціями в 1988 р. Константіно Тсалліс (Constantino Tsallis) запропонував узагальнення статистичної механіки BG, яка охоплює системи, що порушують ергодичність, системи, мікроскопічні конфігурації яких не можна вважати незалежними. Це узагальнення базується на неадитивних ентропіях, <span class="math inline">\(S_q\)</span>, що характеризується індексом <span class="math inline">\(q\)</span> і призводить до неекстенсивної статистики</p>
+<p>де <span class="math inline">\(p_i\)</span> — ймовірність мікроскопічної конфігурації <span class="math inline">\(i\)</span> <span class="citation" data-cites="tsallis1988possible">[<a href="references.html#ref-tsallis1988possible" role="doc-biblioref">3</a>]</span>. Статистична механіка BG все ще ґрунтується на таких гіпотезах, як молекулярний хаос <span class="citation" data-cites="g1989exploring">[<a href="references.html#ref-g1989exploring" role="doc-biblioref">2</a>]</span> та ергодичність <span class="citation" data-cites="e21070696">[<a href="references.html#ref-e21070696" role="doc-biblioref">7</a>]</span>. Незважаючи на відсутність фактичного фундаментального виведення, статистика BG, безсумнівно, мала успіх у вивченні систем, в яких домінують короткі просторово-часові взаємодії. Отже, цілком можливо, що інші фізичні ентропії, крім BG, можуть бути визначені для належного опису аномальних систем, для яких спрощена гіпотеза про ергодичність та/або незалежність не виконується. Натхненний такими концепціями в 1988 р. Константіно Тсалліс (Constantino Tsallis) запропонував узагальнення статистичної механіки BG, яка охоплює системи, що порушують ергодичність, системи, мікроскопічні конфігурації яких не можна вважати незалежними. Це узагальнення базується на неадитивних ентропіях, <span class="math inline">\(S_q\)</span>, що характеризується індексом <span class="math inline">\(q\)</span> і призводить до неекстенсивної статистики</p>
 <p><span id="eq-10-3"><span class="math display">\[
 S_q = -k \left( 1-\sum_{i=1}^{W}p_{i}^{q} \right) \Bigg/ (1-q),
 \tag{10.3}\]</span></span></p>
-<p><span class="math inline">\(p_i\)</span> — ймовірності, пов’язані з мікроскопічними конфігураціями, <span class="math inline">\(W\)</span> — їх загальне число, <span class="math inline">\(q\)</span> — дійсне число, і <span class="math inline">\(k\)</span> — постійна Больцмана. Значення <span class="math inline">\(q\)</span> є мірою неекстенсивності системи. При цьому, <span class="math inline">\(q=1\)</span> відповідає стандартній статистиці BG. Вираз (<a href="#eq-10-3" class="quarto-xref"><span>10.3</span></a>) модифікує <span class="math inline">\(S_{BG}\)</span> (<span class="math inline">\(\lim q\to 1, S_q = S_{BG}\)</span>), як основу можливого узагальнення статистичної механіки BG <span class="citation" data-cites="e21070648 de2021connecting">&nbsp;[<a href="references.html#ref-e21070648" role="doc-biblioref">8</a>,<a href="references.html#ref-de2021connecting" role="doc-biblioref">9</a>]</span>. Значення ентропійного індексу <span class="math inline">\(q\)</span> для конкретної системи повинно визначатися апріорі з мікроскопічної динаміки.</p>
-<p>З часу своєї появи ентропія Тсалліса (<a href="#eq-10-3" class="quarto-xref"><span>10.3</span></a>) стала джерелом кількох важливих результатів як у фундаментальній, так і в прикладній фізиці, а також в інших наукових областях, таких як біологія, хімія, економіка, геофізика та медицина <span class="citation" data-cites="pavlos2015complexity">&nbsp;[<a href="references.html#ref-pavlos2015complexity" role="doc-biblioref">10</a>]</span>.</p>
+<p><span class="math inline">\(p_i\)</span> — ймовірності, пов’язані з мікроскопічними конфігураціями, <span class="math inline">\(W\)</span> — їх загальне число, <span class="math inline">\(q\)</span> — дійсне число, і <span class="math inline">\(k\)</span> — постійна Больцмана. Значення <span class="math inline">\(q\)</span> є мірою неекстенсивності системи. При цьому, <span class="math inline">\(q=1\)</span> відповідає стандартній статистиці BG. Вираз (<a href="#eq-10-3" class="quarto-xref"><span>10.3</span></a>) модифікує <span class="math inline">\(S_{BG}\)</span> (<span class="math inline">\(\lim q\to 1, S_q = S_{BG}\)</span>), як основу можливого узагальнення статистичної механіки BG <span class="citation" data-cites="e21070648 de2021connecting">[<a href="references.html#ref-e21070648" role="doc-biblioref">8</a>,<a href="references.html#ref-de2021connecting" role="doc-biblioref">9</a>]</span>. Значення ентропійного індексу <span class="math inline">\(q\)</span> для конкретної системи повинно визначатися апріорі з мікроскопічної динаміки.</p>
+<p>З часу своєї появи ентропія Тсалліса (<a href="#eq-10-3" class="quarto-xref"><span>10.3</span></a>) стала джерелом кількох важливих результатів як у фундаментальній, так і в прикладній фізиці, а також в інших наукових областях, таких як біологія, хімія, економіка, геофізика та медицина <span class="citation" data-cites="pavlos2015complexity">[<a href="references.html#ref-pavlos2015complexity" role="doc-biblioref">10</a>]</span>.</p>
 </section>
 <section id="неекстенсивна-ентропія-і-триплет-тсалліса" class="level3" data-number="10.1.2">
 <h3 data-number="10.1.2" class="anchored" data-anchor-id="неекстенсивна-ентропія-і-триплет-тсалліса"><span class="header-section-number">10.1.2</span> Неекстенсивна ентропія і триплет Тсалліса</h3>
-<p>Системи, що характеризуються статистичною механікою Больцмана-Гіббса, мають такі характеристики: (i) їх функції розподілу для енергій пропорційні експоненціальній функції; (ii) вони мають сильну чутливість до початкових умов, яка з часом зростає в геометричній прогресії (хаос), характеризуючись позитивним максимальним показником Ляпунова; (iii) їх релаксація відбувається експоненційно з певним часом релаксації. Іншими словами, ці три способи поведінки описуються експоненціальними функціями (тобто <span class="math inline">\(q=1\)</span>). Однак встановлено, що для систем, які можна вивчати в рамках неекстенсивної статистичної механіки, функція щільності ймовірності енергії (пов’язана зі стаціонарністю або рівновагою), чутливість до початкових умов та релаксація описуються трьома ентропійними індексами <span class="math inline">\(q_{stat}, q_{sens}, q_{rel}\)</span>, які отримали назву <strong>триплета Тсалліса</strong> (Tsallis triplet), або <span class="math inline">\(q\)</span>-триплета Тсалліса <span class="citation" data-cites="TSALLIS20041 FERRI20101829">&nbsp;[<a href="references.html#ref-TSALLIS20041" role="doc-biblioref">4</a>,<a href="references.html#ref-FERRI20101829" role="doc-biblioref">11</a>]</span>.</p>
+<p>Системи, що характеризуються статистичною механікою Больцмана-Гіббса, мають такі характеристики: (i) їх функції розподілу для енергій пропорційні експоненціальній функції; (ii) вони мають сильну чутливість до початкових умов, яка з часом зростає в геометричній прогресії (хаос), характеризуючись позитивним максимальним показником Ляпунова; (iii) їх релаксація відбувається експоненційно з певним часом релаксації. Іншими словами, ці три способи поведінки описуються експоненціальними функціями (тобто <span class="math inline">\(q=1\)</span>). Однак встановлено, що для систем, які можна вивчати в рамках неекстенсивної статистичної механіки, функція щільності ймовірності енергії (пов’язана зі стаціонарністю або рівновагою), чутливість до початкових умов та релаксація описуються трьома ентропійними індексами <span class="math inline">\(q_{stat}, q_{sens}, q_{rel}\)</span>, які отримали назву <strong>триплета Тсалліса</strong> (Tsallis triplet), або <span class="math inline">\(q\)</span>-триплета Тсалліса <span class="citation" data-cites="TSALLIS20041 FERRI20101829">[<a href="references.html#ref-TSALLIS20041" role="doc-biblioref">4</a>,<a href="references.html#ref-FERRI20101829" role="doc-biblioref">11</a>]</span>.</p>
 <p>Неекстенсивна статистична теорія математично базується на нелінійному рівнянні</p>
 <p><span id="eq-10-4"><span class="math display">\[
 \frac{dy}{dx} = y^{q},
@@ -426,8 +593,8 @@ S_q = -k \left( 1-\sum_{i=1}^{W}p_{i}^{q} \right) \Bigg/ (1-q),
 \tag{10.5}\]</span></span></p>
 <p>Для <span class="math inline">\(q\to1\)</span> <span class="math inline">\(q\)</span>-Гаусіан відповідає звичайному розподілу Гауса.</p>
 <p>Розв’язок рівняння (<a href="#eq-10-4" class="quarto-xref"><span>10.4</span></a>) можна реалізувати трьома різними способами, включеними до <span class="math inline">\(q\)</span>-триплету Тсалліса: (<span class="math inline">\(q_{sens}, q_{stat}, q_{rel}\)</span>). Ці величини характеризують три фізичні процеси, які узагальнені тут, тоді як значення <span class="math inline">\(q\)</span>-триплету характеризують атракторний набір динаміки у фазовому просторі динаміки, і вони можуть змінюватися, коли динаміка системи притягується до іншого набору атракторів.</p>
-<p>Для неекстенсивної системи величина <span class="math inline">\(q\)</span>-індексу залежить від оцінюваних властивостей динаміки і фазового простору системи. Для динамічних систем оцінюється <span class="math inline">\(q\)</span>–триплет, що відображає три властивості системи (<a href="#fig-triplet" class="quarto-xref">Рис.&nbsp;<span>10.1</span></a>). Індекс <span class="math inline">\(q_{stat}\)</span> оцінюється на основі рівноважної моделі рангового розподілу з використанням методів нелінійного оцінювання <span class="citation" data-cites="umarov2008aq">&nbsp;[<a href="references.html#ref-umarov2008aq" role="doc-biblioref">12</a>]</span>. Цей індекс є параметром області атракції системи. Індекс <span class="math inline">\(q_{sens}\)</span> відображає чутливість системи до початкових умов та виробництво ентропії і визначається за мультифрактальним спектром <span class="citation" data-cites="PhysRevLett.80.5313">&nbsp;[<a href="references.html#ref-PhysRevLett.80.5313" role="doc-biblioref">13</a>]</span>. Релаксаційний індекс <span class="math inline">\(q_{rel}\)</span> знаходять на основі автокореляції і характеристик дифузійних процесів <span class="citation" data-cites="doi:10.1142/S0218127412300303">&nbsp;[<a href="references.html#ref-doi:10.1142/S0218127412300303" role="doc-biblioref">14</a>]</span>.</p>
-<div id="fig-triplet" class="quarto-figure quarto-figure-center quarto-float anchored">
+<p>Для неекстенсивної системи величина <span class="math inline">\(q\)</span>-індексу залежить від оцінюваних властивостей динаміки і фазового простору системи. Для динамічних систем оцінюється <span class="math inline">\(q\)</span>–триплет, що відображає три властивості системи (<a href="#fig-triplet" class="quarto-xref">Рис.&nbsp;<span>10.1</span></a>). Індекс <span class="math inline">\(q_{stat}\)</span> оцінюється на основі рівноважної моделі рангового розподілу з використанням методів нелінійного оцінювання <span class="citation" data-cites="umarov2008aq">[<a href="references.html#ref-umarov2008aq" role="doc-biblioref">12</a>]</span>. Цей індекс є параметром області атракції системи. Індекс <span class="math inline">\(q_{sens}\)</span> відображає чутливість системи до початкових умов та виробництво ентропії і визначається за мультифрактальним спектром <span class="citation" data-cites="PhysRevLett.80.5313">[<a href="references.html#ref-PhysRevLett.80.5313" role="doc-biblioref">13</a>]</span>. Релаксаційний індекс <span class="math inline">\(q_{rel}\)</span> знаходять на основі автокореляції і характеристик дифузійних процесів <span class="citation" data-cites="doi:10.1142/S0218127412300303">[<a href="references.html#ref-doi:10.1142/S0218127412300303" role="doc-biblioref">14</a>]</span>.</p>
+<div id="fig-triplet" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-triplet-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="Images\lab_10\triplet.png" style="height:10cm" class="figure-img">
@@ -451,7 +618,7 @@ C_q = \begin{cases}
     \sqrt{\pi}\,\Gamma\left( \frac{3-q}{2(q-1)} \right) \Big/ \sqrt{q-1}\,\Gamma\left( \frac{1}{q-1} \right), &amp; \text{якщо} \; 1&lt;q&lt;3.
 \end{cases}
 \tag{10.7}\]</span></span></p>
-<p>Для оцінки динаміки значення <span class="math inline">\(q\)</span> будується графік залежності <span class="math inline">\(\ln_q[p(x)]\)</span> від <span class="math inline">\(x^2\)</span> для вибраного інтервалу <span class="math inline">\(q\)</span> (наприклад, від 1 до 5), що забезпечує найкраще лінійне наближення (оцінюється за максимальним коефіцієнтом детермінації <span class="math inline">\(R^2\)</span>) <span class="citation" data-cites="STOSIC20181069">&nbsp;[<a href="references.html#ref-STOSIC20181069" role="doc-biblioref">15</a>]</span>. Зрозуміло, що значення <span class="math inline">\(p(x)\)</span> стають помітно негаусівськими вздовж хвостів, і замість цього можуть бути описані степеневим законом.</p>
+<p>Для оцінки динаміки значення <span class="math inline">\(q\)</span> будується графік залежності <span class="math inline">\(\ln_q[p(x)]\)</span> від <span class="math inline">\(x^2\)</span> для вибраного інтервалу <span class="math inline">\(q\)</span> (наприклад, від 1 до 5), що забезпечує найкраще лінійне наближення (оцінюється за максимальним коефіцієнтом детермінації <span class="math inline">\(R^2\)</span>) <span class="citation" data-cites="STOSIC20181069">[<a href="references.html#ref-STOSIC20181069" role="doc-biblioref">15</a>]</span>. Зрозуміло, що значення <span class="math inline">\(p(x)\)</span> стають помітно негаусівськими вздовж хвостів, і замість цього можуть бути описані степеневим законом.</p>
 </section>
 <section id="релаксація-qq_rel" class="level4" data-number="10.1.2.2">
 <h4 data-number="10.1.2.2" class="anchored" data-anchor-id="релаксація-qq_rel"><span class="header-section-number">10.1.2.2</span> Релаксація <span class="math inline">\(q=q_{rel}\)</span></h4>
@@ -471,7 +638,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <p><span id="eq-10-10"><span class="math display">\[
 \xi = \left[ 1 - (\lambda_{q_{sens}} \big/ \lambda_{1}) + (\lambda_{q_{sens}} \big/ \lambda_{1}) \exp{\left( \left( 1-q_{sens} \right)\lambda_{1}t \right)} \right]^{1 / (1-q_{sens})}.
 \tag{10.10}\]</span></span></p>
-<p>Спочатку було висловлено гіпотезу, а згодом доведено для часових рядів неекстенсивних систем різної природи, що має місце таке співвідношення <span class="citation" data-cites="10.1007/978-3-031-14841-5_12">&nbsp;[<a href="references.html#ref-10.1007/978-3-031-14841-5_12" role="doc-biblioref">16</a>]</span>:</p>
+<p>Спочатку було висловлено гіпотезу, а згодом доведено для часових рядів неекстенсивних систем різної природи, що має місце таке співвідношення <span class="citation" data-cites="10.1007/978-3-031-14841-5_12">[<a href="references.html#ref-10.1007/978-3-031-14841-5_12" role="doc-biblioref">16</a>]</span>:</p>
 <p><span id="eq-10-11"><span class="math display">\[
 1 \big/ (1-q_{sens}) = 1 \big/ \alpha_{min} - 1 \big/ \alpha_{max},
 \tag{10.11}\]</span></span></p>
@@ -549,7 +716,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rel_func(x, q, tau):</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np_exp_q(<span class="op">-</span>x<span class="op">/</span>tau, q)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="4">
+<div id="cell-20" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># функція для обчислення прибутковостей ряду чи його стандартизації</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -575,11 +742,11 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values.squeeze()</span>
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-21" class="cell" data-execution_count="5">
+<div id="cell-21" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># функція для побудови парних графіків</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
@@ -619,7 +786,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі виконаємо налаштування формату виведення рисунків:</p>
-<div id="cell-23" class="cell" data-execution_count="6">
+<div id="cell-23" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -642,18 +809,18 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>У цій роботі розглянемо динаміку неекстенсивних показників на прикладі фондового індексу S&amp;P 500, але дивитимемось на ряд, починаючи з 2016 року. Для отримання значень індексу скористаємось бібліотекою <code>yfinance</code>.</p>
-<div id="cell-25" class="cell" data-execution_count="7">
+<div id="cell-25" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^DJI'</span>          <span class="co"># Символ індексу</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2016-01-01"</span>     <span class="co"># Дата початку зчитування даних</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2023-12-01"</span>       <span class="co"># Дата закінчення зчитування даних</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol, start, end)  <span class="co"># вивантажуємо дані</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Close'</span>].copy()     <span class="co"># зберігаємо саме ціни закриття</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>    <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol          <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
+<pre><code>[*********************100%***********************]  1 of 1 completed</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -673,18 +840,18 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <div id="cell-28" class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases</span><span class="er">\</span><span class="st">sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'</span><span class="dv">$</span><span class="ch">\v</span><span class="vs">arepsilon</span><span class="dv">$</span><span class="vs">'</span>          <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p>Виводимо досліджуваний ряд:</p>
-<div id="cell-fig-dji-init" class="cell" data-execution_count="8">
+<div id="cell-fig-dji-init" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)               <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -696,7 +863,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dji-init" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dji-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_10_files/figure-html/fig-dji-init-output-1.png" class="img-fluid figure-img">
@@ -712,7 +879,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="розрахунок-показника-q_stat"><span class="header-section-number">10.2.1</span> Розрахунок показника <span class="math inline">\(q_{stat}\)</span></h3>
 <section id="побудова-q-гаусіана-для-всього-ряду" class="level4" data-number="10.2.1.1">
 <h4 data-number="10.2.1.1" class="anchored" data-anchor-id="побудова-q-гаусіана-для-всього-ряду"><span class="header-section-number">10.2.1.1</span> Побудова <span class="math inline">\(q\)</span>-Гаусіана для всього ряду</h4>
-<div id="cell-34" class="cell" data-execution_count="9">
+<div id="cell-34" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>q_stat_time_ser <span class="op">=</span> time_ser.copy()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span> <span class="co"># визначення типу ряду для його перетворення</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>q_stat_time_ser <span class="op">=</span> transformation(q_stat_time_ser, ret_type)</span>
@@ -728,19 +895,19 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>popt, pcov <span class="op">=</span> curve_fit(G_q, xdata<span class="op">=</span>xval, ydata<span class="op">=</span>yval, bounds<span class="op">=</span>([<span class="fl">0.0</span>, <span class="fl">0.0</span>], [np.inf, <span class="fl">3.0</span>]))</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-dji-qgaus" class="cell" data-execution_count="10">
+<div id="cell-fig-dji-qgaus" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax.plot(bin_edg[<span class="dv">1</span>:], hist, <span class="st">'o'</span>, label<span class="op">=</span><span class="vs">r"$P_{емпіричний}$"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ax.plot(bin_edg[<span class="dv">1</span>:], hist, <span class="st">'o'</span>, label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">P_{емпіричний}</span><span class="dv">$</span><span class="vs">"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax.plot(x, p, <span class="st">'o'</span>, label<span class="op">=</span><span class="st">"Гаус"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.plot(x, G_q(x<span class="op">**</span><span class="dv">2</span>, popt[<span class="dv">0</span>], popt[<span class="dv">1</span>]), label<span class="op">=</span><span class="vs">r"$q$-Гаусіан"</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.plot(x, G_q(x<span class="op">**</span><span class="dv">2</span>, popt[<span class="dv">0</span>], popt[<span class="dv">1</span>]), label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">q</span><span class="dv">$</span><span class="vs">-Гаусіан"</span>)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.set_yscale(<span class="st">'log'</span>)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\log{P(\beta, x)}$"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="er">\</span><span class="vs">log{P</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">eta, x</span><span class="kw">)</span><span class="vs">}</span><span class="dv">$</span><span class="vs">"</span>)</span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span> </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-qgaus" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dji-qgaus" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dji-qgaus-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_10_files/figure-html/fig-dji-qgaus-output-1.png" class="img-fluid figure-img">
@@ -756,7 +923,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </section>
 <section id="розрахунок-q_stat-у-віконній-процедурі" class="level4" data-number="10.2.1.2">
 <h4 data-number="10.2.1.2" class="anchored" data-anchor-id="розрахунок-q_stat-у-віконній-процедурі"><span class="header-section-number">10.2.1.2</span> Розрахунок <span class="math inline">\(q_{stat}\)</span> у віконній процедурі</h4>
-<div id="cell-38" class="cell" data-execution_count="11">
+<div id="cell-38" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">4</span>    <span class="co"># вид ряду: </span></span>
@@ -771,7 +938,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>q_stats <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-39" class="cell" data-execution_count="12">
+<div id="cell-39" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -790,19 +957,19 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    q_stats.append(q_stat)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  5%|▍         | 79/1742 [00:00&lt;00:13, 125.04it/s]100%|██████████| 1742/1742 [00:12&lt;00:00, 140.55it/s]</code></pre>
+<pre><code>100%|██████████| 1742/1742 [00:12&lt;00:00, 136.62it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div id="cell-41" class="cell" data-execution_count="13">
+<div id="cell-41" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"q_stat_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, q_stats)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div id="cell-43" class="cell" data-execution_count="14">
+<div id="cell-43" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника q_stat в легенді рисунку </span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>label_q_stat <span class="op">=</span> <span class="vs">r'$q_</span><span class="sc">{stat}</span><span class="vs">$'</span>  </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>label_q_stat <span class="op">=</span> <span class="vs">r'</span><span class="dv">$</span><span class="vs">q_{stat}</span><span class="dv">$</span><span class="vs">'</span>  </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># назва рисунку</span></span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"q_stat_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">"</span></span>
@@ -810,7 +977,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># колір показника</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'brown'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-dji-wind-q_stat" class="cell" data-execution_count="15">
+<div id="cell-fig-dji-wind-q_stat" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          q_stats, </span>
@@ -820,7 +987,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-q_stat" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dji-wind-q_stat" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dji-wind-q_stat-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_10_files/figure-html/fig-dji-wind-q_stat-output-1.png" class="img-fluid figure-img">
@@ -837,7 +1004,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </section>
 <section id="розрахунок-показника-q_rel" class="level3" data-number="10.2.2">
 <h3 data-number="10.2.2" class="anchored" data-anchor-id="розрахунок-показника-q_rel"><span class="header-section-number">10.2.2</span> Розрахунок показника <span class="math inline">\(q_{rel}\)</span></h3>
-<div id="cell-47" class="cell" data-execution_count="16">
+<div id="cell-47" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -854,7 +1021,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>q_rels <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="17">
+<div id="cell-48" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -871,19 +1038,19 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>    q_rels.append(q_rel)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 1742/1742 [00:09&lt;00:00, 184.97it/s]</code></pre>
+<pre><code>100%|██████████| 1742/1742 [00:08&lt;00:00, 199.75it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div id="cell-50" class="cell" data-execution_count="18">
+<div id="cell-50" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"q_rel_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_maxlag=</span><span class="sc">{</span>max_lag<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, q_rels)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div id="cell-52" class="cell" data-execution_count="19">
+<div id="cell-52" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника q_rel в легенді рисунку </span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>label_q_rel <span class="op">=</span> <span class="vs">r'$q_</span><span class="sc">{rel}</span><span class="vs">$'</span>  </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>label_q_rel <span class="op">=</span> <span class="vs">r'</span><span class="dv">$</span><span class="vs">q_{rel}</span><span class="dv">$</span><span class="vs">'</span>  </span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># назва рисунку</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"q_rel_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_window=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_rettype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_maxlag=</span><span class="sc">{</span>max_lag<span class="sc">}</span><span class="ss">"</span></span>
@@ -892,7 +1059,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'red'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-dji-wind-q_rel" class="cell" data-execution_count="20">
+<div id="cell-fig-dji-wind-q_rel" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>          q_rels, </span>
@@ -902,7 +1069,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-q_rel" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dji-wind-q_rel" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dji-wind-q_rel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_10_files/figure-html/fig-dji-wind-q_rel-output-1.png" class="img-fluid figure-img">
@@ -918,7 +1085,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </section>
 <section id="розрахунок-показника-q_sens" class="level3" data-number="10.2.3">
 <h3 data-number="10.2.3" class="anchored" data-anchor-id="розрахунок-показника-q_sens"><span class="header-section-number">10.2.3</span> Розрахунок показника <span class="math inline">\(q_{sens}\)</span></h3>
-<div id="cell-57" class="cell" data-execution_count="21">
+<div id="cell-57" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -948,7 +1115,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>q_sens_values <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-58" class="cell" data-execution_count="22">
+<div id="cell-58" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -988,19 +1155,19 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>    q_sens_values.append(q_sens)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 1742/1742 [01:22&lt;00:00, 21.10it/s]</code></pre>
+<pre><code>100%|██████████| 1742/1742 [01:16&lt;00:00, 22.77it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div id="cell-60" class="cell" data-execution_count="23">
+<div id="cell-60" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"q_sens_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_inc<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, q_sens_values)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div id="cell-62" class="cell" data-execution_count="24">
+<div id="cell-62" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення показника q_rel в легенді рисунку </span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>label_q_sens <span class="op">=</span> <span class="vs">r'$q_</span><span class="sc">{sens}</span><span class="vs">$'</span>  </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>label_q_sens <span class="op">=</span> <span class="vs">r'</span><span class="dv">$</span><span class="vs">q_{sens}</span><span class="dv">$</span><span class="vs">'</span>  </span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># назва рисунку</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"q_sens_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_qmin=</span><span class="sc">{</span>q_min<span class="sc">}</span><span class="ss">_qmax=</span><span class="sc">{</span>q_max<span class="sc">}</span><span class="ss">_qinc=</span><span class="sc">{</span>q_inc<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span>
@@ -1009,7 +1176,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'green'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-dji-wind-q_sens" class="cell" data-execution_count="25">
+<div id="cell-fig-dji-wind-q_sens" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>          q_sens_values, </span>
@@ -1019,7 +1186,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-q_sens" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dji-wind-q_sens" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dji-wind-q_sens-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_10_files/figure-html/fig-dji-wind-q_sens-output-1.png" class="img-fluid figure-img">
@@ -1035,7 +1202,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 </section>
 <section id="розрахунок-ентропії-тсалліса" class="level3" data-number="10.2.4">
 <h3 data-number="10.2.4" class="anchored" data-anchor-id="розрахунок-ентропії-тсалліса"><span class="header-section-number">10.2.4</span> Розрахунок ентропії Тсалліса</h3>
-<div id="cell-67" class="cell" data-execution_count="26">
+<div id="cell-67" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">250</span>    <span class="co"># розмір вікна</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># крок вікна</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ret_type <span class="op">=</span> <span class="dv">1</span>    <span class="co"># вид ряду: </span></span>
@@ -1050,7 +1217,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>tsallis_en <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-68" class="cell" data-execution_count="27">
+<div id="cell-68" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy()  <span class="co"># відбираємо фрагмент</span></span>
@@ -1072,19 +1239,19 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>    tsallis_en.append(tsen)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 1742/1742 [00:00&lt;00:00, 2221.44it/s]</code></pre>
+<pre><code>100%|██████████| 1742/1742 [00:01&lt;00:00, 1212.78it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо отримані результати в текстовому файлі:</p>
-<div id="cell-70" class="cell" data-execution_count="28">
+<div id="cell-70" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="ss">f"tsen_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">.txt"</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(name, tsallis_en)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри для збереження рисунків:</p>
-<div id="cell-72" class="cell" data-execution_count="29">
+<div id="cell-72" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># позначення ентропії Тсалліса в легенді рисунку </span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>label_ts_en <span class="op">=</span> <span class="vs">r'$TsEn$'</span>  </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>label_ts_en <span class="op">=</span> <span class="vs">r'</span><span class="dv">$</span><span class="vs">TsEn</span><span class="dv">$</span><span class="vs">'</span>  </span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># назва рисунку</span></span>
 <span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"tsen_name=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_ret=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span>
@@ -1093,7 +1260,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">'purple'</span>  </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо результат:</p>
-<div id="cell-fig-dji-wind-tsen" class="cell" data-execution_count="30">
+<div id="cell-fig-dji-wind-tsen" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>          tsallis_en, </span>
@@ -1103,7 +1270,7 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>          file_name,</span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>          color)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-dji-wind-tsen" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-dji-wind-tsen" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dji-wind-tsen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_10_files/figure-html/fig-dji-wind-tsen-output-1.png" class="img-fluid figure-img">
@@ -1135,424 +1302,307 @@ C(\tau) = \sum_{t}|g_{t+\tau}|\cdot|g_t| \bigg/ \sum_{t}|g_t|^2.
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-DBLP:conf/m3e2/BielinskyiSSSSP20" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Bielinskyi, S. Semerikov, O. Serdyuk, V. Solovieva, V. N. Soloviev, and L. Pichl, <em><a href="https://ceur-ws.org/Vol-2713/paper41.pdf">Econophysics of Sustainability Indices</a></em>, in <em>Proceedings of the Selected Papers of the Special Edition of International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2020), Odessa, Ukraine, July 13-18, 2020</em>, edited by A. Kiv, Vol. 2713 (CEUR-WS.org, 2020), pp. 372–392.</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">A. Bielinskyi, S. Semerikov, O. Serdyuk, V. Solovieva, V.N. Soloviev, L. Pichl, Econophysics of sustainability indices, in: A. Kiv (Ed.), Proceedings of the Selected Papers of the Special Edition of International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2020), Odessa, Ukraine, July 13-18, 2020, CEUR-WS.org, 2020: pp. 372–392. <a href="https://ceur-ws.org/Vol-2713/paper41.pdf">https://ceur-ws.org/Vol-2713/paper41.pdf</a>.</div>
 </div>
 <div id="ref-g1989exploring" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">G. Nicolis, I. Prigogine, W. H. Freeman, and Company, <em>Exploring Complexity: An Introduction</em> (W.H. Freeman, 1989).</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">G. Nicolis, I. Prigogine, W.H. Freeman, Company, Exploring complexity: An introduction, W.H. Freeman, 1989.</div>
 </div>
 <div id="ref-tsallis1988possible" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">C. Tsallis, <a href="https://doi.org/10.1007/BF01016429">Possible generalization of boltzmann-gibbs statistics</a>, Journal of Statistical Physics <strong>52</strong>, 479 (1988).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">C. Tsallis, Possible generalization of boltzmann-gibbs statistics, Journal of Statistical Physics 52 (1988) 479–487. https://doi.org/<a href="https://doi.org/10.1007/BF01016429">10.1007/BF01016429</a>.</div>
 </div>
 <div id="ref-TSALLIS20041" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">C. Tsallis, <a href="https://doi.org/10.1016/j.physa.2004.03.072">Dynamical scenario for nonextensive statistical mechanics</a>, Physica A: Statistical Mechanics and Its Applications <strong>340</strong>, 1 (2004).</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">C. Tsallis, Dynamical scenario for nonextensive statistical mechanics, Physica A: Statistical Mechanics and Its Applications 340 (2004) 1–10. https://doi.org/<a href="https://doi.org/10.1016/j.physa.2004.03.072">10.1016/j.physa.2004.03.072</a>.</div>
 </div>
 <div id="ref-doi:10.1073/pnas.0503807102" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">C. Tsallis, M. Gell-Mann, and Y. Sato, <a href="https://doi.org/10.1073/pnas.0503807102">Asymptotically scale-invariant occupancy of phase space makes the entropy &lt;i&gt;s&lt;sub&gt;q&lt;/sub&gt;&lt;/i&gt; extensive</a>, Proceedings of the National Academy of Sciences <strong>102</strong>, 15377 (2005).</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">C. Tsallis, M. Gell-Mann, Y. Sato, Asymptotically scale-invariant occupancy of phase space makes the entropy &lt;i&gt;s&lt;sub&gt;q&lt;/sub&gt;&lt;/i&gt; extensive, Proceedings of the National Academy of Sciences 102 (2005) 15377–15382. https://doi.org/<a href="https://doi.org/10.1073/pnas.0503807102">10.1073/pnas.0503807102</a>.</div>
 </div>
 <div id="ref-e19090457" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">C. Tsallis, <a href="https://doi.org/10.3390/e19090457">Economics and finance: Q-statistical stylized features galore</a>, Entropy <strong>19</strong>, (2017).</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">C. Tsallis, Economics and finance: Q-statistical stylized features galore, Entropy 19 (2017). https://doi.org/<a href="https://doi.org/10.3390/e19090457">10.3390/e19090457</a>.</div>
 </div>
 <div id="ref-e21070696" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">C. Tsallis, <a href="https://doi.org/10.3390/e21070696">Beyond boltzmann–gibbs–shannon in physics and elsewhere</a>, Entropy <strong>21</strong>, (2019).</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">C. Tsallis, Beyond boltzmann–gibbs–shannon in physics and elsewhere, Entropy 21 (2019). https://doi.org/<a href="https://doi.org/10.3390/e21070696">10.3390/e21070696</a>.</div>
 </div>
 <div id="ref-e21070648" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">E. G. Pavlos, O. E. Malandraki, O. V. Khabarova, L. P. Karakatsanis, G. P. Pavlos, and G. Livadiotis, <a href="https://doi.org/10.3390/e21070648">Non-extensive statistical analysis of energetic particle flux enhancements caused by the interplanetary coronal mass ejection-heliospheric current sheet interaction</a>, Entropy <strong>21</strong>, (2019).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">E.G. Pavlos, O.E. Malandraki, O.V. Khabarova, L.P. Karakatsanis, G.P. Pavlos, G. Livadiotis, Non-extensive statistical analysis of energetic particle flux enhancements caused by the interplanetary coronal mass ejection-heliospheric current sheet interaction, Entropy 21 (2019). https://doi.org/<a href="https://doi.org/10.3390/e21070648">10.3390/e21070648</a>.</div>
 </div>
 <div id="ref-de2021connecting" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">R. de Oliveira, S. Brito, L. da Silva, and C. Tsallis, Connecting complex networks to nonadditive entropies, Scientific Reports <strong>11</strong>, 1130 (2021).</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">R. de Oliveira, S. Brito, L. da Silva, C. Tsallis, Connecting complex networks to nonadditive entropies, Scientific Reports 11 (2021) 1130.</div>
 </div>
 <div id="ref-pavlos2015complexity" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">G. Pavlos, A. Iliopoulos, L. Karakatsanis, M. Xenakis, and E. Pavlos, <a href="https://www.academia.edu/download/37828856/Complexity_of_Economical_Systems.pdf">Complexity of economical systems.</a>, Journal of Engineering Science &amp; Technology Review <strong>8</strong>, (2015).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">G. Pavlos, A. Iliopoulos, L. Karakatsanis, M. Xenakis, E. Pavlos, Complexity of economical systems., Journal of Engineering Science &amp; Technology Review 8 (2015). <a href="https://www.academia.edu/download/37828856/Complexity_of_Economical_Systems.pdf">https://www.academia.edu/download/37828856/Complexity_of_Economical_Systems.pdf</a>.</div>
 </div>
 <div id="ref-FERRI20101829" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">G. L. Ferri, M. F. Reynoso Savio, and A. Plastino, <a href="https://doi.org/10.1016/j.physa.2009.12.020">Tsallis’ q-triplet and the ozone layer</a>, Physica A: Statistical Mechanics and Its Applications <strong>389</strong>, 1829 (2010).</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">G.L. Ferri, M.F. Reynoso Savio, A. Plastino, Tsallis’ q-triplet and the ozone layer, Physica A: Statistical Mechanics and Its Applications 389 (2010) 1829–1833. https://doi.org/<a href="https://doi.org/10.1016/j.physa.2009.12.020">https://doi.org/10.1016/j.physa.2009.12.020</a>.</div>
 </div>
 <div id="ref-umarov2008aq" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">S. Umarov, C. Tsallis, and S. Steinberg, <a href="https://doi.org/10.1007/s00032-008-0087-y">On aq-central limit theorem consistent with nonextensive statistical mechanics</a>, Milan Journal of Mathematics <strong>76</strong>, 307 (2008).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">S. Umarov, C. Tsallis, S. Steinberg, On aq-central limit theorem consistent with nonextensive statistical mechanics, Milan Journal of Mathematics 76 (2008) 307–328. https://doi.org/<a href="https://doi.org/10.1007/s00032-008-0087-y">10.1007/s00032-008-0087-y</a>.</div>
 </div>
 <div id="ref-PhysRevLett.80.5313" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">C. Anteneodo and C. Tsallis, <a href="https://doi.org/10.1103/PhysRevLett.80.5313">Breakdown of exponential sensitivity to initial conditions: Role of the range of interactions</a>, Phys. Rev. Lett. <strong>80</strong>, 5313 (1998).</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">C. Anteneodo, C. Tsallis, Breakdown of exponential sensitivity to initial conditions: Role of the range of interactions, Phys. Rev. Lett. 80 (1998) 5313–5316. https://doi.org/<a href="https://doi.org/10.1103/PhysRevLett.80.5313">10.1103/PhysRevLett.80.5313</a>.</div>
 </div>
 <div id="ref-doi:10.1142/S0218127412300303" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C. TSALLIS, <a href="https://doi.org/10.1142/S0218127412300303">Some open problems in nonextensive statistical mechanics</a>, International Journal of Bifurcation and Chaos <strong>22</strong>, 1230030 (2012).</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">C. TSALLIS, Some open problems in nonextensive statistical mechanics, International Journal of Bifurcation and Chaos 22 (2012) 1230030. https://doi.org/<a href="https://doi.org/10.1142/S0218127412300303">10.1142/S0218127412300303</a>.</div>
 </div>
 <div id="ref-STOSIC20181069" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">D. Stosic, D. Stosic, T. B. Ludermir, and T. Stosic, <a href="https://doi.org/10.1016/j.physa.2018.04.066">Nonextensive triplets in cryptocurrency exchanges</a>, Physica A: Statistical Mechanics and Its Applications <strong>505</strong>, 1069 (2018).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">D. Stosic, D. Stosic, T.B. Ludermir, T. Stosic, Nonextensive triplets in cryptocurrency exchanges, Physica A: Statistical Mechanics and Its Applications 505 (2018) 1069–1074. https://doi.org/<a href="https://doi.org/10.1016/j.physa.2018.04.066">https://doi.org/10.1016/j.physa.2018.04.066</a>.</div>
 </div>
 <div id="ref-10.1007/978-3-031-14841-5_12" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">A. O. Bielinskyi, A. V. Matviychuk, O. A. Serdyuk, S. O. Semerikov, V. V. Solovieva, and V. N. Soloviev, <em><a href="https://doi.org/10.1007/978-3-031-14841-5_12">Correlational and&nbsp;Non-Extensive Nature of&nbsp;Carbon Dioxide Pricing Market</a></em>, in <em>ICTERI 2021 Workshops</em>, edited by O. Ignatenko, V. Kharchenko, V. Kobets, H. Kravtsov, Y. Tarasich, V. Ermolayev, D. Esteban, V. Yakovyna, and A. Spivakovsky, Vol. 1635 (Springer International Publishing, Cham, 2022), pp. 183–199.</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">A.O. Bielinskyi, A.V. Matviychuk, O.A. Serdyuk, S.O. Semerikov, V.V. Solovieva, V.N. Soloviev, Correlational and&nbsp;non-extensive nature of&nbsp;carbon dioxide pricing market, in: O. Ignatenko, V. Kharchenko, V. Kobets, H. Kravtsov, Y. Tarasich, V. Ermolayev, D. Esteban, V. Yakovyna, A. Spivakovsky (Eds.), ICTERI 2021 Workshops, Springer International Publishing, Cham, 2022: pp. 183–199. https://doi.org/<a href="https://doi.org/10.1007/978-3-031-14841-5_12">10.1007/978-3-031-14841-5_12</a>.</div>
 </div>
 </div>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопійовано!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопійовано!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Скопійовано!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Скопійовано!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1560,185 +1610,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="./lab_9.html" class="pagination-link" aria-label="Лабораторна робота № 9">

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.551">
+<meta name="generator" content="quarto-1.7.33">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Моделювання складних систем у Python - 11&nbsp; Лабораторна робота № 11</title>
+<title>11&nbsp; Лабораторна робота № 11 – Моделювання складних систем у Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +21,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -86,17 +87,20 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./lab_12.html" rel="next">
 <link href="./lab_10.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8b10bbddb8093a15b0d29705600995f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-0c638a1db3776987c1198e8561be3b0c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-8b10bbddb8093a15b0d29705600995f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -125,7 +129,7 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -158,19 +162,181 @@ window.Quarto = {
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lab_11.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -289,9 +455,9 @@ window.Quarto = {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Додатки</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -362,6 +528,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title"><span id="sec-title11" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Лабораторна робота № 11</span></span></h1>
@@ -385,20 +552,20 @@ window.Quarto = {
 <p><strong>Мета.</strong> Навчитись розраховувати значення індексів незворотності часу для складних сигналів та досліджувати їх динаміку у випадку незворотних змін, побудови передвісників критичних і кризових явищ</p>
 <section id="теоретичні-відомості" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="теоретичні-відомості"><span class="header-section-number">11.1</span> Теоретичні відомості</h2>
-<p>Складні системи — це відкриті системи, які обмінюються енергією, речовиною та інформацією з навколишнім середовищем. Досліджуючи складні системи в природничих науках, Пригожин <span class="citation" data-cites="10.1063/1.2890013">&nbsp;[<a href="references.html#ref-10.1063/1.2890013" role="doc-biblioref">1</a>]</span> зробив фундаментальне узагальнення, вказавши на необхідність розгляду явищ незворотності та нерівноважності, які є фундаментальними властивостями складних систем різної природи: соціальні, економічні, біомедичні тощо <span class="citation" data-cites="PhysRevE.71.021906">&nbsp;[<a href="references.html#ref-PhysRevE.71.021906" role="doc-biblioref">2</a>]</span>. Пригожин вважав, що найважливіші зміни в сучасній науковій революції пов’язані зі зняттям попередніх обмежень у науковому розумінні часу. Нелінійний світ характеризується рисами темпоральності, тобто незворотністю і швидкоплинністю процесів і явищ. Самоорганізація розглядається як спонтанний процес формування складних систем, що інтегруються. Саме через неоднозначність вибору в точках біфуркації час у теоріях самоорганізації стає справді незворотнім. На відміну від лінійних динамічних теорій — класичної, релятивістської, квантової (де час обернений), в термодинаміці дисипативних структур, створеної Пригожиним, час перестає бути простим параметром і стає поняттям, що виражає темп і напрямок розвитку подій.</p>
-<p>Незворотність часу є фундаментальною властивістю нерівноважних дисипативних систем, і її втрата може свідчити про розвиток деструктивних процесів <span class="citation" data-cites="costa2008multiscale PhysRevE.71.021906">&nbsp;[<a href="references.html#ref-PhysRevE.71.021906" role="doc-biblioref">2</a>,<a href="references.html#ref-costa2008multiscale" role="doc-biblioref">3</a>]</span>.</p>
+<p>Складні системи — це відкриті системи, які обмінюються енергією, речовиною та інформацією з навколишнім середовищем. Досліджуючи складні системи в природничих науках, Пригожин <span class="citation" data-cites="10.1063/1.2890013">[<a href="references.html#ref-10.1063/1.2890013" role="doc-biblioref">1</a>]</span> зробив фундаментальне узагальнення, вказавши на необхідність розгляду явищ незворотності та нерівноважності, які є фундаментальними властивостями складних систем різної природи: соціальні, економічні, біомедичні тощо <span class="citation" data-cites="PhysRevE.71.021906">[<a href="references.html#ref-PhysRevE.71.021906" role="doc-biblioref">2</a>]</span>. Пригожин вважав, що найважливіші зміни в сучасній науковій революції пов’язані зі зняттям попередніх обмежень у науковому розумінні часу. Нелінійний світ характеризується рисами темпоральності, тобто незворотністю і швидкоплинністю процесів і явищ. Самоорганізація розглядається як спонтанний процес формування складних систем, що інтегруються. Саме через неоднозначність вибору в точках біфуркації час у теоріях самоорганізації стає справді незворотнім. На відміну від лінійних динамічних теорій — класичної, релятивістської, квантової (де час обернений), в термодинаміці дисипативних структур, створеної Пригожиним, час перестає бути простим параметром і стає поняттям, що виражає темп і напрямок розвитку подій.</p>
+<p>Незворотність часу є фундаментальною властивістю нерівноважних дисипативних систем, і її втрата може свідчити про розвиток деструктивних процесів <span class="citation" data-cites="costa2008multiscale PhysRevE.71.021906">[<a href="references.html#ref-PhysRevE.71.021906" role="doc-biblioref">2</a>,<a href="references.html#ref-costa2008multiscale" role="doc-biblioref">3</a>]</span>.</p>
 <p>З огляду на статистичні властивості досліджуваного сигналу, його еволюцію можна було б назвати <strong>незворотною</strong> (irreversible), якби була відсутня інваріантність, тобто був би отриманий той же сигнал, якби ми виміряли його в протилежному напрямку. Функція <span class="math inline">\(f\)</span> може бути застосована для знаходження характеристик, які відрізняються прямою і зворотною версіями, тобто часові ряди незворотні, якщо <span class="math inline">\(f(X^d) \neq f(X^r)\)</span>. Основна ідея цього визначення полягає в тому, що немає ніяких обмежень на <span class="math inline">\(f(\cdot )\)</span>.</p>
-<p>Передбачається, що стаціонарний процес <span class="math inline">\(X\)</span> називається <strong>статистично зворотним у часі</strong>, якщо розподіл імовірностей прямої та зворотної систем приблизно однаковий <span class="citation" data-cites="F.Donges_2013 e20090665 FLANAGAN20161689">&nbsp;[<a href="references.html#ref-F.Donges_2013" role="doc-biblioref">4</a>–<a href="references.html#ref-FLANAGAN20161689" role="doc-biblioref">6</a>]</span>. Незворотність часових рядів вказує на наявність нелінійних залежностей (пам’яті) <span class="citation" data-cites="Puglisi_2009">&nbsp;[<a href="references.html#ref-Puglisi_2009" role="doc-biblioref">7</a>]</span> у динаміці далекої від рівноваги системи, включаючи негаусові випадкові процеси та дисипативний хаос.</p>
-<p>У першій групі методів виконується символізація часових рядів, а потім проводиться аналіз шляхом статистичного порівняння рядка символів у прямому та зворотному напрямках <span class="citation" data-cites="DIKS1995221">&nbsp;[<a href="references.html#ref-DIKS1995221" role="doc-biblioref">8</a>]</span>. Іноді використовуються додаткові алгоритми стиснення <span class="citation" data-cites="PhysRevE.62.1912">&nbsp;[<a href="references.html#ref-PhysRevE.62.1912" role="doc-biblioref">9</a>]</span>. Важливим кроком для цієї групи є символізація — перетворення часового ряду у символьний ряд вимагає додаткової спеціальної інформації (наприклад, поділ діапазону або розмір алфавіту) і, отже, містить проблему залежності алгоритму від цих додаткових параметрів. Друга проблема виникає при розгляді масштабної інваріантності складних сигналів. Оскільки процедури типових символізацій є локальними, врахування різних масштабів може викликати певні труднощі <span class="citation" data-cites="costa2008multiscale">&nbsp;[<a href="references.html#ref-costa2008multiscale" role="doc-biblioref">3</a>]</span>.</p>
+<p>Передбачається, що стаціонарний процес <span class="math inline">\(X\)</span> називається <strong>статистично зворотним у часі</strong>, якщо розподіл імовірностей прямої та зворотної систем приблизно однаковий <span class="citation" data-cites="F.Donges_2013 e20090665 FLANAGAN20161689">[<a href="references.html#ref-F.Donges_2013" role="doc-biblioref">4</a>–<a href="references.html#ref-FLANAGAN20161689" role="doc-biblioref">6</a>]</span>. Незворотність часових рядів вказує на наявність нелінійних залежностей (пам’яті) <span class="citation" data-cites="Puglisi_2009">[<a href="references.html#ref-Puglisi_2009" role="doc-biblioref">7</a>]</span> у динаміці далекої від рівноваги системи, включаючи негаусові випадкові процеси та дисипативний хаос.</p>
+<p>У першій групі методів виконується символізація часових рядів, а потім проводиться аналіз шляхом статистичного порівняння рядка символів у прямому та зворотному напрямках <span class="citation" data-cites="DIKS1995221">[<a href="references.html#ref-DIKS1995221" role="doc-biblioref">8</a>]</span>. Іноді використовуються додаткові алгоритми стиснення <span class="citation" data-cites="PhysRevE.62.1912">[<a href="references.html#ref-PhysRevE.62.1912" role="doc-biblioref">9</a>]</span>. Важливим кроком для цієї групи є символізація — перетворення часового ряду у символьний ряд вимагає додаткової спеціальної інформації (наприклад, поділ діапазону або розмір алфавіту) і, отже, містить проблему залежності алгоритму від цих додаткових параметрів. Друга проблема виникає при розгляді масштабної інваріантності складних сигналів. Оскільки процедури типових символізацій є локальними, врахування різних масштабів може викликати певні труднощі <span class="citation" data-cites="costa2008multiscale">[<a href="references.html#ref-costa2008multiscale" role="doc-biblioref">3</a>]</span>.</p>
 <p>Інша група методів формалізації показника незворотності не використовує процедуру символізації, а базується на використанні вихідних значень часових рядів або прибутковостей.</p>
-<p>Один з таких підходів базується на асиметрії розподілу точок на <strong>діаграмі Пуанкаре</strong> (Poincaré diagram), побудованої на основі значень досліджуваного часового ряду <span class="citation" data-cites="GuzikPiskorskiKrauzeWykretowiczWysocki 4511792">&nbsp;[<a href="references.html#ref-GuzikPiskorskiKrauzeWykretowiczWysocki" role="doc-biblioref">10</a>,<a href="references.html#ref-4511792" role="doc-biblioref">11</a>]</span>.</p>
-<p>Нещодавно було запропоновано принципово новий підхід до вимірювання незворотності часових рядів, який використовує методи теорії складних мереж <span class="citation" data-cites="F.Donges_2013 Lacasa_2012">&nbsp;[<a href="references.html#ref-F.Donges_2013" role="doc-biblioref">4</a>,<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span> та поєднує два інструменти: алгоритм графа видимості, що перетворює часові ряди у складну мережу та алгоритм дивергенції Куллбака-Лейблера <span class="citation" data-cites="Lacasa_2012">&nbsp;[<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span>. Перший формує спрямовану мережу за геометричним критерієм. Потім ступінь незворотності ряду оцінюється за розбіжністю Кульбака-Лейблера. Цей метод є обчислювально ефективним, не вимагає спеціального процесу символізації і, на думку авторів, природно враховує мультимасштабність.</p>
+<p>Один з таких підходів базується на асиметрії розподілу точок на <strong>діаграмі Пуанкаре</strong> (Poincaré diagram), побудованої на основі значень досліджуваного часового ряду <span class="citation" data-cites="GuzikPiskorskiKrauzeWykretowiczWysocki 4511792">[<a href="references.html#ref-GuzikPiskorskiKrauzeWykretowiczWysocki" role="doc-biblioref">10</a>,<a href="references.html#ref-4511792" role="doc-biblioref">11</a>]</span>.</p>
+<p>Нещодавно було запропоновано принципово новий підхід до вимірювання незворотності часових рядів, який використовує методи теорії складних мереж <span class="citation" data-cites="F.Donges_2013 Lacasa_2012">[<a href="references.html#ref-F.Donges_2013" role="doc-biblioref">4</a>,<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span> та поєднує два інструменти: алгоритм графа видимості, що перетворює часові ряди у складну мережу та алгоритм дивергенції Куллбака-Лейблера <span class="citation" data-cites="Lacasa_2012">[<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span>. Перший формує спрямовану мережу за геометричним критерієм. Потім ступінь незворотності ряду оцінюється за розбіжністю Кульбака-Лейблера. Цей метод є обчислювально ефективним, не вимагає спеціального процесу символізації і, на думку авторів, природно враховує мультимасштабність.</p>
 <section id="незворотність-на-основі-діаграм-пуанкаре" class="level3" data-number="11.1.1">
 <h3 data-number="11.1.1" class="anchored" data-anchor-id="незворотність-на-основі-діаграм-пуанкаре"><span class="header-section-number">11.1.1</span> Незворотність на основі діаграм Пуанкаре</h3>
-<p>Діаграма Пуанкаре для часового ряду являє собою графік, на осі <span class="math inline">\(x\)</span> якого розташовані значення для поточного часу <span class="math inline">\(t\)</span>, а на осі <span class="math inline">\(y\)</span> — його наступні значення в часі <span class="math inline">\(t+\tau\)</span>. Усі наступні значення, які рівні один одному <span class="math inline">\((x(t) = x(t+\tau))\)</span>, розташовані на <strong>лінії ідентичності</strong> (line of identity, LI). Інтервали, що представляють зростаючу тендецію, відмічені вище LI <span class="math inline">\(( x(t)&lt;x(t+\tau) )\)</span>, тоді як спадна тенденція характеризуватиметься скупченням точок нижче LI <span class="math inline">\((x(t)&gt;x(t+\tau))\)</span>. Оцінюючи асиметрію точок на діаграмі, ми можемо вивести різні кількісні показники незворотності (асиметрії) досліджуваних систем <span class="citation" data-cites="DBLP:conf/m3e2/BielinskyiHMSSS21 10.1007/978-3-031-35467-0_26">&nbsp;[<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiHMSSS21" role="doc-biblioref">13</a>,<a href="references.html#ref-10.1007/978-3-031-35467-0_26" role="doc-biblioref">14</a>]</span>.</p>
+<p>Діаграма Пуанкаре для часового ряду являє собою графік, на осі <span class="math inline">\(x\)</span> якого розташовані значення для поточного часу <span class="math inline">\(t\)</span>, а на осі <span class="math inline">\(y\)</span> — його наступні значення в часі <span class="math inline">\(t+\tau\)</span>. Усі наступні значення, які рівні один одному <span class="math inline">\((x(t) = x(t+\tau))\)</span>, розташовані на <strong>лінії ідентичності</strong> (line of identity, LI). Інтервали, що представляють зростаючу тендецію, відмічені вище LI <span class="math inline">\(( x(t)&lt;x(t+\tau) )\)</span>, тоді як спадна тенденція характеризуватиметься скупченням точок нижче LI <span class="math inline">\((x(t)&gt;x(t+\tau))\)</span>. Оцінюючи асиметрію точок на діаграмі, ми можемо вивести різні кількісні показники незворотності (асиметрії) досліджуваних систем <span class="citation" data-cites="DBLP:conf/m3e2/BielinskyiHMSSS21 10.1007/978-3-031-35467-0_26">[<a href="references.html#ref-DBLP:conf/m3e2/BielinskyiHMSSS21" role="doc-biblioref">13</a>,<a href="references.html#ref-10.1007/978-3-031-35467-0_26" role="doc-biblioref">14</a>]</span>.</p>
 <section id="індекс-гузіка" class="level4" data-number="11.1.1.1">
 <h4 data-number="11.1.1.1" class="anchored" data-anchor-id="індекс-гузіка"><span class="header-section-number">11.1.1.1</span> Індекс Гузіка</h4>
-<p><strong>Індекс Гузіка</strong> (Guzik index, GIx) <span class="citation" data-cites="GuzikPiskorskiKrauzeWykretowiczWysocki">&nbsp;[<a href="references.html#ref-GuzikPiskorskiKrauzeWykretowiczWysocki" role="doc-biblioref">10</a>]</span> можна визначити як відношення відстаней точок вище LI до відстаней усіх точок на діаграмі:</p>
+<p><strong>Індекс Гузіка</strong> (Guzik index, GIx) <span class="citation" data-cites="GuzikPiskorskiKrauzeWykretowiczWysocki">[<a href="references.html#ref-GuzikPiskorskiKrauzeWykretowiczWysocki" role="doc-biblioref">10</a>]</span> можна визначити як відношення відстаней точок вище LI до відстаней усіх точок на діаграмі:</p>
 <p><span class="math display">\[
 GIx = \sum_{i=1}^{a} \left( D_{i}^{+} \right)^{2} \bigg/ \sum_{i=1}^{m} \left( D_{i} \right)^{2},
 \]</span></p>
@@ -409,7 +576,7 @@ D_{i} = \left( |x(i+\tau) - x(i)| \right) / \sqrt{2}.
 </section>
 <section id="індекс-порти" class="level4" data-number="11.1.1.2">
 <h4 data-number="11.1.1.2" class="anchored" data-anchor-id="індекс-порти"><span class="header-section-number">11.1.1.2</span> Індекс Порти</h4>
-<p><strong>Індекс Порти</strong> (Porta index, PIx) <span class="citation" data-cites="4511792">&nbsp;[<a href="references.html#ref-4511792" role="doc-biblioref">11</a>]</span> визначається як кількість точок нижче LI, поділена на загальну кількість точок на діаграмі Пуанкаре, за винятком тих, що знаходяться на LI:</p>
+<p><strong>Індекс Порти</strong> (Porta index, PIx) <span class="citation" data-cites="4511792">[<a href="references.html#ref-4511792" role="doc-biblioref">11</a>]</span> визначається як кількість точок нижче LI, поділена на загальну кількість точок на діаграмі Пуанкаре, за винятком тих, що знаходяться на LI:</p>
 <p><span class="math display">\[
 PIx = b / m,
 \]</span></p>
@@ -417,7 +584,7 @@ PIx = b / m,
 </section>
 <section id="індекс-кошти" class="level4" data-number="11.1.1.3">
 <h4 data-number="11.1.1.3" class="anchored" data-anchor-id="індекс-кошти"><span class="header-section-number">11.1.1.3</span> Індекс Кошти</h4>
-<p><strong>Індекс Кошти</strong> (Costa index, CIx) [<span class="citation" data-cites="PhysRevLett.95.198102">&nbsp;[<a href="references.html#ref-PhysRevLett.95.198102" role="doc-biblioref">15</a>]</span>;costa2008multiscale] враховує кількість приростів <span class="math inline">\((x(i+1)-x(i) &gt; 0)\)</span> та спадів <span class="math inline">\((x(i+1)-x(i) &lt; 0)\)</span>. Вони представляються симетричними, якщо рівні один одному. Даний індекс розраховується для двовимірної мультимасштабної площини <span class="math inline">\((x(i), x(i+L))\)</span>, де новий крос-гранульований ряд <span class="math inline">\(y_{\tau}(i) = x(i+L)-x(i)\)</span> для <span class="math inline">\(1 \leq i \leq N-\tau\)</span> відображає асиметрію приростів та спадів ряду, й індекс незворотності для діапазону масштабів <span class="math inline">\(\tau\)</span> визначається виразом:</p>
+<p><strong>Індекс Кошти</strong> (Costa index, CIx) [<span class="citation" data-cites="PhysRevLett.95.198102">[<a href="references.html#ref-PhysRevLett.95.198102" role="doc-biblioref">15</a>]</span>;costa2008multiscale] враховує кількість приростів <span class="math inline">\((x(i+1)-x(i) &gt; 0)\)</span> та спадів <span class="math inline">\((x(i+1)-x(i) &lt; 0)\)</span>. Вони представляються симетричними, якщо рівні один одному. Даний індекс розраховується для двовимірної мультимасштабної площини <span class="math inline">\((x(i), x(i+L))\)</span>, де новий крос-гранульований ряд <span class="math inline">\(y_{\tau}(i) = x(i+L)-x(i)\)</span> для <span class="math inline">\(1 \leq i \leq N-\tau\)</span> відображає асиметрію приростів та спадів ряду, й індекс незворотності для діапазону масштабів <span class="math inline">\(\tau\)</span> визначається виразом:</p>
 <p><span class="math display">\[
 CIx_{\tau} = \left( \sum_{y_{\tau}&lt;0} H[y_{\tau}] - \sum_{y_{\tau}&gt;0} H[y_{\tau}] \right) \Bigg/ \left( N-\tau \right).
 \]</span></p>
@@ -429,7 +596,7 @@ CIx = \frac{1}{L} \sum_{\tau=1}^{L} |CIx_{\tau}|,
 </section>
 <section id="індекс-ейлера" class="level4" data-number="11.1.1.4">
 <h4 data-number="11.1.1.4" class="anchored" data-anchor-id="індекс-ейлера"><span class="header-section-number">11.1.1.4</span> Індекс Ейлера</h4>
-<p>Опираючись на асиметрію розподілу точок нижче та вище LI, Ейлер (Ehler) запропонував наступний індекс асиметрії <span class="citation" data-cites="Ehlers_1998">&nbsp;[<a href="references.html#ref-Ehlers_1998" role="doc-biblioref">16</a>]</span>:</p>
+<p>Опираючись на асиметрію розподілу точок нижче та вище LI, Ейлер (Ehler) запропонував наступний індекс асиметрії <span class="citation" data-cites="Ehlers_1998">[<a href="references.html#ref-Ehlers_1998" role="doc-biblioref">16</a>]</span>:</p>
 <p><span class="math display">\[
 EIx = \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{3} \Bigg/ \left( \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{2} \right)^{3/2}.
 \]</span></p>
@@ -437,7 +604,7 @@ EIx = \sum_{i=1}^{N-1} \left[ x(i)-x(i+\tau) \right]^{3} \Bigg/ \left( \sum_{i=1
 </section>
 <section id="індекс-площі" class="level4" data-number="11.1.1.5">
 <h4 data-number="11.1.1.5" class="anchored" data-anchor-id="індекс-площі"><span class="header-section-number">11.1.1.5</span> Індекс площі</h4>
-<p><strong>Індекс площі</strong> (Area index, AIx) <span class="citation" data-cites="Yan_2017">&nbsp;[<a href="references.html#ref-Yan_2017" role="doc-biblioref">17</a>]</span> визначається як сукупна площа секторів, що сформовані точками над LI поділена на сукупну площу секторів, що відповідають усім точкам на діаграмі Пуанкаре (крім тих, що розташовані точно на LI). Площа сектора, що відповідає певній точці <span class="math inline">\(P_{i}\)</span>, обчислюється як</p>
+<p><strong>Індекс площі</strong> (Area index, AIx) <span class="citation" data-cites="Yan_2017">[<a href="references.html#ref-Yan_2017" role="doc-biblioref">17</a>]</span> визначається як сукупна площа секторів, що сформовані точками над LI поділена на сукупну площу секторів, що відповідають усім точкам на діаграмі Пуанкаре (крім тих, що розташовані точно на LI). Площа сектора, що відповідає певній точці <span class="math inline">\(P_{i}\)</span>, обчислюється як</p>
 <p><span class="math display">\[
 S_{i} = 1/2 \times R\theta_{i} \times r^{2},
 \]</span></p>
@@ -448,7 +615,7 @@ AIx = \sum_{i=1}^{a}|S_{i}| \Bigg/ \sum_{i=1}^{m}|S_{i}|.
 </section>
 <section id="індекс-кута-нахилу" class="level4" data-number="11.1.1.6">
 <h4 data-number="11.1.1.6" class="anchored" data-anchor-id="індекс-кута-нахилу"><span class="header-section-number">11.1.1.6</span> Індекс кута нахилу</h4>
-<p>На додачу до представлених вище мір, було запропоновано розраховувати незворотність сигналу з відношення кутів нахилу точок над LI до нахилу всіх точок на діаграмі <span class="citation" data-cites="Karmakar_2015">&nbsp;[<a href="references.html#ref-Karmakar_2015" role="doc-biblioref">18</a>]</span>:</p>
+<p>На додачу до представлених вище мір, було запропоновано розраховувати незворотність сигналу з відношення кутів нахилу точок над LI до нахилу всіх точок на діаграмі <span class="citation" data-cites="Karmakar_2015">[<a href="references.html#ref-Karmakar_2015" role="doc-biblioref">18</a>]</span>:</p>
 <p><span class="math display">\[
 SIx = \sum_{i=1}^{a}|R\theta_{i}| \Bigg/ \sum_{i=1}^{m}|R\theta_{i}|.
 \]</span></p>
@@ -456,7 +623,7 @@ SIx = \sum_{i=1}^{a}|R\theta_{i}| \Bigg/ \sum_{i=1}^{m}|R\theta_{i}|.
 </section>
 <section id="методи-складних-мереж" class="level3" data-number="11.1.2">
 <h3 data-number="11.1.2" class="anchored" data-anchor-id="методи-складних-мереж"><span class="header-section-number">11.1.2</span> Методи складних мереж</h3>
-<p><strong>Графи видимості</strong> (Visibility graphs, VG) базуються на простому відображенні часових рядів у мережну область, де кожне спостереження є вершиною в складній мережі. Дві вершини <span class="math inline">\(i\)</span> та <span class="math inline">\(j\)</span> пов’язані ребром, якщо для них застосовується наступна умова <span class="citation" data-cites="Lacasa_2012">&nbsp;[<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span>:</p>
+<p><strong>Графи видимості</strong> (Visibility graphs, VG) базуються на простому відображенні часових рядів у мережну область, де кожне спостереження є вершиною в складній мережі. Дві вершини <span class="math inline">\(i\)</span> та <span class="math inline">\(j\)</span> пов’язані ребром, якщо для них застосовується наступна умова <span class="citation" data-cites="Lacasa_2012">[<a href="references.html#ref-Lacasa_2012" role="doc-biblioref">12</a>]</span>:</p>
 <p><span class="math display">\[
 x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right)\left( t_{j}-t_{k} \right)/\left( t_{j}-t_{i} \right).
 \]</span></p>
@@ -466,14 +633,14 @@ x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right)\left( t_{j}-t_{k} \right)/\left(
 A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left[ x_{k} &lt; x_{j} + \left( x_{i} - x_{j} \right)\left( t_{j}-t_{k} \right)/\left( t_{j}-t_{i} \right) \right],
 \]</span></p>
 <p>де <span class="math inline">\(H( \cdot )\)</span> — функція Гевісайда.</p>
-<p><strong>Граф горизонтальної видимості</strong> (Horizontal visibility graph, HVG) є спрощеною версією цього алгоритму <span class="citation" data-cites="PhysRevE.80.046103">&nbsp;[<a href="references.html#ref-PhysRevE.80.046103" role="doc-biblioref">19</a>]</span>. Для досліджуваного часового ряду набори вершин VG і HVG однакові, тоді як набір ребер HVG відображає взаємну горизонтальну видимість двох спостережень <span class="math inline">\(x_{i}\)</span> та <span class="math inline">\(x_{j}\)</span>. Тобто, можна побудувати ребро <span class="math inline">\((i,j)\)</span>, якщо <span class="math inline">\(x_{k} &lt; \min(x_{i}, x_{j})\)</span> для всіх <span class="math inline">\(k\)</span> при <span class="math inline">\(t_{i} &lt; t_{k} &lt; t_{j}\)</span> так що</p>
+<p><strong>Граф горизонтальної видимості</strong> (Horizontal visibility graph, HVG) є спрощеною версією цього алгоритму <span class="citation" data-cites="PhysRevE.80.046103">[<a href="references.html#ref-PhysRevE.80.046103" role="doc-biblioref">19</a>]</span>. Для досліджуваного часового ряду набори вершин VG і HVG однакові, тоді як набір ребер HVG відображає взаємну горизонтальну видимість двох спостережень <span class="math inline">\(x_{i}\)</span> та <span class="math inline">\(x_{j}\)</span>. Тобто, можна побудувати ребро <span class="math inline">\((i,j)\)</span>, якщо <span class="math inline">\(x_{k} &lt; \min(x_{i}, x_{j})\)</span> для всіх <span class="math inline">\(k\)</span> при <span class="math inline">\(t_{i} &lt; t_{k} &lt; t_{j}\)</span> так що</p>
 <p><span class="math display">\[
 A_{ij}^{VG} = A_{ji}^{VG} = \prod_{k=i+1}^{j-1} H \left( x_{i} - x_{k} \right) H \left( x_{j} - x_{k} \right).
 \]</span></p>
 <p>VG і HVG фіксують по суті одні й ті ж властивості досліджуваної системи, оскільки HVG є підграфом VG з тим же набором вершин, але володіє тільки підмножиною ребер VG. Зверніть увагу, що VG інваріантний щодо суперпозиції лінійних трендів, тоді як HVG — ні.</p>
 <p>Оскільки визначення VGs та HVGs чітко враховує часовий порядок спостережень, напрямок часу нерозривно пов’язаний з отриманою структурою мережі. Щоб врахувати цей факт, ми визначаємо набір нових статистичних мережних показників на основі двох простих характеристик вершин:</p>
 <ol type="1">
-<li><p>Оскільки кількість ребер інцидентних вершині <span class="math inline">\(i\)</span> можна визначити як <span class="math inline">\(k_{i}^{r} = \sum_{j} A_{ij}\)</span>, для (H)VG ми можемо переписати дану кількісну характеристику для вершини в час <span class="math inline">\(t_{i}\)</span> відносно її минулих та майбутніх вершин <span class="citation" data-cites="FLANAGAN20161689 PhysRevE.92.022817">&nbsp;[<a href="references.html#ref-FLANAGAN20161689" role="doc-biblioref">6</a>,<a href="references.html#ref-PhysRevE.92.022817" role="doc-biblioref">20</a>]</span>:</p>
+<li><p>Оскільки кількість ребер інцидентних вершині <span class="math inline">\(i\)</span> можна визначити як <span class="math inline">\(k_{i}^{r} = \sum_{j} A_{ij}\)</span>, для (H)VG ми можемо переписати дану кількісну характеристику для вершини в час <span class="math inline">\(t_{i}\)</span> відносно її минулих та майбутніх вершин <span class="citation" data-cites="FLANAGAN20161689 PhysRevE.92.022817">[<a href="references.html#ref-FLANAGAN20161689" role="doc-biblioref">6</a>,<a href="references.html#ref-PhysRevE.92.022817" role="doc-biblioref">20</a>]</span>:</p>
 <p><span class="math display">\[
 k_{i}^{r} = \sum_{j&lt;i} A_{ij} \quad \mathrm{і} \quad k_{i}^{a} \sum_{j&gt;i} A_{ij},
 \]</span></p>
@@ -483,11 +650,11 @@ k_{i}^{r} = \sum_{j&lt;i} A_{ij} \quad \mathrm{і} \quad k_{i}^{a} \sum_{j&gt;i}
 <p><span class="math display">\[
 C_{i}^{r} =  \left[2/k_{i}^{r}(k_{i}^{r}-1)\right]\sum_{j&lt;i,k&lt;i} A_{ij}A_{jk}A_{ki} \quad \textrm{і} \quad C_{i}^{a} =  \left[2/k_{i}^{a}(k_{i}^{a}-1)\right]\sum_{j&gt;i,k&gt;i} A_{ij}A_{jk}A_{ki}.
 \]</span></p>
-<p>Якщо уявити нашу систему зворотною в часі, ми припускаємо, що розподіли ймовірностей прямих і зворотних за часом характеристик повинні бути однаковими. Для незворотних процесів ми очікуємо статистичну нееквівалентність. Ця нееквівалентність буде визначатися через дивергенцію Кульбака-Лейблера <span class="citation" data-cites="e20090665">&nbsp;[<a href="references.html#ref-e20090665" role="doc-biblioref">5</a>]</span>:</p>
+<p>Якщо уявити нашу систему зворотною в часі, ми припускаємо, що розподіли ймовірностей прямих і зворотних за часом характеристик повинні бути однаковими. Для незворотних процесів ми очікуємо статистичну нееквівалентність. Ця нееквівалентність буде визначатися через дивергенцію Кульбака-Лейблера <span class="citation" data-cites="e20090665">[<a href="references.html#ref-e20090665" role="doc-biblioref">5</a>]</span>:</p>
 <p><span class="math display">\[
 D_{KL}(p||q) = \sum_{i=1}^{N} p(x_{i}) \cdot \log{\left[ p(x_{i})/q(x_{i}) \right]},
 \]</span></p>
-<p>де <span class="math inline">\(p(\cdot)\)</span> відповідатиме розподілу вхідних характеристикам, а <span class="math inline">\(q(\cdot)\)</span> — зворотніх. Крім того, подібність обох величин можна оцінити за допомогою відстані Дженсена-Шеннона <span class="citation" data-cites="Grosse_2002">&nbsp;[<a href="references.html#ref-Grosse_2002" role="doc-biblioref">21</a>]</span>:</p>
+<p>де <span class="math inline">\(p(\cdot)\)</span> відповідатиме розподілу вхідних характеристикам, а <span class="math inline">\(q(\cdot)\)</span> — зворотніх. Крім того, подібність обох величин можна оцінити за допомогою відстані Дженсена-Шеннона <span class="citation" data-cites="Grosse_2002">[<a href="references.html#ref-Grosse_2002" role="doc-biblioref">21</a>]</span>:</p>
 <p><span class="math display">\[
 JS(p||q) = \sqrt{\left[ D_{KL}(p||m) + D_{KL}(q||m)/2 \right]},
 \]</span></p>
@@ -495,7 +662,7 @@ JS(p||q) = \sqrt{\left[ D_{KL}(p||m) + D_{KL}(q||m)/2 \right]},
 </section>
 <section id="незворотність-на-основі-пермутаційних-шаблонів" class="level3" data-number="11.1.3">
 <h3 data-number="11.1.3" class="anchored" data-anchor-id="незворотність-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.1.3</span> Незворотність на основі пермутаційних шаблонів</h3>
-<p>Ідея аналізу <strong>пермутаційних шаблонів</strong> (permutation patterns, PP) спочатку була запропонована Бандтом і Помпе <span class="citation" data-cites="perm_en">&nbsp;[<a href="references.html#ref-perm_en" role="doc-biblioref">22</a>]</span> як простий та ефективний інструмент для характеристики складності динаміки реальних систем. Він уникає порогу амплітуди і замість цього має справу з порядковими шаблонами перестановок. Їх частоти дозволяють відрізнити детерміновані процеси від абсолютно випадкових. Розрахунки PP припускають, що часовий ряд розбивається на пересічні підвектори довжини <span class="math inline">\(d_{E}\)</span>:</p>
+<p>Ідея аналізу <strong>пермутаційних шаблонів</strong> (permutation patterns, PP) спочатку була запропонована Бандтом і Помпе <span class="citation" data-cites="perm_en">[<a href="references.html#ref-perm_en" role="doc-biblioref">22</a>]</span> як простий та ефективний інструмент для характеристики складності динаміки реальних систем. Він уникає порогу амплітуди і замість цього має справу з порядковими шаблонами перестановок. Їх частоти дозволяють відрізнити детерміновані процеси від абсолютно випадкових. Розрахунки PP припускають, що часовий ряд розбивається на пересічні підвектори довжини <span class="math inline">\(d_{E}\)</span>:</p>
 <p><span class="math display">\[
 \vec{X}(i) = \left\{ x(i), x(i+\tau), ... , x(i+[d_{E}-1]\tau) \right\},
 \]</span></p>
@@ -504,43 +671,32 @@ JS(p||q) = \sqrt{\left[ D_{KL}(p||m) + D_{KL}(q||m)/2 \right]},
 <p><span class="math display">\[
 x(i+r_0) \leq x(i+r_1) \leq ... \leq x(i+r_{d_{E}-1}).
 \]</span></p>
-<p>Цікава для нас міра незворотності часу на основі PP може бути отримана шляхом врахування їх відносної частоти як для початкового, так і для оберненого часового ряду. Відповідно, якщо обидва типи мають приблизно однакові розподіли ймовірностей своїх патернів, часові ряди представляються зворотними, а для іншого випадку робиться протилежний висновок <span class="citation" data-cites="DBLP:conf/cte/BielinskyiKPSS21">&nbsp;[<a href="references.html#ref-DBLP:conf/cte/BielinskyiKPSS21" role="doc-biblioref">23</a>]</span>.</p>
+<p>Цікава для нас міра незворотності часу на основі PP може бути отримана шляхом врахування їх відносної частоти як для початкового, так і для оберненого часового ряду. Відповідно, якщо обидва типи мають приблизно однакові розподіли ймовірностей своїх патернів, часові ряди представляються зворотними, а для іншого випадку робиться протилежний висновок <span class="citation" data-cites="DBLP:conf/cte/BielinskyiKPSS21">[<a href="references.html#ref-DBLP:conf/cte/BielinskyiKPSS21" role="doc-biblioref">23</a>]</span>.</p>
 <p>Різницю між розподілами прямих часових рядів (<span class="math inline">\(P^{d}\)</span>) та зворотних (<span class="math inline">\(P^{r}\)</span>) можна оцінити за допомогою дивергенції Кульбака-Лейблера або Дженсена-Шеннона.</p>
 </section>
 </section>
 <section id="хід-роботи" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="хід-роботи"><span class="header-section-number">11.2</span> Хід роботи</h2>
-<p>Підключаємо та встановлюємо необхідні бібліотеки. Для побудови пермутаційних шаблонів нам знадобиться встановити бібліотеку <code>ordpy</code> <span class="citation" data-cites="10.1063/5.0049901">&nbsp;[<a href="references.html#ref-10.1063/5.0049901" role="doc-biblioref">24</a>]</span>, використовуючи наступну команду:</p>
-<div id="2e40bc0b" class="cell" data-execution_count="2">
+<p>Підключаємо та встановлюємо необхідні бібліотеки. Для побудови пермутаційних шаблонів нам знадобиться встановити бібліотеку <code>ordpy</code> <span class="citation" data-cites="10.1063/5.0049901">[<a href="references.html#ref-10.1063/5.0049901" role="doc-biblioref">24</a>]</span>, використовуючи наступну команду:</p>
+<div id="2e40bc0b" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ordpy</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting ordpy
-  Downloading ordpy-1.1.3-py3-none-any.whl.metadata (11 kB)
-Downloading ordpy-1.1.3-py3-none-any.whl (24 kB)
+  Downloading ordpy-1.2.0-py3-none-any.whl.metadata (11 kB)
+Downloading ordpy-1.2.0-py3-none-any.whl (26 kB)
 Installing collected packages: ordpy
-Successfully installed ordpy-1.1.3</code></pre>
+Successfully installed ordpy-1.2.0</code></pre>
 </div>
 </div>
 <p>Для роботи з графами видимості та мірами незворотності на їх основі ми встановимо бібліотеку <code>ts2vg</code> про яку ще поговоримо в наступних роботах:</p>
-<div id="6587a9d6" class="cell" data-execution_count="4">
+<div id="6587a9d6" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install ts2vg</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Collecting ts2vg
-  Downloading ts2vg-1.2.3-cp311-cp311-win_amd64.whl.metadata (8.3 kB)
-Requirement already satisfied: numpy in c:\users\andrii\anaconda3\lib\site-packages (from ts2vg) (1.26.4)
-Downloading ts2vg-1.2.3-cp311-cp311-win_amd64.whl (379 kB)
-   ---------------------------------------- 0.0/379.3 kB ? eta -:--:--
-   - -------------------------------------- 10.2/379.3 kB ? eta -:--:--
-   ------- ------------------------------- 71.7/379.3 kB 991.0 kB/s eta 0:00:01
-   ---------------- ----------------------- 153.6/379.3 kB 1.3 MB/s eta 0:00:01
-   ------------------------ --------------- 235.5/379.3 kB 1.4 MB/s eta 0:00:01
-   --------------------------------- ------ 317.4/379.3 kB 1.5 MB/s eta 0:00:01
-   ---------------------------------------- 379.3/379.3 kB 1.5 MB/s eta 0:00:00
-Installing collected packages: ts2vg
-Successfully installed ts2vg-1.2.3</code></pre>
+<pre><code>Requirement already satisfied: ts2vg in d:\programs\anaconda3\lib\site-packages (1.2.4)
+Requirement already satisfied: numpy&gt;=1.24 in d:\programs\anaconda3\lib\site-packages (from ts2vg) (1.26.4)</code></pre>
 </div>
 </div>
-<div id="918521d7" class="cell" data-execution_count="5">
+<div id="918521d7" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.dates <span class="im">as</span> mdates</span>
@@ -559,7 +715,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>І встановлюємо параметри для побудови графіків:</p>
-<div id="34910c39" class="cell" data-execution_count="7">
+<div id="34910c39" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plt.style.use([<span class="st">'science'</span>, <span class="st">'notebook'</span>, <span class="st">'grid'</span>]) <span class="co"># стиль, що використовуватиметься</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                               <span class="co"># для виведення рисунків</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -582,7 +738,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>plt.rcParams.update(params)              <span class="co"># оновлення стилю згідно налаштувань</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Далі визначаємо функцію для побудови рекурентного графа:</p>
-<div id="1f63d619" class="cell" data-execution_count="8">
+<div id="1f63d619" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> recurrence_net(time_ser, rec_thr, dim, tau, dist_type<span class="op">=</span><span class="st">'euclidien'</span>):</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    time_series <span class="op">=</span> nk.complexity_embedding(time_ser, dimension<span class="op">=</span>dim, delay<span class="op">=</span>tau)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    rp <span class="op">=</span> (distance.cdist(time_series, time_series, dist_type) <span class="op">&lt;=</span> rec_thr).astype(<span class="bu">int</span>)</span>
@@ -597,7 +753,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {i: (xs[i], ts[i]) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(ts))}</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>У подальшому ми представимо індекс Кошти для розрахунку якого визначимо наступну функцію:</p>
-<div id="6ab13617" class="cell" data-execution_count="9">
+<div id="6ab13617" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Costa_1(time_ser, taus):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    Cst <span class="op">=</span> []</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> tau <span class="kw">in</span> taus:</span>
@@ -613,7 +769,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <section id="оголошення-функцій-для-підрахунку-показників-незворотності" class="level3" data-number="11.2.1">
 <h3 data-number="11.2.1" class="anchored" data-anchor-id="оголошення-функцій-для-підрахунку-показників-незворотності"><span class="header-section-number">11.2.1</span> Оголошення функцій для підрахунку показників незворотності</h3>
 <p>Пермутаційна незворотність:</p>
-<div id="5b6774d0" class="cell" data-execution_count="10">
+<div id="5b6774d0" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> PermIrrever(time_ser, d_e, tau, delta<span class="op">=</span><span class="fl">1e-10</span>, distance_irr<span class="op">=</span><span class="st">"kullback"</span>):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># створення зворотньої версії ряду</span></span>
@@ -638,7 +794,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> distance.jensenshannon(dist_dir <span class="op">+</span> delta, dist_rev <span class="op">+</span> delta)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Функція для підрахунку ймовірностей:</p>
-<div id="e024dc5e" class="cell" data-execution_count="11">
+<div id="e024dc5e" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_prob_dist(p, q):</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    p_cnt, q_cnt <span class="op">=</span> <span class="bu">dict</span>(Counter(p)), <span class="bu">dict</span>(Counter(q))</span>
@@ -660,7 +816,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> p_dist, q_dist</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Дивергеція Кульбака-Лейблера:</p>
-<div id="51190ca1" class="cell" data-execution_count="12">
+<div id="51190ca1" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> KLD(p_dist, q_dist, delta<span class="op">=</span><span class="fl">1e-10</span>):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    div_list <span class="op">=</span> [</span>
@@ -672,7 +828,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> kld</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Дивергенція Дженсена-Шеннона:</p>
-<div id="3a4cd8db" class="cell" data-execution_count="13">
+<div id="3a4cd8db" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> JS(p_dist, q_dist, delta<span class="op">=</span><span class="fl">1e-10</span>):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    m_dist <span class="op">=</span> {k: <span class="fl">0.5</span><span class="op">*</span>(p_dist[k]<span class="op">+</span>q_dist[k]) <span class="cf">for</span> k <span class="kw">in</span> p_dist.keys()}</span>
@@ -682,7 +838,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> js</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Графо-динамічна незворотність:</p>
-<div id="9b4cbdc1" class="cell" data-execution_count="14">
+<div id="9b4cbdc1" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GraphIrrever(fragm, </span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                 graph_type<span class="op">=</span><span class="st">'classic'</span>, </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                 delta<span class="op">=</span><span class="fl">1e-10</span>, </span>
@@ -729,14 +885,14 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <h4 data-number="11.2.1.1" class="anchored" data-anchor-id="функції-для-отримання-ступеня-вершини-та-локальної-кластеризації"><span class="header-section-number">11.2.1.1</span> Функції для отримання ступеня вершини та локальної кластеризації</h4>
 <p>Процедура знаходження ступеня вершини та локальної кластеризації кожної вершини є доволі громіздкою. Для прискорення розрахунків відповідних процедур скористаємось бібліотекою <code>numba</code>. <a href="https://numba.readthedocs.io/en/stable/index.html">Numba</a> — це швидкий компілятор для Python, який найкраще працює з кодом, що використовує масиви, функції та цикли NumPy. Найпоширеніший спосіб використання Numba — це колекція декораторів, які можна застосувати до ваших функцій, щоб доручити Numba їх компілювати. Коли здійснюється виклик функції, прикрашеної Numba, вона компілюється у машинний код “just-in-time” для виконання, і весь або частина вашого коду може згодом виконуватися зі швидкістю власного машинного коду!</p>
 <p>Встановити її можна в наступний спосіб:</p>
-<div id="c8a1c88e" class="cell" data-execution_count="15">
+<div id="c8a1c88e" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install numba</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Numba надає декілька утиліт для генерації коду, але центральною функцією є декоратор <code>numba.jit()</code>. За допомогою цього декоратора ви можете позначити функцію для оптимізації JIT-компілятором Numba. Різні режими виклику викликають різні варіанти компіляції та поведінки. Імпортуємо відповідний декоратор з бібліотеки <code>numba</code>:</p>
-<div id="6a79a1fa" class="cell" data-execution_count="16">
+<div id="6a79a1fa" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numba <span class="im">import</span> jit</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="1e8c3c20" class="cell" data-execution_count="17">
+<div id="1e8c3c20" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="at">@jit</span>(nopython<span class="op">=</span><span class="va">True</span>, nogil<span class="op">=</span><span class="va">True</span>) </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> GetDegree(AM):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    numNodes <span class="op">=</span> AM.shape[<span class="dv">0</span>]</span>
@@ -788,12 +944,12 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розглянемо можливість використання всіх згаданих показників у якості індикаторів або індикаторів-передвісників кризових явищ. Для прикладу завантажимо часовий ряд фондового індексу Russell 2000 за період із 1 грудня 1988 року по 1 листопада 2023 року:</p>
-<div id="f85fec47" class="cell" data-execution_count="18">
+<div id="f85fec47" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'^RUT'</span>                       <span class="co"># символ індексу</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">'1988-12-01'</span>                  <span class="co"># початок відліку</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">'2023-11-01'</span>                    <span class="co"># кінець відліку</span></span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> yf.download(symbol)            <span class="co"># вивантажуємо дані</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Adj Close'</span>].copy()   <span class="co"># зберігаємо саме ціни закриття</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[<span class="st">'Close'</span>].copy()   <span class="co"># зберігаємо саме ціни закриття</span></span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="st">'time, days'</span>                 <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                       <span class="co"># підпис по вісі Оу</span></span>
@@ -802,7 +958,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_initial_time_series.txt'</span>, time_ser.values)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[*********************100%%**********************]  1 of 1 completed</code></pre>
+<pre><code>[*********************100%***********************]  1 of 1 completed</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -822,20 +978,20 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <div id="42915906" class="cell" data-execution_count="733">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">'sMpa11'</span>                  <span class="co"># Символ індексу</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases\sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"databases</span><span class="er">\</span><span class="st">sMpa11.txt"</span>      <span class="co"># шлях по якому здійснюється зчитування файлу</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(path,           <span class="co"># зчитування даних </span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                   names<span class="op">=</span>[symbol])</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>time_ser <span class="op">=</span> data[symbol].copy()     <span class="co"># копіюємо значення кривої </span></span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="co"># "напруга-видовження" до окремої змінної</span></span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'$\varepsilon$'</span>          <span class="co"># підпис по вісі Ох </span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>xlabel <span class="op">=</span> <span class="vs">r'</span><span class="dv">$</span><span class="ch">\v</span><span class="vs">arepsilon</span><span class="dv">$</span><span class="vs">'</span>          <span class="co"># підпис по вісі Ох </span></span>
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>ylabel <span class="op">=</span> symbol                    <span class="co"># підпис по вісі Оу</span></span>
 <span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>date_in_num <span class="op">=</span> time_ser.index</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
 <p>Виведемо досліджуваний ряд:</p>
-<div id="cell-fig-rus-init" class="cell" data-execution_count="19">
+<div id="cell-fig-rus-init" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()                   <span class="co"># Створюємо порожній графік</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ax.plot(time_ser.index, time_ser.values)   <span class="co"># Додаємо дані до графіку</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ax.legend([symbol])                        <span class="co"># Додаємо легенду</span></span>
@@ -847,7 +1003,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f'</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">.jpg'</span>)               <span class="co"># Зберігаємо графік </span></span>
 <span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>plt.show()<span class="op">;</span>                                <span class="co"># Виводимо графік</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-rus-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-rus-init" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rus-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-rus-init-output-1.png" class="img-fluid figure-img">
@@ -860,7 +1016,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </div>
 </div>
 <p>Користуючись тими методами, що ми розглянули в попередній лабораторній роботі, побудуємо діаграму Пуанкаре та граф нашого часового ряду. Але, перш за все, для діаграми Пункаре треба знайти стандартизовані прибутковості. Оголосимо функцію <code>transformation()</code>, що прийматиме на вхід часовий сигнал, тип ряду, і повертатиме його перетворення:</p>
-<div id="1988fe64" class="cell" data-execution_count="20">
+<div id="1988fe64" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> transformation(signal, ret_type):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> signal.copy()</span>
@@ -885,7 +1041,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">-=</span> for_rec.mean()</span>
 <span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>        for_rec <span class="op">/=</span> for_rec.std()</span>
 <span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    for_rec <span class="op">=</span> for_rec.dropna().values.squeeze()</span>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> for_rec</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -894,7 +1050,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <section id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі" class="level3" data-number="11.2.2">
 <h3 data-number="11.2.2" class="anchored" data-anchor-id="виводимо-діаграму-пуанкаре-та-розраховуємо-міри-на-її-основі"><span class="header-section-number">11.2.2</span> Виводимо діаграму Пуанкаре та розраховуємо міри на її основі</h3>
 <p>Розглянемо діаграму Пуанкаре для фрагмента прибутковостей часового ряду:</p>
-<div id="29c7dbbc" class="cell" data-execution_count="21">
+<div id="29c7dbbc" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>for_puank <span class="op">=</span> time_ser.copy()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>tau_assym <span class="op">=</span> <span class="dv">1</span>   <span class="co"># часова затримка для діаграми Пуанкаре</span></span>
@@ -914,7 +1070,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>for_puank <span class="op">=</span> transformation(fragm, ret_type)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-poincare-init" class="cell" data-execution_count="22">
+<div id="cell-fig-poincare-init" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">1</span>)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ax1.scatter(for_puank[:<span class="op">-</span>tau_assym], for_puank[tau_assym:], marker<span class="op">=</span><span class="st">"X"</span>, s<span class="op">=</span><span class="dv">180</span>, c<span class="op">=</span><span class="st">"g"</span>)</span>
@@ -924,8 +1080,8 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>ax1.axline([low_x, low_y], [high_x, high_y])</span>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>ax1.set_aspect(<span class="st">'equal'</span>, <span class="st">'box'</span>)</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="vs">r'$g(t)$'</span>)</span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="vs">r'$g(t+\tau)$'</span>) </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">t</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="vs">r'</span><span class="dv">$</span><span class="vs">g</span><span class="kw">(</span><span class="vs">t</span><span class="op">+</span><span class="ch">\t</span><span class="vs">au</span><span class="kw">)</span><span class="dv">$</span><span class="vs">'</span>) </span>
 <span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>ax1.set_xlim(left<span class="op">=</span>low_x, right<span class="op">=</span>high_x)</span>
 <span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>ax1.set_ylim(bottom<span class="op">=</span>low_y, top<span class="op">=</span>high_y)</span>
 <span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>plt.locator_params(axis<span class="op">=</span><span class="st">'y'</span>, nbins<span class="op">=</span><span class="dv">7</span>)</span>
@@ -933,7 +1089,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Poincare_plot_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>idx_beg<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>idx_end<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>)</span>
 <span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-poincare-init" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-poincare-init" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-poincare-init-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-poincare-init-output-1.png" class="img-fluid figure-img">
@@ -950,7 +1106,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <section id="віконна-процедура" class="level3" data-number="11.2.3">
 <h3 data-number="11.2.3" class="anchored" data-anchor-id="віконна-процедура"><span class="header-section-number">11.2.3</span> Віконна процедура</h3>
 <p>Визначаємо функцію для побудови парних графіків:</p>
-<div id="4a322d11" class="cell" data-execution_count="23">
+<div id="4a322d11" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_pair(x_values, </span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>              y1_values,</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>              y2_values,  </span>
@@ -992,7 +1148,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>    plt.show()<span class="op">;</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Визначаємо параметри та оголошуємо масиви для збереження результатів:</p>
-<div id="4944e900" class="cell" data-execution_count="24">
+<div id="4944e900" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>    <span class="co"># розмір ковзного вікна</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>       <span class="co"># часовий крок</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1020,7 +1176,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>CIx <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розраховуємо відповідні міри у віконній процедурі:</p>
-<div id="7431ed59" class="cell" data-execution_count="25">
+<div id="7431ed59" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy() <span class="co"># відбираємо фрагмент ряду </span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -1052,11 +1208,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>    EIx.append(Eiler)</span>
 <span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>    CIx.append(Costa)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>100%|██████████| 8706/8706 [00:08&lt;00:00, 1079.10it/s]</code></pre>
+<pre><code>100%|██████████| 9040/9040 [00:12&lt;00:00, 742.29it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо значення до .txt файлів</p>
-<div id="f12da088" class="cell" data-execution_count="26">
+<div id="f12da088" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Porta_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, PIx)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Gudzik_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, GIx)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"Slope_idx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">.txt"</span>, SIx)</span>
@@ -1069,11 +1225,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <h3 data-number="11.2.4" class="anchored" data-anchor-id="візуалізація-показників-на-основі-діаграми-пуанкаре"><span class="header-section-number">11.2.4</span> Візуалізація показників на основі діаграми Пуанкаре</h3>
 <section id="індекс-порти-1" class="level4" data-number="11.2.4.1">
 <h4 data-number="11.2.4.1" class="anchored" data-anchor-id="індекс-порти-1"><span class="header-section-number">11.2.4.1</span> Індекс Порти</h4>
-<div id="61927105" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$PIx$"</span></span>
+<div id="61927105" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">PIx</span><span class="dv">$</span><span class="vs">"</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"PIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-pi" class="cell" data-execution_count="28">
+<div id="cell-fig-wind-pi" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>          PIx, </span>
@@ -1083,7 +1239,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-pi" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-pi" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-pi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-pi-output-1.png" class="img-fluid figure-img">
@@ -1099,11 +1255,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="індекс-гузіка-1" class="level4" data-number="11.2.4.2">
 <h4 data-number="11.2.4.2" class="anchored" data-anchor-id="індекс-гузіка-1"><span class="header-section-number">11.2.4.2</span> Індекс Гузіка</h4>
-<div id="2453eef9" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$GIx$"</span></span>
+<div id="2453eef9" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">GIx</span><span class="dv">$</span><span class="vs">"</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"GIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-gi" class="cell" data-execution_count="30">
+<div id="cell-fig-wind-gi" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>          GIx, </span>
@@ -1113,7 +1269,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-gi" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-gi" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-gi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-gi-output-1.png" class="img-fluid figure-img">
@@ -1129,11 +1285,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="індекс-кута-нахилу-1" class="level4" data-number="11.2.4.3">
 <h4 data-number="11.2.4.3" class="anchored" data-anchor-id="індекс-кута-нахилу-1"><span class="header-section-number">11.2.4.3</span> Індекс кута нахилу</h4>
-<div id="661e713b" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$SIx$"</span></span>
+<div id="661e713b" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">SIx</span><span class="dv">$</span><span class="vs">"</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"SIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-si" class="cell" data-execution_count="32">
+<div id="cell-fig-wind-si" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>          SIx, </span>
@@ -1143,7 +1299,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-si" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-si" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-si-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-si-output-1.png" class="img-fluid figure-img">
@@ -1159,11 +1315,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="індекс-площі-секторів" class="level4" data-number="11.2.4.4">
 <h4 data-number="11.2.4.4" class="anchored" data-anchor-id="індекс-площі-секторів"><span class="header-section-number">11.2.4.4</span> Індекс площі секторів</h4>
-<div id="2a74b522" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$AIx$"</span></span>
+<div id="2a74b522" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">AIx</span><span class="dv">$</span><span class="vs">"</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"AIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-ai" class="cell" data-execution_count="34">
+<div id="cell-fig-wind-ai" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>          AIx, </span>
@@ -1173,7 +1329,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-ai" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-ai" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-ai-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-ai-output-1.png" class="img-fluid figure-img">
@@ -1189,11 +1345,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="індекс-ейлера-1" class="level4" data-number="11.2.4.5">
 <h4 data-number="11.2.4.5" class="anchored" data-anchor-id="індекс-ейлера-1"><span class="header-section-number">11.2.4.5</span> Індекс Ейлера</h4>
-<div id="e6d3d546" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$EIx$"</span></span>
+<div id="e6d3d546" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">EIx</span><span class="dv">$</span><span class="vs">"</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"EIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-ei" class="cell" data-execution_count="36">
+<div id="cell-fig-wind-ei" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>          EIx, </span>
@@ -1203,7 +1359,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-ei" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-ei" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-ei-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-ei-output-1.png" class="img-fluid figure-img">
@@ -1219,11 +1375,11 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="індекс-кошти-1" class="level4" data-number="11.2.4.6">
 <h4 data-number="11.2.4.6" class="anchored" data-anchor-id="індекс-кошти-1"><span class="header-section-number">11.2.4.6</span> Індекс Кошти</h4>
-<div id="27f6ba3f" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$CIx$"</span></span>
+<div id="27f6ba3f" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">CIx</span><span class="dv">$</span><span class="vs">"</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"CIx_</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tau_assym<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-сi" class="cell" data-execution_count="38">
+<div id="cell-fig-wind-сi" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>          CIx, </span>
@@ -1233,7 +1389,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"crimson"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-сi" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-сi" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-сi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-i-output-1.png" class="img-fluid figure-img">
@@ -1250,7 +1406,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="побудова-графу-досліджуваного-ряду" class="level3" data-number="11.2.5">
 <h3 data-number="11.2.5" class="anchored" data-anchor-id="побудова-графу-досліджуваного-ряду"><span class="header-section-number">11.2.5</span> Побудова графу досліджуваного ряду</h3>
-<div id="7659a588" class="cell" data-execution_count="53">
+<div id="7659a588" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>graph_type <span class="op">=</span> <span class="st">'classic'</span>    <span class="co"># тип графу: classic, horizontal, recurrent</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># параметри для рекурентного графу</span></span>
@@ -1302,7 +1458,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a>    nxg <span class="op">=</span> g</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Виводимо зв’язки видимості:</p>
-<div id="cell-fig-visibility" class="cell" data-execution_count="58">
+<div id="cell-fig-visibility" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">13</span>, <span class="dv">8</span>))</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>nx.draw_networkx(nxg, ax<span class="op">=</span>ax[<span class="dv">0</span>], pos<span class="op">=</span>pos1, <span class="op">**</span>graph_plot_options)</span>
@@ -1347,10 +1503,10 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb42-42"><a href="#cb42-42" aria-hidden="true" tabindex="-1"></a>cb <span class="op">=</span> plt.colorbar(sm, ax<span class="op">=</span>ax[<span class="dv">1</span>])</span>
 <span id="cb42-43"><a href="#cb42-43" aria-hidden="true" tabindex="-1"></a>cb.set_label(<span class="st">'Ступенева центральність'</span>)</span>
 <span id="cb42-44"><a href="#cb42-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Time_ser_connections_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_idx_beg=</span><span class="sc">{</span>index_begin<span class="sc">}</span><span class="ss">_</span><span class="ch">\</span></span>
+<span id="cb42-45"><a href="#cb42-45" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="ss">f"Time_ser_connections_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_idx_beg=</span><span class="sc">{</span>index_begin<span class="sc">}</span><span class="ss">_</span><span class="op">\</span></span>
 <span id="cb42-46"><a href="#cb42-46" aria-hidden="true" tabindex="-1"></a><span class="ss">            idx_end=</span><span class="sc">{</span>index_end<span class="sc">}</span><span class="ss">_sertype=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_network_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.jpg"</span>, bbox_inches<span class="op">=</span><span class="st">"tight"</span>, dpi<span class="op">=</span><span class="dv">1000</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-visibility" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-visibility" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-visibility-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-visibility-output-1.png" class="img-fluid figure-img">
@@ -1367,7 +1523,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <section id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів" class="level3" data-number="11.2.6">
 <h3 data-number="11.2.6" class="anchored" data-anchor-id="побудова-показників-незворотності-на-основі-пермутаційних-шаблонів-та-графів"><span class="header-section-number">11.2.6</span> Побудова показників незворотності на основі пермутаційних шаблонів та графів</h3>
 <p>Ініціалізуємо масиви для збереження результатів розрахунків:</p>
-<div id="4c8b82d9" class="cell" data-execution_count="60">
+<div id="4c8b82d9" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> <span class="dv">500</span>      <span class="co"># ширина вікна</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>tstep <span class="op">=</span> <span class="dv">1</span>         <span class="co"># часовий крок</span></span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1404,7 +1560,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb43-34"><a href="#cb43-34" aria-hidden="true" tabindex="-1"></a>Perm <span class="op">=</span> []</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Розпочинаємо процедуру рухомого вікна:</p>
-<div id="92786eab" class="cell" data-execution_count="61">
+<div id="92786eab" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> tqdm(<span class="bu">range</span>(<span class="dv">0</span>,length<span class="op">-</span>window,tstep)):</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    fragm <span class="op">=</span> time_ser.iloc[i:i<span class="op">+</span>window].copy() <span class="co"># відбираємо фрагмент ряду</span></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1429,16 +1585,16 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>    Clust.append(clust)</span>
 <span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>    Perm.append(perm)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>  1%|          | 48/8706 [00:00&lt;01:13, 117.69it/s]100%|██████████| 8706/8706 [01:04&lt;00:00, 135.08it/s]</code></pre>
+<pre><code>100%|██████████| 9040/9040 [01:17&lt;00:00, 116.09it/s]</code></pre>
 </div>
 </div>
 <p>Зберігаємо результати до .txt файлів</p>
-<div id="742e9d3f" class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_deg_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<div id="742e9d3f" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_deg_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.txt"</span>, Degree)</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">.txt"</span>, Clust)</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_perm_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>np.savetxt(<span class="ss">f"</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">_perm_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="ss">            _step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss">_d_e=</span><span class="sc">{</span>d_e_perm<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_perm<span class="sc">}</span><span class="ss">.txt"</span>, Perm)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1446,13 +1602,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <h3 data-number="11.2.7" class="anchored" data-anchor-id="візуалізація-показників-на-основі-графів-та-пермутаційних-шаблонів"><span class="header-section-number">11.2.7</span> Візуалізація показників на основі графів та пермутаційних шаблонів</h3>
 <section id="ступінь-незворотності-на-основі-ступеня-вершини" class="level4" data-number="11.2.7.1">
 <h4 data-number="11.2.7.1" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-ступеня-вершини"><span class="header-section-number">11.2.7.1</span> Ступінь незворотності на основі ступеня вершини</h4>
-<div id="c473a58d" class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{deg}</span><span class="vs">$"</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Degree_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<div id="c473a58d" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">Dist_{deg}</span><span class="dv">$</span><span class="vs">"</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Degree_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="op">\</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            _graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">_dist=</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-degree" class="cell" data-scrolled="false" data-execution_count="64">
+<div id="cell-fig-wind-degree" class="cell" data-scrolled="false" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>          Degree, </span>
@@ -1462,7 +1618,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"darkgreen"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-degree" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-degree" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-degree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-degree-output-1.png" class="img-fluid figure-img">
@@ -1478,13 +1634,13 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="ступінь-незворотності-на-основі-показника-локальної-кластеризації" class="level4" data-number="11.2.7.2">
 <h4 data-number="11.2.7.2" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-показника-локальної-кластеризації"><span class="header-section-number">11.2.7.2</span> Ступінь незворотності на основі показника локальної кластеризації</h4>
-<div id="60335a82" class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{clust}</span><span class="vs">$"</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<div id="60335a82" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">Dist_{clust}</span><span class="dv">$</span><span class="vs">"</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Clust_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="op">\</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            _graph_type=</span><span class="sc">{</span>graph_type<span class="sc">}</span><span class="ss">_dist=</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-clust" class="cell" data-scrolled="false" data-execution_count="66">
+<div id="cell-fig-wind-clust" class="cell" data-scrolled="false" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>          Clust, </span>
@@ -1494,7 +1650,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"darkred"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-clust" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-clust" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-clust-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-clust-output-1.png" class="img-fluid figure-img">
@@ -1510,14 +1666,14 @@ Successfully installed ts2vg-1.2.3</code></pre>
 </section>
 <section id="ступінь-незворотності-на-основі-пермутаційних-шаблонів" class="level4" data-number="11.2.7.3">
 <h4 data-number="11.2.7.3" class="anchored" data-anchor-id="ступінь-незворотності-на-основі-пермутаційних-шаблонів"><span class="header-section-number">11.2.7.3</span> Ступінь незворотності на основі пермутаційних шаблонів</h4>
-<div id="03af0763" class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"$Dist_</span><span class="sc">{perm}</span><span class="vs">$"</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Perm_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="ch">\</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            d_e=</span><span class="sc">{</span>d_e_perm<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_perm<span class="sc">}</span><span class="ss"> </span><span class="ch">\</span></span>
+<div id="03af0763" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>measure_label <span class="op">=</span> <span class="vs">r"</span><span class="dv">$</span><span class="vs">Dist_{perm}</span><span class="dv">$</span><span class="vs">"</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>file_name <span class="op">=</span> <span class="ss">f"Perm_symbol=</span><span class="sc">{</span>symbol<span class="sc">}</span><span class="ss">_wind=</span><span class="sc">{</span>window<span class="sc">}</span><span class="ss">_ </span><span class="op">\</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="ss">            step=</span><span class="sc">{</span>tstep<span class="sc">}</span><span class="ss">_ret_type=</span><span class="sc">{</span>ret_type<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="ss">            d_e=</span><span class="sc">{</span>d_e_perm<span class="sc">}</span><span class="ss">_tau=</span><span class="sc">{</span>tau_perm<span class="sc">}</span><span class="ss"> </span><span class="op">\</span></span>
 <span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="ss">            _dist=</span><span class="sc">{</span>distance_irr<span class="sc">}</span><span class="ss">"</span></span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-fig-wind-perm" class="cell" data-execution_count="68">
+<div id="cell-fig-wind-perm" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>plot_pair(time_ser.index[window:length:tstep],</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>          time_ser.values[window:length:tstep],</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>          Perm, </span>
@@ -1527,7 +1683,7 @@ Successfully installed ts2vg-1.2.3</code></pre>
 <span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>          file_name, </span>
 <span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>          clr<span class="op">=</span><span class="st">"black"</span>)</span></code><button title="Копіювати" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="fig-wind-perm" class="quarto-figure quarto-figure-center quarto-float anchored">
+<div id="fig-wind-perm" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-wind-perm-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="lab_11_files/figure-html/fig-wind-perm-output-1.png" class="img-fluid figure-img">
@@ -1561,448 +1717,331 @@ Successfully installed ts2vg-1.2.3</code></pre>
 
 <div id="refs" class="references csl-bib-body" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-10.1063/1.2890013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Prigogine and E. N. Hiebert, <a href="https://doi.org/10.1063/1.2890013"><span class="nocase">From Being to Becoming: Time and Complexity in the Physical Sciences</span></a>, Physics Today <strong>35</strong>, 69 (1982).</div>
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">I. Prigogine, E.N. Hiebert, <span class="nocase">From Being to Becoming: Time and Complexity in the Physical Sciences</span>, Physics Today 35 (1982) 69–70. https://doi.org/<a href="https://doi.org/10.1063/1.2890013">10.1063/1.2890013</a>.</div>
 </div>
 <div id="ref-PhysRevE.71.021906" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <a href="https://doi.org/10.1103/PhysRevE.71.021906">Multiscale entropy analysis of biological signals</a>, Phys. Rev. E <strong>71</strong>, 021906 (2005).</div>
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">M. Costa, A.L. Goldberger, C.-K. Peng, Multiscale entropy analysis of biological signals, Phys. Rev. E 71 (2005) 021906. https://doi.org/<a href="https://doi.org/10.1103/PhysRevE.71.021906">10.1103/PhysRevE.71.021906</a>.</div>
 </div>
 <div id="ref-costa2008multiscale" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M. D. Costa, C.-K. Peng, and A. L. Goldberger, Multiscale analysis of heart rate dynamics: Entropy and time irreversibility measures, Cardiovascular Engineering <strong>8</strong>, 88 (2008).</div>
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M.D. Costa, C.-K. Peng, A.L. Goldberger, Multiscale analysis of heart rate dynamics: Entropy and time irreversibility measures, Cardiovascular Engineering 8 (2008) 88–93.</div>
 </div>
 <div id="ref-F.Donges_2013" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J. F.Donges, R. V. Donner, and J. Kurths, <a href="https://doi.org/10.1209/0295-5075/102/10004">Testing time series irreversibility using complex network methods</a>, Europhysics Letters <strong>102</strong>, 10004 (2013).</div>
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">J. F.Donges, R.V. Donner, J. Kurths, Testing time series irreversibility using complex network methods, Europhysics Letters 102 (2013) 10004. https://doi.org/<a href="https://doi.org/10.1209/0295-5075/102/10004">10.1209/0295-5075/102/10004</a>.</div>
 </div>
 <div id="ref-e20090665" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Zanin, A. Rodríguez-González, E. Menasalvas Ruiz, and D. Papo, <a href="https://doi.org/10.3390/e20090665">Assessing time series reversibility through permutation patterns</a>, Entropy <strong>20</strong>, (2018).</div>
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">M. Zanin, A. Rodríguez-González, E. Menasalvas Ruiz, D. Papo, Assessing time series reversibility through permutation patterns, Entropy 20 (2018). https://doi.org/<a href="https://doi.org/10.3390/e20090665">10.3390/e20090665</a>.</div>
 </div>
 <div id="ref-FLANAGAN20161689" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[6] </div><div class="csl-right-inline">R. Flanagan and L. Lacasa, <a href="https://doi.org/10.1016/j.physleta.2016.03.011">Irreversibility of financial time series: A graph-theoretical approach</a>, Physics Letters A <strong>380</strong>, 1689 (2016).</div>
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">R. Flanagan, L. Lacasa, Irreversibility of financial time series: A graph-theoretical approach, Physics Letters A 380 (2016) 1689–1697. https://doi.org/<a href="https://doi.org/10.1016/j.physleta.2016.03.011">https://doi.org/10.1016/j.physleta.2016.03.011</a>.</div>
 </div>
 <div id="ref-Puglisi_2009" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Puglisi and D. Villamaina, <a href="https://doi.org/10.1209/0295-5075/88/30004">Irreversible effects of memory</a>, Europhysics Letters <strong>88</strong>, 30004 (2009).</div>
+<div class="csl-left-margin">[7] </div><div class="csl-right-inline">A. Puglisi, D. Villamaina, Irreversible effects of memory, Europhysics Letters 88 (2009) 30004. https://doi.org/<a href="https://doi.org/10.1209/0295-5075/88/30004">10.1209/0295-5075/88/30004</a>.</div>
 </div>
 <div id="ref-DIKS1995221" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[8] </div><div class="csl-right-inline">C. Diks, J. C. van Houwelingen, F. Takens, and J. DeGoede, <a href="https://doi.org/10.1016/0375-9601(95)00239-Y">Reversibility as a criterion for discriminating time series</a>, Physics Letters A <strong>201</strong>, 221 (1995).</div>
+<div class="csl-left-margin">[8] </div><div class="csl-right-inline">C. Diks, J.C. van Houwelingen, F. Takens, J. DeGoede, Reversibility as a criterion for discriminating time series, Physics Letters A 201 (1995) 221–228. https://doi.org/<a href="https://doi.org/10.1016/0375-9601(95)00239-Y">https://doi.org/10.1016/0375-9601(95)00239-Y</a>.</div>
 </div>
 <div id="ref-PhysRevE.62.1912" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[9] </div><div class="csl-right-inline">C. S. Daw, C. E. A. Finney, and M. B. Kennel, <a href="https://doi.org/10.1103/PhysRevE.62.1912">Symbolic approach for measuring temporal <span>“irreversibility”</span></a>, Phys. Rev. E <strong>62</strong>, 1912 (2000).</div>
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">C.S. Daw, C.E.A. Finney, M.B. Kennel, Symbolic approach for measuring temporal <span>“irreversibility,”</span> Phys. Rev. E 62 (2000) 1912–1921. https://doi.org/<a href="https://doi.org/10.1103/PhysRevE.62.1912">10.1103/PhysRevE.62.1912</a>.</div>
 </div>
 <div id="ref-GuzikPiskorskiKrauzeWykretowiczWysocki" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[10] </div><div class="csl-right-inline">P. Guzik, J. Piskorski, T. Krauze, A. Wykretowicz, and H. Wysocki, <a href="https://doi.org/doi:10.1515/BMT.2006.054">Heart rate asymmetry by poincaré plots of RR intervals</a>, Biomedical Engineering / Biomedizinische Technik <strong>51</strong>, 272 (2006).</div>
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">P. Guzik, J. Piskorski, T. Krauze, A. Wykretowicz, H. Wysocki, Heart rate asymmetry by poincaré plots of RR intervals, Biomedical Engineering / Biomedizinische Technik 51 (2006) 272–275. https://doi.org/<a href="https://doi.org/doi:10.1515/BMT.2006.054">doi:10.1515/BMT.2006.054</a>.</div>
 </div>
 <div id="ref-4511792" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Porta, S. Guzzetti, N. Montano, T. Gnecchi-Ruscone, R. Furlan, and A. Malliani, <em><a href="">Time Reversibility in Short-Term Heart Period Variability</a></em>, in <em>2006 Computers in Cardiology, Valencia, Spain, September 17-20, 2006</em> (IEEE, 2006), pp. 77–80.</div>
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">A. Porta, S. Guzzetti, N. Montano, T. Gnecchi-Ruscone, R. Furlan, A. Malliani, Time reversibility in short-term heart period variability, in: 2006 Computers in Cardiology, Valencia, Spain, September 17-20, 2006, IEEE, 2006: pp. 77–80. <a href="https://ieeexplore.ieee.org/document/4511792">https://ieeexplore.ieee.org/document/4511792</a>.</div>
 </div>
 <div id="ref-Lacasa_2012" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[12] </div><div class="csl-right-inline">L. Lacasa, A. Nuñez, É. Roldán, J. M. R. Parrondo, and B. Luque, <a href="https://doi.org/10.1140/epjb/e2012-20809-8">Time series irreversibility: A visibility graph approach</a>, The European Physical Journal B <strong>85</strong>, (2012).</div>
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">L. Lacasa, A. Nuñez, É. Roldán, J.M.R. Parrondo, B. Luque, Time series irreversibility: A visibility graph approach, The European Physical Journal B 85 (2012). https://doi.org/<a href="https://doi.org/10.1140/epjb/e2012-20809-8">10.1140/epjb/e2012-20809-8</a>.</div>
 </div>
 <div id="ref-DBLP:conf/m3e2/BielinskyiHMSSS21" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[13] </div><div class="csl-right-inline">A. O. Bielinskyi, S. V. Hushko, A. V. Matviychuk, O. A. Serdyuk, S. O. Semerikov, and V. N. Soloviev, <em><a href="https://ceur-ws.org/Vol-3048/paper04.pdf">Irreversibility of Financial Time Series: A Case of Crisis</a></em>, in <em>Proceedings of the Selected and Revised Papers of 9th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2021), Odessa, Ukraine, May 26-28, 2021</em>, edited by A. E. Kiv, V. N. Soloviev, and S. O. Semerikov, Vol. 3048 (CEUR-WS.org, 2021), pp. 134–150.</div>
+<div class="csl-left-margin">[13] </div><div class="csl-right-inline">A.O. Bielinskyi, S.V. Hushko, A.V. Matviychuk, O.A. Serdyuk, S.O. Semerikov, V.N. Soloviev, Irreversibility of financial time series: A case of crisis, in: A.E. Kiv, V.N. Soloviev, S.O. Semerikov (Eds.), Proceedings of the Selected and Revised Papers of 9th International Conference on Monitoring, Modeling <span>&amp;</span> Management of Emergent Economy <span>(M3E2-MLPEED</span> 2021), Odessa, Ukraine, May 26-28, 2021, CEUR-WS.org, 2021: pp. 134–150. <a href="https://ceur-ws.org/Vol-3048/paper04.pdf">https://ceur-ws.org/Vol-3048/paper04.pdf</a>.</div>
 </div>
 <div id="ref-10.1007/978-3-031-35467-0_26" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[14] </div><div class="csl-right-inline">A. Kiv, A. Bryukhanov, A. Bielinskyi, V. Soloviev, T. Kavetskyy, D. Dyachok, I. Donchev, and V. Lukashin, <em><a href="https://doi.org/10.1007/978-3-031-35467-0_26">Irreversibility of Plastic Deformation Processes in Metals</a></em>, in <em>Information Technology for Education, Science, and Technics</em>, edited by E. Faure, O. Danchenko, M. Bondarenko, Y. Tryus, C. Bazilo, and G. Zaspa (Springer Nature Switzerland, Cham, 2023), pp. 425–445.</div>
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">A. Kiv, A. Bryukhanov, A. Bielinskyi, V. Soloviev, T. Kavetskyy, D. Dyachok, I. Donchev, V. Lukashin, Irreversibility of plastic deformation processes in metals, in: E. Faure, O. Danchenko, M. Bondarenko, Y. Tryus, C. Bazilo, G. Zaspa (Eds.), Information Technology for Education, Science, and Technics, Springer Nature Switzerland, Cham, 2023: pp. 425–445. https://doi.org/<a href="https://doi.org/10.1007/978-3-031-35467-0_26">https://doi.org/10.1007/978-3-031-35467-0_26</a>.</div>
 </div>
 <div id="ref-PhysRevLett.95.198102" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Costa, A. L. Goldberger, and C.-K. Peng, <a href="https://doi.org/10.1103/PhysRevLett.95.198102">Broken asymmetry of the human heartbeat: Loss of time irreversibility in aging and disease</a>, Phys. Rev. Lett. <strong>95</strong>, 198102 (2005).</div>
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">M. Costa, A.L. Goldberger, C.-K. Peng, Broken asymmetry of the human heartbeat: Loss of time irreversibility in aging and disease, Phys. Rev. Lett. 95 (2005) 198102. https://doi.org/<a href="https://doi.org/10.1103/PhysRevLett.95.198102">10.1103/PhysRevLett.95.198102</a>.</div>
 </div>
 <div id="ref-Ehlers_1998" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C. L. Ehlers, J. Havstad, D. Prichard, and J. Theiler, <a href="https://doi.org/10.1523/jneurosci.18-18-07474.1998">Low doses of ethanol reduce evidence for nonlinear structure in brain activity</a>, The Journal of Neuroscience <strong>18</strong>, 7474 (1998).</div>
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">C.L. Ehlers, J. Havstad, D. Prichard, J. Theiler, Low doses of ethanol reduce evidence for nonlinear structure in brain activity, The Journal of Neuroscience 18 (1998) 7474–7486. https://doi.org/<a href="https://doi.org/10.1523/jneurosci.18-18-07474.1998">10.1523/jneurosci.18-18-07474.1998</a>.</div>
 </div>
 <div id="ref-Yan_2017" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C. Yan, P. Li, L. Ji, L. Yao, C. Karmakar, and C. Liu, <a href="https://doi.org/10.1186/s12938-017-0402-3">Area asymmetry of heart rate variability signal</a>, BioMedical Engineering OnLine <strong>16</strong>, (2017).</div>
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">C. Yan, P. Li, L. Ji, L. Yao, C. Karmakar, C. Liu, Area asymmetry of heart rate variability signal, BioMedical Engineering OnLine 16 (2017). https://doi.org/<a href="https://doi.org/10.1186/s12938-017-0402-3">10.1186/s12938-017-0402-3</a>.</div>
 </div>
 <div id="ref-Karmakar_2015" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C. K. Karmakar, A. Khandoker, and M. Palaniswami, <a href="https://doi.org/10.1088/0967-3334/36/2/303">Phase asymmetry of heart rate variability signal</a>, Physiological Measurement <strong>36</strong>, 303 (2015).</div>
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">C.K. Karmakar, A. Khandoker, M. Palaniswami, Phase asymmetry of heart rate variability signal, Physiological Measurement 36 (2015) 303. https://doi.org/<a href="https://doi.org/10.1088/0967-3334/36/2/303">10.1088/0967-3334/36/2/303</a>.</div>
 </div>
 <div id="ref-PhysRevE.80.046103" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B. Luque, L. Lacasa, F. Ballesteros, and J. Luque, <a href="https://doi.org/10.1103/PhysRevE.80.046103">Horizontal visibility graphs: Exact results for random time series</a>, Phys. Rev. E <strong>80</strong>, 046103 (2009).</div>
+<div class="csl-left-margin">[19] </div><div class="csl-right-inline">B. Luque, L. Lacasa, F. Ballesteros, J. Luque, Horizontal visibility graphs: Exact results for random time series, Phys. Rev. E 80 (2009) 046103. https://doi.org/<a href="https://doi.org/10.1103/PhysRevE.80.046103">10.1103/PhysRevE.80.046103</a>.</div>
 </div>
 <div id="ref-PhysRevE.92.022817" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[20] </div><div class="csl-right-inline">L. Lacasa and R. Flanagan, <a href="https://doi.org/10.1103/PhysRevE.92.022817">Time reversibility from visibility graphs of nonstationary processes</a>, Phys. Rev. E <strong>92</strong>, 022817 (2015).</div>
+<div class="csl-left-margin">[20] </div><div class="csl-right-inline">L. Lacasa, R. Flanagan, Time reversibility from visibility graphs of nonstationary processes, Phys. Rev. E 92 (2015) 022817. https://doi.org/<a href="https://doi.org/10.1103/PhysRevE.92.022817">10.1103/PhysRevE.92.022817</a>.</div>
 </div>
 <div id="ref-Grosse_2002" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[21] </div><div class="csl-right-inline">I. Grosse, P. Bernaola-Galván, P. Carpena, R. Román-Roldán, J. Oliver, and H. E. Stanley, <a href="https://doi.org/10.1103/physreve.65.041905">Analysis of symbolic sequences using the jensen-shannon divergence</a>, Physical Review E <strong>65</strong>, (2002).</div>
+<div class="csl-left-margin">[21] </div><div class="csl-right-inline">I. Grosse, P. Bernaola-Galván, P. Carpena, R. Román-Roldán, J. Oliver, H.E. Stanley, Analysis of symbolic sequences using the jensen-shannon divergence, Physical Review E 65 (2002). https://doi.org/<a href="https://doi.org/10.1103/physreve.65.041905">10.1103/physreve.65.041905</a>.</div>
 </div>
 <div id="ref-perm_en" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[22] </div><div class="csl-right-inline">C. Bandt and B. Pompe, <a href="https://doi.org/10.1103/PhysRevLett.88.174102">Permutation entropy: A natural complexity measure for time series</a>, Phys. Rev. Lett. <strong>88</strong>, 174102 (2002).</div>
+<div class="csl-left-margin">[22] </div><div class="csl-right-inline">C. Bandt, B. Pompe, Permutation entropy: A natural complexity measure for time series, Phys. Rev. Lett. 88 (2002) 174102. https://doi.org/<a href="https://doi.org/10.1103/PhysRevLett.88.174102">10.1103/PhysRevLett.88.174102</a>.</div>
 </div>
 <div id="ref-DBLP:conf/cte/BielinskyiKPSS21" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[23] </div><div class="csl-right-inline">A. O. Bielinskyi, A. E. Kiv, Y. O. Prikhozha, M. A. Slusarenko, and V. N. Soloviev, <em><a href="https://doi.org/10.55056/cte.103">Complex Systems and Physics Education</a></em>, in <em>Proceedings of the 9th Workshop on Cloud Technologies in Education, <span>CTE</span> 2021, Kryvyi Rih, Ukraine, December 17, 2021</em>, edited by A. E. Kiv, S. O. Semerikov, and M. P. Shyshkina, Vol. 3085 (CEUR-WS.org, 2021), pp. 56–80.</div>
+<div class="csl-left-margin">[23] </div><div class="csl-right-inline">A.O. Bielinskyi, A.E. Kiv, Y.O. Prikhozha, M.A. Slusarenko, V.N. Soloviev, Complex systems and physics education, in: A.E. Kiv, S.O. Semerikov, M.P. Shyshkina (Eds.), Proceedings of the 9th Workshop on Cloud Technologies in Education, <span>CTE</span> 2021, Kryvyi Rih, Ukraine, December 17, 2021, CEUR-WS.org, 2021: pp. 56–80. https://doi.org/<a href="https://doi.org/10.55056/cte.103">https://doi.org/10.55056/cte.103</a>.</div>
 </div>
 <div id="ref-10.1063/5.0049901" class="csl-entry" role="listitem">
-<div class="csl-left-margin">[24] </div><div class="csl-right-inline">A. A. B. Pessa and H. V. Ribeiro, <a href="https://doi.org/10.1063/5.0049901"><span class="nocase">ordpy: A Python package for data analysis with permutation entropy and ordinal network methods</span></a>, Chaos: An Interdisciplinary Journal of Nonlinear Science <strong>31</strong>, 063110 (2021).</div>
+<div class="csl-left-margin">[24] </div><div class="csl-right-inline">A.A.B. Pessa, H.V. Ribeiro, <span class="nocase">ordpy: A Python package for data analysis with permutation entropy and ordinal network methods</span>, Chaos: An Interdisciplinary Journal of Nonlinear Science 31 (2021) 063110. https://doi.org/<a href="https://doi.org/10.1063/5.0049901">https://doi.org/10.1063/5.0049901</a>.</div>
 </div>
 </div>
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Скопійовано!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Скопійовано!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Скопійовано!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Скопійовано!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/butman2099\.github\.io\/Complex-systems-book\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        return container.innerHTML
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -2010,185 +2049,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation column-body">
   <div class="nav-page nav-page-previous">
       <a href="./lab_10.html" class="pagination-link" aria-label="Лабораторна робота № 10">
